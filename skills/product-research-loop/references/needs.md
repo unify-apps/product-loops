@@ -1,7 +1,9 @@
 # What each node needs
 
 Node 1 reads this file to build its one round of questions. For every need: look in the places listed first.
-Ask only what is still missing and would change the result. Ask at most 6 questions. Every other need shows
+Ask only what is still missing and would change the result. Ask at most 6 questions. A need whose default
+you could fill from what you found (for example the market, when every rival found sells in one country) is
+not a question: show it in the brief. Every other need shows
 in the brief with its value or its default, so the person can change it in the same reply.
 
 Where to look, in this order, for every need:
@@ -33,6 +35,10 @@ Where to look, in this order, for every need:
 
 - Run one WebSearch for the category (for example "<category> software"). It must return results.
 - Run one WebFetch on the home page of one named rival, or of the first search result. It must return text.
+- The run opens 30 to 50 web pages after the person leaves. If the start check's WebSearch or WebFetch asked
+  the person for permission first, add this line to the questions message:
+  "Allow web reads for this run (choose 'don't ask again' when asked), or the research will stop while you
+  are away."
 - If WebSearch is missing, say research will use only pages the person names or that can be guessed
   (`<rival>.com`, `<rival>.com/pricing`, `help.<rival>.com`). If both fail, say so with the questions: the run
   can still go, but the stop fact will not be met and the hand-over will say why.

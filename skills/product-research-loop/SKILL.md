@@ -10,11 +10,18 @@ Read `${CLAUDE_SKILL_DIR}/shared/loop-rules.md` first, all of it, and follow it.
 
 In this file:
 - `STATE` means: `node "${CLAUDE_SKILL_DIR}/shared/scripts/loop-state.mjs"`
-- `CHECK` means: `node "${CLAUDE_SKILL_DIR}/scripts/check-research.mjs"`
+- `CHECK` means: `node "${CLAUDE_SKILL_DIR}/scripts/check-research.mjs"`. Its first word is always the check
+  name, then the out folder: `CHECK research research/<short name> --rivals 3`. The default out folder also
+  starts with `research/`, so never drop the check name.
 - `RUN` is the run folder that `STATE status` prints. `OUT` is the out folder from need 12
   (default `research/<short name>/` in the working folder). Make `OUT/rivals/` and `RUN/checks/` at the start
   of node 2. When `OUT` already holds files from an earlier run, add today's date to its name
   (`research/<short name>-<yyyymmdd>/`), so old rival files are never counted.
+- **Waiting for helpers.** Helper agents run in the background. To wait for their files, run one Bash command in
+  the foreground (not in the background) with a 600000 ms timeout, for example
+  `until [ "$(ls OUT/rivals 2>/dev/null | grep -c '\.md$')" -ge 3 ]; do sleep 10; done`. Never use `sleep` alone,
+  ScheduleWakeup or ListAgents. When it times out or is moved to the background, check which files are
+  missing and run the same wait once more.
 
 Stop fact: `OUT/brief.md` and `OUT/capability-sheet.csv` exist, every sheet row has a source link, and the brief
 ends in a ranked module list whose every module cites sheet rows.
@@ -74,6 +81,7 @@ every need with its value, `OUT`, and the stop fact.
    for this market, and take the names that show up in the most lists. Run `STATE decide` for each one added.
 3. Start one helper agent per rival with the Agent tool, all in one message. Each gets the task in
    `${CLAUDE_SKILL_DIR}/references/research.md`, filled in. Each writes only `OUT/rivals/<rival-slug>.md`.
+   Then wait for all the files, as "Waiting for helpers" says.
 4. Check: `CHECK research OUT --rivals <number of rivals> --write RUN/checks/research.txt`
 5. A FAIL names the file and the problem. Send one helper to fix that file only, then
    `STATE retry research --why "<the FAIL line>"` and check again.
@@ -89,7 +97,7 @@ file, run `STATE decide` to drop it, and check again with one rival fewer.
    `${CLAUDE_SKILL_DIR}/references/matrix.md` says, from the rival files only.
 3. Check: `CHECK matrix OUT --write RUN/checks/matrix.txt`
 4. On FAIL: fix the rows it names, `STATE retry matrix --why "..."`, check again.
-5. `STATE done matrix --check "every row has an id, a source link and a mark" --proof RUN/checks/matrix.txt`
+5. `STATE done matrix --check "every row has a source and a mark, every yes cell its own rival's link" --proof RUN/checks/matrix.txt`
 
 ## Node 4: think
 
@@ -106,22 +114,25 @@ file, run `STATE decide` to drop it, and check again with one rival fewer.
 2. Write `OUT/brief.md` as `${CLAUDE_SKILL_DIR}/references/recommend.md` says.
 3. Check: `CHECK brief OUT --write RUN/checks/brief.txt`
 4. On FAIL: fix it, `STATE retry recommend --why "..."`, check again.
-5. `STATE done recommend --check "ranked list is last, every module cites real sheet rows" --proof RUN/checks/brief.txt`
+5. `STATE done recommend --check "ranked list is last, every module has a must have and cites real sheet rows" --proof RUN/checks/brief.txt`
 
 ## Node 6: review
 
 1. `STATE start review`
 2. Start one helper agent with the Agent tool, with the task in `${CLAUDE_SKILL_DIR}/references/review.md`,
-   filled in. It writes `RUN/review.md`.
+   filled in. It writes `RUN/review.md`. Wait for that file, as "Waiting for helpers" says.
 3. Read `RUN/review.md`. On FAIL: fix what it names (in the node that made it), `STATE retry review --why "..."`,
    and start a new review agent.
 4. `STATE done review --check "fresh agent says PASS" --proof RUN/review.md`
 
 ## Node 7: handover
 
-Follow the hand-over rules in loop-rules.md. In `handover.md` also put:
+Follow the hand-over rules in loop-rules.md. Take the decision count from `STATE status --json` (its
+`decisions` field), never from memory, and link `decisions.md` only when it exists. In
+`STATE finish --stop-fact`, write the real out folder, not `OUT`.
+In `handover.md` also put:
 - Links to `OUT/brief.md`, `OUT/capability-sheet.csv`, `OUT/thinking.md` and each rival file.
-- The ranked module list's top 3, one line each.
+- The ranked module list's top 3, one line each, and the `## Questions for the build` from the brief.
 - What was not checked: rivals dropped, pages that would not open, `unverified` rows.
 - Next step: a build can start from `OUT/brief.md` (for example `/product-build-loop OUT/brief.md`, when that
   loop is installed).

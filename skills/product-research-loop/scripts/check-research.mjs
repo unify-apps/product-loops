@@ -18,6 +18,8 @@ export const RIVAL_VALUES = ["yes", "partial", "no", "unknown"];
 export const STATUSES = ["read", "unverified"];
 const MIN_READ_ROWS = 5;
 const URL = /https?:\/\/[^\s|)>\]]+/u;
+/** Pure: a name in small letters and digits only, so "Rival-A" and "rival a" match. */
+const slug = (name) => String(name).toLowerCase().replace(/[^a-z0-9]/gu, "");
 
 /** Pure: the rows of a CSV text, with quoted fields ("a, b" and "" inside quotes). */
 export function parseCsv(text) {
@@ -129,6 +131,20 @@ export function checkMatrix(outDir) {
   results.push({ pass: !badMark.length, text: `rows whose mark is not ${MARKS.join("/")}: ${badMark.length}${badMark.length ? ` (${badMark.slice(0, 5).map((row) => row.id).join(", ")})` : ""}` });
   const badCells = sheet.rows.flatMap((row) => sheet.rivalColumns.filter((name) => !RIVAL_VALUES.includes((row[name] ?? "").toLowerCase())).map((name) => `${row.id}/${name}`));
   results.push({ pass: !badCells.length, text: `rival cells not ${RIVAL_VALUES.join("/")}: ${badCells.length}${badCells.length ? ` (${badCells.slice(0, 5).join(", ")})` : ""}` });
+  // A yes or partial cell needs a link from that rival's own file, so one rival's page never proves another rival's cell.
+  const rivalFiles = fs.existsSync(dir) ? fs.readdirSync(dir).filter((name) => name.endsWith(".md")) : [];
+  const noFile = sheet.rivalColumns.filter((name) => !rivalFiles.some((file) => slug(file.replace(/\.md$/u, "")) === slug(name)));
+  results.push({ pass: !noFile.length, text: `rival columns with no rivals/<column>.md file: ${noFile.length}${noFile.length ? ` (${noFile.join(", ")})` : ""}` });
+  const unproved = sheet.rivalColumns.filter((name) => !noFile.includes(name)).flatMap((name) => {
+    const file = rivalFiles.find((candidate) => slug(candidate.replace(/\.md$/u, "")) === slug(name));
+    // The "Home page:" line only names the product; it proves no feature unless a table row cites that page too.
+    const text = fs.readFileSync(path.join(dir, file), "utf8").replace(/^\s*-\s*home page:.*$/gimu, "");
+    const own = new Set([...text.matchAll(new RegExp(URL.source, "gu"))].map((match) => match[0]));
+    return sheet.rows.filter((row) => ["yes", "partial"].includes((row[name] ?? "").toLowerCase()))
+      .filter((row) => ![...(row.sources ?? "").matchAll(new RegExp(URL.source, "gu"))].some((match) => own.has(match[0])))
+      .map((row) => `${row.id}/${name}`);
+  });
+  results.push({ pass: !unproved.length, text: `yes or partial cells with no link from that rival's own file: ${unproved.length}${unproved.length ? ` (${unproved.slice(0, 8).join(", ")})` : ""}` });
   return results;
 }
 
@@ -162,6 +178,8 @@ export function checkBrief(outDir) {
   results.push({ pass: ranks.every((rank, index) => rank === index + 1), text: `ranks: ${ranks.join(", ") || "none"} (must be 1, 2, 3 ... in order)` });
   const noJob = rows.filter((row) => !(row["job step"] ?? "").replace(/[-–—\s]/gu, ""));
   results.push({ pass: !noJob.length, text: `modules with no job step: ${noJob.length}${noJob.length ? ` (${noJob.map((row) => row.module).join(", ")})` : ""}` });
+  const noMust = rows.filter((row) => !(row["must have"] ?? "").replace(/[-–—\s]/gu, ""));
+  results.push({ pass: !noMust.length, text: `modules with no must have: ${noMust.length}${noMust.length ? ` (${noMust.map((row) => row.module).join(", ")})` : ""}` });
   const sheet = readSheet(outDir);
   const known = new Set((sheet?.rows ?? []).map((row) => row.id.toLowerCase()));
   const untraced = rows.filter((row) => {
@@ -171,6 +189,8 @@ export function checkBrief(outDir) {
   results.push({ pass: !untraced.length, text: `modules citing no row, or a row not in ${SHEET_FILE}: ${untraced.length}${untraced.length ? ` (${untraced.map((row) => `${row.module}: "${row["matrix rows"] ?? ""}"`).join("; ")})` : ""}` });
   return results;
 }
+
+export const STEPS = ["research", "matrix", "think", "brief", "all"];
 
 export function check(step, outDir, options = {}) {
   if (step === "research") return checkResearch(outDir, options);
@@ -183,7 +203,9 @@ export function check(step, outDir, options = {}) {
 
 export function main(argv) {
   const [step, outDir, ...rest] = argv;
-  if (!step || !outDir) throw new Error("Usage: check-research.mjs <research|matrix|think|brief|all> <out folder> [--rivals <n>] [--write <file>]");
+  const usage = "Usage: check-research.mjs <research|matrix|think|brief|all> <out folder> [--rivals <n>] [--write <file>]";
+  if (!STEPS.includes(step)) throw new Error(`The first word must be the check name (${STEPS.join(", ")}), then the out folder. Got "${step ?? ""}". Example: check-research.mjs research research/<short name> --rivals 3. ${usage}`);
+  if (!outDir || outDir.startsWith("--")) throw new Error(`The second word must be the out folder. ${usage}`);
   const options = {};
   let write = null;
   for (let i = 0; i < rest.length; i++) {

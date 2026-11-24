@@ -28,8 +28,11 @@ Target screen: checkout
 | 4 | Pay button under the summary | step 3 | | |
 ```
 
-A part is anything a person would miss if it were gone: a section, a field, a column, a button, a step of a
-flow, a state (empty, loading, error), and the order they come in.
+A part is anything a person would miss if it were gone: a section, a field, a column, a button, a side or top
+navigation, a step of a flow, a state (empty, loading, error), and the order they come in.
+
+List every part, even one you will not build. A part you leave out keeps its row, with `left out: <why>` in
+"Found on the target", and a `STATE decide` with the same reason. A note under the table is not enough.
 
 ## 3. Build it into the target screen
 
@@ -44,5 +47,5 @@ flow, a state (empty, loading, error), and the order they come in.
 
 Capture the target screen: `CHECK capture --screens RUN/screens.json --out RUN/reference-check --only <screen>`.
 For each row, find the part in `RUN/reference-check/<screen>.txt` or with `CHECK eval`, and fill
-"Found" (yes or no) and "Where". Every row must say yes. Then read the two screenshots side by side and write
+"Found" (yes or no) and "Where". Every row must say yes, or `left out: <why>`. Then read the two screenshots side by side and write
 one line under the table on what still looks different, and whether the mode allows it.

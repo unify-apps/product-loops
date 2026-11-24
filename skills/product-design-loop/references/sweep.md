@@ -24,8 +24,10 @@ place in the code, not only where the person saw it.
 
 ## Then
 
-- `CHECK capture --screens RUN/screens.json --out RUN/after`
-- `CHECK compare --before RUN/before --after RUN/after --explained <every screen a row or the sweep names> --out RUN/compare-sweep.md`
+- When the sweep changed no file (node 4 already did every place), skip the capture: write "no file changed
+  since compare-changes.md" in `sweep.md`.
+- Otherwise: `CHECK capture --screens RUN/screens.json --out RUN/after`, then
+  `CHECK compare --before RUN/before --after RUN/after --explained <every screen where a row's thing was> --out RUN/compare-sweep.md`.
 - UNEXPECTED or BROKEN: fix it and run both again.
 
 `sweep.md` looks like this:

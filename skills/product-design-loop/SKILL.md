@@ -61,8 +61,9 @@ A note that arrives after "go" is never a question. Add it as a new row and do i
    screen named `reference-<name>` when it is a local file or a web page.
 4. Copy the prototype's source files to `before/source/`. In a git folder, also write `git rev-parse HEAD` and
    `git status --short` to `before/git.txt`. Never commit, stash or reset.
-5. `CHECK capture --screens RUN/screens.json --out RUN/before`. A screen that was already broken before the
-   run is written in `requests.md` under "Broken before the run". It is not this run's fault, and not its job.
+5. `CHECK capture --screens RUN/screens.json --out RUN/before`. Then `CHECK click` each button or link that a
+   row renames, moves or restyles but does not ask to make work. Write a broken screen, and each such control
+   that is dead, in `requests.md` under "Broken before the run". Not this run's fault, not its job: never fix it.
 6. Check: `curl -s -o /dev/null -w "%{http_code}" <link>` prints 200. Write the link and the code to `link.txt`.
    Tell the person the link in one line.
 7. `STATE done run-prototype --check "link answers 200, before screenshots taken" --proof RUN/before/summary.json`
@@ -76,7 +77,8 @@ With no reference: `STATE left copy-reference --why "no reference was given"` an
    every part of it in `reference-parts.md`, build it into the target screen in exact or flow-only mode.
    Never edit the reference itself.
 3. Check: capture the target screen into `RUN/reference-check/` (with `--only`), and mark each row of
-   `reference-parts.md` found, with where. Every row must be found. Look at both screenshots side by side.
+   `reference-parts.md` found, with where. Every row must be found, or say `left out: <why>` with a
+   `STATE decide`. A part never listed is a fault. Look at both screenshots side by side.
 4. Mark the reference row of `requests.md` done.
 5. `STATE done copy-reference --check "every part of the reference is on the screen" --proof RUN/reference-parts.md`
 
@@ -89,18 +91,21 @@ With no reference: `STATE left copy-reference --why "no reference was given"` an
    rest under Proposals.
 3. Do each row of `requests.md` that is still `todo`, in order, as make-changes.md says. After each row, run its
    check and write the command and its real output to `change-checks.md`. Mark the row `done`, or retry it.
+   Run `STATE decide` the moment you make a choice, not in a batch at the end.
 4. Rows that live in different files may go to helper agents, one per file group, each told the rows, the
    files and the checks. Rows in the same file are done one after another. Helpers never run `STATE`.
 5. `CHECK capture --screens RUN/screens.json --out RUN/after`, then
-   `CHECK compare --before RUN/before --after RUN/after --explained <screens the rows name> --out RUN/compare-changes.md`.
-   For each UNEXPECTED screen, read what moved. Fix a leak (scope the rule to the screen the note named), or
-   add the screen to the row that explains it. Fix every BROKEN screen. Run the compare again.
+   `CHECK compare --before RUN/before --after RUN/after --explained <screens> --out RUN/compare-changes.md`.
+   `<screens>` are only the screens where a row's thing really is (its text in `before/*.txt`, or its code),
+   never every screen an `everywhere` row lists. For each UNEXPECTED screen, read what moved. Fix a leak (scope
+   the rule to the screen the note named). Fix every BROKEN screen. Run the compare again.
 6. Design check on the changed screens: run the `design-review` skill when installed, else
-   `${CLAUDE_SKILL_DIR}/references/design-check.md`. Fix what it finds in the parts this run changed.
+   `${CLAUDE_SKILL_DIR}/references/design-check.md`. Either way, write `RUN/design-check.md`: one line per
+   design-check.md rule, with what you ran and what it found. Fix every P1 in the parts this run changed.
    A larger change it suggests goes under Proposals in `requests.md`, not into the build.
-7. Check: every row is `done` or `left` with a reason, and `compare-changes.md` ends with UNEXPECTED none
-   and BROKEN none.
-8. `STATE done make-changes --check "every row checked, compare clean" --proof RUN/change-checks.md`
+7. Check: every row is `done` or `left` with a reason, `compare-changes.md` ends with UNEXPECTED none and
+   BROKEN none, and `design-check.md` has a line for every rule and no open P1.
+8. `STATE done make-changes --check "every row checked, compare clean, design check has no P1" --proof RUN/change-checks.md`
 
 ## Node 5: sweep
 
@@ -108,27 +113,30 @@ With no reference: `STATE left copy-reference --why "no reference was given"` an
 2. Follow `${CLAUDE_SKILL_DIR}/references/sweep.md`: for every row marked `everywhere`, write the rule in one
    line, find every place it fits on every screen and in the code, apply it, and list each place in `sweep.md`.
 3. Check: run each rule's find again. It must find no place left, or only places listed as skipped with a
-   reason. Capture `after/` again and compare with `--explained` set to the screens the rows and the sweep name.
+   reason. When the sweep changed a file, capture `after/` again and compare, as sweep.md says.
 4. Mark each swept row `swept` in `requests.md`.
-5. `STATE done sweep --check "every rule found no place left, compare clean" --proof RUN/sweep.md`
+5. `STATE done sweep --check "every rule found no place left; compare clean, or no file changed" --proof RUN/sweep.md`
 
 ## Node 6: review
 
 1. `STATE start review`
 2. Start one helper agent with the Agent tool. It did not build anything in this run. Give it the prompt in
-   `${CLAUDE_SKILL_DIR}/references/review-prompt.md`, with RUN, the link, `CHECK` written out in full, and
-   the design rules found in node 1.
+   `${CLAUDE_SKILL_DIR}/references/review-prompt.md`, with RUN, the link, the prototype's changed files,
+   `CHECK` written out in full, and the design rules found in node 1.
 3. Read `review.md`. If it says FAIL: fix what it names, `STATE retry review --why "<what failed>"`, and start
-   a new review agent. After 3 retries, `STATE left review --why "<what still fails>"`.
+   a new review agent in retry mode: rename `review.md` to `review-<try>.md` and fill in the prompt's Retry
+   part. After 3 retries,
+   `STATE left review --why "<what still fails>"`.
 4. `STATE done review --check "fresh agent says PASS" --proof RUN/review.md`
 
 ## Node 7: handover
 
 Follow the hand-over rules in loop-rules.md. In `handover.md` also give:
-- The link, and the one command that starts the server again.
+- The link, and the commands that start and stop the server, with the port.
 - The request table: each row, its status, and its proof line.
 - Per changed screen: the before and after screenshot paths.
 - The files changed. Nothing was committed, unless the person asked for it in node 1.
+- Broken before the run: each item from `requests.md`, so the person knows the run left it as it was.
 - Proposals: larger changes the design check or a step skill suggested, and choices taken on the person's
   behalf that they may want to change.
 

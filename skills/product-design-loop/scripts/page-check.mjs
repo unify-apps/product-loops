@@ -15,10 +15,12 @@ const HELP = `page-check.mjs: look at a prototype's screens the way a person wou
 
   browser                                       prints the browser it will use, or "none"
   capture --screens <screens.json> --out <dir> [--width 1440] [--only a,b]
-                                                per screen: <name>.png, <name>.txt (page text), <name>.layout.json;
+                                                per screen: <name>.png, <name>.txt (page text), <name>.layout.json,
+                                                <name>.styles.json (drawn sizes, fonts, colours, corners);
                                                 and summary.json with errors per screen
   compare --before <dir> --after <dir> --out <file.md> [--explained a,b]
-                                                per screen: text lines added and removed, boxes that moved, new errors.
+                                                per screen: text lines added and removed, boxes that moved, new errors,
+                                                and new styles (a value no prototype screen drew before).
                                                 A screen that changed and is not in --explained is marked UNEXPECTED.
   click   --screens <screens.json> --screen <name> --target "<css selector>" | --text "<visible text>"
                                                 clicks one thing and says what changed. "dead" means nothing changed.
@@ -187,6 +189,27 @@ const LAYOUT_JS = `(() => {
   return out;
 })()`;
 
+// Every drawn style value a person can see (text size, weight, font, colour, fill, corner), each with the first
+// element that uses it. Runs inside the page. compare uses it to find a value the prototype never drew before.
+const STYLES_JS = `(() => {
+  const out = {};
+  const name = (el) => el.tagName.toLowerCase() + (el.classList.length ? '.' + [...el.classList].join('.') : '');
+  const add = (value, el) => { if (!(value in out)) out[value] = name(el) + ' ' + JSON.stringify((el.innerText || el.value || '').trim().slice(0, 30)); };
+  for (const el of document.body.querySelectorAll('*')) {
+    if (['SCRIPT', 'STYLE', 'TEMPLATE'].includes(el.tagName) || !el.getClientRects().length) continue;
+    const s = getComputedStyle(el);
+    if (s.visibility === 'hidden') continue;
+    const hasText = ['INPUT', 'SELECT', 'TEXTAREA', 'BUTTON'].includes(el.tagName) || [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim());
+    if (hasText) {
+      add('font-size ' + s.fontSize, el); add('font-weight ' + s.fontWeight, el);
+      add('font ' + s.fontFamily.split(',')[0].trim(), el); add('color ' + s.color, el);
+    }
+    if (s.backgroundColor !== 'rgba(0, 0, 0, 0)') add('fill ' + s.backgroundColor, el);
+    if (s.borderRadius !== '0px') add('corner ' + s.borderRadius, el);
+  }
+  return out;
+})()`;
+
 const textOfHtml = (html) => html.replace(/<(script|style)[\s\S]*?<\/\1>/giu, " ").replace(/<[^>]+>/gu, "\n")
   .replace(/&nbsp;/gu, " ").replace(/&amp;/gu, "&").replace(/&lt;/gu, "<").replace(/&gt;/gu, ">")
   .split("\n").map((line) => line.trim()).filter(Boolean).join("\n");
@@ -219,6 +242,7 @@ async function capture(options) {
         await openScreen(page, screen);
         const text = String(await page.evaluate("document.body ? document.body.innerText : ''")).trim();
         const layout = await page.evaluate(LAYOUT_JS);
+        const styles = await page.evaluate(STYLES_JS);
         const height = Math.min(MAX_SHOT_HEIGHT, Math.max(900, Math.ceil((await page.send("Page.getLayoutMetrics")).cssContentSize.height)));
         const shot = await page.send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip: { x: 0, y: 0, width: summary.width, height, scale: 1 } });
         const png = Buffer.from(shot.data, "base64");
@@ -228,6 +252,7 @@ async function capture(options) {
         fs.writeFileSync(path.join(out, `${screen.name}.png`), png);
         fs.writeFileSync(path.join(out, `${screen.name}.txt`), `${text}\n`);
         fs.writeFileSync(path.join(out, `${screen.name}.layout.json`), `${JSON.stringify(layout)}\n`);
+        fs.writeFileSync(path.join(out, `${screen.name}.styles.json`), `${JSON.stringify(styles, null, 1)}\n`);
         summary.screens[screen.name] = { url: screen.url, ok: text.length > 0 && !page.errors.length, errors: [...page.errors], dialogs: [...page.dialogs],
           textLines: text ? text.split("\n").length : 0, boxes: layout.length, png: crypto.createHash("sha1").update(png).digest("hex"), moving };
       }
@@ -265,6 +290,16 @@ export function layoutChanges(before, after) {
   return { moved, added, removed: [...map.values()] };
 }
 
+/** Pure: style values a screen draws now that no prototype screen drew before. A reference screen's values do not
+ *  count as the prototype's own, so copying a reference's look still shows. */
+export function newStyles(beforeByScreen, afterStyles) {
+  const known = new Set();
+  for (const [name, styles] of Object.entries(beforeByScreen)) if (!name.startsWith("reference-")) for (const value of Object.keys(styles ?? {})) known.add(value);
+  return Object.entries(afterStyles ?? {}).filter(([value]) => !known.has(value)).map(([value, where]) => ({ value, where }));
+}
+
+const readStyles = (dir, name) => { try { return JSON.parse(fs.readFileSync(path.join(dir, `${name}.styles.json`), "utf8")); } catch { return null; } };
+
 function compare(options) {
   const before = path.resolve(need(options, "before"));
   const after = path.resolve(need(options, "after"));
@@ -274,11 +309,16 @@ function compare(options) {
   const a = read(before); const b = read(after);
   const names = [...new Set([...Object.keys(a.screens), ...Object.keys(b.screens)])];
   const lines = [`# Screen compare`, "", `Before: ${before}`, `After: ${after}`, `Explained screens: ${[...explained].join(", ") || "none"}`, ""];
-  const result = { unexpected: [], broken: [], changed: [], same: [] };
+  const result = { unexpected: [], broken: [], changed: [], same: [], styles: [] };
+  const beforeStyles = Object.fromEntries(Object.keys(a.screens).map((name) => [name, readStyles(before, name)]).filter(([, s]) => s));
   for (const name of names) {
     const sa = a.screens[name]; const sb = b.screens[name];
     if (!sb) { result.broken.push(name); lines.push(`## ${name}: BROKEN`, "", "- It was there before and is missing now.", ""); continue; }
-    if (!sa) { result.changed.push(name); lines.push(`## ${name}: new screen`, ""); continue; }
+    const fresh = Object.keys(beforeStyles).length && !name.startsWith("reference-") ? newStyles(beforeStyles, readStyles(after, name)) : [];
+    const styleLine = fresh.length ? [`- New styles, drawn on no screen before (${fresh.length}): ${fresh.slice(0, LIST_LIMIT).map((f) => `${f.value} on ${f.where}`).join("; ")}`] : [];
+    if (fresh.length) result.styles.push(`${name} (${fresh.map((f) => f.value).join(", ")})`);
+    // A new screen (an open form, a panel) is checked for new styles too: it is where new looks tend to come in.
+    if (!sa) { result.changed.push(name); lines.push(`## ${name}: new screen`, "", ...styleLine, ""); continue; }
     const ta = readText(before, name) ?? []; const tb = readText(after, name) ?? [];
     const plus = linesAdded(ta, tb); const minus = linesAdded(tb, ta);
     const la = readLayout(before, name); const lb = readLayout(after, name);
@@ -302,16 +342,19 @@ function compare(options) {
       if (boxes.added.length) lines.push(`- Boxes added: ${boxes.added.length}`);
       if (boxes.removed.length) lines.push(`- Boxes gone: ${boxes.removed.length}`);
     }
+    lines.push(...styleLine);
     if (sa.moving || sb.moving) lines.push("- Screenshot: not compared, the screen moves on its own");
     if (pixels !== null) lines.push(`- Screenshot: ${pixels ? "different" : "the same"} (before/${name}.png, after/${name}.png)`);
     if (!changed && !broken) lines.push("- No change.");
     lines.push("");
   }
   lines.push("## Result", "", `- Same: ${result.same.join(", ") || "none"}`, `- Changed, explained: ${result.changed.join(", ") || "none"}`,
-    `- UNEXPECTED change: ${result.unexpected.join(", ") || "none"}`, `- BROKEN: ${result.broken.join(", ") || "none"}`, "");
+    `- UNEXPECTED change: ${result.unexpected.join(", ") || "none"}`, `- BROKEN: ${result.broken.join(", ") || "none"}`,
+    `- New styles: ${result.styles.join("; ") || "none"}`, "");
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, `${lines.join("\n")}\n`);
-  console.log(`same ${result.same.length}, explained ${result.changed.length}, UNEXPECTED ${result.unexpected.length}, BROKEN ${result.broken.length}: ${outFile}`);
+  // New styles do not fail the compare: a reason in decisions.md can allow one. Design check rule 8 reads them.
+  console.log(`same ${result.same.length}, explained ${result.changed.length}, UNEXPECTED ${result.unexpected.length}, BROKEN ${result.broken.length}, new styles on ${result.styles.length}: ${outFile}`);
   return result.unexpected.length || result.broken.length ? 1 : 0;
 }
 

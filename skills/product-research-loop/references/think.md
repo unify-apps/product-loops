@@ -30,7 +30,8 @@ exactly these `##` sections, in this order. Keep each one short: a few lines or 
      no-show or a change of plan.
 
 6. `## Modules`
-   - The candidate modules, as a table. Every module serves a job step. A module that serves no step is cut.
+   - The candidate modules, as a table. Every module serves a job step. A module that serves no step is not
+     a row in this table: write it under **Cut** in the next section, with the reason.
 
      | Module | Job step it serves | Matrix rows | Why the persona needs it |
      |---|---|---|---|

@@ -19,9 +19,10 @@ The stop fact: <stop fact>.
 
 Do these checks, in order:
 1. Run `node "<loop folder>/scripts/check-research.mjs" all "<out folder>" --rivals <n>`. Copy its last line.
-2. Pick 5 sheet rows across different rivals, at random. For each, open one of its source links with WebFetch
-   and say whether the page shows that capability. A page that will not open counts as "could not open", not
-   as wrong.
+2. Pick 5 `yes` cells, each on a row that a top-3 ranked module cites, across different rivals. Take the cell's
+   link from that rival's own file. Open it with WebFetch and say whether the page shows the capability as the
+   sheet words it, for that rival. A page that only names the feature, when the sheet claims more, counts as
+   wrong. A page that will not open, or shows no text, counts as "could not open", not as wrong; pick another.
 3. Read the brief as the buyer: <persona and buyer>. For each ranked module, does it answer a step of their
    job? Is anything they would need on day one missing from the top of the list?
 4. Does the brief answer the decision the person asked for: <decision>?

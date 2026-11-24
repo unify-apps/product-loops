@@ -46,6 +46,8 @@ Write the file `<out folder>/rivals/<rival-slug>.md` in exactly this shape:
 Rules for the table:
 - `Source` is the full link of the page that shows the feature. Every row has one.
 - `Status` is `read` (you saw it on that page in this run) or `unverified`. At least 5 rows must be `read`.
+- "What it does" says only what the page says, not what such a feature usually does. A page that names a
+  feature without saying how it works gives a short line like "Has a wait list", nothing more.
 - No `|` inside a cell. Keep "What it does" to one short line.
 
 When the file is written, reply with one line: the file path, the number of rows, and how many are `read`.

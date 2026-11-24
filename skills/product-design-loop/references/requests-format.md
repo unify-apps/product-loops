@@ -10,7 +10,7 @@ Reference: screenshots/checkout-1.png to checkout-3.png, flow only, changes the 
 
 | # | Note, in words | Screens | Where | Check | Status |
 |---|---|---|---|---|---|
-| 1 | Book cards: 20px gap between cards | shelf | this place | eval `gap` of `.shelf-grid` is "20px"; the search page grid unchanged | todo |
+| 1 | Book cards: 20px gap between cards | shelf | this place | eval `gap` of `.shelf-grid` is "20px"; the rule matches only the cards; the search page grid unchanged | todo |
 | 2 | Rename "Add to my shelf" to "Save" | book | everywhere | "Add to my shelf" gone from every after/*.txt; "Save" on book | todo |
 | 3 | Remove the small grey intro line under page titles | shelf | everywhere | no `.lede` text on any screen | todo |
 | 4 | "Share" on a book opens a panel with a copy-link button | book | this place | click "Share" works; the panel shows "Copy link" | todo |
@@ -31,7 +31,13 @@ Reference: screenshots/checkout-1.png to checkout-3.png, flow only, changes the 
 - **Words, not pictures.** A note on a screenshot becomes: the screen, the element (its visible text or a
   short description of where it is), and the change. A helper agent cannot see an image pasted in chat.
 - **Keep the person's numbers.** "20px", "320 wide", "Tue 4 Jun" go into the row as given.
-- **Screens** use the names in `screens.json`.
+- **A concrete result in every row.** "More room", "shorten it" or "make it work" is not a row yet. Write the
+  result you will build: the number, the new words, the fields of the form, where the buttons go. When the
+  note did not say, write your reading and mark it `(my reading)`. The person corrects it from the list in
+  node 1, with no extra question.
+- **Screens** use the names in `screens.json`. For an `everywhere` row, name only the screens where the thing
+  is now (its text in the page or its code). A screen without it is not "explained" by the row, and listing it
+  would hide a leak there.
 - **Where** is `this place` or `everywhere` (need 5 in needs.md).
 - **Check** says how the row is proved on the real page: a text that must be there or gone, a measured value,
   a click that must open something, or parts of a reference that must be found. Write it before the change.
