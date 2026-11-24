@@ -1,0 +1,16 @@
+{
+  "name": "product-loops",
+  "owner": {
+    "name": "UnifyApps",
+    "url": "https://github.com/unify-apps/product-loops"
+  },
+  "plugins": [
+    {
+      "name": "product-loops",
+      "source": "./",
+      "description": "Loops for product people: research what to build, build a prototype, change its design, review it, and make a deck. Each loop asks everything once at the start, then runs to the end on its own.",
+      "strict": true
+    }
+  ],
+  "description": "Product loops: hand a loop your ask, answer its questions once, and come back to the result."
+}

@@ -1,0 +1,11 @@
+{
+  "name": "product-loops",
+  "version": "0.1.0",
+  "description": "Loops for product people: research what to build, build a prototype, change its design, review it, and make a deck. Each loop asks everything once at the start, then runs to the end on its own.",
+  "author": {
+    "name": "UnifyApps"
+  },
+  "skills": [
+    "./skills/"
+  ]
+}
