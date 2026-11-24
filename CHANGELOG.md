@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3
+
+- product-build-loop: the first link shows each module's name and what it must have while it is built, instead of "not found". The click check fails a link that lands on "not found". Every fix gets a fresh review round, and nothing changes after the review passes. Records are not copied, dates read the way people say them, and anything people do in a module (vote, add notes) must really work. The local server stops itself after 2 hours with no visits and comes back on the same link; the handover gives its start and stop commands.
+
 ## 0.1.2
 
 - product-review-loop: screens are named after their menu labels, so every finding points at the right screen. A fix takes the smallest change made from what the product already has, never a new form or field. Every recheck walks and reviews every screen again. A walk no longer hangs when its browser closes.

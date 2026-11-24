@@ -72,29 +72,35 @@ look before asking. Fill all you can find. Then:
 3. **Start check.** Run `CLICKS --probe --tools RUN/tools`. It says which browser the click checks will use. If
    it says none, say so with the questions: links will then be checked by loading only.
 4. Write `RUN/requests.md` with every thing the ask and the answers name, and `RUN/modules.md` with the modules in
-   build order: `| # | Module | Must have | Files | Status |`.
+   build order: `| # | Module | Must have | Files | Status |`. R1 is the whole ask; node 6 ticks it.
 5. Ask the rest in one round (see `needs.md` § The questions), then close the intake as the rules say.
 
 ## Node 2: run-link
 
 1. `STATE start run-link`
 2. A new product: write the shell first, `PRODUCT/index.html`, one file with its CSS and JS inside (unless the
-   person chose one file per module). It holds the header with the working name, the navigation with every
-   module from `modules.md`, and a hash route per module (`#/<module>`). An existing product: change nothing.
+   person chose one file per module). Keep it small: this node is about speed. It holds the header with the
+   working name, the navigation with every module from `modules.md`, and a hash route per module (`#/<module>`).
+   Until a module lands, its route shows the module's name, its must-haves as a list, and one line: "Being
+   built now. This page fills in by itself." Never "Not found" or an empty page. An existing product: change
+   nothing.
 3. Start the server. A folder with a dev script runs its own (`npm run dev`, started in the background with its
    output to `RUN/server.log`; read the link from the log and write `RUN/server.json` with `url` and `pid`).
-   Any other folder: `SERVE PRODUCT --info RUN/server.json`. It reuses a server that is already running.
-4. Check: `curl -s -o /dev/null -w "%{http_code}" <url>` prints 200. Write the serve line and the code to
-   `RUN/run-link.txt`.
-5. Say the link in one line: "First link: <url>. It reloads by itself as each module lands."
-6. `STATE done run-link --check "server answers 200" --proof RUN/run-link.txt`
+   Any other folder: `SERVE PRODUCT --info RUN/server.json`. It reuses a server that is already running, and it
+   stops by itself after 2 hours with no open page.
+4. `curl -s -o /dev/null -w "%{http_code}" <url>` prints 200. Then at once say the link in one line: "First
+   link: <url>. It reloads by itself as each module lands."
+5. Check: `CLICKS <url> <url>#/<module>... --out RUN/run-link.json --tools RUN/tools` (the base link, plus each
+   new module's route on a new product) passes.
+6. `STATE done run-link --check "server answers 200, shell routes pass" --proof RUN/run-link.json`
 
 ## Node 3: name-mark
 
 An existing product, or a brief that gives both the name and the mark files: `STATE left name-mark --why "<the
 product already has its name and mark>"`, and put the given files on the header in node 4. Otherwise:
 `STATE start name-mark`, then follow `${CLAUDE_SKILL_DIR}/references/name-mark.md`.
-Check: `PRODUCT/brand-options.html` shows 3 options, each on a copy of the real header, and `CLICKS` passes on it.
+Check: `PRODUCT/brand-options.html` shows 3 options, each on a copy of the real header, and
+`CLICKS <url>brand-options.html --out RUN/name-mark.json --tools RUN/tools` passes (give the link, not the file).
 `STATE done name-mark --check "3 options on the real header" --proof RUN/name-mark.json`
 
 ## Node 4: build-modules
@@ -119,10 +125,11 @@ Check: `PRODUCT/brand-options.html` shows 3 options, each on a copy of the real 
    `${CLAUDE_SKILL_DIR}/references/review-module.md` (it runs the `design-review` skill when installed). It writes
    `RUN/reviews/<module>-round<n>.md`: P1, P2 and P3 findings, each with one exact fix.
 3. Apply every P1 and every P2 that has one clear fix (spacing, words, a missing state, a dead end). Taste and
-   structure calls go to `proposals.md`. Run `CLICKS` again, then a new review round. A round with 0 P1 and
-   passing clicks ends that module's review. At most 3 rounds per module.
+   structure calls go to `proposals.md`. Run `CLICKS` again, then a new review round by a fresh helper: it checks
+   each fix landed and nothing broke. A round with 0 P1 and nothing left to fix ends that module's review. At most
+   3 rounds per module. A round that changed no file needs no next round.
 4. Write `RUN/review-modules.md`: one row per module, its rounds, and the P1 count of its last round.
-5. Check: every module's last round has 0 P1 and its clicks pass.
+5. Check: every module's last round has 0 P1, its clicks pass, and no file changed after that round was written.
    `STATE done review-modules --check "no P1 left in any module" --proof RUN/review-modules.md`
 
 ## Node 6: demo-links
@@ -130,8 +137,10 @@ Check: `PRODUCT/brand-options.html` shows 3 options, each on a copy of the real 
 1. `STATE start demo-links`
 2. Follow `${CLAUDE_SKILL_DIR}/references/demo-links.md`: sample data that agrees across modules, and
    `RUN/links.md` with one link per state (each list, a detail, each create flow, each empty and error state).
-3. Check: `CLICKS RUN/links.md --out RUN/demo-clicks.json --tools RUN/tools` passes.
-   `STATE done demo-links --check "every link opens, every click works" --proof RUN/demo-clicks.json`
+3. Tick R1, the whole ask, when every module is built. Then `grep -c '^- \[ \]' RUN/requests.md` must print 0.
+   An open line: build it now, or write in it why it is not built. The review fails on any open line.
+4. Check: `CLICKS RUN/links.md --out RUN/demo-clicks.json --tools RUN/tools` passes, and the grep printed 0.
+   `STATE done demo-links --check "every link opens, every click works, no open request" --proof RUN/demo-clicks.json`
 
 ## Node 7: review
 
@@ -143,11 +152,15 @@ Check: `PRODUCT/brand-options.html` shows 3 options, each on a copy of the real 
    line per reason, to RUN/review.md. Change no file in PRODUCT. Do not run loop-state.mjs."
 3. If it says FAIL: fix what it names, `STATE retry review --why "<reason>"`, and run a new fresh agent.
 4. `STATE done review --check "fresh agent says PASS" --proof RUN/review.md`
+5. After PASS, change no file in PRODUCT. A small fix the reviewer noted goes to `proposals.md` for the person.
 
 ## Node 8: handover
 
 Follow the hand-over rules in loop-rules.md. In `handover.md` also put:
 - The base link and every link from `links.md`, and which browser checked the clicks.
-- How to stop the server: `SERVE --stop --info RUN/server.json` (the full command).
+- Under "Left for you": the server is still running at <url> and stops by itself after 2 hours with no open
+  page. To open the links again later: `SERVE PRODUCT --info RUN/server.json` (it takes the same port). To stop it
+  now: `SERVE --stop --info RUN/server.json`. Write both as full commands with real paths.
+- The decisions exactly as `decisions.md` has them, never retold.
 - `proposals.md`, each with the pick that was built, and the name options from node 3.
 - Every line of `requests.md`, ticked or not.

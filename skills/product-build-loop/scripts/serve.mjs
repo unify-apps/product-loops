@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 // serve.mjs serves one prototype folder on this laptop only (127.0.0.1), and keeps running after the session ends.
-//   node serve.mjs <folder> --info <server.json> [--port 4400]   start, or reuse the server already running for it
-//   node serve.mjs --stop --info <server.json>                     stop it
+//   node serve.mjs <folder> --info <server.json> [--port 4400] [--idle-hours 2]   start, or reuse the one running for it
+//   node serve.mjs --stop --info <server.json>                                      stop it
+// It stops by itself after --idle-hours with no request. An open page asks every 1.5 s, so it never stops under one.
+// Started again with the same --info, it takes the same port as before, so the links already handed over still work.
 // Every answer is sent with no-store, so a page is never stale. An HTML page gets a small script that reloads it
 // when a file in the folder changes. It prints "ok serving <folder> at <url> (pid <n>)" when the link opens.
 import fs from "node:fs";
@@ -18,10 +20,13 @@ const SKIP = new Set(["node_modules", ".git", "loop-runs", ".claude"]);
 const RELOAD = `<script>(()=>{let v=null;setInterval(async()=>{try{const r=await fetch("/__changed",{cache:"no-store"});const t=await r.text();if(v!==null&&t!==v)location.reload();v=t;}catch{}},1500);})();</script>`;
 
 function args(argv) {
-  const out = { folder: null, info: null, port: 4400, stop: false, child: false };
+  // 2 hours: long enough to come back after a meeting with the page closed, short enough that a forgotten server
+  // does not run for days. The hand-over gives the start command for later.
+  const out = { folder: null, info: null, port: 4400, idleHours: 2, stop: false, child: false };
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === "--info") out.info = path.resolve(argv[++i]);
     else if (argv[i] === "--port") out.port = Number(argv[++i]);
+    else if (argv[i] === "--idle-hours") out.idleHours = Number(argv[++i]);
     else if (argv[i] === "--stop") out.stop = true;
     else if (argv[i] === "--child") out.child = true;
     else out.folder = path.resolve(argv[i]);
@@ -42,8 +47,12 @@ function newest(dir, depth = 0) {
   return best;
 }
 
-function serveFolder(folder, firstPort, info) {
+function serveFolder(folder, firstPort, info, idleHours) {
+  let last = Date.now();
+  const idleMs = idleHours * 3600000;
+  setInterval(() => { if (Date.now() - last > idleMs) process.exit(0); }, Math.min(60000, idleMs / 2));
   const server = http.createServer((req, res) => {
+    last = Date.now();
     const url = new URL(req.url, "http://127.0.0.1");
     res.setHeader("Cache-Control", "no-store");
     if (url.pathname === "/__changed") { res.end(String(newest(folder))); return; }
@@ -81,7 +90,7 @@ async function opens(url) {
 async function main() {
   const options = args(process.argv.slice(2));
   if (!options.info) { console.error("Usage: node serve.mjs <folder> --info <server.json> [--port 4400] | --stop --info <server.json>"); return 2; }
-  if (options.child) { serveFolder(options.folder, options.port, options.info); return null; }
+  if (options.child) { serveFolder(options.folder, options.port, options.info, options.idleHours); return null; }
   const old = readInfo(options.info);
   if (options.stop) {
     if (old && alive(old.pid)) process.kill(old.pid);
@@ -96,15 +105,20 @@ async function main() {
     console.log(`ok serving ${old.folder} at ${old.url} (pid ${old.pid}, reused)`);
     return 0;
   }
+  // The same folder again: take its old port, so every link in links.md and handover.md opens again.
+  const port = old && old.folder === options.folder ? Number(new URL(old.url).port) : options.port;
   fs.rmSync(options.info, { force: true });
   const log = fs.openSync(`${options.info.replace(/\.json$/u, "")}.log`, "a");
-  const child = spawn(process.execPath, [fileURLToPath(import.meta.url), options.folder, "--info", options.info, "--port", String(options.port), "--child"],
+  const child = spawn(process.execPath, [fileURLToPath(import.meta.url), options.folder, "--info", options.info, "--port", String(port), "--idle-hours", String(options.idleHours), "--child"],
     { detached: true, stdio: ["ignore", log, log] });
   child.unref();
   for (let i = 0; i < 50; i++) {
     await new Promise((resolve) => setTimeout(resolve, 100));
     const info = readInfo(options.info);
-    if (info && await opens(info.url)) { console.log(`ok serving ${info.folder} at ${info.url} (pid ${info.pid})`); return 0; }
+    if (info && await opens(info.url)) {
+      console.log(`ok serving ${info.folder} at ${info.url} (pid ${info.pid}; stops by itself after ${options.idleHours} h with no open page)`);
+      return 0;
+    }
   }
   console.error("serve: the server did not answer within 5 seconds. See the .log file next to the info file.");
   return 1;

@@ -39,8 +39,12 @@ Places to look, in this order:
 Show the brief first. Then ask, as one numbered list, only the questions below whose answer you could not find.
 Each question names the default you picked. At most 8. Leave out a question when the ask already answers it.
 
-1. What we build on: a new product in `<folder>`, or the existing one at `<path>` (list up to 5 found).
-   Default: <your pick>.
+Always ask 3 and 4 unless the person's own words already give them. A persona or a must-have list you drafted
+from the ask or from the files is your guess, not an answer: the person knows who uses it and what they need.
+Never write "no open questions" while 3 or 4 is still a draft.
+
+1. Only when a product was found here: what we build on, the existing one at `<path>` (list up to 5 found) or a
+   new product. Default: <your pick>. With no product found, the folder is a default: do not ask.
 2. Only when no brief exists and the feature set is open: run `product-research-loop` first?
    Default: no, build from the modules below.
 3. Who uses it, and the one job they come to do. Default: <drafted persona>.

@@ -7,6 +7,8 @@
 // A click is dead when nothing changes: no new content, no new address, no dialog, no new tab.
 // The browser: the system Chrome through playwright-core (installed once into --tools with npm), else Playwright's own
 // browser, else a load-only check (each link must load; clicks are then NOT checked, and the report says so).
+// A page that says "not found" or "does not exist" fails too: a wrong id in a link lands there and looks fine.
+// Only a link whose line in the links file says "not found" or "error" may show it (an error state on purpose).
 // Exit 0: every link opened, no dead click, no page error, no placeholder text. Exit 1: something failed. Exit 2: usage.
 // In load-only mode exit 0 means only that every link loaded: the report then says "clicksChecked": false.
 import fs from "node:fs";
@@ -17,6 +19,8 @@ import { spawnSync } from "node:child_process";
 // An old enough, fixed version, so every run gets the same browser driver.
 const PLAYWRIGHT = "playwright-core@1.62.1";
 const PLACEHOLDER = /\b(lorem ipsum|placeholder|coming soon|todo|tbd|not (?:yet )?implemented|under construction|dummy text|sample text)\b/giu;
+// What a page says when a link or a row points at a record or route that is not there.
+const MISSING = /\b(not found|does not exist|doesn['’]t exist)\b/iu;
 // How long a click gets to change the page. Prototype clicks answer at once; 350 ms leaves room for a short animation.
 const SETTLE_MS = 350;
 
@@ -44,6 +48,19 @@ export function linksFrom(inputs) {
     for (const match of text.matchAll(/https?:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?[^\s)>\]"'`]*/gu)) found.push(match[0].replace(/[.,;]+$/u, ""));
   }
   return [...new Set(found)];
+}
+
+/** Pure: the links whose own line in a links file says the page is meant to be a not-found or error state. */
+export function meantMissing(inputs) {
+  const meant = new Set();
+  for (const input of inputs) {
+    if (!fs.existsSync(input)) continue;
+    for (const line of fs.readFileSync(input, "utf8").split("\n")) {
+      if (!/not found|error/iu.test(line)) continue;
+      for (const url of linksFrom([line])) meant.add(url);
+    }
+  }
+  return meant;
 }
 
 /** Pure: placeholder words in a text, minus the words this product really uses. */
@@ -134,7 +151,8 @@ async function checkWithBrowser(browser, links, options) {
     page.on("pageerror", (error) => errors.push(error.message.slice(0, 200)));
     page.on("console", (msg) => { if (msg.type() === "error") errors.push(msg.text().slice(0, 200)); });
     page.on("dialog", (dialog) => dialog.accept().catch(() => {}));
-    const route = { url, opened: false, errors, placeholders: [], clicks: { tried: 0, dead: [], skipped: 0, otherSite: 0 } };
+    const route = { url, opened: false, errors, placeholders: [], missing: [], clicks: { tried: 0, dead: [], skipped: 0, otherSite: 0 } };
+    const meant = options.meant.has(url);
     const open = async () => {
       // A fresh state for each click: an earlier click must not hide or show what the next one finds.
       // Saved data goes too, so a prototype that saves to storage starts from its own sample data every time.
@@ -152,6 +170,7 @@ async function checkWithBrowser(browser, links, options) {
       const text = await page.evaluate(() => document.body?.innerText ?? "");
       route.opened = Boolean(res?.ok()) && text.trim().length >= 20;
       route.placeholders = placeholders(text, options.allow);
+      if (!meant && MISSING.test(text)) route.missing.push(`"${text.match(MISSING)[0]}" on the page`);
       if (options.shots) {
         fs.mkdirSync(options.shots, { recursive: true });
         const name = (url.split("#")[1] || "home").replace(/[^a-z0-9]+/giu, "-").replace(/^-|-$/gu, "") || "home";
@@ -173,7 +192,7 @@ async function checkWithBrowser(browser, links, options) {
           window.__ccObserver?.disconnect();
           window.__ccObserver = new MutationObserver((records) => { window.__ccChanges += records.length; });
           window.__ccObserver.observe(document, { subtree: true, childList: true, attributes: true, characterData: true });
-          return location.href;
+          return { href: location.href, text: document.body?.innerText ?? "" };
         });
         // A submit button: fill the form's empty fields first, or the browser's own check stops the click.
         await el.evaluate((node) => {
@@ -200,11 +219,12 @@ async function checkWithBrowser(browser, links, options) {
         page.off("dialog", onReact);
         context.off("page", onReact);
         // A bare "#" link moves the address but opens nothing, so it does not count as a change.
-        const moved = after.href !== before && !after.href.endsWith("#");
+        const moved = after.href !== before.href && !after.href.endsWith("#");
         if (moved || after.changes > 0 || reacted) {
           dirty = true;
           const found = placeholders(after.text, options.allow).filter((w) => !route.placeholders.includes(w));
           if (found.length) route.placeholders.push(...found.map((w) => `${w} (after clicking "${target.text}")`));
+          if (!meant && MISSING.test(after.text) && !MISSING.test(before.text ?? "")) route.missing.push(`"${after.text.match(MISSING)[0]}" after clicking "${target.text}"`);
         } else route.clicks.dead.push(target.text);
       } catch { route.clicks.skipped++; dirty = true; }
     }
@@ -219,13 +239,14 @@ async function checkWithBrowser(browser, links, options) {
 async function checkLoadOnly(links, options) {
   const routes = [];
   for (const url of links) {
-    const route = { url, opened: false, errors: [], placeholders: [], clicks: "not checked: no browser" };
+    const route = { url, opened: false, errors: [], placeholders: [], missing: [], clicks: "not checked: no browser" };
     try {
       const res = await fetch(url, { cache: "no-store" });
       const html = await res.text();
       const text = html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<[^>]+>/giu, " ");
       route.opened = res.ok && text.trim().length >= 20;
       route.placeholders = placeholders(text, options.allow);
+      if (!options.meant.has(url) && MISSING.test(text)) route.missing.push(`"${text.match(MISSING)[0]}" on the page`);
     } catch (error) { route.errors.push(`did not open: ${error.message}`); }
     routes.push(route);
   }
@@ -241,7 +262,13 @@ async function main() {
     console.log(browser ? `browser: ${browser.name}` : "browser: none (links will be checked by loading only; clicks will not be checked)");
     return 0;
   }
+  const page = options.inputs.find((input) => /\.html?$/iu.test(input) && fs.existsSync(input));
+  if (page) {
+    console.error(`check-clicks: ${page} is a page, not a links file. Give its link instead, for example http://127.0.0.1:4400/${path.basename(page)}`);
+    return 2;
+  }
   const links = linksFrom(options.inputs);
+  options.meant = meantMissing(options.inputs);
   if (!options.out || !links.length) {
     console.error("Usage: node check-clicks.mjs <links.md or URL>... --out <report.json> [--shots <folder>] [--tools <folder>] [--allow <words>]");
     console.error(links.length ? "" : "No local link (http://127.0.0.1:... or http://localhost:...) was found in the inputs.");
@@ -251,13 +278,15 @@ async function main() {
   const launched = playwright ? await launch(playwright) : null;
   const routes = launched ? await checkWithBrowser(launched.browser, links, options) : await checkLoadOnly(links, options);
   if (launched) await launched.browser.close();
-  const bad = routes.filter((r) => !r.opened || r.errors.length || r.placeholders.length || (typeof r.clicks === "object" && r.clicks.dead.length));
+  const bad = routes.filter((r) => !r.opened || r.errors.length || r.placeholders.length || r.missing.length || (typeof r.clicks === "object" && r.clicks.dead.length));
   const report = { checkedAt: new Date().toISOString(), browser: launched?.name ?? "none (load-only: clicks not checked)", pass: bad.length === 0, clicksChecked: Boolean(launched), links: links.length, failing: bad.map((r) => r.url), routes };
   fs.mkdirSync(path.dirname(options.out), { recursive: true });
   fs.writeFileSync(options.out, `${JSON.stringify(report, null, 2)}\n`);
   for (const r of routes) {
     const clicks = typeof r.clicks === "object" ? `${r.clicks.tried} clicks, ${r.clicks.skipped} could not be clicked, ${r.clicks.dead.length} dead${r.clicks.dead.length ? ` (${r.clicks.dead.slice(0, 5).map((t) => `"${t}"`).join(", ")})` : ""}` : r.clicks;
-    console.log(`${r.opened && !r.errors.length && !r.placeholders.length && !(r.clicks.dead?.length) ? "ok  " : "FAIL"} ${r.url}: ${r.opened ? "opened" : "did not open"}; ${clicks}; ${r.errors.length} errors; placeholders: ${r.placeholders.join(", ") || "none"}`);
+    const good = r.opened && !r.errors.length && !r.placeholders.length && !r.missing.length && !(r.clicks.dead?.length);
+    const missing = r.missing.length ? `; not found: ${r.missing.slice(0, 3).join(", ")}` : "";
+    console.log(`${good ? "ok  " : "FAIL"} ${r.url}: ${r.opened ? "opened" : "did not open"}; ${clicks}; ${r.errors.length} errors; placeholders: ${r.placeholders.join(", ") || "none"}${missing}${r.shot ? `; shot ${r.shot}` : ""}`);
   }
   const verdict = !report.pass ? "FAIL" : launched ? "PASS" : "LOAD-ONLY PASS (clicks NOT checked)";
   console.log(`${verdict}: ${links.length} links, browser ${report.browser}. Report: ${options.out}`);

@@ -19,13 +19,18 @@ to the person and never runs `loop-state.mjs`.
 > Rules:
 > 1. Every thing that looks clickable opens real content: a detail, a form that saves, a menu that does what it
 >    says, a state change. Never a dead button, never "coming soon", never lorem ipsum or "TODO".
+>    A must-have that people do (vote, add notes, sign up, pay) is a working action, not only a number or a list
+>    to look at: the persona can do it and see the result.
 >    If an action cannot really happen in a prototype (send, pay, sync), show its result in the page and say
 >    in one short line that it is a demo action. A button that needs a filled field shows a short message on the
 >    page when the field is empty, so the click is never silent.
 > 2. Use sample data the persona would recognise: real-looking names, dates and numbers that agree with each
 >    other. Keep it in one data block for the module, so the demo node can extend it.
 > 3. Every state gets a hash route, so it has its own link: `#/<module>` (the list), `#/<module>/<id>` (a detail),
->    `#/<module>/new` (create), `#/<module>/empty` (no data yet). Add others the module has.
+>    `#/<module>/new` (create), `#/<module>/empty` (no data yet). Add others the module has. Every state shows real
+>    content: a list has rows, a detail has every field filled, an empty state says what goes here and offers the
+>    action that adds it. A wrong id shows a short "not found" page with a way back; never list that link as a
+>    normal state (the check fails a page that says "not found" unless its line says "not found" or "error").
 > 4. Start from the plainest version that does the whole job. Leave out what does not help the persona decide
 >    or act.
 > 5. No page error in the console. No file from the internet unless the brief says so.
@@ -46,6 +51,8 @@ to the person and never runs `loop-state.mjs`.
   A row opens its detail.
 - Spacing on a 4 px grid. Equal gaps. Text aligned to text.
 - Calm motion: 150 to 250 ms, no jumps, nothing moves the layout.
+- No browser-default look: a link in text uses the accent colour, a button has the product's button style.
+- Data as a person says it: "15 Oct 2026, 18:30", never "2026-10-15" or an id. Same for true/false and codes.
 
 ## After the helper
 
