@@ -14,10 +14,13 @@ In this file:
 - `CHECK` means `node "${CLAUDE_SKILL_DIR}/scripts/check-findings.mjs"`
 - `RUN` means the run folder that `STATE status` prints.
 
+Run every `WALK` in the foreground, with the Bash timeout set to 600000 ms. A walk of 10 screens takes 1 to 3
+minutes. Never run it in the background and poll it: each poll costs a full turn.
+
 The person's ask: $ARGUMENTS
 
-Stop fact, fix mode: after the last walk, a fresh agent found no open P1 on any screen, and every P2 is fixed or
-listed in `handover.md`. Report-only mode: every screen has a screenshot and a reviewed list of findings, each with
+Stop fact, fix mode: after the last walk, a fresh agent found no open P1 on any screen, every P1 left as "your
+call" is listed first in `handover.md`, and every P2 is fixed or listed there. Report-only mode: every screen has a screenshot and a reviewed list of findings, each with
 a screen, a rule and a level, and a fresh agent confirmed the list against the screenshots.
 
 This loop works on the person's laptop only. It never deploys, publishes or sends anything, even when the
@@ -36,7 +39,8 @@ prototype has a deploy script, unless the person's intake answer asks for it in 
 
 Run `STATE init --loop product-review-loop --nodes intake,walk,review,fix,recheck,handover`, then follow the
 intake rules. Read `${CLAUDE_SKILL_DIR}/references/needs.md`: it lists every need, its default and where to look
-before asking. In short, the questions are:
+before asking. A need the person's message already answers (the file, the screens, fix or report) goes in the
+brief as found, never in the questions. The needs are:
 
 1. Which prototype (a file, a folder or a local URL). Default: the one found in this folder.
 2. Which screens. Default: every screen the nav reaches (`WALK --url <product> --find-screens`).
@@ -50,7 +54,9 @@ questions: without a browser the walk node is left, the review and recheck work 
 and every `CHECK` below runs without `--checks`.
 Also check the product opens: a file or folder exists, or a local URL answers `curl -sI`.
 
-Write `RUN/screens.json` before close-intake: a JSON list of `{ "name": "<screen name>", "open": "<how>" }`.
+Write `RUN/screens.json` before close-intake with `WALK --url <product> --find-screens --write RUN/screens.json`.
+Keep the names it writes: they are the nav's own labels, and every finding and the hand-over use them. Add a
+screen the nav does not reach (a dialog, a detail page) as `{ "name": "<the name the product shows>", "open": "<how>" }`.
 `open` is a hash or path from the start page (`"#settings"`), or `"click:text=<label>"`, or `"click:<css selector>"`.
 
 ## Node 2: walk
@@ -60,8 +66,9 @@ Write `RUN/screens.json` before close-intake: a JSON list of `{ "name": "<screen
    background, local only), then run
    `WALK --url <product> --screens RUN/screens.json --out RUN/walk/before`
    Add `--no-phone` only when the brief says the product is desktop only.
-3. Look at every screenshot yourself (Read the PNG). A blank or wrong screenshot means `screens.json` is wrong:
-   fix it and walk again.
+3. A line starting `check screens.json:` means a screen is misnamed, blank or did not open. Fix `screens.json`
+   as the line says and walk again. Then look at every screenshot yourself (Read the PNG). A blank or wrong
+   screenshot means `screens.json` is wrong: fix it and walk again.
 4. Check: `WALK` exits 0, and `RUN/walk/before/checks.md` names a screenshot for every screen in `screens.json`.
 5. `STATE done walk --check "every screen has a screenshot and script checks" --proof RUN/walk/before/checks.md`
 
@@ -97,11 +104,12 @@ Write `RUN/screens.json` before close-intake: a JSON list of `{ "name": "<screen
 Round n (n starts at 1):
 
 1. In round 1 only: `STATE start recheck`
-2. Walk again: `WALK --url <product> --screens RUN/screens.json --out RUN/walk/after-<n>`
+2. Walk every screen again, never only the fixed ones: `WALK --url <product> --screens RUN/screens.json --out RUN/walk/after-<n>`
 3. Start one new helper with the Agent tool, one that did no review or fix in this run. Give it the brief, the
    stop fact, `references/checklist.md`, `RUN/findings.md`, and `RUN/walk/after-<n>/checks.md` with its
    screenshots. Tell it to read the real screenshots and files, not your notes, and to write
-   `RUN/recheck-<n>.md`: the findings table for the product as it is now (old problems still there, and new
+   `RUN/recheck-<n>.md`: the findings table for every screen of the product as it is now, with screen names from
+   `RUN/screens.json` (old problems still there, and new
    ones the fixes caused; the header row even when no problem is left), then a last line `RESULT: PASS` or
    `RESULT: FAIL` with one line of reason.
    In report-only mode it checks instead that every row of findings.md is true on the screenshots and that

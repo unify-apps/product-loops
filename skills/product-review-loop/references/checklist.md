@@ -39,7 +39,9 @@ of theirs that is a matter of taste).
 
 Levels: **P1** breaks the persona's job or looks broken to anyone who opens it. **P2** works but looks careless.
 **P3** polish. A check rule decides the problem, not the level: move a level up or down when the screen calls
-for it, and say why in the Problem column.
+for it, and say why in the Problem column. Never move a slip the script measured (`near-miss-alignment`, `uneven-spacing` of 4 px
+or more, `cut-off-text`) below its usual level because it is small or hard to see: the people the product is
+shown to look closely, and the fix is usually one line.
 
 ## Taste: always the person's call
 
@@ -57,7 +59,7 @@ Exactly these columns, in this order, one finding per row:
 ```
 | ID | Screen | Rule | Level | Problem | Fix | Status |
 |---|---|---|---|---|---|---|
-| F1 | Inbox | dead-click | P1 | "New request", the main button, does nothing when clicked. | Open the new request form, or remove the button. | open |
+| F1 | Inbox | dead-click | P2 | "Export", a button the persona does not need for their job, does nothing when clicked. | Remove the "Export" button. | open |
 | F2 | All screens | mixed-words | P2 | The nav says "Clients", the page title says "Customers". | Use "Clients" in both: the nav uses it on every screen. | open |
 | F3 | Inbox | taste | P3 | The purple header is loud next to the grey page. | Keep it, or try a darker purple. | your call |
 | F4 | Reports | uneven-spacing | P3 | The script found one 2 px gap difference; it comes from a hidden row. | none | not a problem |
@@ -68,7 +70,10 @@ Exactly these columns, in this order, one finding per row:
 - **Rule**: one of the rule names above, or `taste`.
 - **Level**: `P1`, `P2` or `P3`.
 - **Problem**: what is wrong, where, and the evidence (the words on screen, a number from `checks.md`).
-- **Fix**: the exact change, in the product's own terms (the element, the words, the value), or "none".
+- **Fix**: ONE exact change, the smallest that removes the problem, in the product's own terms (the element, the
+  words, the value), or "none". Never two options ("add a form, or remove the button"): pick the smaller one.
+  Prefer a fix made from what the product already has: a message, a label, a value from data it already holds,
+  removing a thing. Keep such a row `open`, at any level. Only the fixer may move a row to `your call`.
 - **Status**: `open` for a problem to fix, `your call` for taste, `not a problem` for a script finding you
   checked and rejected. The fix node uses `fixed` and `not fixed`.
 

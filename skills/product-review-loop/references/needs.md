@@ -53,7 +53,9 @@ to look before asking. Ask only what you could not find. Put every value, found 
 
 ## The questions, as node 1 asks them
 
-Ask only the ones still open after the look-up. Each names its default.
+Ask only the ones still open after the look-up. Each names its default. A question the person's message already
+answers is not asked again, not even as "is that right?". Example: "review shop/checkout.html and fix the problems"
+answers questions 1 and 4, so the round asks only 2, 3, 5 and 6.
 
 1. Which prototype should I review? Default: `<the one you found>`.
 2. Which screens? Default: all `<n>` screens the nav reaches: `<names>`.

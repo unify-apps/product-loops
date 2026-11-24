@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2
+
+- product-review-loop: screens are named after their menu labels, so every finding points at the right screen. A fix takes the smallest change made from what the product already has, never a new form or field. Every recheck walks and reviews every screen again. A walk no longer hangs when its browser closes.
+
 ## 0.1.1
 
 - product-research-loop: a rival only gets a `yes` on a row when its own page says so; a weaker one gets `partial`. The brief now has a "Must have" list per module and the open questions for the build, each with a default. Helpers are waited for properly.

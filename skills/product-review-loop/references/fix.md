@@ -15,13 +15,20 @@ is there: it holds the file as it was before this run.
 - Fix the rows with status `open` and a level at or above the bar. Leave P3 rows as they are.
 - Never change a row with status `your call` or `not a problem`, and never make a taste change on your own.
 - Fix the smallest thing that removes the problem. Prefer removing a broken or empty thing to building a new
-  feature. A dead button the persona needs gets the smallest working result: a dialog, a form, or a toast that
-  says what happened. A dead button nobody needs is removed.
+  feature. A dead button nobody needs for the persona's job is removed. A dead button the persona needs gets
+  the smallest working result with what the product already has: a toast or a line that says what happened.
+- When the Fix column names two options, take the smaller one (removing beats building).
+- Never add a new form, field, dropdown, step, or kind of data the product does not have: that changes the flow.
+  First look for a fix from what the product already has: a message or label that says what happened, a value
+  from data it already holds, a removed thing. A P1 `persona-path` row needs that try. Only when no such fix
+  removes the problem, set the row to `your call` and write the option in the Fix column.
+- A fix that changes data (marks a row, moves an item, changes a count) must leave every screen that shows that
+  data in agreement. Search the source for every place that reads it before you finish.
 - Use what the product already has: its colours, fonts, spacing, components and words. Do not add a library.
 - For `mixed-words`, use the word the product uses most often, in every place, and say which in the Fix column.
 - For an empty or loading state, use the product's own text style: one short line (for example: No requests match "<term>".).
-- When a fix would change the layout, the flow or the product's look, do not make it. Set the row to
-  `your call` and write the option in the Fix column.
+- When a fix would change the layout or the product's look, do not make it. Set the row to `your call` and
+  write the option in the Fix column.
 - Keep the product working: after your changes, open it again (the main session re-walks it in the next node).
 - Never deploy, push, publish or send anything. Never delete a file of the product.
 

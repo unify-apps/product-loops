@@ -27,9 +27,11 @@ product. It writes only into its `--out` folder.
 ```
 
 - `open` is a hash or path from the start page, or a click: `click:text=<the label>` or `click:<css selector>`.
-- `WALK --url <product> --find-screens` prints the screens the nav reaches. Start from that list, then add
-  screens the nav does not reach: a dialog, a detail page, a second step. Read the source to find them.
-- Use the name the product shows for each screen.
+- `WALK --url <product> --find-screens --write RUN/screens.json` writes the screens the nav reaches, each named
+  with the nav's own label. Keep those names. Then add screens the nav does not reach: a dialog, a detail page,
+  a second step. Read the source to find them, and name each as the product shows it.
+- Never rename a screen to its hash or file name (`#orders` is "Open orders", not "orders"). The walk refuses
+  a screen whose name differs from its nav label.
 
 ## 3. Run it
 
@@ -37,8 +39,12 @@ product. It writes only into its `--out` folder.
 WALK --url <product> --screens RUN/screens.json --out RUN/walk/before
 ```
 
+Run it in the foreground with the Bash timeout set to 600000 ms. It takes 1 to 3 minutes for 10 screens.
+
 It prints one line: how many screens, screenshots and script findings. It exits 1 when a screen has no
-screenshot or could not open. Then read the line for that screen in `checks.md` and fix `screens.json`.
+screenshot, could not open, or `screens.json` is wrong. A line starting `check screens.json:` says which screen
+and what to change: a name that differs from its nav label, a screen with no words, or a screen that shows the
+same words as an earlier one (its `open` did not open it). Fix `screens.json` and walk again.
 
 What it writes:
 
@@ -69,5 +75,6 @@ save, a list with no data at all), or anything of taste. The reviewer reads the 
 
 ## 5. Look at the screenshots
 
-Read every PNG. A screenshot that is blank, shows the wrong screen, or shows a screen half loaded means the
-screens file or the wait is wrong. Fix `screens.json` and walk again before the review starts.
+The `check screens.json:` lines catch a blank screen or one that did not open. Then read every PNG too. A
+screenshot that is blank, shows the wrong screen, or shows a screen half loaded means the screens file or the
+wait is wrong. Fix `screens.json` and walk again before the review starts.

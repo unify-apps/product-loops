@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // walk.mjs opens a prototype in a headless browser, takes a screenshot of every screen, and runs the checks a script can do.
 //   node walk.mjs --check                                         is Node new enough, and is a browser here
-//   node walk.mjs --url <file, folder or URL> --find-screens      prints the screens it finds from the nav, as JSON
+//   node walk.mjs --url <file, folder or URL> --find-screens [--write <screens.json>]   prints (or writes) the screens the nav reaches, named as the nav names them
 //   node walk.mjs --url <...> --screens <screens.json> --out <folder> [--width 1440] [--no-phone] [--no-clicks]
 // It writes only into --out: one PNG per screen, checks.json and checks.md. It never changes the prototype.
 // It clicks and types only on a local page (a file, localhost or 127.0.0.1). On any other host it only looks.
@@ -11,6 +11,7 @@ import os from "node:os";
 import path from "node:path";
 import http from "node:http";
 import { spawn } from "node:child_process";
+import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const NODE_MAJOR = 22; // the first Node with a built-in WebSocket, which this script talks to the browser with
@@ -29,7 +30,7 @@ function parseArgs(argv) {
     else if (a === "--find-screens") o.findScreens = true;
     else if (a === "--no-phone") o.phone = false;
     else if (a === "--no-clicks") o.clicks = false;
-    else if (["--url", "--screens", "--out", "--width"].includes(a)) o[a.slice(2)] = argv[++i];
+    else if (["--url", "--screens", "--out", "--width", "--write"].includes(a)) o[a.slice(2)] = argv[++i];
     else throw new Error(`Unknown argument ${a}. Run with --check, --find-screens or --screens (see the top of this file).`);
   }
   o.width = Number(o.width) || 1440;
@@ -134,7 +135,13 @@ async function launch(browserPath) {
   const { targetId } = await send("Target.createTarget", { url: "about:blank" });
   const { sessionId } = await send("Target.attachToTarget", { targetId, flatten: true });
   const page = (method, params) => send(method, params, sessionId);
-  const close = () => { try { ws.close(); } catch { /* gone */ } child.kill("SIGKILL"); fs.rmSync(profile, { recursive: true, force: true }); };
+  const close = () => {
+    try { ws.close(); } catch { /* gone */ }
+    child.kill("SIGKILL");
+    // The browser's helpers can still write to the profile for a moment after the kill. Retry, and never throw:
+    // a throw here skipped closing the file server, so the script printed its answer and then never ended.
+    try { fs.rmSync(profile, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 }); } catch { /* a temp folder left behind is harmless */ }
+  };
   return { page, on: (fn) => listeners.push(fn), close };
 }
 
@@ -474,20 +481,16 @@ function loadWaiter(b) {
   return { next: () => new Promise((resolve) => pending.push(resolve)) };
 }
 
-async function findScreens(options) {
-  const { url, server } = await startUrl(options.url);
-  const b = await launch(requireBrowser());
-  try {
-    await b.page("Page.enable");
-    await setWidth(b, options.width);
-    const loads = loadWaiter(b);
-    await openScreen(b, url, { name: "start", open: "" }, loads);
-    const found = await evaluate(b, `(() => {
+// The screens the nav reaches, each named with the nav's own label. Run in the page.
+const NAV_SCREENS = `(() => {
       const visible = (el) => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0; };
       const navs = [...document.querySelectorAll('nav, header, aside, [role=navigation], [role=tablist], .sidebar, .nav, .tabs')];
       const out = []; const seen = new Set();
+      const names = new Set();
       for (const nav of navs) for (const el of nav.querySelectorAll('a[href], [role=tab], button, li')) {
         if (!visible(el)) continue;
+        if (el.matches('li') && el.querySelector('a[href], button, [role=tab]')) continue; // its link or button is the item
+        if (/brand|logo/i.test(String(el.className) + ' ' + el.id)) continue; // the product's name, not a screen
         const text = (el.innerText || '').trim().split('\\n')[0];
         if (!text || text.length > 40) continue;
         const href = el.getAttribute('href');
@@ -497,14 +500,28 @@ async function findScreens(options) {
           if (to.origin !== location.origin) continue;
           open = to.pathname === location.pathname ? (to.hash || '') : to.pathname.split('/').pop() + to.search + to.hash;
         } else if (el.matches('[role=tab], [data-screen], [data-view], [data-page], [data-tab]') || nav.matches('nav, [role=navigation], [role=tablist], .sidebar, .nav, .tabs')) open = 'click:text=' + text;
-        if (open === null || seen.has(open)) continue;
-        seen.add(open); out.push({ name: text, open });
+        if (open === null || seen.has(open) || names.has(text)) continue;
+        seen.add(open); names.add(text); out.push({ name: text, open });
       }
       return out;
-    })()`);
+    })()`;
+
+async function findScreens(options) {
+  const { url, server } = await startUrl(options.url);
+  const b = await launch(requireBrowser());
+  try {
+    await b.page("Page.enable");
+    await setWidth(b, options.width);
+    const loads = loadWaiter(b);
+    await openScreen(b, url, { name: "start", open: "" }, loads);
+    const found = await evaluate(b, NAV_SCREENS);
     const screens = found.length ? found : [{ name: "Start", open: "" }];
-    console.log(JSON.stringify(screens, null, 2));
-  } finally { b.close(); server?.close(); }
+    if (options.write) {
+      fs.mkdirSync(path.dirname(options.write), { recursive: true });
+      fs.writeFileSync(options.write, `${JSON.stringify(screens, null, 2)}\n`);
+      console.log(`wrote ${screens.length} screens to ${options.write}: ${screens.map((x) => x.name).join(", ")}`);
+    } else console.log(JSON.stringify(screens, null, 2));
+  } finally { server?.close(); b.close(); }
 }
 
 function requireBrowser() {
@@ -526,7 +543,7 @@ async function walk(options) {
   const clicks = options.clicks && local;
   const browser = requireBrowser();
   const b = await launch(browser);
-  const result = { url, browser, width: options.width, clicks, phone: options.phone, when: new Date().toISOString(), screens: [], crossScreen: [], blocked: [] };
+  const result = { url, browser, width: options.width, clicks, phone: options.phone, when: new Date().toISOString(), screens: [], crossScreen: [], blocked: [], warnings: [] };
   let current = null;
   let requestCount = 0; // requests the page made; a click that makes one is not dead
   b.on((msg) => {
@@ -553,6 +570,14 @@ async function walk(options) {
       await b.page("Fetch.enable", { patterns: [{ urlPattern: "*", requestStage: "Request" }] });
     }
     const loads = loadWaiter(b);
+    // A screen the nav reaches keeps the nav's own name, so findings, the hand-over and the person all use one word.
+    await setWidth(b, options.width);
+    await openScreen(b, url, { name: "start", open: "" }, loads);
+    const nav = await evaluate(b, NAV_SCREENS).catch(() => []);
+    for (const screen of screens) {
+      const item = nav.find((n) => n.open === (screen.open ?? ""));
+      if (item && item.name !== screen.name) result.warnings.push(`screen "${screen.name}" is the nav item "${item.name}": rename it to "${item.name}" in ${options.screens}`);
+    }
     for (const [i, screen] of screens.entries()) {
       const record = { name: screen.name, open: screen.open ?? "", screenshot: null, phoneScreenshot: null, consoleErrors: [], findings: [], words: [], clicksTried: 0, error: null };
       current = record;
@@ -564,6 +589,9 @@ async function walk(options) {
         record.findings.push(...checks.findings);
         record.words = checks.words;
         record.title = checks.title;
+        // The whole visible text, as a short key: two screens with the same key show the same thing.
+        const text = await evaluate(b, `(document.body?.innerText ?? "").replace(/\\s+/g, " ").trim()`);
+        record.textKey = text ? `${text.length}:${crypto.createHash("sha1").update(text).digest("hex").slice(0, 12)}` : "";
         record.screenshot = path.join(options.out, `${slug(screen.name, i)}.png`);
         await shot(b, record.screenshot, options.width);
 
@@ -622,14 +650,22 @@ async function walk(options) {
     }
     current = null;
     result.crossScreen = wordClashes(result.screens);
-  } finally { b.close(); server?.close(); }
+    // A screen with no words is blank, and one with the same words as an earlier screen most likely did not open.
+    for (const [i, s] of result.screens.entries()) {
+      if (s.error) continue;
+      if (!s.textKey) result.warnings.push(`screen "${s.name}" shows no words: it is blank or did not load. Check its "open" in ${options.screens}`);
+      const twin = s.textKey && result.screens.slice(0, i).find((t) => !t.error && t.textKey === s.textKey);
+      if (twin) result.warnings.push(`screen "${s.name}" shows the same words as "${twin.name}": its "open" most likely did not open it. Check ${options.screens}`);
+    }
+  } finally { server?.close(); b.close(); }
   fs.writeFileSync(path.join(options.out, "checks.json"), `${JSON.stringify(result, null, 2)}\n`);
   fs.writeFileSync(path.join(options.out, "checks.md"), summary(result));
   const total = result.screens.reduce((n, s) => n + s.findings.length, 0) + result.crossScreen.length;
   const missing = result.screens.filter((s) => !s.screenshot || !fs.existsSync(s.screenshot));
   console.log(`walked ${result.screens.length} screens: ${result.screens.length - missing.length} screenshots, ${total} script findings. Wrote ${path.join(options.out, "checks.md")}`);
   for (const s of result.screens.filter((x) => x.error)) console.log(`screen "${s.name}" had a problem: ${s.error}`);
-  return missing.length || result.screens.some((s) => s.error) ? 1 : 0;
+  for (const w of result.warnings) console.log(`check screens.json: ${w}`);
+  return missing.length || result.screens.some((s) => s.error) || result.warnings.length ? 1 : 0;
 }
 
 function dedupe(list) {
@@ -653,6 +689,7 @@ function summary(r) {
     else { lines.push(""); for (const f of s.findings) lines.push(`- ${f.kind}: ${f.text ? `"${f.text}" ` : ""}(${f.where || "screen"}) ${f.detail}`); }
     lines.push("", `Words: ${s.words.join(" · ")}`, "");
   }
+  if (r.warnings?.length) { lines.push("## Screens file", ""); for (const w of r.warnings) lines.push(`- ${w}`); lines.push(""); }
   lines.push("## Across screens", "");
   if (!r.crossScreen.length) lines.push("No mixed words found by the script.");
   for (const f of r.crossScreen) lines.push(`- ${f.kind}: ${f.text}: ${f.where} (${f.detail})`);
@@ -677,5 +714,7 @@ async function main(argv) {
 
 if (process.argv[1] && fs.realpathSync(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const timer = setTimeout(() => { console.error("walk.mjs: stopped after 10 minutes."); process.exit(1); }, 10 * 60_000); // a hard stop, so a stuck page never holds the loop
-  main(process.argv.slice(2)).then((code) => { clearTimeout(timer); process.exitCode = code; }, (error) => { clearTimeout(timer); console.error(`walk.mjs: ${error.message}`); process.exitCode = 1; });
+  // End on purpose once the output is written, so nothing left open (a socket, a server) keeps the script running.
+  const end = (code) => { clearTimeout(timer); process.stdout.write("", () => process.exit(code)); };
+  main(process.argv.slice(2)).then(end, (error) => { console.error(`walk.mjs: ${error.message}`); end(1); });
 }
