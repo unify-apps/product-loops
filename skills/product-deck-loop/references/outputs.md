@@ -1,12 +1,13 @@
 # Outputs: the final files
 
 `DECK make`, `DECK render`, look at every slide, write `looked.md`, then `DECK check --dir OUT`. The full check is
-the stop fact:
+the stop fact. If you change any words here, run `DECK claims` and a new claim checker (`writing.md`) first.
 
 | Check | What it proves |
 |---|---|
 | count | the main slide count is in `slide_count` |
-| figures | every number on a new slide is in a fact the slide cites; every public fact has a link, every estimate a `how` |
+| figures | every number on a new slide is in a fact its own line cites; every public fact has a link, every estimate a `how` |
+| claims | every line that states something cites facts that exist, and the claim checker said PASS on the words as they are now |
 | fit | every text box fits; titles are on one line |
 | open | each output opens: the PowerPoint loads, is 16:9, has the right number of slides, real text on every new slide, and no slide that is one big picture; the PDF has one page per slide |
 | looked | a picture of every slide exists, made after the last `make`, and `looked.md` has a line for each, written after the last picture |

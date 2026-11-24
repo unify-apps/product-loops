@@ -6,8 +6,10 @@
   <py> deck.py make --dir <deck folder>                  deck.json + facts.json -> out/deck.html, out/deck.pptx
   <py> deck.py render --dir <deck folder>                one picture per slide of every output, and out/deck.pdf
   <py> deck.py sheet --dir <deck folder> [--kind pptx|html]   6 slide pictures per sheet, to look at side by side
+  <py> deck.py merge-facts --dir <deck folder>           research/*.md fact lines -> facts.json (ids f1, f2, ...), then the facts check
   <py> deck.py facts --dir <deck folder>                 facts.json alone: every fact has a link, a 'how' or comes from the person
-  <py> deck.py check --dir <deck folder> [--only count,figures,fit,open,looked]
+  <py> deck.py claims --dir <deck folder>                every piece of slide text next to the facts it cites -> claims.md, then the claims check
+  <py> deck.py check --dir <deck folder> [--only count,figures,claims,fit,open,looked]
                                                         the stop-fact checks -> check.md (or check-<keys>.md); exit 1 when one fails
 
 <py> is the "python" path that setup writes to tools.json. Works on Python 3.8 and later.
@@ -53,6 +55,11 @@ def write_text(path, text):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as handle:
         handle.write(text)
+
+
+def item_text(item):
+    """A point is a string or {"text": ..., "facts": [...]}."""
+    return str(item.get("text", "")) if isinstance(item, dict) else str(item)
 
 
 # ---------- setup ----------
@@ -349,7 +356,8 @@ def lay_block(block, b, x, y, w, h, deck_dir):
         y, h = y + 0.6, h - 0.6
     if kind == "points":
         small = 9 if block.get("auto") == "sources" else 14
-        ops.append(text_op(x, y, w, h, block.get("points", []), b["body_font"], 22, small, b["text"], bullet=len(block.get("points", [])) > 1))
+        points = [item_text(p) for p in block.get("points", [])]
+        ops.append(text_op(x, y, w, h, points, b["body_font"], 22, small, b["text"], bullet=len(points) > 1))
     elif kind == "numbers":
         items = block.get("numbers", [])[:4] or [{}]
         gap = 0.35
@@ -381,7 +389,7 @@ def lay_block(block, b, x, y, w, h, deck_dir):
                 heading = "%d. %s" % (i + 1, heading)
             head = text_op(cx, top, inner, 0.9, [heading], b["title_font"], 19, 13, b["accent"], bold=b.get("title_bold", True), role="heading")
             ops.append(head)
-            body = item.get("points") or ([item["text"]] if item.get("text") else [])
+            body = [item_text(p) for p in item.get("points") or []] or ([item["text"]] if item.get("text") else [])
             ops.append(text_op(cx, top + 1.0, inner, h - (top - y) - 1.2, body, b["body_font"], 17, 11, b["text"], bullet=kind == "columns" and len(body) > 1))
     elif kind == "image":
         path = block.get("image", "")
@@ -713,16 +721,26 @@ def cmd_render(args):
         index["notes"].append("no Chrome: HTML pages not drawn")
     write_json(os.path.join(renders, "index.json"), index)
     print("ok render: %d HTML pictures, %d PowerPoint pictures%s" % (len(index["html"]), len(index["pptx"]), ("; " + "; ".join(index["notes"])) if index["notes"] else ""))
+    kind = "pptx" if index["pptx"] else "html"
+    if index[kind]:
+        try:
+            cmd_sheet({"--dir": deck_dir, "--kind": kind})
+        except Exception as error:  # a sheet is a help for looking, never a reason for render to fail
+            print("no sheets: %s" % error)
     return 0
 
 
 # ---------- check ----------
 
 NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?")
+FACT_ID = re.compile(r"\(?\bf\d+\b\)?")
 
 
 def cited_facts(slide):
     ids = list(slide.get("facts", []))
+    for point in slide.get("points", []) or []:
+        if isinstance(point, dict):
+            ids += point.get("facts", [])
     for key in ("numbers", "columns", "steps", "blocks"):
         for item in slide.get(key, []) or []:
             if isinstance(item, dict):
@@ -734,7 +752,7 @@ def cited_facts(slide):
 
 def visible_text(slide):
     parts = [slide.get(k, "") for k in ("title", "subtitle", "heading", "caption", "value", "label", "text")]
-    parts += [str(p) for p in slide.get("points", []) or []]
+    parts += [item_text(p) for p in slide.get("points", []) or []]
     for key in ("numbers", "columns", "steps", "blocks"):
         for item in slide.get(key, []) or []:
             parts.append(visible_text(item) if isinstance(item, dict) else str(item))
@@ -742,6 +760,7 @@ def visible_text(slide):
 
 
 def figures_in(text):
+    text = FACT_ID.sub(" ", text)  # a fact id such as "(f12)" is not a figure; the claims check flags it
     found = []
     for match in NUMBER.finditer(text):
         token = match.group(0).rstrip(".,")
@@ -762,6 +781,174 @@ def figures_in(text):
     return found
 
 
+def claim_rows(slide, number):
+    """One row per piece of text on a new slide: what it says and the facts that back it.
+    need=True: the row states something, so it must cite a fact. need=False: a label, a cover line or the notes;
+    no fact is required, but the claim checker still reads it and its figures must be in the slide's facts."""
+    rows = []
+    every = list(dict.fromkeys(cited_facts(slide)))
+    own = list(slide.get("facts", []))
+
+    def add(where, text, facts, need):
+        text = str(text or "").strip()
+        if text:
+            rows.append({"id": "s%d.%s" % (number, where), "slide": number, "text": text,
+                         "facts": list(dict.fromkeys(facts)), "need": need and not text.endswith("?")})
+
+    def block(item, prefix, parent_facts):
+        kind = item.get("layout", "points")
+        add(prefix + "heading", item.get("heading"), parent_facts, False)
+        for i, point in enumerate(item.get("points", []) or [], 1):
+            facts = point.get("facts", []) if isinstance(point, dict) else []
+            add("%sp%d" % (prefix, i), item_text(point), facts or (parent_facts if prefix else []), True)
+        for i, num in enumerate(item.get("numbers", []) or [], 1):
+            add("%sn%d" % (prefix, i), ("%s: %s" % (num.get("value", ""), num.get("label", ""))).strip(": "),
+                ([num["fact"]] if num.get("fact") else []) + list(num.get("facts", [])), True)
+        for key, short in (("columns", "c"), ("steps", "st")):
+            for i, col in enumerate(item.get(key, []) or [], 1):
+                facts = list(col.get("facts", []))
+                if key == "steps":
+                    add("%s%s%d" % (prefix, short, i), ("%s: %s" % (col.get("heading", ""), col.get("text", ""))).strip(": "), facts, True)
+                else:
+                    block(col, "%s%s%d." % (prefix, short, i), facts)
+        for i, sub in enumerate(item.get("blocks", []) or [], 1):
+            block(sub, "%sb%d." % (prefix, i), list(sub.get("facts", [])))
+        add(prefix + "caption", item.get("caption"), parent_facts, False)
+
+    layout = slide.get("layout", "points")
+    if layout == "section":
+        return rows
+    if layout == "title":
+        add("title", slide.get("title"), own, False)
+        add("subtitle", slide.get("subtitle"), own, False)
+    else:
+        add("title", slide.get("title"), own or every, True)
+        block(slide, "", own)
+    add("notes", slide.get("notes"), every, False)
+    return rows
+
+
+def kept_rows(item, start, person_facts):
+    """A kept start-deck slide is the presenter's word, but it may not claim more about our product than need 6.
+    Each of its lines, after its word swaps, is checked against every from-person fact."""
+    number = int(item["source"].get("from_slide", 0))
+    slide = next((x for x in (start or {}).get("slides", []) if x.get("slide") == number), None)
+    rows = []
+    for text in "\n".join((slide or {}).get("text", [])).split("\n"):
+        for change in item["source"].get("replace", []):
+            text = text.replace(change["old"], change["new"])
+        if text.strip():
+            rows.append({"id": "s%d.k%d" % (item["slide"], len(rows) + 1), "slide": item["slide"], "text": text.strip(),
+                         "facts": list(person_facts), "need": False, "kept": True})
+    return rows
+
+
+def deck_claim_rows(planned, deck_dir=None, facts=()):
+    rows = []
+    start = None
+    if deck_dir and os.path.exists(os.path.join(deck_dir, "start", "slides.json")):
+        start = read_json(os.path.join(deck_dir, "start", "slides.json"))
+    person = [f.get("id") for f in facts if f.get("kind") == "from-person"]
+    for item in planned:
+        if item["source"].get("auto") == "sources":
+            continue
+        if item["layout"] == "keep":
+            rows += kept_rows(item, start, person)
+            continue
+        rows += claim_rows(item["source"], item["slide"])
+    return rows
+
+
+def rows_hash(rows, facts=()):
+    """Changes when any slide line, its cited ids, or any fact's text changes: each needs a new claim check."""
+    import hashlib
+    data = [[r["id"], r["text"], r["facts"]] for r in rows] + [[f.get("id"), f.get("text")] for f in facts]
+    return hashlib.sha1(json.dumps(data, ensure_ascii=False).encode("utf-8")).hexdigest()[:12]
+
+
+def figure_problems(rows, by_id):
+    problems = []
+    for row in rows:
+        if row.get("kept"):
+            continue  # a kept slide's numbers are the presenter's word; the claim checker reads its product claims
+        backing = " ".join(str(by_id[i].get("text", "")) + " " + str(by_id[i].get("value", "")) for i in row["facts"] if i in by_id)
+        tokens = set(m.group(0).rstrip(".,").replace(",", "") for m in NUMBER.finditer(backing))
+        for figure in dict.fromkeys(figures_in(row["text"])):
+            if figure not in tokens:
+                problems.append("%s shows %s, which is in none of its facts (%s)" % (row["id"], figure, ", ".join(row["facts"]) or "none cited"))
+    return problems
+
+
+def claim_problems(rows, by_id, deck_dir, facts=()):
+    problems = []
+    for row in rows:
+        if row["need"] and not row["facts"]:
+            problems.append("%s cites no fact: \"%s\"" % (row["id"], row["text"][:70]))
+        missing = [i for i in row["facts"] if i not in by_id]
+        if missing:
+            problems.append("%s cites %s, not in facts.json" % (row["id"], ", ".join(missing)))
+        if not row["id"].endswith("notes") and FACT_ID.search(row["text"]):
+            problems.append("%s shows a fact id in its words: put it in \"facts\" only" % row["id"])
+    claims_md = os.path.join(deck_dir, "claims.md")
+    verdict = os.path.join(deck_dir, "claims-verdict.md")
+    if not os.path.exists(claims_md):
+        problems.append("claims.md is missing: run DECK claims")
+    else:
+        head = open(claims_md, encoding="utf-8").read(400)
+        if "Rows: %s" % rows_hash(rows, facts) not in head:
+            problems.append("the slide words changed after claims.md was made: run DECK claims and the claim checker again")
+        elif not os.path.exists(verdict):
+            problems.append("claims-verdict.md is missing: run the claim checker on claims.md")
+        elif os.path.getmtime(verdict) < os.path.getmtime(claims_md):
+            problems.append("claims-verdict.md is older than claims.md: run the claim checker again")
+        elif not open(verdict, encoding="utf-8").read().lstrip().upper().startswith("PASS"):
+            problems.append("claims-verdict.md does not say PASS: fix the rows it names, run DECK claims, then a new checker")
+    return problems
+
+
+def cmd_claims(args):
+    """Write claims.md: every piece of new-slide text with the full text of the facts it cites."""
+    deck_dir = args["--dir"]
+    deck, facts, brand, size, fmt, planned = plan(deck_dir)
+    by_id = {f.get("id"): f for f in facts}
+    rows = deck_claim_rows(planned, deck_dir, facts)
+    digest = rows_hash(rows, facts)
+    target = os.path.join(deck_dir, "claims.md")
+    old = open(target, encoding="utf-8").read(400) if os.path.exists(target) else ""
+    if "Rows: %s" % digest not in old:  # unchanged rows keep the file's time, so a verdict on them stays good
+        lines = ["# Claims to check", "", "Rows: %s. %d rows from %d new slides." % (digest, len(rows), len({r["slide"] for r in rows})), "",
+                 "Each row is one piece of slide text, then the facts it cites, in full. A row marked",
+                 "(label or cover) needs no fact; every other row states something and must cite one. A (notes) row",
+                 "is what the presenter will say, shown with every fact its slide cites. A (kept slide) row is a line",
+                 "of the presenter's own start deck, shown with every fact the presenter gave. The facts no slide",
+                 "cites are listed at the end.", ""]
+        for row in rows:
+            mark = " (kept slide)" if row.get("kept") else " (notes)" if row["id"].endswith(".notes") else "" if row["need"] else " (label or cover)"
+            lines.append("## %s%s" % (row["id"], mark))
+            lines.append("> " + row["text"].replace("\n", " "))
+            for fact_id in row["facts"]:
+                fact = by_id.get(fact_id, {})
+                extra = fact.get("how") if fact.get("kind") == "estimate" else fact.get("date", "")
+                lines.append("- %s [%s] %s%s" % (fact_id, fact.get("kind", "missing"), fact.get("text", "NOT IN facts.json"), (" (%s)" % extra) if extra else ""))
+            if not row["facts"]:
+                lines.append("- no fact cited")
+            lines.append("")
+        cited = {i for row in rows if not row.get("kept") for i in row["facts"]}
+        lines.append("## Facts no slide cites")
+        for fact in facts:
+            if fact.get("id") not in cited:
+                extra = fact.get("how") if fact.get("kind") == "estimate" else fact.get("date", "")
+                lines.append("- %s [%s] %s%s" % (fact.get("id"), fact.get("kind"), fact.get("text", ""), (" (%s)" % extra) if extra else ""))
+        write_text(target, "\n".join(lines) + "\n")
+    problems = claim_problems(rows, by_id, deck_dir, facts)
+    # claims.md itself is fresh here, so only the rows' own problems decide this command's answer
+    own = [p for p in problems if "claims-verdict" not in p]
+    print("%s: %d rows in claims.md (%d need a fact)." % ("PASS" if not own else "FAIL", len(rows), sum(r["need"] for r in rows)))
+    for problem in own:
+        print("- " + problem)
+    return 1 if own else 0
+
+
 def fact_problems(facts):
     problems, seen = [], set()
     for fact in facts:
@@ -778,6 +965,38 @@ def fact_problems(facts):
         elif kind not in ("public", "estimate", "from-person"):
             problems.append("fact %s has kind %r (public, estimate or from-person)" % (fact_id, kind))
     return problems
+
+
+def cmd_merge_facts(args):
+    """research/*.md fact lines -> facts.json. The person's file first, then company, industry, people, the rest."""
+    deck_dir = args["--dir"]
+    order = {"person.md": 0, "company.md": 1, "industry.md": 2, "people.md": 3, "added.md": 10}
+    files = sorted(glob.glob(os.path.join(deck_dir, "research", "*.md")), key=lambda f: (order.get(os.path.basename(f), 9), f))
+    line_re = re.compile(r"^\s*[-*]\s*\[(public|estimate|from-person)\]\s*(.+?)\s*$")
+    facts, skipped = [], 0
+    for path in files:
+        if os.path.basename(path) == "spot-check.md":
+            continue
+        for line in open(path, encoding="utf-8"):
+            found = line_re.match(line)
+            if not found:
+                skipped += line.lstrip().startswith("- [")
+                continue
+            kind, rest = found.group(1), [part.strip() for part in found.group(2).split(" | ")]
+            fact = {"id": "f%d" % (len(facts) + 1), "kind": kind, "text": rest[0], "from": os.path.basename(path)}
+            if kind == "public":
+                fact["source"] = next((x for x in rest[1:] if x.startswith("http")), "")
+                dates = [x for x in rest[1:] if not x.startswith("http")]
+                if dates:
+                    fact["date"] = dates[0]
+            elif kind == "estimate":
+                fact["how"] = " | ".join(rest[1:]).replace("how:", "", 1).strip()
+            elif len(rest) > 1:
+                fact["where"] = " | ".join(rest[1:])
+            facts.append(fact)
+    write_json(os.path.join(deck_dir, "facts.json"), {"facts": facts})
+    print("ok merge-facts: %d facts from %d files -> facts.json%s" % (len(facts), len(files), "; %d lines starting '- [' were not in the fact shape" % skipped if skipped else ""))
+    return cmd_facts(args)
 
 
 def cmd_facts(args):
@@ -813,21 +1032,12 @@ def cmd_check(args):
     low, high = (deck.get("slide_count") or [1, 999])[:2]
     add("count", "slide count in the asked range", low <= len(main) <= high, "%d main slides, asked %s to %s; %d in the appendix" % (len(main), low, high, len(planned) - len(main)))
 
-    problems = fact_problems(facts)
-    for item in planned:
-        slide = item["source"]
-        if item["layout"] == "keep" or slide.get("auto") == "sources":
-            continue
-        ids = cited_facts(slide)
-        for fact_id in ids:
-            if fact_id not in by_id:
-                problems.append("slide %d cites %s, which is not in facts.json" % (item["slide"], fact_id))
-        backing = " ".join(str(by_id[i].get("text", "")) + " " + str(by_id[i].get("value", "")) for i in ids if i in by_id)
-        tokens = set(m.group(0).rstrip(".,").replace(",", "") for m in NUMBER.finditer(backing))
-        for figure in figures_in(visible_text(slide)):
-            if figure not in tokens:
-                problems.append("slide %d shows %s with no fact behind it" % (item["slide"], figure))
-    add("figures", "every figure has a source", not problems, "; ".join(problems[:12]) or "%d facts, every figure on a slide is in a cited fact" % len(facts))
+    rows = deck_claim_rows(planned, deck_dir, facts)
+    problems = fact_problems(facts) + figure_problems(rows, by_id)
+    add("figures", "every figure has a source", not problems, "; ".join(problems[:12]) or "%d facts, every figure on a slide is in a fact its line cites" % len(facts))
+    if not only or "claims" in only:
+        claims = claim_problems(rows, by_id, deck_dir, facts)
+        add("claims", "every line cites facts that say it", not claims, "; ".join(claims[:12]) or "%d rows, each cites a fact, claim checker PASS" % len(rows))
 
     layout_file = os.path.join(deck_dir, "out", "layout.json")
     fit = []
@@ -917,7 +1127,7 @@ def cmd_check(args):
 
 def cmd_sheet(args):
     """Put every slide picture of one kind on one or more sheets, 6 slides a sheet, for a quick side-by-side look."""
-    from PIL import Image
+    from PIL import Image, ImageDraw
     deck_dir = args["--dir"]
     kind = args.get("--kind", "pptx")
     files = sorted(glob.glob(os.path.join(deck_dir, "renders", kind, "slide-*.png")))
@@ -930,9 +1140,13 @@ def cmd_sheet(args):
         thumbs = [Image.open(f).convert("RGB") for f in group]
         tw = 640
         th = int(tw * thumbs[0].height / float(thumbs[0].width))
-        sheet = Image.new("RGB", (tw * 2 + 30, (th + 30) * ((len(thumbs) + 1) // 2)), "white")
+        # A grey sheet so white slides show their edges; the slide number sits under each picture.
+        sheet = Image.new("RGB", (tw * 2 + 30, (th + 30) * ((len(thumbs) + 1) // 2) + 10), (200, 203, 208))
+        draw = ImageDraw.Draw(sheet)
         for i, thumb in enumerate(thumbs):
-            sheet.paste(thumb.resize((tw, th)), (10 + (i % 2) * (tw + 10), 10 + (i // 2) * (th + 30)))
+            x, y = 10 + (i % 2) * (tw + 10), 10 + (i // 2) * (th + 30)
+            sheet.paste(thumb.resize((tw, th)), (x, y))
+            draw.text((x, y + th + 6), "slide %d" % (start + i + 1), fill=(20, 20, 20))
         target = os.path.join(deck_dir, "renders", "%s-sheet-%d.png" % (kind, start // 6 + 1))
         sheet.save(target)
         made.append(target)
@@ -958,7 +1172,8 @@ def main():
         print(__doc__)
         return 0
     command, args = sys.argv[1], parse(sys.argv[2:])
-    commands = {"setup": cmd_setup, "read-start": cmd_read_start, "make": cmd_make, "render": cmd_render, "check": cmd_check, "facts": cmd_facts, "sheet": cmd_sheet}
+    commands = {"setup": cmd_setup, "read-start": cmd_read_start, "make": cmd_make, "render": cmd_render, "check": cmd_check,
+                "facts": cmd_facts, "merge-facts": cmd_merge_facts, "claims": cmd_claims, "sheet": cmd_sheet}
     if command not in commands:
         print("deck.py: unknown command %s" % command)
         return 2

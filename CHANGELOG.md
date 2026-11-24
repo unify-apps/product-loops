@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.4
+
+- product-deck-loop: every line on a slide, and in the speaker notes, must cite the facts that say it, and a separate checker reads each line next to those facts before the review. A worded claim with no fact behind it ("nearly doubled", "still small") now fails early instead of at the review. Facts are merged from the research files, never retyped, and the newest figure is used for each measure. Every slide is looked at after it is drawn.
+- All loops: one shared rule for waiting on helper agents, so a run never stops while helpers work. Status now shows how many choices the loop made for you.
+
 ## 0.1.3
 
 - product-build-loop: the first link shows each module's name and what it must have while it is built, instead of "not found". The click check fails a link that lands on "not found". Every fix gets a fresh review round, and nothing changes after the review passes. Records are not copied, dates read the way people say them, and anything people do in a module (vote, add notes) must really work. The local server stops itself after 2 hours with no visits and comes back on the same link; the handover gives its start and stop commands.

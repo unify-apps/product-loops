@@ -257,6 +257,7 @@ function statusText(run) {
   for (const n of s.nodes) lines.push(`  ${n.status.padEnd(7)} ${n.name}${n.retries ? ` (${n.retries} retries)` : ""}${n.leftWhy ? `: ${n.leftWhy}` : ""}`);
   lines.push(s.next ? `next node: ${s.next}` : "next node: none, run finish");
   if (s.held.length) lines.push(`held steps: ${s.held.map((h) => `${h.step} (${h.kind})`).join("; ")}`);
+  lines.push(`decisions: ${s.decisions}${s.decisions ? " (in decisions.md)" : ""}`);
   return lines.join("\n");
 }
 

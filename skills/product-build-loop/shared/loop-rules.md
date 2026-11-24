@@ -59,6 +59,13 @@ From `close-intake` to `finish`:
    After 3 retries, `retry` refuses. Then run `STATE left <node> --why "<what still fails>"` and go on.
 6. A node you cannot start at all (a missing tool, a held step it needs): `STATE left <node> --why "<why>"`.
 
+## Waiting for helper agents
+
+Start the helpers a node needs in one message, and wait for all of them before the node's check. Do not
+start them in the background and then end your turn: the run would stop until something wakes it. When a
+shell command must wait for a file a helper writes, wait in the foreground with one loop that ends when the
+file exists, and run it again if the shell moves it to the background.
+
 ## The review node (the node before handover)
 
 The review checks the stop fact with fresh eyes. Start one helper agent (the Agent tool) that did not build

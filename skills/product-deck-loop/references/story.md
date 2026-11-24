@@ -21,7 +21,9 @@ step). A brochure is 4 to 8 pages, one topic a page. A web page is the first-mee
 - The title is a claim the slide proves, in under 60 characters so it fits one line. "Online orders grew 18%
   in 2024", not "Market overview".
 - Each slide leads to the next. Read the titles alone, in order: they must tell the whole story.
-- Every number cites a fact id from `facts.json`. No fact, no number.
+- Every line cites the fact ids from `facts.json` that say it. No fact, no claim.
+- Read every fact on a topic before a slide states it. Use the newest figure for each measure, and never state
+  something another fact says otherwise.
 - Talk about their business and their money: revenue, cost, risk, time. Our product comes after their problem.
 - Kept start-deck slides count toward the slide count. A slide the person asked to keep is never cut.
 - The last main slide is a concrete ask: what we propose, what we need from them, how long, and how both sides

@@ -16,8 +16,8 @@ In this file:
   setup has run, use `python3` in its place. Run `DECK help` once to see every command.
 
 Stop fact: every output asked for is in `OUT/out/` and opens; every slide was drawn and looked at after the last
-change; every figure on a slide has a source link, an estimate note or the person's word behind it; and the main
-slide count is in the asked range.
+change; every line on a slide cites facts that say it, each with a source link, an estimate note or the person's
+word; and the main slide count is in the asked range.
 
 ## Nodes
 
@@ -25,7 +25,7 @@ slide count is in the asked range.
 2. `research`: helpers find facts on the company, its industry and the people, each with a source link.
 3. `story`: one idea per slide in a clear order, written as `OUT/deck.json`.
 4. `build`: makes the deck files, draws every slide, looks at each one and fixes the layout.
-5. `facts-and-words`: no claim without a fact behind it, plain words on every slide.
+5. `facts-and-words`: plain words, and a fresh claim checker finds no line its facts do not say.
 6. `outputs`: makes the final files, draws and looks again, runs the full check.
 7. `review`: a fresh agent reads the deck as the named reader and checks the stop fact.
 8. `handover`: writes handover.md and finishes the run.
@@ -55,8 +55,9 @@ Run `STATE init --loop product-deck-loop --nodes intake,research,story,build,fac
 then follow the intake rules. Read `${CLAUDE_SKILL_DIR}/references/needs.md`: it lists every need, its default and
 where to look before asking.
 
-1. Read the ask, every file it names, and the working folder's `CLAUDE.md`. List the deck files in the folder
-   (`.pptx`, `.pdf`, `.key`) and in any folder the ask names.
+1. Read the ask, every file it names, and the working folder's `CLAUDE.md`. List every file in the folder and in
+   any folder the ask names. Read each text file that may say what we offer or may claim, or what is known about
+   the company or the meeting (claims, notes, transcripts). Note the deck files (`.pptx`, `.pdf`, `.key`).
 2. Start check, in this order. Say in the question message what failed and what it costs.
    - `mkdir -p OUT && python3 "${CLAUDE_SKILL_DIR}/scripts/deck.py" setup --dir OUT`. It makes the Python tools
      (python-pptx, pymupdf, about 1 minute the first time) and finds Chrome and Quick Look. If it fails, the
@@ -76,11 +77,12 @@ where to look before asking.
 ## Node 2: research
 
 1. `STATE start research`. Follow `references/research.md`.
-2. Start up to 3 helper agents at once with the Agent tool: the company, its industry, the people. Each writes
-   `OUT/research/<part>.md` and returns facts in the format of `references/research.md`.
-3. Merge every fact into `OUT/facts.json`. Add the person's own facts as `from-person`.
-   Without web tools, use only the given files and the person's facts, and write that down with `STATE decide`.
-4. Check: `DECK facts --dir OUT` prints PASS.
+2. Start up to 3 helper agents in one message, not in the background: the company, its industry, the people. Each
+   writes its facts to `OUT/research/<part>.md`, in the line shape of `references/research.md`.
+3. Write `OUT/research/person.md`: the person's facts and every line of what we may claim. Then
+   `DECK merge-facts --dir OUT` writes `OUT/facts.json`. Without web tools, use only the given files and the
+   person's facts, and write that down with `STATE decide`.
+4. Check: `DECK merge-facts --dir OUT` prints PASS, and the 3 links in `OUT/research/spot-check.md` match.
 5. `STATE done research --check "every fact has a link, a how or the person's word" --proof OUT/facts-check.md`
 
 ## Node 3: story
@@ -88,7 +90,7 @@ where to look before asking.
 1. `STATE start story`. Follow `references/story.md` for the order that fits the meeting.
 2. Write `OUT/story.md`: one line per slide (its title as a claim, then the one idea), main slides first, then
    the appendix. Then write `OUT/deck.json` (format in `references/build.md`) with the text of every slide, the
-   facts each slide uses, `slide_count` from the brief, the outputs, the format and the brand.
+   facts each line cites, `slide_count` from the brief, the outputs, the format and the brand.
 3. Check: `DECK check --dir OUT --only count,figures` prints PASS.
 4. `STATE done story --check "count in range, every figure cited" --proof OUT/check-count-figures.md`
 
@@ -97,7 +99,8 @@ where to look before asking.
 1. `STATE start build`. Follow `references/build.md`.
 2. `DECK make --dir OUT`, then `DECK render --dir OUT`. `make` names every box whose text does not fit.
 3. Look at every slide picture in `OUT/renders/pptx/` (or `OUT/renders/html/` when no PowerPoint is made) with
-   the Read tool, one by one. Fix what is wrong in `deck.json`, then make and render again.
+   the Read tool, one by one, then the sheets `render` made, to compare slides side by side. Fix what is wrong in
+   `deck.json`, then make and render again.
 4. Write `OUT/looked.md` after the last render: one line per slide, `slide N: <what you saw>`.
 5. Check: `DECK check --dir OUT --only fit,looked` prints PASS.
 6. `STATE done build --check "every slide drawn, looked at, text fits" --proof OUT/check-fit-looked.md`
@@ -108,24 +111,28 @@ where to look before asking.
    installed; else follow `references/writing.md`.
 2. Change only words in `deck.json`, never the facts. A claim with no fact behind it is cut, narrowed, or turned
    into a question for the meeting. Write each change in `OUT/words.md` (slide, before, after, why).
-3. Check: `DECK check --dir OUT --only figures` prints PASS, and `words.md` exists.
-4. `STATE done facts-and-words --check "every figure cited after the word pass" --proof OUT/check-figures.md`
+3. The claim checker, as `references/writing.md` says: `DECK claims --dir OUT`, then one fresh text-only helper
+   reads `OUT/claims.md` and writes `OUT/claims-verdict.md`. On FAIL, fix the rows it names, `STATE retry`, and
+   run `DECK claims` and a new helper.
+4. Check: `DECK check --dir OUT --only figures,claims` prints PASS, and `words.md` exists. Node 6 draws again.
+5. `STATE done facts-and-words --check "every line cites facts that say it" --proof OUT/check-figures-claims.md`
 
 ## Node 6: outputs
 
 1. `STATE start outputs`. Follow `references/outputs.md`.
-2. `DECK make --dir OUT`, `DECK render --dir OUT`, look at every slide again, and write `OUT/looked.md` anew.
-3. `DECK check --dir OUT` must print PASS on all 5 checks. Fix and repeat, as the retry rule says.
+2. `DECK make --dir OUT`, `DECK render --dir OUT`, look at every slide again, and write `OUT/looked.md` anew. A word changed here needs `DECK claims` and a new claim checker.
+3. `DECK check --dir OUT` must print PASS on all 6 checks. Fix and repeat, as the retry rule says.
 4. An Artifact only when node 1's answer asked for one, and only when the Artifact tool is in this session.
    Otherwise write why in `OUT/outputs.md`. Never publish or send anything else anywhere.
-5. `STATE done outputs --check "deck check PASS on all 5" --proof OUT/check.md`
+5. `STATE done outputs --check "deck check PASS on all 6" --proof OUT/check.md`
 
 ## Node 7: review
 
 1. `STATE start review`
-2. Start one helper agent with the Agent tool, with the brief in `references/review.md`. It writes `RUN/review.md`.
-3. If it says FAIL, fix in `deck.json`, make, render, look, check, `STATE retry review --why "..."`, and run a new
-   helper. After 3 tries, `STATE left review --why "..."`.
+2. Start one helper agent with the Agent tool, not in the background, with the brief in `references/review.md`.
+   It writes `RUN/review.md`.
+3. If it says FAIL, fix in `deck.json`, `DECK claims` and a new claim checker, make, render, look, check,
+   `STATE retry review --why "..."`, and run a new helper. After 3 retries, `STATE left review --why "..."`.
 4. `STATE done review --check "fresh agent says PASS as the reader" --proof RUN/review.md`
 
 ## Node 8: handover

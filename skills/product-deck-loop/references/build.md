@@ -19,7 +19,11 @@ and shapes, never a picture of a slide.
     {"layout": "title", "title": "Shorter waits at every store", "subtitle": "A first conversation with Acme"},
     {"layout": "numbers", "title": "Acme in 2024", "numbers": [
       {"value": "$3.1B", "label": "Revenue, up 4%", "fact": "f1"}]},
-    {"layout": "points", "title": "...", "points": ["...", "..."], "facts": ["f3"], "notes": "what to say"},
+    {"layout": "points", "title": "Empty shelves cost Acme $450M of sales", "facts": ["f4"], "points": [
+      {"text": "$450M of sales lost to empty shelves in 2024", "facts": ["f4"]},
+      {"text": "Do stores still count stock by hand?"}], "notes": "what to say"},
+    {"layout": "steps", "title": "A 7-week pilot in one region", "facts": ["f1"], "steps": [
+      {"heading": "Weeks 1-2", "text": "Connect your stock data", "facts": ["f1"]}]},
     {"layout": "keep", "from_slide": 3},
     {"layout": "keep", "from_slide": 5, "replace": [{"old": "Hub", "new": "Console"}]},
     {"layout": "section", "title": "Appendix", "part": "appendix"}
@@ -31,8 +35,11 @@ and shapes, never a picture of a slide.
   (full-width sections, HTML only). A PowerPoint is made only for `slides`.
 - `outputs`: any of `html`, `pptx`, `pdf`. The HTML is always made.
 - `part`: `main` (the default) or `appendix`. Only main slides count toward `slide_count`.
-- `facts`: the fact ids a slide uses. In `numbers`, each item names its own `fact`.
-- `notes`: the speaker notes. Add what to say, in 2 or 3 sentences.
+- Every line cites its own facts: each point is `{"text": ..., "facts": [...]}`, each step, column and stack
+  block has `facts`, each `numbers` item names its `fact`. The slide's own `facts` back its title. A point in a
+  column may use its column's `facts`. A line ending in "?" is a question for the meeting and needs no fact.
+  Fact ids go in `facts` only, never in the words. `DECK claims` checks all of this.
+- `notes`: the speaker notes. Add what to say, in 2 or 3 sentences. Every number in them is in the slide's facts.
 - A Sources slide is added at the end on its own. `"sources_slide": false` turns it off (a one-pager).
 - `brand`: any key left out takes the plain default. `"title_bold": false` keeps titles regular, as many start decks do. From a start deck, use `fonts_used` and `fills_used` in
   `OUT/start/slides.json` (the most used first): the fonts the slides really use, not the theme's.
@@ -45,8 +52,8 @@ and shapes, never a picture of a slide.
 | `section` | title, subtitle | a break between parts, and the Appendix break |
 | `points` | title, points (2 to 5 short lines) | a claim with its reasons |
 | `numbers` | title, numbers (1 to 4: value, label, fact) | figures that carry the slide |
-| `columns` | title, columns (2 or 3: heading, points) | a comparison, or by-team views |
-| `steps` | title, steps (2 to 5: heading, text) | a process, a roadmap, a pilot plan |
+| `columns` | title, columns (2 or 3: heading, points, facts) | a comparison, or by-team views |
+| `steps` | title, steps (2 to 5: heading, text, facts) | a process, a roadmap, a pilot plan |
 | `image` | title, image (a path from `OUT`), caption | a real product screen or diagram the person gave |
 | `stack` | title, blocks (each a `points`, `numbers`, `columns`, `steps` or `image` with an optional heading and weight) | a one-pager or a dense brochure page |
 | `keep` | from_slide, replace (optional) | a start-deck slide, unchanged except the word swaps |
@@ -60,16 +67,19 @@ and shapes, never a picture of a slide.
   start deck, with the new ones placed between them. "Edit it" means list every slide and use `replace` for word
   changes. A slide that needs more than word changes becomes a new slide with the same title.
 - From a PDF start deck, a `keep` slide is the page's picture (not editable). Say so in the hand-over.
+- A kept slide is the presenter's word, but it may not claim more about our product than need 6 allows. The
+  claim checker reads its lines too. A line that goes too far is narrowed with `replace`, and the hand-over says so.
 - A 4:3 start deck stays 4:3 when slides are kept: the check then fails on 16:9. Write that down with `STATE decide`
   and say it in the hand-over.
 
 ## Draw and look
 
 `DECK render` draws every slide: the HTML through Chrome (this also makes `out/deck.pdf`), and the PowerPoint
-through macOS Quick Look, one slide at a time. Then:
+through macOS Quick Look, one slide at a time. It ends by putting the pictures on sheets, 6 slides a sheet
+(`OUT/renders/pptx-sheet-1.png` and on; `html-sheet-` when there is no PowerPoint). Then:
 
 1. Open every picture in `OUT/renders/pptx/` with the Read tool, one by one (`renders/html/` when there is no
-   PowerPoint). `DECK sheet --dir OUT` puts 6 on a page for a quick side-by-side look after that.
+   PowerPoint). Then open the sheets, to compare the slides side by side.
 2. Look for: text cut off or running out of its box, a title on two lines, a big empty area, boxes of unequal
    size, a slide with too much text, a kept slide that clashes with the new ones.
 3. Fix in `deck.json`: fewer words first, then a different layout, then a split into two slides. Make, render,
