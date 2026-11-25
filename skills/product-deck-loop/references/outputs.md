@@ -8,6 +8,7 @@ the stop fact. If you change any words here, run `DECK claims` and a new claim c
 | count | the main slide count is in `slide_count` |
 | figures | every number on a new slide is in a fact its own line cites; every public fact has a link, every estimate a `how` |
 | claims | every line that states something cites facts that exist, and the claim checker said PASS on the words as they are now |
+| body | no slide has more than a third of it empty under its content; every number in a title is in its body |
 | fit | every text box fits; titles are on one line |
 | open | each output opens: the PowerPoint loads, is 16:9, has the right number of slides, real text on every new slide, and no slide that is one big picture; the PDF has one page per slide |
 | looked | a picture of every slide exists, made after the last `make`, and `looked.md` has a line for each, written after the last picture |

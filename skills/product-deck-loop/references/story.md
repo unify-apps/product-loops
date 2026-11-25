@@ -1,6 +1,21 @@
 # Story: one idea per slide, in an order the reader follows
 
-## Pick the order from the meeting kind
+## Build to the goal
+
+The brief's goal (G1), angle (G2) and real audience (G3) decide the deck. Write the goal at the top of
+`story.md`, then pick the order: from the goal first, from the meeting kind only when the goal is an outside-in
+view or a pitch. When G2 says not to follow the usual order, use none of the orders below as they are.
+
+| Goal | Order of the main slides |
+|---|---|
+| A plan for them, ranked by impact | 1. The answer in one line: what to do first and what it is worth. 2. Where they stand today, with their own numbers. 3. The ranked plan on one slide: each item, what it does, the revenue or cost it moves, when. 4. One slide per top item: what changes, for whom, the figure behind its rank (public, or our estimate with its `how`). 5. What it takes from them. 6. The first step |
+| A vision to retell to their boss | 1. Why now, in the boss's terms: money, risk, speed. 2. What good looks like in 2 to 3 years, as a picture of their business, not our product. 3. The few moves that get there, ranked by value. 4. The proof it can be done. 5. The first step the reader can take to the boss. Every title is a sentence the reader could say aloud to the boss |
+
+Every item in a plan or a vision is tied to more revenue or lower cost, with a figure behind it: a public fact or
+an estimate with its `how`, labelled "our estimate". An item no figure can back is cut, or shown as a question
+to size together. Rank by that figure, and say how the rank was made.
+
+## The order for the meeting kind (outside-in view, pitch, technical walk-through)
 
 | Meeting | Order of the main slides |
 |---|---|
@@ -20,7 +35,11 @@ step). A brochure is 4 to 8 pages, one topic a page. A web page is the first-mee
 - One idea per slide. If the title needs "and", it is two slides.
 - The title is a claim the slide proves, in under 60 characters so it fits one line. "Online orders grew 18%
   in 2024", not "Market overview".
-- Each slide leads to the next. Read the titles alone, in order: they must tell the whole story.
+- Each slide leads to the next. Read the titles alone, in order: they must tell the whole story and make the
+  goal's case to the real audience (G3).
+- Each slide carries enough to fill it: a claim, then what it means for them. A numbers slide adds 1 or 2 points
+  under its boxes on what the numbers mean. Two thin slides become one. The `body` check fails a slide whose
+  bottom third is empty, and a title number the body does not show.
 - Every line cites the fact ids from `facts.json` that say it. No fact, no claim.
 - Read every fact on a topic before a slide states it. Use the newest figure for each measure, and never state
   something another fact says otherwise.

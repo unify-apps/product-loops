@@ -24,7 +24,8 @@ Places to look, in this order:
 | name-mark | Name and mark | 3 options, the first one used in the product | 1, 2 |
 | build-modules | Persona: who uses it, and the one job they come to do | drafted from the ask, shown in the brief | 1, 3 |
 | build-modules | Modules in build order, with the must-haves of each | drafted from the ask: 2 to 4 modules | 1, 3 |
-| build-modules | Screens or products to follow, and exact or flow only | none; flow only | 1, 2 |
+| build-modules | Screens or products to follow, and exact or flow only | what the ask says ("exactly like X" is exact); else none, flow only | 1, 2 |
+| build-modules | How deep: which modules are built in full, which are a shell | what the ask says ("a shell", "the opening page" builds the shell and that page in full; the rest are titled empty pages); else every module in full | 1 |
 | build-modules | Look: logo and icon files, colours, fonts | the product's own look; else the `product-design` skill; else the plain look in `build-module.md` | 2, 4 |
 | build-modules | Photos of people | none: initials only (nothing is downloaded) | 1 |
 | build-modules | Two versions behind a key where a layout choice is open | no: build the pick, list the other in proposals | 1, 4 |
@@ -37,9 +38,9 @@ Places to look, in this order:
 ## The questions
 
 Show the brief first. Then ask, as one numbered list, only the questions below whose answer you could not find.
-Each question names the default you picked. At most 8. Leave out a question when the ask already answers it.
+Each question names the default you picked. At most 9. Leave out a question when the ask already answers it.
 
-Always ask 3 and 4 unless the person's own words already give them. A persona or a must-have list you drafted
+Always ask 3, 4 and 6 unless the person's own words already give them. A persona or a must-have list you drafted
 from the ask or from the files is your guess, not an answer: the person knows who uses it and what they need.
 Never write "no open questions" while 3 or 4 is still a draft.
 
@@ -49,10 +50,14 @@ Never write "no open questions" while 3 or 4 is still a draft.
    Default: no, build from the modules below.
 3. Who uses it, and the one job they come to do. Default: <drafted persona>.
 4. The modules in build order, and what each must have. Default: <drafted list>.
-5. Screens or products to follow, and exact or flow only. Default: none, flow only.
-6. Your logo and icon files, colours and fonts. Default: <what was found, or the plain look>.
-7. Only for a new product: a name you have, or 3 options to pick from later. Default: 3 options, the first used.
-8. Extras: photos of people, two versions behind a key, a PDF guide, a public link.
+5. Screens or products to follow, and exact or flow only. Default: what the ask says; else none, flow only.
+   "Exactly like X" means exact: list what that takes (for a chat product: streamed answers, the action row under
+   each answer, the sidebar that collapses, recent chats) and build all of it.
+6. How deep: which modules are built in full and which are only a titled page in the shell. Default: what the
+   ask says; else every module in full.
+7. Your logo and icon files, colours and fonts. Default: <what was found, or the plain look>.
+8. Only for a new product: a name you have, or 3 options to pick from later. Default: 3 options, the first used.
+9. Extras: photos of people, two versions behind a key, a PDF guide, a public link.
    Default: none of them; the product stays on this laptop.
 
 End with: `Reply with your answers, or just "go" to use the defaults.`

@@ -3,6 +3,25 @@
 Node 1 reads this file. For each need: fill it from the places in "Look first", in that order. Ask only for what
 is still empty, in one message, with the default shown. "go" takes every default.
 
+## First: what the deck is for
+
+Needs G1 to G3 come before every other need. Every later node builds to them, and the review checks them first.
+Unless the ask states the goal in words, the goal is question 1 of the message, with 3 to 5 options written for
+this company and this reader, each one line saying what the deck would hold. Pick the default from the reader's
+role and say why in a few words. Typical options, to adapt, never to copy:
+
+- An outside-in view: what is changing in their industry, what it means for them, where the openings are.
+- A plan for them: what they should do, ranked by impact, each item tied to more revenue or lower cost.
+- A vision the reader can retell to their own boss: why now, what good looks like, the first steps.
+- A pitch: their problem, how our product solves it, proof, a next step.
+- A technical walk-through: their systems, how ours connects, a pilot plan.
+
+| # | Need | Used by | Default | Look first |
+|---|---|---|---|---|
+| G1 | The goal: what the reader should believe or do after the deck, in one sentence, and which option above | story, review, stop fact | the option that fits the reader's role, named in question 1 | the ask ("help me form a view", "pitch", "roadmap", "guide her") |
+| G2 | The angle and shape: the one idea the deck argues, and whether to follow the usual order for the meeting kind or a different one | story | the order in `story.md` for the goal | the ask, `CLAUDE.md` |
+| G3 | The real audience: who the reader must convince next, and what that person cares about (money, risk, speed) | story, review | the reader alone | the ask ("for her CEO", "she will share it") |
+
 | # | Need | Used by | Default | Look first |
 |---|---|---|---|---|
 | 1 | The company: its name, and its website when the name is common | research, story | none: ask when the ask does not name it | the ask, file names, a start deck's title slide |
@@ -30,9 +49,11 @@ is still empty, in one message, with the default shown. "go" takes every default
 
 ## Questions for a weak ask
 
-Ask these when the ask has fewer than 3 of needs 1 to 5. Example of a weak ask and a full one:
+Ask these when the ask has fewer than 3 of needs 1 to 5. G1, the goal, is always the first of them. Example of a
+weak ask and a full one:
 
 - Weak: "need a deck for the X meeting".
-- Full: "First meeting with X's head of operations next Tuesday. Start from our-deck.pptx and keep its slides 2
-  and 4. Research X, its industry and her public talks. About 10 slides, extras in an appendix. Mark every figure
-  as public or our estimate. HTML deck and an editable PowerPoint."
+- Full: "First meeting with X's head of operations next Tuesday. Give her a plan ranked by what it saves, that she
+  can take to her COO. Start from our-deck.pptx and keep its slides 2 and 4. Research X, its industry and her
+  public talks. About 10 slides, extras in an appendix. Mark every figure as public or our estimate. HTML deck and
+  an editable PowerPoint."

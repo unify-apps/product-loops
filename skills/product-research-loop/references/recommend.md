@@ -12,7 +12,12 @@ Date: <today>. Decision: <need 1>. Persona: <persona, one line>. Market: <market
 Rivals studied: <names, or Rival A, B, C>. Sheet: capability-sheet.csv (<n> rows).
 
 ## Bottom line
-Three lines at most: what to build first, and the one way it beats the rivals.
+Three lines at most: what to build first, and the one way it beats the rivals. When the decision is a capability
+matrix, start with the sheet: its file, its row count, and what it shows.
+
+## The matrix
+Only when the decision is a capability matrix. One line per group: how many rows, what most rivals have, and
+where they differ. Point to `capability-sheet.xlsx` as the place to read it in full.
 
 ## Persona and job
 The persona in two lines, then the job steps from thinking.md as a numbered list.
@@ -24,7 +29,14 @@ The bold rule from thinking.md.
 A short table: category, what most rivals have, where they are weak. Cite sheet ids.
 
 ## Where we beat them
-Each `beat` row worth building, one line each, with its sheet id and source.
+Each `beat` row worth building, one line each, with its sheet id and source. Only rows marked `beat` in the
+sheet: `CHECK brief` fails any other id here. Say for each one what the beat proof searched, in a few words.
+When a rival has something close, name it and say plainly what is still different.
+
+## Ideas no rival has
+At least 3, from thinking.md `## Ideas`, ranked by how big the win is for the persona. One line each: the idea,
+the pain or sheet row it comes from, and why no rival does it yet. These are new ways to do the job, not small
+additions. When need 16 says bold, the top ones are also in the ranked modules.
 
 ## Later and cut
 What waits, and what is cut, each with the reason in a few words.
@@ -42,6 +54,15 @@ persona starts, what a module leaves out. Write "none" when there is none.
 |---|---|---|---|---|---|---|---|
 | 1 | Online booking | Patients book a free slot from the clinic's site | Pick a visit type; see free slots for one week; book with name and phone; staff see it on the day view | 1, 2 | C01, C04 | Match: all rivals have it; ours needs no app | yes |
 ```
+
+## Rules for claims about the rivals
+
+- A sentence that says no rival, or every rival, does something cites the `beat` row that proves it. With no
+  such row, say what the pages show, rival by rival, instead.
+- A beat the review found wrong, and that could not be fixed, is named under `## Not sure yet`, and the bottom
+  line does not rest on it.
+- The persona ranks the modules. It never takes a row out of the sheet. A capability left out of the modules
+  because of the persona goes under `## Later and cut`, with that reason.
 
 ## Rules for the ranked list
 

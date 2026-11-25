@@ -11,28 +11,38 @@ question. Do not run `loop-state.mjs`. Do not change any file except `<run folde
 Read these real files, not anyone's summary:
 - The person's ask: `<run folder>/brief.md`
 - The product brief: `<out folder>/brief.md`
-- The sheet: `<out folder>/capability-sheet.csv`
-- The rival files: `<out folder>/rivals/*.md`
+- The sheet: `<out folder>/capability-sheet.csv` (and its Excel copy, `capability-sheet.xlsx`)
+- The rival files: `<out folder>/rivals/*.md`, and the beat proof: `<out folder>/beats/*.md`
 - The thinking: `<out folder>/thinking.md`
 
 The stop fact: <stop fact>.
 
 Do these checks, in order:
-1. Run `node "<loop folder>/scripts/check-research.mjs" all "<out folder>" --rivals <n>`. Copy its last line.
+1. Run `node "<loop folder>/scripts/check-research.mjs" all "<out folder>" --rivals <n> --kinds "<kinds>" --groups "<groups>"`.
+   Copy its last line.
 2. Pick 5 `yes` cells, each on a row that a top-3 ranked module cites, across different rivals. Take the cell's
    link from that rival's own file. Open it with WebFetch and say whether the page shows the capability as the
    sheet words it, for that rival. A page that only names the feature, when the sheet claims more, counts as
    wrong. A page that will not open, or shows no text, counts as "could not open", not as wrong; pick another.
-3. Read the brief as the buyer: <persona and buyer>. For each ranked module, does it answer a step of their
+3. Check the "nobody has it" claims yourself. Pick 4 `beat` rows: first the ones the top-3 modules cite, then the
+   ones the brief's `## Bottom line` leans on. For each, take the 2 rivals most likely to have it. For each
+   rival: open the page the row cites for it and read it for the capability, then run 2 searches of your own
+   on that rival's site (`site:<its site> <words>`), with words the beat proof file did not use, and open the
+   best hit. Say per rival: found (with the link and the words on the page), or not found (with what you
+   searched). Found means the beat is wrong.
+4. Read the brief as the buyer: <persona and buyer>. For each ranked module, does it answer a step of their
    job? Is anything they would need on day one missing from the top of the list?
-4. Does the brief answer the decision the person asked for: <decision>?
+5. Does the output answer what the person asked for: <decision>? When they asked for a capability matrix: is
+   the sheet the main output, does it use their group words and hold a row for each example they named, and
+   does every row say what it does?
 
 Write `<run folder>/review.md`:
 - Line 1: `PASS` or `FAIL`, then one line of reason.
 - Then one short section per check, with what you saw.
+- Under check 3, one line per wrong beat: `WRONG BEAT <row id> <rival>: <link> "<words on the page>"`.
 
 FAIL when: the check script prints any FAIL, 2 or more of the 5 opened pages clearly do not show the claimed
-capability, a ranked module answers no job step, or the brief does not answer the decision.
-Otherwise PASS. List smaller problems under PASS as "fix later".
+capability, any beat row is wrong, a ranked module answers no job step, or the output does not answer what the
+person asked for. Otherwise PASS. List smaller problems under PASS as "fix later".
 
 Reply with line 1 of `review.md`.

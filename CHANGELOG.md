@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.5
+
+- All loops: the first step always shows its brief and questions and waits for your reply, even when your first message says "build it". A new hook counts your replies, and the loop cannot start working until there is one. A default never goes against your own words: "exactly like X" means exact. A helper that comes back with no report is started again, never left waiting for you.
+- product-build-loop: it asks how deep to build each module (in full, or a page in the shell), and "exactly like X" lists everything that takes and builds it.
+- product-research-loop: a "no rival has this" row needs a search of every rival's own site first, and the review checks a sample of them. The matrix says what each row does, and every link names the rival it backs. You get the file kind you asked for (Excel or a Google Sheet), the source kinds you name are tried, and your own group words are used. It asks how bold to be, and the brief lists at least 3 ideas no rival has.
+- product-deck-loop: the first question is what the deck is for, with options written for your reader. The review reads as that reader and checks the goal first. Every review finding is fixed or listed for you. A new check fails a slide that is mostly empty, or a title number the slide does not show.
+
 ## 0.1.4
 
 - product-deck-loop: every line on a slide, and in the speaker notes, must cite the facts that say it, and a separate checker reads each line next to those facts before the review. A worded claim with no fact behind it ("nearly doubled", "still small") now fails early instead of at the review. Facts are merged from the research files, never retyped, and the newest figure is used for each measure. Every slide is looked at after it is drawn.

@@ -6,6 +6,7 @@ exactly these `##` sections, in this order. Keep each one short: a few lines or 
 ## Sections
 
 1. `## Persona`
+   - The persona from the brief. Do not add a name, a team size or counts that no source and no answer gives.
    - The person who uses it every day: their role, where they work, how big the place is.
    - What they use for this job today (paper, a spreadsheet, a rival). That sets the bar.
    - The words they use for things. Those become the product's labels.
@@ -41,8 +42,11 @@ exactly these `##` sections, in this order. Keep each one short: a few lines or 
    - Three short lists: **Keep** (first release), **Later** (with the reason, "for now"), **Cut** (with the
      reason). A field, screen or module stays only if it changes a decision the persona makes.
    - Depth before breadth: a few complete modules beat many thin ones.
+   - The cut is for modules, never for sheet rows. Every capability stays in the sheet.
 
-Add `## Ideas` at the end only for ideas no page proves yet. They never go in the ranked list.
+Add `## Ideas` at the end for ideas no rival has and no page proves yet: at least 3, as need 16 asks. Each names
+the persona pain or sheet row it comes from. The recommend node moves them into the brief's
+`## Ideas no rival has`, so the person sees them there, not only here.
 
 ## Rules
 

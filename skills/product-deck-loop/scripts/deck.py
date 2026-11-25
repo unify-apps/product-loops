@@ -9,7 +9,8 @@
   <py> deck.py merge-facts --dir <deck folder>           research/*.md fact lines -> facts.json (ids f1, f2, ...), then the facts check
   <py> deck.py facts --dir <deck folder>                 facts.json alone: every fact has a link, a 'how' or comes from the person
   <py> deck.py claims --dir <deck folder>                every piece of slide text next to the facts it cites -> claims.md, then the claims check
-  <py> deck.py check --dir <deck folder> [--only count,figures,claims,fit,open,looked]
+  <py> deck.py findings --dir <deck folder> --review <run folder>/review.md   every review finding is fixed or left
+  <py> deck.py check --dir <deck folder> [--only count,figures,claims,body,fit,open,looked]
                                                         the stop-fact checks -> check.md (or check-<keys>.md); exit 1 when one fails
 
 <py> is the "python" path that setup writes to tools.json. Works on Python 3.8 and later.
@@ -334,9 +335,10 @@ def text_op(x, y, w, h, paragraphs, font, pt_max, pt_min, color, bold=False, bul
         fits = lines == 1 and pt * 1.2 / 72.0 <= h + 0.01
     else:
         pt, lines, fits = fit_size(paragraphs, font, pt_max, pt_min, w, h, bold, bullet)
+    used = lines * pt * 1.2 / 72.0 + max(0, len(paragraphs) - 1) * pt * 0.6 / 72.0 if paragraphs else 0.0
     return {"op": "text", "x": x, "y": y, "w": w, "h": h, "paragraphs": paragraphs, "font": font, "pt": pt,
             "color": color, "bold": bold, "bullet": bullet, "align": align, "valign": valign, "role": role,
-            "lines": lines, "fits": fits, "one_line": one_line}
+            "lines": lines, "fits": fits, "one_line": one_line, "used": round(min(used, h) if fits else h, 3)}
 
 
 def rect_op(x, y, w, h, fill):
@@ -368,6 +370,10 @@ def lay_block(block, b, x, y, w, h, deck_dir):
             ops.append(rect_op(cx, y, cw, bh, b["accent_soft"]))
             ops.append(text_op(cx + 0.25, y + 0.3, cw - 0.5, 1.0, [item.get("value", "")], b["title_font"], 44, 24, b["accent"], bold=b.get("title_bold", True), role="figure", one_line=True))
             ops.append(text_op(cx + 0.25, y + 1.45, cw - 0.5, bh - 1.65, [item.get("label", "")], b["body_font"], 18, 11, b["text"]))
+        points = [item_text(p) for p in block.get("points", [])]
+        if points and h - bh > 0.8:
+            # what the numbers mean for the reader, under the boxes
+            ops.append(text_op(x, y + bh + 0.4, w, h - bh - 0.4, points, b["body_font"], 20, 12, b["text"], bullet=len(points) > 1))
     elif kind in ("columns", "steps"):
         items = block.get("columns" if kind == "columns" else "steps", [])[:5] or [{}]
         gap = 0.35
@@ -942,7 +948,7 @@ def cmd_claims(args):
         write_text(target, "\n".join(lines) + "\n")
     problems = claim_problems(rows, by_id, deck_dir, facts)
     # claims.md itself is fresh here, so only the rows' own problems decide this command's answer
-    own = [p for p in problems if "claims-verdict" not in p]
+    own = [p for p in problems if "claims-verdict" not in p] + figure_problems(rows, by_id)
     print("%s: %d rows in claims.md (%d need a fact)." % ("PASS" if not own else "FAIL", len(rows), sum(r["need"] for r in rows)))
     for problem in own:
         print("- " + problem)
@@ -999,6 +1005,27 @@ def cmd_merge_facts(args):
     return cmd_facts(args)
 
 
+def cmd_findings(args):
+    """Every finding R1, R2, ... in the review has a line in review-fixes.md that says fixed or left."""
+    deck_dir, review = args["--dir"], args.get("--review", "")
+    if not os.path.exists(review):
+        raise SystemExit("deck.py findings: give --review <run folder>/review.md")
+    found = list(dict.fromkeys(re.findall(r"\bR(\d+)\b", open(review, encoding="utf-8").read())))
+    fixes_file = os.path.join(deck_dir, "review-fixes.md")
+    fixes = open(fixes_file, encoding="utf-8").read() if os.path.exists(fixes_file) else ""
+    answered = {m.group(1): m.group(2).lower() for m in re.finditer(r"\bR(\d+)\s*:\s*(fixed|left)\b", fixes, re.I)}
+    missing = ["R" + n for n in found if n not in answered]
+    left = ["R" + n for n in found if answered.get(n) == "left"]
+    lines = ["# Review findings", "", "%s: %d findings, %d fixed, %d left%s." % (
+        "PASS" if not missing else "FAIL", len(found), len(found) - len(missing) - len(left), len(left),
+        "" if not missing else "; no fixed or left line for " + ", ".join(missing))]
+    if left:
+        lines.append("Left, to list in the hand-over: " + ", ".join(left))
+    write_text(os.path.join(deck_dir, "check-findings.md"), "\n".join(lines) + "\n")
+    print("\n".join(lines))
+    return 1 if missing else 0
+
+
 def cmd_facts(args):
     """The research check: facts.json alone, before any deck exists."""
     deck_dir = args["--dir"]
@@ -1038,6 +1065,26 @@ def cmd_check(args):
     if not only or "claims" in only:
         claims = claim_problems(rows, by_id, deck_dir, facts)
         add("claims", "every line cites facts that say it", not claims, "; ".join(claims[:12]) or "%d rows, each cites a fact, claim checker PASS" % len(rows))
+
+    body = []
+    planned_by_number = {item["slide"]: item for item in planned}
+    layout_path = os.path.join(deck_dir, "out", "layout.json")
+    for item in (read_json(layout_path)["slides"] if os.path.exists(layout_path) else []):
+        source = planned_by_number.get(item["slide"], {}).get("source", {})
+        if item["layout"] in ("keep", "title", "section") or source.get("auto") == "sources" or fmt == "web":
+            continue
+        H = size[1]
+        bottom = max([op["y"] + (op.get("used", op["h"]) if op["op"] == "text" and op.get("valign") != "middle" else op["h"])
+                      for op in item["ops"] if op.get("role") != "title"] or [0])
+        # More than a third of the slide empty under the content reads as a half-finished slide.
+        if bottom < 0.65 * H:
+            body.append("slide %d is %d%% empty below its content" % (item["slide"], round(100 * (H - bottom) / H)))
+        rest = dict(source, title="", subtitle="", notes="")
+        shown = set(m.group(0).rstrip(".,").replace(",", "") for m in NUMBER.finditer(FACT_ID.sub(" ", visible_text(rest))))
+        for figure in dict.fromkeys(figures_in(str(source.get("title", "")))):
+            if figure not in shown:
+                body.append("slide %d title says %s, which its body does not show" % (item["slide"], figure))
+    add("body", "every slide's body fills it and shows its title's numbers", not body, "; ".join(body[:12]) or "no slide half empty; every title number is in its body")
 
     layout_file = os.path.join(deck_dir, "out", "layout.json")
     fit = []
@@ -1173,7 +1220,7 @@ def main():
         return 0
     command, args = sys.argv[1], parse(sys.argv[2:])
     commands = {"setup": cmd_setup, "read-start": cmd_read_start, "make": cmd_make, "render": cmd_render, "check": cmd_check,
-                "facts": cmd_facts, "merge-facts": cmd_merge_facts, "claims": cmd_claims, "sheet": cmd_sheet}
+                "facts": cmd_facts, "merge-facts": cmd_merge_facts, "claims": cmd_claims, "findings": cmd_findings, "sheet": cmd_sheet}
     if command not in commands:
         print("deck.py: unknown command %s" % command)
         return 2

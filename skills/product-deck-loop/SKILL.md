@@ -15,19 +15,23 @@ In this file:
 - `DECK` means: `"<the python path in OUT/tools.json>" "${CLAUDE_SKILL_DIR}/scripts/deck.py"`. Before node 1's
   setup has run, use `python3` in its place. Run `DECK help` once to see every command.
 
-Stop fact: every output asked for is in `OUT/out/` and opens; every slide was drawn and looked at after the last
-change; every line on a slide cites facts that say it, each with a source link, an estimate note or the person's
-word; and the main slide count is in the asked range.
+Stop fact: the deck does what the brief's goal says, for its reader and the person they must convince next; every
+output asked for is in `OUT/out/` and opens; every slide was drawn and looked at after the last change, and none
+is half empty; every line on a slide cites facts that say it, each with a source link, an estimate note or the
+person's word; the main slide count is in the asked range; and every review finding is fixed or left for the
+person with why.
 
 ## Nodes
 
-1. `intake`: reads what is given, sets up the tools, collects every need, writes the brief, waits for "go".
+1. `intake`: reads what is given, sets up the tools, asks what the deck is for first, collects every need,
+   writes the brief, waits for "go".
 2. `research`: helpers find facts on the company, its industry and the people, each with a source link.
-3. `story`: one idea per slide in a clear order, written as `OUT/deck.json`.
+3. `story`: one idea per slide, in an order that builds to the goal, written as `OUT/deck.json`.
 4. `build`: makes the deck files, draws every slide, looks at each one and fixes the layout.
 5. `facts-and-words`: plain words, and a fresh claim checker finds no line its facts do not say.
 6. `outputs`: makes the final files, draws and looks again, runs the full check.
-7. `review`: a fresh agent reads the deck as the named reader and checks the stop fact.
+7. `review`: a fresh agent reads the deck as its real audience, checks the goal and the stop fact; every finding
+   is fixed or left for the person.
 8. `handover`: writes handover.md and finishes the run.
 
 ## Step skills and preferences
@@ -70,9 +74,12 @@ where to look before asking.
    - Web search: say whether the WebSearch and WebFetch tools are in this session. Without them, research uses
      only the given files.
 3. Fill every need you can from the files. Ask the rest in one message, each with its default, as the intake
-   rules say. Ask about the company only when the ask does not name it.
-4. On "go": write `RUN/brief.md` with every need and its value, the stop fact with the real numbers (for example
-   "8 to 12 main slides"), and the reader. Then `STATE close-intake`.
+   rules say. Unless the ask states what the deck is for, question 1 is the goal (G1 in `needs.md`), with 3 to 5
+   options written for this company and reader; the angle (G2) and who the reader must convince next (G3) come
+   right after. Ask about the company only when the ask does not name it.
+4. On "go": write `RUN/brief.md`. It starts with the goal, the angle and the real audience, then every other
+   need and its value, the stop fact with the real numbers (for example "8 to 12 main slides"), and the reader.
+   Then `STATE close-intake`.
 
 ## Node 2: research
 
@@ -87,7 +94,7 @@ where to look before asking.
 
 ## Node 3: story
 
-1. `STATE start story`. Follow `references/story.md` for the order that fits the meeting.
+1. `STATE start story`. Follow `references/story.md`: the order comes from the brief's goal, then the meeting.
 2. Write `OUT/story.md`: one line per slide (its title as a claim, then the one idea), main slides first, then
    the appendix. Then write `OUT/deck.json` (format in `references/build.md`) with the text of every slide, the
    facts each line cites, `slide_count` from the brief, the outputs, the format and the brand.
@@ -102,18 +109,20 @@ where to look before asking.
    the Read tool, one by one, then the sheets `render` made, to compare slides side by side. Fix what is wrong in
    `deck.json`, then make and render again.
 4. Write `OUT/looked.md` after the last render: one line per slide, `slide N: <what you saw>`.
-5. Check: `DECK check --dir OUT --only fit,looked` prints PASS.
-6. `STATE done build --check "every slide drawn, looked at, text fits" --proof OUT/check-fit-looked.md`
+5. Check: `DECK check --dir OUT --only fit,body,looked` prints PASS. A `body` failure is fixed now, with
+   substance (what the numbers mean, a reason, an example, each with its facts) or by merging thin slides.
+6. `STATE done build --check "every slide drawn, looked at, filled, text fits" --proof OUT/check-fit-body-looked.md`
 
 ## Node 5: facts-and-words
 
 1. `STATE start facts-and-words`. Run the `write-factual-content` skill on every slide's text when it is
    installed; else follow `references/writing.md`.
-2. Change only words in `deck.json`, never the facts. A claim with no fact behind it is cut, narrowed, or turned
-   into a question for the meeting. Write each change in `OUT/words.md` (slide, before, after, why).
+2. `DECK claims --dir OUT`, then read `OUT/claims.md` yourself, row by row, against the checker's list in
+   `references/writing.md`. Change only words in `deck.json`, never the facts. A claim with no fact behind it is
+   cut, narrowed, or turned into a question for the meeting. Write each change in `OUT/words.md`.
 3. The claim checker, as `references/writing.md` says: `DECK claims --dir OUT`, then one fresh text-only helper
-   reads `OUT/claims.md` and writes `OUT/claims-verdict.md`. On FAIL, fix the rows it names, `STATE retry`, and
-   run `DECK claims` and a new helper.
+   reads `OUT/claims.md` and writes `OUT/claims-verdict.md`. On FAIL, use its new text for each named row (or cut
+   the row), run `DECK claims` and a new helper. Up to 5 rounds are the node's own work, not retries.
 4. Check: `DECK check --dir OUT --only figures,claims` prints PASS, and `words.md` exists. Node 6 draws again.
 5. `STATE done facts-and-words --check "every line cites facts that say it" --proof OUT/check-figures-claims.md`
 
@@ -121,22 +130,26 @@ where to look before asking.
 
 1. `STATE start outputs`. Follow `references/outputs.md`.
 2. `DECK make --dir OUT`, `DECK render --dir OUT`, look at every slide again, and write `OUT/looked.md` anew. A word changed here needs `DECK claims` and a new claim checker.
-3. `DECK check --dir OUT` must print PASS on all 6 checks. Fix and repeat, as the retry rule says.
+3. `DECK check --dir OUT` must print PASS on all 7 checks. Fix and repeat, as the retry rule says.
 4. An Artifact only when node 1's answer asked for one, and only when the Artifact tool is in this session.
    Otherwise write why in `OUT/outputs.md`. Never publish or send anything else anywhere.
-5. `STATE done outputs --check "deck check PASS on all 6" --proof OUT/check.md`
+5. `STATE done outputs --check "deck check PASS on all 7" --proof OUT/check.md`
 
 ## Node 7: review
 
 1. `STATE start review`
 2. Start one helper agent with the Agent tool, not in the background, with the brief in `references/review.md`.
-   It writes `RUN/review.md`.
-3. If it says FAIL, fix in `deck.json`, `DECK claims` and a new claim checker, make, render, look, check,
-   `STATE retry review --why "..."`, and run a new helper. After 3 retries, `STATE left review --why "..."`.
-4. `STATE done review --check "fresh agent says PASS as the reader" --proof RUN/review.md`
+   It reads the deck as the real audience in the brief and checks the goal first. It writes `RUN/review.md`.
+3. Answer every finding in `OUT/review-fixes.md`, fixed or left, as `references/review.md` says. Never drop one.
+   After fixes: `DECK claims` and a new claim checker, make, render, look, check.
+4. If it said FAIL, or a fix added, cut or reordered slides: `STATE retry review --why "..."` and run a new helper.
+   After 3 retries, `STATE left review --why "..."`.
+5. Check: `DECK findings --dir OUT --review RUN/review.md` prints PASS, and the last helper said PASS.
+6. `STATE done review --check "fresh agent says PASS as the real audience; every finding fixed or left" --proof RUN/review.md`
 
 ## Node 8: handover
 
 Follow the hand-over rules in loop-rules.md. In `handover.md` also give: the full path of each file in `OUT/out/`
-(the person opens these), the slide count, how many facts are public, estimates or the person's own, the
-estimates the person should check before the meeting, and the review's top 3 points.
+(the person opens these), the goal and how the deck meets it, the slide count, how many facts are public,
+estimates or the person's own, the estimates the person should check before the meeting, and the review's
+findings. Every finding marked left in `OUT/review-fixes.md` goes under "Left for you", with why and the one step.

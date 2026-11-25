@@ -32,11 +32,16 @@ All of them live in the run folder that `STATE init` makes: `loop-runs/<loop>-<d
    default you picked. End with: `Reply with your answers, or just "go" to use the defaults.`
    If the AskUserQuestion tool is there, you may use it once for this round. If it is not there (a headless
    session), write the numbered list and end your turn.
-   If the first message already says "go" and nothing is missing, skip the questions and go to step 7.
-7. When the person answers: put their answers in the brief. If they said "go" (or clearly said to start),
+   Always end this turn after the questions, even when nothing seems missing or the message says "build it" or
+   "go". The person has not seen your brief or your defaults yet, so their first message is never the go.
+   close-intake refuses until they have replied once.
+7. When the person answers: put their answers in the brief. If they said "go" (or clearly said to start, in this reply),
    write `brief.md`, then run `STATE close-intake`. If they did not say go, ask once more, then wait.
 8. After close-intake, tell the person in one line: "The run has started. You can leave. Everything is in
    <run folder>." Then go straight on to node 2 in the same turn. Do not wait for a reply.
+
+A default never goes against the person's own words. When they say "exactly like X", the default is exact, not
+"flow only". When they ask for a shell or one page, the default builds that, not every page in full.
 
 ## After the intake: never ask the person anything
 
@@ -65,6 +70,12 @@ Start the helpers a node needs in one message, and wait for all of them before t
 start them in the background and then end your turn: the run would stop until something wakes it. When a
 shell command must wait for a file a helper writes, wait in the foreground with one loop that ends when the
 file exists, and run it again if the shell moves it to the background.
+
+A helper can come back with no report: "interrupted", an API error, or a stall. Nobody interrupted it, and
+nobody is there to say "carry on". Run `STATE retry <node> --why "<which helper, and how it failed>"`, then
+start the same helper again with the same brief, in the same turn. Check what it already wrote first, and tell
+the new helper to go on from there. When retry refuses (3 used), run `STATE left` with what failed and go on.
+Never end a turn to wait for the person.
 
 ## The review node (the node before handover)
 

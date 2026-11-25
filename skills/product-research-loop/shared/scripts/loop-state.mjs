@@ -11,7 +11,7 @@ import { POINTER_FILE, STATE_FILE, STATE_VERSION, findRun, isEnded, isStale, nex
 const HELP = `loop-state.mjs: the state of one loop run.
 
   init --loop <name> --nodes <intake,...,review,handover> [--run <folder>] [--work <folder>] [--replace]
-  close-intake                      after the person says "go"; needs brief.md in the run folder
+  close-intake                      after the person replies "go"; needs brief.md and at least one reply
   start <node>
   done <node> --check "<what proved it>" --proof <file>
   retry <node> --why "<what failed>"      at most 3 times per node
@@ -118,7 +118,7 @@ function init(options) {
     version: STATE_VERSION, loop, workDir, runDir, script: scriptPath, createdAt: at, changedAt: at,
     intake: "open", finished: null, stopped: null,
     nodes: names.map((name, i) => ({ name, status: i === 0 ? "running" : "pending", startedAt: i === 0 ? at : null, endedAt: null, check: null, proof: null, retries: [], leftWhy: null })),
-    held: [], decisions: 0,
+    held: [], decisions: 0, replies: 0,
   };
   writeState(runDir, state);
   fs.writeFileSync(path.join(workDir, POINTER_FILE), `${runDir}\n`);
@@ -131,8 +131,11 @@ function closeIntake(run) {
   if (state.intake === "closed") refuse("The intake is already closed.");
   const brief = path.join(run.runDir, "brief.md");
   if (!fs.existsSync(brief) || !fs.readFileSync(brief, "utf8").trim()) refuse(`Write the brief first: ${brief} is missing or empty.`);
+  // The first message is never the go: the person has not seen the brief or the defaults yet.
+  // count-person-replies.mjs (a hook) adds 1 to `replies` for each message or AskUserQuestion answer after init.
+  if (!(state.replies >= 1)) refuse("The person has not replied since the run started. Show the brief and the questions, end your turn, and wait for their answer. Their first message is never the go, even when it says to build. If this keeps happening after they replied, the count-person-replies hook is not installed.");
   const intake = state.nodes[0];
-  Object.assign(intake, { status: "done", endedAt: now(), check: 'the person said "go"', proof: path.relative(state.workDir, brief) });
+  Object.assign(intake, { status: "done", endedAt: now(), check: `the person said "go" (${state.replies} replies)`, proof: path.relative(state.workDir, brief) });
   state.intake = "closed";
   writeState(run.runDir, state);
   return { state, line: `ok close-intake: the intake is closed. From now on never ask the person anything. Next node: ${nextNode(state)?.name}` };
@@ -247,13 +250,13 @@ export function summary(run) {
     loop: state.loop, runDir: run.runDir, workDir: state.workDir, intake: state.intake,
     finished: state.finished, stopped: state.stopped, stale: isStale(state), next: next?.name ?? null,
     nodes: state.nodes.map((n) => ({ name: n.name, status: n.status, retries: n.retries.length, proof: n.proof, leftWhy: n.leftWhy })),
-    held: state.held, decisions: state.decisions,
+    held: state.held, decisions: state.decisions, replies: state.replies ?? 0,
   };
 }
 
 function statusText(run) {
   const s = summary(run);
-  const lines = [`ok status ${s.loop}: intake ${s.intake}${s.finished ? ", finished" : ""}${s.stopped ? ", stopped" : ""}${s.stale ? ", stale (no change for 24 hours)" : ""}`, `run folder: ${s.runDir}`];
+  const lines = [`ok status ${s.loop}: intake ${s.intake}${s.intake === "open" ? ` (${s.replies} replies)` : ""}${s.finished ? ", finished" : ""}${s.stopped ? ", stopped" : ""}${s.stale ? ", stale (no change for 24 hours)" : ""}`, `run folder: ${s.runDir}`];
   for (const n of s.nodes) lines.push(`  ${n.status.padEnd(7)} ${n.name}${n.retries ? ` (${n.retries} retries)` : ""}${n.leftWhy ? `: ${n.leftWhy}` : ""}`);
   lines.push(s.next ? `next node: ${s.next}` : "next node: none, run finish");
   if (s.held.length) lines.push(`held steps: ${s.held.map((h) => `${h.step} (${h.kind})`).join("; ")}`);
