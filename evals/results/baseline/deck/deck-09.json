@@ -1,0 +1,123 @@
+{
+  "arm": "baseline",
+  "loop": "deck",
+  "case": "deck-09",
+  "ask": "outside-in point of view on Ørsted's offshore wind operations for their VP Operations. She'll share it with her CEO. About 10 slides.",
+  "expected_track": "full",
+  "notes": "Goal (outside-in), reader, real audience and count are given. What we offer is open and matters (does the deck pitch at all?).",
+  "must_cover": [
+    "goal|outside-in",
+    "real audience|ceo",
+    "slide count|10",
+    "what we offer|claims|our product",
+    "output|powerpoint|pdf"
+  ],
+  "findable": [
+    "goal|what the deck is for|what should the reader",
+    "real audience|convince next|ceo",
+    "slide count|how many slides",
+    "company|which company",
+    "reader|who is in the meeting"
+  ],
+  "fixtures": [],
+  "message": "## Product deck loop: intake\n\nI read your ask. The working folder is empty: no start deck, no `CLAUDE.md`, no notes about Ørsted or the meeting.\n\n**Start check**\n- Deck tools (python-pptx, PDF reader): set up and working. Chrome and Quick Look found. The editable PowerPoint, the HTML deck and the PDF can all be made.\n- Web search: WebSearch and WebFetch are available in this session, so research can use public sources, each fact with a source link.\n- Start deck: none. I build new, in a plain look.\n\n**My brief so far**\n- Company: Ørsted, offshore wind operations.\n- Reader: their VP Operations. She will share it with her CEO.\n- Format: about 10 slides, 16:9, extras go to an appendix.\n- Files: HTML deck and editable PowerPoint, written to `decks/orsted-20261126/out/`.\n- What we offer or may claim: nothing. This is an outside-in view, so the deck makes no product claims.\n- Every figure is marked public (with link) or as an estimate.\n\n**Questions** (reply with your answers, or \"go\" to take every default)\n\n1. **What should the deck make her believe or do?** Your words say \"outside-in point of view\". These are the options for her:\n   - a) An outside-in view: what is changing in offshore wind operations, what it means for Ørsted, where the openings are. *Default, because you named it and a VP Operations needs a view she can defend.*\n   - b) A plan for her: what operations should do next, ranked by cost saved or output gained.\n   - c) A vision she can retell to her CEO: why now, what good looks like, the first steps.\n   - d) A pitch: Ørsted's operating problem, how we solve it, proof, a next step.\n   - e) A technical walk-through of their fleet and systems and a pilot plan.\n2. **What is the one idea it argues, and in what order?** Default: the usual order for an outside-in view (what is changing, what it means for Ørsted operations, where the openings are, what to look at first), with a single claim as the title of each slide. Tell me if you have a thesis in mind, for example \"operating cost per MWh decides who wins the next round of projects\".\n3. **What does her CEO care about?** Default: money and risk first (cost per MWh, availability, project delivery), then speed. Tell me if it is something else.\n4. **Who is the VP Operations?** Name and a public profile link if you have them. Default: I do not research her. I write for a senior operations reader and use no personal details.\n5. **Who are we, and what may the deck say about us?** Default: nothing. The deck does not mention your company or any product, customer or number of ours. Tell me if the last slide should name a next step or an offer.\n6. **Is this presented or sent to read?** Default: first meeting, presented by you or her. It can then be made as a sent-to-read deck, with a PDF added, if she mostly forwards it.\n7. **Output files.** Default: HTML deck and editable PowerPoint, no PDF, no claude.ai Artifact. Say if you want the PDF or an Artifact too.\n8. **Slide count.** Default: 10 main slides (inside 8 to 12), plus an appendix that ends with a Sources slide.\n9. **Look.** Default: plain: Arial, dark text on white, one dark blue accent. Send a brand if you want one.\n10. **Anything to lead with or leave out?** For example a topic (US projects, divestments, cost overruns) or a competitor not to name. Default: none. I will include the public setbacks if they matter to operations, with a link.\n11. **Anything you know that is not public?** Their systems, the deal so far, what they have said they need. Default: none, public sources only.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 11,
+      "evidence": "1. What should the deck make her believe or do? Your words say \"outside-i | 2. What is the one idea it argues, and in what order? Default: the usual  | 3. What does her CEO care about? Default: money and risk first (cost per  | 4. Who is the VP Operations? Name and a public profile link if you have t | 5. Who are we, and what may the deck say about us? Default: nothing. The  | 6. Is this presented or sent to read? Default: first meeting, presented b | 7. Output files. Default: HTML deck and editable PowerPoint, no PDF, no c | 8. Slide count. Default: 10 main slides (inside 8 to 12), plus an appendi | 9. Look. Default: plain: Arial, dark text on white, one dark blue accent. | 10. Anything to lead with or leave out? For example a topic (US projects,  | 11. Anything you know that is not public? Their systems, the deal so far, "
+    },
+    "asked_le_7": {
+      "pass": false,
+      "value": 11,
+      "evidence": "11 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "11 of 11 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 11"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "13 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: real audience (\"ceo\"), slide count (\"slide count\"), company (\"company\"), reader (\"reader\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 649,
+      "evidence": "649 words, 165 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 649,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 5,
+      "defaults_quality": 9,
+      "clarity": 4,
+      "respects_words": 8,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles goal (outside-in), CEO reader, slide count, \"What we offer or may claim: nothing\", and output files (HTML + PowerPoint, PDF on request).",
+      "no_redundancy": "Re-asks given facts as questions: Q1 \"What should the deck make her believe or do?\" despite \"outside-in\", and Q8 \"Slide count\" despite \"About 10 slides\".",
+      "defaults_quality": "Every question has a concrete default fitting the ask, e.g. \"money and risk first (cost per MWh, availability, project delivery)\" and \"public sources only\".",
+      "clarity": "Eleven questions, Q1 with five lettered options, plus a start check and brief; too long for a two-minute reply.",
+      "respects_words": "Defaults keep outside-in, CEO sharing and 10 slides, though Q1 offers pitch/plan options that drift from the stated outside-in goal.",
+      "overall": "Solid brief and sensible defaults so \"go\" works, but redundant questions and a long list weaken it as a one-round intake."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.862Z"
+}

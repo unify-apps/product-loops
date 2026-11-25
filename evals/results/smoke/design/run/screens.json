@@ -1,0 +1,29 @@
+{
+  "screens": [
+    {
+      "name": "today",
+      "url": "http://localhost:4100/#/today",
+      "open": null
+    },
+    {
+      "name": "customers",
+      "url": "http://localhost:4100/#/clients",
+      "open": null
+    },
+    {
+      "name": "customers-search-empty",
+      "url": "http://localhost:4100/#/clients",
+      "open": "(() => { const i = document.getElementById('client-search'); i.value = 'zzz'; i.dispatchEvent(new Event('input')); })()"
+    },
+    {
+      "name": "invoices",
+      "url": "http://localhost:4100/#/invoices",
+      "open": null
+    },
+    {
+      "name": "settings",
+      "url": "http://localhost:4100/#/settings",
+      "open": null
+    }
+  ]
+}

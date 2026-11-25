@@ -1,0 +1,126 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-07",
+  "ask": "build the thing in spec.md end to end",
+  "expected_track": "full",
+  "notes": "The spec answers nearly every need: persona, modules in order with must-haves, depth, look, name, out of scope. A good intake shows the brief and asks very little (0 to 2 questions, for example where it lives). Asking persona or modules here is a fault.",
+  "must_cover": [
+    "persona|flatmates",
+    "module",
+    "how deep|in full",
+    "look|font|colour|color",
+    "settle"
+  ],
+  "findable": [
+    "persona|who uses|who is it for",
+    "module|modules|must-have|must have",
+    "font|typeface",
+    "colour|color|palette",
+    "name|naming|brand name",
+    "how deep|in full|shell|depth"
+  ],
+  "fixtures": [
+    "spec.md"
+  ],
+  "message": "**Goal:** build a clickable prototype of Tally, shared expenses for UK flatmates, in four modules.\n\n**Found:**\n- Who and job: flatmates aged 20 to 35 in a rented UK flat; see who owes whom, settle up without an awkward chat (from spec.md).\n- Modules, all in full: Home, Add expense, Bills, Settle up, with empty states for a new flat (from spec.md).\n- Look: Nunito, primary #22A06B, ink #1B1F24, background #F7F8F6, rounded; word mark in Nunito 800 (from spec.md).\n- Name: Tally, final, so there are no name options to choose from (from spec.md).\n- Left out: real payments, bank links, sign-up (from spec.md).\n- Lands in `tally/` in this folder, for Rina's prototype review. It stays on this laptop. The full plan is in `loop-runs/product-build-loop-20261126-035047/brief.md`.\n\n**Track:** full, because there are four modules, each built in full, and empty states for every list.\n\nStill open after reading your files: the sample flat's people and amounts, and what happens when shares do not add up.\n\n**Done means:**\n- Home, Add expense, Bills and Settle up are all built in full.\n- Every module passes review with no blocking problems left.\n- Every link opens with no dead click, placeholder text or page error.\n- Empty states show for a new flat with no expenses.\n- Settle up suggests the fewest transfers that clear every debt.\n\nLinks are checked in a real headless Chrome browser.\n\nAbout 25 minutes and 11 helper agents, within a budget of 120 minutes.\n\n1. Who are the sample flatmates, and what do the sample expenses look like?\n   Recommended: four flatmates (Ama, Ben, Chloe, Dev) with about 10 expenses in pounds, so the balances need a three-transfer settle up.\n   Why it matters: Home and Settle up only show something real if the sample numbers agree.\n\n2. When \"split by shares\" does not add up (zero total, or a negative amount), what does the form do?\n   Recommended: Save stays off and a short line under the field says what to fix.\n   Why it matters: this decides how Add expense handles bad input.\n\n3. Should what you do (a new expense, a bill marked paid, a payment marked paid) stay when you move between pages?\n   Recommended: yes, within one visit; a page reload goes back to the sample flat.\n   Why it matters: Settle up and Home must agree after you add or settle something.\n\n4. Do you want the full track, with a link for every list, a detail, each create flow and each empty state, or the quick track, with one list page per module?\n   Recommended: full.\n   Why it matters: quick leaves out the detail pages, create flows and empty states the spec asks for.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Who are the sample flatmates, and what do the sample expenses look lik | 2. When \"split by shares\" does not add up (zero total, or a negative amou | 3. Should what you do (a new expense, a bill marked paid, a payment marke | 4. Do you want the full track, with a link for every list, a detail, each"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: module (\"module\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 25 minutes and 11 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: the sample flat's people and amounts, and what happens when shares do not add up."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 457,
+      "evidence": "457 words, 246 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because there are four modules, each built in full, and empty states for every list."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 457,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 6,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 8,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Brief settles persona, all four modules 'all in full', look (Nunito, #22A06B...) and settle ('fewest transfers that clear every debt'); sample data and bad-share input added as questions.",
+      "no_redundancy": "Q4 asks 'full track ... or the quick track' though spec.md says 'Every module built in full' and the brief already states 'Track: full'; other found facts are stated, not asked.",
+      "defaults_quality": "Each question has a concrete default, e.g. 'four flatmates (Ama, Ben, Chloe, Dev) with about 10 expenses in pounds' and 'Save stays off and a short line under the field'.",
+      "clarity": "Four numbered questions with defaults and reasons, plain words, but a long preamble and a redundant Q4 add reading time.",
+      "respects_words": "Keeps name final, scope exclusions and in-full depth, but Q4 offers a quick track that would drop what the spec requires, and 'no ... placeholder text' sits oddly with 'photo of the receipt (placeholder ok)'.",
+      "overall": "Solid intake that a 'go' would run well; docked for re-asking depth already decided by the spec and some length."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.111Z"
+}

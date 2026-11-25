@@ -50,7 +50,9 @@ its facts' own words; keep notes to what the slide's facts say.
    `claims.md`: no pictures, no web. It did not write the slides, so it reads them as the reviewer will.
 3. Its answer is `OUT/claims-verdict.md`. On FAIL, change each named row in `deck.json`: use its new text exactly
    as given (it comes from the facts), or cut the row, or make it a question. Write no new wording of your own for
-   a named row: new wording is what the next checker finds. A kept-slide row (`s5.k2`) changes through a
+   a named row: new wording is what the next checker finds. A new text the checker gives must pass that row's own
+   test; when it would not (a notes row with no cited fact can state nothing), cut the row instead of taking the
+   text, and say so in the round's report. A kept-slide row (`s5.k2`) changes through a
    `replace` swap on that `keep` slide; write it down with `STATE decide`, as the person asked to keep the
    slide. Add each change to `words.md`, run `DECK claims` again, and start a new helper.
 4. Up to 5 checker rounds are this node's own work, not retries. The node's check runs after the last round.

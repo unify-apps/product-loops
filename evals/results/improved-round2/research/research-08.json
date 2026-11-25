@@ -1,0 +1,125 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-08",
+  "ask": "redo the onboarding research from last month, but add Rippling and Deel this time",
+  "expected_track": "full",
+  "notes": "An earlier run left its brief: persona, market, sources and how bold are known. A good intake reuses them, adds the two rivals, and puts the new out folder under a dated name. Asking the persona again is redundant.",
+  "must_cover": [
+    "rivals|rippling|deel",
+    "out folder|folder|date",
+    "persona|hr",
+    "market|uk",
+    "how bold|bold"
+  ],
+  "findable": [
+    "persona|who uses|who is it for",
+    "market|country|region",
+    "how bold|bold|catch up",
+    "sources|source kinds|which pages"
+  ],
+  "fixtures": [
+    "loop-runs/product-research-loop-20261021-1012/brief.md",
+    "research/onboarding/brief.md"
+  ],
+  "message": "**Goal:** redo last month's onboarding research (first modules of an onboarding product for HR teams), now with 5 rivals: BambooHR, HiBob, Personio, Rippling and Deel.\n\n**Found:**\n- Decision, persona, buyer, market, sources and \"how bold\" are all taken from last month's run (`loop-runs/product-research-loop-20261021-1012/brief.md`): first modules; HR operations manager (10 to 40 starters a month), paid for by the Head of People; UK and Ireland; product pages, help centre, release notes, pricing and public reviews; bold = both.\n- Rivals: the 3 from last month, plus Rippling and Deel from your message (5 in all, the most a run takes).\n- Out folder: `research/onboarding/` already holds last month's brief, so the new files go to `research/onboarding-20261126/` and the old ones stay untouched.\n- Start check passed: web search works, and Rippling's home page opened (HR, payroll, IT and finance on one platform). Search results list Deel as strongest for international onboarding.\n- Last month's ranked modules (pre-boarding checklist, equipment and access requests, first-week plan) will be compared against the new result.\n\n**Track:** full, because you named 5 rivals (quick covers 3 rivals and 2 source kinds).\n\n**Coverage:** 7 clear · partial: Edge cases, Words with no number\n\n**Done means:**\n- Capability sheet (Excel and CSV) covers all 5 rivals, 5+ rows each.\n- Every yes or partial cell links to that rival's own pages.\n- Every \"no rival has it\" claim has a search of each rival's site.\n- Brief ends in a ranked module list citing sheet rows.\n\nEverything else (needs, coverage table, lessons) is in the run's `brief.md`.\n\nAbout 40 minutes and 12 helper agents, within a budget of 90 minutes.\n\n1. Should the 3 rivals from last month be read again from scratch?\n   Recommended: yes, read all 5 fresh, so every row is dated the same and changes since October show.\n   Why it matters: reusing old rows is faster but mixes October and November facts in one sheet.\n\n2. Rippling and Deel sell mostly in the US and worldwide. Should their rows count only for UK and Ireland, or for everything they offer?\n   Recommended: everything they offer, with a note on rows that do not apply in the UK or Ireland.\n   Why it matters: it decides whether payroll and international-hire rows are in the sheet or cut.\n\n3. Which track: quick or full?\n   Recommended: full (all 5 rivals, 5 source kinds each).\n   Why it matters: quick covers only 3 rivals and 2 source kinds, so Rippling or Deel could be left out.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. Should the 3 rivals from last month be read again from scratch? | 2. Rippling and Deel sell mostly in the US and worldwide. Should their ro | 3. Which track: quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 3, Why it matters: on 3, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "16 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: sources (\"source kinds\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 12 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 7 clear · partial: Edge cases, Words with no number"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 425,
+      "evidence": "425 words, 272 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you named 5 rivals (quick covers 3 rivals and 2 source kinds)."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 425,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 6,
+      "defaults_quality": 8,
+      "clarity": 6,
+      "respects_words": 8,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles all five: 5 rivals incl. 'Rippling and Deel', persona 'HR operations manager', 'UK and Ireland', 'bold = both', and out folder 'research/onboarding-20261126/'.",
+      "no_redundancy": "Persona, market, bold and sources are stated as found, but Q3 'Which track: quick or full?' re-asks what the brief already settled ('Track: full, because you named 5 rivals'), and Q2 partly reopens the found UK and Ireland market.",
+      "defaults_quality": "Every question has a concrete default ('read all 5 fresh', 'everything they offer, with a note on rows that do not apply in the UK or Ireland', 'full'), and all fit a redo with added rivals.",
+      "clarity": "Only 3 questions with plain answers, but the brief before them is long and has jargon like 'Coverage: 7 clear · partial: Edge cases, Words with no number', and Q3 repeats the brief.",
+      "respects_words": "Keeps 'redo' and adds 'Rippling and Deel' as asked; the Q2 default 'everything they offer' stretches past last month's UK and Ireland market, though it does flag rows that do not apply.",
+      "overall": "A solid, faithful brief with sensible defaults, so 'go' gives a good run; it loses points for the redundant track question and a dense brief."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.839Z"
+}

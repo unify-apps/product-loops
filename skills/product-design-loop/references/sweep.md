@@ -15,6 +15,10 @@ place in the code, not only where the person saw it.
    | No intro line under titles | `grep -n 'class="lede"' <files>` | the old intro texts in `after/*.txt` |
    | Times as "6:30 pm" | `grep -nE '\b[0-2][0-9]:[0-5][0-9]\b' <files>` (then read which are shown to people) | `grep -E '\b[0-2][0-9]:[0-5][0-9]\b' after/*.txt` |
    | A rename | `grep -n '<old name>' <files>` | `grep -l '<old name>' after/*.txt` |
+
+A rename changes shown text only: element text, placeholders, messages, titles, labels. Code names, ids, data
+fields and routes (`#/clients`, `client_id`) are skipped places: list them with that reason and leave them.
+Grep the shown text first (`after/*.txt`); grep the code only for the strings that text shows.
    | A spacing rule for a kind of row | the class or component of that kind of row | `CHECK eval` of the value on each screen that has one |
 
 3. Run the find. List every place in `sweep.md`: the file and line or the screen, and whether you changed it.

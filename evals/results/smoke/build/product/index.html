@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bloom &amp; Co · Orders</title>
+<style>
+  :root {
+    --brand: #7A3E65;
+    --brand-soft: #f4ecf1;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #e6e6e6;
+    --bg: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: Georgia, "Times New Roman", serif; font-size: 16px; }
+  .app { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
+  .side { border-right: 1px solid var(--line); padding: 24px 16px; }
+  .brand { display: flex; align-items: center; gap: 8px; font-size: 20px; color: var(--brand); margin: 0 0 24px; text-decoration: none; }
+  .brand-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--brand); }
+  .nav a { display: block; padding: 8px 12px; border-radius: 6px; color: var(--text); text-decoration: none; font-size: 16px; }
+  .nav a[aria-current="page"] { background: var(--brand-soft); color: var(--brand); }
+  main { padding: 32px 40px; max-width: 1040px; }
+  h1 { font-size: 28px; font-weight: normal; margin: 0 0 16px; }
+  .muted { color: var(--muted); }
+  /* ---- Orders module ---- */
+  .o-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0 0 8px; }
+  .o-head h1 { margin: 0; }
+  .o-sub { font-size: 14px; color: var(--muted); margin: 0 0 24px; }
+  .o-btn { font-family: inherit; font-size: 14px; border-radius: 6px; padding: 8px 16px; cursor: pointer; border: 1px solid var(--line); background: var(--bg); color: var(--text); transition: background 150ms ease, border-color 150ms ease; }
+  .o-btn:hover { border-color: var(--brand); color: var(--brand); }
+  .o-btn:focus-visible, .o-field input:focus-visible, .o-field textarea:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+  .o-btn-main { background: var(--brand); border-color: var(--brand); color: #fff; }
+  .o-btn-main:hover { background: #63314f; border-color: #63314f; color: #fff; }
+  .o-status { font-size: 14px; color: var(--brand); margin: 0 0 16px; }
+  .o-status:empty { margin: 0; }
+  .o-link { border: 0; background: none; padding: 0 0 0 4px; color: var(--brand); text-decoration: underline; font-size: 14px; }
+  .o-link:hover { color: #63314f; }
+  .o-form { border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin: 0 0 32px; animation: o-in 200ms ease; }
+  .o-form h2 { font-size: 20px; font-weight: normal; margin: 0 0 16px; }
+  .o-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .o-field { display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+  .o-field.o-wide { grid-column: 1 / -1; }
+  .o-field input, .o-field textarea { font-family: inherit; font-size: 16px; color: var(--text); padding: 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+  .o-field textarea { min-height: 64px; resize: vertical; }
+  .o-field .o-opt { color: var(--muted); }
+  .o-field.o-bad input, .o-field.o-bad textarea { border-color: #b3261e; }
+  .o-err { color: #b3261e; font-size: 13px; min-height: 0; }
+  .o-way { display: flex; gap: 16px; align-items: center; font-size: 14px; border: 0; padding: 0; margin: 0; }
+  .o-way legend { padding: 0; margin: 0 0 4px; }
+  .o-way label { display: inline-flex; gap: 4px; align-items: center; }
+  .o-way input[type=radio] { accent-color: var(--brand); }
+  .o-actions { display: flex; gap: 8px; margin-top: 20px; }
+  .o-group { margin: 0 0 32px; }
+  .o-group h2 { font-size: 16px; font-weight: normal; color: var(--muted); margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .o-list { list-style: none; margin: 0; padding: 0; }
+  .o-row { display: grid; grid-template-columns: 160px 1fr 88px 112px; gap: 16px; align-items: start; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .o-due { font-size: 14px; }
+  .o-due .o-day { color: var(--muted); display: block; }
+  .o-what { font-size: 16px; margin: 0 0 4px; }
+  .o-meta { font-size: 13px; color: var(--muted); margin: 0; }
+  .o-nw { white-space: nowrap; }
+  .o-note { font-size: 13px; color: var(--text); margin: 4px 0 0; font-style: italic; }
+  .o-price { font-size: 14px; text-align: right; }
+  .o-row .o-btn { justify-self: end; }
+  .o-done .o-row { color: var(--muted); }
+  .o-done .o-what, .o-done .o-note { color: var(--muted); }
+  .o-done .o-what span { text-decoration: line-through; }
+  .o-empty { font-size: 14px; color: var(--muted); padding: 12px 0; margin: 0; }
+  @keyframes o-in { from { opacity: 0; } to { opacity: 1; } }
+  @media (max-width: 720px) {
+    .o-grid { grid-template-columns: 1fr; }
+    .o-row { grid-template-columns: 1fr auto; }
+    .o-row .o-due { grid-column: 1 / -1; }
+    .o-price { text-align: left; }
+    .o-row .o-btn { grid-column: 1 / -1; justify-self: start; }
+    .nav { display: none; }
+    .side { padding: 12px 16px; }
+    .brand { margin: 0; }
+  }
+  @media (max-width: 720px) {
+    .app { grid-template-columns: 1fr; }
+    .side { border-right: 0; border-bottom: 1px solid var(--line); padding: 16px; }
+    main { padding: 24px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <a class="brand" href="#/orders"><span class="brand-dot" aria-hidden="true"></span>Bloom &amp; Co</a>
+    <nav class="nav" id="nav">
+      <a href="#/orders" data-module="orders">Orders</a>
+    </nav>
+  </aside>
+  <main id="view"></main>
+</div>
+<script>
+  // Modules of the product. Each module registers a render function in MODULES.<id>.render.
+  const MODULES = {
+    orders: {
+      name: "Orders",
+      mustHaves: ["A list of orders", "Add order", "Mark done"],
+      render: null
+    }
+  };
+
+  // ---- Orders module: data, storage and page ----
+  (function () {
+    // Sample data. "Today" is pinned to Thursday 26 November 2026 so the demo reads the same on any day.
+    var ORDERS_DATA = {
+      today: '2026-11-26',
+      orders: [
+        { id: 1, customer: 'Sarah Whitfield', phone: '07700 914 382', item: 'Hand-tied bouquet of white roses and eucalyptus', price: 45, due: '2026-11-26T10:30', way: 'pickup', address: '', note: 'Birthday card to read "Happy 40th, Jen"', status: 'done' },
+        { id: 2, customer: 'Tom Okafor', phone: '0117 946 0213', item: 'Funeral wreath, white lilies and chrysanthemums', price: 95, due: '2026-11-26T14:00', way: 'delivery', address: 'Arnos Vale Cemetery, Bath Road, Bristol BS4 3EW', note: 'Deliver to the chapel office before 2pm', status: 'todo' },
+        { id: 3, customer: 'Priya Desai', phone: '07812 335 790', item: 'Small posy of ranunculus, pastel colours', price: 22.5, due: '2026-11-26T16:30', way: 'pickup', address: '', note: '', status: 'todo' },
+        { id: 4, customer: 'Gareth Hughes', phone: '07946 102 557', item: 'Dozen red roses in a vase', price: 60, due: '2026-11-26T17:45', way: 'delivery', address: '14 Cotham Hill, Bristol BS6 6LF', note: 'Ring the top bell. Anniversary, keep it a surprise', status: 'todo' },
+        { id: 5, customer: 'Clifton Kitchen', phone: '0117 973 1180', item: 'Three table centrepieces, seasonal greens and berries', price: 120, due: '2026-11-27T09:00', way: 'delivery', address: '42 Princess Victoria Street, Bristol BS8 4BZ', note: 'Ask for Hannah at the bar', status: 'todo' },
+        { id: 6, customer: 'Ellie Bancroft', phone: '07723 488 016', item: 'Wedding buttonholes x 6, ivory spray roses', price: 54, due: '2026-11-27T15:00', way: 'pickup', address: '', note: 'Bride collecting with her mum', status: 'todo' },
+        { id: 7, customer: 'Mohammed Rahman', phone: '07588 270 941', item: 'Get well basket, yellow tulips and gerberas', price: 38, due: '2026-11-28T11:00', way: 'delivery', address: 'Southmead Hospital, Ward 9B, Bristol BS10 5NB', note: '', status: 'todo' },
+        { id: 8, customer: 'Lucy Pennington', phone: '0117 924 6635', item: 'Christmas door wreath, natural pine and dried orange', price: 48, due: '2026-11-28T12:30', way: 'pickup', address: '', note: '', status: 'todo' }
+      ]
+    };
+    var KEY = 'bloomco.orders.v1';
+    var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var state = { orders: load(), formOpen: false, status: '' };
+
+    function load() {
+      try {
+        var raw = localStorage.getItem(KEY);
+        if (raw) { var list = JSON.parse(raw); if (Array.isArray(list)) return list; }
+      } catch (e) { /* storage blocked or bad data: start from the samples */ }
+      return ORDERS_DATA.orders.map(function (o) { return Object.assign({}, o); });
+    }
+    function save() {
+      try { localStorage.setItem(KEY, JSON.stringify(state.orders)); } catch (e) { /* storage blocked: keep it for this visit only */ }
+    }
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
+    }
+    function money(n) { return '£' + Number(n).toFixed(2); }
+    function dayWord(dateStr) {
+      var p = dateStr.split('-').map(Number);
+      var t = ORDERS_DATA.today.split('-').map(Number);
+      var diff = Math.round((Date.UTC(p[0], p[1] - 1, p[2]) - Date.UTC(t[0], t[1] - 1, t[2])) / 86400000);
+      if (diff === 0) return 'Today';
+      if (diff === 1) return 'Tomorrow';
+      if (diff === -1) return 'Yesterday';
+      return DAYS[new Date(Date.UTC(p[0], p[1] - 1, p[2])).getUTCDay()];
+    }
+    function when(due) {
+      var date = due.split('T')[0], d = date.split('-').map(Number), word = dayWord(date);
+      var day = (word === 'Today' || word === 'Tomorrow' || word === 'Yesterday') ? word : word.slice(0, 3) + ' ' + d[2] + ' ' + MONTHS[d[1] - 1];
+      return { day: day, text: due.split('T')[1] };
+    }
+    function longDate(date) {
+      var d = date.split('-').map(Number);
+      return DAYS[new Date(Date.UTC(d[0], d[1] - 1, d[2])).getUTCDay()] + ' ' + d[2] + ' ' + MONTHS[d[1] - 1] + ' ' + d[0];
+    }
+
+    function row(o) {
+      var w = when(o.due);
+      var way = o.way === 'delivery' ? 'Delivery to ' + esc(o.address) : 'Pickup at the shop';
+      var meta = way + (o.phone ? ' <span class="o-nw">· ' + esc(o.phone) + '</span>' : '');
+      var action = o.status === 'done'
+        ? '<button type="button" class="o-btn" data-undo="' + o.id + '">Undo</button>'
+        : '<button type="button" class="o-btn" data-done="' + o.id + '">Mark done</button>';
+      return '<li class="o-row">' +
+        '<div class="o-due"><span class="o-day">' + w.day + '</span>' + w.text + '</div>' +
+        '<div><p class="o-what"><span>' + esc(o.item) + '</span></p>' +
+        '<p class="o-meta">' + esc(o.customer) + ' · ' + meta + '</p>' +
+        (o.note ? '<p class="o-note">' + esc(o.note) + '</p>' : '') + '</div>' +
+        '<div class="o-price">' + (o.price === '' || o.price == null ? '<span class="muted">No price</span>' : money(o.price)) + '</div>' +
+        action + '</li>';
+    }
+
+    function form() {
+      return '<form class="o-form" id="o-form" novalidate>' +
+        '<h2>New order</h2><div class="o-grid">' +
+        field('customer', 'Customer name', 'text', '') +
+        field('phone', 'Phone', 'tel', ' <span class="o-opt">(optional)</span>') +
+        field('item', 'What to make', 'textarea', '', true) +
+        field('date', 'Due date', 'date', '') +
+        field('time', 'Due time', 'time', '') +
+        '<fieldset class="o-way o-wide"><legend>Pickup or delivery</legend>' +
+        '<label><input type="radio" name="way" value="pickup" checked> Pickup</label>' +
+        '<label><input type="radio" name="way" value="delivery"> Delivery</label></fieldset>' +
+        '<div id="o-addr-wrap" class="o-wide" hidden>' + field('address', 'Delivery address', 'text', '', true) + '</div>' +
+        field('price', 'Price in £', 'number', ' <span class="o-opt">(optional)</span>') +
+        field('note', 'Note', 'textarea', ' <span class="o-opt">(optional)</span>', true) +
+        '</div><div class="o-actions"><button type="submit" class="o-btn o-btn-main">Save order</button>' +
+        '<button type="button" class="o-btn" data-cancel>Cancel</button></div></form>';
+    }
+    function field(name, label, type, extra, wide) {
+      var input = type === 'textarea'
+        ? '<textarea id="o-' + name + '" name="' + name + '"></textarea>'
+        : '<input id="o-' + name + '" name="' + name + '" type="' + type + '"' +
+          (type === 'number' ? ' min="0" step="0.01" inputmode="decimal"' : '') +
+          (name === 'date' ? ' value="' + ORDERS_DATA.today + '"' : '') + '>';
+      return '<label class="o-field' + (wide ? ' o-wide' : '') + '" id="o-f-' + name + '">' +
+        '<span>' + label + extra + '</span>' + input + '<span class="o-err" id="o-e-' + name + '"></span></label>';
+    }
+
+    function render(view) {
+      var todo = state.orders.filter(function (o) { return o.status !== 'done'; })
+        .sort(function (a, b) { return a.due < b.due ? -1 : a.due > b.due ? 1 : 0; });
+      var done = state.orders.filter(function (o) { return o.status === 'done'; })
+        .sort(function (a, b) { return (b.doneAt || 0) - (a.doneAt || 0) || (a.due < b.due ? -1 : 1); });
+      view.innerHTML =
+        '<div class="o-head"><h1>Orders</h1>' +
+        (state.formOpen ? '' : '<button type="button" class="o-btn o-btn-main" data-add>Add order</button>') + '</div>' +
+        '<p class="o-sub">' + longDate(ORDERS_DATA.today) + '</p>' +
+        '<p class="o-status" role="status" aria-live="polite" tabindex="-1">' + (state.status ? esc(state.status) +
+          (state.undoId ? ' <button type="button" class="o-btn o-link" data-undo="' + state.undoId + '">Undo</button>' : '') : '') + '</p>' +
+        (state.formOpen ? form() : '') +
+        '<section class="o-group"><h2>To do (' + todo.length + ')</h2>' +
+        (todo.length ? '<ul class="o-list">' + todo.map(row).join('') + '</ul>' : '<p class="o-empty">Nothing left to make. Every order has gone out.</p>') +
+        '</section>' +
+        (done.length ? '<section class="o-group o-done"><h2>Done (' + done.length + ')</h2><ul class="o-list">' + done.map(row).join('') + '</ul></section>' : '');
+      wire(view);
+    }
+
+    function focusStatus() { var st = document.querySelector('.o-status'); if (st && st.textContent) st.focus(); }
+    function find(id) { return state.orders.filter(function (o) { return String(o.id) === String(id); })[0]; }
+
+    function wire(view) {
+      view.onclick = function (ev) {
+        var t = ev.target.closest('button');
+        if (!t) return;
+        state.undoId = null;
+        if (t.hasAttribute('data-add')) { state.formOpen = true; state.status = ''; render(view); var c = document.getElementById('o-customer'); if (c) c.focus(); }
+        else if (t.hasAttribute('data-cancel')) { state.formOpen = false; state.status = ''; render(view); }
+        else if (t.dataset.done) { var o = find(t.dataset.done); if (o) { o.status = 'done'; o.doneAt = Date.now(); save(); state.status = 'Order for ' + o.customer + ' marked done.'; state.undoId = o.id; render(view); focusStatus(); } }
+        else if (t.dataset.undo) { var u = find(t.dataset.undo); if (u) { u.status = 'todo'; delete u.doneAt; save(); state.status = 'Order for ' + u.customer + ' is back in To do.'; render(view); focusStatus(); } }
+      };
+      var f = document.getElementById('o-form');
+      if (!f) return;
+      f.addEventListener('change', function (ev) {
+        if (ev.target.name === 'way') document.getElementById('o-addr-wrap').hidden = ev.target.value !== 'delivery';
+      });
+      f.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var v = function (n) { return (document.getElementById('o-' + n).value || '').trim(); };
+        var way = f.querySelector('input[name=way]:checked').value;
+        var errs = {};
+        if (!v('customer')) errs.customer = 'Add the customer name.';
+        if (!v('item')) errs.item = 'Say what to make.';
+        if (!v('date')) errs.date = 'Pick the due date.';
+        if (!v('time')) errs.time = 'Pick the due time.';
+        if (way === 'delivery' && !v('address')) errs.address = 'Add the delivery address.';
+        var price = v('price');
+        if (price !== '' && !(Number(price) >= 0)) errs.price = 'Price must be a number, 0 or more.';
+        ['customer', 'item', 'date', 'time', 'address', 'price'].forEach(function (n) {
+          document.getElementById('o-e-' + n).textContent = errs[n] || '';
+          document.getElementById('o-f-' + n).classList.toggle('o-bad', !!errs[n]);
+        });
+        var first = Object.keys(errs)[0];
+        if (first) { state.status = ''; document.querySelector('.o-status').textContent = 'Some details are missing. See the messages below.'; document.getElementById('o-' + first).focus(); return; }
+        var id = state.orders.reduce(function (m, o) { return Math.max(m, Number(o.id) || 0); }, 0) + 1;
+        state.orders.push({ id: id, customer: v('customer'), phone: v('phone'), item: v('item'),
+          price: price === '' ? '' : Math.round(Number(price) * 100) / 100, due: v('date') + 'T' + v('time'),
+          way: way, address: way === 'delivery' ? v('address') : '', note: v('note'), status: 'todo' });
+        save();
+        state.formOpen = false;
+        state.status = 'Order for ' + v('customer') + ' added.';
+        state.undoId = null;
+        render(view);
+        focusStatus();
+      });
+    }
+
+    MODULES.orders.render = function (view) { render(view); };
+  })();
+
+  function pending(mod) {
+    return '<h1>' + mod.name + '</h1>' +
+      '<ul>' + mod.mustHaves.map(function (m) { return '<li>' + m + '</li>'; }).join('') + '</ul>' +
+      '<p class="muted">Being built now. This page fills in by itself.</p>';
+  }
+
+  function route() {
+    const hash = location.hash.replace(/^#\/?/, '');
+    const id = hash.split('/')[0] || 'orders';
+    const mod = MODULES[id] || MODULES.orders;
+    const key = MODULES[id] ? id : 'orders';
+    document.querySelectorAll('#nav a').forEach(function (a) {
+      if (a.dataset.module === key) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+    const view = document.getElementById('view');
+    if (mod.render) mod.render(view, hash.split('/').slice(1)); else view.innerHTML = pending(mod);
+  }
+  window.addEventListener('hashchange', route);
+  route();
+</script>
+</body>
+</html>

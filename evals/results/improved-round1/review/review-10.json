@@ -1,0 +1,118 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-10",
+  "ask": "our front desk uses iPads and phones. review the clinic prototype for small screens, fix P1 and P2, and add a rule: tap targets at least 44px",
+  "expected_track": "full",
+  "notes": "Bar, mode, persona and a custom rule are given. The widths are open (iPad 768/1024 and phone 390 as defaults). A good intake asks at most one or two questions.",
+  "must_cover": [
+    "phone|ipad|tablet|width",
+    "44",
+    "p1|p2",
+    "persona|front desk"
+  ],
+  "findable": [
+    "bar|p1 and p2|p1 only",
+    "fix or report|report only",
+    "rules|rule of your own|own rules",
+    "persona|who uses|who is it for"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "# Brief: review the Northside Physio prototype for small screens\n\n**Goal:** Review the clinic prototype as a front-desk person on an iPad or phone, fix every P1 and P2 problem, and add your rule: tap targets at least 44px.\n\n## Facts found\n- **Prototype:** `proto-clinic/index.html` (a single HTML file, the only one in the folder). No server needed: the walk serves it itself.\n- **Screens (4, from the nav):** Today, Clients, Invoices, Settings. Written to `loop-runs/product-review-loop-20261126-032834/screens.json`.\n- **Start check:** Node 25.9.0 ok, Chrome found, the file exists. The walk can run.\n- **Folder:** no `CLAUDE.md`, no earlier runs, no lessons yet, and no `design-review` or `product-design` skill rules found in the folder.\n\n## Needs\n| Need | Value |\n|---|---|\n| Prototype | `proto-clinic/index.html` (found, default) |\n| Screens | Today, Clients, Invoices, Settings (default: every screen the nav reaches) |\n| Who and the one job | A front-desk receptionist on an iPad or phone, who checks today's appointments and books a new one (default, a guess from the Today screen) |\n| Fix or report | Fix, in place, a copy of each changed file kept in `RUN/original/` (from your words \"fix P1 and P2\") |\n| Bar | P1 and P2 (from your words). P3 is listed, never fixed |\n| Your own rule | `tap-target`: every button, link, input, select and tappable row is at least 44px by 44px. Added to the checklist, level P2, P1 when it is on the main path |\n| Track | Full (recommended: phones matter to you, and quick leaves out the phone width) |\n| Widths | 1440px desktop and 390px phone (the walk's default). An iPad width of 820px is not in the default |\n| Where the result goes | `handover.md` on this laptop. Nothing is deployed, posted or sent (default) |\n\n## Coverage scan\n| Topic | State | Why |\n|---|---|---|\n| Scope | clear | 4 screens, fix P1 and P2, no new screens |\n| Who and their job | partial | \"front desk\" is yours; the one job is my guess |\n| Data and facts | clear | the prototype holds its own sample data |\n| Main flow | partial | Today has a \"New appointment\" button; I have not clicked it yet |\n| Edge cases | partial | the walk checks empty states and sideways scroll; I do not know if you want a rule on landscape iPad |\n| Look | clear | keep the product's own colours, fonts and words |\n| Outputs | clear | `handover.md`, `fixes.md`, before and after screenshots |\n| Done signal | clear | see Done means |\n| Words with no number | partial | \"small screens\" has no width; \"tap target 44px\" does not say if it means CSS pixels at every width |\n\n## Lessons applied\nnone yet\n\n## Budget\n60 minutes\n\n## Done means\n1. All 4 screens (Today, Clients, Invoices, Settings) have a before and a last after screenshot, at 1440px and at 390px.\n2. After the last walk, a fresh agent found no open P1 on any of the 4 screens.\n3. Every P1 not fixed is marked \"your call\" in `findings.md` with one plain sentence.\n4. Every P1 and P2 finding is fixed, or marked with its reason.\n5. The `tap-target` rule is checked on every screen: every button, link, input, select and tappable row measures at least 44px by 44px at 390px, or is listed with its reason.\n6. Every changed file has its original in `RUN/original/`, and nothing is deployed or sent.\n\nAbout 60 minutes and 5 helper agents (one builder check, one reviewer for the 4 screens, one fix helper, and a fresh checker for each of 2 rounds), within a budget of 60 minutes.\n\n## Questions\n\n1. Does \"tap targets at least 44px\" mean 44px by 44px for every button, link, input, select and table row, at the phone width and the iPad width?\n   Recommended: yes, 44px by 44px for anything you tap, measured at 390px and at 820px. Table rows only count when they are tapped. Nothing at desktop width is checked for it.\n   Why it matters: this sets how many things I resize, and whether the nav and the tables change shape.\n\n2. Do you want an iPad width (820px) walked as well as the phone (390px)?\n   Recommended: yes, add 820px. The walk's default is only 1440px and 390px, and you named iPads first.\n   Why it matters: an iPad layout can break in ways the other two widths hide, and it adds about 5 minutes.\n\n3. Who uses it, and what one job do they come to do?\n   Recommended: a front-desk receptionist who checks today's appointments and books a new one on an iPad or phone.\n   Why it matters: the job decides which problems are P1. A dead \"New appointment\" button is P1 only if booking is the job.\n\n4. When a P1 or P2 needs a design choice (for example, how the 5-column tables fit a phone), should I take the smallest change?\n   Recommended: yes. Keep the tables and let the wide ones scroll inside their own box. Taste changes (colour, layout, dropping a column) are listed as \"your call\", never made.\n   Why it matters: it stops me from rebuilding screens you did not ask me to.\n\n5. Should the walk and the fixes also check the \"New appointment\" button, which has no action?\n   Recommended: yes, the smallest working result with what the product has: a short message that says what happened, not a new booking form.\n   Why it matters: a new form would change the flow, so I will not build one without your word.\n\n6. Quick or full?\n   Recommended: full. Phones matter to you, and quick (P1 only, no phone width) would leave them out.\n   Why it matters: quick finishes sooner but cannot meet your ask.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Does \"tap targets at least 44px\" mean 44px by 44px for every button, l | 2. Do you want an iPad width (820px) walked as well as the phone (390px)? | 3. Who uses it, and what one job do they come to do? | 4. When a P1 or P2 needs a design choice (for example, how the 5-column t | 5. Should the walk and the fixes also check the \"New appointment\" button, | 6. Quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "43 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: bar (\"p1 only\"), persona (\"who uses\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 5 helper agents (one builder check, one reviewer for the 4 screens, one fix helper, and a fresh checker for each of 2 r"
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "| Track | Full (recommended: phones matter to you, and quick leaves out the phone width) |"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 992,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 6,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles widths (390px phone, 'add 820px' iPad), the 44px rule ('44px by 44px for anything you tap'), the bar ('P1 and P2... P3 is listed, never fixed') and persona ('front-desk receptionist').",
+      "no_redundancy": "Q3 'Who uses it' re-asks the persona the ask gave ('front desk'), and Q6 'Quick or full?' asks something its own default says only one answer meets the ask; Q1 partly re-asks the stated 44px rule.",
+      "defaults_quality": "Every question has a concrete default fitted to the ask, e.g. 'Keep the tables and let the wide ones scroll inside their own box' and 'yes, add 820px... you named iPads first'.",
+      "clarity": "Six questions sit under a long brief with a Needs table, a 9-row Coverage scan and a Done list; the questions are plain, but a busy person must read a wall of text first.",
+      "respects_words": "Keeps 'fix P1 and P2' and the 44px rule, and recommends the iPad width because 'you named iPads first'; only the Needs table's default of no iPad width briefly works against the ask.",
+      "overall": "A solid, well-grounded intake with good defaults where 'go' works, held back by length and a few questions the ask already answered."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.690Z"
+}

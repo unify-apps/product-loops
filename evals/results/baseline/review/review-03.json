@@ -1,0 +1,120 @@
+{
+  "arm": "baseline",
+  "loop": "review",
+  "case": "review-03",
+  "ask": "audit my prototype in proto-clinic/ - don't change anything, I just want a list of what's wrong",
+  "expected_track": "full",
+  "notes": "Report-only mode stated in words. The bar question matters less (nothing gets fixed). Asking fix or report is redundant.",
+  "must_cover": [
+    "report only|report",
+    "screens",
+    "persona|who uses"
+  ],
+  "findable": [
+    "fix or report|report only|fix what",
+    "which prototype|which file"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "I'll audit `proto-clinic/index.html` and give you a list of what's wrong. I won't change any file. Here is my brief. Nothing has started yet.\n\n## Brief\n\n- **Goal:** a reviewed list of what is wrong with the Northside Physio prototype. Each item has a screen, a rule and a level (P1, P2 or P3).\n- **Prototype:** `proto-clinic/index.html`, a single HTML file. It needs no server, because the walk serves it itself. You named it.\n- **Mode:** report only. You said \"don't change anything\", so no file is edited, no copy is made and nothing is deployed or sent. The run's `fixes.md` will say \"Report only: no file was changed.\"\n- **Screens:** the 4 screens the nav reaches, found by the tool and saved: **Today**, **Clients**, **Invoices**, **Settings**. I use the nav's own labels in every finding.\n- **Screen widths:** 1440 px, plus a 390 px phone check.\n- **Who uses it and the one job (my guess from the screens):** front-desk staff at a physiotherapy clinic, who come to see today's appointments and book a new one. The main button on the first screen is \"New appointment\".\n- **Rules:** the built-in checklist. There is no `CLAUDE.md`, no README and no `design-review` skill in this folder.\n- **Focus:** every screen equally.\n- **Bar:** not needed in report-only mode. Every finding is listed and none is fixed.\n- **Result goes to:** `handover.md` in the run folder, on this laptop only.\n- **Stop fact:** every screen has a screenshot and a reviewed list of findings, each with a screen, a rule and a level. A fresh agent has confirmed the list against the screenshots.\n\n**Start checks:** Node and a browser (Chrome) are both found, so the full walk with screenshots and script checks can run. The prototype file exists.\n\n## Questions\n\n1. **Screens:** are these 4 screens all you want checked? Default: all 4 (Today, Clients, Invoices, Settings). I add a dialog or detail page only if you name one.\n2. **Who uses it, and what one job do they come to do?** Default: front-desk staff at the clinic, who come to see today's appointments and book a new one.\n3. **Any rule of your own to check?** Default: the built-in checklist only.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. Screens: are these 4 screens all you want checked? Default: all 4 (Tod | 2. Who uses it, and what one job do they come to do? Default: front-desk  | 3. Any rule of your own to check? Default: the built-in checklist only."
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "14 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 381,
+      "evidence": "381 words, 296 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 381,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 10,
+      "defaults_quality": 9,
+      "clarity": 8,
+      "respects_words": 10,
+      "overall": 9
+    },
+    "evidence": {
+      "completeness": "Settles all three: 'Mode: report only', 'Screens: ... Today, Clients, Invoices, Settings', and persona 'front-desk staff at a physiotherapy clinic'.",
+      "no_redundancy": "States rather than asks the found facts: 'You said \"don't change anything\"' and 'Prototype: proto-clinic/index.html ... You named it.'",
+      "defaults_quality": "Every question has a concrete default ('Default: all 4 (Today, Clients, Invoices, Settings)', 'front-desk staff ... book a new one', 'built-in checklist only'); persona default is grounded in the 'New appointment' button.",
+      "clarity": "Only 3 short single-topic questions with 'just \"go\"', but the brief is long-ish and uses internal terms like 'Bar' and 'Stop fact'.",
+      "respects_words": "Keeps the ask exactly: 'no file is edited, no copy is made and nothing is deployed or sent' and output is a list of findings.",
+      "overall": "A strong opening: faithful report-only brief, all needed topics settled with sensible defaults in one round; only slightly heavier than necessary."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.817Z"
+}

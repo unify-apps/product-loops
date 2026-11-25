@@ -1,0 +1,12 @@
+{"items":[
+{"id":"S1","passes":true,"evidence":"Opened order-board/index.html and loaded http://127.0.0.1:4400/#/orders: Orders section renders list, add form, mark done."},
+{"id":"S2","passes":true,"evidence":"Read reviews/orders-round2.md: P1 0, P2 0. index.html mtime 03:36:33 is before round 2 file 03:38:43, so unchanged since."},
+{"id":"S3","passes":true,"evidence":"Ran check-clicks on links.md: PASS: 1 links, 9 clicks, 0 dead, 0 errors, no placeholders."},
+{"id":"S4","passes":true,"evidence":"requests.md R1-R5 all ticked; each checked in the live page (list, Add order, Mark done, single route)."},
+{"id":"S5","passes":true,"evidence":"Fresh playwright context: Add order, filled name/what/time, Save: row 'Zed Reviewer' in To do, count 7 to 8, 0 page errors."},
+{"id":"S6","passes":true,"evidence":"Same walk: Mark done moved the row to Done (struck through, Undo), To do 8 to 7, status Undo shown, persisted after reload. Screenshot shots/review/mine-done.png."}],
+"spec":4,"quality":4,"verdict":"PASS",
+"findings":[
+{"level":"P3","what":"Phone wraps to a new line with a leading dot (Mohammed Rahman row at 1440)","fix":"put the phone next to the name inside the no-wrap span"},
+{"level":"P3","what":"Cancel discards a half-typed order with no warning; past due times not marked late","fix":"confirm discard only when a field has text; add a Late marker"},
+{"level":"P3","what":"Status-line Undo tap target is small at 375 px","fix":".o-link { padding: 8px 4px; margin: -8px 0; }"}]}

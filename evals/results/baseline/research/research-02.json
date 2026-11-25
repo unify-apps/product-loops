@@ -1,0 +1,118 @@
+{
+  "arm": "baseline",
+  "loop": "research",
+  "case": "research-02",
+  "ask": "quick look at how Notion, Coda and Slite do templates. just a feature list, nothing fancy",
+  "expected_track": "quick",
+  "notes": "Small, clear scope: a feature list of three named rivals. Quick track (3 rivals, 2 source kinds). The persona only ranks modules here and matters little; a good intake keeps the round short.",
+  "must_cover": [
+    "decision|feature list|matrix|sheet",
+    "sources|kinds|help centre|product pages",
+    "groups|categories",
+    "persona|who uses"
+  ],
+  "findable": [
+    "rivals|competitors|which products"
+  ],
+  "fixtures": [],
+  "message": "I read your ask and ran the start check. The web search returned results, and a fetch of Notion's template page returned text. Both worked with no permission prompt, so the run can read the web while you are away.\n\n## The brief as I understand it\n\n- **Decision:** a capability matrix. You asked for a feature list, so the sheet is the main output. After it come where we could beat the rivals, then the modules.\n- **Product and category:** not named in your message. I assume a workspace or docs tool where templates are a feature (see question 1).\n- **Rivals:** Notion, Coda and Slite. These are the three you named.\n- **Scope:** how each of them does templates only. Template creation, galleries, use, sharing, pricing limits and so on.\n- **Market:** global, since all three sell worldwide.\n- **What we have today:** nothing, a new product. Every row is `gap` or `beat`.\n- **Sources:** public pages only, no sign-in, no trial sign-ups, no paid reports. Kinds tried for every rival: product pages, help centre or docs, release notes or changelog, pricing, public reviews.\n- **Depth:** up to 12 pages and 40 features per rival.\n- **Groups (sheet categories):** you gave none, so I will use plain ones such as finding, creating, using, sharing and limits.\n- **Fixed and refused:** none.\n- **First release size:** rank every module. The top 3 are the first release.\n- **Rival names:** kept real. The brief stays on this laptop.\n- **Where to save:** `research/templates/` in this folder.\n- **Sharing:** nothing is published or sent.\n- **Sheet file:** `capability-sheet.xlsx` and `capability-sheet.csv`. No Google Sheet, since you did not ask for one.\n- **Stop fact:** `research/templates/capability-sheet.xlsx` and `.csv` exist. Every row says what it does, and every yes or partial cell links to that rival's own pages. `brief.md` ends in a ranked module list that cites sheet rows.\n\n## Questions\n\n1. **Product.** What are we building templates for (for example a docs tool, a wiki, a project tool)? Default: a general workspace and docs tool.\n2. **Persona.** Who uses it every day, and who pays? My draft: a small-team lead who sets up shared docs for the team, with the company as the buyer. The persona only ranks the modules. It never takes a row out of the sheet.\n3. **How bold?** Catch up with the rivals only, or also look for ideas no rival has? Default: both. The brief adds `## Ideas no rival has`, with at least 3 ideas.\n\nEverything else above takes its default. Change any of it in your reply.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. Product. What are we building templates for (for example a docs tool,  | 2. Persona. Who uses it every day, and who pays? My draft: a small-team l | 3. How bold? Catch up with the rivals only, or also look for ideas no riv"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": false,
+      "evidence": "no default on: 2"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: rivals (\"rivals\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 442,
+      "evidence": "442 words, 315 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 442,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 8,
+      "clarity": 6,
+      "respects_words": 4,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles all four: decision ('a capability matrix'), sources ('product pages, help centre or docs, release notes...'), groups ('finding, creating, using, sharing and limits'), persona (question 2).",
+      "no_redundancy": "Rivals are stated in the brief ('Notion, Coda and Slite. These are the three you named'), not asked; the three questions concern facts the ask does not give.",
+      "defaults_quality": "Every question has a concrete default ('a small-team lead who sets up shared docs'), but the bold default 'both' with '## Ideas no rival has' does not suit a quick look.",
+      "clarity": "Only 3 questions in plain words, but they sit under a 16-bullet brief that is heavy reading for a 'quick look'.",
+      "respects_words": "'just a feature list, nothing fancy' becomes a matrix plus 'where we could beat the rivals, then the modules', a ranked first release and by default 'at least 3 ideas'.",
+      "overall": "Thorough, well-defaulted intake, but it inflates a quick, plain feature list into a full strategy brief that goes against the person's 'nothing fancy'."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.759Z"
+}

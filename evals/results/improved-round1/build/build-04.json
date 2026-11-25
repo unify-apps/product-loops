@@ -1,0 +1,116 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-04",
+  "ask": "We run a 14-hospital network (about 4,000 beds). Build a clickable prototype of a bed management tool for charge nurses: a bed board by ward, the admit / transfer / discharge flow, a housekeeping queue for beds being cleaned, and an exec dashboard with occupancy. It's for our innovation board in three weeks, so it has to look like a real product, not a wireframe.",
+  "expected_track": "full",
+  "notes": "Large enterprise ask with four named modules and a clear persona. Depth is implied ('a real product'). Good intake: confirms modules and must-haves, sample data that looks real but is made up (patient privacy), the look, and the research-first option is unnecessary since modules are named.",
+  "must_cover": [
+    "persona|charge nurse|who uses",
+    "module",
+    "how deep|in full|shell|depth",
+    "look|colour|color|font",
+    "sample data|data|patients",
+    "exec|dashboard",
+    "privacy|patient names|fake"
+  ],
+  "findable": [
+    "persona|who uses|who is it for"
+  ],
+  "fixtures": [],
+  "message": "## Brief\n\n**Goal:** Build a clickable web prototype of a bed management tool for charge nurses in a 14-hospital network (about 4,000 beds). It is for your innovation board in three weeks, so it has to look like a real product, not a wireframe.\n\n**Product:** new, in `/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/evalwork/e35062da89/bed-management/` (default). The working folder is empty, so there is nothing to build on and no earlier run. One `index.html` with its CSS and JS inside, with a hash route per module. It runs on this laptop only (default).\n\n**Persona (my draft, not your answer):** a charge nurse who runs one ward for a shift. The one job: see which beds are free, and move patients in, between beds and out.\n\n**Modules in build order (my draft, not your answer):**\n\n| # | Module | Must have |\n|---|---|---|\n| 1 | Bed board | Beds grouped by ward; hospital picker and ward tabs; bed status (occupied, free, needs cleaning, blocked); click a bed for the patient and its actions |\n| 2 | Admit / transfer / discharge | Three flows from a bed or the waiting list; pick a bed, confirm; the board updates |\n| 3 | Housekeeping queue | Beds being cleaned, oldest first, time waiting, mark clean, the bed returns to free |\n| 4 | Exec dashboard | Occupancy across the 14 hospitals, by hospital and ward type, 7-day trend, beds free now |\n\n**What to follow:** nothing named, so flow only (default). **Look:** a clean clinical product look of its own, with a real header, icons and status colours (default; no logo, colours or fonts found). **Name:** 3 name and mark options on the real header, the first one used (default). **Photos:** none, initials only (default). **Data:** invented hospitals, wards and patients, no real patient data. **Ships:** this laptop only, nothing published (default). **Browser for click checks:** chrome-headless-shell, found by the start check, so clicks will really be checked.\n\n**Defaults taken from the builder check (shown in the questions below):** one shared in-browser state across modules; saved in localStorage with a \"Reset demo\" button.\n\n**Requests so far:**\n- R1 Build a clickable prototype of a bed management tool for charge nurses that looks like a real product, not a wireframe\n- R2 A bed board by ward\n- R3 The admit / transfer / discharge flow\n- R4 A housekeeping queue for beds being cleaned\n- R5 An exec dashboard with occupancy\n- R6 Ready for the innovation board in three weeks\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | partial | four modules named; no bed holds, isolation or gender rules unless you say so |\n| Who and their job | partial | charge nurse named; the exec reader of the dashboard is not |\n| Data and facts | missing | no ward list or sample data given; I invent it |\n| Main flow | clear | admit, transfer, discharge, clean, free |\n| Edge cases | partial | which cases show (no free bed, full ward, bed blocked) is not said |\n| Look | partial | \"a real product\" is the only guide |\n| Outputs | clear | a local link per module and per demo state |\n| Done signal | partial | the board demo is three weeks out; \"looks real\" has no measure |\n| Words with no number | partial | \"real product\" is read as: icons, status colours, real-looking data, no placeholder text, no lorem ipsum |\n\n**Lessons applied:** none yet (no earlier runs).\n\n**Budget:** 120 minutes.\n\n**Done means:**\n1. Every module is built: Bed board, Admit / transfer / discharge, Housekeeping queue, Exec dashboard.\n2. Every module's last review round has 0 P1.\n3. Every link in the links file opens, no dead click, no placeholder text, no page error.\n4. The request list has no open line.\n5. Your must-haves, in your words, once you give them (for example \"it looks like a real product, not a wireframe\").\n6. A link for every list, one detail, every create flow and every empty state.\n\nAbout 80 minutes and 14 helper agents, within a budget of 120 minutes.\n\n## Questions\n\n1. Who uses it, and what one job do they come to do?\n   Recommended: a charge nurse running one ward for a shift, who finds a free bed and moves patients in, across and out. The exec only reads the dashboard.\n   Why it matters: the persona decides which module is built first and what the board shows.\n\n2. Is the 14-hospital network part of the nurse's day, or only of the exec dashboard?\n   Recommended: the nurse sees one hospital at a time (a hospital picker in the header, ward tabs inside it). The exec dashboard covers all 14, reached through a role switch (Charge nurse / Executive). Only 2 or 3 hospitals get full bed data; the others get generated summaries.\n   Why it matters: it sets the data model and whether a hospital picker and a role switch exist.\n\n3. Which rules link the flow, the board and housekeeping?\n   Recommended: one shared state. A discharge turns the bed to \"Needs cleaning\" and adds a housekeeping task; marking it clean makes the bed \"Available\"; only an Available bed can take an admit or transfer; a transfer frees the old bed the same way. No bed holds, isolation or gender rules.\n   Why it matters: without one rule, the modules are separate pages that do not agree.\n\n4. Do changes stay, and does the exec dashboard follow them?\n   Recommended: yes. State is saved in the browser with a \"Reset demo\" button, and occupancy is computed from the same bed state, beside an invented 7-day trend. No live ticking, no backend.\n   Why it matters: it decides whether the numbers are computed or fixed, and whether you can repeat the demo.\n\n5. How deep is each module?\n   Recommended: every module in full, with a detail, its create flows, and its empty and error states (a ward with no free bed, an empty housekeeping queue).\n   Why it matters: this is for a board demo, and states you can click to are what makes it feel real.\n\n6. Do you have a logo, colours, fonts, or a product to resemble?\n   Recommended: no; a clean clinical look of its own, with a restrained blue and green palette and standard status colours, and 3 name and mark options to pick from.\n   Why it matters: it is the main driver of \"looks like a real product\".\n\n7. The track: quick or full?\n   Recommended: full (4 modules, and you will show it to a board): it adds the name and mark options and a link for every demo state. Quick would be one list page per module with no detail, create or empty routes.\n   Why it matters: it sets how long the run takes and what you can show.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. Who uses it, and what one job do they come to do? | 2. Is the 14-hospital network part of the nurse's day, or only of the exe | 3. Which rules link the flow, the board and housekeeping? | 4. Do changes stay, and does the exec dashboard follow them? | 5. How deep is each module? | 6. Do you have a logo, colours, fonts, or a product to resemble? | 7. The track: quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "42 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: persona (\"persona\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.857,
+      "evidence": "missing: privacy"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 80 minutes and 14 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "7. The track: quick or full?"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1160,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 6,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles persona, all four modules, depth (\"every module in full\"), look (\"restrained blue and green palette\"), data and privacy (\"invented hospitals, wards and patients, no real patient data\"), and exec scope (\"exec dashboard covers all 14\").",
+      "no_redundancy": "Q1 \"Who uses it, and what one job do they come to do?\" re-asks the persona the ask already gives (\"for charge nurses\"); Q5 depth and Q7 track also overlap.",
+      "defaults_quality": "Every question has a concrete, fitting default, e.g. \"A discharge turns the bed to 'Needs cleaning' and adds a housekeeping task\" and \"Only 2 or 3 hospitals get full bed data\".",
+      "clarity": "Seven questions behind a long brief with a requests list, coverage scan table and done list; the most useful questions (network scope, linking rules) are not first.",
+      "respects_words": "Keeps \"look like a real product, not a wireframe\", the three-week board date and all four named modules; adds no unrequested scope (\"No bed holds, isolation or gender rules\").",
+      "overall": "Solid, well-defaulted intake that a person could answer with \"go\", hurt by a redundant persona question, overlapping depth/track questions and a long wall of text."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.362Z"
+}

@@ -1,0 +1,67 @@
+{
+  "facts": [
+    {
+      "id": "f1",
+      "kind": "from-person",
+      "text": "Bright Smiles Dental runs 40 clinics in England and Wales",
+      "from": "person.md",
+      "where": "facts.md: the person, from their website visit on 20 Nov 2026"
+    },
+    {
+      "id": "f2",
+      "kind": "from-person",
+      "text": "Bright Smiles Dental's COO is Priya Nair, who joined in March 2026",
+      "from": "person.md",
+      "where": "facts.md: the person"
+    },
+    {
+      "id": "f3",
+      "kind": "from-person",
+      "text": "Bright Smiles Dental told us no-shows run at about 9% of appointments",
+      "from": "person.md",
+      "where": "facts.md: the person, from the intro call"
+    },
+    {
+      "id": "f4",
+      "kind": "from-person",
+      "text": "Our product, Clinic Scheduler, offers online booking, text reminders, and a waitlist that fills cancelled slots",
+      "from": "person.md",
+      "where": "facts.md: our product page, internal"
+    },
+    {
+      "id": "f5",
+      "kind": "from-person",
+      "text": "In our 3 pilot clinics, no-shows fell from 8% to 5% in 3 months, an estimate in our internal pilot report",
+      "from": "person.md",
+      "where": "facts.md: our pilot report, internal, estimate"
+    },
+    {
+      "id": "f6",
+      "kind": "from-person",
+      "text": "Clinic Scheduler costs £120 per clinic per month",
+      "from": "person.md",
+      "where": "facts.md: our price list"
+    },
+    {
+      "id": "f7",
+      "kind": "estimate",
+      "text": "If Bright Smiles saw the same 3-point fall as our pilot clinics, its no-shows would go from about 9% to about 6% of appointments",
+      "from": "added.md",
+      "how": "about 9% today (f3) minus the 3-point fall from 8% to 5% in our 3 pilot clinics (f5). Not a promise: the pilot in her clinics would measure it."
+    },
+    {
+      "id": "f8",
+      "kind": "estimate",
+      "text": "Clinic Scheduler in all 40 Bright Smiles clinics would cost £4,800 a month at list price",
+      "from": "added.md",
+      "how": "40 clinics (f1) x £120 per clinic per month (f6)."
+    },
+    {
+      "id": "f9",
+      "kind": "from-person",
+      "text": "We propose a pilot in a few Bright Smiles clinics at the list price; which clinics, how many, how long and the start date are agreed with Bright Smiles, and the pilot is judged on the no-show rate before and after",
+      "from": "added.md",
+      "where": "the person's \"go\" on intake question 3 (brief.md, Q3)"
+    }
+  ]
+}

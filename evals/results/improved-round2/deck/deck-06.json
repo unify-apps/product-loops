@@ -1,0 +1,124 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-06",
+  "ask": "a 6-page brochure for the hotel chains we'll meet at the Lisbon hospitality trade show, about our housekeeping app",
+  "expected_track": "full",
+  "notes": "Brochure with a page count. The reader is many hotel chains, not one company, so 'which company' should become a default (a general reader) rather than a blocker. Print size A4 is set without asking.",
+  "must_cover": [
+    "brochure|format",
+    "6|pages",
+    "audience|hotel|reader",
+    "print|a4|paper",
+    "language|portuguese|english",
+    "look"
+  ],
+  "findable": [
+    "format|slides or one-pager|output",
+    "slide count|how many pages|page count",
+    "what we offer|claims"
+  ],
+  "fixtures": [
+    "app-facts.md"
+  ],
+  "message": "**Goal (draft):** a 6-page brochure that makes operations leaders at the hotel chains you meet in Lisbon want to try Tidy, your housekeeping app.\n\n**Found:**\n- Tidy is a live room status board for housekeepers and the front desk (`app-facts.md`).\n- It is used in 40 hotels across Spain and Portugal (`app-facts.md`).\n- Quote you may use: \"Rooms ready 35 minutes sooner on average.\" Ops Director, Pestana group pilot, 2025 (`app-facts.md`).\n- Available in English, Portuguese and Spanish (`app-facts.md`).\n- Format: a brochure of 6 pages, A4 portrait (your message; A4 because you are in Spain and Portugal).\n- Web search and page fetch are available, so research uses public sources with a link on every fact.\n\n**Track:** quick, because a brochure to hand out needs the PDF and an HTML copy, and 6 pages sits inside the 6 to 8 range.\n**Coverage:** 5 clear · partial: Who and their job, Look · missing: Done signal, Edge cases (what to claim, what to leave out)\n**Done means:**\n- A 6-page PDF and an HTML copy, both open.\n- Every claim has a source link or your word.\n- Each page drawn and looked at.\n- A fresh reviewer reads it as a hotel operations director.\n\nThe full brief goes to `loop-runs/product-deck-loop-20261126-034306/brief.md` once you say go. The PDF tools work.\n\nAbout 60 minutes and 5 helper agents, within a budget of 90 minutes.\n\n**Questions**\n\n1. What should a hotel operations leader believe or do after reading it?\n   Recommended: a pitch that ends in an invitation to a pilot. It holds their problem, how Tidy fixes it, the proof (40 hotels, 35 minutes sooner) and the next step. Other options: an outside-in view of hotel operations; a vision they can retell to their boss.\n   Why it matters: the goal sets the order of all 6 pages and what the reviewer checks first.\n\n2. Who reads it, and who must they convince next?\n   Recommended: the head of operations or rooms division at a hotel chain, who takes it to the group COO. The COO cares about labour cost and guest ratings.\n   Why it matters: it decides whether the pages argue money, speed or guest experience.\n\n3. What is the call to action on the last page, and which contact and stand number do we print?\n   Recommended: \"Book a pilot\", with the name, email and stand number you reply with. If you give none, no contact is printed and the handover flags it.\n   Why it matters: a brochure with no next step wastes the meeting.\n\n4. Is anything else we may claim, or must not say (pricing, integrations, named customers other than Pestana)?\n   Recommended: only what is in `app-facts.md`. No pricing, no integrations, and no other customer names.\n   Why it matters: every extra claim needs a source, and a wrong one is costly in front of a chain.\n\n5. What language is the brochure in?\n   Recommended: English, with a line that Tidy runs in Portuguese and Spanish too.\n   Why it matters: it sets every word on every page.\n\n6. What look should it have: logo, colours, fonts?\n   Recommended: plain, with Arial, dark text on white and one dark blue accent. No logo, and no made-up product screens.\n   Why it matters: a look you give later means redrawing every page.\n\n7. Which track: quick or full?\n   Recommended: quick, which makes the HTML and the PDF. Full also makes an editable PowerPoint, which a handed-out brochure rarely needs.\n   Why it matters: full adds a file you may not need.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. What should a hotel operations leader believe or do after reading it? | 2. Who reads it, and who must they convince next? | 3. What is the call to action on the last page, and which contact and sta | 4. Is anything else we may claim, or must not say (pricing, integrations, | 5. What language is the brochure in? | 6. What look should it have: logo, colours, fonts? | 7. Which track: quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 5 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 5 clear · partial: Who and their job, Look · missing: Done signal, Edge cases (what to claim, what to leave out)"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 594,
+      "evidence": "594 words, 232 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because a brochure to hand out needs the PDF and an HTML copy, and 6 pages sits inside the 6 to 8 range."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 594,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 10,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles brochure, 6 pages, A4 print (\"a brochure of 6 pages, A4 portrait\"), audience (Q2), language (Q5) and look (Q6), plus CTA and claims.",
+      "no_redundancy": "States format, page count and app facts as found rather than asking; but Q7 re-asks the track the brief already chose (\"Track: quick\").",
+      "defaults_quality": "Every question has a concrete default fitting the ask, e.g. \"English, with a line that Tidy runs in Portuguese and Spanish too\" and \"Book a pilot\" with flagged missing contact.",
+      "clarity": "Seven questions behind a long brief with coverage/track/budget lines; plain words and one topic each, but more than a two-minute read.",
+      "respects_words": "Keeps \"6-page brochure\" for Lisbon hotel chains throughout; defaults add nothing the person ruled out.",
+      "overall": "Strong, well-defaulted intake that settles every needed topic; held back by length and the redundant track question."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.925Z"
+}

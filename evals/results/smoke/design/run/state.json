@@ -1,0 +1,100 @@
+{
+  "version": 2,
+  "loop": "product-design-loop",
+  "workDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/smokework/design",
+  "runDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/smokework/design/loop-runs/product-design-loop-20261126-032658",
+  "script": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/repo/product-loops/skills/product-design-loop/shared/scripts/loop-state.mjs",
+  "createdAt": "2026-11-25T21:56:58.203Z",
+  "changedAt": "2026-11-25T22:04:40.962Z",
+  "intake": "closed",
+  "finished": {
+    "at": "2026-11-25T22:04:40.962Z",
+    "stopFact": "Every note in requests.md is done, swept or left with a reason, no screen changed without a row explaining it, and http://localhost:4100/ answers 200."
+  },
+  "stopped": null,
+  "paused": null,
+  "track": "full",
+  "skillDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/repo/product-loops/skills/product-design-loop",
+  "budget": {
+    "minutes": 60,
+    "maxPushes": 6,
+    "maxDecisions": 40,
+    "startedAt": "2026-11-25T21:59:44.767Z"
+  },
+  "pushes": 0,
+  "nodes": [
+    {
+      "name": "intake",
+      "status": "done",
+      "startedAt": "2026-11-25T21:56:58.203Z",
+      "endedAt": "2026-11-25T21:59:44.766Z",
+      "check": "the person said \"go\" (1 replies)",
+      "proof": "loop-runs/product-design-loop-20261126-032658/brief.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "run-prototype",
+      "status": "done",
+      "startedAt": "2026-11-25T21:59:56.651Z",
+      "endedAt": "2026-11-25T22:00:46.566Z",
+      "check": "link answers 200, before screenshots taken",
+      "proof": "loop-runs/product-design-loop-20261126-032658/before/summary.json",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "copy-reference",
+      "status": "left",
+      "startedAt": "2026-11-25T22:00:51.192Z",
+      "endedAt": "2026-11-25T22:00:51.193Z",
+      "check": null,
+      "proof": null,
+      "retries": [],
+      "leftWhy": "no reference was given"
+    },
+    {
+      "name": "make-changes",
+      "status": "done",
+      "startedAt": "2026-11-25T22:00:51.260Z",
+      "endedAt": "2026-11-25T22:02:21.402Z",
+      "check": "every row checked, compare clean, design check has no P1",
+      "proof": "loop-runs/product-design-loop-20261126-032658/change-checks.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "sweep",
+      "status": "done",
+      "startedAt": "2026-11-25T22:02:26.064Z",
+      "endedAt": "2026-11-25T22:02:51.877Z",
+      "check": "every rule found no place left; compare clean, or no file changed",
+      "proof": "loop-runs/product-design-loop-20261126-032658/sweep.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "review",
+      "status": "done",
+      "startedAt": "2026-11-25T22:02:56.708Z",
+      "endedAt": "2026-11-25T22:04:23.852Z",
+      "check": "fresh agent says PASS, spec 5, quality 4, model claude-sonnet-5-5",
+      "proof": "loop-runs/product-design-loop-20261126-032658/review.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "handover",
+      "status": "done",
+      "startedAt": "2026-11-25T22:04:23.981Z",
+      "endedAt": "2026-11-25T22:04:40.893Z",
+      "check": "handover.md written",
+      "proof": "loop-runs/product-design-loop-20261126-032658/handover.md",
+      "retries": [],
+      "leftWhy": null
+    }
+  ],
+  "held": [],
+  "decisions": 2,
+  "replies": 1
+}

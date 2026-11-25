@@ -1,0 +1,124 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-10",
+  "ask": "turn notes.md into a short pitch deck for Spotify's ad sales team - 6 slides, PDF only",
+  "expected_track": "quick",
+  "notes": "Short pitch with count, output and goal given. Quick track (HTML deck, PDF, no pptx) matches 'PDF only'.",
+  "must_cover": [
+    "goal|pitch",
+    "slide count|6",
+    "pdf",
+    "reader|ad sales",
+    "claims|customers"
+  ],
+  "findable": [
+    "slide count|how many slides",
+    "output|format|powerpoint",
+    "goal|what the deck is for",
+    "what we offer|claims"
+  ],
+  "fixtures": [
+    "notes.md"
+  ],
+  "message": "**Goal:** a 6-slide pitch that gets Spotify's ad sales team to say yes to a free Soundcheck pilot on 3 Spotify ad campaigns in Q1.\n\n**Found:**\n- Soundcheck measures brand lift from audio ads within 48 hours, using a 6-question survey after the ad, and works with podcasts and music streaming (from `notes.md`).\n- Customers we may name: iHeartMedia (pilot) and Acast (live) (from `notes.md`).\n- The ask: a free pilot on 3 Spotify ad campaigns in Q1 (from `notes.md`).\n- The deck is 6 slides and the only file you get is a PDF, `decks/spotify-20261126/out/deck.pdf` (from your message).\n- The notes give no lift numbers, so the deck will state none. Spotify facts will come from public pages, each with a link.\n- Web search works here, and the tools to make the PDF are ready.\n\n**Track:** quick, because you asked for a short deck, 6 slides and a PDF only.\n\nStill open after reading your files: who will be in the room, and what the reader must take to the next person.\n\nAbout 15 minutes and 4 helper agents, within a budget of 90 minutes.\n\nThe full brief is in `loop-runs/product-deck-loop-20261126-035402/brief.md`.\n\n**Done means:**\n- 6 main slides, one idea each, ending on the pilot ask\n- `deck.pdf` opens and has 6 pages\n- Every line cites `notes.md` or a public source link\n- No result or number that is not in your notes\n- Every review finding is fixed, or left with why\n\n**Questions**\n\n1. Who in Spotify ad sales will read this, and who must they convince next?\n   Recommended: ad sales leaders, who must win the head of ad partnerships, who approves a free pilot and cares about advertiser renewals and risk.\n   Why it matters: it sets what the last slide has to help them say upward.\n\n2. What is the one idea the deck argues?\n   Recommended: \"Show advertisers audio works, within 48 hours, so your sellers close more audio budgets.\"\n   Why it matters: every slide is chosen to build this one idea.\n\n3. May we name iHeartMedia and Acast, and how far may we describe them?\n   Recommended: name both as in your notes, \"pilot\" and \"live\", and say nothing about their results.\n   Why it matters: a customer name or result you cannot stand behind costs trust in the room.\n\n4. Is this a first meeting that you present live, or a deck sent to read?\n   Recommended: a first meeting, presented live, so slides stay short and the talking goes in the speaker notes.\n   Why it matters: a deck sent to read needs full sentences on the slide.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Who in Spotify ad sales will read this, and who must they convince nex | 2. What is the one idea the deck argues? | 3. May we name iHeartMedia and Acast, and how far may we describe them? | 4. Is this a first meeting that you present live, or a deck sent to read?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 4 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 15 minutes and 4 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: who will be in the room, and what the reader must take to the next person."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 442,
+      "evidence": "442 words, 245 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because you asked for a short deck, 6 slides and a PDF only."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 442,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles goal (\"get Spotify's ad sales team to say yes to a free Soundcheck pilot\"), 6 slides, PDF only, reader (Q1) and claims (Q3 on naming iHeartMedia and Acast).",
+      "no_redundancy": "States slide count, output and offer as found facts, but Q2 \"What is the one idea the deck argues?\" partly re-asks the goal already given in the brief.",
+      "defaults_quality": "Every question has a concrete default, e.g. \"name both as in your notes, 'pilot' and 'live', and say nothing about their results\".",
+      "clarity": "Four plain, single-topic questions with defaults, but they sit under a long brief (Found, Track, budget, Done means) that slows a busy reader.",
+      "respects_words": "Keeps \"6 slides\" and \"the only file you get is a PDF\", and picks a quick track \"because you asked for a short deck\".",
+      "overall": "Strong opening: faithful brief, no invented numbers, answerable with \"go\"; slightly long, and Q2 overlaps the stated goal."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.325Z"
+}

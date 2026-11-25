@@ -1,0 +1,119 @@
+{
+  "arm": "baseline",
+  "loop": "build",
+  "case": "build-05",
+  "ask": "need prototype. school canteen pre-order. parents order + pay, kitchen see count per dish by 10am. india. mobile first",
+  "expected_track": "full",
+  "notes": "Terse, non-native voice, two personas, a market (India: rupees, UPI), a cut-off time and mobile first. Payment is fake in a prototype and should be stated, not asked as a real money step.",
+  "must_cover": [
+    "persona|parent|kitchen",
+    "module",
+    "pay|payment",
+    "phone|mobile",
+    "currency|rupee|₹|inr",
+    "10am|cut-off|cutoff",
+    "how deep|in full|depth"
+  ],
+  "findable": [],
+  "fixtures": [],
+  "message": "## Brief (draft, nothing built yet)\n\n**Goal:** a clickable, mobile-first web prototype of a school canteen pre-order product for India. Parents order and pay. The kitchen sees the count per dish by 10am.\n\n**Your words:** \"need prototype. school canteen pre-order. parents order + pay, kitchen see count per dish by 10am. india. mobile first\"\n\n**Working folder:** empty, so this is a new product. It will go in `<working folder>/school-canteen/` as one `index.html` with its CSS and JS inside.\n\n**Browser for click checks:** found (chrome-headless-shell), so every click will be checked, not only page loads.\n\n**Requests on the list:**\n- R1 the whole ask\n- R2 parents order\n- R3 parents pay\n- R4 kitchen sees count per dish by 10am\n- R5 India: prices in rupees, UPI, Indian school setting\n- R6 mobile first\n\n**Stop fact:** every module is built and reviewed with no P1 left, every link opens and every click works, and no request is open.\n\n## Questions\n\n1. **Who uses it, and the one job they come to do.** My guess, not your answer: two people. A parent orders and pays for a child's meals before the school day. A canteen kitchen lead sees how many of each dish to cook. Default: these two.\n2. **Modules, in build order, and what each must have.** My guess:\n   1. Parent: menu and order. Pick child, pick day, dishes with rupee prices, cart, cutoff time.\n   2. Parent: pay and orders. UPI pay screen, order confirmed, my orders, cancel before the cutoff.\n   3. Kitchen: count per dish. Totals per dish for a day, split by class, the 10am cutoff.\n   \n   Default: these three.\n3. **The 10am rule.** Is 10am the time the kitchen needs the final count, or the time parents must order by? Does an order placed after it go to the next day? Default: 10am is the parents' cutoff, the day before. After it, ordering for that day is closed. The kitchen sees the final count from then on.\n4. **How deep.** Which modules are built in full, and which are only a titled page. Default: all three in full.\n5. **Payment.** UPI only, or also cards, wallets and cash? Default: UPI only, with a simulated pay screen (no real payment).\n6. **Screens or products to follow, exact or flow only.** Default: none, flow only.\n7. **Look.** Logo, colours and fonts. Default: a plain, clean look in English. Rupee prices. Phone-width layout first, then it widens for a desktop kitchen screen.\n8. **Name.** A name you have, or 3 options to pick from later? Default: 3 options, the first one used.\n9. **Extras.** Photos of dishes or people, two versions behind a key, a PDF guide, a public link. Default: none of them. Dishes use plain colour tiles, and the product stays on this laptop.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 10,
+      "evidence": "1. Parent: menu and order. Pick child, pick day, dishes with rupee prices | 2. Parent: pay and orders. UPI pay screen, order confirmed, my orders, ca | 3. Kitchen: count per dish. Totals per dish for a day, split by class, th | 3. The 10am rule. Is 10am the time the kitchen needs the final count, or  | 4. How deep. Which modules are built in full, and which are only a titled | 5. Payment. UPI only, or also cards, wallets and cash? Default: UPI only, | 6. Screens or products to follow, exact or flow only. Default: none, flow | 7. Look. Logo, colours and fonts. Default: a plain, clean look in English | 8. Name. A name you have, or 3 options to pick from later? Default: 3 opt | 9. Extras. Photos of dishes or people, two versions behind a key, a PDF g"
+    },
+    "asked_le_7": {
+      "pass": false,
+      "value": 10,
+      "evidence": "10 questions"
+    },
+    "every_question_has_default": {
+      "pass": false,
+      "evidence": "no default on: 1, 2"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 10"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "13 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 476,
+      "evidence": "476 words, 158 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 476,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 7,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles persona (Q1), modules (Q2), payment (Q5 'UPI only, simulated'), mobile (R6, Q7), rupees (R5), 10am cutoff (Q3) and depth (Q4 'all three in full').",
+      "no_redundancy": "Q1 re-asks who uses it though the ask names parents and kitchen, but frames it as 'My guess' with that answer; nothing else could be found.",
+      "defaults_quality": "Every question has a concrete default, e.g. 'UPI only, with a simulated pay screen' and the three modules with contents; 'go' gives a usable result.",
+      "clarity": "Nine numbered questions plus a long brief; plain words and one topic each, but more than a busy person answers in two minutes and Q3 bundles two sub-questions.",
+      "respects_words": "Keeps mobile first and India, but default '10am is the parents' cutoff, the day before' stretches 'kitchen see count per dish by 10am', which reads as a same-day 10am count.",
+      "overall": "Strong, complete intake with good defaults; weakened by length and a 10am default that may not match what the person meant."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.358Z"
+}

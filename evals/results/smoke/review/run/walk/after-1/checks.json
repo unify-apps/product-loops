@@ -1,0 +1,127 @@
+{
+  "url": "http://127.0.0.1:57105/index.html",
+  "browser": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "width": 1440,
+  "clicks": true,
+  "phone": true,
+  "when": "2026-11-25T22:04:17.184Z",
+  "screens": [
+    {
+      "name": "Today",
+      "open": "#/today",
+      "screenshot": "loop-runs/product-review-loop-20261126-032657/walk/after-1/01-today.png",
+      "phoneScreenshot": "loop-runs/product-review-loop-20261126-032657/walk/after-1/01-today.phone.png",
+      "consoleErrors": [],
+      "findings": [],
+      "words": [
+        "Today",
+        "Clients",
+        "Invoices",
+        "Settings",
+        "Today, Thursday 26 November",
+        "New appointment",
+        "Time",
+        "Client",
+        "Therapist",
+        "Type",
+        "Room"
+      ],
+      "clicksTried": 4,
+      "error": null,
+      "title": "Today, Thursday 26 November",
+      "textKey": "403:272743bf9c22"
+    },
+    {
+      "name": "Clients",
+      "open": "#/clients",
+      "screenshot": "loop-runs/product-review-loop-20261126-032657/walk/after-1/02-clients.png",
+      "phoneScreenshot": "loop-runs/product-review-loop-20261126-032657/walk/after-1/02-clients.phone.png",
+      "consoleErrors": [],
+      "findings": [],
+      "words": [
+        "Today",
+        "Clients",
+        "Invoices",
+        "Settings",
+        "Customers",
+        "Name",
+        "Phone",
+        "Last visit",
+        "Visits"
+      ],
+      "clicksTried": 3,
+      "error": null,
+      "title": "Customers",
+      "textKey": "307:15ba957f2481"
+    },
+    {
+      "name": "Invoices",
+      "open": "#/invoices",
+      "screenshot": "loop-runs/product-review-loop-20261126-032657/walk/after-1/03-invoices.png",
+      "phoneScreenshot": "loop-runs/product-review-loop-20261126-032657/walk/after-1/03-invoices.phone.png",
+      "consoleErrors": [],
+      "findings": [],
+      "words": [
+        "Today",
+        "Clients",
+        "Invoices",
+        "Settings",
+        "Number",
+        "Client",
+        "Date",
+        "Amount",
+        "Status"
+      ],
+      "clicksTried": 3,
+      "error": null,
+      "title": "Invoices",
+      "textKey": "276:385fc2526793"
+    },
+    {
+      "name": "Settings",
+      "open": "#/settings",
+      "screenshot": "loop-runs/product-review-loop-20261126-032657/walk/after-1/04-settings.png",
+      "phoneScreenshot": "loop-runs/product-review-loop-20261126-032657/walk/after-1/04-settings.phone.png",
+      "consoleErrors": [],
+      "findings": [
+        {
+          "kind": "placeholder",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i",
+          "where": "#app > div.card > p.muted:nth-of-type(1)",
+          "detail": "text: \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i\""
+        },
+        {
+          "kind": "uneven-spacing",
+          "text": "Booking policy",
+          "where": "#app > div.card > label:nth-of-type(3)",
+          "detail": "gap after it is 48px, the other gaps are 52px"
+        }
+      ],
+      "words": [
+        "Today",
+        "Clients",
+        "Invoices",
+        "Settings",
+        "Clinic name",
+        "Opening hours",
+        "Booking policy",
+        "Reminder texts",
+        "Save changes"
+      ],
+      "clicksTried": 4,
+      "error": null,
+      "title": "Settings",
+      "textKey": "285:7c5cf6d88975"
+    }
+  ],
+  "crossScreen": [
+    {
+      "kind": "mixed-words",
+      "text": "Clients / Client",
+      "where": "\"Clients\" on Today; \"Clients\" on Clients; \"Clients\" on Invoices; \"Clients\" on Settings; \"Client\" on Today; \"Client\" on Invoices",
+      "detail": "one name written two ways"
+    }
+  ],
+  "blocked": [],
+  "warnings": []
+}

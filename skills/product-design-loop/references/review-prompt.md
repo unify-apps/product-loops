@@ -14,6 +14,8 @@ real pages, not the run's own notes about them. Do not edit the prototype. Do no
 - The page tool: <CHECK in full>. Its commands: `capture`, `compare`, `click`, `eval` (run `help` for the options).
   To try a form, use one `eval` that sets each field's `value`, clicks the submit button, and returns what changed.
 - Design rules: <the design review skill to run with the Skill tool, or the path to design-check.md>
+- The rubric: `<skill folder>/shared/review-rubric.md`. Follow it as well: two scores, and `<RUN>/review.json`
+  with one item per line of this stop-fact table: <paste `STATE stop-fact status`>.
 
 Do these, in order:
 
@@ -57,11 +59,12 @@ Proposals: <faults you saw that no row names, or none>
 Reason: <one line>
 ```
 
-Writing `review.md` is your last step. End your turn right after it: the run waits on you.
+Then write `<RUN>/review.json` as the rubric says. Writing the two files is your last step. End your turn
+right after it: the run waits on you.
 
 The first line is exactly PASS or FAIL. PASS only when the link answers 200, the compare has no UNEXPECTED and no
 BROKEN screen, every difference on screen and in the code traces to a row, every row's check passes, and there
-is no P1.
+is no P1, and the rubric's verdict is PASS.
 
 ## Retry
 

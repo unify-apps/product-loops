@@ -1,0 +1,118 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-02",
+  "ask": "quick look at how Notion, Coda and Slite do templates. just a feature list, nothing fancy",
+  "expected_track": "quick",
+  "notes": "Small, clear scope: a feature list of three named rivals. Quick track (3 rivals, 2 source kinds). The persona only ranks modules here and matters little; a good intake keeps the round short.",
+  "must_cover": [
+    "decision|feature list|matrix|sheet",
+    "sources|kinds|help centre|product pages",
+    "groups|categories",
+    "persona|who uses"
+  ],
+  "findable": [
+    "rivals|competitors|which products"
+  ],
+  "fixtures": [],
+  "message": "**Goal:** a feature list of how Notion, Coda and Slite do templates.\n\n**Found:**\n- Rivals: Notion, Coda and Slite, all named in your message.\n- Main output: a feature sheet (Excel and CSV), as you asked for \"just a feature list\".\n- It will land in `research/templates-notion-coda-slite/` in this folder, and nothing is published or sent.\n- It is for deciding what our own template feature should include (assumed, as no product was named).\n- Sources: public product pages and help centre pages only, no sign-in.\n- Web search and page reads work.\n\n**Track:** quick, because you said \"quick look\" and \"nothing fancy\": the 3 rivals you named, up to 12 pages each. The proof step and a fresh review still run.\n\nStill open after reading your files: what we are building, who it is for.\n\n**Done means:**\n- Excel and CSV sheet covering Notion, Coda and Slite.\n- At least 5 template features read per rival.\n- Every yes or partial has a link from that rival's own pages.\n- Every \"nobody has it\" claim is checked on each rival's site.\n- The brief ends with a ranked list of features.\n\nFull brief: `loop-runs/product-research-loop-20261126-035043/brief.md`\n\nAbout 15 minutes and 8 helper agents, within a budget of 90 minutes.\n\n1. What is our product, and what do templates do in it?\n   Recommended: a shared docs and wiki tool for small teams, where templates start a new page.\n   Why it matters: it decides which features count as relevant for us.\n2. Who uses it every day?\n   Recommended: a team lead who sets up shared pages for a small team.\n   Why it matters: the person only ranks the features, no feature is taken out of the sheet.\n3. Which should the brief lead with: catching up with the three, or ideas none of them has?\n   Recommended: both, with a short list of ideas none of them has.\n   Why it matters: it sets what goes first in the ranked list.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. What is our product, and what do templates do in it? | 2. Who uses it every day? | 3. Which should the brief lead with: catching up with the three, or ideas"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 3, Why it matters: on 3, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 1 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.75,
+      "evidence": "missing: groups"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 15 minutes and 8 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what we are building, who it is for."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 337,
+      "evidence": "337 words, 208 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because you said \"quick look\" and \"nothing fancy\": the 3 rivals you named, up to 12 pages each. The proof step and a fresh"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 337,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 7,
+      "no_redundancy": 9,
+      "defaults_quality": 8,
+      "clarity": 7,
+      "respects_words": 6,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles the sheet (\"a feature sheet (Excel and CSV)\"), sources (\"public product pages and help centre pages only\") and persona (Q2), but never says how features will be grouped or categorised.",
+      "no_redundancy": "Rivals are stated, not asked (\"all named in your message\"); the three questions are about things the empty folder cannot answer.",
+      "defaults_quality": "Each question has a concrete default (\"a shared docs and wiki tool for small teams\", \"a team lead who sets up shared pages\"), but Q3's default \"both\" adds work to a quick look.",
+      "clarity": "Three short numbered questions with defaults and a 'go' option, but the brief before them has extra detail (helper agents, budget, proof step, brief path) that a busy person has to read past.",
+      "respects_words": "Keeps \"quick\", but \"just a feature list, nothing fancy\" turns into \"The brief ends with a ranked list of features\" and Q3 on \"ideas none of them has\", which goes past a plain list.",
+      "overall": "A solid opening that asks the right unknowns with usable defaults, but it adds ranking and gap ideas the person did not ask for and leaves feature groups unsettled."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.240Z"
+}

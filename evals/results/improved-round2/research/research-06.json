@@ -1,0 +1,121 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-06",
+  "ask": "Precisamos decidir os módulos de um app de estoque para farmácias no Brasil. Rivals? not sure, find them. Portuguese sources are fine.",
+  "expected_track": "full",
+  "notes": "Mixed Portuguese and English. Market and source language are given. Rivals must be found. A good intake answers in the person's mix or plain English, names a rival-finding default, and may flag local rules (ANVISA, controlled drugs).",
+  "must_cover": [
+    "decision|modules|módulos",
+    "market|brasil|brazil",
+    "rivals|find",
+    "sources|portuguese|português",
+    "persona|pharmacist|farmacêutico|who uses",
+    "rules|anvisa|regulation"
+  ],
+  "findable": [
+    "market|country|region",
+    "sources|language|portuguese"
+  ],
+  "fixtures": [],
+  "message": "**Objetivo:** decidir quais módulos um app de estoque para farmácias no Brasil deve ter, em ordem de construção, com base em pesquisa de concorrentes.\n\n**Encontrado:**\n- Mercado: Brasil. Fontes em português aceitas (da sua mensagem).\n- Concorrentes: você não citou nenhum. Pela busca, os candidatos são Trier Sistemas, Linx (PDV e sistema para farmácias) e FarMoura (JN Moura). A página inicial da Trier abriu e lista módulos de estoque e validade, SNGPC, compras e fiscal.\n- Hoje o app não tem nada (produto novo): toda linha da planilha será \"lacuna\" ou \"vantagem\".\n- Fontes: só páginas públicas, sem login, sem cadastro em site de concorrente. Nada será publicado ou enviado.\n- Entregas: planilha Excel e CSV, mais um brief com a lista de módulos ranqueada. Pasta: `research/modulos-estoque-farmacia-br/`.\n\n**Faixa:** completa, porque o mercado tem exigências próprias (SNGPC, notas fiscais, validade e lote) e a lista deve ser sólida.\n**Coverage:** 3 clear · partial: Who and their job, Words with no number · missing: Done signal (o resto usa o padrão)\n\n**Pronto quando:**\n- Planilha .xlsx e .csv existem, e o Excel bate com o CSV.\n- 3 concorrentes, cada um com pelo menos 5 linhas lidas nas páginas dele.\n- Todo \"sim\" ou \"parcial\" tem link do próprio site do concorrente.\n- Toda linha de vantagem foi buscada no site de cada concorrente.\n- O brief termina numa lista de módulos ranqueada, citando linhas da planilha.\n\nAbout 60 minutes and 8 helper agents, within a budget of 90 minutes.\n\n**Perguntas**\n\n1. Quem usa o app todo dia e qual é o trabalho principal dessa pessoa?\n   Recomendado: o farmacêutico-dono de uma farmácia independente, que confere estoque e validade todo dia.\n   Por que importa: a persona define qual módulo vem primeiro (ela só ordena, nunca tira uma linha da planilha).\n\n2. Quais concorrentes estudar?\n   Recomendado: Trier Sistemas, Linx e FarMoura (até 5, se você indicar mais).\n   Por que importa: a lista de módulos sai do que esses produtos oferecem.\n\n3. O brief deve priorizar alcançar os concorrentes ou ideias que nenhum deles tem?\n   Recomendado: os dois: módulos para alcançar primeiro, e uma seção com pelo menos 3 ideias novas.\n   Por que importa: muda o que fica no topo da lista.\n\n4. Quantos módulos entram na primeira versão?\n   Recomendado: os 3 primeiros da lista.\n   Por que importa: define onde o corte da lista é feito.\n\n5. Algum módulo é obrigatório, ou algo fica de fora (por exemplo SNGPC, fiscal, PDV)?\n   Recomendado: nenhum obrigatório e nenhum excluído; a pesquisa decide.\n   Por que importa: um módulo obrigatório entra na lista mesmo que os concorrentes o tratem como secundário.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Quem usa o app todo dia e qual é o trabalho principal dessa pessoa? | 2. Quais concorrentes estudar? | 3. O brief deve priorizar alcançar os concorrentes ou ideias que nenhum d | 4. Quantos módulos entram na primeira versão? | 5. Algum módulo é obrigatório, ou algo fica de fora (por exemplo SNGPC, f"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": false,
+      "evidence": "no default on: 1, 2, 3, 4, 5"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.667,
+      "evidence": "missing: rivals, rules"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 8 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 3 clear · partial: Who and their job, Words with no number · missing: Done signal (o resto usa o padrão)"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 443,
+      "evidence": "443 words, 249 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 443,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles decision, market, rivals (Trier, Linx, FarMoura), sources and persona (Q1); rules come in only through 'SNGPC, notas fiscais, validade e lote', and ANVISA is never named.",
+      "no_redundancy": "Market and sources are stated as found ('Mercado: Brasil. Fontes em português aceitas'), not asked; Q2 re-asks rivals the person said to find, though it gives found ones as the default.",
+      "defaults_quality": "Every question has a concrete default, e.g. 'o farmacêutico-dono de uma farmácia independente' and 'os 3 primeiros da lista'.",
+      "clarity": "Five short, plain questions with the persona first, but a jargon English line ('Coverage: 3 clear · partial: Who and their job...') and mixed languages add noise.",
+      "respects_words": "Keeps Brazil, Portuguese sources and 'find them' (it searched and proposes rivals); nothing goes against the ask.",
+      "overall": "A strong opening with a clear brief, found rivals and good defaults; small marks off for the redundant rivals question, the jargon line and rules that are only implied."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.833Z"
+}

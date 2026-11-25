@@ -1,0 +1,8 @@
+{"items":[
+{"id":"S1","passes":true,"evidence":"re-ran row checks: greps on final/*.txt and clinic/index.html, eval of td padding on today/customers/invoices"},
+{"id":"S2","passes":true,"evidence":"re-ran sweep finds on clinic/index.html and grep on final/*.txt: no match"},
+{"id":"S3","passes":true,"evidence":"page-check compare: same 0, explained 5, UNEXPECTED 0, BROKEN 0; compare-final.md"},
+{"id":"S4","passes":true,"evidence":"diff before/source/index.html vs clinic/index.html: 6 changed lines, all trace to rows 1, 2, 4"},
+{"id":"S5","passes":true,"evidence":"curl http://localhost:4100/ printed 200"}],
+"spec":5,"quality":4,"verdict":"PASS","findings":[
+{"level":"P3","what":"New appointment button dead, Settings lorem ipsum, Invoices Overdue empty with no words (pre-existing, no row)","fix":"see Proposals in requests.md"}]}

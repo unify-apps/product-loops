@@ -1,0 +1,123 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-03",
+  "ask": "add a loyalty points module to the bakery prototype in shop/. customers earn 1 point per £1, 10 points = a free coffee",
+  "expected_track": "quick",
+  "notes": "Existing product in shop/ (plain HTML, README says how it runs). The points rule is given. A good intake does not ask which product or how points work; it may ask about redeeming with too few points and where the module sits.",
+  "must_cover": [
+    "persona|customer|who uses",
+    "where|nav|screen",
+    "redeem|free coffee",
+    "how deep|in full|depth|edge|not enough points"
+  ],
+  "findable": [
+    "which product|existing product|new product|which prototype",
+    "how it runs|server|dev script",
+    "points rule|per £1|points per"
+  ],
+  "fixtures": [
+    "shop/README.md",
+    "shop/index.html"
+  ],
+  "message": "**Goal:** add a Loyalty module to the Crumb & Co prototype in `shop/`: customers earn 1 point per £1, and 10 points get a free coffee.\n\n**Found:**\n- Existing product at `shop/index.html`: one file with its CSS and JS inside, three screens (Menu, Basket, My orders), hash routes (from the file and `shop/README.md`).\n- Customers order ahead and collect in the shop, so the person using it is a Crumb & Co customer (from `shop/README.md`).\n- The only coffee on the menu is the Flat white at £3.10; the Pay button does nothing yet (from `shop/index.html`).\n- My orders shows two past orders, £7.60 and £4.50 (from `shop/index.html`).\n- Look: the shop's own brown and orange style, reused as is (from `shop/index.html`).\n- Browser for click checks: chrome-headless-shell, so clicks will really be checked.\n\n**Track:** quick, because it is one module on a product that already has its name and look. Quick builds the Loyalty page as one page in the shell, with no name options and no extra demo states.\n\n**Coverage:** 5 clear · partial: Main flow, Edge cases · missing: Words with no number (\"1 point per £1\" on £7.60)\n\n**Done means:**\n- Loyalty module built: a points balance and a Loyalty route in the menu.\n- Paying a basket adds 1 point per £1.\n- 10 points can be spent on a free coffee.\n- Every link opens, with no dead click and no page error.\n- No P1 left in the last review round.\n\nThe full brief, with the coverage table, is written to `brief.md` in the run folder when you reply.\n\nAbout 60 minutes and 5 helper agents, within a budget of 120 minutes.\n\n1. Does a part pound earn a part point? A £7.60 basket gives either 7 points or 7.6.\n   Recommended: whole points only, rounded down per order (£7.60 gives 7).\n   Why it matters: it decides what the balance shows and when the 10th point lands.\n\n2. When do points arrive?\n   Recommended: when the person presses Pay, which then empties the basket and shows \"You earned 7 points\". Today Pay does nothing.\n   Why it matters: this adds behaviour to a button that is only a placeholder now.\n\n3. How is the free coffee claimed?\n   Recommended: a \"Free coffee\" button on the Loyalty page and in the Basket takes the Flat white's £3.10 off and costs 10 points. It is greyed out under 10 points.\n   Why it matters: the Flat white is the only coffee, so the choice is between a discount line and adding a free item.\n\n4. What balance does a customer start with?\n   Recommended: 11 points, from the two sample orders (7 + 4), so one free coffee can be shown straight away.\n   Why it matters: a balance of 0 makes the free coffee impossible to demo.\n\n5. Does the free coffee earn points?\n   Recommended: no, points are earned only on what is paid (£0 earns 0).\n   Why it matters: it stops a free coffee from feeding the next one.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Does a part pound earn a part point? A £7.60 basket gives either 7 poi | 2. When do points arrive? | 3. How is the free coffee claimed? | 4. What balance does a customer start with? | 5. Does the free coffee earn points?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 5 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 5 clear · partial: Main flow, Edge cases · missing: Words with no number (\"1 point per £1\" on £7.60)"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 510,
+      "evidence": "510 words, 279 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because it is one module on a product that already has its name and look. Quick builds the Loyalty page as one page in the"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 510,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Persona settled in Found (\"the person using it is a Crumb & Co customer\"), where in Done means (\"a Loyalty route in the menu\"), redeem in Q3, depth via Track quick and \"greyed out under 10 points\"; edge depth beyond that is thin.",
+      "no_redundancy": "Product, how it runs and the points rule are stated in Goal/Found, not asked; Q1 asks only the real gap (\"Does a part pound earn a part point?\").",
+      "defaults_quality": "Every question has a specific, demo-aware default, e.g. \"whole points only, rounded down per order (£7.60 gives 7)\" and \"11 points, from the two sample orders\".",
+      "clarity": "Five short one-topic questions with reasons, but the brief carries jargon and noise (\"Coverage: 5 clear · partial\", \"No P1\", \"chrome-headless-shell\").",
+      "respects_words": "Keeps \"1 point per £1\" and \"10 points = a free coffee\" exactly, builds in shop/ with its own look; defaults only fill gaps.",
+      "overall": "A strong, grounded intake that settles the key decisions with good defaults; slightly long and jargon-heavy for a busy person."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.252Z"
+}

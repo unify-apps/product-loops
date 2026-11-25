@@ -1,0 +1,1360 @@
+{
+  "format": "slides",
+  "size": [
+    13.333,
+    7.5
+  ],
+  "slides": [
+    {
+      "slide": 1,
+      "layout": "title",
+      "part": "main",
+      "ops": [
+        {
+          "op": "rect",
+          "x": 0.75,
+          "y": 2.25,
+          "w": 1.2,
+          "h": 0.08,
+          "fill": "1F4E79"
+        },
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 2.55,
+          "w": 11.833,
+          "h": 1.6,
+          "paragraphs": [
+            "Fewer no-shows at Bright Smiles Dental"
+          ],
+          "font": "Arial",
+          "pt": 44,
+          "color": "1F2328",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "title",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.733
+        },
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 4.35,
+          "w": 11.833,
+          "h": 1.2,
+          "paragraphs": [
+            "Clinic Scheduler: a first conversation with Priya Nair, COO"
+          ],
+          "font": "Arial",
+          "pt": 22,
+          "color": "59636E",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.367
+        }
+      ]
+    },
+    {
+      "slide": 2,
+      "layout": "numbers",
+      "part": "main",
+      "ops": [
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 0.55,
+          "w": 11.833,
+          "h": 0.75,
+          "paragraphs": [
+            "About 9% of your appointments are no-shows"
+          ],
+          "font": "Arial",
+          "pt": 30,
+          "color": "1F2328",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "title",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.5
+        },
+        {
+          "op": "rect",
+          "x": 0.75,
+          "y": 1.65,
+          "w": 5.7415,
+          "h": 2.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "text",
+          "x": 1.0,
+          "y": 1.95,
+          "w": 5.2415,
+          "h": 1.0,
+          "paragraphs": [
+            "40"
+          ],
+          "font": "Arial",
+          "pt": 44,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "figure",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.733
+        },
+        {
+          "op": "text",
+          "x": 1.0,
+          "y": 3.0999999999999996,
+          "w": 5.2415,
+          "h": 0.75,
+          "paragraphs": [
+            "Clinics in England and Wales"
+          ],
+          "font": "Arial",
+          "pt": 18,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.3
+        },
+        {
+          "op": "rect",
+          "x": 6.8415,
+          "y": 1.65,
+          "w": 5.7415,
+          "h": 2.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "text",
+          "x": 7.0915,
+          "y": 1.95,
+          "w": 5.2415,
+          "h": 1.0,
+          "paragraphs": [
+            "About 9%"
+          ],
+          "font": "Arial",
+          "pt": 44,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "figure",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.733
+        },
+        {
+          "op": "text",
+          "x": 7.0915,
+          "y": 3.0999999999999996,
+          "w": 5.2415,
+          "h": 0.75,
+          "paragraphs": [
+            "Of appointments are no-shows, as you told us"
+          ],
+          "font": "Arial",
+          "pt": 18,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.3
+        },
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 4.45,
+          "w": 11.833,
+          "h": 2.45,
+          "paragraphs": [
+            "You told us this figure yourselves",
+            "How many appointments does one clinic book in a month?"
+          ],
+          "font": "Arial",
+          "pt": 20,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": true,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 2,
+          "fits": true,
+          "one_line": false,
+          "used": 0.833
+        }
+      ]
+    },
+    {
+      "slide": 3,
+      "layout": "steps",
+      "part": "main",
+      "ops": [
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 0.55,
+          "w": 11.833,
+          "h": 0.75,
+          "paragraphs": [
+            "Clinic Scheduler books, reminds and refills slots"
+          ],
+          "font": "Arial",
+          "pt": 30,
+          "color": "1F2328",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "title",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.5
+        },
+        {
+          "op": "rect",
+          "x": 0.75,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 3.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "rect",
+          "x": 0.75,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 0.08,
+          "fill": "1F4E79"
+        },
+        {
+          "op": "text",
+          "x": 0.95,
+          "y": 1.95,
+          "w": 3.3110000000000004,
+          "h": 0.9,
+          "paragraphs": [
+            "1. Book"
+          ],
+          "font": "Arial",
+          "pt": 19,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "heading",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.317
+        },
+        {
+          "op": "text",
+          "x": 0.95,
+          "y": 2.95,
+          "w": 3.3110000000000004,
+          "h": 1.8999999999999997,
+          "paragraphs": [
+            "Patients book a slot online"
+          ],
+          "font": "Arial",
+          "pt": 17,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.283
+        },
+        {
+          "op": "rect",
+          "x": 4.811,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 3.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "rect",
+          "x": 4.811,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 0.08,
+          "fill": "1F4E79"
+        },
+        {
+          "op": "text",
+          "x": 5.011,
+          "y": 1.95,
+          "w": 3.3110000000000004,
+          "h": 0.9,
+          "paragraphs": [
+            "2. Remind"
+          ],
+          "font": "Arial",
+          "pt": 19,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "heading",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.317
+        },
+        {
+          "op": "text",
+          "x": 5.011,
+          "y": 2.95,
+          "w": 3.3110000000000004,
+          "h": 1.8999999999999997,
+          "paragraphs": [
+            "Patients get a text reminder"
+          ],
+          "font": "Arial",
+          "pt": 17,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.283
+        },
+        {
+          "op": "rect",
+          "x": 8.872,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 3.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "rect",
+          "x": 8.872,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 0.08,
+          "fill": "1F4E79"
+        },
+        {
+          "op": "text",
+          "x": 9.072,
+          "y": 1.95,
+          "w": 3.3110000000000004,
+          "h": 0.9,
+          "paragraphs": [
+            "3. Refill"
+          ],
+          "font": "Arial",
+          "pt": 19,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "heading",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.317
+        },
+        {
+          "op": "text",
+          "x": 9.072,
+          "y": 2.95,
+          "w": 3.3110000000000004,
+          "h": 1.8999999999999997,
+          "paragraphs": [
+            "The waitlist fills cancelled slots"
+          ],
+          "font": "Arial",
+          "pt": 17,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.283
+        }
+      ]
+    },
+    {
+      "slide": 4,
+      "layout": "numbers",
+      "part": "main",
+      "ops": [
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 0.55,
+          "w": 11.833,
+          "h": 0.75,
+          "paragraphs": [
+            "No-shows fell from 8% to 5% in our pilot"
+          ],
+          "font": "Arial",
+          "pt": 30,
+          "color": "1F2328",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "title",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.5
+        },
+        {
+          "op": "rect",
+          "x": 0.75,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 2.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "text",
+          "x": 1.0,
+          "y": 1.95,
+          "w": 3.2110000000000003,
+          "h": 1.0,
+          "paragraphs": [
+            "8%"
+          ],
+          "font": "Arial",
+          "pt": 44,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "figure",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.733
+        },
+        {
+          "op": "text",
+          "x": 1.0,
+          "y": 3.0999999999999996,
+          "w": 3.2110000000000003,
+          "h": 0.75,
+          "paragraphs": [
+            "No-shows before, in our 3 pilot clinics"
+          ],
+          "font": "Arial",
+          "pt": 18,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 2,
+          "fits": true,
+          "one_line": false,
+          "used": 0.6
+        },
+        {
+          "op": "rect",
+          "x": 4.811,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 2.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "text",
+          "x": 5.061,
+          "y": 1.95,
+          "w": 3.2110000000000003,
+          "h": 1.0,
+          "paragraphs": [
+            "5%"
+          ],
+          "font": "Arial",
+          "pt": 44,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "figure",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.733
+        },
+        {
+          "op": "text",
+          "x": 5.061,
+          "y": 3.0999999999999996,
+          "w": 3.2110000000000003,
+          "h": 0.75,
+          "paragraphs": [
+            "No-shows after 3 months"
+          ],
+          "font": "Arial",
+          "pt": 18,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.3
+        },
+        {
+          "op": "rect",
+          "x": 8.872,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 2.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "text",
+          "x": 9.122,
+          "y": 1.95,
+          "w": 3.2110000000000003,
+          "h": 1.0,
+          "paragraphs": [
+            "3"
+          ],
+          "font": "Arial",
+          "pt": 44,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "figure",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.733
+        },
+        {
+          "op": "text",
+          "x": 9.122,
+          "y": 3.0999999999999996,
+          "w": 3.2110000000000003,
+          "h": 0.75,
+          "paragraphs": [
+            "Pilot clinics"
+          ],
+          "font": "Arial",
+          "pt": 18,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.3
+        },
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 4.45,
+          "w": 11.833,
+          "h": 2.45,
+          "paragraphs": [
+            "Our pilot report's estimate: a 3-point fall in 3 months",
+            "Your clinics start higher, at about 9%"
+          ],
+          "font": "Arial",
+          "pt": 20,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": true,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 2,
+          "fits": true,
+          "one_line": false,
+          "used": 0.833
+        }
+      ]
+    },
+    {
+      "slide": 5,
+      "layout": "numbers",
+      "part": "main",
+      "ops": [
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 0.55,
+          "w": 11.833,
+          "h": 0.75,
+          "paragraphs": [
+            "The same fall would bring you to about 6%"
+          ],
+          "font": "Arial",
+          "pt": 30,
+          "color": "1F2328",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "title",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.5
+        },
+        {
+          "op": "rect",
+          "x": 0.75,
+          "y": 1.65,
+          "w": 5.7415,
+          "h": 2.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "text",
+          "x": 1.0,
+          "y": 1.95,
+          "w": 5.2415,
+          "h": 1.0,
+          "paragraphs": [
+            "About 9%"
+          ],
+          "font": "Arial",
+          "pt": 44,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "figure",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.733
+        },
+        {
+          "op": "text",
+          "x": 1.0,
+          "y": 3.0999999999999996,
+          "w": 5.2415,
+          "h": 0.75,
+          "paragraphs": [
+            "Your no-shows today"
+          ],
+          "font": "Arial",
+          "pt": 18,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.3
+        },
+        {
+          "op": "rect",
+          "x": 6.8415,
+          "y": 1.65,
+          "w": 5.7415,
+          "h": 2.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "text",
+          "x": 7.0915,
+          "y": 1.95,
+          "w": 5.2415,
+          "h": 1.0,
+          "paragraphs": [
+            "About 6%"
+          ],
+          "font": "Arial",
+          "pt": 44,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "figure",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.733
+        },
+        {
+          "op": "text",
+          "x": 7.0915,
+          "y": 3.0999999999999996,
+          "w": 5.2415,
+          "h": 0.75,
+          "paragraphs": [
+            "With the same 3-point fall, our estimate"
+          ],
+          "font": "Arial",
+          "pt": 18,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.3
+        },
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 4.45,
+          "w": 11.833,
+          "h": 2.45,
+          "paragraphs": [
+            "Our estimate, not a promise: a pilot in your clinics would measure it",
+            "What does an empty slot cost one of your clinics?"
+          ],
+          "font": "Arial",
+          "pt": 20,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": true,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 2,
+          "fits": true,
+          "one_line": false,
+          "used": 0.833
+        }
+      ]
+    },
+    {
+      "slide": 6,
+      "layout": "steps",
+      "part": "main",
+      "ops": [
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 0.55,
+          "w": 11.833,
+          "h": 0.75,
+          "paragraphs": [
+            "A pilot in a few of your clinics would measure it"
+          ],
+          "font": "Arial",
+          "pt": 30,
+          "color": "1F2328",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "title",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.5
+        },
+        {
+          "op": "rect",
+          "x": 0.75,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 3.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "rect",
+          "x": 0.75,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 0.08,
+          "fill": "1F4E79"
+        },
+        {
+          "op": "text",
+          "x": 0.95,
+          "y": 1.95,
+          "w": 3.3110000000000004,
+          "h": 0.9,
+          "paragraphs": [
+            "1. Choose"
+          ],
+          "font": "Arial",
+          "pt": 19,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "heading",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.317
+        },
+        {
+          "op": "text",
+          "x": 0.95,
+          "y": 2.95,
+          "w": 3.3110000000000004,
+          "h": 1.8999999999999997,
+          "paragraphs": [
+            "We agree with you which clinics, how many, and for how long"
+          ],
+          "font": "Arial",
+          "pt": 17,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 3,
+          "fits": true,
+          "one_line": false,
+          "used": 0.85
+        },
+        {
+          "op": "rect",
+          "x": 4.811,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 3.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "rect",
+          "x": 4.811,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 0.08,
+          "fill": "1F4E79"
+        },
+        {
+          "op": "text",
+          "x": 5.011,
+          "y": 1.95,
+          "w": 3.3110000000000004,
+          "h": 0.9,
+          "paragraphs": [
+            "2. Run"
+          ],
+          "font": "Arial",
+          "pt": 19,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "heading",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.317
+        },
+        {
+          "op": "text",
+          "x": 5.011,
+          "y": 2.95,
+          "w": 3.3110000000000004,
+          "h": 1.8999999999999997,
+          "paragraphs": [
+            "Those clinics use online booking, text reminders and the waitlist"
+          ],
+          "font": "Arial",
+          "pt": 17,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 3,
+          "fits": true,
+          "one_line": false,
+          "used": 0.85
+        },
+        {
+          "op": "rect",
+          "x": 8.872,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 3.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "rect",
+          "x": 8.872,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 0.08,
+          "fill": "1F4E79"
+        },
+        {
+          "op": "text",
+          "x": 9.072,
+          "y": 1.95,
+          "w": 3.3110000000000004,
+          "h": 0.9,
+          "paragraphs": [
+            "3. Measure"
+          ],
+          "font": "Arial",
+          "pt": 19,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "heading",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.317
+        },
+        {
+          "op": "text",
+          "x": 9.072,
+          "y": 2.95,
+          "w": 3.3110000000000004,
+          "h": 1.8999999999999997,
+          "paragraphs": [
+            "We compare the no-show rate before and after"
+          ],
+          "font": "Arial",
+          "pt": 17,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 2,
+          "fits": true,
+          "one_line": false,
+          "used": 0.567
+        }
+      ]
+    },
+    {
+      "slide": 7,
+      "layout": "steps",
+      "part": "main",
+      "ops": [
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 0.55,
+          "w": 11.833,
+          "h": 0.75,
+          "paragraphs": [
+            "Next step: agree a pilot at £120 per clinic a month"
+          ],
+          "font": "Arial",
+          "pt": 30,
+          "color": "1F2328",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "title",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.5
+        },
+        {
+          "op": "rect",
+          "x": 0.75,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 3.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "rect",
+          "x": 0.75,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 0.08,
+          "fill": "1F4E79"
+        },
+        {
+          "op": "text",
+          "x": 0.95,
+          "y": 1.95,
+          "w": 3.3110000000000004,
+          "h": 0.9,
+          "paragraphs": [
+            "1. We propose"
+          ],
+          "font": "Arial",
+          "pt": 19,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "heading",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.317
+        },
+        {
+          "op": "text",
+          "x": 0.95,
+          "y": 2.95,
+          "w": 3.3110000000000004,
+          "h": 1.8999999999999997,
+          "paragraphs": [
+            "A pilot in a few of your clinics at £120 per clinic per month, list price"
+          ],
+          "font": "Arial",
+          "pt": 17,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 3,
+          "fits": true,
+          "one_line": false,
+          "used": 0.85
+        },
+        {
+          "op": "rect",
+          "x": 4.811,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 3.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "rect",
+          "x": 4.811,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 0.08,
+          "fill": "1F4E79"
+        },
+        {
+          "op": "text",
+          "x": 5.011,
+          "y": 1.95,
+          "w": 3.3110000000000004,
+          "h": 0.9,
+          "paragraphs": [
+            "2. From you"
+          ],
+          "font": "Arial",
+          "pt": 19,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "heading",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.317
+        },
+        {
+          "op": "text",
+          "x": 5.011,
+          "y": 2.95,
+          "w": 3.3110000000000004,
+          "h": 1.8999999999999997,
+          "paragraphs": [
+            "Which clinics, how many, how long, and the start date"
+          ],
+          "font": "Arial",
+          "pt": 17,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 2,
+          "fits": true,
+          "one_line": false,
+          "used": 0.567
+        },
+        {
+          "op": "rect",
+          "x": 8.872,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 3.4,
+          "fill": "E8EEF5"
+        },
+        {
+          "op": "rect",
+          "x": 8.872,
+          "y": 1.65,
+          "w": 3.7110000000000003,
+          "h": 0.08,
+          "fill": "1F4E79"
+        },
+        {
+          "op": "text",
+          "x": 9.072,
+          "y": 1.95,
+          "w": 3.3110000000000004,
+          "h": 0.9,
+          "paragraphs": [
+            "3. How we judge it"
+          ],
+          "font": "Arial",
+          "pt": 19,
+          "color": "1F4E79",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "heading",
+          "lines": 1,
+          "fits": true,
+          "one_line": false,
+          "used": 0.317
+        },
+        {
+          "op": "text",
+          "x": 9.072,
+          "y": 2.95,
+          "w": 3.3110000000000004,
+          "h": 1.8999999999999997,
+          "paragraphs": [
+            "The no-show rate before and after; yours is about 9% today"
+          ],
+          "font": "Arial",
+          "pt": 17,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 2,
+          "fits": true,
+          "one_line": false,
+          "used": 0.567
+        }
+      ]
+    },
+    {
+      "slide": 8,
+      "layout": "section",
+      "part": "appendix",
+      "ops": [
+        {
+          "op": "rect",
+          "x": 0.75,
+          "y": 2.75,
+          "w": 1.2,
+          "h": 0.08,
+          "fill": "1F4E79"
+        },
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 3.0,
+          "w": 11.833,
+          "h": 1.2,
+          "paragraphs": [
+            "Appendix"
+          ],
+          "font": "Arial",
+          "pt": 38,
+          "color": "1F2328",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "title",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.633
+        }
+      ]
+    },
+    {
+      "slide": 9,
+      "layout": "points",
+      "part": "appendix",
+      "ops": [
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 0.55,
+          "w": 11.833,
+          "h": 0.75,
+          "paragraphs": [
+            "Sources"
+          ],
+          "font": "Arial",
+          "pt": 30,
+          "color": "1F2328",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "title",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.5
+        },
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 1.65,
+          "w": 11.833,
+          "h": 5.25,
+          "paragraphs": [
+            "f3. Bright Smiles Dental told us no-shows run at about 9% of appointments (Given by the presenter)",
+            "f1. Bright Smiles Dental runs 40 clinics in England and Wales (Given by the presenter)",
+            "f4. Our product, Clinic Scheduler, offers online booking, text reminders, and a waitlist that fills cancelled slots (Given by the presenter)",
+            "f5. In our 3 pilot clinics, no-shows fell from 8% to 5% in 3 months, an estimate in our internal pilot report (Given by the presenter)",
+            "f7. If Bright Smiles saw the same 3-point fall as our pilot clinics, its no-shows would go from about 9% to about 6% of appointments (Our estimate: about 9% today (f3) minus the 3-point fall from 8% to 5% in our 3 pilot clinics (f5). Not a promise: the pilot in her clinics would measure it.)",
+            "f9. We propose a pilot in a few Bright Smiles clinics at the list price; which clinics, how many, how long and the start date are agreed with Bright Smiles, and the pilot is judged on the no-show rate before and after (Given by the presenter)"
+          ],
+          "font": "Arial",
+          "pt": 19,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": true,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 13,
+          "fits": true,
+          "one_line": false,
+          "used": 4.908
+        }
+      ]
+    },
+    {
+      "slide": 10,
+      "layout": "points",
+      "part": "appendix",
+      "ops": [
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 0.55,
+          "w": 11.833,
+          "h": 0.75,
+          "paragraphs": [
+            "Sources (continued)"
+          ],
+          "font": "Arial",
+          "pt": 30,
+          "color": "1F2328",
+          "bold": true,
+          "bullet": false,
+          "align": "left",
+          "valign": "top",
+          "role": "title",
+          "lines": 1,
+          "fits": true,
+          "one_line": true,
+          "used": 0.5
+        },
+        {
+          "op": "text",
+          "x": 0.75,
+          "y": 1.65,
+          "w": 11.833,
+          "h": 5.25,
+          "paragraphs": [
+            "f6. Clinic Scheduler costs £120 per clinic per month (Given by the presenter)",
+            "f8. Clinic Scheduler in all 40 Bright Smiles clinics would cost £4,800 a month at list price (Our estimate: 40 clinics (f1) x £120 per clinic per month (f6).)"
+          ],
+          "font": "Arial",
+          "pt": 22,
+          "color": "1F2328",
+          "bold": false,
+          "bullet": true,
+          "align": "left",
+          "valign": "top",
+          "role": "body",
+          "lines": 3,
+          "fits": true,
+          "one_line": false,
+          "used": 1.283
+        }
+      ]
+    }
+  ]
+}

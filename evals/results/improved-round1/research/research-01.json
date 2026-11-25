@@ -1,0 +1,116 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-01",
+  "ask": "what should we build first for an online booking tool for small physio clinics in the UK? compare us with Cliniko, Jane and Power Diary",
+  "expected_track": "full",
+  "notes": "Classic research ask: decision, category, market and three rivals are all given. A good intake asks the persona and how bold, not the rivals or the market.",
+  "must_cover": [
+    "decision|first modules",
+    "persona|clinic|physio|receptionist",
+    "rivals|cliniko",
+    "market|uk",
+    "how bold|bold|catch up|catch-up",
+    "sources|pages"
+  ],
+  "findable": [
+    "rivals|competitors|which products",
+    "market|country|region"
+  ],
+  "fixtures": [],
+  "message": "## Product research brief (draft, nothing has started yet)\n\n**Goal:** decide what to build first for an online booking tool for small physio clinics in the UK, compared with Cliniko, Jane and Power Diary.\n\n**Start check:** a web search for \"physio clinic booking software UK\" returned results (Semble, Praclio, PracticePal, PPS and others, plus Cliniko's partner listing with the Chartered Society of Physiotherapy), and a read of Cliniko's home page returned text. Web reads worked without asking. One gap: no Google Drive tool was needed, because you did not ask for a Google Sheet.\n\n| Need | Value |\n|---|---|\n| Decision | The first modules to build, ranked in build order. The comparison sheet of the 3 rivals is the main evidence, then where we beat them, then the modules (default) |\n| Product | An online booking tool for small physio clinics, in the clinic booking and practice management software category |\n| Persona and buyer | Draft: the owner-physio of a clinic with 1 to 5 clinicians, who also does the admin and pays. Receptionist and patient are secondary users. Not confirmed (question 2) |\n| What we have today | Nothing, a new product. Every row is `gap` or `beat` (default) |\n| Rivals | Cliniko, Jane (Jane App), Power Diary. Real names kept, the brief stays on this laptop |\n| Market | UK (default) |\n| Sources | Public pages only. No sign-in, no trial sign-up, no paid reports |\n| Source kinds (KINDS) | Quick track: product pages, help centre. Full track adds release notes or changelog, pricing and public reviews |\n| Depth | Up to 12 pages and 40 features per rival (default) |\n| Groups (GROUPS) | None given. The sheet uses plain groups, for example booking, reminders, payments, clinical notes, billing, reporting |\n| Fixed and refused | None (default) |\n| First release size | Top 3 modules (default) |\n| How bold | Both: a `## Ideas no rival has` section with at least 3 ideas (question 3) |\n| Out folder (OUT) | `research/physio-booking-uk/` in the working folder |\n| Sharing | None. Nothing is published or sent |\n| Sheet files | `capability-sheet.xlsx` and `capability-sheet.csv` |\n| Lessons applied | None yet (no earlier runs) |\n\n**Coverage scan**\n\n| Topic | Status | Why |\n|---|---|---|\n| Scope | partial | Booking only, or a full practice management replacement? (question 1) |\n| Who and their job | partial | \"Small clinics\" has no number, and the persona is a draft (question 2) |\n| Data and facts | clear | Rivals named, public pages, no files needed |\n| Main flow | partial | The job steps come from the research and the think node |\n| Edge cases | partial | Insurer billing, several clinicians and rooms are covered by questions 1 and 2 |\n| Look | n/a | No screens are made |\n| Outputs | clear | Excel sheet, CSV, brief |\n| Done signal | clear | See \"Done means\" |\n| Words with no number | partial | \"Small\" becomes 1 to 5 clinicians, one site (default, question 2) |\n\n**Done means**\n1. `capability-sheet.xlsx` and `capability-sheet.csv` exist in `research/physio-booking-uk/`, and the Excel file matches the CSV.\n2. The sheet covers Cliniko, Jane and Power Diary, each with at least 5 rows read on its own pages.\n3. Every sheet row says what it does, and every yes or partial cell has a link from that rival's own pages.\n4. Every beat row (a feature we say no rival has) has a search of every rival's own site behind it, in `research/physio-booking-uk/beats/`.\n5. Every source kind (product pages, help centre on the quick track) was tried for every rival.\n6. `brief.md` ends in a ranked module list, and every module cites sheet rows.\n\nAbout 60 minutes and 8 helper agents, within a budget of 90 minutes.\n\n**Questions**\n\n1. Quick or full?\n   Recommended: quick. 3 rivals, 2 source kinds (product pages, help centre). The beat proof and the review still run. Full adds release notes, pricing and public reviews, and costs about 20 minutes more.\n   Why it matters: it sets how many pages each rival gets and how sure the \"no rival has it\" claims are. Say full if you want pricing and review evidence in the sheet.\n\n2. Who uses it every day, and who pays?\n   Recommended: the owner-physio of a 1 to 5 clinician UK private clinic, who books and moves appointments and pays for the tool. The receptionist and the patient booking online come second.\n   Why it matters: the persona only ranks the modules. It never takes a row out of the sheet.\n\n3. How bold should the brief be?\n   Recommended: both. Catch-up modules first, plus at least 3 ideas no rival has, each tied to a persona pain or a sheet row.\n   Why it matters: bold puts the new ideas at the top of the ranked list, and catch-up keeps them as a short list.\n\n4. Is \"booking tool\" the whole product or a start?\n   Recommended: booking first (online booking, diary, reminders, deposits and payments). Clinical notes and billing are ranked as later modules, still shown in the sheet.\n   Why it matters: Cliniko, Jane and Power Diary are full practice management suites, so this decides whether notes and billing compete for the first release.\n\n5. Do the clinics bill insurers or only take self-pay?\n   Recommended: self-pay private clinics first. Insurer billing is ranked as a later module.\n   Why it matters: insurer billing is a large module and can move the whole ranking.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Quick or full? | 2. Who uses it every day, and who pays? | 3. How bold should the brief be? | 4. Is \"booking tool\" the whole product or a start? | 5. Do the clinics bill insurers or only take self-pay?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "42 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: rivals (\"rivals\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 8 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 8,
+      "evidence": "8 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "| Source kinds (KINDS) | Quick track: product pages, help centre. Full track adds release notes or changelog, pricing and public reviews |"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 947,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "All six topics settled: Decision 'first modules to build, ranked', persona Q2, rivals and 'Market | UK', 'How bold' Q3, 'Sources | Public pages only'.",
+      "no_redundancy": "Rivals and UK are stated in the brief, not asked; only small slip is tagging the given market 'UK (default)' as if it were a choice.",
+      "defaults_quality": "Every question has a specific default fitting a UK physio ask, e.g. 'owner-physio of a 1 to 5 clinician UK private clinic' and 'self-pay private clinics first'.",
+      "clarity": "Five clear one-topic questions, but behind a long brief table, a coverage scan and done list; the first question 'Quick or full?' is less important than scope or persona.",
+      "respects_words": "Keeps the booking tool, UK and the three named rivals; Q4 checks scope ('booking first') without overriding the ask.",
+      "overall": "Thorough, well-defaulted intake that 'go' alone runs well, held back by length and question order."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.626Z"
+}

@@ -1,0 +1,6 @@
+# Beat proof: Wave
+
+| Row | Capability | Searches | Pages | Result | Link |
+|---|---|---|---|---|---|
+| C27 | Deposit then balance by a set date | site:support.waveapps.com deposit estimate balance invoice; site:support.waveapps.com partial payment schedule installments invoice; site:waveapps.com deposit request balance due date | https://www.waveapps.com/payments https://support.waveapps.com/hc/en-us/articles/37527763768724 https://support.waveapps.com/hc/en-us/articles/43691521646612-Accept-partial-or-installment-payments-on-an-invoice-New-online-payments-experience https://www.waveapps.com/blog/seal-the-deal-with-waves-new-deposits-feature | partial | https://www.waveapps.com/blog/seal-the-deal-with-waves-new-deposits-feature |
+| C50 | Bank transfer matched to its invoice | site:support.waveapps.com match bank transaction to invoice payment; site:support.waveapps.com bank deposit automatically mark invoice paid; site:waveapps.com bank reconciliation transactions merge invoice payment | https://www.waveapps.com/payments https://support.waveapps.com/hc/en-us/articles/4988928647188 https://support.waveapps.com/hc/en-us/articles/115004964423-Automated-bookkeeping-with-online-payments | partial | https://support.waveapps.com/hc/en-us/articles/4988928647188 |

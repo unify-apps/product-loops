@@ -1,0 +1,122 @@
+{
+  "arm": "baseline",
+  "loop": "review",
+  "case": "review-04",
+  "ask": "QA everything in proto-clinic before I show it to the clinic owners on Monday",
+  "expected_track": "full",
+  "notes": "CLAUDE.md gives the persona, the job and four house rules. A good intake states them and does not ask the persona or rules again.",
+  "must_cover": [
+    "persona|front desk",
+    "rules|empty state|sentence case",
+    "bar|p1|p2",
+    "fix|report"
+  ],
+  "findable": [
+    "persona|who uses|who is it for|one job",
+    "rules|rule of your own|own rules"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "proto-clinic/index.html"
+  ],
+  "message": "Here is the brief I wrote from your message and from `CLAUDE.md`. Nothing has been changed or opened yet.\n\n## Brief\n\n**Goal:** Review the whole clickable prototype in `proto-clinic/` screen by screen, as the person who will use it, before you show it to the clinic owners on Monday.\n\n**What I found, so I am not asking you:**\n\n| Need | Value | Where I got it |\n|---|---|---|\n| Prototype | `proto-clinic/index.html` (the only one in the folder, a single HTML file, no server needed) | your message, the folder |\n| Screens | All 4 screens the nav reaches: Today, Clients, Invoices, Settings | your message (\"everything\"), the nav |\n| Who uses it | Front desk staff at small physio clinics (2 to 6 therapists) | `CLAUDE.md` |\n| Their one job | Get the day's clients in and out on time, and take payment | `CLAUDE.md` |\n| Your own rules | Buttons in sentence case; every list has an empty state that says what to do next; no placeholder text anywhere; money always with the £ sign and two decimals. These are added to the built-in checklist. | `CLAUDE.md` |\n| Widths | 1440 px, plus a check at 390 px for a phone | default |\n| Rounds | At most 3 review, fix and recheck rounds | fixed |\n| Where the result goes | `handover.md` in the run folder, on this laptop. Nothing is deployed, published or sent. | default |\n\n**Start checks:** Node 25.9.0 is there and Chrome is found, so the walk can open the screens and take screenshots. The prototype file exists.\n\n**Stop fact:** After the last walk, a fresh agent finds no open P1 on any of the 4 screens. Every P1 left as \"your call\" is listed first in `handover.md`, and every P2 is fixed or listed there.\n\n## Questions\n\n1. **Should I fix what I find, or only report it?** \"QA\" could mean either. Default: fix, in place, keeping a copy of every file I change in the run folder, so you can put it back.\n2. **What should I fix: P1 and P2, or P1 only?** Default: P1 and P2. P3 is listed, never fixed. Taste calls are listed for you, never changed.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 2,
+      "evidence": "1. Should I fix what I find, or only report it? \"QA\" could mean either. D | 2. What should I fix: P1 and P2, or P1 only? Default: P1 and P2. P3 is li"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 2,
+      "evidence": "2 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "2 of 2 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 2"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "16 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 389,
+      "evidence": "389 words, 311 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 389,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 10,
+      "defaults_quality": 9,
+      "clarity": 8,
+      "respects_words": 9,
+      "overall": 9
+    },
+    "evidence": {
+      "completeness": "Persona and rules are settled in the brief ('Front desk staff at small physio clinics', the four CLAUDE.md rules), and the bar and fix topics are the two questions ('fix what I find, or only report it?', 'P1 and P2, or P1 only?').",
+      "no_redundancy": "Persona, job and rules are stated under 'What I found, so I am not asking you', with CLAUDE.md as the source. Neither question asks for them.",
+      "defaults_quality": "Both defaults are concrete and safe: 'fix, in place, keeping a copy of every file I change' and 'P1 and P2. P3 is listed, never fixed. Taste calls are listed for you'. Fix-by-default is a fair reading of a QA pass before a demo.",
+      "clarity": "Only two short questions, one topic each, most important first, with a plain 'just \"go\"'. The brief table and the start-check and stop-fact lines add some reading time.",
+      "respects_words": "'everything' becomes 'All 4 screens the nav reaches' and the Monday showing is kept. The message flags that '\"QA\" could mean either' instead of quietly overriding the ask.",
+      "overall": "A tight, well-sourced opening. It settles every needed topic, asks only the two real unknowns, and gives good defaults, so a reply of 'go' leads to a sound unattended run."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.820Z"
+}

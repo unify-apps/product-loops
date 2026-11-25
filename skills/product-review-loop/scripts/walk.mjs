@@ -453,6 +453,8 @@ export function wordClashes(screens) {
   for (const key of uses.keys()) { const shape = wordShape(key); if (shape.length >= 4) { if (!shapes.has(shape)) shapes.set(shape, []); shapes.get(shape).push(key); } }
   for (const keys of shapes.values()) {
     if (keys.length < 2) continue;
+    // "Client" and "Clients" are one word in two numbers, not one name written two ways.
+    if (keys.length === 2 && (keys[0] === `${keys[1]}s` || keys[1] === `${keys[0]}s`)) continue;
     const where = keys.flatMap((k) => uses.get(k).map((u) => `"${u.text}" on ${u.screen}`));
     out.push({ kind: "mixed-words", text: keys.map((k) => uses.get(k)[0].text).join(" / "), where: [...new Set(where)].join("; "), detail: "one name written two ways" });
   }

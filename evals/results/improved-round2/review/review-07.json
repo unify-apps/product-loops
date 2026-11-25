@@ -1,0 +1,121 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-07",
+  "ask": "review http://localhost:5173 - it's our clinic app",
+  "expected_track": "full",
+  "notes": "The URL does not answer (nothing is running, and vite is not installed). The start check should find that and say so in the same message, with a default (open clinic-app/index.html directly).",
+  "must_cover": [
+    "localhost|5173|server|not running|start",
+    "screens",
+    "fix|report",
+    "persona|who uses"
+  ],
+  "findable": [
+    "which prototype|which file"
+  ],
+  "fixtures": [
+    "clinic-app/index.html",
+    "clinic-app/package.json"
+  ],
+  "message": "**Goal:** review the Northside Physio clinic app screen by screen, as the person who uses it, fix what I find, and review again until no P1 problem is left.\n\n**Found:**\n- Product: `clinic-app/` (one `index.html`, Vite `dev` script on port 5173, from your message and `package.json`). Nothing answers on `http://localhost:5173` right now and `node_modules` is missing, so I will open the folder directly. No server needed.\n- Screens: 4, all reached by the nav (Today, Clients, Invoices, Settings).\n- Words on the screens: \"Northside Physio\", a day list of appointments, clients, invoices, a \"New appointment\" button (from `index.html`).\n- No `CLAUDE.md`, no README, no earlier runs, no lessons from earlier runs.\n- Nothing is deployed, posted or sent. Files change only in place, with a copy of each kept in the run folder.\n\n**Track:** full, because phone width is checked and you did not say it is for a meeting today.\n\nCoverage: 5 clear · partial: Who and their job, Done signal · missing: none\n\n**Done means:**\n- All 4 screens have a before and a last after screenshot.\n- A fresh agent finds no open P1 on any screen.\n- Every P1 not fixed is marked \"your call\" in one sentence.\n- Every P1 and P2 is fixed or has a reason.\n- Every changed file has its original kept.\n\nAbout 40 minutes and 6 helper agents, within a budget of 60 minutes.\n\n1. Should I fix what I find, or only report it?\n   Recommended: fix, in place, keeping a copy of every file I change.\n   Why it matters: report only changes no file; fix edits `clinic-app/index.html`.\n\n2. Who uses it, and what one job do they come to do?\n   Recommended: a clinic receptionist who sees today's appointments and books a new one.\n   Why it matters: the persona decides which problems count as P1, such as a dead \"New appointment\" button.\n\n3. What should I fix: P1 and P2, or P1 only?\n   Recommended: P1 and P2. P3 is listed, never fixed.\n   Why it matters: P2 covers spacing, mixed words and placeholder text, so it changes how much I touch.\n\n4. Quick (P1 only, no phone width) or full?\n   Recommended: full (all 4 screens, 1440 px and 390 px phone, 3 review rounds at most). Quick checks 1440 px only and lists P2 and P3 without fixing.\n   Why it matters: full takes about twice as long and catches sideways scrolling on a phone.\n\n5. Any rule of your own to check, such as a brand colour, a word list or a tone?\n   Recommended: none, the built-in checklist only.\n   Why it matters: your rule is checked on every screen and can turn a P2 into a P1.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Should I fix what I find, or only report it? | 2. Who uses it, and what one job do they come to do? | 3. What should I fix: P1 and P2, or P1 only? | 4. Quick (P1 only, no phone width) or full? | 5. Any rule of your own to check, such as a brand colour, a word list or "
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "16 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 1 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 6 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Coverage: 5 clear · partial: Who and their job, Done signal · missing: none"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 457,
+      "evidence": "457 words, 234 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because phone width is checked and you did not say it is for a meeting today."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 457,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 8,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles server (\"Nothing answers on http://localhost:5173 ... I will open the folder directly\"), screens (\"4, all reached by the nav\"), fix vs report (Q1) and persona (Q2).",
+      "no_redundancy": "States the product as found (\"Product: clinic-app/ ... from your message and package.json\") instead of asking which prototype; nothing asked that the files answer.",
+      "defaults_quality": "Every question has a specific default, e.g. \"a clinic receptionist who sees today's appointments and books a new one\" and \"P1 and P2. P3 is listed, never fixed.\"",
+      "clarity": "Five questions where Q1 (fix/report), Q3 (P1/P2) and Q4 (quick/full) overlap, Track is declared before Q4 asks it, and the \"Coverage: 5 clear · partial\" line is jargon.",
+      "respects_words": "Keeps the clinic app and asks before fixing a \"review\", but swaps the given localhost URL for opening the file directly rather than offering to start the dev server.",
+      "overall": "A strong, grounded opening with good defaults that a person can \"go\" on, held back by overlapping scope questions and some noise in the brief."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.895Z"
+}

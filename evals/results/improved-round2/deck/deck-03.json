@@ -1,0 +1,124 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-03",
+  "ask": "one-pager for Tesco's category buyer about our compostable packaging, to send ahead of the call",
+  "expected_track": "quick",
+  "notes": "Format (one-pager), meeting kind (sent to read) and the product facts are given. A4 for a UK company is set without asking. Quick track fits a single page.",
+  "must_cover": [
+    "goal",
+    "one-pager|one page|format",
+    "sent to read|send ahead",
+    "a4|paper size",
+    "claims|certified",
+    "reader|buyer"
+  ],
+  "findable": [
+    "format|slides or one-pager|output",
+    "meeting kind|sent to read|first meeting",
+    "what we offer|claims|product"
+  ],
+  "fixtures": [
+    "product.md"
+  ],
+  "message": "**Goal:** a one-page A4 sheet that gets Tesco's category buyer to take your call knowing what Leafwrap is and why it is worth a trial.\n\n**Found:**\n- Company and reader: Tesco, its category buyer (from your message).\n- Kind: sent to read ahead of the call, so it must stand alone (from your message).\n- Format: one-pager, 1 page, A4 portrait for a UK reader (from your message).\n- Product: Leafwrap, home-compostable film for fresh produce (from product.md).\n- Claims we may use: breaks down in 26 weeks in a home compost bin, TUV OK compost HOME; price parity with PET film over 40 tonnes a year (from product.md).\n- Customers in product.md: Riverford (since 2024), Abel & Cole (trial).\n\n**Track:** full, because a one-pager is 1 page and the quick track makes 6 to 8 slides.\n**Coverage:** 6 clear · partial: Who and their job, Data and facts, Done signal · missing: none. The full table is in `brief.md`.\n**Start check:** the PDF and PowerPoint tools are ready. Web search is available, so research on Tesco can use public sources.\n\n**Done means:**\n- One A4 page that does what the goal says\n- HTML, PowerPoint and PDF files open\n- Every line cites a source link, estimate or your word\n- Every review finding fixed or left with why\n\nAbout 70 minutes and 7 helper agents, within a budget of 90 minutes.\n\n1. What should the buyer believe or do after reading it?\n   Recommended: a pitch, so she agrees to a trial of Leafwrap on one produce line.\n   Why it matters: the goal decides what the page leads with and what it leaves out.\n   Other options: an outside-in view of what is changing in produce packaging for Tesco; a plan she can take to her boss.\n\n2. What do you want from the call itself?\n   Recommended: agreement to a small trial on one Tesco produce line.\n   Why it matters: the page ends on this next step.\n\n3. Who must she convince next, and what do they care about?\n   Recommended: her commercial director, who cares about cost and packaging-target risk.\n   Why it matters: the page is written so she can forward it.\n\n4. May we name Riverford and Abel & Cole to Tesco, and call Abel & Cole a trial?\n   Recommended: name both, with Abel & Cole called a trial, as product.md says.\n   Why it matters: a customer named without permission is a risk, and the page cannot take it back.\n\n5. Who is the buyer, and is there a public profile link?\n   Recommended: no name, write for the role.\n   Why it matters: a name lets research use her public talks and Tesco's stated packaging goals.\n\n6. Anything to leave out, such as a competitor or a claim on PET film?\n   Recommended: nothing beyond the claims in product.md.\n   Why it matters: the page stays within what you can stand behind.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. What should the buyer believe or do after reading it? | 2. What do you want from the call itself? | 3. Who must she convince next, and what do they care about? | 4. May we name Riverford and Abel & Cole to Tesco, and call Abel & Cole a | 5. Who is the buyer, and is there a public profile link? | 6. Anything to leave out, such as a competitor or a claim on PET film?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: what we offer (\"claims\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 70 minutes and 7 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 6 clear · partial: Who and their job, Data and facts, Done signal · missing: none. The full table is in `brief.md`."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 491,
+      "evidence": "491 words, 233 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because a one-pager is 1 page and the quick track makes 6 to 8 slides."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 491,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles goal, one-pager, send-ahead ('must stand alone'), A4, claims ('TUV OK compost HOME') and reader (category buyer); only the goal is left as Q1, and it has a default.",
+      "no_redundancy": "Format, meeting kind and offer are stated as found, not asked; but Q2 ('agreement to a small trial') mostly repeats Q1's trial default.",
+      "defaults_quality": "Every question has a specific default, e.g. 'name both, with Abel & Cole called a trial, as product.md says' and 'her commercial director, who cares about cost'.",
+      "clarity": "Six questions plus internal jargon ('Track: full', 'Coverage: 6 clear · partial', '7 helper agents') make it longer than a busy person needs.",
+      "respects_words": "Keeps one page and send-ahead as asked; 'A4 portrait for a UK reader' is an inference but is labelled '(from your message)'.",
+      "overall": "A solid, faithful intake with good defaults; it loses points for the Q1/Q2 overlap and the process noise around the questions."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.915Z"
+}

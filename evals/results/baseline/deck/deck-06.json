@@ -1,0 +1,124 @@
+{
+  "arm": "baseline",
+  "loop": "deck",
+  "case": "deck-06",
+  "ask": "a 6-page brochure for the hotel chains we'll meet at the Lisbon hospitality trade show, about our housekeeping app",
+  "expected_track": "full",
+  "notes": "Brochure with a page count. The reader is many hotel chains, not one company, so 'which company' should become a default (a general reader) rather than a blocker. Print size A4 is set without asking.",
+  "must_cover": [
+    "brochure|format",
+    "6|pages",
+    "audience|hotel|reader",
+    "print|a4|paper",
+    "language|portuguese|english",
+    "look"
+  ],
+  "findable": [
+    "format|slides or one-pager|output",
+    "slide count|how many pages|page count",
+    "what we offer|claims"
+  ],
+  "fixtures": [
+    "app-facts.md"
+  ],
+  "message": "I read your ask and the one file in the folder (`app-facts.md`). There is no `CLAUDE.md` and no start deck. Here is the brief I have so far, then my questions.\n\n## Brief so far\n\n- **What it is:** a 6-page brochure about Tidy, our housekeeping app, to hand out to hotel chains at the Lisbon hospitality trade show.\n- **Reader:** hotel-chain people who walk up to the stand. Role unknown, so I write for a senior business reader (operations or general management).\n- **Company to research:** none single. The reader is \"hotel chains at the show\", not one company. I will research the hotel industry in Iberia and the show (not a named chain) unless you name chains below.\n- **Format:** brochure, A4 portrait (Portugal), 6 pages. That is inside the usual 4 to 8 for a brochure.\n- **Files:** PDF, plus an editable PowerPoint and an HTML version. No claude.ai Artifact. Saved in `decks/lisbon-hospitality-show-20261126/`.\n- **What we may claim** (only from `app-facts.md`, nothing more):\n  - Live room status board for housekeepers and front desk.\n  - Used in 40 hotels across Spain and Portugal.\n  - Quote: \"Rooms ready 35 minutes sooner on average.\" - Ops Director, Pestana group pilot (2025).\n  - Available in English, Portuguese and Spanish.\n- **Look:** plain (Arial, dark text on white, one dark blue accent), because there is no start deck or brand file.\n- **Pictures:** none. I will not invent product screens.\n- **Start check:**\n  - The tools for PowerPoint and PDF are set up and work (python-pptx, PDF reader, Chrome, Quick Look found).\n  - Web search and web fetch are available in this session, so research will use public sources, each fact with a link.\n\n## Questions\n\n1. **What should a hotel chain's reader believe or do after the brochure?** (the goal)\n   - a) **A pitch:** their housekeeping problem, how Tidy solves it, proof from the Pestana pilot and 40 hotels, and a next step (book a demo at the stand). *Default. A brochure handed out at a stand has to make one ask.*\n   - b) **A view of the industry:** what is changing in hotel operations in Iberia, what it means for chains, where the openings are, with Tidy as one of them.\n   - c) **A plan for them:** how a chain could get rooms ready sooner, ranked by impact, with Tidy as the tool.\n   - d) **A vision they can retell to their own boss:** why now, what good looks like, the first steps.\n   - e) **A technical walk-through:** how Tidy fits their systems and a pilot plan.\n2. **The angle:** what is the one idea the brochure argues? *Default: \"Rooms ready sooner, and everyone sees it live\", built on the 35-minute quote.* And the order: *default is the usual order for a pitch (problem, solution, proof, next step).*\n3. **The real audience:** who must the person at the stand convince next? *Default: the reader alone.* (For example, their operations director, their general manager, or the group's head office. Say what that person cares about most: money, risk or speed.)\n4. **Which hotel chains will you meet, and who?** Names, roles and any public profile links. *Default: none named; I write for a senior business reader.*\n5. **Anything to lead with or leave out?** A product, a topic, a competitor not to name. *Default: none.*\n6. **What is the next step you want printed on the last page?** (for example a demo, a pilot, a stand number, a name and email). *Default: \"Book a demo at our stand\", with no stand number, name or contact, because none is in the files.*\n7. **Do you have more we may claim?** Other customers, numbers, or things we must not say. *Default: only what is in `app-facts.md`. One note: the 35-minute figure is a pilot result at one group, so I will word it as that, not as every hotel.*\n8. **Slide count.** *Default: 6 pages, with no appendix.* Sources go on the back of the last page as a short list.\n9. **Output and look.** *Default: A4 portrait brochure as PDF, editable PowerPoint and HTML; plain look.* Tell me if you want a brand colour, font or logo file.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 9,
+      "evidence": "1. What should a hotel chain's reader believe or do after the brochure? ( | 2. The angle: what is the one idea the brochure argues? *Default: \"Rooms  | 3. The real audience: who must the person at the stand convince next? *De | 4. Which hotel chains will you meet, and who? Names, roles and any public | 5. Anything to lead with or leave out? A product, a topic, a competitor n | 6. What is the next step you want printed on the last page? (for example  | 7. Do you have more we may claim? Other customers, numbers, or things we  | 8. Slide count. *Default: 6 pages, with no appendix.* Sources go on the b | 9. Output and look. *Default: A4 portrait brochure as PDF, editable Power"
+    },
+    "asked_le_7": {
+      "pass": false,
+      "value": 9,
+      "evidence": "9 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "9 of 9 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 9"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: format (\"output\"), slide count (\"slide count\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 707,
+      "evidence": "707 words, 282 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 707,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 7,
+      "no_redundancy": 6,
+      "defaults_quality": 8,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles brochure, 6 pages, reader, A4 print and look (\"A4 portrait (Portugal), 6 pages\", \"Look: plain\"), but never settles the brochure's language despite a Lisbon show and an app in EN/PT/ES.",
+      "no_redundancy": "Re-asks facts the ask already gives: \"8. Slide count. Default: 6 pages\" and \"9. Output and look\" repeat the stated brochure format, and Q7 partly re-asks what we offer.",
+      "defaults_quality": "Defaults are concrete and fit the ask (\"A pitch ... book a demo at the stand\", \"Rooms ready sooner, and everyone sees it live\", pilot quote worded as one group), though PowerPoint+HTML for a printed brochure is a weaker default.",
+      "clarity": "Nine questions after a long brief, Q1 has five options and Q2 bundles angle and order; plain words but too much for a two-minute reply.",
+      "respects_words": "Keeps \"6-page brochure\", hotel chains, Lisbon show and claims only from app-facts.md; only the slip of calling pages a \"Slide count\" jars.",
+      "overall": "Solid brief with sensible defaults so \"go\" works, but the missed language question for a Portuguese show plus redundant format questions and length hold it back."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.855Z"
+}

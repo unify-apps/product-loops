@@ -1,0 +1,421 @@
+{
+  "builtAt": "2026-11-25T22:26:47.326Z",
+  "arms": {
+    "baseline": {
+      "overall": {
+        "cases": 50,
+        "graded_by_llm": 50,
+        "checks": {
+          "ended_with_go_line": 0.98,
+          "asked_le_7": 0.74,
+          "every_question_has_default": 0.88,
+          "recommended_and_why": 0,
+          "brief_shown": 1,
+          "no_findable_asked": 0.42,
+          "estimate_line": 0.02,
+          "coverage_shown": 0,
+          "track_offered": 0,
+          "message_le_600_words": 0.54,
+          "state_initialised": 1,
+          "turn_ended_without_working": 1
+        },
+        "values": {
+          "asked_count": 6.04,
+          "must_cover_hit": 0.97,
+          "stop_fact_items": 0,
+          "message_words": 567.86
+        },
+        "llm": {
+          "completeness": 9.2,
+          "no_redundancy": 7.34,
+          "defaults_quality": 8.5,
+          "clarity": 5.94,
+          "respects_words": 8.42,
+          "overall": 7.34
+        },
+        "mean_cost_usd": null,
+        "mean_minutes": null
+      },
+      "loops": {
+        "build": {
+          "cases": 10,
+          "graded_by_llm": 10,
+          "checks": {
+            "ended_with_go_line": 1,
+            "asked_le_7": 0.5,
+            "every_question_has_default": 0.9,
+            "recommended_and_why": 0,
+            "brief_shown": 1,
+            "no_findable_asked": 0.3,
+            "estimate_line": 0,
+            "coverage_shown": 0,
+            "track_offered": 0,
+            "message_le_600_words": 0.8,
+            "state_initialised": 1,
+            "turn_ended_without_working": 1
+          },
+          "values": {
+            "asked_count": 7.4,
+            "must_cover_hit": 0.986,
+            "stop_fact_items": 0,
+            "message_words": 522.8
+          },
+          "llm": {
+            "completeness": 9.1,
+            "no_redundancy": 6.1,
+            "defaults_quality": 8.3,
+            "clarity": 5.6,
+            "respects_words": 8.5,
+            "overall": 7.1
+          },
+          "mean_cost_usd": null,
+          "mean_minutes": null
+        },
+        "research": {
+          "cases": 10,
+          "graded_by_llm": 10,
+          "checks": {
+            "ended_with_go_line": 0.9,
+            "asked_le_7": 1,
+            "every_question_has_default": 0.7,
+            "recommended_and_why": 0,
+            "brief_shown": 1,
+            "no_findable_asked": 0.3,
+            "estimate_line": 0.1,
+            "coverage_shown": 0,
+            "track_offered": 0,
+            "message_le_600_words": 0.3,
+            "state_initialised": 1,
+            "turn_ended_without_working": 1
+          },
+          "values": {
+            "asked_count": 5.1,
+            "must_cover_hit": 0.967,
+            "stop_fact_items": 0,
+            "message_words": 622.2
+          },
+          "llm": {
+            "completeness": 9.2,
+            "no_redundancy": 7.7,
+            "defaults_quality": 8.8,
+            "clarity": 5.9,
+            "respects_words": 7.4,
+            "overall": 7.1
+          },
+          "mean_cost_usd": null,
+          "mean_minutes": null
+        },
+        "design": {
+          "cases": 10,
+          "graded_by_llm": 10,
+          "checks": {
+            "ended_with_go_line": 1,
+            "asked_le_7": 1,
+            "every_question_has_default": 0.9,
+            "recommended_and_why": 0,
+            "brief_shown": 1,
+            "no_findable_asked": 0.6,
+            "estimate_line": 0,
+            "coverage_shown": 0,
+            "track_offered": 0,
+            "message_le_600_words": 0.5,
+            "state_initialised": 1,
+            "turn_ended_without_working": 1
+          },
+          "values": {
+            "asked_count": 4.3,
+            "must_cover_hit": 0.98,
+            "stop_fact_items": 0,
+            "message_words": 603.3
+          },
+          "llm": {
+            "completeness": 9,
+            "no_redundancy": 7.9,
+            "defaults_quality": 8.7,
+            "clarity": 6.7,
+            "respects_words": 8.8,
+            "overall": 7.9
+          },
+          "mean_cost_usd": null,
+          "mean_minutes": null
+        },
+        "review": {
+          "cases": 10,
+          "graded_by_llm": 10,
+          "checks": {
+            "ended_with_go_line": 1,
+            "asked_le_7": 1,
+            "every_question_has_default": 1,
+            "recommended_and_why": 0,
+            "brief_shown": 1,
+            "no_findable_asked": 0.8,
+            "estimate_line": 0,
+            "coverage_shown": 0,
+            "track_offered": 0,
+            "message_le_600_words": 1,
+            "state_initialised": 1,
+            "turn_ended_without_working": 1
+          },
+          "values": {
+            "asked_count": 3.8,
+            "must_cover_hit": 0.975,
+            "stop_fact_items": 0,
+            "message_words": 379.3
+          },
+          "llm": {
+            "completeness": 9.7,
+            "no_redundancy": 8.3,
+            "defaults_quality": 8.7,
+            "clarity": 7.3,
+            "respects_words": 8.9,
+            "overall": 8.2
+          },
+          "mean_cost_usd": null,
+          "mean_minutes": null
+        },
+        "deck": {
+          "cases": 10,
+          "graded_by_llm": 10,
+          "checks": {
+            "ended_with_go_line": 1,
+            "asked_le_7": 0.2,
+            "every_question_has_default": 0.9,
+            "recommended_and_why": 0,
+            "brief_shown": 1,
+            "no_findable_asked": 0.1,
+            "estimate_line": 0,
+            "coverage_shown": 0,
+            "track_offered": 0,
+            "message_le_600_words": 0.1,
+            "state_initialised": 1,
+            "turn_ended_without_working": 1
+          },
+          "values": {
+            "asked_count": 9.6,
+            "must_cover_hit": 0.943,
+            "stop_fact_items": 0,
+            "message_words": 711.7
+          },
+          "llm": {
+            "completeness": 9,
+            "no_redundancy": 6.7,
+            "defaults_quality": 8,
+            "clarity": 4.2,
+            "respects_words": 8.5,
+            "overall": 6.4
+          },
+          "mean_cost_usd": null,
+          "mean_minutes": null
+        }
+      }
+    },
+    "improved": {
+      "overall": {
+        "cases": 50,
+        "graded_by_llm": 50,
+        "checks": {
+          "ended_with_go_line": 1,
+          "asked_le_7": 1,
+          "every_question_has_default": 1,
+          "recommended_and_why": 1,
+          "brief_shown": 0.98,
+          "no_findable_asked": 0.74,
+          "estimate_line": 1,
+          "coverage_shown": 0.98,
+          "track_offered": 1,
+          "message_le_600_words": 0.96,
+          "state_initialised": 1,
+          "turn_ended_without_working": 0.98
+        },
+        "values": {
+          "asked_count": 4.18,
+          "must_cover_hit": 0.893,
+          "stop_fact_items": 0,
+          "message_words": 439.64
+        },
+        "llm": {
+          "completeness": 9.02,
+          "no_redundancy": 8.42,
+          "defaults_quality": 8.7,
+          "clarity": 6.92,
+          "respects_words": 8.64,
+          "overall": 7.88
+        },
+        "mean_cost_usd": null,
+        "mean_minutes": null
+      },
+      "loops": {
+        "build": {
+          "cases": 10,
+          "graded_by_llm": 10,
+          "checks": {
+            "ended_with_go_line": 1,
+            "asked_le_7": 1,
+            "every_question_has_default": 1,
+            "recommended_and_why": 1,
+            "brief_shown": 1,
+            "no_findable_asked": 0.8,
+            "estimate_line": 1,
+            "coverage_shown": 0.9,
+            "track_offered": 1,
+            "message_le_600_words": 1,
+            "state_initialised": 1,
+            "turn_ended_without_working": 1
+          },
+          "values": {
+            "asked_count": 5.3,
+            "must_cover_hit": 0.823,
+            "stop_fact_items": 0,
+            "message_words": 461.7
+          },
+          "llm": {
+            "completeness": 8.9,
+            "no_redundancy": 8.3,
+            "defaults_quality": 9,
+            "clarity": 6.9,
+            "respects_words": 8.8,
+            "overall": 7.9
+          },
+          "mean_cost_usd": null,
+          "mean_minutes": null
+        },
+        "research": {
+          "cases": 10,
+          "graded_by_llm": 10,
+          "checks": {
+            "ended_with_go_line": 1,
+            "asked_le_7": 1,
+            "every_question_has_default": 1,
+            "recommended_and_why": 1,
+            "brief_shown": 1,
+            "no_findable_asked": 0.7,
+            "estimate_line": 1,
+            "coverage_shown": 1,
+            "track_offered": 1,
+            "message_le_600_words": 1,
+            "state_initialised": 1,
+            "turn_ended_without_working": 0.9
+          },
+          "values": {
+            "asked_count": 3.9,
+            "must_cover_hit": 0.835,
+            "stop_fact_items": 0,
+            "message_words": 407.9
+          },
+          "llm": {
+            "completeness": 8.6,
+            "no_redundancy": 8.6,
+            "defaults_quality": 8.5,
+            "clarity": 6.9,
+            "respects_words": 8.2,
+            "overall": 7.5
+          },
+          "mean_cost_usd": null,
+          "mean_minutes": null
+        },
+        "design": {
+          "cases": 10,
+          "graded_by_llm": 10,
+          "checks": {
+            "ended_with_go_line": 1,
+            "asked_le_7": 1,
+            "every_question_has_default": 1,
+            "recommended_and_why": 1,
+            "brief_shown": 1,
+            "no_findable_asked": 0.8,
+            "estimate_line": 1,
+            "coverage_shown": 1,
+            "track_offered": 1,
+            "message_le_600_words": 0.9,
+            "state_initialised": 1,
+            "turn_ended_without_working": 1
+          },
+          "values": {
+            "asked_count": 3,
+            "must_cover_hit": 0.935,
+            "stop_fact_items": 0,
+            "message_words": 442.7
+          },
+          "llm": {
+            "completeness": 9.2,
+            "no_redundancy": 9,
+            "defaults_quality": 9,
+            "clarity": 7.2,
+            "respects_words": 8.7,
+            "overall": 8.2
+          },
+          "mean_cost_usd": null,
+          "mean_minutes": null
+        },
+        "review": {
+          "cases": 10,
+          "graded_by_llm": 10,
+          "checks": {
+            "ended_with_go_line": 1,
+            "asked_le_7": 1,
+            "every_question_has_default": 1,
+            "recommended_and_why": 1,
+            "brief_shown": 0.9,
+            "no_findable_asked": 1,
+            "estimate_line": 1,
+            "coverage_shown": 1,
+            "track_offered": 1,
+            "message_le_600_words": 1,
+            "state_initialised": 1,
+            "turn_ended_without_working": 1
+          },
+          "values": {
+            "asked_count": 3.6,
+            "must_cover_hit": 0.91,
+            "stop_fact_items": 0,
+            "message_words": 384.2
+          },
+          "llm": {
+            "completeness": 9.4,
+            "no_redundancy": 8,
+            "defaults_quality": 8.6,
+            "clarity": 7.1,
+            "respects_words": 8.3,
+            "overall": 7.9
+          },
+          "mean_cost_usd": null,
+          "mean_minutes": null
+        },
+        "deck": {
+          "cases": 10,
+          "graded_by_llm": 10,
+          "checks": {
+            "ended_with_go_line": 1,
+            "asked_le_7": 1,
+            "every_question_has_default": 1,
+            "recommended_and_why": 1,
+            "brief_shown": 1,
+            "no_findable_asked": 0.4,
+            "estimate_line": 1,
+            "coverage_shown": 1,
+            "track_offered": 1,
+            "message_le_600_words": 0.9,
+            "state_initialised": 1,
+            "turn_ended_without_working": 1
+          },
+          "values": {
+            "asked_count": 5.1,
+            "must_cover_hit": 0.963,
+            "stop_fact_items": 0,
+            "message_words": 501.7
+          },
+          "llm": {
+            "completeness": 9,
+            "no_redundancy": 8.2,
+            "defaults_quality": 8.4,
+            "clarity": 6.5,
+            "respects_words": 9.2,
+            "overall": 7.9
+          },
+          "mean_cost_usd": null,
+          "mean_minutes": null
+        }
+      }
+    }
+  }
+}

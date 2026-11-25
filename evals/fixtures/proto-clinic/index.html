@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northside Physio</title>
+<style>
+  :root { --ink: #1d2433; --muted: #5b6475; --line: #e3e6ec; --bg: #f6f7f9; --card: #fff; --accent: #2457d6; --ok: #1f8a4c; --warn: #b4560b; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink); background: var(--bg); font-size: 15px; }
+  header { display: flex; align-items: center; gap: 24px; padding: 14px 24px; background: var(--card); border-bottom: 1px solid var(--line); }
+  header .brand { font-weight: 700; font-size: 17px; }
+  nav a { color: var(--muted); text-decoration: none; margin-right: 18px; padding: 6px 0; }
+  nav a.active { color: var(--ink); border-bottom: 2px solid var(--accent); }
+  main { max-width: 1040px; margin: 24px auto; padding: 0 24px; }
+  h1 { font-size: 22px; margin: 0 0 16px; }
+  .row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .stat b { display: block; font-size: 26px; }
+  .stat span { color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; background: var(--card); }
+  th, td { text-align: left; padding: 4px 10px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: 13px; }
+  .btn { background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: 9px 14px; font-size: 14px; cursor: pointer; }
+  .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .pill { font-size: 12px; padding: 2px 8px; border-radius: 99px; background: #eef1f6; }
+  .pill.paid { background: #e5f4ea; color: var(--ok); }
+  .pill.overdue { background: #fbeee2; color: var(--warn); }
+  input, select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; }
+  .muted { color: var(--muted); }
+  label { display: block; margin: 12px 0 4px; font-weight: 600; }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">Northside Physio</div>
+  <nav>
+    <a href="#/today">Today</a>
+    <a href="#/clients">Clients</a>
+    <a href="#/invoices">Invoices</a>
+    <a href="#/settings">Settings</a>
+  </nav>
+</header>
+<main id="app"></main>
+
+<script>
+  // Sample data only. Names and amounts are made up.
+  const appointments = [
+    { time: "08:30", client: "Priya Nair", therapist: "Tom Hale", type: "Knee rehab", room: "Room 1" },
+    { time: "09:15", client: "Owen Brooks", therapist: "Sara Lind", type: "First visit", room: "Room 2" },
+    { time: "10:00", client: "Mei Chen", therapist: "Tom Hale", type: "Back pain", room: "Room 1" },
+    { time: "11:30", client: "Luis Ortega", therapist: "Sara Lind", type: "Sports massage", room: "Room 3" },
+    { time: "14:00", client: "Hannah Weiss", therapist: "Tom Hale", type: "Shoulder follow-up", room: "Room 1" },
+  ];
+  const clients = [
+    { name: "Priya Nair", phone: "07700 900123", last: "12 Nov 2026", visits: 6 },
+    { name: "Owen Brooks", phone: "07700 900456", last: "New", visits: 0 },
+    { name: "Mei Chen", phone: "07700 900789", last: "3 Nov 2026", visits: 11 },
+    { name: "Luis Ortega", phone: "07700 900321", last: "28 Oct 2026", visits: 3 },
+    { name: "Hannah Weiss", phone: "07700 900654", last: "19 Nov 2026", visits: 8 },
+    { name: "Ade Okoye", phone: "07700 900987", last: "2 Sep 2026", visits: 2 },
+  ];
+  const invoices = [
+    { no: "INV-1041", client: "Mei Chen", date: "3 Nov 2026", amount: 55, status: "Paid" },
+    { no: "INV-1042", client: "Luis Ortega", date: "28 Oct 2026", amount: 45, status: "Paid" },
+    { no: "INV-1043", client: "Priya Nair", date: "12 Nov 2026", amount: 55, status: "Sent" },
+    { no: "INV-1044", client: "Hannah Weiss", date: "19 Nov 2026", amount: 65, status: "Sent" },
+  ];
+
+  const screens = {
+    today() {
+      return `
+        <div class="row"><h1>Today, Thursday 26 November</h1><button class="btn" id="new-appointment">New appointment</button></div>
+        <div class="stats">
+          <div class="card stat"><b>${appointments.length}</b><span>appointments</span></div>
+          <div class="card stat"><b>2</b><span>therapists in</span></div>
+          <div class="card stat"><b>£110</b><span>unpaid this week</span></div>
+        </div>
+        <table>
+          <thead><tr><th>Time</th><th>Client</th><th>Therapist</th><th>Type</th><th>Room</th></tr></thead>
+          <tbody>${appointments.map((a) => `<tr><td>${a.time}</td><td>${a.client}</td><td>${a.therapist}</td><td>${a.type}</td><td>${a.room}</td></tr>`).join("")}</tbody>
+        </table>`;
+    },
+    clients() {
+      return `
+        <div class="row"><h1>Customers</h1><input id="client-search" placeholder="Search by name"></div>
+        <table>
+          <thead><tr><th>Name</th><th>Phone</th><th>Last visit</th><th>Visits</th></tr></thead>
+          <tbody id="client-rows"></tbody>
+        </table>`;
+    },
+    invoices() {
+      return `
+        <div class="row"><h1>Invoices</h1>
+          <select id="invoice-filter"><option>All</option><option>Paid</option><option>Sent</option><option>Overdue</option></select>
+        </div>
+        <table>
+          <thead><tr><th>Number</th><th>Client</th><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody id="invoice-rows"></tbody>
+        </table>`;
+    },
+    settings() {
+      return `
+        <h1>Settings</h1>
+        <div class="card">
+          <label>Clinic name</label><input value="Northside Physio">
+          <label>Opening hours</label><input value="Mon to Fri, 08:00 to 18:00">
+          <label>Booking policy</label>
+          <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <label>Reminder texts</label><select><option>24 hours before</option><option>2 hours before</option><option>Off</option></select>
+          <p><button class="btn" id="save-settings">Save changes</button> <span id="saved" class="muted"></span></p>
+        </div>`;
+    },
+  };
+
+  function renderClients(q = "") {
+    const rows = clients.filter((c) => c.name.toLowerCase().includes(q.toLowerCase()));
+    document.getElementById("client-rows").innerHTML = rows.map((c) => `<tr><td>${c.name}</td><td>${c.phone}</td><td>${c.last}</td><td>${c.visits}</td></tr>`).join("")
+      || `<tr><td colspan="4" class="muted">No client matches "${q}".</td></tr>`;
+  }
+
+  function renderInvoices(status = "All") {
+    const rows = invoices.filter((i) => status === "All" || i.status === status);
+    // No empty state: the Overdue filter shows a table with no rows and no words.
+    document.getElementById("invoice-rows").innerHTML = rows.map((i) => `<tr><td>${i.no}</td><td>${i.client}</td><td>${i.date}</td><td>£${i.amount}</td><td><span class="pill ${i.status.toLowerCase()}">${i.status}</span></td></tr>`).join("");
+  }
+
+  function route() {
+    const name = (location.hash.replace("#/", "") || "today");
+    const screen = screens[name] ? name : "today";
+    document.getElementById("app").innerHTML = screens[screen]();
+    document.querySelectorAll("nav a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === `#/${screen}`));
+    if (screen === "clients") { renderClients(); document.getElementById("client-search").addEventListener("input", (e) => renderClients(e.target.value)); }
+    if (screen === "invoices") { renderInvoices(); document.getElementById("invoice-filter").addEventListener("change", (e) => renderInvoices(e.target.value)); }
+    if (screen === "settings") document.getElementById("save-settings").addEventListener("click", () => { document.getElementById("saved").textContent = "Saved"; });
+    // "New appointment" on Today has no handler: it is a dead button.
+  }
+  window.addEventListener("hashchange", route);
+  route();
+</script>
+</body>
+</html>

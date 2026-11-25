@@ -1,0 +1,124 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-01",
+  "ask": "apply my notes in notes.md to the clinic prototype",
+  "expected_track": "full",
+  "notes": "Six clear notes on the planted faults. Note 2 says 'everywhere' itself. Note 4 is vague ('too tight') and should get a concrete reading as a default. Asking which prototype is redundant (only one).",
+  "must_cover": [
+    "request|notes|list",
+    "everywhere|this screen only|every screen",
+    "too tight|row height|padding",
+    "form|fields",
+    "policy"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "notes|which notes",
+    "everywhere|all screens|this place only"
+  ],
+  "fixtures": [
+    "notes.md",
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** apply Sam's 6 notes to the clinic prototype (Northside Physio), changing only what the notes name.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, one plain HTML file with 4 screens (Today, Clients, Invoices, Settings). I will serve it locally.\n- Notes: `notes.md` from Sam, 6 notes. All six match something real in the file.\n- Note 1: \"New appointment\" on Today has no handler, so it is a dead button today.\n- Note 2: \"Customers\" appears once, as the Clients page title. The nav already says \"Clients\".\n- Note 5: the Overdue filter on Invoices renders an empty table with no words.\n- Where it lands: the same file, left uncommitted, with a local link only. Nothing is published or pushed.\n\n**Track:** full. No reference to copy, so both tracks are the same.\n\nStill open after reading your files: what the new-appointment form does on save, and the exact booking policy wording.\n\n**Done means:**\n- All 6 notes are done, or left with a reason.\n- \"Customers\" is gone from every screen.\n- No screen except the ones the notes name changes.\n- The local link answers 200.\n\n**Requests, as I read them** (a \"my reading\" is where a note left room; correct any of them):\n- R1 Today: \"New appointment\" opens a form with client, time, therapist, type (my reading: the form opens as a panel on the page)\n- R2 everywhere: rename \"Customers\" to \"Clients\"\n- R3 Settings: replace the Latin text under Booking policy with a real policy: 24 hour cancellation\n- R4 Invoices: more room in table rows (my reading: row padding from 4px to 12px top and bottom, Invoices table only)\n- R5 Invoices: the Overdue filter shows \"No overdue invoices.\" instead of a blank table\n- R6 Today: the date in the heading is smaller than \"Today\" (my reading: \"Today\" stays 22px, the date goes to 15px in the muted grey)\n\nAnything missing or wrong? Notes you send after \"go\" still join this run.\n\nAbout 15 minutes and 2 helper agents, within a budget of 60 minutes.\n\n1. When Sam saves the new appointment, should it only close, or add a row to the Today list?\n   Recommended: add a row to the list in time order, and update the \"appointments\" count.\n   Why it matters: a form that saves nothing looks broken when someone tries it.\n\n2. What should the booking policy say, beyond 24 hour cancellation?\n   Recommended: \"Cancel or move an appointment at least 24 hours before it starts. Later changes or missed appointments are charged in full.\"\n   Why it matters: this is real text that clients will read, so the charge rule needs your decision.\n\n3. In the form, should the time and therapist be free text or pick lists?\n   Recommended: time as a time field; therapist as a list of Tom Hale and Sara Lind; type as a free text field.\n   Why it matters: pick lists stop typing mistakes but fix the choices to the people already on the page.\n\nFull brief, with the coverage notes, goes into `brief.md` after your reply.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. When Sam saves the new appointment, should it only close, or add a row | 2. What should the booking policy say, beyond 24 hour cancellation? | 3. In the form, should the time and therapist be free text or pick lists?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 3, Why it matters: on 3, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "24 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 15 minutes and 2 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what the new-appointment form does on save, and the exact booking policy wording."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 519,
+      "evidence": "519 words, 341 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full. No reference to copy, so both tracks are the same."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 519,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Lists all six notes as R1-R6, settles 'everywhere' (R2), row padding 'from 4px to 12px' (R4), form fields and save behaviour (Q1, Q3), and policy wording (Q2).",
+      "no_redundancy": "States the prototype, notes and 'everywhere' as found facts; the three questions (save behaviour, policy text, field types) are not answered by the files.",
+      "defaults_quality": "Every question has a specific default, e.g. 'therapist as a list of Tom Hale and Sara Lind' and a full policy sentence, so 'go' gives a usable result.",
+      "clarity": "Only three plain, single-topic questions, but they come after a long brief (Found, Track, Done means, Requests, budget), which takes a while to read.",
+      "respects_words": "Keeps Sam's scope ('changing only what the notes name'), the rename on every screen, and the 24h rule; the extra charge clause is put as a question, not assumed.",
+      "overall": "A strong opening: grounded in the file, all the notes mapped to requests, and three questions that matter, each with a good default. It is a bit wordy for a busy reader."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.263Z"
+}

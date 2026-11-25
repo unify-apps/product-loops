@@ -1,0 +1,125 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-06",
+  "ask": "Make a clickable demo of a chat assistant exactly like ChatGPT for our in-house legal team. Demo is Friday.",
+  "expected_track": "full",
+  "notes": "'Exactly like ChatGPT' means exact: streamed answers, action row, collapsible sidebar, recent chats. The default must not water it down to flow only. CLAUDE.md answers the look and a privacy rule for sample data.",
+  "must_cover": [
+    "exact|exactly",
+    "streamed|streaming",
+    "sidebar|recent chats|history",
+    "persona|lawyer|legal team|who uses",
+    "friday|deadline",
+    "sample|answers|matters"
+  ],
+  "findable": [
+    "font|typeface",
+    "colour|color|palette",
+    "logo"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "brand/kestrel-logo.svg"
+  ],
+  "message": "I'll build a clickable demo of a ChatGPT-style chat assistant for Kestrel Legal's in-house team, ready to show on Friday.\n\n**Found:**\n- Audience is the in-house legal team and the demo is Friday (from your message).\n- \"Exactly like ChatGPT\" is taken as exact: streamed answers, the action row under each answer, a sidebar that collapses, recent chats, new chat, regenerate and stop.\n- Look comes from `CLAUDE.md`: IBM Plex Sans and Mono, navy #14213D, gold #C9A227, paper #FAFAF7.\n- The Kestrel logo (`brand/kestrel-logo.svg`) goes top left. Sample chats use ids like \"Matter 1042\", never real client names.\n- It lands in `kestrel-assistant/` in this folder, on a local link only. Nothing is published.\n\n**Track:** full, because you will show it to people on Friday.\n\nStill open after reading your files: what the team does with it, and what done means.\n\n**Done means:**\n- Chat, sidebar and settings are built, with no serious problem left in review.\n- Every link opens and every click works, checked in a real browser.\n- Answers stream in, with the action row under each.\n- The sidebar collapses and lists recent chats by Matter id.\n- It uses the Kestrel colours, fonts and logo.\n\nThe full brief is in `loop-runs/product-build-loop-20261126-035052/brief.md`.\n\nAbout 55 minutes and 11 helper agents, within a budget of 120 minutes.\n\n1. What is the one job a lawyer on the team comes to do in it?\n   Recommended: review a contract and pull out the risky clauses, then ask follow-up questions.\n   Why it matters: the sample chats and the first screen are written around this job.\n\n2. Which ChatGPT screens does \"exactly\" cover?\n   Recommended: chat, sidebar with search, rename and delete, account menu, and settings.\n   Why it matters: this fixes how many screens get built before Friday.\n\n3. What should the sample conversations be about?\n   Recommended: contract review, clause drafting and a policy question, all on Matter ids.\n   Why it matters: the answers shown while streaming are the part people watch most.\n\n4. Who watches on Friday, and on what screen?\n   Recommended: the legal team in a meeting room, on a laptop.\n   Why it matters: it decides the screen width the demo is checked at.\n\n5. Do you want a dark theme in settings, as ChatGPT has?\n   Recommended: yes, light and dark, with light as the start.\n   Why it matters: dark doubles the colour work and the checks.\n\n6. Quick track (the chat page only) or full (every screen working)?\n   Recommended: full.\n   Why it matters: quick leaves out the sidebar actions, settings and the demo links.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. What is the one job a lawyer on the team comes to do in it? | 2. Which ChatGPT screens does \"exactly\" cover? | 3. What should the sample conversations be about? | 4. Who watches on Friday, and on what screen? | 5. Do you want a dark theme in settings, as ChatGPT has? | 6. Quick track (the chat page only) or full (every screen working)?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 55 minutes and 11 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what the team does with it, and what done means."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 435,
+      "evidence": "435 words, 219 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you will show it to people on Friday."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 435,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles exact (\"taken as exact: streamed answers... a sidebar that collapses, recent chats\"), Friday, persona (Q1 \"one job a lawyer on the team\"), and sample content (Q3 \"contract review, clause drafting and a policy question, all on Matter ids\").",
+      "no_redundancy": "Font, colours and logo are stated as found from CLAUDE.md, not asked; but Q6 re-asks the track already set in the brief (\"Track: full\").",
+      "defaults_quality": "Every question has a specific, fitting default, e.g. \"review a contract and pull out the risky clauses, then ask follow-up questions\" and \"light and dark, with light as the start\".",
+      "clarity": "Six short single-topic questions with reasons, but the brief is long and slightly contradictory (\"Still open... what done means\" right before a full \"Done means\" list), and Q6 duplicates the track line.",
+      "respects_words": "Keeps \"exactly like ChatGPT\", the Friday deadline and the legal-team audience; only Q6 floats a chat-page-only option, though its default stays full.",
+      "overall": "A strong opening that covers every needed topic with good defaults and no asks for findable facts, held back by length and the redundant track question."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.064Z"
+}

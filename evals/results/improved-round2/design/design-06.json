@@ -1,0 +1,123 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-06",
+  "ask": "tighten up the spacing everywhere and use our brand font",
+  "expected_track": "full",
+  "notes": "Two HTML files, but CLAUDE.md names the live one and the font. 'Tighten' is vague: a good intake gives a concrete reading (an 8 px scale, row padding) as the default. Asking which prototype or which font is redundant.",
+  "must_cover": [
+    "spacing|tighten|px",
+    "everywhere|every screen",
+    "source sans|font"
+  ],
+  "findable": [
+    "font|typeface|brand font",
+    "which prototype|which file|old",
+    "colour|color"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "old/proto-clinic-v1.html",
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** make the spacing on every screen of the Northside Physio prototype tidy and even, and set the whole prototype in your brand font.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, plain HTML with 4 screens: Today, Clients, Invoices, Settings (from `CLAUDE.md`: \"the live prototype\").\n- `old/proto-clinic-v1.html` is archived and will not be touched (from `CLAUDE.md`).\n- Brand font: Source Sans 3, headings 600, body 400, loaded from Google Fonts (from `CLAUDE.md`). It is not in the prototype yet, which uses the system font.\n- Spacing today: table cells use `4px 10px` while cards and rows use 16px, and the page also uses 6, 8, 9, 12, 14, 18 and 24px (from the code).\n- You said \"everywhere\" for both notes, so both will be applied to all four screens.\n- Browser for screenshots: Chrome found. Node v25.9.0. No design skill installed, so the built-in design check is used.\n\n**Track:** full, because there is no reference to copy and nothing to leave out.\n\n**Coverage:** 6 clear · partial: Look, Done signal · missing: Words with no number (\"tighten up\")\n\n**Done means:**\n- Both notes below are done on all four screens.\n- Spacing uses one scale (4, 8, 12, 16, 24px) and nothing else.\n- Page text and headings draw in Source Sans 3 at 400 and 600.\n- No screen changes except through these notes (before and after compare).\n- The prototype link opens (200).\n\n**Requests** (full table and every default are in `brief.md` after you reply):\n- R1 all screens, everywhere: spacing moves onto the scale above, table cells included (my reading)\n- R2 all screens, everywhere: Source Sans 3 on page text, buttons, inputs and the brand name\n- R3 all screens, everywhere: headings 600, body text 400 (the stat numbers and brand name were bold 700)\n\nNothing is published or committed. The result is a local link, with the changed files listed.\n\nAbout 30 minutes and 2 helper agents, within a budget of 60 minutes.\n\n**Questions**\n\n1. By \"tighten up\", do you want less space, or even space?\n   Recommended: even space. The table rows (4px) are already the tightest part; the scale makes them 8px and brings the odd gaps (6, 9, 14, 18px) onto 4, 8, 12 or 16.\n   Why it matters: \"less space\" would squeeze the table rows further and read cramped; \"even\" changes some gaps up and some down.\n\n2. Which spacing is in: only table cells, cards and form fields, or also the header and page margins?\n   Recommended: table cells, cards, stat boxes, form labels and fields, and button padding; the header bar and page edges stay as they are.\n   Why it matters: the header and page edges frame every screen, so changing them moves everything on every screen.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 2,
+      "evidence": "1. By \"tighten up\", do you want less space, or even space? | 2. Which spacing is in: only table cells, cards and form fields, or also "
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 2,
+      "evidence": "2 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "2 of 2 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 2, Why it matters: on 2, of 2"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "22 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 30 minutes and 2 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 6 clear · partial: Look, Done signal · missing: Words with no number (\"tighten up\")"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 465,
+      "evidence": "465 words, 326 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because there is no reference to copy and nothing to leave out."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 465,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 8,
+      "no_redundancy": 7,
+      "defaults_quality": 6,
+      "clarity": 6,
+      "respects_words": 5,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles spacing (\"one scale (4, 8, 12, 16, 24px)\"), every screen (\"all four screens\") and font (\"Source Sans 3 at 400 and 600\"); scope of 'everywhere' is left muddled by Q2.",
+      "no_redundancy": "Font, prototype and archive rule are stated as found, not asked; but Q2 asks which areas are in although the person already said \"everywhere\".",
+      "defaults_quality": "Both questions have concrete defaults, but Q2's default (\"the header bar and page edges stay as they are\") cuts the ask, and Q1's \"even space\" sidesteps 'tighten'.",
+      "clarity": "Only two questions with clear recommendations, but buried under a long brief with jargon like \"Coverage: 6 clear · partial: Look, Done signal\" and \"Track: full\".",
+      "respects_words": "Brief says \"both will be applied to all four screens\" yet the Q2 default exempts header and page edges, against \"everywhere\"; Q1 default reinterprets \"tighten up\" as even rather than less.",
+      "overall": "Well-researched brief with real findings, but on \"go\" it would deliver less than 'everywhere' and maybe not 'tighter', and it reads long for a busy person."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.862Z"
+}

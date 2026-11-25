@@ -28,8 +28,9 @@ const HELP = `page-check.mjs: look at a prototype's screens the way a person wou
                                                 prints the value of a JavaScript expression on that screen, as JSON
 
 screens.json: { "screens": [ { "name": "requests", "url": "http://localhost:4100/#requests", "open": null } ] }
-"open" is optional JavaScript run after the page loads, for a screen with no URL of its own
-(for example: "document.querySelector('[data-nav=settings]').click()").
+"open" is an optional JavaScript expression, evaluated after the page loads, for a screen with no URL of its own
+(for example: "document.querySelector('[data-nav=settings]').click()"). Statements go inside an arrow:
+"(() => { const i = document.querySelector('input'); i.value = 'zz'; i.dispatchEvent(new Event('input')); })()".
 Exit codes: 0 ok, 1 a check failed or a refusal, 3 no browser for a command that needs one.`;
 
 const WAIT_AFTER_LOAD_MS = 500; // long enough for a small prototype's first draw and short entrance animations

@@ -1,0 +1,123 @@
+{
+  "arm": "baseline",
+  "loop": "design",
+  "case": "design-06",
+  "ask": "tighten up the spacing everywhere and use our brand font",
+  "expected_track": "full",
+  "notes": "Two HTML files, but CLAUDE.md names the live one and the font. 'Tighten' is vague: a good intake gives a concrete reading (an 8 px scale, row padding) as the default. Asking which prototype or which font is redundant.",
+  "must_cover": [
+    "spacing|tighten|px",
+    "everywhere|every screen",
+    "source sans|font"
+  ],
+  "findable": [
+    "font|typeface|brand font",
+    "which prototype|which file|old",
+    "colour|color"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "old/proto-clinic-v1.html",
+    "proto-clinic/index.html"
+  ],
+  "message": "## My brief\n\n**Goal:** change how the Northside Physio prototype looks, from your one note: tighten the spacing everywhere, and use the brand font.\n\n- **Prototype:** `proto-clinic/index.html` (plain HTML, one file, 4 screens: Today, Clients, Invoices, Settings). `old/proto-clinic-v1.html` is archived and your `CLAUDE.md` says never to change it, so I will not touch it.\n- **How it runs:** a local server on its folder, one link. Nothing is published, pushed or committed. I leave the changed files uncommitted and list them.\n- **Brand font:** Source Sans 3 from Google Fonts, headings 600, body 400 (from your `CLAUDE.md`).\n- **Design rules:** your `CLAUDE.md` only. No `product-design` or `design-review` skill is installed, so I use the built-in design check.\n- **Start check:** Node v25.9.0 and a browser for screenshots are both there, and the prototype was found.\n- **Stop fact:** every row below is done and swept, no screen that no note names changed without a reason, and the link opens.\n\n## The request list\n\n| # | Note, in words | Screens | Where | Check |\n|---|---|---|---|---|\n| 1 | Table cells get even spacing: 10px top and bottom, 12px left and right, instead of 4px top and bottom *(my reading)* | Today, Clients, Invoices | everywhere | padding of every `th, td` is \"10px 12px\" |\n| 2 | Gaps between header, page title, stat cards, table and settings card follow one scale of 8, 16 and 24px; nothing else changes *(my reading)* | Today, Clients, Invoices, Settings | everywhere | no gap or margin off the scale; other screens do not move |\n| 3 | Load Source Sans 3 from Google Fonts and use it for all text, headings weight 600, body weight 400 | all 4 | everywhere | body `font-family` starts with \"Source Sans 3\"; headings and brand 600, body 400 |\n\n## Questions\n\n1. **What does \"tighten up\" mean here?** The table rows are the tightest thing today (4px above and below the text), so reading it as \"less space\" would make them worse. **Default:** I read it as \"make the spacing tidy and even\" (rows 1 and 2 above). The other reading is \"make everything more compact\", which shrinks the gaps instead.\n2. **Where does the spacing note apply?** Your note says everywhere, so I marked rows 1 to 3 as `everywhere`. **Default:** all four screens, including the Settings card.\n3. **How should the font load?** **Default:** a Google Fonts link in the page `<head>`, with the current system fonts as the fallback. If you are offline, screenshots may show the fallback.\n\nAnything missing or wrong in the list? Notes you send later still join this run.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. What does \"tighten up\" mean here? The table rows are the tightest thin | 2. Where does the spacing note apply? Your note says everywhere, so I mar | 3. How should the font load? Default: a Google Fonts link in the page `<h"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "14 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: font (\"font\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 455,
+      "evidence": "455 words, 307 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 455,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 6,
+      "defaults_quality": 7,
+      "clarity": 7,
+      "respects_words": 6,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Spacing (rows 1-2, Q1), everywhere ('all four screens'), and font ('Source Sans 3 from Google Fonts, headings 600, body 400') are all settled.",
+      "no_redundancy": "Font, prototype and archive rule are stated from CLAUDE.md, not asked, but Q2 'Where does the spacing note apply?' asks what 'everywhere' already answers.",
+      "defaults_quality": "Every question has a concrete default (e.g. 'a Google Fonts link in the page <head>, with the current system fonts as the fallback'), but Q1's default sets a debatable direction.",
+      "clarity": "Only three short questions, the key one first, but the brief and the request table come before them and make the message long.",
+      "respects_words": "The default reads 'tighten up' as 'make the spacing tidy and even' and raises table padding from 4px to 10px, which goes against the plain meaning of tighten, though it says so openly.",
+      "overall": "A well-grounded brief that uses the files well, but the default goes against 'tighten' and one question is redundant, so 'go' may give the opposite of what was asked."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.797Z"
+}

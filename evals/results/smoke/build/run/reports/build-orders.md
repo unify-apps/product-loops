@@ -1,0 +1,9 @@
+- Files changed: order-board/index.html only (Orders CSS block `.o-*`, and `MODULES.orders.render` with its one `ORDERS_DATA` block; header, nav, router untouched).
+- Links: `- Orders list (To do by due time, Done group with Undo, Add order form opens on the page): http://127.0.0.1:4400/#/orders` (links/orders.md).
+- Click check: PASS (1 link, 9 clicks, 0 dead, 0 errors, no placeholders); also scripted add -> mark done -> reload at 1440 and 375 wide, 0 console errors, saved order survives reload.
+- Requests done: R2 list, R3 add order, R4 mark done (with Undo), R5 one page at #/orders only.
+- Own choice: 8 samples = 7 to do + 1 already done, so the Done group shows from the start; today pinned to Thu 26 Nov 2026 with a "Today / Tomorrow / weekday" label over each due time.
+- Own choice: Add order opens an inline form above the list (button hides while open); Due date prefilled with today, time left empty; Pickup selected by default; address field shows only for Delivery.
+- Own choice: a failed save shows one status line plus a short red message under each bad field and focuses the first; success/mark done/undo show a one-line status message.
+- Own choice: Done group sorted most recently done first; done rows muted with the item struck through; order with no price shows "No price".
+- Own choice: storage key `bloomco.orders.v1`; every read/write in try/catch, page falls back to the samples in memory.

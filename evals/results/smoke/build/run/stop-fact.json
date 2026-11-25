@@ -1,0 +1,53 @@
+{
+  "items": [
+    {
+      "id": "S1",
+      "item": "Every module in RUN/modules.md is built: Orders.",
+      "passes": true,
+      "proof": "loop-runs/product-build-loop-20261126-032655/review.json",
+      "note": "Opened order-board/index.html and loaded http://127.0.0.1:4400/#/orders: Orders section renders list, add form, mark done."
+    },
+    {
+      "id": "S2",
+      "item": "Every module's last review round has 0 P1.",
+      "passes": true,
+      "proof": "loop-runs/product-build-loop-20261126-032655/review.json",
+      "note": "Read reviews/orders-round2.md: P1 0, P2 0. index.html mtime 03:36:33 is before round 2 file 03:38:43, so unchanged since."
+    },
+    {
+      "id": "S3",
+      "item": "CLICKS passes on every link in RUN/links.md: each opens, no dead click, no placeholder text, no page error.",
+      "passes": true,
+      "proof": "loop-runs/product-build-loop-20261126-032655/review.json",
+      "note": "Ran check-clicks on links.md: PASS: 1 links, 9 clicks, 0 dead, 0 errors, no placeholders."
+    },
+    {
+      "id": "S4",
+      "item": "RUN/requests.md has no open line.",
+      "passes": true,
+      "proof": "loop-runs/product-build-loop-20261126-032655/review.json",
+      "note": "requests.md R1-R5 all ticked; each checked in the live page (list, Add order, Mark done, single route)."
+    },
+    {
+      "id": "S5",
+      "item": "A staff member can add an order from the Orders page and see it in the list.",
+      "passes": true,
+      "proof": "loop-runs/product-build-loop-20261126-032655/review.json",
+      "note": "Fresh playwright context: Add order, filled name/what/time, Save: row 'Zed Reviewer' in To do, count 7 to 8, 0 page errors."
+    },
+    {
+      "id": "S6",
+      "item": "A staff member can mark an order done and see it change in the list.",
+      "passes": true,
+      "proof": "loop-runs/product-build-loop-20261126-032655/review.json",
+      "note": "Same walk: Mark done moved the row to Done (struck through, Undo), To do 8 to 7, status Undo shown, persisted after reload. Screenshot shots/review/mine-done.png."
+    }
+  ],
+  "review": {
+    "file": "loop-runs/product-build-loop-20261126-032655/review.json",
+    "spec": 4,
+    "quality": 4,
+    "verdict": "PASS",
+    "at": "2026-11-25T22:10:30.533Z"
+  }
+}

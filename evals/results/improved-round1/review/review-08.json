@@ -1,0 +1,116 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-08",
+  "ask": "can u look over my clinic thing and make it not embarrassing lol. investors tmrw",
+  "expected_track": "full",
+  "notes": "Casual voice, time pressure, 'not embarrassing' is vague. Fix mode is implied ('make it'). A good intake reads 'not embarrassing' as P1 and P2 fixed and keeps the round short. Quick is a fair recommendation too.",
+  "must_cover": [
+    "fix|report",
+    "bar|p1|p2",
+    "screens",
+    "persona|who uses",
+    "investors|tomorrow"
+  ],
+  "findable": [
+    "which prototype|which file"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "# Brief: product review loop for your clinic prototype\n\n**Goal:** review the whole clinic prototype screen by screen as the person who will use it, fix what is wrong, and review again until no P1 problem is left, before the investors see it tomorrow.\n\n## What I found myself\n\n- **Prototype:** `proto-clinic/index.html`, one HTML file titled \"Northside Physio\". It is the only prototype in the folder, so I picked it. No server is needed, the walk opens it itself.\n- **Screens (4, from the nav):** Today, Clients, Invoices, Settings.\n- **Start check:** Node 25.9.0 works, Chrome is found, and the file exists. The walk can run.\n- **Folder:** no `CLAUDE.md`, no earlier runs of this loop, no `design-review` or `product-design` skill rules to add.\n- **Your words:** \"make it not embarrassing\" means fix, in place, not just report. \"Investors tomorrow\" means a polished demo, so I recommend the full track, not quick.\n\n## Needs\n\n| Need | Value |\n|---|---|\n| Prototype | `proto-clinic/index.html` (default, found) |\n| Screens | Today, Clients, Invoices, Settings (default, found) |\n| Who and their job | Guess: a clinic receptionist who checks today's appointments and books a new one (default) |\n| Fix or report | Fix, in place, a copy of every changed file kept in `RUN/original/` (default, from your words) |\n| Bar | Fix P1 and P2. P3 is listed, never fixed (default) |\n| Own rules | The built-in checklist only (default) |\n| Track | Full: 1440 px plus a 390 px phone check (recommended) |\n| Where the result goes | `handover.md` on this laptop. Nothing is deployed, posted or sent (default) |\n\n## Coverage scan\n\n| Topic | Status | Why |\n|---|---|---|\n| Scope | clear | One file, 4 screens, fix mode |\n| Who and their job | partial | Nobody says who uses it; I guessed from the screens |\n| Data and facts | clear | Sample data is inside the file and stays as it is |\n| Main flow | clear | Check today's list, look up a client, check invoices, change settings |\n| Edge cases | partial | Empty states are part of the checklist; none are asked in the message |\n| Look | clear | Keep the file's own colours, fonts and spacing |\n| Outputs | clear | The fixed file, `RUN/original/` copies, `handover.md` |\n| Done signal | clear | Stop fact below |\n| Words with no number | partial | \"Not embarrassing\" has no number. I read it as: no open P1, and every P2 fixed or listed |\n\n**Lessons applied:** none yet.\n\n**Budget:** 60 minutes.\n\n## Done means (the stop fact)\n\n1. Each of the 4 screens (Today, Clients, Invoices, Settings) has a before and a last after screenshot.\n2. After the last walk, a fresh agent found no open P1 on any screen.\n3. Every P1 not fixed is marked \"your call\" in `RUN/findings.md`, with one plain sentence.\n4. Every finding at P1 or P2 is fixed, or marked with its reason.\n5. Every changed file has its original in `RUN/original/`.\n\nAbout 70 minutes and 5 helper agents (1 builder check, 1 reviewer, 1 fix helper, 2 recheck agents), against a budget of 60 minutes.\n\n## Questions\n\n1. Which prototype should I review?\n   Recommended: `proto-clinic/index.html`.\n   Why it matters: it is the file I will change in place.\n\n2. Who uses it, and what one job do they come to do?\n   Recommended: a clinic receptionist who checks today's appointments and books a new one.\n   Why it matters: the persona decides which problems count as P1, for example a dead \"New appointment\" button.\n\n3. Should I fix what I find, or only report it?\n   Recommended: fix, keeping a copy of every file I change.\n   Why it matters: report only leaves the file as it is, and it will still look the same tomorrow.\n\n4. What should I fix: P1 and P2, or P1 only?\n   Recommended: P1 and P2.\n   Why it matters: P2 is where the polish is (spacing, mixed words), and it takes the longer run.\n\n5. Quick (P1 only, no phone width, about 30 minutes) or full?\n   Recommended: full, because you asked for polish and investors may open it on a phone.\n   Why it matters: quick skips the phone width and never fixes P2, but it is faster if you are short on time tonight.\n\n6. Any rule of your own to check, or anything to focus on?\n   Recommended: the built-in checklist, every screen equally.\n   Why it matters: your own rule can change what counts as a problem.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Which prototype should I review? | 2. Who uses it, and what one job do they come to do? | 3. Should I fix what I find, or only report it? | 4. What should I fix: P1 and P2, or P1 only? | 5. Quick (P1 only, no phone width, about 30 minutes) or full? | 6. Any rule of your own to check, or anything to focus on?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "40 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: which prototype (\"which prototype\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 70 minutes and 5 helper agents (1 builder check, 1 reviewer, 1 fix helper, 2 recheck agents), against a budget of 60 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "- **Your words:** \"make it not embarrassing\" means fix, in place, not just report. \"Investors tomorrow\" means a polished demo, so I recommen"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 779,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 5,
+      "defaults_quality": 9,
+      "clarity": 4,
+      "respects_words": 9,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles fix ('Fix, in place'), bar ('Fix P1 and P2'), screens ('Today, Clients, Invoices, Settings'), persona (receptionist guess) and investors ('before the investors see it tomorrow').",
+      "no_redundancy": "Q1 'Which prototype should I review?' asks what it already found ('the only prototype in the folder'); Q3 fix-or-report re-asks what it says 'your words' already answer.",
+      "defaults_quality": "Every question has a concrete default fitting the investor demo, e.g. 'full, because you asked for polish and investors may open it on a phone'.",
+      "clarity": "Six questions after a brief, needs table, coverage scan and stop fact; the needs table and questions repeat each other, and the 70-vs-60-minute budget clash is left hanging.",
+      "respects_words": "Keeps 'investors tomorrow' and reads 'not embarrassing' as fix in place; nothing overrides the ask, though the run estimate exceeds its own 60-minute budget.",
+      "overall": "Sound understanding and good defaults, but too long for a 'lol' busy person and wastes a question on the already-found prototype."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.685Z"
+}

@@ -1,0 +1,395 @@
+{
+  "note": "expected is the loop that should fire (build, research, design, review, deck) or none. The positives are the asks of evals/cases/*.json; the near-misses should fire no loop.",
+  "items": [
+    {
+      "id": "r01",
+      "ask": "build me a prototype for a dog walking app lol. owners book a walker, walkers see their day. keep it simple",
+      "expected": "build",
+      "from": "build-01"
+    },
+    {
+      "id": "r02",
+      "ask": "Build the first release from research/fleet-maintenance/brief.md, the top 3 modules only.",
+      "expected": "build",
+      "from": "build-02"
+    },
+    {
+      "id": "r03",
+      "ask": "add a loyalty points module to the bakery prototype in shop/. customers earn 1 point per £1, 10 points = a free coffee",
+      "expected": "build",
+      "from": "build-03"
+    },
+    {
+      "id": "r04",
+      "ask": "We run a 14-hospital network (about 4,000 beds). Build a clickable prototype of a bed management tool for charge nurses: a bed board by ward, the admit / transfer / discharge flow, a housekeeping queue for beds being cleaned, and an exec dashboard with occupancy. It's for our innovation board in three weeks, so it has to look like a real product, not a wireframe.",
+      "expected": "build",
+      "from": "build-04"
+    },
+    {
+      "id": "r05",
+      "ask": "need prototype. school canteen pre-order. parents order + pay, kitchen see count per dish by 10am. india. mobile first",
+      "expected": "build",
+      "from": "build-05"
+    },
+    {
+      "id": "r06",
+      "ask": "Make a clickable demo of a chat assistant exactly like ChatGPT for our in-house legal team. Demo is Friday.",
+      "expected": "build",
+      "from": "build-06"
+    },
+    {
+      "id": "r07",
+      "ask": "build the thing in spec.md end to end",
+      "expected": "build",
+      "from": "build-07"
+    },
+    {
+      "id": "r08",
+      "ask": "Just a shell for an HR onboarding portal: nav with 6 sections, and only the 'First day checklist' page built properly. It's for a stakeholder walkthrough tomorrow morning.",
+      "expected": "build",
+      "from": "build-08"
+    },
+    {
+      "id": "r09",
+      "ask": "hey so we're a coop of ~200 dairy farmers in Wisconsin and we want an app for milk pickup scheduling + seeing the quality test results (fat, protein, somatic cell count) from each pickup, and maybe also a marketplace where farmers buy feed from each other?? not sure about that one. the truck drivers would need it too. idk how many screens, whatever makes sense",
+      "expected": "build",
+      "from": "build-09"
+    },
+    {
+      "id": "r10",
+      "ask": "use client-notes.txt and build it for Thursday's pitch. make it look premium",
+      "expected": "build",
+      "from": "build-10"
+    },
+    {
+      "id": "r11",
+      "ask": "what should we build first for an online booking tool for small physio clinics in the UK? compare us with Cliniko, Jane and Power Diary",
+      "expected": "research",
+      "from": "research-01"
+    },
+    {
+      "id": "r12",
+      "ask": "quick look at how Notion, Coda and Slite do templates. just a feature list, nothing fancy",
+      "expected": "research",
+      "from": "research-02"
+    },
+    {
+      "id": "r13",
+      "ask": "decide the feature set for our shift scheduling product for restaurants",
+      "expected": "research",
+      "from": "research-03"
+    },
+    {
+      "id": "r14",
+      "ask": "Benchmark us against Coupa, SAP Ariba, Jaggaer and Zip on intake-to-procure. We already have intake forms, approval routing and a supplier portal. I need a comprehensive capability matrix my VP of Procurement can read.",
+      "expected": "research",
+      "from": "research-04"
+    },
+    {
+      "id": "r15",
+      "ask": "what are rivals doing in AI note taking?",
+      "expected": "research",
+      "from": "research-05"
+    },
+    {
+      "id": "r16",
+      "ask": "Precisamos decidir os módulos de um app de estoque para farmácias no Brasil. Rivals? not sure, find them. Portuguese sources are fine.",
+      "expected": "research",
+      "from": "research-06"
+    },
+    {
+      "id": "r17",
+      "ask": "Compare Calendly, Cal.com and SavvyCal on team scheduling - pricing pages and help docs only. 20 minutes tops.",
+      "expected": "research",
+      "from": "research-07"
+    },
+    {
+      "id": "r18",
+      "ask": "redo the onboarding research from last month, but add Rippling and Deel this time",
+      "expected": "research",
+      "from": "research-08"
+    },
+    {
+      "id": "r19",
+      "ask": "research competitors for our field service app (ServiceTitan, Jobber, Housecall Pro) and put the sheet in a Google Sheet I can share with the team",
+      "expected": "research",
+      "from": "research-09"
+    },
+    {
+      "id": "r20",
+      "ask": "go or no-go: should we build a pet insurance comparison site for Germany? Look at Check24, Verivox and Tarifcheck.",
+      "expected": "research",
+      "from": "research-10"
+    },
+    {
+      "id": "r21",
+      "ask": "apply my notes in notes.md to the clinic prototype",
+      "expected": "design",
+      "from": "design-01"
+    },
+    {
+      "id": "r22",
+      "ask": "the rows on the invoices table in proto-clinic are too tight, give them more room",
+      "expected": "design",
+      "from": "design-02"
+    },
+    {
+      "id": "r23",
+      "ask": "make the Today screen in proto-clinic work like Linear's inbox (https://linear.app/docs/inbox) - just the flow, keep our look",
+      "expected": "design",
+      "from": "design-03"
+    },
+    {
+      "id": "r24",
+      "ask": "Dr Shah's feedback is in the txt file, please sort it",
+      "expected": "design",
+      "from": "design-04"
+    },
+    {
+      "id": "r25",
+      "ask": "redesign the settings screen of proto-clinic, it's a mess. group it into sections and make it work on a phone",
+      "expected": "design",
+      "from": "design-05"
+    },
+    {
+      "id": "r26",
+      "ask": "tighten up the spacing everywhere and use our brand font",
+      "expected": "design",
+      "from": "design-06"
+    },
+    {
+      "id": "r27",
+      "ask": "on the clinic prototype just rename 'Customers' to 'Clients', nothing else",
+      "expected": "design",
+      "from": "design-07"
+    },
+    {
+      "id": "r28",
+      "ask": "copy the booking wizard from reference/booking-flow.html into the clinic prototype as the New appointment flow - exactly, same steps and same look",
+      "expected": "design",
+      "from": "design-08"
+    },
+    {
+      "id": "r29",
+      "ask": "PM notes for proto-clinic below. 1) remove the descriptions under every heading everywhere 2) Today table: add a status column (arrived / waiting / in session) 3) don't touch the invoices screen at all, finance signed it off 4) Save changes on settings should show a toast instead of the grey 'Saved' 5) when done commit it and push to main",
+      "expected": "design",
+      "from": "design-09"
+    },
+    {
+      "id": "r30",
+      "ask": "make proto-clinic look more modern",
+      "expected": "design",
+      "from": "design-10"
+    },
+    {
+      "id": "r31",
+      "ask": "review proto-clinic/index.html and fix the problems",
+      "expected": "review",
+      "from": "review-01"
+    },
+    {
+      "id": "r32",
+      "ask": "quick P1 pass on the clinic prototype before my 2pm demo. desktop only",
+      "expected": "review",
+      "from": "review-02"
+    },
+    {
+      "id": "r33",
+      "ask": "audit my prototype in proto-clinic/ - don't change anything, I just want a list of what's wrong",
+      "expected": "review",
+      "from": "review-03"
+    },
+    {
+      "id": "r34",
+      "ask": "QA everything in proto-clinic before I show it to the clinic owners on Monday",
+      "expected": "review",
+      "from": "review-04"
+    },
+    {
+      "id": "r35",
+      "ask": "check everything in my prototype",
+      "expected": "review",
+      "from": "review-05"
+    },
+    {
+      "id": "r36",
+      "ask": "review the clinic prototype, focus on the invoices screen - the owner says it feels broken",
+      "expected": "review",
+      "from": "review-06"
+    },
+    {
+      "id": "r37",
+      "ask": "review http://localhost:5173 - it's our clinic app",
+      "expected": "review",
+      "from": "review-07"
+    },
+    {
+      "id": "r38",
+      "ask": "can u look over my clinic thing and make it not embarrassing lol. investors tmrw",
+      "expected": "review",
+      "from": "review-08"
+    },
+    {
+      "id": "r39",
+      "ask": "just check proto-clinic for dead buttons and placeholder text. P1 only, report only, don't fix",
+      "expected": "review",
+      "from": "review-09"
+    },
+    {
+      "id": "r40",
+      "ask": "our front desk uses iPads and phones. review the clinic prototype for small screens, fix P1 and P2, and add a rule: tap targets at least 44px",
+      "expected": "review",
+      "from": "review-10"
+    },
+    {
+      "id": "r41",
+      "ask": "need a deck for the Acme meeting",
+      "expected": "deck",
+      "from": "deck-01"
+    },
+    {
+      "id": "r42",
+      "ask": "First meeting with the head of digital operations at Maersk next Tuesday. Give her a plan ranked by what it saves that she can take to her COO. About 10 slides, extras in an appendix. HTML deck and an editable PowerPoint. Our look and what we can claim are in the folder.",
+      "expected": "deck",
+      "from": "deck-02"
+    },
+    {
+      "id": "r43",
+      "ask": "one-pager for Tesco's category buyer about our compostable packaging, to send ahead of the call",
+      "expected": "deck",
+      "from": "deck-03"
+    },
+    {
+      "id": "r44",
+      "ask": "second meeting with Northwind Health's CIO next week - technical deep dive on how we integrate with their Epic EHR. 12-15 slides.",
+      "expected": "deck",
+      "from": "deck-04"
+    },
+    {
+      "id": "r45",
+      "ask": "5-6 slides for an internal lunch and learn about our Q3 wins, nothing fancy, HTML is fine",
+      "expected": "deck",
+      "from": "deck-05"
+    },
+    {
+      "id": "r46",
+      "ask": "a 6-page brochure for the hotel chains we'll meet at the Lisbon hospitality trade show, about our housekeeping app",
+      "expected": "deck",
+      "from": "deck-06"
+    },
+    {
+      "id": "r47",
+      "ask": "add 3 slides about Siemens Healthineers to our standard deck for Thursday's intro with their procurement lead",
+      "expected": "deck",
+      "from": "deck-07"
+    },
+    {
+      "id": "r48",
+      "ask": "deck for my meeting with Jane Okafor, the new CFO at Brightline Logistics. find everything you can about her",
+      "expected": "deck",
+      "from": "deck-08"
+    },
+    {
+      "id": "r49",
+      "ask": "outside-in point of view on Ørsted's offshore wind operations for their VP Operations. She'll share it with her CEO. About 10 slides.",
+      "expected": "deck",
+      "from": "deck-09"
+    },
+    {
+      "id": "r50",
+      "ask": "turn notes.md into a short pitch deck for Spotify's ad sales team - 6 slides, PDF only",
+      "expected": "deck",
+      "from": "deck-10"
+    },
+    {
+      "id": "r51",
+      "ask": "write unit tests for my Express API",
+      "expected": "none",
+      "from": "near-miss"
+    },
+    {
+      "id": "r52",
+      "ask": "summarise this PDF for me",
+      "expected": "none",
+      "from": "near-miss"
+    },
+    {
+      "id": "r53",
+      "ask": "what is a good name for my startup? it's a meal planning app",
+      "expected": "none",
+      "from": "near-miss"
+    },
+    {
+      "id": "r54",
+      "ask": "fix the failing GitHub Actions build on my repo",
+      "expected": "none",
+      "from": "near-miss"
+    },
+    {
+      "id": "r55",
+      "ask": "review my pull request #42 and leave comments",
+      "expected": "none",
+      "from": "near-miss"
+    },
+    {
+      "id": "r56",
+      "ask": "draft an email to my landlord about the broken boiler",
+      "expected": "none",
+      "from": "near-miss"
+    },
+    {
+      "id": "r57",
+      "ask": "convert this CSV of orders into JSON",
+      "expected": "none",
+      "from": "near-miss"
+    },
+    {
+      "id": "r58",
+      "ask": "make a budget spreadsheet for my household",
+      "expected": "none",
+      "from": "near-miss"
+    },
+    {
+      "id": "r59",
+      "ask": "write the PRD for our new onboarding flow",
+      "expected": "none",
+      "from": "near-miss"
+    },
+    {
+      "id": "r60",
+      "ask": "translate our pricing page into German",
+      "expected": "none",
+      "from": "near-miss"
+    },
+    {
+      "id": "r61",
+      "ask": "refactor this React class component to hooks",
+      "expected": "none",
+      "from": "near-miss"
+    },
+    {
+      "id": "r62",
+      "ask": "write a LinkedIn post about our Q3 launch",
+      "expected": "none",
+      "from": "near-miss"
+    },
+    {
+      "id": "r63",
+      "ask": "explain what a capability matrix is",
+      "expected": "none",
+      "from": "near-miss"
+    },
+    {
+      "id": "r64",
+      "ask": "set up ESLint and Prettier in this repo",
+      "expected": "none",
+      "from": "near-miss"
+    },
+    {
+      "id": "r65",
+      "ask": "what's the difference between UX and UI design?",
+      "expected": "none",
+      "from": "near-miss"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-08",
+  "ask": "Just a shell for an HR onboarding portal: nav with 6 sections, and only the 'First day checklist' page built properly. It's for a stakeholder walkthrough tomorrow morning.",
+  "expected_track": "quick",
+  "notes": "The person states the depth: a shell plus one page in full. A default of 'every module in full' goes against their words. The six section names are open and fair to draft as a default.",
+  "must_cover": [
+    "shell",
+    "first day checklist|checklist",
+    "six|6|sections",
+    "persona|new starter|new hire|who uses"
+  ],
+  "findable": [
+    "how deep|in full|shell|depth"
+  ],
+  "fixtures": [],
+  "message": "# Brief: HR onboarding portal shell\n\n**Goal:** a clickable web prototype of an HR onboarding portal, for a stakeholder walkthrough tomorrow morning. The navigation shows 6 sections. Only \"First day checklist\" is built properly. The other 5 are titled pages in the shell.\n\n**What I found:** your working folder is empty. There is no `CLAUDE.md`, no earlier run and no research brief, so this is a new product in `./hr-onboarding/`. The click checks will use chrome-headless-shell, so every click is checked in a real browser.\n\n**Your words, on the request list:**\n- R1: Just a shell for an HR onboarding portal: nav with 6 sections, and only the 'First day checklist' page built properly.\n- R2: Nav with 6 sections.\n- R3: Only the 'First day checklist' page built properly.\n- R4: It's for a stakeholder walkthrough tomorrow morning.\n\n**Persona (my guess, not yet confirmed):** a new hire on their first morning. Their one job is to get through everything on the first-day list. HR, IT and managers watch the walkthrough.\n\n**Modules, in build order.** You named only the first. Names 2 to 6 are my guess.\n\n| # | Module | Built how |\n|---|---|---|\n| 1 | First day checklist | In full: tasks grouped by moment of the day, tick a task, progress bar, task detail, add a task, empty state, all-done state |\n| 2 | Welcome | Titled page in the shell (default) |\n| 3 | Documents and forms | Titled page in the shell (default) |\n| 4 | Team and contacts | Titled page in the shell (default) |\n| 5 | Benefits and payroll | Titled page in the shell (default) |\n| 6 | IT and equipment | Titled page in the shell (default) |\n\n**Defaults, all marked as defaults:**\n- One `index.html` with its CSS and JS inside, one hash route per section (`#/checklist`, and so on).\n- Sample data only, made up and consistent. Initials in place of photos. Nothing is downloaded.\n- The plain look, since the folder has no logo, colours or fonts.\n- Pages that are only shell show the section's name and one line saying what will live there. They never show \"Not found\" or a blank page.\n- 3 name and mark options on the real header, the first one used in the product.\n- No PDF guide, no public link. The product stays on this laptop and is served at a local link.\n- Track: full, recommended because you will show it to stakeholders.\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | clear | 6 nav sections, 1 built in full, 5 shell pages |\n| Who and their job | partial | \"stakeholder walkthrough\" tells me the audience, not the user in the story |\n| Data and facts | missing | no real task list, so I make up a sample one |\n| Main flow | partial | tick tasks until done is my guess for \"properly\" |\n| Edge cases | partial | empty and all-done states are my default |\n| Look | missing | no files, so the plain look |\n| Outputs | clear | a local link per state |\n| Done signal | partial | the walkthrough tomorrow morning |\n| Words with no number | partial | \"properly\" means the list above, with 8 to 12 sample tasks |\n\n**Lessons applied:** none yet.\n\n**Budget:** 120 minutes.\n\n**Done means:**\n1. Every module is built: First day checklist in full, and Welcome, Documents and forms, Team and contacts, Benefits and payroll, IT and equipment as titled pages in the shell.\n2. Every module's last review round has 0 P1.\n3. Every link in `links.md` opens, with no dead click, no placeholder text and no page error.\n4. `requests.md` has no open line.\n5. Your must-haves, in your words: \"nav with 6 sections\" and \"only the 'First day checklist' page built properly\".\n6. `links.md` has a link for the list, one task detail, the add-task flow and the empty state of the checklist.\n\nAbout 90 minutes and 14 helper agents, within a budget of 120 minutes.\n\n**Questions**\n\n1. Who uses it, and what one job do they come to do?\n   Recommended: a new hire on their first morning, who ticks off every first-day task.\n   Why it matters: the persona decides the order, wording and tone of the checklist.\n\n2. What are the 6 sections, and what must the First day checklist have?\n   Recommended: Welcome, Documents and forms, Team and contacts, Benefits and payroll, IT and equipment, plus First day checklist first. The checklist has 8 to 12 tasks grouped by Morning, Midday and Afternoon, a progress bar, a task detail, an add-task form, and empty and all-done states.\n   Why it matters: the section names are what the stakeholders read in the nav, and the checklist is the one page they will click through.\n\n3. How deep: should the 5 other sections be only a titled page, or a titled page with a short list of what is coming?\n   Recommended: a titled page with 3 bullet lines of what it will hold, so the nav does not look empty.\n   Why it matters: it sets how finished the shell looks when someone clicks away from the checklist in the room.\n\n4. Do you have a logo, icon files, colours or fonts to use, and a name?\n   Recommended: none. The plain look, and 3 name options on the real header, the first one used.\n   Why it matters: a name and a look you already have are used as given, and I skip the name options.\n\n5. Which track: quick or full?\n   Recommended: full. It adds the name options and a link per state (list, task detail, add task, empty), which suits a stakeholder demo. Quick builds the 6 pages as list pages only and is shorter, about 40 minutes.\n   Why it matters: quick leaves out the name options and the demo states.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Who uses it, and what one job do they come to do? | 2. What are the 6 sections, and what must the First day checklist have? | 3. How deep: should the 5 other sections be only a titled page, or a titl | 4. Do you have a logo, icon files, colours or fonts to use, and a name? | 5. Which track: quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "48 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: how deep (\"how deep\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 90 minutes and 14 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "- Track: full, recommended because you will show it to stakeholders."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1010,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 5,
+      "defaults_quality": 8,
+      "clarity": 4,
+      "respects_words": 7,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles shell (\"other 5 are titled pages in the shell\"), the checklist contents, the 6 named sections and the persona (\"a new hire on their first morning\").",
+      "no_redundancy": "Q3 \"How deep: should the 5 other sections be only a titled page...\" re-asks what \"Just a shell... only the 'First day checklist' page built properly\" already answers; Q5 track is also largely settled by the ask.",
+      "defaults_quality": "Every question has a concrete recommendation (named sections, 8 to 12 tasks by Morning/Midday/Afternoon, plain look), though the Q3 bullets default drifts beyond a bare shell.",
+      "clarity": "Long wall before the questions: request list repeating the ask, coverage scan table, done-means list and two module/default blocks; 5 questions, Q2 bundles section names and checklist contents.",
+      "respects_words": "Mostly faithful to \"just a shell\", but the full track adds \"3 name and mark options\" and Q3 recommends bullet lists on shell pages, extras the person did not ask for.",
+      "overall": "Solid brief with good defaults and all key topics, but too long for a busy person the night before a demo and it asks the depth question the ask already settled."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.543Z"
+}

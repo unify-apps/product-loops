@@ -1,0 +1,116 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-07",
+  "ask": "review http://localhost:5173 - it's our clinic app",
+  "expected_track": "full",
+  "notes": "The URL does not answer (nothing is running, and vite is not installed). The start check should find that and say so in the same message, with a default (open clinic-app/index.html directly).",
+  "must_cover": [
+    "localhost|5173|server|not running|start",
+    "screens",
+    "fix|report",
+    "persona|who uses"
+  ],
+  "findable": [
+    "which prototype|which file"
+  ],
+  "fixtures": [
+    "clinic-app/index.html",
+    "clinic-app/package.json"
+  ],
+  "message": "## Brief (draft, nothing has started)\n\n**Goal:** Review the Northside Physio clinic prototype screen by screen as the person who uses it, fix what is wrong, and review again until no P1 problem is left.\n\n**What I found**\n- Source: `clinic-app/index.html`, one file with its own sample data and four hash routes. `package.json` has a `dev` script (`vite --port 5173`), but `node_modules` is not installed.\n- Nothing answers on `http://localhost:5173` right now (`curl` could not connect). The file needs no build, so the walk can serve it itself and open exactly what you would see at that URL.\n- Walk check: Node 25.9.0 ok, Chrome found.\n- Screens the nav reaches (4): Today, Clients, Invoices, Settings.\n- No `CLAUDE.md`, no earlier runs, no lessons from earlier runs (Lessons applied: none yet).\n\n**Needs** (D = default, not something you said)\n\n| Need | Value |\n|---|---|\n| Prototype | `clinic-app/index.html`, walked from the file because the URL is down (D) |\n| Screens | all 4: Today, Clients, Invoices, Settings (D) |\n| Who and their job | A front-desk receptionist at Northside Physio who checks today's appointments and books new ones. This is a guess from the screens (D) |\n| Fix or report | Fix in place, with a copy of every changed file in `RUN/original/` (D) |\n| Bar | Fix P1 and P2. P3 is listed, never fixed (D) |\n| Own rules | The built-in checklist only (D) |\n| Track | Full: 1440 px plus a 390 px phone check (D) |\n| Deploy or send | Nothing. Laptop only (D) |\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | clear | \"review\" the clinic app at localhost:5173: all four screens |\n| Who and their job | partial | not said; guessed from the screens |\n| Data and facts | clear | sample data is inside the file |\n| Main flow | partial | \"New appointment\" on Today is the obvious main action; not confirmed |\n| Edge cases | partial | empty filter and search states exist on some screens, not all |\n| Look | clear | keep the product's own colours, fonts and spacing |\n| Outputs | clear | `handover.md` with before and after screenshots |\n| Done signal | clear | the stop fact below |\n| Words with no number | partial | \"review\" does not say fix or report only, and no bar was named |\n\n**Done means** (stop fact, fix mode)\n1. Each of the 4 screens (Today, Clients, Invoices, Settings) has a before and a last after screenshot.\n2. After the last walk, a fresh agent found no open P1 on any of the 4 screens.\n3. Every P1 not fixed is marked \"your call\" in `findings.md` with one plain sentence.\n4. Every finding at P1 or P2 is fixed, or marked with its reason.\n5. Every changed file has its original in `RUN/original/`.\n\n**Budget:** 60 minutes.\n\nAbout 60 minutes and 4 helper agents, within a budget of 60 minutes.\n\n## Questions\n\n1. Which version should I review, the running app or the file?\n   Recommended: the file `clinic-app/index.html`, served by the walk itself. It is the same page, and it avoids installing `vite` (a download) to start `localhost:5173`. Say so if you want that URL used instead.\n   Why it matters: nothing is running on the URL now, so I need your choice before the first walk.\n\n2. Who uses it, and what one job do they come to do?\n   Recommended: a front-desk receptionist who checks today's appointments and books new ones.\n   Why it matters: the persona decides which problems count as P1.\n\n3. Should I fix what I find, or only report it?\n   Recommended: fix, keeping a copy of every file I change.\n   Why it matters: \"review\" alone does not tell me whether I may edit `index.html`.\n\n4. What should I fix: P1 and P2, or P1 only?\n   Recommended: P1 and P2. P3 is listed and left alone.\n   Why it matters: it sets how many files change and how long the run takes.\n\n5. Quick or full?\n   Recommended: full. It adds a 390 px phone check and keeps P2 in scope. Choose quick (P1 only, no phone width, about 20 minutes) if this is for a meeting today.\n   Why it matters: quick skips the phone check and fixes no P2.\n\n6. Any rule of your own to check?\n   Recommended: the built-in checklist only (no `CLAUDE.md` or design skill was found).\n   Why it matters: your own rules would add findings I would otherwise not raise.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Which version should I review, the running app or the file? | 2. Who uses it, and what one job do they come to do? | 3. Should I fix what I find, or only report it? | 4. What should I fix: P1 and P2, or P1 only? | 5. Quick or full? | 6. Any rule of your own to check?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "39 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 1 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 4 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "| Track | Full: 1440 px plus a 390 px phone check (D) |"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 777,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 6,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 8,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles all four topics: URL down (\"Nothing answers on http://localhost:5173\"), screens (\"all 4: Today, Clients, Invoices, Settings\"), fix vs report (Q3), persona (Q2).",
+      "no_redundancy": "Q1 \"Which version should I review, the running app or the file?\" asks which prototype, which the ask and files already settle; the rest are genuine unknowns.",
+      "defaults_quality": "Every question has a concrete default fitting the app, e.g. \"a front-desk receptionist who checks today's appointments and books new ones\" and \"fix, keeping a copy of every file I change\".",
+      "clarity": "Six questions after a long brief with two tables and a garbled budget line (\"About 60 minutes ... within a budget of 60 minutes\"); Q4 and Q5 overlap on the P2 bar.",
+      "respects_words": "Keeps the clinic app and review scope; defaulting to serve the file instead of the named localhost:5173 is a mild drift, though it explains it is the same page.",
+      "overall": "A solid, well-grounded intake with good defaults, held back by length and one redundant, overlapping set of questions."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.683Z"
+}

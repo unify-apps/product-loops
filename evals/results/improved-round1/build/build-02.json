@@ -1,0 +1,121 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-02",
+  "ask": "Build the first release from research/fleet-maintenance/brief.md, the top 3 modules only.",
+  "expected_track": "full",
+  "notes": "A research brief and CLAUDE.md answer persona, modules with must-haves, look and logo. Asking for any of those is redundant. The open question the brief itself raises (driver screens) is fair to ask.",
+  "must_cover": [
+    "how deep|in full|shell|depth",
+    "product folder|folder|where",
+    "driver|phone",
+    "name|mark|logo"
+  ],
+  "findable": [
+    "brand colour|colour|color|palette",
+    "font|typeface",
+    "persona|who uses|who is it for",
+    "module|modules",
+    "logo|mark"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "assets/fleetwise-mark.svg",
+    "research/fleet-maintenance/brief.md"
+  ],
+  "message": "# Brief: Fleetwise first release (clickable prototype)\n\n**Goal:** a clickable web prototype of release 1 of a fleet maintenance tool, built from `research/fleet-maintenance/brief.md`, the top 3 modules only.\n\n**Found by reading your files** (`research/fleet-maintenance/brief.md`, `CLAUDE.md`, `assets/fleetwise-mark.svg`):\n\n- **New or existing:** no product or earlier run in this folder, so a new product in `fleetwise/` (default).\n- **Brief:** a research brief exists, so no research-first question.\n- **Persona (from the brief):** a fleet manager at a UK regional courier (50 to 500 vans). They come in every morning to see which vans are off the road today and why. The operations director pays. Managers only: no driver screens.\n- **Modules in build order (the brief's own ranking):**\n  1. **Vehicle board:** every van, its status (on road, in workshop, due) and next service date. Must have: filter by depot, status chips, search by reg.\n  2. **Defect reports:** drivers report a defect from the walkaround check; the manager triages. Must have: photo, severity, assign to workshop.\n  3. **Service schedule:** calendar of services and MOTs, overdue in red. Must have: month view, drag to move a booking.\n- **Out of release 1:** Parts stock, Cost reports, driver phone screens. They are not built or listed in the navigation (default).\n- **Look (from `CLAUDE.md`):** primary #0B5FFF, ink #0F172A, surface #F8FAFC, font Inter from Google Fonts. Logo `assets/fleetwise-mark.svg`, put in the header.\n- **Name:** Fleetwise, from `CLAUDE.md` and the logo file. Name and mark are given, so there is no name-options step (default).\n- **How it runs:** one plain `fleetwise/index.html` with its CSS and JS inside, no build step, one route per module (`#/board`, `#/defects`, `#/schedule`), served on a local link.\n- **Data:** about 60 made-up vans in 3 depots, one data set shared by all three modules (default). Initials only, no photos of people.\n- **Where it goes:** this laptop only. Your `CLAUDE.md` says demo links go to Slack #proto-demos only when someone asks, so nothing is posted.\n- **Browser for click checks:** found, chrome-headless-shell, so every click is checked in a real browser.\n- **Requests on the list:** R1 the whole ask; R2 Vehicle board; R3 Defect reports; R4 Service schedule.\n- **Lessons applied:** none yet (no earlier runs).\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | clear | top 3 modules, managers only |\n| Who and their job | partial | persona is from the brief, so it is a draft until you confirm (Q1) |\n| Data and facts | partial | no real data, so sample data is made up (Q3) |\n| Main flow | partial | each module's must-haves are listed, but how a defect or a booking affects the board is not (Q3) |\n| Edge cases | partial | empty search, no defects and a booking on a full day are not named; defaults below |\n| Look | clear | colours, font and logo given |\n| Outputs | clear | one local `index.html` and a link per state |\n| Done signal | clear | see Done means |\n| Words with no number | partial | \"overdue\" and \"due\" have no day count (Q4) |\n\n**Done means**\n\n1. All 3 modules are built: Vehicle board, Defect reports, Service schedule.\n2. Every module's last review round has 0 P1.\n3. Every link in `RUN/links.md` opens in a real browser, with no dead click, no placeholder text and no page error.\n4. `RUN/requests.md` has no open line.\n5. Must-have: on the Vehicle board a manager can filter by depot, use status chips and search by reg.\n6. Must-have: a defect has a photo, a severity and an assigned workshop.\n7. Must-have: on the Service schedule a manager sees a month view with overdue in red and can drag a booking to a new day.\n8. Full track: there is a link for every list, one detail, every create flow and every empty state.\n\nAbout 40 minutes and 11 helper agents, within a budget of 120 minutes.\n\n**Questions**\n\n1. Who uses it, and the one job they come to do?\n   Recommended: a fleet manager at a UK regional courier, who each morning sees which vans are off the road today and why.\n   Why it matters: the persona decides what the first screen shows and what comes first on it.\n\n2. Are the modules, their order and their must-haves right, and are drivers' own phone screens out of release 1?\n   Recommended: yes to all of it, as listed above; drivers out (your brief's own view), and Parts stock and Cost reports not built.\n   Why it matters: it fixes what gets built, and the brief leaves the driver question open.\n\n3. Should the three modules share one set of vans, so that a defect or a booking changes the Vehicle board?\n   Recommended: yes, one shared set. A high-severity defect shows the van as off the road on the board, and a booking shows the van as in workshop on its day. These two links are my guess and go into `proposals.md` as open questions for your team, not as rules.\n   Why it matters: shared data makes the demo hang together, and separate data per module is quicker but looks fake.\n\n4. What number of days makes a service \"due\" and what makes it \"overdue\"?\n   Recommended: due when the next service is within 14 days, overdue when its date has passed.\n   Why it matters: the status chips on the board and the red on the calendar both depend on it.\n\n5. Are changes kept after a page reload (a dragged booking, a new defect, an assigned workshop)?\n   Recommended: no, everything lives in the page and resets on reload.\n   Why it matters: keeping them needs browser storage, which adds work and can make demos start from a stale state.\n\n6. How deep: are all 3 modules built in full, or are some a titled page in the shell?\n   Recommended: all 3 in full, each with a list, a detail, a create flow where it has one, and an empty state.\n   Why it matters: it decides the build time and how many demo links you get.\n\n7. The track: quick or full?\n   Recommended: full. A new product with 3 modules, and the ops director who pays may see it. Quick makes each module one list page, with no detail, create or empty pages and no demo states.\n   Why it matters: full takes about 40 minutes and makes a link for every state; quick is faster but shows less.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. Who uses it, and the one job they come to do? | 2. Are the modules, their order and their must-haves right, and are drive | 3. Should the three modules share one set of vans, so that a defect or a  | 4. What number of days makes a service \"due\" and what makes it \"overdue\"? | 5. Are changes kept after a page reload (a dragged booking, a new defect, | 6. How deep: are all 3 modules built in full, or are some a titled page i | 7. The track: quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "41 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: persona (\"persona\"), module (\"module\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 11 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "8. Full track: there is a link for every list, one detail, every create flow and every empty state."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1093,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 4,
+      "defaults_quality": 9,
+      "clarity": 4,
+      "respects_words": 9,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "All four topics settled: depth (Q6 'all 3 in full'), folder ('a new product in `fleetwise/`'), drivers (Q2 'drivers out'), name ('Name: Fleetwise... no name-options step').",
+      "no_redundancy": "Q1 re-asks the persona the brief gives ('Who uses it, and the one job they come to do?') and Q2 re-asks the brief's modules, order and must-haves; only the driver part of Q2 is a real open point.",
+      "defaults_quality": "Every question has a concrete, fitting default, e.g. Q4 'due when the next service is within 14 days, overdue when its date has passed' and Q5 'resets on reload'.",
+      "clarity": "Long wall: a found-facts list, a 9-row coverage table, an 8-point done list and 7 questions; Q2 bundles several things and Q6/Q7 overlap on depth.",
+      "respects_words": "Keeps 'top 3 modules only' ('Parts stock, Cost reports... not built or listed in the navigation') and follows CLAUDE.md on plain HTML and not posting to Slack.",
+      "overall": "Thorough and faithful with good defaults, but padded and asks two questions the files already answer, so a busy person must wade through far more than needed."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.280Z"
+}

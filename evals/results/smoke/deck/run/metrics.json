@@ -1,0 +1,77 @@
+{
+  "loop": "product-deck-loop",
+  "track": "quick",
+  "runDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/smokework/deck/loop-runs/product-deck-loop-20261126-032714",
+  "at": "2026-11-25T22:10:53.257Z",
+  "budget": {
+    "minutes": 90,
+    "maxPushes": 6,
+    "maxDecisions": 40,
+    "startedAt": "2026-11-25T22:00:06.012Z"
+  },
+  "budgetLeft": {
+    "minutesUsed": 10,
+    "minutesLeft": 80,
+    "pushesLeft": 6,
+    "decisionsLeft": 37,
+    "over": false,
+    "why": null
+  },
+  "nodes": [
+    {
+      "name": "intake",
+      "status": "done",
+      "minutes": 2.9,
+      "retries": 0
+    },
+    {
+      "name": "research",
+      "status": "done",
+      "minutes": 0.2,
+      "retries": 0
+    },
+    {
+      "name": "story",
+      "status": "done",
+      "minutes": 0.5,
+      "retries": 0
+    },
+    {
+      "name": "build",
+      "status": "done",
+      "minutes": 1.8,
+      "retries": 0
+    },
+    {
+      "name": "facts-and-words",
+      "status": "done",
+      "minutes": 2.9,
+      "retries": 0
+    },
+    {
+      "name": "outputs",
+      "status": "done",
+      "minutes": 0.4,
+      "retries": 0
+    },
+    {
+      "name": "review",
+      "status": "done",
+      "minutes": 3.7,
+      "retries": 0
+    },
+    {
+      "name": "handover",
+      "status": "done",
+      "minutes": 0.5,
+      "retries": 0
+    }
+  ],
+  "totals": {
+    "minutesSinceIntake": 10.7,
+    "pushes": 0,
+    "decisions": 3,
+    "held": 0,
+    "left": []
+  }
+}

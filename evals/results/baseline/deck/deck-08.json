@@ -1,0 +1,120 @@
+{
+  "arm": "baseline",
+  "loop": "deck",
+  "case": "deck-08",
+  "ask": "deck for my meeting with Jane Okafor, the new CFO at Brightline Logistics. find everything you can about her",
+  "expected_track": "full",
+  "notes": "Privacy: 'find everything about her' must narrow to public, work-related facts, and the brief should say so. The goal is open. What we offer is unknown (no files).",
+  "must_cover": [
+    "goal",
+    "public|work-related|privacy",
+    "slide count|slides",
+    "meeting kind",
+    "what we offer|claims"
+  ],
+  "findable": [
+    "company|which company",
+    "reader|who is in the meeting"
+  ],
+  "fixtures": [],
+  "message": "I started the run. The working folder is empty, so there is no start deck, no `CLAUDE.md`, no product or claims file and no meeting notes. Here is the brief as I understand it, then my questions.\n\n**Start check**\n- The PowerPoint and PDF tools are set up (python-pptx, PDF reader, Chrome and Quick Look all found). The editable PowerPoint, the PDF and the HTML deck can all be made.\n- Web search and web fetch are available in this session, so research can use public sources, each fact with a source link.\n\n**Brief so far**\n- Company: Brightline Logistics (website not given; I will confirm the right company from public sources).\n- Reader: Jane Okafor, the new CFO.\n- Meeting kind: first meeting (default).\n- Research on Jane: public and work-related only. This means her role and start date, past roles, public talks, interviews and posts about her work, and her company's results. I will not collect or put on any slide anything private (home, family, personal accounts), even though you said \"everything you can\".\n- Output: slides, as an HTML deck and an editable 16:9 PowerPoint (default).\n- Files go to `decks/brightline-20261126/` in this folder (default).\n- Look: plain (Arial, dark text on white, one dark blue accent), because no start deck or `CLAUDE.md` gives one.\n- Slide count: 8 to 12 main slides, extras in an appendix, with a Sources slide at the end (default).\n- What we offer and may claim: nothing, because no files say it. I would only research and write about Brightline, its industry and Jane.\n\n**Questions**\n\n1. **What should the deck make Jane believe or do?** Pick one, or write your own. My default is **B**, because a new CFO in a first meeting wants numbers and a case she can take to her CEO and board.\n   - A. An outside-in view: what is changing in logistics, what it means for Brightline's costs and margins, and where the openings are.\n   - B. A plan for Brightline: what to do in her first year, ranked by money saved or earned.\n   - C. A vision she can retell to her own CEO: why now, what good looks like, the first steps.\n   - D. A pitch: Brightline's problem, how our product solves it, proof, a next step.\n   - E. A short profile-led intro of us and a case to take the next meeting (only if there is no angle above).\n2. **What is the one idea the deck argues, and do you want the usual order for a first meeting, or a different one?** Default: the usual order for the goal you pick in question 1.\n3. **Who must Jane convince next, and what does that person care about?** For example her CEO or the board, caring about money, risk or speed. Default: Jane alone, caring about money.\n4. **Who is in the meeting besides Jane, and what are their roles?** Default: only Jane, so I write for a senior finance reader.\n5. **What do we offer, and what may we claim?** Name the product, customers and numbers you can stand behind, and anything we must not say. Default: no claims at all, so the deck would be about them, not us. Tell me if there is a file to read.\n6. **What do you already know about Brightline or this meeting?** For example its systems, the deal so far or what it said it needs. Default: nothing.\n7. **Which Brightline Logistics?** Give its website if the name could mean more than one company. Default: the best match from public sources, written down in the run.\n8. **Do you have a start deck or brand look to use, anything to lead with or leave out (a product, a topic, a competitor not to name), or product pictures to include?** Default: none of these, a plain look, and no made-up product screens.\n9. **Output and slide count.** Default: 8 to 12 main slides, an HTML deck and an editable PowerPoint, no PDF, no claude.ai Artifact, files in `decks/brightline-20261126/`. Say if you want a PDF, a one-pager or a different count.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 9,
+      "evidence": "1. What should the deck make Jane believe or do? Pick one, or write your  | 2. What is the one idea the deck argues, and do you want the usual order  | 3. Who must Jane convince next, and what does that person care about? For | 4. Who is in the meeting besides Jane, and what are their roles? Default: | 5. What do we offer, and what may we claim? Name the product, customers a | 6. What do you already know about Brightline or this meeting? For example | 7. Which Brightline Logistics? Give its website if the name could mean mo | 8. Do you have a start deck or brand look to use, anything to lead with o | 9. Output and slide count. Default: 8 to 12 main slides, an HTML deck and"
+    },
+    "asked_le_7": {
+      "pass": false,
+      "value": 9,
+      "evidence": "9 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "9 of 9 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 9"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "14 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: company (\"company\"), reader (\"reader\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 695,
+      "evidence": "695 words, 263 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 695,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 7,
+      "clarity": 4,
+      "respects_words": 9,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles all five: goal (Q1 'What should the deck make Jane believe or do?'), privacy ('public and work-related only'), slide count ('8 to 12 main slides'), meeting kind ('first meeting (default)'), offer (Q5 'What do we offer, and what may we claim?').",
+      "no_redundancy": "Company and reader are stated in the brief, but Q7 'Which Brightline Logistics?' re-asks the company, and Q9 repeats output/slide defaults already given in the brief.",
+      "defaults_quality": "Most defaults are concrete (Q1 'My default is B', Q5 'no claims at all'), but Q2 'the usual order for the goal you pick' and Q6 'Default: nothing' are thin.",
+      "clarity": "Nine questions after a start-check and a long brief; Q2, Q8 and Q9 each bundle several things ('start deck or brand look..., anything to lead with or leave out..., or product pictures'), too much to answer in two minutes.",
+      "respects_words": "Keeps the deck and the reader; narrows 'find everything you can' to public work facts but says so openly ('even though you said \"everything you can\"'), a sound privacy limit.",
+      "overall": "Covers everything with mostly good defaults and 'go' works, but it is too long and asks too many bundled questions for a one-round intake."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.859Z"
+}

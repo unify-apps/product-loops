@@ -1,0 +1,115 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-02",
+  "ask": "quick P1 pass on the clinic prototype before my 2pm demo. desktop only",
+  "expected_track": "quick",
+  "notes": "Bar and width given, time pressure. Quick track (P1 only, no phone). A good intake asks one or two questions at most.",
+  "must_cover": [
+    "p1",
+    "desktop|no phone",
+    "fix|report"
+  ],
+  "findable": [
+    "bar|p1 and p2|p1 only",
+    "phone|screen width|390"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "# Brief: quick P1 review of the Northside Physio prototype\n\n**Goal:** a quick pass on `proto-clinic/index.html` that finds the P1 problems (the ones that would hurt in a demo) and fixes them before your 2pm demo today. Desktop width only.\n\n**Facts**\n- Your ask: \"quick P1 pass on the clinic prototype before my 2pm demo. desktop only\"\n- Product: Northside Physio, one HTML file, no server needed. I will open it myself.\n- The browser check passed (Node 25.9.0, Google Chrome found), so the walk can click every button and take screenshots.\n- Screens the nav reaches (4): Today, Clients, Invoices, Settings. I found no dialog or detail page in the source.\n- Nothing is deployed, posted or sent. Everything stays on this laptop.\n\n**Your answers already in the ask, so I am not asking them again**\n- Track: **quick**. P1 only, and no phone-width check.\n- Width: **1440 px desktop only**.\n- Bar: **P1 only**. Every P2 and P3 is listed for you in the hand-over, never fixed.\n\n**Defaults I will use (marked as defaults)**\n- Prototype: `proto-clinic/index.html`, the only one in the folder (default).\n- Screens: all 4 the nav reaches (default).\n- Rules: the built-in checklist only. I found no `CLAUDE.md`, `design-review` or `product-design` skill here (default).\n- Look of any fix: match what the page already does (default).\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | clear | one file, 4 screens, P1 only |\n| Who and their job | partial | a guess from the screens, see question 1 |\n| Data and facts | clear | made-up sample data, never treated as a rule |\n| Main flow | partial | check today's appointments, find a client, chase an invoice |\n| Edge cases | partial | the walk tests search with no match and clicks every button |\n| Look | clear | keep the page's own look |\n| Outputs | clear | `handover.md` with before and after screenshots |\n| Done signal | clear | see Done means |\n| Words with no number | clear | \"quick\" means P1 only, one recheck round, no phone width |\n\n**Lessons applied:** none yet.\n\n**Budget:** 60 minutes.\n\n**Done means**\n1. All 4 screens (Today, Clients, Invoices, Settings) have a before screenshot and a last after screenshot at 1440 px.\n2. After the last walk, a fresh agent found no open P1 on any of the 4 screens.\n3. Every P1 I do not fix is marked \"your call\" with one plain sentence, and listed first in `handover.md`.\n4. Every P1 is fixed or marked with its reason; every P2 and P3 is listed in `handover.md` and none is fixed.\n5. Every file I change has its original saved in the run folder under `original/`.\n\nAbout 30 minutes and 3 helper agents, within a budget of 60 minutes.\n\n**Questions**\n\n1. Who uses it, and what one job do they come to do?\n   Recommended: a front-desk receptionist at the clinic who checks today's appointments and chases unpaid invoices.\n   Why it matters: the persona decides which broken things count as P1 on the demo path.\n\n2. Should I fix what I find, or only report it?\n   Recommended: fix in place, keeping a copy of every changed file, since the demo is at 2pm.\n   Why it matters: \"pass\" can mean either, and a fix changes your file.\n\n3. When a P1 needs words only you can supply (for example what the \"New appointment\" button should do, or the real Booking policy text), what should I do?\n   Recommended: make the smallest honest fix (a clear message instead of a dead click, no made-up policy) and mark it \"your call\" for you.\n   Why it matters: I will not invent clinic rules or behaviour for you to demo.\n\n4. The Clients screen is titled \"Customers\" while the nav and the rest say \"Clients\". Is that a P1 for your demo?\n   Recommended: no, list it as a P2 and leave it unfixed on this quick pass.\n   Why it matters: on the P1-only bar, fixing it would go beyond what you asked.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Who uses it, and what one job do they come to do? | 2. Should I fix what I find, or only report it? | 3. When a P1 needs words only you can supply (for example what the \"New a | 4. The Clients screen is titled \"Customers\" while the nav and the rest sa"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "38 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: bar (\"bar\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 30 minutes and 3 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "- Track: **quick**. P1 only, and no phone-width check."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 697,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles P1 (\"Bar: P1 only\"), desktop (\"1440 px desktop only\", \"no phone-width check\") and fix vs report (Q2 \"Recommended: fix in place\"), plus persona and done signal.",
+      "no_redundancy": "States the bar and phone width as found facts (\"Your answers already in the ask, so I am not asking them again\"), but Q4 re-asks a P1-bar call the stated bar already settles.",
+      "defaults_quality": "Every question has a concrete, fitting default, e.g. \"fix in place, keeping a copy of every changed file, since the demo is at 2pm\" and \"no made-up policy\".",
+      "clarity": "Four plain questions with defaults, but buried under a long brief, coverage table and done list that is heavy for a busy person before a 2pm demo; the goal already says \"fixes them\" while Q2 asks fix or report.",
+      "respects_words": "Keeps \"quick\", \"P1\" and \"desktop only\" faithfully (\"every P2 and P3 is listed ... never fixed\"); the 60-minute budget is a bit long for \"quick\" but within the demo deadline.",
+      "overall": "Strong, faithful intake that settles everything needed with good defaults; held back by length and one avoidable question."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.673Z"
+}

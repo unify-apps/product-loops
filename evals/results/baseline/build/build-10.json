@@ -1,0 +1,125 @@
+{
+  "arm": "baseline",
+  "loop": "build",
+  "case": "build-10",
+  "ask": "use client-notes.txt and build it for Thursday's pitch. make it look premium",
+  "expected_track": "full",
+  "notes": "Agency voice. Notes answer the modules, colours and font. 'Premium' is a vague word the intake should pin down (what it means on screen). The 6-taps pain gives a measurable goal (book in 2 taps).",
+  "must_cover": [
+    "persona|member|front desk",
+    "module",
+    "premium",
+    "book|booking|taps",
+    "how deep|in full|depth",
+    "thursday|deadline"
+  ],
+  "findable": [
+    "colour|color|palette|orange",
+    "font|typeface|barlow",
+    "module|modules|class booking"
+  ],
+  "fixtures": [
+    "brand/apex-colors.json",
+    "client-notes.txt"
+  ],
+  "message": "## Brief (draft)\n\n**Goal:** a clickable web prototype of the Apex Fitness app for Thursday 2pm's pitch to Dan (COO) and Lauren (Head of Member Experience), built from `client-notes.txt` and made to look premium.\n\n**What I found**\n- `client-notes.txt`: the call notes with Apex Fitness (12 gyms, London), 18 Nov. They want members to book classes from their phone, see the timetable per gym and join a waitlist when a class is full. The front desk checks people in by scan or search. A membership page shows plan, next payment and freeze membership. They hate the current app because booking takes 6 taps.\n- `brand/apex-colors.json`: black `#0A0A0A`, Apex orange `#FF5A1F`, grey `#8A8F98`, font Barlow.\n- No existing product, no earlier run, no `CLAUDE.md`, no logo or icon files. So this is a new product.\n- Start check: click checks will run in `chrome-headless-shell`, so every click gets tested for real.\n\n**Plan (drafts, all defaults until you answer)**\n- **Product folder:** `apex-fitness/` in this folder, one `index.html` with its CSS and JS inside, served locally. Nothing is published.\n- **Persona:** a gym member on their phone who wants a class booked fast. A second view is for front-desk staff.\n- **Modules in build order:**\n  1. Member timetable and booking: a timetable per gym, booking in 2 taps, a waitlist when full.\n  2. Membership: plan, next payment, freeze membership.\n  3. Front-desk check-in: search a member or scan, then check in.\n- **Look:** black and Apex orange `#FF5A1F` with grey `#8A8F98`, Barlow throughout. \"Premium\" means dark, high contrast, generous spacing, no clutter.\n- **Name and mark:** the product is Apex's own, so I'd use \"Apex\" with no new name.\n- **Sample data:** made up (members, classes, gyms). Initials only, no photos.\n- **Stop fact:** every module is built and reviewed with no P1 finding left, every demo link opens and every click works in a real browser, and no request is open.\n\n**Request list so far:** R1 the whole ask, R2 book from a phone, R3 timetable per gym, R4 waitlist, R5 front-desk check-in by scan or search, R6 membership (plan, next payment, freeze), R7 booking in far fewer than 6 taps, R8 Apex colours and Barlow, R9 premium look.\n\n## Questions\n\n1. **Who uses it, and what is their one job?** Default: a member booking a class from their phone in 2 taps. Front-desk staff get one check-in screen. I drafted this from the notes, so it is a guess. Is the front desk a second app, or a second view of this one?\n2. **Modules and must-haves.** Default: the 3 modules above. Is anything missing for Thursday (a gym picker on first open, a class detail page, a payment history, a \"my bookings\" list), or should anything be cut?\n3. **How deep?** Default: every module in full. Or should the booking flow be in full and the rest a titled page?\n4. **Book in how many taps?** The notes say the current app takes 6. Default: 2 taps from the timetable (tap the class, tap Book). Is that the number you want to show them?\n5. **Look.** Default: black `#0A0A0A`, orange `#FF5A1F`, grey `#8A8F98`, Barlow, taken from `brand/apex-colors.json`. You have no logo or icon files here. I'd use a plain \"APEX\" wordmark. Do you have a real logo? What does \"premium\" mean to you: a reference app or site you like?\n6. **Screens to follow.** Default: none, flow only. Is there an app (theirs or another) whose screens you want copied exactly?\n7. **Phone or desktop?** Default: phone-first for members, shown in a phone-size frame on desktop. Front desk is built for a tablet. OK?\n8. **Extras.** Default: none. That means no photos of people (initials only), no two versions behind a key, no PDF guide and no public link, so the prototype stays on this laptop. Do you need a link to send to the pitch room? If you do, say so now, because I won't publish anything unless you ask.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 8,
+      "evidence": "1. Who uses it, and what is their one job? Default: a member booking a cl | 2. Modules and must-haves. Default: the 3 modules above. Is anything miss | 3. How deep? Default: every module in full. Or should the booking flow be | 4. Book in how many taps? The notes say the current app takes 6. Default: | 5. Look. Default: black `#0A0A0A`, orange `#FF5A1F`, grey `#8A8F98`, Barl | 6. Screens to follow. Default: none, flow only. Is there an app (theirs o | 7. Phone or desktop? Default: phone-first for members, shown in a phone-s | 8. Extras. Default: none. That means no photos of people (initials only),"
+    },
+    "asked_le_7": {
+      "pass": false,
+      "value": 8,
+      "evidence": "8 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "8 of 8 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 8"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "19 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: colour (\"color\"), font (\"barlow\"), module (\"module\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 672,
+      "evidence": "672 words, 367 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 672,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 6,
+      "defaults_quality": 8,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles persona (Q1 member + front desk), modules (Q2), premium (Q5 'What does premium mean to you'), taps (Q4 '2 taps'), depth (Q3) and Thursday 2pm in the goal; only the deadline's effect on scope is left implicit.",
+      "no_redundancy": "Q5 re-asks colours and Barlow already in brand/apex-colors.json, and Q2/Q1 re-open modules and personas the notes already list, though framed as confirmations with found defaults.",
+      "defaults_quality": "Concrete, fitting defaults throughout ('2 taps from the timetable (tap the class, tap Book)', 'phone-first ... front desk built for a tablet', 'plain APEX wordmark'); Q8's no-link default is debatable for a pitch.",
+      "clarity": "Eight questions after a long brief, several bundling multiple sub-questions (Q5 asks logo, reference app and premium meaning at once; Q1 asks persona plus app-vs-view).",
+      "respects_words": "Keeps 'premium' ('dark, high contrast, generous spacing'), Thursday 2pm, the client notes and the brand file; nothing overrides the ask.",
+      "overall": "A solid, faithful brief with good defaults that a 'go' would run well on, weakened by too many and bundled questions and some re-asking of facts already in the files."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.754Z"
+}

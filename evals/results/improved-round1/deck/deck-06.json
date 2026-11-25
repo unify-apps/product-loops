@@ -1,0 +1,119 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-06",
+  "ask": "a 6-page brochure for the hotel chains we'll meet at the Lisbon hospitality trade show, about our housekeeping app",
+  "expected_track": "full",
+  "notes": "Brochure with a page count. The reader is many hotel chains, not one company, so 'which company' should become a default (a general reader) rather than a blocker. Print size A4 is set without asking.",
+  "must_cover": [
+    "brochure|format",
+    "6|pages",
+    "audience|hotel|reader",
+    "print|a4|paper",
+    "language|portuguese|english",
+    "look"
+  ],
+  "findable": [
+    "format|slides or one-pager|output",
+    "slide count|how many pages|page count",
+    "what we offer|claims"
+  ],
+  "fixtures": [
+    "app-facts.md"
+  ],
+  "message": "# Brief: Tidy brochure for hotel chains at the Lisbon hospitality trade show\n\n**Run:** `loop-runs/product-deck-loop-20261126-032921/` · **Track I recommend:** quick (HTML and PDF)\n\n## Goal (set by default, question 1 lets you change it)\n\nAfter reading the brochure, a hotel chain's operations leader at the show believes Tidy gets rooms ready faster, and takes one next step: a demo or a pilot talk.\n\n- **Angle (default):** housekeeping is where room-ready time is lost, and a live room status board gives it back. The proof is the Pestana pilot.\n- **Real audience (default):** the reader alone, an operations or housekeeping lead. They may pass it to their general manager or finance director, so every claim must stand without us in the room.\n- **Meeting kind:** a trade show stand. Nobody presents, and the brochure is taken away and read later (\"sent to read\").\n\n## What I found in the folder\n\n- `app-facts.md` is the only file. No `CLAUDE.md`, no start deck, no meeting notes, no logo or screenshots.\n- It gives these facts about Tidy, the housekeeping app for hotels:\n  - A live room status board for housekeepers and the front desk.\n  - Used in 40 hotels across Spain and Portugal.\n  - A quote we may use: \"Rooms ready 35 minutes sooner on average.\" (Ops Director, Pestana group pilot, 2025.)\n  - Available in English, Portuguese and Spanish.\n- Nothing else counts as a claim we can make. No price, integration, security or customer name beyond Pestana will appear unless you give it.\n\n## Every need, with its value\n\n| # | Need | Value | Source |\n|---|---|---|---|\n| G1 | Goal | Believe the claim and book a demo or pilot talk | default |\n| G2 | Angle | Time lost in room turnover, regained by a live board | default |\n| G3 | Real audience | The reader alone | default |\n| 1 | Company | No single company. The reader is \"hotel chains at the Lisbon show\". Research covers the industry and the show, not one chain | the ask |\n| 2 | Who is in the meeting | Unknown roles. Written for a senior operations reader. No person research | default |\n| 3 | Meeting kind | Trade show hand-out, read later | the ask |\n| 4 | Start deck | None. Built new, plain look | folder |\n| 5 | Page count | 6 pages (a brochure is 4 to 8; the ask says 6). No appendix. The Sources page counts inside the 6 | the ask |\n| 6 | What we may claim | The 4 facts above only | `app-facts.md` |\n| 7 | Facts only you know | None given | default |\n| 8 | Output | Brochure: HTML and PDF. No PowerPoint and no Artifact | quick track |\n| 9 | Where files go | `decks/lisbon-20261126/` (default) | default |\n| 10 | Look | Plain: Arial, dark text on white, one dark blue accent. A4 portrait, as the show is in Portugal | default |\n| 11 | Lead with or leave out | Lead with the Pestana result. Name no competitor | default |\n| 12 | Product pictures | None. No made-up product screens | default |\n\nLanguage is a default too: English only. The app speaks three languages, and the brochure says so in one line.\n\n## Coverage scan\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | partial | 6 pages are set, but the content mix is not |\n| Who and their job | partial | \"Hotel chains\" gives no role, so the job is assumed |\n| Data and facts | partial | Only 4 facts. Industry facts need web research |\n| Main flow | clear | Problem, product, proof, next step |\n| Edge cases | partial | Whether the Pestana quote may carry the pilot's size is unknown |\n| Look | missing | No brand or logo given. Plain by default |\n| Outputs | clear | A 6-page brochure as PDF, with an HTML copy |\n| Done signal | clear | See \"Done means\" |\n| Words with no number | partial | \"Housekeeping app\" is fine. \"6-page\" is the only count and it is clear |\n\n## Tools check\n\n- **Python tools:** ready (python-pptx, PDF reader, Chrome and Quick Look found). The PDF can be made.\n- **Web search:** WebSearch and WebFetch are in this session, so research on the industry and the show uses the web. Each fact gets a source link.\n- **Start deck:** none, so there is nothing to read.\n\n## Lessons applied\n\nnone yet\n\n## Budget\n\nBudget: 90 minutes\n\n## Done means\n\n1. The brochure does what the goal says for a hotel operations reader: they believe the room-ready claim and know the next step.\n2. `brochure.pdf` and `brochure.html` are in `decks/lisbon-20261126/out/` and open.\n3. The brochure is 6 pages, A4 portrait.\n4. `DECK check` prints PASS on every check after the last change.\n5. Every line cites a fact with a source link, an estimate note or your word.\n6. Every review finding is fixed, or left with a reason, in `review-fixes.md`.\n\nAbout 60 minutes and 7 helper agents, within a budget of 90 minutes.\n\n## Questions\n\n1. What should the brochure do for the reader?\n   - **A.** A pitch: their housekeeping delay, how Tidy fixes it, the Pestana proof, a demo as the next step.\n   - **B.** An outside-in view: what is changing in hotel operations, what it means for a chain, where Tidy fits.\n   - **C.** A plan for them: the steps to get rooms ready sooner, ranked by time saved, with Tidy as the tool.\n   - **D.** A vision they can retell to their own boss: why now, what good looks like, the first steps.\n\n   Recommended: A. At a show the reader gives a brochure about 2 minutes, and you have one strong number.\n   Why it matters: the goal sets the order of all 6 pages and what the review judges first.\n\n2. Whom does the reader need to convince next, and what does that person care about?\n   Recommended: the general manager or owner, who cares about guest wait time and labour cost.\n   Why it matters: it decides whether pages 3 to 5 lead with speed or with cost.\n\n3. Which chains, if any, should it speak to, and what is the show's name and date?\n   Recommended: no single chain. Write for any mid-size or large chain in Iberia, and use the show only as the setting.\n   Why it matters: a named chain turns this into a company-specific piece and needs research on that chain.\n\n4. What else may we claim beyond the four facts in `app-facts.md`, and what must we not say?\n   Recommended: nothing more. No price, no integration names, no claim about the 40 hotels beyond \"used in 40 hotels across Spain and Portugal\", and Pestana named only as the quote's source.\n   Why it matters: a claim we cannot stand behind in front of hotel chains costs more than a thinner brochure.\n\n5. Is the 35-minute result safe to print as a pilot result, and may we say how many hotels or rooms the pilot covered?\n   Recommended: print it as \"average in the Pestana group pilot, 2025\", with no pilot size.\n   Why it matters: a reader will ask how big the pilot was, and a number we cannot source would be cut.\n\n6. What is the next step on the last page, and do you have a logo, colours or product screenshots?\n   Recommended: \"Book a 20-minute demo\" with the contact details you give me, and the plain look with no screenshots.\n   Why it matters: a brochure with no next step fails its goal, and a made-up screen would break the no-invented-pictures rule.\n\n7. Quick track (HTML and PDF, 6 to 8 pages) or full track (adds an editable PowerPoint)?\n   Recommended: quick. A hand-out is read as a PDF, and the research, the claim check and the review still run.\n   Why it matters: full takes longer and adds an editable file you did not ask for.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. What should the brochure do for the reader? | 2. Whom does the reader need to convince next, and what does that person  | 3. Which chains, if any, should it speak to, and what is the show's name  | 4. What else may we claim beyond the four facts in `app-facts.md`, and wh | 5. Is the 35-minute result safe to print as a pilot result, and may we sa | 6. What is the next step on the last page, and do you have a logo, colour | 7. Quick track (HTML and PDF, 6 to 8 pages) or full track (adds an editab"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "62 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 7 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Run:** `loop-runs/product-deck-loop-20261126-032921/` · **Track I recommend:** quick (HTML and PDF)"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1371,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 4,
+      "respects_words": 8,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles brochure, \"6 pages\", reader (\"an operations or housekeeping lead\"), print (\"A4 portrait\"), language (\"English only\") and look (\"Plain: Arial... one dark blue accent\"); language and print are set only as brief defaults, not asked.",
+      "no_redundancy": "Mostly states found facts, but Q7 re-asks the output format (\"Quick track (HTML and PDF...) or full track\") the brief already settled, and Q4 re-asks claims the brief already limits to the 4 facts.",
+      "defaults_quality": "Every question has a concrete recommendation, e.g. \"Book a 20-minute demo\" and \"print it as 'average in the Pestana group pilot, 2025', with no pilot size\".",
+      "clarity": "A long wall with three tables, a coverage scan and 7 questions, some bundling two things (\"next step... and do you have a logo, colours or product screenshots?\").",
+      "respects_words": "Keeps the brochure and 6 pages (\"the ask says 6\"), but Q7 drifts with \"HTML and PDF, 6 to 8 pages\", and English-only for a Lisbon show is a quiet assumption.",
+      "overall": "Thorough and well-defaulted so \"go\" would work, but far too long, with a few redundant or drifting questions for a busy person."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.701Z"
+}

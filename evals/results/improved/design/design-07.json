@@ -1,0 +1,119 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-07",
+  "ask": "on the clinic prototype just rename 'Customers' to 'Clients', nothing else",
+  "expected_track": "quick",
+  "notes": "Tiny, exact change with 'nothing else'. A good intake asks nothing or almost nothing, offers the quick track, and does not add a sweep of other notes. Planted: the heading says Customers.",
+  "must_cover": [
+    "clients",
+    "nothing else|only"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "everywhere|this place only|scope"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "Goal: on the clinic prototype, rename \"Customers\" to \"Clients\" and change nothing else.\n\nFound:\n- Prototype: `proto-clinic/index.html` (Northside Physio), plain HTML, the only prototype in the folder (from the folder).\n- \"Customers\" appears once: the page title on the Clients screen. The menu already says \"Clients\" (from the code).\n- No `CLAUDE.md`, notes files or earlier runs, so the existing look stays as it is.\n- Result lands in that same file and opens as a local link only. Nothing is committed or published.\n\nTrack: full. You gave no reference to copy, so quick and full do the same thing.\n\nStill open after reading your files: nothing that changes the result.\n\nDone means:\n- \"Customers\" appears nowhere in the prototype.\n- The Clients screen title reads \"Clients\".\n- No other screen or text changes.\n- The prototype's link opens.\n\nRequest list (the full brief is in `loop-runs/product-design-loop-20261126-035201/brief.md`):\nR1 clients screen: rename the page title \"Customers\" to \"Clients\", everywhere it appears (only that one place today)\n\nI will not touch the three faults I noticed that you did not mention: the dead \"New appointment\" button, the empty Overdue invoice list, and the placeholder text on Settings.\n\nAbout 5 minutes and 1 helper agent, within a budget of 60 minutes.\n\nQuestions:\n1. Anything missing or wrong in R1? Notes you send later still join this run.\n   Recommended: no, R1 is the whole job.\n   Why it matters: the run does only the rows on this list.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 1,
+      "evidence": "1. Anything missing or wrong in R1? Notes you send later still join this "
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 1,
+      "evidence": "1 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "1 of 1 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 1, Why it matters: on 1, of 1"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 5 minutes and 1 helper agent, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: nothing that changes the result."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 254,
+      "evidence": "254 words, 208 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "Track: full. You gave no reference to copy, so quick and full do the same thing."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 254,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 8,
+      "respects_words": 10,
+      "overall": 9
+    },
+    "evidence": {
+      "completeness": "Settles both topics: \"rename \\\"Customers\\\" to \\\"Clients\\\" and change nothing else\" plus done-check \"No other screen or text changes.\"",
+      "no_redundancy": "States found facts instead of asking (\"Prototype: proto-clinic/index.html ... the only prototype\", \"everywhere it appears\"); only a generic confirm question remains.",
+      "defaults_quality": "The one question has a concrete default: \"Recommended: no, R1 is the whole job.\" so 'go' gives the right result.",
+      "clarity": "One question, plain words, but extra lines (\"Track: full...\", time/budget, helper agents) pad a one-word rename.",
+      "respects_words": "Honors 'nothing else' explicitly: \"I will not touch the three faults I noticed that you did not mention\".",
+      "overall": "Accurate brief, faithful scope, single defaulted question; slightly heavier than a tiny rename needs."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.277Z"
+}

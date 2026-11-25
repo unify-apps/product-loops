@@ -1,0 +1,119 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-10",
+  "ask": "turn notes.md into a short pitch deck for Spotify's ad sales team - 6 slides, PDF only",
+  "expected_track": "quick",
+  "notes": "Short pitch with count, output and goal given. Quick track (HTML deck, PDF, no pptx) matches 'PDF only'.",
+  "must_cover": [
+    "goal|pitch",
+    "slide count|6",
+    "pdf",
+    "reader|ad sales",
+    "claims|customers"
+  ],
+  "findable": [
+    "slide count|how many slides",
+    "output|format|powerpoint",
+    "goal|what the deck is for",
+    "what we offer|claims"
+  ],
+  "fixtures": [
+    "notes.md"
+  ],
+  "message": "# Brief: pitch deck for Spotify's ad sales team\n\n**Goal (to confirm, question 1):** after the deck, Spotify's ad sales team agrees to run a free pilot of Soundcheck on 3 Spotify ad campaigns in Q1.\n\n**What I found in your files and setup**\n- `notes.md` is the only file in the folder. There is no start deck, no `CLAUDE.md` and no earlier run, so the deck is built new in a plain look.\n- From `notes.md`, the only things I may claim:\n  - Soundcheck measures brand lift from audio ads within 48 hours, using a 6-question survey after the ad.\n  - It works with podcasts and music streaming.\n  - Customers: iHeartMedia (pilot) and Acast (live).\n  - The ask: a pilot on 3 Spotify ad campaigns in Q1, free.\n- Nothing else about Soundcheck will be said on a slide: no lift numbers, no prices, no other customers.\n- Setup check passed. The PDF and HTML tools work (python-pptx, pymupdf, Chrome, Quick Look).\n- Web search and web fetch are in this session, so research on Spotify's ad business, the audio ad market and the people can use public pages. Every fact gets a source link.\n- `Lessons applied`: none yet. There are no lessons from earlier runs.\n\n**Needs and values** (defaults are marked)\n\n| Need | Value |\n|---|---|\n| Company | Spotify |\n| Reader | Spotify's ad sales team |\n| Meeting kind | First meeting (default) |\n| Slides | 6 main slides (from your ask), plus a Sources slide in the appendix (default) |\n| Output | PDF, as you asked. The quick track also keeps the HTML deck it is drawn from. No PowerPoint. |\n| Where files go | `decks/spotify-20261126/` in this folder (default) |\n| Look | Plain: Arial, dark text on white, one dark blue accent (default) |\n| Product pictures | None. No made-up product screens (default) |\n| Lead with or leave out | Nothing (default) |\n\n**Coverage scan**\n\n| Topic | Status | Why |\n|---|---|---|\n| Scope | partial | Pitch for Spotify ad sales; what the deck is meant to make them do is not stated |\n| Who and their job | partial | \"Ad sales team\" is clear; their job in this decision and who they answer to is not |\n| Data and facts | partial | Four facts in `notes.md`; no results or numbers we can stand behind |\n| Main flow | clear | First-meeting order, 6 slides, ends on the pilot ask |\n| Edge cases | clear | Not relevant to a deck |\n| Look | clear | Plain default |\n| Outputs | clear | PDF only |\n| Done signal | partial | Needs the goal confirmed |\n| Words with no number | clear | \"Short\" is 6 slides, from your ask |\n\n**Done means**\n1. The deck does what the goal says for Spotify's ad sales team: they agree to a free Soundcheck pilot on 3 campaigns in Q1.\n2. `deck.pdf` is in `decks/spotify-20261126/out/` and opens.\n3. The main slide count is 6.\n4. The deck check prints PASS on every check, after the last change.\n5. Every line on a slide cites facts that say it, each with a source link, an estimate note or your word.\n6. Every review finding is fixed, or left with why.\n\nAbout 70 minutes and 7 helper agents, within a budget of 90 minutes.\n\n## Questions\n\n1. What should Spotify's ad sales team believe or do after this deck?\n   - A. Agree to the free Q1 pilot on 3 Spotify campaigns. The deck covers their advertisers' proof problem, what Soundcheck measures, proof, and the pilot plan.\n   - B. Believe that brand lift proof closes more audio ad budget. The deck is an outside-in view of audio advertising and where proof is missing.\n   - C. Retell the idea to their boss: why now, what good looks like, first step.\n   - D. Take a technical walk-through of how the survey runs after an ad.\n\n   Recommended: A. Your notes end on the pilot ask, and a sales team can say yes to a pilot.\n   Why it matters: the goal sets the order of all 6 slides and what the reviewer checks first.\n\n2. What is the one idea the deck argues?\n   Recommended: \"Advertisers buy more audio when they can see brand lift in 48 hours, and Spotify can offer that proof.\"\n   Why it matters: every slide title is written to support this one sentence.\n\n3. Who must the sales team convince next, and what does that person care about?\n   Recommended: their advertiser clients, who care about proof that the ad moved the brand. If it is the sales leadership instead, say so.\n   Why it matters: it decides whether the deck talks about advertiser results or about Spotify's own revenue.\n\n4. Is the PDF alone enough, or do you want the quick track's HTML deck too?\n   Recommended: quick track. The PDF is the file you open and send. The HTML deck stays in the folder as its source.\n   Why it matters: the full track also makes a PowerPoint and allows 8 to 12 slides. You asked for 6 slides and PDF only, so it adds work you did not ask for.\n\n5. Who is in the room, and what do you know about the deal so far?\n   Recommended: names and roles unknown, so the deck is written for a senior business reader, with no deal history.\n   Why it matters: a named head of sales gets that person's public talks and priorities in the research. A deal history changes the pilot ask.\n\n6. What may the deck claim about Soundcheck beyond the four lines in `notes.md`?\n   Recommended: nothing more. Name iHeartMedia (pilot) and Acast (live) only if you confirm they agree to be named.\n   Why it matters: a wrong claim in front of Spotify costs the pilot. A pilot with no results needs a different proof slide than one with lift numbers.\n\n7. Is there anything the deck must not say or must lead with, such as a competitor's name?\n   Recommended: no limits, and lead with the pilot ask.\n   Why it matters: it is cheaper to avoid a sensitive claim than to cut a finished slide.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. What should Spotify's ad sales team believe or do after this deck? | 2. What is the one idea the deck argues? | 3. Who must the sales team convince next, and what does that person care  | 4. Is the PDF alone enough, or do you want the quick track's HTML deck to | 5. Who is in the room, and what do you know about the deal so far? | 6. What may the deck claim about Soundcheck beyond the four lines in `not | 7. Is there anything the deck must not say or must lead with, such as a c"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "45 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: output (\"powerpoint\"), goal (\"goal\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 70 minutes and 7 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "| Output | PDF, as you asked. The quick track also keeps the HTML deck it is drawn from. No PowerPoint. |"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1055,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 5,
+      "defaults_quality": 8,
+      "clarity": 4,
+      "respects_words": 6,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles goal (\"agree to the free Q1 pilot\"), 6 slides, PDF, reader \"Spotify's ad sales team\" and claims (\"Name iHeartMedia (pilot) and Acast (live) only if you confirm\").",
+      "no_redundancy": "Q1 asks the goal the notes already give (\"Ask: a pilot on 3 Spotify ad campaigns\") and Q4 asks \"Is the PDF alone enough\" after the person said \"PDF only\".",
+      "defaults_quality": "Every question has a concrete default, e.g. \"Recommended: nothing more\" for claims and a specific one-sentence argument for Q2.",
+      "clarity": "Seven questions behind a long brief with a needs table, a coverage scan and a done list; too much for a two-minute reply.",
+      "respects_words": "Keeps 6 slides and PDF, but adds \"a Sources slide in the appendix\" and keeps \"the HTML deck\" despite \"6 slides, PDF only\".",
+      "overall": "Accurate brief with good claim discipline and defaults, but it is padded, re-asks goal and output, and bends \"PDF only\"."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.707Z"
+}

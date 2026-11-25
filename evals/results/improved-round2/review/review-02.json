@@ -1,0 +1,120 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-02",
+  "ask": "quick P1 pass on the clinic prototype before my 2pm demo. desktop only",
+  "expected_track": "quick",
+  "notes": "Bar and width given, time pressure. Quick track (P1 only, no phone). A good intake asks one or two questions at most.",
+  "must_cover": [
+    "p1",
+    "desktop|no phone",
+    "fix|report"
+  ],
+  "findable": [
+    "bar|p1 and p2|p1 only",
+    "phone|screen width|390"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** a quick P1 pass on the Northside Physio prototype, so it is safe to show at your 2pm demo.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, the only one in this folder.\n- Screens: the 4 the nav reaches: Today, Clients, Invoices, Settings (`screens.json` is written).\n- Width: desktop only, so the walk leaves out the phone width (from your message).\n- Bar: P1 only. P2 and P3 are listed for you, never fixed (from your message).\n- Fix mode: I fix in place and keep a copy of every changed file in `RUN/original/` (default).\n- Nothing is deployed, posted or sent; this stays on your laptop.\n\n**Track:** quick, because you said \"quick\" and \"before my 2pm demo\".\n\nCoverage: 6 clear · partial: Who and their job, Edge cases · missing: none\n\n**Done means:**\n- All 4 screens have a before and an after screenshot.\n- A fresh agent finds no open P1 on any screen.\n- Every P1 I do not fix is marked \"your call\" in one sentence.\n- Every changed file has its original kept.\n\nAbout 50 minutes and 4 helper agents, within a budget of 60 minutes.\n\n1. Who uses it, and what one job do they come to do?\n   Recommended: a clinic receptionist who checks today's appointments and books a new one.\n   Why it matters: the persona decides which broken things count as P1.\n\n2. Should I fix what I find, or only report it, given the demo is at 2pm?\n   Recommended: fix, keeping a copy of every file I change.\n   Why it matters: report only changes no file, so you would fix the P1s yourself before 2pm.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 2,
+      "evidence": "1. Who uses it, and what one job do they come to do? | 2. Should I fix what I find, or only report it, given the demo is at 2pm?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 2,
+      "evidence": "2 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "2 of 2 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 2, Why it matters: on 2, of 2"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "16 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 50 minutes and 4 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Coverage: 6 clear · partial: Who and their job, Edge cases · missing: none"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 282,
+      "evidence": "282 words, 189 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because you said \"quick\" and \"before my 2pm demo\"."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 282,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 8,
+      "respects_words": 10,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles P1 (\"Bar: P1 only\"), desktop (\"leaves out the phone width\") and fix vs report (question 2 with a default); persona also covered.",
+      "no_redundancy": "Bar and phone are stated as found, not asked; but fix mode is listed under Found as a default and then asked again in question 2, a small repeat.",
+      "defaults_quality": "Both defaults are concrete and fit a 2pm demo: \"a clinic receptionist who checks today's appointments\" and \"fix, keeping a copy of every file I change\".",
+      "clarity": "Only two short questions, each about one thing, ending with \"just go\"; the Coverage line and full brief add some extra reading.",
+      "respects_words": "Keeps \"quick\", \"P1\" and \"desktop only\" exactly, and the 50-minute plan fits before the 2pm demo.",
+      "overall": "A tight, faithful intake that a busy person can answer with \"go\"; only the fix-mode repeat and a little brief clutter hold it back."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.881Z"
+}

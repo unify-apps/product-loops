@@ -1,0 +1,122 @@
+{
+  "arm": "baseline",
+  "loop": "research",
+  "case": "research-10",
+  "ask": "go or no-go: should we build a pet insurance comparison site for Germany? Look at Check24, Verivox and Tarifcheck.",
+  "expected_track": "full",
+  "notes": "Decision type is go or no-go, not modules. Market and rivals given. A good intake keeps the decision as asked and may flag the insurance broker licence question as a fact to research, not a question for the person.",
+  "must_cover": [
+    "go|no-go",
+    "market|germany",
+    "persona|pet owner",
+    "rivals|check24",
+    "money|revenue|commission",
+    "rules|bafin|regulation|licen"
+  ],
+  "findable": [
+    "rivals|competitors|which products",
+    "market|country|region",
+    "decision|what this run decides"
+  ],
+  "fixtures": [],
+  "message": "I have read your ask and started a run. Nothing is researched yet. Here is the brief I would work from, then my questions.\n\n**Start check.** Passed. A web search for \"Haustierversicherung Vergleich Hundekrankenversicherung Katzenversicherung\" returned results. I also fetched the CHECK24 pet insurance page (https://www.check24.de/tierversicherung/) and got text. It says CHECK24 compares dog liability and dog health, cat health, and horse liability and horse surgery cover. It lists over 400 tariff variants, surgery-only and full-cover tiers, and some tariffs with daily cancellation. It also has a loyalty program, an AI assistant and customer reviews. The web reads did not ask for permission.\n\n## Brief (draft)\n\n| # | Need | Value |\n|---|---|---|\n| 1 | Decision | **Go or no-go:** should we build a pet insurance comparison site for Germany? The brief ends with a clear go or no-go and the reasons. Because rivals are compared, the capability sheet is a main output, then where we could beat them, then ranked modules. |\n| 2 | Product | A comparison site for pet insurance (dog and cat health, surgery cover, liability) in Germany. Category: insurance comparison portals. |\n| 3 | Persona | Draft, see question 1. |\n| 4 | What we have today | Nothing: a new product. Every row is `gap` or `beat`. |\n| 5 | Rivals | CHECK24, Verivox, Tarifcheck (3 named, no more added). |\n| 6 | Market | Germany. |\n| 7 | Sources | Public pages only. No sign-in, no paid reports, no trial sign-up. Kinds tried for every rival: product pages, help centre or docs, release notes or changelog, pricing, public reviews. |\n| 8 | Depth | Up to 12 pages and 40 features per rival. |\n| 9 | Fixed and refused | None. |\n| 10 | First release size | Rank every module. The top 3 are the first release. |\n| 11 | Rival names | Keep real names. The brief stays on this laptop. |\n| 12 | Where to save | `research/pet-insurance-de/` in the working folder. |\n| 13 | Sharing | Nothing is published or sent. |\n| 14 | Groups | None given. I will use plain groups (for example: tariff search, comparison and filters, contract and switching, trust and advice, extras). |\n| 15 | Sheet file | `capability-sheet.xlsx` and `capability-sheet.csv`. No Google Sheet, since you did not ask. |\n| 16 | How bold | See question 2. |\n\n**Stop fact.** `research/pet-insurance-de/capability-sheet.xlsx` and `.csv` exist. Every row says what it does. Every yes or partial cell links to that rival's own pages. Every \"no rival has it\" claim has a search of each rival's own site behind it. `brief.md` gives a go or no-go and ends in a ranked module list that cites sheet rows.\n\n## Questions\n\n1. **Persona.** My draft: a German dog or cat owner, 25 to 45, with a young pet. They check prices before they sign, they worry about a large vet bill, and they distrust the small print (exclusions, waiting times, price rises with age). They are the user and the payer. The persona only ranks the modules. It never takes a row out of the sheet. Default: my draft. Change it if your buyer is someone else, for example an insurer paying for leads.\n2. **How bold.** Should the brief lead with catching up to CHECK24, Verivox and Tarifcheck, or with ideas no rival has? Default: both. The brief gets `## Ideas no rival has` with at least 3 ideas, ranked by how big the win is.\n3. **What makes it a \"go\"?** For example: a gap the big portals leave open, or a niche they under-serve. Do you have a bar, such as a revenue target, a team size or a time limit? Default: no fixed bar. I judge whether a small team could win a clear niche against three established portals, and I say what the answer depends on.\n4. **Business model.** Should I assume the usual commission from insurers per sale, or look at other ways to earn money? Default: commission, with a note on other options if the research shows them.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Persona. My draft: a German dog or cat owner, 25 to 45, with a young p | 2. How bold. Should the brief lead with catching up to CHECK24, Verivox a | 3. What makes it a \"go\"? For example: a gap the big portals leave open, o | 4. Business model. Should I assume the usual commission from insurers per"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "22 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.833,
+      "evidence": "missing: rules"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 1,
+      "evidence": "1 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 705,
+      "evidence": "705 words, 468 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 705,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 7,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 8,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles go/no-go, Germany, persona (Q1), the three rivals and money (Q4 'usual commission from insurers per sale'), but never raises insurance-broker rules (BaFin, §34d licence) that could decide a go.",
+      "no_redundancy": "Rivals, market and decision are stated in the brief ('CHECK24, Verivox, Tarifcheck (3 named, no more added)', 'Germany'), not asked; all four questions are open points.",
+      "defaults_quality": "Every question has a concrete default fit to the ask, e.g. persona 'German dog or cat owner, 25 to 45, with a young pet' and go bar 'whether a small team could win a clear niche'.",
+      "clarity": "Four plain questions, but buried under a start-check paragraph and a 16-row brief table with details like sheet file names and depth limits that slow a two-minute reply.",
+      "respects_words": "Keeps the go/no-go and the three named rivals, but leans a decision ask toward feature planning ('the capability sheet is a main output', 'The top 3 are the first release').",
+      "overall": "Solid intake with good defaults and no redundant asks, held back by missing regulation and a long brief that shifts focus from the go/no-go to a feature sheet."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.779Z"
+}

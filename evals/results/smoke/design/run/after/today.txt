@@ -1,0 +1,16 @@
+Northside Physio
+Today Customers Invoices Settings
+Today, Thursday 26 November
+New appointment
+5
+appointments
+2
+therapists in
+£110
+unpaid this week
+Time	Customer	Therapist	Type	Room
+08:30	Priya Nair	Tom Hale	Knee rehab	Room 1
+09:15	Owen Brooks	Sara Lind	First visit	Room 2
+10:00	Mei Chen	Tom Hale	Back pain	Room 1
+11:30	Luis Ortega	Sara Lind	Sports massage	Room 3
+14:00	Hannah Weiss	Tom Hale	Shoulder follow-up	Room 1

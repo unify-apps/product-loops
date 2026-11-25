@@ -1,0 +1,124 @@
+{
+  "arm": "baseline",
+  "loop": "design",
+  "case": "design-01",
+  "ask": "apply my notes in notes.md to the clinic prototype",
+  "expected_track": "full",
+  "notes": "Six clear notes on the planted faults. Note 2 says 'everywhere' itself. Note 4 is vague ('too tight') and should get a concrete reading as a default. Asking which prototype is redundant (only one).",
+  "must_cover": [
+    "request|notes|list",
+    "everywhere|this screen only|every screen",
+    "too tight|row height|padding",
+    "form|fields",
+    "policy"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "notes|which notes",
+    "everywhere|all screens|this place only"
+  ],
+  "fixtures": [
+    "notes.md",
+    "proto-clinic/index.html"
+  ],
+  "message": "## My brief\n\n**Goal:** apply Sam's six notes (`notes.md`) to the Northside Physio clinic prototype, and run to the end without asking again.\n\n- **Prototype:** `proto-clinic/index.html`, the only one in the folder. It is plain HTML with no `dev` or `start` script, so I will serve it locally with the loop's own server and give you the link.\n- **Screens I found:** Today, Clients, Invoices, Settings.\n- **Reference:** none, so the copy-reference step is skipped.\n- **Design rules:** no `CLAUDE.md` in the folder and no `product-design` or `design-review` skill installed, so I will use the loop's built-in design checks.\n- **Start checks:** Chrome is found for screenshots, and Node is v25.9.0. Both pass.\n- **Result goes to:** a local link only. Nothing is published, pushed, committed or sent.\n- **Stop fact:** every note below is done and swept. No screen that no note names has broken or changed without a reason. The prototype's link opens.\n\n## The request list\n\n| # | Note, in words | Screens | Where | Check |\n|---|---|---|---|---|\n| 1 | The \"New appointment\" button on Today opens a short form with four fields: client, time, therapist, type. (my reading: a panel below the heading with Save and Cancel; Save adds the row to the Today table and closes the panel.) | Today | this place | Click \"New appointment\": the form shows Client, Time, Therapist, Type. Save adds a row. |\n| 2 | Rename \"Customers\" to \"Clients\" | Clients | everywhere | \"Customers\" is gone from every screen's text and from the code. \"Clients\" is the Clients page title. |\n| 3 | Replace the Latin text under Booking policy with a real short policy: 24h cancellation. (my reading: \"Appointments can be cancelled or moved free of charge up to 24 hours before the start time. Cancellations within 24 hours are charged the full fee.\") | Settings | this place | No \"Lorem\" on Settings. The 24-hour policy is shown. |\n| 4 | Invoices table rows feel too tight. (my reading: cell padding goes from 4px to 12px top and bottom, 10px left and right unchanged.) | Invoices | this place | The measured padding of an Invoices cell is \"12px 10px\". The Today and Clients tables stay as they are. |\n| 5 | Picking \"Overdue\" on Invoices shows words saying there are none, not a blank table. (my reading: one row reading \"No overdue invoices.\") | Invoices | this place | Choose \"Overdue\": the table shows \"No overdue invoices.\" |\n| 6 | Today's date in the heading is smaller than the page title. (my reading: the title is \"Today\" at 22px and the date \", Thursday 26 November\" is 15px in the muted colour, on the same line.) | Today | this place | The date text measures smaller than the \"Today\" title. The heading still reads \"Today, Thursday 26 November\". |\n\n**Broken before the run:** none yet. I will click the controls before changing anything and list any that are already broken. Note 1 and note 5 are known gaps that your notes ask me to fix, so they are not listed there.\n\n## Questions\n\n1. **Anything missing or wrong in the list above?** Default: the list is right. Notes you send later still join this run.\n2. **Note 2, \"everywhere\":** the word \"Customers\" appears only as the Clients page title today. I marked it everywhere, so any other place found, such as a placeholder, a label or the code, is renamed too. Default: everywhere.\n3. **Note 1, the form:** should Save add the new appointment to the Today table, or only close the form? Default: add it to the table (sample data only, not saved after reload).\n4. **Note 3, the policy words:** are the words in my reading right? Default: use them as written.\n5. **Note 4, \"too tight\":** is 12px top and bottom right? Default: 12px.\n6. **Note 6, \"smaller\":** is the 15px muted date right? Default: 15px, muted colour.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Anything missing or wrong in the list above? Default: the list is righ | 2. Note 2, \"everywhere\": the word \"Customers\" appears only as the Clients | 3. Note 1, the form: should Save add the new appointment to the Today tab | 4. Note 3, the policy words: are the words in my reading right? Default:  | 5. Note 4, \"too tight\": is 12px top and bottom right? Default: 12px. | 6. Note 6, \"smaller\": is the 15px muted date right? Default: 15px, muted "
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "19 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: notes (\"notes\"), everywhere (\"everywhere\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 676,
+      "evidence": "676 words, 525 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 676,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 10,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "All topics settled: request list table, note 2 'everywhere', note 4 'cell padding goes from 4px to 12px', note 1 'four fields: client, time, therapist, type', note 3 policy wording drafted.",
+      "no_redundancy": "Question 2 asks about 'everywhere' even though Sam's note already says 'everywhere'; questions 4-6 re-confirm readings already stated in the brief.",
+      "defaults_quality": "Every question has a concrete default fitting the notes, e.g. 'Default: 12px', 'Default: add it to the table (sample data only, not saved after reload)', full 24h policy text.",
+      "clarity": "Six questions plus a dense six-column table and long brief; each question is plain and single-topic, but 'Anything missing or wrong' is vague and 4-6 could merge into one confirm.",
+      "respects_words": "Keeps Sam's words: rename 'everywhere', four named form fields, '24h cancellation', Invoices-only padding with 'Today and Clients tables stay as they are', local link only.",
+      "overall": "Strong intake that settles everything with sensible defaults so 'go' works; loses some points for re-asking 'everywhere' and several low-value confirmation questions."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.782Z"
+}

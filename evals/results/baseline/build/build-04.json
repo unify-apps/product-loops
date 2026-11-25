@@ -1,0 +1,121 @@
+{
+  "arm": "baseline",
+  "loop": "build",
+  "case": "build-04",
+  "ask": "We run a 14-hospital network (about 4,000 beds). Build a clickable prototype of a bed management tool for charge nurses: a bed board by ward, the admit / transfer / discharge flow, a housekeeping queue for beds being cleaned, and an exec dashboard with occupancy. It's for our innovation board in three weeks, so it has to look like a real product, not a wireframe.",
+  "expected_track": "full",
+  "notes": "Large enterprise ask with four named modules and a clear persona. Depth is implied ('a real product'). Good intake: confirms modules and must-haves, sample data that looks real but is made up (patient privacy), the look, and the research-first option is unnecessary since modules are named.",
+  "must_cover": [
+    "persona|charge nurse|who uses",
+    "module",
+    "how deep|in full|shell|depth",
+    "look|colour|color|font",
+    "sample data|data|patients",
+    "exec|dashboard",
+    "privacy|patient names|fake"
+  ],
+  "findable": [
+    "persona|who uses|who is it for"
+  ],
+  "fixtures": [],
+  "message": "## Brief (draft, nothing is built yet)\n\n**Goal:** A clickable web prototype of a bed management tool for charge nurses at a 14-hospital network (about 4,000 beds), for your innovation board in three weeks. It has to look like a real product, not a wireframe.\n\n**Where it lives:** nothing exists in this folder yet, so it is a new product in `<working folder>/bed-management/`, one `index.html` with its CSS and JS inside, served on this laptop only. The click checks will use chrome-headless-shell, so every click gets tested for real.\n\n**Draft modules, in build order (my guess, please correct):**\n\n| # | Module | Must have |\n|---|---|---|\n| 1 | Bed board | Hospital and ward picker, bed tiles by status (occupied, vacant, being cleaned, blocked), filters, bed detail |\n| 2 | Patient flow | Admit, transfer and discharge, each changing the board |\n| 3 | Housekeeping | Queue of beds being cleaned, mark clean, the bed returns to the board |\n| 4 | Exec dashboard | Network occupancy, per hospital and per ward, trend |\n\n**Request list so far:** R1 the whole ask, R2 bed board by ward, R3 admit / transfer / discharge flow, R4 housekeeping queue, R5 exec dashboard with occupancy, R6 sample data at 14-hospital scale.\n\n**Stop fact:** every module is built and reviewed with no P1 left, every link opens and every click works in a real browser, and no request is open.\n\n## Questions\n\n1. **Research first?** No brief exists and the feature set is partly open. Run `product-research-loop` first? Default: no, build from the modules above.\n2. **Who uses it, and the one job they come to do.** Default (my guess): a charge nurse on a ward, who comes to see which beds are free or about to be, and to place, move or discharge a patient fast. Execs only read the dashboard.\n3. **Modules and must-haves.** Is the list above right? Anything to add or drop (for example bed blocking, isolation or infection flags, discharge-ready predictions, bed requests from the ED)? Default: the four modules above.\n4. **Screens or products to follow.** Any bed management product or screens to copy, and exact or flow only? Default: none, flow only.\n5. **How deep.** Default: all four modules built in full, with the flow changing the board and housekeeping live.\n6. **Look.** Do you have a logo, icon files, colours or fonts (your hospital network's brand, or a house style)? Default: a clean clinical look of my own (calm blues and greens, clear status colours), no brand.\n7. **Name.** Do you have a product name? Default: 3 name and mark options on the real header, the first one used.\n8. **Extras.** Photos of people, two layout versions behind a key, a PDF guide of the screens, or a public link? Default: none of these. Patients and staff are initials only, nothing is downloaded and nothing leaves this laptop. All patient data is made up.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 8,
+      "evidence": "1. Research first? No brief exists and the feature set is partly open. Ru | 2. Who uses it, and the one job they come to do. Default (my guess): a ch | 3. Modules and must-haves. Is the list above right? Anything to add or dr | 4. Screens or products to follow. Any bed management product or screens t | 5. How deep. Default: all four modules built in full, with the flow chang | 6. Look. Do you have a logo, icon files, colours or fonts (your hospital  | 7. Name. Do you have a product name? Default: 3 name and mark options on  | 8. Extras. Photos of people, two layout versions behind a key, a PDF guid"
+    },
+    "asked_le_7": {
+      "pass": false,
+      "value": 8,
+      "evidence": "8 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "8 of 8 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 8"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "12 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: persona (\"who uses\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.857,
+      "evidence": "missing: privacy"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 504,
+      "evidence": "504 words, 241 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 504,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 8,
+      "no_redundancy": 6,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Covers persona, the four modules, depth ('all four modules built in full'), look ('calm blues and greens'), exec dashboard, sample data (R6 '14-hospital scale') and privacy ('initials only... All patient data is made up'), though privacy and data are tucked into the Extras default.",
+      "no_redundancy": "Q2 'Who uses it' re-asks the persona the ask already states (charge nurses), and Q1 'Research first?' asks something the ask does not need.",
+      "defaults_quality": "Every question has a specific default fitting the ask, e.g. 'a clean clinical look of my own (calm blues and greens, clear status colours)' and 'Patients and staff are initials only'.",
+      "clarity": "Eight questions, with the least important ('Research first?') first and the privacy choice buried in a mixed 'Extras' question that bundles photos, layouts, PDF and link.",
+      "respects_words": "Keeps the three-week board deadline, 'look like a real product, not a wireframe', 14 hospitals / 4,000 beds and all four named parts in full.",
+      "overall": "A solid brief with good defaults so 'go' works, but it re-asks the persona, leads with a low-value question and hides the patient-privacy decision."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.291Z"
+}

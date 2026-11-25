@@ -1,0 +1,114 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-05",
+  "ask": "need prototype. school canteen pre-order. parents order + pay, kitchen see count per dish by 10am. india. mobile first",
+  "expected_track": "full",
+  "notes": "Terse, non-native voice, two personas, a market (India: rupees, UPI), a cut-off time and mobile first. Payment is fake in a prototype and should be stated, not asked as a real money step.",
+  "must_cover": [
+    "persona|parent|kitchen",
+    "module",
+    "pay|payment",
+    "phone|mobile",
+    "currency|rupee|₹|inr",
+    "10am|cut-off|cutoff",
+    "how deep|in full|depth"
+  ],
+  "findable": [],
+  "fixtures": [],
+  "message": "# Brief: school canteen pre-order prototype\n\n**Goal:** a clickable, mobile-first web prototype where parents in India order and pay for their child's school lunch, and the kitchen sees the count per dish by 10am.\n\n**Your words:** \"need prototype. school canteen pre-order. parents order + pay, kitchen see count per dish by 10am. india. mobile first\"\n\n**What I found:** the working folder is empty. There is no product, no earlier run, no research brief, no CLAUDE.md and no logo. The click checks will use chrome-headless-shell, so every click will be checked in a real browser.\n\n**Persona (my guess, not yet your answer):** a parent of a school child who orders tomorrow's lunch on their phone and pays by UPI. The second user is the canteen kitchen lead, who reads the count per dish.\n\n**Modules in build order (my guess):**\n\n| # | Module | Must have |\n|---|---|---|\n| 1 | Menu and order (parent) | pick a school day, pick a child, add dishes, see the total in rupees, one dish shown as sold out |\n| 2 | Pay and orders (parent) | a sample UPI pay screen that always succeeds, an order confirmation, order history, cancel before the cut-off with a sample \"refund to UPI\" line |\n| 3 | Kitchen counts (kitchen) | count per dish for a chosen day, the 10:00 IST cut-off shown, orders placed after 10:00 not counted |\n\n**Defaults taken (marked as defaults):**\n- New product in `school-canteen/`, one `index.html` with its CSS and JS inside, one route per module (`#/menu`, `#/pay`, `#/kitchen`).\n- Follow: no product copied, flow only. Depth: every module in full.\n- Look: the plain look, rupee prices, English only, initials instead of photos, designed at 390px wide first and stretched for desktop.\n- Data: made-up sample data (one parent, 2 children in different classes, about 8 dishes with prices). No real login, no real money, no payment gateway.\n- 10am cut-off (default): orders for a school day close at 10:00 IST on that same day. After that the day shows \"Ordering closed\", the parent can still order later days, and the kitchen count only holds orders placed before 10:00.\n- Kitchen screen (default): count per dish only, with no names or class breakdown.\n- Name: 3 options on the real header after the first link, the first one used.\n- Extras: no photos, no two versions behind a key, no PDF guide. It stays on this laptop and nothing is published.\n- Track: full.\n\n**Coverage scan:**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | partial | three modules drafted; refunds, a canteen admin and real payment are out |\n| Who and their job | partial | parent orders and pays, kitchen reads counts; both are my guess |\n| Data and facts | partial | menu, prices, children and school are all sample data |\n| Main flow | clear | order, pay, then kitchen count |\n| Edge cases | partial | cut-off, sold out and cancel have defaults; nothing else yet |\n| Look | missing | no logo, colours or fonts given; plain look by default |\n| Outputs | clear | a local link per module and per demo state |\n| Done signal | clear | every module built, reviewed, every click checked |\n| Words with no number | partial | \"mobile first\" becomes 390px wide; \"10am\" becomes 10:00 IST on the order day |\n\n**Lessons applied:** none yet.\n\n**Done means:**\n1. Every module is built: Menu and order, Pay and orders, Kitchen counts.\n2. Every module's last review round has 0 P1.\n3. Every link in the links list opens, has no dead click, no placeholder text and no page error.\n4. The request list has no open line.\n5. A parent can order for a child and pay, and the order then shows in the kitchen count per dish. The kitchen sees the count per dish with the 10:00 cut-off shown.\n6. There is a link for every list, one detail, every create flow and every empty state.\n\n**Request list (so far):**\n- R1 the whole ask\n- R2 parents order\n- R3 parents pay\n- R4 kitchen sees the count per dish by 10am\n- R5 India (rupees, UPI, Indian school sample data)\n- R6 mobile first\n\nAbout 40 minutes and 11 helper agents, within a budget of 120 minutes.\n\n**Questions**\n\n1. Who uses it, and what one job do they come to do?\n   Recommended: a parent with two children at the school who orders tomorrow's lunch on their phone and pays by UPI; the kitchen lead is the second user and reads the count per dish.\n   Why it matters: the persona decides which module is built first and what the home screen shows.\n\n2. Which modules, in build order, and what must each have?\n   Recommended: the three in the table above (Menu and order, Pay and orders, Kitchen counts).\n   Why it matters: this is the list the builders and the reviewer check against; anything missing here is not built.\n\n3. What does \"by 10am\" mean exactly, and in which time zone?\n   Recommended: orders for a school day close at 10:00 IST on that same day; after that the day shows \"Ordering closed\" and the kitchen count is final. Pre-order for tomorrow and later is the main flow.\n   Why it matters: it changes the order screen, the kitchen screen and what a late parent sees.\n\n4. How far do sold-out dishes, cancel and refund go?\n   Recommended: one dish is flagged \"Sold out\" in the sample data and cannot be added. An order can be cancelled before the cut-off with a sample \"refund to UPI\" line in history; after the cut-off there is no cancel. Payment is a fake UPI screen that always succeeds.\n   Why it matters: each one adds a state on the order and pay screens, and the kitchen count must drop when an order is cancelled.\n\n5. Does the kitchen see more than the count per dish, and how many children and classes does a parent have?\n   Recommended: one parent, 2 children in different classes; an order is per child per day; the kitchen sees the count per dish only, no names or classes.\n   Why it matters: a class or name breakdown would add a second view to the kitchen module.\n\n6. How deep should it go: every module in full, or some as a titled page in the shell?\n   Recommended: every module in full (list, detail, create flow, empty state).\n   Why it matters: full takes about 3 times longer than a shell.\n\n7. Which track: quick or full?\n   Recommended: full, because it is a new product with 3 modules and you may demo it. Quick builds each module as one list page, with no name options and no demo states.\n   Why it matters: full adds the name and mark options and a link for every state, and takes longer.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. Who uses it, and what one job do they come to do? | 2. Which modules, in build order, and what must each have? | 3. What does \"by 10am\" mean exactly, and in which time zone? | 4. How far do sold-out dishes, cancel and refund go? | 5. Does the kitchen see more than the count per dish, and how many childr | 6. How deep should it go: every module in full, or some as a titled page  | 7. Which track: quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "49 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 11 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "- Track: full."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1168,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles persona, modules, pay ('a sample UPI pay screen'), mobile ('390px wide first'), rupees, 10am ('10:00 IST on that same day') and depth ('every module in full').",
+      "no_redundancy": "Q1 'Who uses it' re-asks what the ask already says ('parents order + pay, kitchen see count'), and several questions repeat defaults already stated in the brief.",
+      "defaults_quality": "Every question has a concrete, fitting default, e.g. 'orders for a school day close at 10:00 IST on that same day; after that the day shows \"Ordering closed\"'.",
+      "clarity": "Long wall: brief, defaults list, coverage scan, done list, request list, then 7 questions that duplicate the brief; Q5 bundles two topics ('kitchen ... and how many children').",
+      "respects_words": "Keeps prototype, India (rupees, UPI), mobile first and count per dish by 10am; kitchen view is 'count per dish only' as asked.",
+      "overall": "Substance is strong and 'go' gives a good result, but the message is far longer and more repetitive than a busy person needs."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.399Z"
+}

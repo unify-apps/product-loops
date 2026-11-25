@@ -56,7 +56,9 @@ Put a cell in quotes when it holds a comma: `"Booking, online"`.
 ## Beat proof
 
 Every `beat` row gets searched for on every rival's own site, by one helper per rival with the task in
-`beat-proof.md`. Each helper writes `beats/<rival-slug>.md` and adds what it found to its rival file. Then:
+`beat-proof.md`. Each helper writes `beats/<rival-slug>.md` and adds what it found to its rival file (the depth
+cap counts these rows too; a helper that would pass it merges rows instead). After the beat proof, run the
+research check again, since the rival files changed. Then:
 
 1. For each line that came back `yes` or `partial`: change that rival's cell to match, and add the link to
    `sources` with the rival's label.

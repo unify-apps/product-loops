@@ -1,0 +1,122 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-10",
+  "ask": "go or no-go: should we build a pet insurance comparison site for Germany? Look at Check24, Verivox and Tarifcheck.",
+  "expected_track": "full",
+  "notes": "Decision type is go or no-go, not modules. Market and rivals given. A good intake keeps the decision as asked and may flag the insurance broker licence question as a fact to research, not a question for the person.",
+  "must_cover": [
+    "go|no-go",
+    "market|germany",
+    "persona|pet owner",
+    "rivals|check24",
+    "money|revenue|commission",
+    "rules|bafin|regulation|licen"
+  ],
+  "findable": [
+    "rivals|competitors|which products",
+    "market|country|region",
+    "decision|what this run decides"
+  ],
+  "fixtures": [],
+  "message": "**Goal:** decide go or no-go on a pet insurance comparison site for Germany, against Check24, Verivox and Tarifcheck.\n\n**Found:**\n- Rivals: Check24, Verivox, Tarifcheck, and the market is Germany (from your message).\n- Check24's pet insurance page compares 400+ tariffs for dogs, cats and horses, with an AI chat, loyalty points and reviews only from customers who signed (read just now from its own page).\n- Verivox has its own pet health insurance page. The Verbraucherzentrale NRW doubts that pet health insurance pays off, which matters for the verdict (web search just now).\n- Nothing is published or sent. Files go to `research/pet-insurance-de/` in this folder. They are for the go or no-go decision.\n- The full brief, with every default, is in `loop-runs/product-research-loop-20261126-035149/brief.md`.\n\n**Track:** quick, because you named 3 rivals and want a verdict, not a full feature matrix.\n\nStill open after reading your files: who the site is for, what \"go\" means.\n\n**Done means:**\n- An Excel sheet and a CSV compare the 3 rivals, 5+ rows each.\n- Every yes cell has a link from that rival's own pages.\n- Every \"no rival has it\" claim has a search of each rival's site behind it.\n- The brief gives a go or no-go and ends in a ranked module list.\n\nAbout 25 minutes and 8 helper agents, within a budget of 90 minutes.\n\n1. What does \"go\" mean for you, in a number or a test?\n   Recommended: go if at least 3 ideas no rival has tie to an owner's real pain, and the rivals' gaps show on the sheet.\n   Why it matters: without a bar, the verdict is only an opinion.\n\n2. Who uses it every day, and what one job do they come to do?\n   Recommended: a German dog or cat owner who compares health cover before signing, and pays for it themselves.\n   Why it matters: the owner decides which module ranks first. It never removes a row from the sheet.\n\n3. Which animals and cover types are in scope?\n   Recommended: dogs and cats, full health cover and operation-only cover. Horses and liability are only noted.\n   Why it matters: it sets which rows count in the sheet.\n\n4. Do we earn commission as a licensed broker, or act as a neutral guide?\n   Recommended: a licensed broker; the licence goes to the build team as an open question, not researched here.\n   Why it matters: it changes what a rival's feature costs us to copy.\n\n5. Which ideas should the brief lead with: catching up with the rivals, or ideas no rival has?\n   Recommended: both, with at least 3 ideas no rival has.\n   Why it matters: it sets what the ranked modules open with.\n\n6. Quick or full?\n   Recommended: quick, 2 source kinds per rival (product pages, help centre). Full tries 5 kinds, up to 25 pages and 100 features per rival.\n   Why it matters: full takes longer and finds more rows for the verdict.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. What does \"go\" mean for you, in a number or a test? | 2. Who uses it every day, and what one job do they come to do? | 3. Which animals and cover types are in scope? | 4. Do we earn commission as a licensed broker, or act as a neutral guide? | 5. Which ideas should the brief lead with: catching up with the rivals, o | 6. Quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "15 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: rivals (\"rivals\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.833,
+      "evidence": "missing: persona"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 25 minutes and 8 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: who the site is for, what \"go\" means."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 499,
+      "evidence": "499 words, 226 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because you named 3 rivals and want a verdict, not a full feature matrix."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": false,
+      "evidence": "new files: x"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 499,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 8,
+      "no_redundancy": 9,
+      "defaults_quality": 8,
+      "clarity": 6,
+      "respects_words": 8,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles go bar (Q1), persona (Q2), money (Q4 'earn commission as a licensed broker'), market and rivals in brief; rules only touched via licence and deferred: 'not researched here', no BaFin/regulation check.",
+      "no_redundancy": "States rivals, market and decision as found ('from your message') instead of asking; no question repeats the ask.",
+      "defaults_quality": "Every question has a concrete default (e.g. 'a German dog or cat owner who compares health cover before signing'); licence default skips researching regulation, which a go/no-go needs.",
+      "clarity": "Six questions after a long brief; Q6 'Quick or full?' repeats the already stated 'Track: quick', and Q5 overlaps Q1.",
+      "respects_words": "Keeps Germany, the 3 named rivals and a go/no-go verdict; adds a ranked module list and feature sheet beyond the ask but frames them as serving the verdict.",
+      "overall": "Solid grounded brief with sensible defaults, but too many questions and regulation risk is deferred rather than settled for a go/no-go."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.261Z"
+}

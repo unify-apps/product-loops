@@ -1,0 +1,121 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-08",
+  "ask": "can u look over my clinic thing and make it not embarrassing lol. investors tmrw",
+  "expected_track": "full",
+  "notes": "Casual voice, time pressure, 'not embarrassing' is vague. Fix mode is implied ('make it'). A good intake reads 'not embarrassing' as P1 and P2 fixed and keeps the round short. Quick is a fair recommendation too.",
+  "must_cover": [
+    "fix|report",
+    "bar|p1|p2",
+    "screens",
+    "persona|who uses",
+    "investors|tomorrow"
+  ],
+  "findable": [
+    "which prototype|which file"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "I will review every screen of your clinic prototype, fix what looks careless, and give you before and after screenshots to look at before the investors do.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, the only one in this folder.\n- Screens: Today, Clients, Invoices, Settings (the nav's own labels).\n- It will be fixed in place, with a copy of every changed file kept. Nothing is deployed or sent.\n- It is for the investor meeting tomorrow.\n- The browser and the file both work, so the check can run.\n- The full plan is in `loop-runs/product-review-loop-20261126-035319/brief.md`.\n\n**Track:** full, because the meeting is tomorrow and phones are worth a look.\n\nStill open after reading your files: who the screens are for, and what counts as your call.\n\n**Done means:**\n- All 4 screens have a before and an after screenshot.\n- A fresh reviewer finds no big problem left on any screen.\n- Any big problem I did not fix is listed first, with one sentence.\n- Every big and medium problem is fixed or has a reason.\n- Every changed file has its original kept.\n\nAbout 25 minutes and 4 helper agents, within a budget of 60 minutes.\n\n1. Who will look at this tomorrow, and what should they come away with?\n   Recommended: investors who see a physio clinic receptionist booking appointments and checking who has paid.\n   Why it matters: it decides which screen I polish hardest and what counts as broken.\n\n2. Should I fix medium problems too, or only the big ones?\n   Recommended: fix both. Small polish is listed for you and never changed.\n   Why it matters: \"not embarrassing\" usually needs the medium ones as well, such as a dead button or an empty list with no message.\n\n3. Quick (big problems only, desktop width) or full (also phone width)?\n   Recommended: full, about 25 minutes.\n   Why it matters: quick is faster but will miss anything that breaks on a phone.\n\n4. Anything you want left alone, or any rule of your own?\n   Recommended: none. Colours, fonts, the clinic name and the layout are listed for you to decide, and I change none of them.\n   Why it matters: you stay in control of the look.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Who will look at this tomorrow, and what should they come away with? | 2. Should I fix medium problems too, or only the big ones? | 3. Quick (big problems only, desktop width) or full (also phone width)? | 4. Anything you want left alone, or any rule of your own?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 1 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.6,
+      "evidence": "missing: bar, persona"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 25 minutes and 4 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: who the screens are for, and what counts as your call."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 376,
+      "evidence": "376 words, 197 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because the meeting is tomorrow and phones are worth a look."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 376,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles fix-in-place with before/after screenshots, the bar (Q2 big vs medium), all 4 screens, persona (Q1) and 'the investor meeting tomorrow'.",
+      "no_redundancy": "States the prototype as found ('the only one in this folder') rather than asking, but Q3 re-asks quick vs full after already declaring 'Track: full'.",
+      "defaults_quality": "Every question has a specific default, e.g. 'investors who see a physio clinic receptionist booking appointments and checking who has paid' and 'fix both'.",
+      "clarity": "Four numbered questions with defaults and 'just \"go\"', but the brief is long, Q3 duplicates the Track line, and 'what counts as your call' is vague.",
+      "respects_words": "Keeps the goal 'not embarrassing' and the deadline 'before the investors do'; changes nothing the person ruled out and leaves look decisions to them.",
+      "overall": "A solid, answerable opening that settles the key topics with good defaults; slightly wordy and one internally redundant question."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.300Z"
+}

@@ -1,0 +1,123 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-05",
+  "ask": "5-6 slides for an internal lunch and learn about our Q3 wins, nothing fancy, HTML is fine",
+  "expected_track": "quick",
+  "notes": "An internal deck, not a meeting with a company: company research is pointless. Count and output are given. A good intake skips web research by default and asks little.",
+  "must_cover": [
+    "goal",
+    "slide count|5|6",
+    "html",
+    "audience|internal|team",
+    "research|no research|files only"
+  ],
+  "findable": [
+    "slide count|how many slides",
+    "output|format|powerpoint|html",
+    "facts|wins|numbers"
+  ],
+  "fixtures": [
+    "q3-wins.md"
+  ],
+  "message": "**Goal:** a 5 to 6 slide HTML deck that lets colleagues at a lunch and learn see and retell what the team won in Q3.\n\n**Found:**\n- Five Q3 results in `q3-wins.md`: 14 new logos (Q2: 9), Halden Foods 3-year deal, net revenue retention 118%, 6 partners signed, sales cycle 74 to 58 days (from q3-wins.md)\n- Internal talk, so there is no outside company to research (from your ask)\n- 5 to 6 slides and HTML (from your ask)\n- No start deck and no CLAUDE.md, so the look is plain: Arial, dark text on white, one dark blue accent\n- Web search is available, but facts come only from your file\n\n**Track:** quick, because you said \"nothing fancy\" (HTML deck and a PDF copy, no PowerPoint).\n\nCoverage: 5 clear · partial: Who and their job, Words with no number (\"nothing fancy\") · missing: Done signal\n\n**Done means:**\n- 5 to 6 main slides, one idea each\n- `deck.html` and `deck.pdf` open\n- Every line cites a fact from `q3-wins.md`\n- Deck check passes after the last change\n- A fresh reviewer reads it as the lunch audience and passes it\n\nFull brief: `loop-runs/product-deck-loop-20261126-034259/brief.md`, written when you say go.\n\nAbout 40 minutes and 3 helper agents, within a budget of 90 minutes.\n\n1. What should people take away from the deck?\n   Recommended: a recap they can retell: what we won in Q3 and what it says about where sales is going.\n   Other options: a thank-you to the people behind each win; a playbook of what worked and should be repeated; a preview of Q4 priorities built on the wins.\n   Why it matters: this decides the order of the slides and what each title claims.\n\n2. Who is in the room, and who will they repeat it to?\n   Recommended: the whole company, mixed roles, no one who needs sales jargon explained, and nobody they must convince afterwards.\n   Why it matters: it sets how much plain explanation goes on each slide (for example what net revenue retention means).\n\n3. Do you want a number, a reason or a story under each win?\n   Recommended: numbers only from your file, plus one line on what each means; no causes or customer names beyond Halden Foods, because your file does not give them.\n   Why it matters: your file gives results but not reasons, so anything more is a claim I cannot back unless you tell me.\n\n4. Is there anything else I may use, such as Q3 revenue amounts, the Halden Foods deal value, or names of the team to thank?\n   Recommended: no, only what is in `q3-wins.md`.\n   Why it matters: with five facts, a 5 to 6 slide deck is thin without more.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. What should people take away from the deck? | 2. Who is in the room, and who will they repeat it to? | 3. Do you want a number, a reason or a story under each win? | 4. Is there anything else I may use, such as Q3 revenue amounts, the Hald"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: facts (\"facts\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 3 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Coverage: 5 clear · partial: Who and their job, Words with no number (\"nothing fancy\") · missing: Done signal"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 461,
+      "evidence": "461 words, 213 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because you said \"nothing fancy\" (HTML deck and a PDF copy, no PowerPoint)."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 461,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 8,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Goal, \"5 to 6 slides and HTML\", internal audience (Q2), and \"no outside company to research\" / \"facts come only from your file\" are all settled.",
+      "no_redundancy": "Slide count, output and the five facts are stated as found (\"5 to 6 slides and HTML (from your ask)\"), not asked; Q3 and Q4 overlap a little on what to add beyond the file.",
+      "defaults_quality": "Every question has a concrete recommendation that fits, e.g. \"numbers only from your file, plus one line on what each means\" and \"no, only what is in q3-wins.md\".",
+      "clarity": "Four plain questions, most important first, but the \"Coverage: 5 clear · partial: ...\" line is jargon and the option lists and time/budget lines make it longer than needed.",
+      "respects_words": "Keeps 5-6 slides, HTML and \"nothing fancy\" (\"quick... plain: Arial\"), but adds an unasked \"deck.pdf\" copy and assumes \"the whole company\" for an internal lunch and learn.",
+      "overall": "A strong, faithful opening with good defaults that \"go\" alone would serve well; it loses a little for the jargon coverage line, the extra PDF, and some overlap between questions."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.921Z"
+}

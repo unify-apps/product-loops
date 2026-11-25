@@ -9,7 +9,7 @@ Run it on the screens this run changed, at 1440 wide. For a phone prototype, als
 | # | Check | How to find it | Serious (P1) when |
 |---|---|---|---|
 | 1 | A click that opens nothing | `CHECK click` on each button and link the run added, and each one a row asks to make work | always. A control that was already dead before the run and that no row asks to make work is not P1: it stays under "Broken before the run" and goes to Proposals. Do not wire it. |
-| 2 | Cut-off or overflowing text | `CHECK eval --js "[...document.querySelectorAll('*')].filter(e => e.scrollWidth > e.clientWidth + 1 && getComputedStyle(e).overflow !== 'visible').map(e => e.innerText.slice(0, 40))"`, and the screenshot | the text is a name, a label or a number a person needs |
+| 2 | Cut-off or overflowing text | `CHECK eval --js "[...document.querySelectorAll('*')].filter(e => e.scrollWidth > e.clientWidth + 1 && getComputedStyle(e).overflow !== 'visible').map(e => e.innerText.slice(0, 40)).filter(t => t.trim())"`, and the screenshot | the text is a name, a label or a number a person needs |
 | 3 | Errors on the page | `summary.json` errors for the screen | always |
 | 4 | Uneven spacing in one list or form | `CHECK eval` of the gaps between siblings; more than 2 values in one list | the note was about spacing |
 | 5 | Not aligned | `CHECK eval` of left edges or tops that should match and are off by 1 to 6 px; parts meant to sit in one row that wrap to a second line (their tops differ) | the parts sit side by side, in one row, or in one column |

@@ -1,0 +1,120 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-10",
+  "ask": "make proto-clinic look more modern",
+  "expected_track": "full",
+  "notes": "One vague taste note. A good intake turns 'modern' into a short concrete list as its default reading (type scale, spacing, radius, colour) and asks the person to confirm or change it.",
+  "must_cover": [
+    "modern",
+    "everywhere|every screen|which screens",
+    "font|colour|color|spacing|radius",
+    "design rules|style"
+  ],
+  "findable": [
+    "which prototype|which file"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** make Northside Physio (`proto-clinic/index.html`) look more modern, with no change to words, flow or data.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, plain HTML, 4 screens (Today, Clients, Invoices, Settings), the only one in the folder.\n- It runs on a local server the loop starts. No `CLAUDE.md` and no design skill were found, so the loop's built-in design check applies.\n- Today the page has tight table rows (4px padding), 10px card corners and a thin underline nav.\n- Already broken, and left alone: \"New appointment\" does nothing, and the Invoices \"Overdue\" filter shows an empty table with no words.\n- Nothing is published, pushed or committed. The result is a local link and a list of changed files.\n\n**Track:** full, because there is no reference to copy (nothing is left out).\n\nStill open after reading your files: what \"modern\" means to you, and anything that must stay as it is.\n\n**Done means:**\n- All 6 numbered changes below are done and checked on the page.\n- Table rows have 14px padding on every screen that has a table.\n- No screen changes except through a listed change.\n- No text, button, field or sample data is changed.\n- The link opens (answers 200).\n\n**The change list** (my reading of \"more modern\", each one a number you can correct):\n- R1 All screens: page background #f4f5f8, cards 14px corners with a light shadow\n- R2 All screens: page titles 28px, bold, tighter spacing\n- R3 Header: nav links become rounded tabs, the active one filled\n- R4 Today, Clients, Invoices: table rows 14px padding, tables in a rounded card, small capital column headings\n- R5 All screens: buttons and inputs 10px corners, hover colour, visible focus ring\n- R6 Today: stat numbers 32px, labels quieter\n\nAnything missing or wrong? Notes you send later still join this run. The full brief is in `loop-runs/product-design-loop-20261126-035238/brief.md`.\n\nAbout 15 minutes and 2 helper agents, within a budget of 60 minutes.\n\n1. What should \"modern\" feel like?\n   Recommended: clean and soft, with more white space, rounded shapes and light shadows, keeping the blue accent.\n   Why it matters: this sets the size of every number in the list above.\n\n2. Keep the current blue (#2457d6) and the system font?\n   Recommended: yes, keep both.\n   Why it matters: a new colour or font touches every screen and the sample look you may already like.\n\n3. Should the new look also work on a phone-width screen?\n   Recommended: yes, tables scroll sideways below 600px and the header wraps.\n   Why it matters: the page has no phone layout now, and this adds work.\n\n4. Should the Overdue empty table and the dead \"New appointment\" button stay as they are?\n   Recommended: yes, leave them and list them in the handover.\n   Why it matters: fixing them changes behaviour, which \"look\" does not ask for.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. What should \"modern\" feel like? | 2. Keep the current blue (#2457d6) and the system font? | 3. Should the new look also work on a phone-width screen? | 4. Should the Overdue empty table and the dead \"New appointment\" button s"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "24 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 1 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.75,
+      "evidence": "missing: design rules"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 15 minutes and 2 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what \"modern\" means to you, and anything that must stay as it is."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 481,
+      "evidence": "481 words, 325 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because there is no reference to copy (nothing is left out)."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 481,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 10,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 8,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles modern (Q1 plus R1-R6), which screens ('All screens', 'Today, Clients, Invoices'), font/colour/radius/spacing (Q2, '14px corners', '28px'), and design rules ('No CLAUDE.md and no design skill... built-in design check applies').",
+      "no_redundancy": "States the prototype as found ('the only one in the folder') instead of asking; every question is about taste or scope the files cannot answer.",
+      "defaults_quality": "Every question has a specific default, e.g. 'clean and soft... keeping the blue accent' and 'tables scroll sideways below 600px'; 'go' yields a sound result.",
+      "clarity": "Four plain one-topic questions with reasons, but the brief and six-item change list make it long, and Q1 partly repeats what R1-R6 already decide.",
+      "respects_words": "Keeps it look-only ('no change to words, flow or data', leaves broken behaviour alone), though defaulting Q3 to 'yes' adds phone layout work the ask did not request.",
+      "overall": "A strong, well-grounded intake with concrete defaults that would run well on 'go'; docked for length and a small default scope addition."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.284Z"
+}

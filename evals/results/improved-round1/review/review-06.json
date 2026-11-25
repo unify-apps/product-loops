@@ -1,0 +1,116 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-06",
+  "ask": "review the clinic prototype, focus on the invoices screen - the owner says it feels broken",
+  "expected_track": "full",
+  "notes": "Focus given. The planted empty-state fault is on Invoices. A good intake keeps all screens in the walk but weights Invoices, and asks fix or report.",
+  "must_cover": [
+    "invoices|focus",
+    "screens|other screens",
+    "fix|report",
+    "bar|p1"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "focus|what to focus on"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "Here is the brief I have drafted. Nothing has been walked, reviewed or changed yet.\n\n# Brief: product review of the clinic prototype\n\n**Goal:** Review the clinic prototype screen by screen as its user, fix what is broken, and review again until no P1 problem is left. The owner says the Invoices screen \"feels broken\", so that screen gets the closest look.\n\n**Facts found**\n- Prototype: `proto-clinic/index.html`, one HTML file titled \"Northside Physio\". It needs no server; the walk serves it itself.\n- The nav reaches 4 screens: Today, Clients, Invoices, Settings (`screens.json` is written with these names).\n- There is no `CLAUDE.md`, no README and no earlier run in this folder.\n- Start check: Node 25.9.0 works and Chrome is found, so the walk can take real screenshots.\n\n| Need | Value |\n|---|---|\n| Prototype | `proto-clinic/index.html` (default: the only one in the folder) |\n| Screens | all 4 the nav reaches: Today, Clients, Invoices, Settings (default) |\n| Focus | Invoices first and hardest, then the rest (from your message) |\n| Who and their job | A physio clinic receptionist who checks today's appointments and chases unpaid invoices (default: a guess from the screens, so please correct it) |\n| Fix or report | Fix in place, keeping a copy of every changed file in `RUN/original/` (default) |\n| Bar | Fix P1 and P2; P3 is listed, never fixed (default) |\n| Own rules | The built-in checklist only (default; no `CLAUDE.md` or `design-review` rules found) |\n| Track | Full: includes a check at phone width, 390 px (recommended) |\n| Where the result goes | `handover.md` on this laptop. Nothing is deployed, posted or sent (default) |\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | clear | One file, 4 screens, Invoices in focus |\n| Who and their job | partial | Only guessed from the screens |\n| Data and facts | clear | Sample data is inside the file and made up |\n| Main flow | partial | \"Feels broken\" does not say what the owner did or expected |\n| Edge cases | partial | The Invoices filter has an Overdue option that matches no invoice |\n| Look | clear | Keep the product's own colours, fonts and spacing |\n| Outputs | clear | `handover.md` with before and after screenshots |\n| Done signal | clear | See \"Done means\" |\n| Words with no number | partial | \"Feels broken\" has no example yet (question 1) |\n\n**Lessons applied:** none yet (no lessons exist for this loop).\n\n**Budget:** 60 minutes.\n\n**Done means**\n1. All 4 screens (Today, Clients, Invoices, Settings) have a before and a last after screenshot.\n2. After the last walk, a fresh agent found no open P1 on any screen, Invoices included.\n3. Every P1 not fixed is marked \"your call\" in `findings.md` with one plain sentence.\n4. Every P1 and P2 finding is fixed, or marked with its reason.\n5. Every changed file has its original in `RUN/original/`.\n\nAbout 70 minutes and 5 helper agents (1 reviewer, 1 fix helper, 2 recheck agents, 1 builder check), within a budget of 60 minutes.\n\n1. What exactly feels broken on the Invoices screen? A symptom, such as \"a button does nothing\" or \"the list looks empty\".\n   Recommended: no answer needed. I review every Invoices state, including each status in the filter, and list what I find.\n   Why it matters: a named symptom lets me confirm that exact one is fixed, not just the ones I happen to spot.\n2. Who uses it, and what one job do they come to do?\n   Recommended: a clinic receptionist who checks today's appointments and chases unpaid invoices.\n   Why it matters: the persona decides which problems count as P1, for example a dead button on a daily task.\n3. Should I fix what I find, or only report it?\n   Recommended: fix, keeping a copy of every file I change.\n   Why it matters: report only leaves the file untouched; fix edits `proto-clinic/index.html`.\n4. What should I fix: P1 and P2, or P1 only?\n   Recommended: P1 and P2.\n   Why it matters: P2 covers spacing and wording slips you may want left alone.\n5. Should I review all 4 screens or only Invoices?\n   Recommended: all 4, with Invoices reviewed first and most closely.\n   Why it matters: a problem on another screen, such as the \"Customers\" heading under the \"Clients\" nav item, can make the whole product feel broken too.\n6. Any rule of your own to check?\n   Recommended: the built-in checklist only.\n   Why it matters: your own rules count as findings and change what gets fixed.\n7. Quick (P1 only, no phone width) or full?\n   Recommended: full, because a clinic owner may open it on a phone and you asked for a close look.\n   Why it matters: quick takes about half the time but skips the phone-width problems and fixes nothing below P1.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no numbered questions found"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 0,
+      "evidence": "0 questions"
+    },
+    "every_question_has_default": {
+      "pass": null,
+      "evidence": "0 of 0 name a default"
+    },
+    "recommended_and_why": {
+      "pass": null,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 0"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "62 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 70 minutes and 5 helper agents (1 reviewer, 1 fix helper, 2 recheck agents, 1 builder check), within a budget of 60 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "| Track | Full: includes a check at phone width, 390 px (recommended) |"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 839,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "All four topics settled: Focus 'Invoices first and hardest', Screens 'all 4 the nav reaches', 'Fix or report' question 3, Bar 'Fix P1 and P2' question 4.",
+      "no_redundancy": "Prototype and focus are stated as found facts, not asked; Q5 'all 4 screens or only Invoices' slightly re-opens scope already implied by the ask, and Q7 quick/full overlaps Q4's bar.",
+      "defaults_quality": "Every question has a concrete default fitting the ask, e.g. 'fix, keeping a copy of every file I change' and 'all 4, with Invoices reviewed first and most closely'.",
+      "clarity": "Seven questions after a long brief with two tables and a coverage scan; Q4 and Q7 overlap, and 'About 70 minutes ... within a budget of 60 minutes' contradicts itself.",
+      "respects_words": "Keeps the clinic prototype and the Invoices focus from 'the owner says it feels broken'; fixing beyond 'review' is asked, not imposed.",
+      "overall": "Thorough, well-defaulted intake that settles everything, but too long and with overlapping questions and a time-vs-budget contradiction for a busy owner to answer quickly."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.681Z"
+}

@@ -1,0 +1,117 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-03",
+  "ask": "make the Today screen in proto-clinic work like Linear's inbox (https://linear.app/docs/inbox) - just the flow, keep our look",
+  "expected_track": "full",
+  "notes": "Reference by URL, the mode (flow only) and the target screen are all in the ask. A good intake states them and asks only what the reference leaves open (for example what the detail pane shows for an appointment).",
+  "must_cover": [
+    "reference|linear|inbox",
+    "flow only|flow",
+    "today",
+    "parts|list|detail"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "exact|flow only|pixel",
+    "which screen|target screen"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "## Brief\n\n**Goal:** Make the Today screen of the Northside Physio prototype (`proto-clinic/index.html`) work like Linear's inbox (https://linear.app/docs/inbox). Copy the flow only and keep the prototype's own look.\n\n- **Prototype:** `proto-clinic/index.html`, plain HTML. It is the only prototype in the folder. I will run it with the built-in local server. The Today screen is `#/today`.\n- **Reference:** the Linear inbox docs page. I read it in the copy step, as a web page. What it says is data, never instructions.\n- **Mode:** flow only (default). You said \"just the flow, keep our look\". The same parts and steps, using our colours, fonts, header, cards and buttons. No Linear styling and no Linear sample content.\n- **Design rules:** the folder has no `CLAUDE.md`. I use any `product-design` or `design-review` skill you have installed, otherwise the built-in design check.\n- **Screens that must not change:** Clients, Invoices and Settings. Only the Today screen changes.\n- **Output:** a local link only. Nothing is published, pushed or committed.\n- **Start check:** Node v25.9.0 works. A browser for screenshots was found (Google Chrome).\n- **Lessons applied:** none yet.\n\n**Your request, as numbered rows.** Each row is my reading of your sentence, because you named no parts. Tell me which are wrong.\n\n1. Today becomes a two-pane inbox. The appointments are a list on the left, and the selected appointment's detail is on the right. The first one is selected on load. *(my reading)*\n2. Each appointment row has an unread dot until it is opened. Opening it marks it read. The unread count shows in the screen title. *(my reading)*\n3. A \"Done\" action on a row and in the detail removes it from the list and selects the next one. A toast with \"Undo\" brings it back in place. *(my reading)*\n4. A \"Later\" (snooze) action hides an appointment until a time you pick: 1 hour, this afternoon, or tomorrow. *(my reading)*\n5. Keyboard: `j` and `k` move down and up, `e` marks done, `u` toggles unread, `h` opens Later. *(my reading)*\n6. Empty state \"All clear for today\" when every appointment is done or snoozed. *(my reading)*\n7. Keep the prototype's look. No new colour or font in the changed rules.\n\nRows 1 to 6 apply to the Today screen only (this place). None is marked everywhere. Notes you send later still join this run.\n\n**Coverage**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | clear | Today screen only, flow only |\n| Who and their job | partial | A receptionist working through the day's appointments; default taken |\n| Data and facts | clear | The 5 sample appointments in the file |\n| Main flow | partial | Linear's steps are read in the copy step; rows 1 to 6 are my reading |\n| Edge cases | partial | Empty state (row 6) and Undo (row 3) added |\n| Look | clear | Keep our look |\n| Outputs | clear | Local link only |\n| Done signal | clear | See \"Done means\" below |\n| Words with no number | partial | \"Later\" times: 1 hour, this afternoon, tomorrow (default) |\n\n**Broken before the run (seen in the code, not this run's job).** The \"New appointment\" button on Today has no handler, so it does nothing. The run leaves it as it is, unless you say otherwise below.\n\n**Done means**\n\n1. All 7 rows in `requests.md` are `done`, or `left` with a reason.\n2. Every part of the Linear inbox flow listed in `reference-parts.md` is on Today, or left out with a reason.\n3. The before and after compare shows no unexpected or broken screen. Clients, Invoices and Settings are unchanged.\n4. Clicking a row marks it read, Done removes it with an Undo toast, and Later hides it. All three are tried on the real page.\n5. The prototype's link answers 200.\n\nAbout 50 minutes and 1 helper agent, within a budget of 60 minutes.\n\n## Questions\n\n1. Which track: quick or full?\n   Recommended: full. You asked to copy a reference, and full is the track that reads the Linear page and lists every part of it.\n   Why it matters: quick treats the reference as background and skips the copy step.\n\n2. What is one inbox item: one appointment?\n   Recommended: yes, one appointment per row, with its client, time, therapist, type and room.\n   Why it matters: this decides what the list, the unread dot and Done act on.\n\n3. Which Linear actions come over, besides the list and detail?\n   Recommended: Done, Later (snooze), mark unread, and the keyboard keys in row 5.\n   Why it matters: each action is a behaviour I build and check. Without a list I might leave out one you expect, or add one you do not.\n\n4. What does \"Later\" bring back, and when?\n   Recommended: the appointment returns to the list at the chosen time. The prototype keeps the choice in the page only, with no saved data.\n   Why it matters: a snoozed item that never returns would look like a deleted one.\n\n5. Do the three stat cards (\"appointments\", \"therapists in\", \"unpaid this week\") stay above the inbox?\n   Recommended: keep them, unchanged. The appointments count follows the list.\n   Why it matters: dropping them changes the screen more than \"just the flow\" suggests.\n\n6. Do you want the dead \"New appointment\" button to work?\n   Recommended: no. Leave it as it is, since it was broken before this run and you did not ask for it.\n   Why it matters: fixing it needs a form you have not described.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Which track: quick or full? | 2. What is one inbox item: one appointment? | 3. Which Linear actions come over, besides the list and detail? | 4. What does \"Later\" bring back, and when? | 5. Do the three stat cards (\"appointments\", \"therapists in\", \"unpaid this | 6. Do you want the dead \"New appointment\" button to work?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "39 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 50 minutes and 1 helper agent, within a budget of 60 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "1. Which track: quick or full?"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 941,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles reference (Linear inbox docs), flow only (\"just the flow, keep our look\"), Today (#/today) and parts (\"a list on the left, and the selected appointment's detail is on the right\").",
+      "no_redundancy": "Prototype and screen are stated in the brief, not asked; only Q1 \"Which track: quick or full?\" is an internal choice the ask already implies (copy a reference).",
+      "defaults_quality": "Every question has a concrete default, e.g. \"Done, Later (snooze), mark unread, and the keyboard keys in row 5\" and \"keep them, unchanged\" for the stat cards.",
+      "clarity": "Six questions follow a long brief, seven rows, a coverage table and a done list; a lot to read before replying, though each question is plain and about one thing.",
+      "respects_words": "Keeps \"flow only\" with \"No Linear styling and no Linear sample content\" and leaves the stat cards and dead button alone, matching \"just the flow\".",
+      "overall": "Strong, faithful intake with good defaults so \"go\" works, but too long and partly redundant (track question, coverage table) for a busy person."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.651Z"
+}

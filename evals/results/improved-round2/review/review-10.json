@@ -1,0 +1,123 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-10",
+  "ask": "our front desk uses iPads and phones. review the clinic prototype for small screens, fix P1 and P2, and add a rule: tap targets at least 44px",
+  "expected_track": "full",
+  "notes": "Bar, mode, persona and a custom rule are given. The widths are open (iPad 768/1024 and phone 390 as defaults). A good intake asks at most one or two questions.",
+  "must_cover": [
+    "phone|ipad|tablet|width",
+    "44",
+    "p1|p2",
+    "persona|front desk"
+  ],
+  "findable": [
+    "bar|p1 and p2|p1 only",
+    "fix or report|report only",
+    "rules|rule of your own|own rules",
+    "persona|who uses|who is it for"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** review the Northside Physio prototype for iPads and phones, fix P1 and P2, and add the rule \"tap targets at least 44px\".\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, the only one in the folder. No server needed.\n- Screens: Today, Clients, Invoices, Settings (the 4 the nav reaches).\n- Mode: fix in place, with a copy of every changed file kept in the run folder.\n- Bar: P1 and P2 fixed, P3 listed only (from your message).\n- Own rule: tap targets at least 44px, added to the built-in checklist (from your message).\n- Browser for the walk: Chrome is installed, so screenshots work.\n\n**Track:** full, because you said phones and iPads matter, so the 390 px phone walk stays in.\n\nCoverage: 5 clear · partial: Who and their job, Edge cases · missing: Words with no number (rule 44px: which items count)\n\n**Done means:**\n- All 4 screens have a before and an after screenshot, at desktop and phone width.\n- A fresh reviewer finds no open P1 on any screen.\n- Every P2 is fixed or listed with its reason.\n- Every tap target on the 4 screens is at least 44px, or listed.\n- Every changed file has its original saved.\n\nThe full brief is in `loop-runs/product-review-loop-20261126-034231/brief.md`.\n\nAbout 40 minutes and 4 helper agents, within a budget of 60 minutes.\n\n1. What should \"New appointment\" on Today do? It does nothing now, and booking is the front desk's main job.\n   Recommended: open a small form (client, time, therapist) that adds the row to the list.\n   Why it matters: removing the button would break the main job, and a form is the larger fix.\n\n2. Should I also check iPad width (820 px), besides desktop and phone?\n   Recommended: yes, add a walk at 820 px.\n   Why it matters: the default walk covers 1440 px and 390 px only, and the iPad is your other main device.\n\n3. Which items must be 44px for the tap-target rule, and at what level?\n   Recommended: every button, nav link, input and select, at phone and iPad width. A miss is P2, and P1 on the New appointment path.\n   Why it matters: this sets how many things get resized, and whether table rows count.\n\n4. Who uses it, and what one job do they come to do?\n   Recommended: a front-desk receptionist who books and moves appointments (a guess from the screens, \"front desk\" is from your message).\n   Why it matters: the job decides which problems rank P1.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. What should \"New appointment\" on Today do? It does nothing now, and bo | 2. Should I also check iPad width (820 px), besides desktop and phone? | 3. Which items must be 44px for the tap-target rule, and at what level? | 4. Who uses it, and what one job do they come to do?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: persona (\"who uses\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 4 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Coverage: 5 clear · partial: Who and their job, Edge cases · missing: Words with no number (rule 44px: which items count)"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 424,
+      "evidence": "424 words, 222 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you said phones and iPads matter, so the 390 px phone walk stays in."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 424,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 5,
+      "defaults_quality": 8,
+      "clarity": 7,
+      "respects_words": 7,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles devices (390 px walk, Q2 820 px), the 44px rule and its scope (Q3), the P1/P2 bar, and persona (Q4: 'a front-desk receptionist who books and moves appointments').",
+      "no_redundancy": "Q4 asks 'Who uses it, and what one job do they come to do?' although the ask says 'front desk', and Q2 asks whether to check iPad width when the person already said 'our front desk uses iPads'.",
+      "defaults_quality": "Every question has a concrete recommendation, e.g. 'every button, nav link, input and select, at phone and iPad width. A miss is P2', and 'yes, add a walk at 820 px'.",
+      "clarity": "Four numbered questions with plain recommendations, but the brief is long and carries jargon like 'Coverage: 5 clear · partial: Who and their job, Edge cases · missing: Words with no number'.",
+      "respects_words": "Mostly faithful, but 'Every P2 is fixed or listed with its reason' softens 'fix P1 and P2', and Q1's default of building a booking form goes past a small-screen review.",
+      "overall": "Solid opening with a clear brief and good defaults, held back by two questions the ask already answers, a softened P2 bar and a wordy brief."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.906Z"
+}

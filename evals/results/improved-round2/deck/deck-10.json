@@ -1,0 +1,124 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-10",
+  "ask": "turn notes.md into a short pitch deck for Spotify's ad sales team - 6 slides, PDF only",
+  "expected_track": "quick",
+  "notes": "Short pitch with count, output and goal given. Quick track (HTML deck, PDF, no pptx) matches 'PDF only'.",
+  "must_cover": [
+    "goal|pitch",
+    "slide count|6",
+    "pdf",
+    "reader|ad sales",
+    "claims|customers"
+  ],
+  "findable": [
+    "slide count|how many slides",
+    "output|format|powerpoint",
+    "goal|what the deck is for",
+    "what we offer|claims"
+  ],
+  "fixtures": [
+    "notes.md"
+  ],
+  "message": "**Goal:** a 6-slide pitch that gets Spotify's ad sales team to agree to a free Q1 pilot of Soundcheck on 3 of their ad campaigns.\n\n**Found:**\n- Company: Spotify, ad sales team (from your message). Deck kind: pitch (from your message).\n- What we offer: Soundcheck measures brand lift from audio ads within 48 hours, using a 6-question survey after the ad (from notes.md).\n- It works with podcasts and music streaming (from notes.md).\n- Customers we may name: iHeartMedia (pilot) and Acast (live) (from notes.md).\n- The ask: a free pilot on 3 Spotify ad campaigns in Q1 (from notes.md).\n- Size and output: 6 slides, PDF only (from your message). No start deck and no CLAUDE.md in the folder.\n\n**Track:** quick, because you asked for 6 slides and a PDF only. The HTML deck is made on the way and not delivered. Research on Spotify, audio advertising and brand lift still runs, with a source link on every fact.\n\n**Start check:** the PDF tools are ready (Python tools, Chrome). The web search tools are available in this session, so research can use public sources.\n\n**Coverage:** 5 clear · partial: Who and their job, Look · missing: Data and facts (no results or numbers in notes.md), Edge cases not needed for a deck.\n\n**Done means:**\n- 6 main slides, one idea each, ending on the pilot ask.\n- `deck.pdf` is the only file delivered, and it opens.\n- Every line cites a source link, an estimate note or your word.\n- Every slide was drawn and looked at after the last change.\n- A fresh reviewer, reading as Spotify's ad sales team, passes it.\n\nThe full brief goes to `loop-runs/product-deck-loop-20261126-034324/brief.md` on go.\n\nAbout 40 minutes and 5 helper agents, within a budget of 90 minutes.\n\n1. Who in Spotify's ad sales team will read it, and who must they convince next?\n   Recommended: sellers of audio and podcast ads to brands, who must convince their head of ad sales and brand clients that audio ads work.\n   Why it matters: the story is built for what that second person cares about (proof for budgets, risk, speed).\n\n2. Do you have any real results we may claim (lift numbers, response rates, a customer quote)?\n   Recommended: none. The deck shows how Soundcheck measures and promises no result numbers.\n   Why it matters: Spotify checks every figure, and a number we cannot source costs the whole deck its credibility.\n\n3. May we name iHeartMedia and Acast on a slide?\n   Recommended: yes, as \"iHeartMedia (pilot)\" and \"Acast (live)\", exactly as in your notes.\n   Why it matters: naming a customer without their consent is a risk we should not guess.\n\n4. Should the look follow Spotify's brand colours, or stay plain?\n   Recommended: plain (Arial, dark text on white, one dark blue accent), with no Spotify logo or colours.\n   Why it matters: it keeps the deck from looking like it came from Spotify.\n\n5. What should the last slide say about who to contact, and what the pilot costs us both?\n   Recommended: \"Free pilot, 3 campaigns, Q1\" and a line for your name and email, which you fill in.\n   Why it matters: the next step is the one thing the reader must act on.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Who in Spotify's ad sales team will read it, and who must they convinc | 2. Do you have any real results we may claim (lift numbers, response rate | 3. May we name iHeartMedia and Acast on a slide? | 4. Should the look follow Spotify's brand colours, or stay plain? | 5. What should the last slide say about who to contact, and what the pilo"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "19 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 4 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 5 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 5 clear · partial: Who and their job, Look · missing: Data and facts (no results or numbers in notes.md), Edge cases not neede"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 547,
+      "evidence": "547 words, 296 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because you asked for 6 slides and a PDF only. The HTML deck is made on the way and not delivered. Research on Spotify, au"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 547,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 10,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles goal (\"a 6-slide pitch that gets Spotify's ad sales team to agree to a free Q1 pilot\"), 6 slides, PDF, reader (Q1) and claims (Q2 results, Q3 naming customers).",
+      "no_redundancy": "States slide count, output, goal and offer as found facts; only Q5's \"what the pilot costs us both\" partly re-asks what notes.md says (\"free\").",
+      "defaults_quality": "Every question has a concrete default fitting the ask, e.g. \"none. The deck shows how Soundcheck measures and promises no result numbers\" and \"plain (Arial, dark text on white, one dark blue accent)\".",
+      "clarity": "Five clear, single-topic questions with the reader question first, but they come after a long brief with jargon blocks (\"Track\", \"Start check\", \"Coverage: 5 clear · partial...\").",
+      "respects_words": "Keeps \"6 main slides\" and \"`deck.pdf` is the only file delivered\", and the HTML is \"made on the way and not delivered\", matching \"6 slides, PDF only\".",
+      "overall": "A strong, faithful intake: the questions that matter (reader, sourceable claims, customer naming) have good defaults, held back only by a wordy brief."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.933Z"
+}

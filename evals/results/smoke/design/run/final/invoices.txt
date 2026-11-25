@@ -1,0 +1,12 @@
+Northside Physio
+Today Customers Invoices Settings
+Invoices
+All
+Paid
+Sent
+Overdue
+Number	Customer	Date	Amount	Status
+INV-1041	Mei Chen	3 Nov 2026	£55	Paid
+INV-1042	Luis Ortega	28 Oct 2026	£45	Paid
+INV-1043	Priya Nair	12 Nov 2026	£55	Sent
+INV-1044	Hannah Weiss	19 Nov 2026	£65	Sent

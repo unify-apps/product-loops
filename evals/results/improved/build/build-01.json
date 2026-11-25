@@ -1,0 +1,117 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-01",
+  "ask": "build me a prototype for a dog walking app lol. owners book a walker, walkers see their day. keep it simple",
+  "expected_track": "quick",
+  "notes": "Short, casual, no files. 'keep it simple' is a vague word the intake should turn into a number or a scope (how many screens). Two personas in one sentence. Should be quick: one page shell, list states.",
+  "must_cover": [
+    "persona|who uses|owners|walkers",
+    "module",
+    "how deep|in full|shell|depth",
+    "look|colour|color|font",
+    "simple"
+  ],
+  "findable": [],
+  "fixtures": [],
+  "message": "I'll build a clickable dog walking prototype: an owner books a walker, and a walker sees their day.\n\n**Found:**\n- Your folder is empty, so this is a new product in `dog-walking/` (from the empty working folder).\n- Two people use it. An owner books a walker, and a walker sees their day (from your message).\n- You gave no logo, colours or fonts, so it gets a plain look.\n- A real browser is installed, so every click is checked, not just page loads.\n- It stays on this laptop. Nothing is published.\n\n**Track:** quick, because it is two modules and you said \"keep it simple\". Quick means each module is one page, with no name options and no extra demo states.\n\nStill open after reading your files: what happens on a booking, and the edge cases.\n\n**Done means:**\n- Book a walker and My day both work.\n- Every link opens with no dead click or error.\n- A booking made as an owner shows in that walker's day.\n- Each module's last review round has nothing serious left.\n\nThe full brief is in `loop-runs/product-build-loop-20261126-035051/brief.md`.\n\nAbout 15 minutes and 5 helper agents, within a budget of 120 minutes.\n\n1. Does the owner pick the walker, or does the app assign one?\n   Recommended: the owner picks from 3 sample walkers.\n   Why it matters: it decides what the booking page shows first.\n\n2. Does a walker accept or decline a booking, or is it confirmed at once?\n   Recommended: confirmed at once, with no accept step.\n   Why it matters: an accept step adds a screen to the walker's day.\n\n3. Does the walker's day show one fixed walker, or let you switch walkers?\n   Recommended: a switcher at the top, so you can see each walker's booked walks.\n   Why it matters: it is how you see a booking land on the right walker.\n\n4. What should happen when the chosen time is already taken?\n   Recommended: show \"That time is taken\" and offer the walker's free times.\n   Why it matters: this is the one edge case a demo is likely to hit.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Does the owner pick the walker, or does the app assign one? | 2. Does a walker accept or decline a booking, or is it confirmed at once? | 3. Does the walker's day show one fixed walker, or let you switch walkers | 4. What should happen when the chosen time is already taken?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "16 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.8,
+      "evidence": "missing: how deep"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 15 minutes and 5 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what happens on a booking, and the edge cases."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 360,
+      "evidence": "360 words, 200 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because it is two modules and you said \"keep it simple\". Quick means each module is one page, with no name options and no "
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 360,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 10,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles persona (\"Two people use it\"), modules (\"Book a walker and My day\"), depth (\"quick... each module is one page\"), look (\"it gets a plain look\") and simple (\"you said 'keep it simple'\"); look is stated rather than offered as a choice.",
+      "no_redundancy": "All four questions (who picks the walker, accept step, walker switcher, taken time) are product decisions no file or the ask answers; found facts are stated, not asked.",
+      "defaults_quality": "Every question has a specific, demo-friendly default, e.g. \"the owner picks from 3 sample walkers\" and \"confirmed at once, with no accept step\", so \"go\" yields a coherent simple prototype.",
+      "clarity": "Four short, single-topic questions with plain words, but the brief carries filler (browser installed, helper agents, budget, brief path) that lengthens the read.",
+      "respects_words": "Keeps \"keep it simple\" as a quick track with one page per module and defaults that avoid extra screens; the walker switcher is a small addition but serves the stated flow.",
+      "overall": "A solid, answerable intake that covers every needed topic with wise defaults; slightly long on process detail for a \"lol, keep it simple\" ask."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:46.782Z"
+}

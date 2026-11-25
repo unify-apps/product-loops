@@ -1,0 +1,118 @@
+{
+  "arm": "baseline",
+  "loop": "deck",
+  "case": "deck-01",
+  "ask": "need a deck for the Acme meeting",
+  "expected_track": "full",
+  "notes": "The weak ask from needs.md. 'Acme' is ambiguous: the company must be pinned down. The goal is question 1 with options.",
+  "must_cover": [
+    "goal",
+    "company|which acme|website",
+    "reader|who is in the meeting|audience",
+    "meeting kind|first meeting",
+    "slide count|slides",
+    "output|powerpoint|pptx|pdf"
+  ],
+  "findable": [],
+  "fixtures": [],
+  "message": "I read your ask and checked the working folder. The folder is empty, so there is no start deck, no notes and no `CLAUDE.md`. All you gave me is \"a deck for the Acme meeting\", so I need a few answers before I start. After you reply, the run goes on by itself and does not ask you anything more.\n\n**Start checks**\n- Deck tools: ready. The Python tools (python-pptx, PDF reader) were made. Google Chrome and Quick Look were found. I can make an HTML deck, an editable PowerPoint and a PDF.\n- Web search: the WebSearch and WebFetch tools are in this session, so I can research the company, its industry and the people, with a source link on every fact.\n- Start deck: none found.\n\n**My brief so far (defaults, until you change them)**\n- Company: \"Acme\". Nothing says which Acme, because the name is common.\n- Meeting: a first meeting. I don't know who attends or what their roles are.\n- Start deck: none, so I build new in a plain look (Arial, dark text on white, one dark blue accent).\n- Length: 8 to 12 main slides, extras go to an appendix, with a Sources slide at the end.\n- What we may claim: only what you tell me. I have no product files, so I will say nothing about what we offer beyond your words.\n- Output: slides as an HTML deck and an editable 16:9 PowerPoint, with speaker notes. No PDF, no Artifact.\n- Files go to `decks/acme-<yyyymmdd>/` in this folder.\n- Stop fact: the deck does what its goal says for its reader, 8 to 12 main slides, every slide drawn and looked at, and every line backed by a fact with a source link, an estimate note or your word.\n\n**Questions**\n\n1. **What is the deck for?** This is the most important question. Everything is built to it. What should the reader believe or do after the deck? Pick one, or write your own:\n   - a) An outside-in view of Acme: what is changing in its industry, what it means for them, where the openings are.\n   - b) A plan for Acme: what they should do, ranked by impact, each item tied to more revenue or lower cost.\n   - c) A vision the reader can retell to their own boss: why now, what good looks like, the first steps.\n   - d) A pitch: Acme's problem, how our product solves it, proof, a next step.\n   - e) A technical walk-through: their systems, how ours connects, a pilot plan.\n\n   Default: **a) outside-in view**. It works for a first meeting when I know little about the reader and have no product facts to claim.\n2. **What is the one idea the deck argues, and in what order?** For example \"Acme's market is shifting and the first mover wins\". Default: the usual order for a first meeting, with the idea drawn from the research.\n3. **Who must the reader convince next, and what does that person care about** (money, risk, speed)? For example, their CEO or a buying committee. Default: the reader alone.\n4. **Which Acme?** Give me the full company name and website. Default: none. I cannot guess, so I need this one.\n5. **Who is in the meeting?** Names, roles, and public profile links (such as LinkedIn) if you have them. Default: roles unknown, so I write for a senior business reader.\n6. **What kind of meeting is it?** A first meeting, a leadership meeting, a technical buyer, or a deck sent to read with no one presenting. Default: first meeting.\n7. **Is there a start deck** to build on, or slides to keep? If so, give me the file (`.pptx` or `.pdf`; a `.key` file must be exported first). Default: none, build new.\n8. **What do we offer, and what may the deck claim?** Products, customers, numbers you stand behind, and anything we must not say. Default: nothing, so the deck holds no claims about us.\n9. **Is there anything only you know about Acme?** Its systems, the deal so far, what it said it needs, or meeting notes. Default: none.\n10. **How many slides, and what format and files?** Default: 8 to 12 main slides, an HTML deck and an editable PowerPoint, and no PDF.\n11. **Anything to lead with or leave out?** A product, a topic, or a competitor not to name. Default: none.\n12. **Any product pictures to use** (screenshots, diagrams)? Default: none, and I will not make up product screens.\n\nReply with your answers, or just \"go\" to use the defaults. Without an answer to question 4 I will have to guess which company Acme is.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults. Without an answer to question 4 I will have to guess which co"
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 12,
+      "evidence": "1. What is the deck for? This is the most important question. Everything  | 2. What is the one idea the deck argues, and in what order? For example \" | 3. Who must the reader convince next, and what does that person care abou | 4. Which Acme? Give me the full company name and website. Default: none.  | 5. Who is in the meeting? Names, roles, and public profile links (such as | 6. What kind of meeting is it? A first meeting, a leadership meeting, a t | 7. Is there a start deck to build on, or slides to keep? If so, give me t | 8. What do we offer, and what may the deck claim? Products, customers, nu | 9. Is there anything only you know about Acme? Its systems, the deal so f | 10. How many slides, and what format and files? Default: 8 to 12 main slid | 11. Anything to lead with or leave out? A product, a topic, or a competito | 12. Any product pictures to use (screenshots, diagrams)? Default: none, an"
+    },
+    "asked_le_7": {
+      "pass": false,
+      "value": 12,
+      "evidence": "12 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "12 of 12 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 12"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "14 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 778,
+      "evidence": "778 words, 299 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 778,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 8,
+      "defaults_quality": 7,
+      "clarity": 3,
+      "respects_words": 9,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles every topic: goal (Q1), \"Which Acme?\" (Q4), \"Who is in the meeting?\" (Q5), meeting kind (Q6), slide count and format (Q10).",
+      "no_redundancy": "Asks nothing the empty folder or ask answers, but Q7 asks for a start deck after reporting \"Start deck: none found\", and Q10 repeats the Length and Output brief lines.",
+      "defaults_quality": "Most defaults are concrete (\"a) outside-in view\", \"8 to 12 main slides\"), but Q2's default is vague (\"the usual order... idea drawn from the research\") and Q4 has \"Default: none\".",
+      "clarity": "Twelve questions plus a long start-checks section and stop-fact line is too much for a two-minute reply, though it puts the most important question first.",
+      "respects_words": "Stays a deck for the Acme meeting and invents no claims (\"I will say nothing about what we offer beyond your words\").",
+      "overall": "Thorough intake with good defaults, but its length and question count make it hard to answer quickly, and several questions could have been folded into the brief."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.840Z"
+}

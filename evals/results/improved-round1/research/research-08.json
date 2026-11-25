@@ -1,0 +1,120 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-08",
+  "ask": "redo the onboarding research from last month, but add Rippling and Deel this time",
+  "expected_track": "full",
+  "notes": "An earlier run left its brief: persona, market, sources and how bold are known. A good intake reuses them, adds the two rivals, and puts the new out folder under a dated name. Asking the persona again is redundant.",
+  "must_cover": [
+    "rivals|rippling|deel",
+    "out folder|folder|date",
+    "persona|hr",
+    "market|uk",
+    "how bold|bold"
+  ],
+  "findable": [
+    "persona|who uses|who is it for",
+    "market|country|region",
+    "how bold|bold|catch up",
+    "sources|source kinds|which pages"
+  ],
+  "fixtures": [
+    "loop-runs/product-research-loop-20261021-1012/brief.md",
+    "research/onboarding/brief.md"
+  ],
+  "message": "# Brief: redo the onboarding research, with Rippling and Deel added\n\nI read last month's run (`loop-runs/product-research-loop-20261021-1012/brief.md`) and its output (`research/onboarding/brief.md`). I took every answer you gave then, so you do not have to give them again. The run folder is `loop-runs/product-research-loop-20261126-032520/`.\n\n**Start check:** a web search for \"employee onboarding software\" returned results, and a fetch of rippling.com returned text. Both worked and neither asked for permission. Deel also shows up in the search results as a pick for global remote teams.\n\n## The brief\n\n**Goal:** redo last month's onboarding research, with Rippling and Deel added to the rivals.\n\n**Decision (default):** the first modules of an onboarding product, ranked in build order. You did not ask for a feature matrix, so the ranked modules are the main output. The sheet still comes with it.\n\n**Product (from last month):** an employee onboarding product for HR teams at companies of 200 to 2,000 people.\n\n**Persona and buyer (from last month):** an HR operations manager who runs onboarding for 10 to 40 new starters a month. The Head of People pays. The persona only ranks the modules. It never takes a row out of the sheet.\n\n**Rivals (5, the most allowed):** BambooHR, HiBob, Personio (last month) and Rippling, Deel (new).\n\n**Market (from last month):** UK and Ireland.\n\n| Need | Value |\n|---|---|\n| What we have today | Nothing yet. Every row is `gap` or `beat` (default) |\n| Source kinds tried for every rival (KINDS) | product pages, help centre, release notes, pricing, public reviews (from last month) |\n| Rules for sources | Public pages only. No sign-in, no paid reports, no trial sign-up (default) |\n| Depth | Up to 12 pages and 40 features per rival (default) |\n| Fixed and refused modules | None (default) |\n| First release size | Rank every module. The top 3 are the first release (default) |\n| Rival names in the brief | Real names. The files stay on this laptop (default) |\n| Groups (GROUPS) | You gave no group words, so plain ones are used (default) |\n| Sheet file | `capability-sheet.xlsx` and `capability-sheet.csv`. No Google Sheet, because you did not ask (default) |\n| Sharing | Nothing is published or sent (default) |\n| How bold | Both: catch-up and ideas no rival has. Last month's answer. Question 2 |\n| Out folder (OUT) | `research/onboarding-20261126/`. `research/onboarding/` already holds last month's files, so I add today's date and the old files are never mixed in |\n| Track | Full. Question 1 |\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | partial | \"redo\" could mean a fresh run or an update of last month's. Question 3 |\n| Who and their job | clear | persona and buyer from last month |\n| Data and facts | clear | public pages of 5 rivals |\n| Main flow | clear | the loop's own nodes |\n| Edge cases | partial | Rippling and Deel sell much more than onboarding (payroll, IT, global hiring). Question 4 |\n| Look | not needed | no screens are made |\n| Outputs | clear | sheet, brief, thinking, handover in `research/onboarding-20261126/` |\n| Done signal | clear | see Done means |\n| Words with no number | clear | none in the ask |\n\n**Lessons applied:** none yet (`loop-runs/solutions/` does not exist).\n\n**Budget:** 90 minutes.\n\n**Done means**\n1. `research/onboarding-20261126/capability-sheet.xlsx` and `capability-sheet.csv` exist, and the Excel file matches the CSV.\n2. The sheet covers BambooHR, HiBob, Personio, Rippling and Deel, each with at least 5 rows read on its own pages.\n3. Every sheet row says what it does, and every yes or partial cell has a link from that rival's own pages.\n4. Every beat row has a search of every rival's own site behind it, in `research/onboarding-20261126/beats/`.\n5. Every source kind (product pages, help centre, release notes, pricing, public reviews) was tried for every rival.\n6. `research/onboarding-20261126/brief.md` ends in a ranked module list whose every module cites sheet rows.\n\nAbout 20 minutes and 12 helper agents (5 for research, 5 for the beat proof, 1 reviewer, 1 builder check), within a budget of 90 minutes.\n\n## Questions\n\n1. Quick or full track?\n   Recommended: full. You named 5 rivals, and the full track reads all five pages deeply and in every source kind. Quick would use 3 rivals and 2 source kinds, and would leave Rippling or Deel out.\n   Why it matters: it decides how many rivals and sources are read, and how long the run takes.\n\n2. How bold should the brief be?\n   Recommended: both. The ranked modules come first, and a section \"Ideas no rival has\" gives at least 3 ideas, each tied to a persona pain or a sheet row.\n   Why it matters: catch-up puts the rivals' common features first, and bold puts new ways to do the job first.\n\n3. What does \"redo\" mean: a fresh run, or an update of last month's?\n   Recommended: a fresh run on all 5 rivals into the new folder. Last month's ranked modules (pre-boarding checklist, equipment and access requests, first-week plan) are used as a comparison, and the brief says where the ranking moved and why. Last month's rival files are not reused, so old and new pages are never mixed.\n   Why it matters: an update would be faster but would keep last month's pages, which may have changed.\n\n4. Rippling and Deel are wide suites. Should the sheet cover only their onboarding features?\n   Recommended: yes, onboarding and the steps around it (pre-boarding, paperwork and e-sign, equipment and access, first-week tasks). Payroll, benefits, device management and global hiring stay out unless they are part of onboarding. This keeps the five rivals comparable.\n   Why it matters: without this limit their files would fill with unrelated features, and the matrix would not compare like with like.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Quick or full track? | 2. How bold should the brief be? | 3. What does \"redo\" mean: a fresh run, or an update of last month's? | 4. Rippling and Deel are wide suites. Should the sheet cover only their o"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "47 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: persona (\"persona\"), how bold (\"how bold\"), sources (\"sources\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 20 minutes and 12 helper agents (5 for research, 5 for the beat proof, 1 reviewer, 1 builder check), within a budget of 90 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 8,
+      "evidence": "8 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "| Track | Full. Question 1 |"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 993,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles rivals (\"BambooHR, HiBob, Personio (last month) and Rippling, Deel (new)\"), persona, market \"UK and Ireland\", how bold, and a dated out folder \"research/onboarding-20261126/\".",
+      "no_redundancy": "Question 2 \"How bold should the brief be?\" re-asks a fact last month's brief already gives (\"How bold: both\"), even though the table already states it as \"Last month's answer\".",
+      "defaults_quality": "Every question has a specific default, e.g. \"a fresh run on all 5 rivals into the new folder\" and an onboarding-only scope for Rippling and Deel, so replying \"go\" gives a good result.",
+      "clarity": "The four questions are plain and each covers one topic, but they sit under a long brief with two tables, a coverage scan and a 6-point done list, which is too much to read in two minutes.",
+      "respects_words": "Keeps last month's rivals and adds Rippling and Deel, as asked (\"add Rippling and Deel this time\"); the new dated folder and the onboarding-only scope go along with the ask rather than against it.",
+      "overall": "A solid, faithful intake with good defaults, held back by its length and one question it did not need to ask (how bold)."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.640Z"
+}

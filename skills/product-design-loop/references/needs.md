@@ -42,3 +42,7 @@ option the skill recommends, run `STATE decide`, and list the other options unde
 | A browser for screenshots | `CHECK browser` (`CHECK` is defined in SKILL.md) | Say so with the questions. The run then compares page text only, and records that with `decide`. |
 | Node 22 or newer | `node -v` | Same as above: `page-check` needs it for the browser. `serve.mjs` works on Node 18. |
 | The prototype exists | the search in need 1 | Say so with the questions. Without a prototype the run cannot start. |
+
+**A note whose screen or element is not in the prototype** (an Export button that does not exist, a Home screen
+under another name): say so in its row, ask once in the intake with "remove nothing" as the recommended answer,
+and after "go" mark the row `left: not in the prototype`. Never guess which other control was meant.

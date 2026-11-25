@@ -1,0 +1,122 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-04",
+  "ask": "QA everything in proto-clinic before I show it to the clinic owners on Monday",
+  "expected_track": "full",
+  "notes": "CLAUDE.md gives the persona, the job and four house rules. A good intake states them and does not ask the persona or rules again.",
+  "must_cover": [
+    "persona|front desk",
+    "rules|empty state|sentence case",
+    "bar|p1|p2",
+    "fix|report"
+  ],
+  "findable": [
+    "persona|who uses|who is it for|one job",
+    "rules|rule of your own|own rules"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** review all of proto-clinic as front desk staff would use it, fix what is wrong, and review again until no serious problem is left, before you show it to the clinic owners on Monday.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, the only one in this folder (from your message). It opens as a single file; nothing is deployed or sent.\n- Screens: Today, Clients, Invoices, Settings, the four in the top menu.\n- Who uses it: front desk staff at small physio clinics, 2 to 6 therapists. Their job: get the day's clients in and out on time, and take payment (from CLAUDE.md).\n- Your rules from CLAUDE.md, checked on every screen: sentence case buttons, an empty state on every list that says what to do next, no placeholder text, money with £ and two decimals.\n- Where it lands: fixes are made in place in `proto-clinic/index.html`, with a copy of the original kept. The write-up is `handover.md` in the run folder.\n\n**Track:** full, because you named Monday, not a meeting today, so it is worth checking the phone width too.\n\nStill open after reading your files: what to do with two things the files cannot answer.\n\n**Done means:**\n- All 4 screens have a before and an after screenshot.\n- A fresh reviewer finds no serious problem left on any screen.\n- Every serious problem not fixed is listed first for you.\n- Every smaller problem is fixed or has its reason.\n- The original file is kept.\n\nEverything else I found, with the defaults, is in `loop-runs/product-review-loop-20261126-035258/brief.md`.\n\nAbout 25 minutes and 5 helper agents, within a budget of 60 minutes.\n\n1. The Settings \"Booking policy\" shows filler text (\"Lorem ipsum...\"). What should it say?\n   Recommended: replace it with \"No booking policy set yet. Add one so clients know the cancellation rules.\" I will not invent a policy.\n   Why it matters: the owners will read this page, and the real policy words are only yours to write.\n\n2. The \"New appointment\" button on Today does nothing when clicked. What should happen?\n   Recommended: remove the button, so nothing on the page looks clickable and is not.\n   Why it matters: it is the first button the front desk sees, and building a booking form is a new screen, not a fix.\n\n3. Should I fix what I find, or only list it?\n   Recommended: fix, keeping a copy of every file I change; I fix serious and smaller problems, and only list polish.\n   Why it matters: fixing edits your file before Monday; listing leaves it exactly as it is.\n\n4. Full (all four screens, desktop and phone width) or quick (serious problems only, no phone width)?\n   Recommended: full.\n   Why it matters: quick is faster, but it will miss a page that breaks on a phone.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. The Settings \"Booking policy\" shows filler text (\"Lorem ipsum...\"). Wh | 2. The \"New appointment\" button on Today does nothing when clicked. What  | 3. Should I fix what I find, or only list it? | 4. Full (all four screens, desktop and phone width) or quick (serious pro"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.75,
+      "evidence": "missing: bar"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 25 minutes and 5 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what to do with two things the files cannot answer."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 473,
+      "evidence": "473 words, 271 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you named Monday, not a meeting today, so it is worth checking the phone width too."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 473,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 8,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Persona and rules stated from CLAUDE.md, fix-vs-report asked (Q3), bar set as 'no serious problem left' with serious/smaller/polish tiers, though the bar is described in words rather than an explicit P1/P2 scale.",
+      "no_redundancy": "Persona and rules are stated, not asked, but Q4 asks full vs quick after the brief already decided 'Track: full, because you named Monday', and 'QA everything' already points to full.",
+      "defaults_quality": "Every question has a concrete default fit for a Monday demo, e.g. empty-state wording for the Lorem ipsum policy, 'remove the button', and 'fix, keeping a copy of every file I change'.",
+      "clarity": "Four short questions with plain reasons, but the brief is long and contradicts itself: it says 'two things the files cannot answer' and then asks four.",
+      "respects_words": "Keeps Monday, the front desk persona and 'everything' (full is the default), though offering 'quick (serious problems only)' and removing the New appointment button pull a little against 'QA everything'.",
+      "overall": "Strong, well-grounded intake with good defaults and real findings turned into questions; held back by one redundant question and some length and inconsistency."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.293Z"
+}

@@ -1,0 +1,5 @@
+PASS  rival files: 3 in /private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/smokework/research/research/shutter-invoice/rivals (need at least 3)
+PASS  bonsai.md: 40 features, 40 read
+PASS  freshbooks.md: 40 features, 40 read
+PASS  wave.md: 40 features, 40 read
+research: all 4 checks PASS

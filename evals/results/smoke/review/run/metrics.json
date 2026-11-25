@@ -1,0 +1,65 @@
+{
+  "loop": "product-review-loop",
+  "track": "full",
+  "runDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/smokework/review/loop-runs/product-review-loop-20261126-032657",
+  "at": "2026-11-25T22:07:09.096Z",
+  "budget": {
+    "minutes": 60,
+    "maxPushes": 6,
+    "maxDecisions": 40,
+    "startedAt": "2026-11-25T21:58:49.603Z"
+  },
+  "budgetLeft": {
+    "minutesUsed": 8,
+    "minutesLeft": 52,
+    "pushesLeft": 6,
+    "decisionsLeft": 40,
+    "over": false,
+    "why": null
+  },
+  "nodes": [
+    {
+      "name": "intake",
+      "status": "done",
+      "minutes": 1.9,
+      "retries": 0
+    },
+    {
+      "name": "walk",
+      "status": "done",
+      "minutes": 0.7,
+      "retries": 0
+    },
+    {
+      "name": "review",
+      "status": "done",
+      "minutes": 2.7,
+      "retries": 0
+    },
+    {
+      "name": "fix",
+      "status": "done",
+      "minutes": 1.9,
+      "retries": 0
+    },
+    {
+      "name": "recheck",
+      "status": "done",
+      "minutes": 2,
+      "retries": 0
+    },
+    {
+      "name": "handover",
+      "status": "done",
+      "minutes": 0.3,
+      "retries": 0
+    }
+  ],
+  "totals": {
+    "minutesSinceIntake": 7.8,
+    "pushes": 0,
+    "decisions": 0,
+    "held": 0,
+    "left": []
+  }
+}

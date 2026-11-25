@@ -1,0 +1,114 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-07",
+  "ask": "Compare Calendly, Cal.com and SavvyCal on team scheduling - pricing pages and help docs only. 20 minutes tops.",
+  "expected_track": "quick",
+  "notes": "Tight time box and fixed source kinds. Quick track fits. The intake must not grow the scope (no reviews, no changelogs) and should keep the questions to one or two.",
+  "must_cover": [
+    "decision|compare|matrix",
+    "sources|pricing|help",
+    "20 minutes|time",
+    "team scheduling|groups"
+  ],
+  "findable": [
+    "rivals|competitors|which products",
+    "sources|which pages|source kinds"
+  ],
+  "fixtures": [],
+  "message": "Start check: one web search for \"team scheduling software\" returned results, and one fetch of Calendly's pricing page returned text (Free, Standard $10, Teams $16 per seat, Enterprise; round-robin and routing sit on Teams). Web reads worked with no permission prompt. The run is set up (quick track, 20 minute budget). No earlier runs, lessons or `CLAUDE.md` were found in the folder.\n\n## Brief (draft)\n\n**Goal:** a capability sheet comparing Calendly, Cal.com and SavvyCal on team scheduling, built only from their pricing pages and help docs, then a short product brief that ends in a ranked module list.\n\n**Decision:** a capability matrix. The sheet is the main output. Then where we could beat them, then the ranked modules (default).\n\n**Product:** not named. Default: a team scheduling tool in the same category. Asked below.\n\n**Persona and buyer:** not named. Draft: an operations lead at a 10 to 30 person services firm who sets up shared booking pages and round-robin for the team. Asked below.\n\n**Rivals:** Calendly, Cal.com, SavvyCal (the 3 named, no others added).\n\n**Market:** default: global, prices in USD. All three sell worldwide.\n\n| Need | Value |\n|---|---|\n| Sources (7) | Pricing pages and help docs only, as you said. No sign-in, no trial, no paid reports. |\n| KINDS | `pricing pages, help docs` |\n| Depth (8) | Up to 12 pages and 40 features per rival (default) |\n| What we have today (4) | Nothing yet (default): every row is `gap` or `beat` |\n| Fixed and refused (9) | None (default) |\n| First release size (10) | Rank every module, top 3 are the first release (default) |\n| Rival names (11) | Real names kept (default) |\n| Where to save (12) | `research/team-scheduling/` in the working folder (default) |\n| Sharing (13) | No. Nothing is published or sent. Files stay on this laptop (default) |\n| GROUPS (14) | None given. Plain category words will be used. No examples to look for. |\n| Sheet file (15) | `capability-sheet.xlsx` and `capability-sheet.csv`. No Google Sheet link (not asked). |\n| How bold (16) | Both (default): `## Ideas no rival has`, at least 3 |\n| Lessons applied | none yet |\n| Budget | 20 minutes |\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | partial | team scheduling is named, but \"our product\" is not |\n| Who and their job | missing | no persona given |\n| Data and facts | clear | public pricing pages and help docs only |\n| Main flow | clear | research per rival, sheet, think, brief |\n| Edge cases | partial | a rival with few pages in these two source kinds may give fewer than 5 rows |\n| Look | clear | not needed, no screens are made |\n| Outputs | clear | xlsx, csv, brief.md in `research/team-scheduling/` |\n| Done signal | clear | see below |\n| Words with no number | partial | \"20 minutes tops\" is read as a 20 minute budget; \"team\" has no size, so the draft persona uses 10 to 30 people |\n\n**Done means**\n1. `research/team-scheduling/capability-sheet.xlsx` and `.csv` exist and the Excel file matches the CSV.\n2. The sheet covers Calendly, Cal.com and SavvyCal, each with at least 5 rows read on its own pages.\n3. Every sheet row says what it does, and every yes or partial cell has a link from that rival's own pages.\n4. Every beat row has a search of each rival's own site behind it, saved in `research/team-scheduling/beats/`.\n5. Both source kinds were tried for every rival: pricing pages, help docs.\n6. `research/team-scheduling/brief.md` ends in a ranked module list whose every module cites sheet rows.\n\nAbout 60 minutes and 8 helper agents, within a budget of 20 minutes.\n\nThat estimate is above your 20 minutes, so question 1 matters. The 8 helpers are 3 for research, 3 for the beat proof, 1 reviewer and 1 builder check.\n\n## Questions\n\n1. Is 20 minutes a hard limit? The steps add up to about 60 minutes (5 work nodes at 5 each, plus 3 rounds of helpers at 10 each).\n   Recommended: keep 20 as you said. The run will pause when the minutes run out and ask whether to continue for 30 more.\n   Why it matters: at 20 minutes the run will probably pause around the think or review step. Raising it to 60 lets it finish in one go.\n\n2. Quick or full track?\n   Recommended: quick. 3 rivals, 2 source kinds (the two you named), and the beat proof and the review still run.\n   Why it matters: full adds more source kinds and up to 25 pages per rival, which does not fit pricing pages and help docs only, or 20 minutes.\n\n3. What is our product, in one line?\n   Recommended: a team scheduling tool for small services firms, built to compete with these three.\n   Why it matters: the product decides which rows are marked `gap` and which could be `beat`.\n\n4. Who uses it every day, and who pays for it?\n   Recommended: an operations lead at a 10 to 30 person services firm sets up shared booking pages and round-robin, and the firm's owner pays.\n   Why it matters: the persona only ranks the modules. It never takes a row out of the sheet.\n\n5. How bold should the brief be?\n   Recommended: both. Catch-up modules first, plus at least 3 ideas no rival has, each tied to a sheet row or a persona pain.\n   Why it matters: bold puts the new ideas first in the ranked list; catch-up keeps them as a short list at the end.\n\n6. Do we have any team scheduling features today?\n   Recommended: no, a new product. Every row is `gap` or `beat`.\n   Why it matters: anything we already have is marked `have` and leaves the gap list.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Is 20 minutes a hard limit? The steps add up to about 60 minutes (5 wo | 2. Quick or full track? | 3. What is our product, in one line? | 4. Who uses it every day, and who pays for it? | 5. How bold should the brief be? | 6. Do we have any team scheduling features today?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "45 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: rivals (\"rivals\"), sources (\"source kinds\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 8 helper agents, within a budget of 20 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "Start check: one web search for \"team scheduling software\" returned results, and one fetch of Calendly's pricing page returned text (Free, S"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 996,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 8,
+      "clarity": 4,
+      "respects_words": 7,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles decision (\"a capability matrix. The sheet is the main output\"), sources (\"Pricing pages and help docs only, as you said\"), time (\"Budget | 20 minutes\") and team scheduling scope incl. round-robin persona.",
+      "no_redundancy": "Rivals and sources are stated not asked, but Q2 \"Quick or full track?\" asks what the ask already decides (its own reason says full \"does not fit pricing pages and help docs only, or 20 minutes\").",
+      "defaults_quality": "Every question has a concrete default, e.g. \"an operations lead at a 10 to 30 person services firm ... and the firm's owner pays\"; Q1 default relies on pausing to ask later, which the job cannot do.",
+      "clarity": "Long wall with start-check notes, two tables, a coverage scan, done list and 6 questions; jargon like \"KINDS\", \"Depth (8)\", \"GROUPS (14)\" and \"5 work nodes\" makes it slow to answer.",
+      "respects_words": "Keeps sources and \"keep 20 as you said\", but plans \"About 60 minutes and 8 helper agents\" against \"20 minutes tops\" instead of scoping the work to fit.",
+      "overall": "Substantively complete with good defaults, but too long and jargon-heavy, and it plans a 60 minute job for a 20 minute cap rather than shrinking scope."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.637Z"
+}

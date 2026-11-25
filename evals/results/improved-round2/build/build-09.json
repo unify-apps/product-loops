@@ -1,0 +1,118 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-09",
+  "ask": "hey so we're a coop of ~200 dairy farmers in Wisconsin and we want an app for milk pickup scheduling + seeing the quality test results (fat, protein, somatic cell count) from each pickup, and maybe also a marketplace where farmers buy feed from each other?? not sure about that one. the truck drivers would need it too. idk how many screens, whatever makes sense",
+  "expected_track": "full",
+  "notes": "Rambling, unsure scope (the marketplace is a maybe), two personas (farmers and drivers), domain data named. A good intake proposes the scope with the marketplace as a clear default (out, or a shell) and asks it once; research-first is a fair question.",
+  "must_cover": [
+    "persona|farmer|driver",
+    "marketplace",
+    "module",
+    "research|rivals",
+    "how deep|in full|depth",
+    "phone|mobile|tablet"
+  ],
+  "findable": [],
+  "fixtures": [],
+  "message": "**Goal:** a clickable prototype of a milk pickup and quality app for a Wisconsin dairy co-op, with a farmer view, a driver view and a feed marketplace.\n\n**Found:**\n- About 200 dairy farmers in Wisconsin (from your message)\n- Pickup scheduling, plus fat, protein and somatic cell count results for each pickup (from your message)\n- Users are farmers and truck drivers (from your message)\n- Marketplace is a maybe, so it is built last and is easy to cut (from your message)\n- Screen count is left to me (from your message)\n- The folder was empty, so this is a new product in `milk-coop/` (from the working folder)\n\n**Track:** full, because there are 4 modules and the folder has nothing to build on. Full gives every list, a detail, create flows and empty states.\n\n**Coverage:** 2 clear · partial: Scope, Who and their job, Data and facts, Main flow, Edge cases, Words with no number · missing: Look\n\n**Done means:**\n- Pickups, Quality results, Driver route and Feed marketplace are all built.\n- A farmer sees fat, protein and SCC for each pickup.\n- A farmer can ask to move or skip a pickup.\n- A driver can mark a stop picked up on a phone-width screen.\n- Every link opens with no dead click, and the browser click check passes.\n\nThe full brief is in `/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/evalwork/d965e79dff/loop-runs/product-build-loop-20261126-033958/brief.md`.\n\nAbout 60 minutes and 14 helper agents, within a budget of 120 minutes.\n\n1. Is the feed marketplace in?\n   Recommended: yes, as the 4th module, with listings, post a listing and message a seller.\n   Why it matters: it adds about 3 screens and one helper round, so a no saves that time.\n\n2. Who decides pickup times?\n   Recommended: the co-op sets fixed routes, and a farmer can request a move or skip one pickup.\n   Why it matters: it decides whether the farmer gets a calendar or a request form.\n\n3. What counts as a high somatic cell count, and do fat and protein get targets?\n   Recommended: flag SCC above 750,000 cells/mL, and show fat and protein as trends only.\n   Why it matters: the flag, the colours and the sample data all follow this number.\n\n4. What does a driver record at each stop?\n   Recommended: volume in gallons, milk temperature, and a tick for \"sample taken\".\n   Why it matters: it sets the driver's form, and which values the farmer later sees.\n\n5. Does anyone in the co-op office need a screen, such as a manager who sets routes?\n   Recommended: no, only farmer and driver views, switched from the header.\n   Why it matters: an office view is a whole extra role and module.\n\n6. Do you have a logo, colours or a name?\n   Recommended: no, so 3 name options are made and the first is used, with a plain green and white look.\n   Why it matters: the name and look show on every screen.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Is the feed marketplace in? | 2. Who decides pickup times? | 3. What counts as a high somatic cell count, and do fat and protein get t | 4. What does a driver record at each stop? | 5. Does anyone in the co-op office need a screen, such as a manager who s | 6. Do you have a logo, colours or a name?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.667,
+      "evidence": "missing: research, how deep"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 14 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 2 clear · partial: Scope, Who and their job, Data and facts, Main flow, Edge cases, Words with no number · missing: Look"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 492,
+      "evidence": "492 words, 242 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because there are 4 modules and the folder has nothing to build on. Full gives every list, a detail, create flows and empty"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 492,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 7,
+      "no_redundancy": 10,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles personas, marketplace (Q1), 4 modules and depth ('Track: full'), driver on 'a phone-width screen', but never mentions researching rivals and leaves the farmer's device unstated.",
+      "no_redundancy": "Every question (pickup times, SCC threshold, driver fields, office role, branding) is something the ask leaves open; found facts are only confirmed in 'Found'.",
+      "defaults_quality": "Defaults are concrete and domain-fit, e.g. 'flag SCC above 750,000 cells/mL' and 'volume in gallons, milk temperature, and a tick for \"sample taken\"'.",
+      "clarity": "Six short one-topic questions with reasons, marketplace first, but the jargon 'Coverage: 2 clear · partial: ...' line and the long brief add bulk.",
+      "respects_words": "Keeps the marketplace a maybe ('built last and is easy to cut') and leaves the screen count to the assistant as asked; defaulting the marketplace to 'yes' is mild but can be cut.",
+      "overall": "A strong, answerable opening with wise defaults and a clear 'Done means', held back by the missing rivals research and some jargon noise."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.724Z"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "product-loops",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"test/*.test.mjs\"",
+    "sync": "node scripts/sync-shared.mjs",
+    "check": "node scripts/sync-shared.mjs --check && node scripts/lint-skills.mjs && node --test \"test/*.test.mjs\""
+  }
+}

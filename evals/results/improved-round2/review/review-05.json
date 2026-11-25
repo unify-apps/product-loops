@@ -1,0 +1,119 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-05",
+  "ask": "check everything in my prototype",
+  "expected_track": "full",
+  "notes": "Two candidates (the app and a one-page marketing site). 'Which prototype' is a fair question here, with the clinic app as the default (more screens, the nav).",
+  "must_cover": [
+    "which prototype|proto-clinic|marketing",
+    "screens",
+    "persona|who uses",
+    "fix|report"
+  ],
+  "findable": [],
+  "fixtures": [
+    "marketing-site/index.html",
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** review every screen of the Northside Physio prototype as the person who uses it, fix what is wrong, and review again until no P1 problem is left.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, a clinic app with sample data (from the folder and the page title).\n- Screens: Today, Clients, Invoices, Settings, the four the nav reaches (from the page's nav, \"everything\" taken as all four).\n- Also in the folder: `marketing-site/index.html`, a one-page booking site with no app screens. Not the one I picked.\n- Who uses it: a front-desk receptionist who books and checks appointments. This is my guess from the words on the screens.\n- Start check passed: Node 25.9.0 and Chrome are there, and the file opens with no server.\n- Defaults I will use: fix in place, keeping a copy of every changed file; fix P1 and P2, list P3; built-in checklist (no `CLAUDE.md` or review skill found).\n\n**Track:** full, because you said \"everything\" and the walk includes a phone width.\n\n**Coverage:** 6 clear · partial: Who and their job, Edge cases · missing: none\n\n**Done means:**\n- All 4 screens have a before and a last after screenshot.\n- A fresh agent finds no open P1 after the last walk.\n- Every P1 not fixed is marked \"your call\" in one sentence.\n- Every P1 and P2 is fixed, or listed with its reason.\n- Every changed file has its original kept in the run folder.\n\nFull brief: `loop-runs/product-review-loop-20261126-034206/brief.md`.\n\nAbout 60 minutes and 5 helper agents, within a budget of 60 minutes.\n\n1. Which prototype should I review?\n   Recommended: `proto-clinic`, the clickable clinic app.\n   Why it matters: the folder holds two pages, and the marketing site is a different job with different screens.\n\n2. Should I fix what I find, or only report it?\n   Recommended: fix, in place, with a copy of every changed file kept in the run folder.\n   Why it matters: \"check\" can mean look only, and fixing changes your files.\n\n3. Who uses it, and what one job do they come to do?\n   Recommended: a clinic receptionist who books and moves appointments.\n   Why it matters: the persona decides which problems count as P1.\n\n4. What should I fix: P1 and P2, or P1 only?\n   Recommended: P1 and P2. P3 is listed, never fixed.\n   Why it matters: P2 covers careless slips such as spacing and mixed words, which are quick fixes but touch more of the file.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Which prototype should I review? | 2. Should I fix what I find, or only report it? | 3. Who uses it, and what one job do they come to do? | 4. What should I fix: P1 and P2, or P1 only?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 5 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 6 clear · partial: Who and their job, Edge cases · missing: none"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 415,
+      "evidence": "415 words, 257 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you said \"everything\" and the walk includes a phone width."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 415,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 8,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles all four topics: prototype (Q1 'proto-clinic'), screens ('Today, Clients, Invoices, Settings'), persona (Q3 receptionist), fix vs report (Q2).",
+      "no_redundancy": "Nothing listed as findable is asked; Q1 re-asks a choice the brief already made ('Not the one I picked') and the 'Defaults I will use' line repeats Q2 and Q4.",
+      "defaults_quality": "Every question has a concrete default fitting the files, e.g. 'fix, in place, with a copy of every changed file kept in the run folder' and 'P1 and P2. P3 is listed, never fixed.'",
+      "clarity": "Four plain, one-topic questions with a 'go' path, but buried under a long brief with Track/Coverage jargon and a five-item 'Done means' list; Q2 and Q4 overlap.",
+      "respects_words": "'everything' kept as all four screens, but the default turns 'check' into editing files; it does flag this ('\"check\" can mean look only').",
+      "overall": "Strong, grounded intake that settles every needed topic with good defaults; loses points for length and some repetition between brief and questions."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.889Z"
+}

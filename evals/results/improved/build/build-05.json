@@ -1,0 +1,119 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-05",
+  "ask": "need prototype. school canteen pre-order. parents order + pay, kitchen see count per dish by 10am. india. mobile first",
+  "expected_track": "full",
+  "notes": "Terse, non-native voice, two personas, a market (India: rupees, UPI), a cut-off time and mobile first. Payment is fake in a prototype and should be stated, not asked as a real money step.",
+  "must_cover": [
+    "persona|parent|kitchen",
+    "module",
+    "pay|payment",
+    "phone|mobile",
+    "currency|rupee|₹|inr",
+    "10am|cut-off|cutoff",
+    "how deep|in full|depth"
+  ],
+  "findable": [],
+  "fixtures": [],
+  "message": "**Goal:** a clickable, mobile-first prototype of a school canteen pre-order for India: parents order and pay, and the kitchen sees the count per dish by 10am.\n\n**Found:**\n- New product: the working folder is empty, so it lands in `school-canteen/index.html` here (from your message, a default for the folder).\n- Two modules, from your message: Parent order (menu, cart, pay) and Kitchen counts (count per dish, 10am).\n- India means rupees, UPI and Indian dishes and names (from your message).\n- Mobile first means the phone screen is built first and checked first (from your message).\n- Everything stays on this laptop as a local link. Nothing is published (default).\n- Clicks will be checked in a real browser (headless Chrome was found).\n\n**Track:** quick, because it is two modules and a prototype to look at. Quick is one page per module in one file, with no name options or demo states. Full adds those.\n\nStill open after reading your message: what \"by 10am\" means, and what happens to orders after it.\n\n**Done means:**\n- Parent order and Kitchen counts are both built and open from the menu.\n- A parent can pick a dish, add it to the cart and pay by UPI.\n- The kitchen page shows the count per dish and the 10am cut-off.\n- Every link opens in a phone-width browser with no dead click.\n\nThe full brief is in `loop-runs/product-build-loop-20261126-035045/brief.md`.\n\nAbout 25 minutes and 8 helper agents, within a budget of 120 minutes.\n\n**Questions**\n\n1. For which day does a parent order, and what happens after 10am?\n   Recommended: orders are for that day's lunch and close at 10am; after 10am the parent sees \"Ordering closed\" and the kitchen's count is final.\n   Why it matters: it decides the cut-off rule on both pages and the closed state.\n\n2. How does a parent pay?\n   Recommended: UPI only, with a simulated UPI screen (no real payment) and a \"paid\" confirmation.\n   Why it matters: it decides the pay flow and what the confirmation shows.\n\n3. What does the kitchen see besides the count per dish?\n   Recommended: the count per dish, plus a split by class so the food can be packed.\n   Why it matters: it decides the layout of the kitchen page.\n\n4. What is on the menu?\n   Recommended: five vegetarian dishes a day (for example dal rice, rajma chawal, poha, paratha with curd, idli sambar), each with a price in rupees.\n   Why it matters: the dishes are the sample data every screen and count uses.\n\n5. How many children can one parent order for?\n   Recommended: one or two children per parent, picked at the top of the order screen.\n   Why it matters: it decides whether the order page needs a child picker.\n\n6. Quick or full?\n   Recommended: quick, one list page per module with no name options or demo states.\n   Why it matters: full takes longer and adds name options and a link for every state.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. For which day does a parent order, and what happens after 10am? | 2. How does a parent pay? | 3. What does the kitchen see besides the count per dish? | 4. What is on the menu? | 5. How many children can one parent order for? | 6. Quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.857,
+      "evidence": "missing: how deep"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 25 minutes and 8 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 499,
+      "evidence": "499 words, 248 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because it is two modules and a prototype to look at. Quick is one page per module in one file, with no name options or de"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 499,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles persona and modules (\"Parent order ... and Kitchen counts\"), pay (Q2 UPI), phone (\"phone screen is built first\"), rupees, the 10am cut-off (Q1) and depth (Q6 \"Quick or full?\").",
+      "no_redundancy": "Found facts are stated, not asked (\"India means rupees, UPI\"); only Q4 menu and Q5 children-per-parent are things the agent could likely have just defaulted itself.",
+      "defaults_quality": "Every question has a specific, fitting default, e.g. \"orders are for that day's lunch and close at 10am; after 10am the parent sees 'Ordering closed'\".",
+      "clarity": "Six questions after a long brief; Q6 repeats the Track paragraph already in the brief, and Q1 bundles two things (\"which day ... and what happens after 10am\").",
+      "respects_words": "Keeps prototype, mobile first, India and 10am; the default \"split by class\" adds a little beyond \"count per dish\", offered only as a recommendation.",
+      "overall": "A strong intake that covers every topic with good defaults so \"go\" works, held back by length, a duplicated depth question and a couple of questions the agent could have decided itself."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.010Z"
+}

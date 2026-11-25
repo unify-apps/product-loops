@@ -1,0 +1,117 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-04",
+  "ask": "QA everything in proto-clinic before I show it to the clinic owners on Monday",
+  "expected_track": "full",
+  "notes": "CLAUDE.md gives the persona, the job and four house rules. A good intake states them and does not ask the persona or rules again.",
+  "must_cover": [
+    "persona|front desk",
+    "rules|empty state|sentence case",
+    "bar|p1|p2",
+    "fix|report"
+  ],
+  "findable": [
+    "persona|who uses|who is it for|one job",
+    "rules|rule of your own|own rules"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "proto-clinic/index.html"
+  ],
+  "message": "# Brief: review of proto-clinic before Monday\n\n**Goal:** walk every screen of the Northside Physio prototype as its user, find what is wrong, fix it, and review again until no P1 problem is left, before you show it to the clinic owners on Monday.\n\n## What I found\n\n- **Prototype:** `proto-clinic/index.html`, one HTML file, the only prototype in the folder. No server needed: the walk serves it itself.\n- **Screens (4, from the nav):** Today, Clients, Invoices, Settings.\n- **Who and their job (from `CLAUDE.md`):** front desk staff at small physio clinics (2 to 6 therapists). Their one job: get the day's clients in and out on time, and take payment.\n- **Your own rules (from `CLAUDE.md`), added to the built-in checklist:**\n  - Buttons in sentence case.\n  - Every list has an empty state that says what to do next.\n  - No placeholder text anywhere, ever.\n  - Money always with the £ sign and two decimals.\n- **Start check:** Node 25.9.0 is ok. Chrome is found at `/Applications/Google Chrome.app`. The prototype opens. Screens file written.\n- **A first look at the source (not yet a review, the reviewers will check each one on the screenshots):** placeholder-looking text on Settings, a \"New appointment\" button on Today that seems to do nothing, an Invoices filter that may show an empty table, \"Clients\" in the nav but \"Customers\" as a heading, and amounts such as £55 and £110 without two decimals.\n\n## Needs\n\n| Need | Value |\n|---|---|\n| Prototype | `proto-clinic/index.html` (found) |\n| Screens | all 4: Today, Clients, Invoices, Settings (found) |\n| Who and job | front desk staff, getting clients in and out on time and taking payment (found) |\n| Fix or report | Fix, in place, with a copy of every changed file in the run's `original/` folder (default) |\n| Bar | P1 and P2 fixed. P3 listed, never fixed (default) |\n| Own rules | the 4 rules above, plus the built-in checklist (found) |\n| Track | Full: the walk also checks a 390 px phone width (recommended, see question 3) |\n| Where the result goes | `handover.md` on this laptop. Nothing is deployed, posted or sent (default) |\n\n## Coverage scan\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | clear | all 4 screens of one file |\n| Who and their job | clear | stated in `CLAUDE.md` |\n| Data and facts | clear | sample data is in the file and is not changed |\n| Main flow | partial | the persona's job includes taking payment, and no screen has a way to do that |\n| Edge cases | partial | empty lists, the Overdue filter and a search with no match need checking |\n| Look | clear | keep the product's own colours, fonts and words |\n| Outputs | clear | `handover.md`, before and after screenshots, `fixes.md` |\n| Done signal | clear | see below |\n| Words with no number | clear | \"everything\" means the 4 screens; \"QA\" means the checklist above |\n\n**Lessons applied:** none yet (no earlier runs of this loop in this folder).\n\n**Budget:** 60 minutes.\n\n**Done means:**\n1. Each of the 4 screens (Today, Clients, Invoices, Settings) has a before screenshot and a last after screenshot.\n2. After the last walk, a fresh agent that did not review or fix finds no open P1 on any of the 4 screens.\n3. Every P1 not fixed is marked \"your call\" in `findings.md`, with one plain sentence.\n4. Every P1 and P2 finding is fixed, or marked with its reason.\n5. Every changed file has its original in the run's `original/` folder.\n\nAbout 60 minutes and 4 helper agents, within a budget of 60 minutes.\n\n## Questions\n\n1. Should I fix what I find, or only report it?\n   Recommended: fix, in place, keeping a copy of every file I change.\n   Why it matters: \"QA\" can mean a list of problems or a fixed prototype. Report only changes no file.\n\n2. Should I fix P1 and P2, or P1 only?\n   Recommended: P1 and P2. P3 is listed, never fixed.\n   Why it matters: P2 is the careless-looking part (a missing empty state, \"Customers\" against \"Clients\", no two decimals), and owners notice those.\n\n3. Quick (P1 only, no phone width) or full?\n   Recommended: full. Monday is not today, so there is time, and it adds the 390 px phone check.\n   Why it matters: quick skips the phone check and leaves every P2 unfixed. Say quick if the owners will only see it on a laptop and you want it faster.\n\n4. Do I review it as the front desk person, or as a clinic owner seeing it for the first time?\n   Recommended: as the front desk person from `CLAUDE.md`, since that is who the prototype is for. I add a note for what an owner would trip over.\n   Why it matters: the user decides which gaps are P1. The job of taking payment has no screen, so it counts as a gap for the front desk but not for an owner.\n\n5. If the review finds that a step of the job has no screen, such as taking payment, do I add one?\n   Recommended: no. I list it as \"your call\" first in `handover.md` and add no screen.\n   Why it matters: adding a screen is a design choice that is yours, and a half-made screen is worse than a gap you know about.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Should I fix what I find, or only report it? | 2. Should I fix P1 and P2, or P1 only? | 3. Quick (P1 only, no phone width) or full? | 4. Do I review it as the front desk person, or as a clinic owner seeing i | 5. If the review finds that a step of the job has no screen, such as taki"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "45 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 4 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "| Track | Full: the walk also checks a 390 px phone width (recommended, see question 3) |"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 927,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Persona and 4 rules stated as found, bar asked (\"P1 and P2. P3 is listed, never fixed\"), fix vs report asked (\"fix, in place, keeping a copy\"); all four topics settled.",
+      "no_redundancy": "Persona is in CLAUDE.md yet Q4 asks \"as the front desk person, or as a clinic owner\"; Q3 (quick = P1 only) repeats Q2's bar question.",
+      "defaults_quality": "Every question has a concrete, fitting default, e.g. \"P1 and P2\" because \"owners notice those\" and \"no. I list it as 'your call'\" for missing screens.",
+      "clarity": "Five questions with overlap, behind a long brief, needs table and coverage-scan table; answerable but well beyond a two-minute read.",
+      "respects_words": "\"everything\" kept as all 4 screens, Monday deadline kept, nothing deployed or sent; fix default is offered as a question, not imposed.",
+      "overall": "Strong, well-grounded intake with good defaults and an early first look, held back by length and two partly redundant questions."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.677Z"
+}

@@ -1,0 +1,118 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-09",
+  "ask": "outside-in point of view on Ørsted's offshore wind operations for their VP Operations. She'll share it with her CEO. About 10 slides.",
+  "expected_track": "full",
+  "notes": "Goal (outside-in), reader, real audience and count are given. What we offer is open and matters (does the deck pitch at all?).",
+  "must_cover": [
+    "goal|outside-in",
+    "real audience|ceo",
+    "slide count|10",
+    "what we offer|claims|our product",
+    "output|powerpoint|pdf"
+  ],
+  "findable": [
+    "goal|what the deck is for|what should the reader",
+    "real audience|convince next|ceo",
+    "slide count|how many slides",
+    "company|which company",
+    "reader|who is in the meeting"
+  ],
+  "fixtures": [],
+  "message": "# Brief: outside-in view on Ørsted's offshore wind operations\n\n**Goal (G1, my default):** Give Ørsted's VP Operations an outside-in point of view on its offshore wind operations: what is changing around them, what it means for Ørsted, and where the openings are. She should be able to retell it to her CEO.\n**Angle (G2, default):** The usual order for an outside-in view: what is changing in the industry, what it means for Ørsted's operations, where the openings are, what to do first.\n**Real audience (G3, default):** The VP Operations reads it first. Her CEO reads it next, so the deck must stand on its own without her presenting it. I assume the CEO cares about money, risk and speed.\n\n## Needs (a default is marked \"default\")\n\n| Need | Value |\n|---|---|\n| Company | Ørsted, the Danish offshore wind developer and operator (orsted.com) |\n| Meeting | None stated. Treated as \"sent to read\": nobody presents it (default) |\n| Who reads it | VP Operations (name and public profile not given, so I write for a senior business reader) (default); then her CEO |\n| Start deck | None. Built new (default) |\n| Slide count | About 10 main slides, in a range of 8 to 12. Extras go to an appendix that ends with a Sources slide |\n| What we offer or may claim | Nothing was given, so the deck claims nothing about us. It is an outside-in view only (default) |\n| Facts only you know | None given |\n| Output | HTML deck, editable PowerPoint and PDF (default for a deck sent to read). No Artifact (default) |\n| Where files go | `decks/orsted-20261126/` (default) |\n| Look | Plain: Arial, dark text on white, one dark blue accent (default; no `CLAUDE.md` or start deck found) |\n| Lead with or leave out | None |\n| Product pictures | None. No made-up screens (default) |\n| Track | Full (see question 6) |\n| Lessons applied | none yet |\n\n## Start checks\n\n- **Tools:** set up and working (python-pptx, PDF reader, Chrome, Quick Look). PowerPoint, PDF and HTML can all be made.\n- **Working folder:** it was empty, so there were no files, notes or `CLAUDE.md` to read.\n- **Web search:** WebSearch and WebFetch are both in this session. Research will use public sources with a link on every fact.\n- **Builder check:** I could not start a separate helper in this session, so I ran that check myself. I found no further question beyond the ones below.\n\n## Coverage scan\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | partial | Offshore wind operations is named, but \"operations\" is wide: build, run and maintain, supply chain, grid, safety |\n| Who and their job | partial | VP Operations, then CEO. The one job she needs it for is not stated |\n| Data and facts | clear | Public research only, each fact with a source link |\n| Main flow | clear | Outside-in order for the goal |\n| Edge cases | clear | Not a product deck, so none apply |\n| Look | clear | Plain default |\n| Outputs | partial | Files not named; default is HTML, PowerPoint and PDF |\n| Done signal | clear | See below |\n| Words with no number | partial | \"About 10 slides\" is read as 8 to 12 main slides |\n\n## Done means\n\n1. The deck gives Ørsted's VP Operations an outside-in view of its offshore wind operations that she can retell to her CEO.\n2. `deck.html`, `deck.pptx` and `deck.pdf` are in `decks/orsted-20261126/out/` and open.\n3. The main slide count is 8 to 12.\n4. `deck.py check` prints PASS on every check, after the last change.\n5. Every line on a slide cites facts that say it, each with a source link, an estimate note or your word.\n6. Every review finding is fixed, or left with why in `review-fixes.md`.\n\nAbout 40 minutes and 5 helper agents, within a budget of 90 minutes.\n\n## Questions\n\n1. What should the deck get her to believe or do? (G1, the goal)\n   Recommended: **Option A, an outside-in view.** What is changing in offshore wind (costs, supply chain, policy, grid and weather risk), what it means for Ørsted's operations, and where the openings are. You asked for an outside-in point of view and she will pass it up to her CEO, so it should read as a view, not a pitch.\n   Other options:\n   - B: A ranked plan of what to do, each item tied to lower cost or more output.\n   - C: A vision she can retell to her CEO: why now, what good looks like, the first steps.\n   - D: A pitch for a product or service. This needs facts about what you offer.\n   - E: A technical walk-through of the wind farms and systems.\n   Why it matters: the goal sets the order and the title of every slide, and the review checks it first.\n\n2. What is the one idea the deck argues, and may I choose the angle? (G2)\n   Recommended: a point of view I choose from the research, for example \"operations, not construction, will decide offshore wind's returns\". You can edit it after.\n   Why it matters: a deck with one idea is easy for a CEO to retell. A deck with five is not.\n\n3. What does her CEO care about most? (G3)\n   Recommended: money first (cost and returns), then risk, then speed.\n   Why it matters: it decides which numbers lead each slide and what the last slide asks for.\n\n4. Which part of operations should the deck cover?\n   Recommended: the whole cycle, in one slide each where it matters: building and installing, running and maintaining the farms, the supply chain and vessels, the grid, and safety and weather.\n   Why it matters: the topic fixes what the research looks for, and public facts differ a lot by part.\n\n5. Do you know her name, or have anything she has said or written?\n   Recommended: no, and I write for a senior business reader. If you give me her name, I use only her public, work-related talks and posts.\n   Why it matters: her own words let the deck speak her language. Without them it stays generic.\n\n6. Which track?\n   Recommended: **full.** Full makes the HTML deck, an editable PowerPoint and a PDF, with 8 to 12 main slides. Quick makes the HTML deck and PDF only, with 6 to 8 slides. Her reader is senior and it will be forwarded, and a PowerPoint she can edit before she sends it helps.\n   Why it matters: it sets the files, the slide count and the time.\n\n7. Do you want me to leave out or lead with anything? For example a competitor, a topic such as a past write-down or a safety event, or a partner.\n   Recommended: no, and I do not hide public facts that matter to operations.\n   Why it matters: a public fact that the CEO knows and the deck skips would hurt trust.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. What should the deck get her to believe or do? (G1, the goal) | 2. What is the one idea the deck argues, and may I choose the angle? (G2) | 3. What does her CEO care about most? (G3) | 4. Which part of operations should the deck cover? | 5. Do you know her name, or have anything she has said or written? | 6. Which track? | 7. Do you want me to leave out or lead with anything? For example a compe"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "46 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: goal (\"goal\"), real audience (\"ceo\"), slide count (\"slide count\"), reader (\"reader\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 5 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "| Track | Full (see question 6) |"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1195,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 5,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles goal, audience (\"Her CEO reads it next\"), slide count (8 to 12), offer (\"the deck claims nothing about us\") and output (\"HTML deck, editable PowerPoint and PDF\").",
+      "no_redundancy": "Q1 re-asks the stated goal (\"What should the deck get her to believe or do?\" despite \"outside-in point of view\"), Q6 track re-opens the stated ~10 slides, Q3 half-repeats the CEO audience.",
+      "defaults_quality": "Every question has a concrete recommendation, e.g. \"money first (cost and returns), then risk, then speed\" and \"the whole cycle\", so \"go\" works.",
+      "clarity": "Seven questions behind a needs table, start checks, coverage scan and done list; the most useful question (scope of operations, Q4) is buried after redundant ones.",
+      "respects_words": "Keeps outside-in and ~10 slides (\"About 10 main slides\"); only the Quick option (6 to 8 slides) drifts from the ask, but it is not the default.",
+      "overall": "Faithful and well-defaulted brief that would run fine on \"go\", but it is long and spends its first questions re-asking what the person already said."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.706Z"
+}

@@ -1,0 +1,119 @@
+{
+  "arm": "baseline",
+  "loop": "review",
+  "case": "review-05",
+  "ask": "check everything in my prototype",
+  "expected_track": "full",
+  "notes": "Two candidates (the app and a one-page marketing site). 'Which prototype' is a fair question here, with the clinic app as the default (more screens, the nav).",
+  "must_cover": [
+    "which prototype|proto-clinic|marketing",
+    "screens",
+    "persona|who uses",
+    "fix|report"
+  ],
+  "findable": [],
+  "fixtures": [
+    "marketing-site/index.html",
+    "proto-clinic/index.html"
+  ],
+  "message": "Here is my brief for reviewing your prototype. Nothing has been changed yet.\n\n## Brief\n\n**Goal:** Review the whole prototype screen by screen as the person who will use it. Click every button, take a screenshot of every screen, and check for dead clicks, console errors, cut-off text, placeholder text, broken images, missing empty, loading and error states, alignment and spacing slips, mixed words across screens, and pages that scroll sideways on a phone. Fix what I find, then review again until no P1 problem is left.\n\n**What I found in this folder:**\n- `proto-clinic/index.html` is a clickable app called Northside Physio. It has 4 screens in its nav: Today, Clients, Invoices, Settings.\n- `marketing-site/index.html` is a one-page landing site for the same clinic (\"Feel better, faster\", a \"Book now\" button). It has 1 screen.\n- The browser and Node checks passed, so I can click through and screenshot the screens.\n- I found no `CLAUDE.md`, README or earlier run in this folder.\n\n**Stop fact:** After the last walk, a fresh agent finds no open P1 on any screen. Every P1 left as \"your call\" is listed first in `handover.md`. Every P2 is fixed or listed there.\n\n## Questions\n\n1. **Which prototype should I review?** You said \"my prototype\", but the folder holds two. Default: `proto-clinic/index.html`, because it is the clickable app. The marketing site is one static page. Say so if you want it included or reviewed instead.\n2. **Which screens?** Default: all 4 that the nav reaches: Today, Clients, Invoices, Settings. I add a screen the nav does not reach only if you name it.\n3. **Who uses it, and what one job do they come to do?** Default (my guess from the screens): a receptionist or practice manager at a physio clinic, who comes to see today's appointments and keep clients and invoices up to date.\n4. **Should I fix what I find, or only report it?** Default: fix, in place, keeping a copy of every changed file in the run folder.\n5. **What should I fix: P1 and P2, or P1 only?** Default: P1 and P2. P3 is listed, never fixed.\n6. **Any rule of your own to check?** Default: the built-in checklist only. I found no `CLAUDE.md` or `design-review` skill with extra rules.\n\nEverything stays on this laptop. Nothing is deployed, posted or sent.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Which prototype should I review? You said \"my prototype\", but the fold | 2. Which screens? Default: all 4 that the nav reaches: Today, Clients, In | 3. Who uses it, and what one job do they come to do? Default (my guess fr | 4. Should I fix what I find, or only report it? Default: fix, in place, k | 5. What should I fix: P1 and P2, or P1 only? Default: P1 and P2. P3 is li | 6. Any rule of your own to check? Default: the built-in checklist only. I"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "9 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 400,
+      "evidence": "400 words, 197 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 400,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 8,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles all four topics: 'Which prototype should I review?', 'Which screens?', 'Who uses it...?', 'Should I fix what I find, or only report it?'.",
+      "no_redundancy": "States found facts in the brief ('4 screens in its nav: Today, Clients, Invoices, Settings') and asks only what the folder cannot answer; Q6 on own rules is mildly extra after noting no CLAUDE.md.",
+      "defaults_quality": "Every question has a specific default, e.g. 'Default: proto-clinic/index.html, because it is the clickable app' and 'a receptionist or practice manager at a physio clinic'.",
+      "clarity": "Plain words and most important first, but six questions plus a dense brief (goal, findings, stop fact) take more than a quick read; Q4 and Q5 could be one.",
+      "respects_words": "Keeps 'my prototype' singular and 'all 4' screens, but 'check everything' could argue for including the marketing site and defaulting to fix goes beyond 'check', though both are offered as choices.",
+      "overall": "A strong, well-grounded opening that settles everything with sensible defaults; slightly long, and the fix-by-default choice is a small stretch from 'check'."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.823Z"
+}

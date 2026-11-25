@@ -1,0 +1,123 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-03",
+  "ask": "add a loyalty points module to the bakery prototype in shop/. customers earn 1 point per £1, 10 points = a free coffee",
+  "expected_track": "quick",
+  "notes": "Existing product in shop/ (plain HTML, README says how it runs). The points rule is given. A good intake does not ask which product or how points work; it may ask about redeeming with too few points and where the module sits.",
+  "must_cover": [
+    "persona|customer|who uses",
+    "where|nav|screen",
+    "redeem|free coffee",
+    "how deep|in full|depth|edge|not enough points"
+  ],
+  "findable": [
+    "which product|existing product|new product|which prototype",
+    "how it runs|server|dev script",
+    "points rule|per £1|points per"
+  ],
+  "fixtures": [
+    "shop/README.md",
+    "shop/index.html"
+  ],
+  "message": "**Goal:** add a loyalty points module to the Crumb & Co ordering prototype: customers earn 1 point per £1, and 10 points = a free coffee.\n\n**Found:**\n- Builds on the existing prototype in `shop/` (`shop/index.html`, one file, three screens: Menu, Basket, My orders; from `shop/README.md`).\n- The new module lands in `shop/index.html` as one more screen next to the other three. It stays on this laptop.\n- It is for customers who order ahead and collect in the shop (from `shop/README.md`).\n- The look is the existing one: brown and cream with an orange button, as in `shop/index.html`.\n- The one coffee on the menu is the Flat white at £3.10; the Pay button does nothing yet.\n- Clicks will be checked in a real browser (found: headless Chrome).\n\n**Track:** quick, because this is one module added to a small prototype. Quick builds the loyalty screen only, with no name options and no extra demo states.\n\nStill open after reading your files: what happens in the awkward cases, and what done means.\n\n**Done means:**\n- A Loyalty screen shows the points balance and progress to the next free coffee.\n- Paying £1 earns 1 point; part pounds round down.\n- At 10 points or more, one Flat white in the basket can be made free.\n- Under 10 points, the free coffee option is off and says how many points are missing.\n- Every link opens and every click does something, with no page errors.\n\nThe full brief is in `loop-runs/product-build-loop-20261126-035049/brief.md`.\n\nAbout 15 minutes and 4 helper agents, within a budget of 120 minutes.\n\n1. Where does a customer use their 10 points?\n   Recommended: in the basket, a \"Use 10 points\" line makes one Flat white free.\n   Why it matters: it decides whether the basket or the new screen holds the redeem button.\n\n2. How should part pounds earn points?\n   Recommended: round down, so a £3.10 order earns 3 points.\n   Why it matters: it sets the points shown for every order.\n\n3. What starting points should the sample customer have?\n   Recommended: 12 points, so the free coffee can be shown and the empty case is one click away.\n   Why it matters: it decides which states you can see in the demo.\n\n4. Should points earned on a free coffee, and on the points-paid part, count?\n   Recommended: no, only money paid earns points.\n   Why it matters: it changes the balance after every redeemed order.\n\n5. Quick (the Loyalty screen only, no demo states) or full (adds a link per state)?\n   Recommended: quick.\n   Why it matters: full takes about twice as long.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Where does a customer use their 10 points? | 2. How should part pounds earn points? | 3. What starting points should the sample customer have? | 4. Should points earned on a free coffee, and on the points-paid part, co | 5. Quick (the Loyalty screen only, no demo states) or full (adds a link p"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.75,
+      "evidence": "missing: how deep"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 15 minutes and 4 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what happens in the awkward cases, and what done means."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 442,
+      "evidence": "442 words, 265 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because this is one module added to a small prototype. Quick builds the loyalty screen only, with no name options and no e"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 442,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Covers persona (\"for customers who order ahead\"), where (\"one more screen next to the other three\"), redeem (Q1 basket \"Use 10 points\"), and depth (Q5 quick vs full, \"Under 10 points ... says how many points are missing\").",
+      "no_redundancy": "States product, how it runs and the 1 point per £1 rule as found; Q2 on rounding repeats what Done means already decided (\"part pounds round down\") but rounding is not in the ask.",
+      "defaults_quality": "Every question has a specific default fitting the prototype, e.g. \"12 points, so the free coffee can be shown and the empty case is one click away\".",
+      "clarity": "Five short one-topic questions with reasons, but the brief before them is long and Q2/Q5 restate choices the brief already made (rounding, quick track).",
+      "respects_words": "Keeps \"1 point per £1\" and \"10 points = a free coffee\" exactly; mapping free coffee to the menu's only coffee, the Flat white, is a faithful reading.",
+      "overall": "A strong intake that settles where, redeem and edge cases with good defaults so \"go\" works, held back only by some length and repetition between brief and questions."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:46.915Z"
+}

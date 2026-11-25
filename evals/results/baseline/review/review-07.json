@@ -1,0 +1,121 @@
+{
+  "arm": "baseline",
+  "loop": "review",
+  "case": "review-07",
+  "ask": "review http://localhost:5173 - it's our clinic app",
+  "expected_track": "full",
+  "notes": "The URL does not answer (nothing is running, and vite is not installed). The start check should find that and say so in the same message, with a default (open clinic-app/index.html directly).",
+  "must_cover": [
+    "localhost|5173|server|not running|start",
+    "screens",
+    "fix|report",
+    "persona|who uses"
+  ],
+  "findable": [
+    "which prototype|which file"
+  ],
+  "fixtures": [
+    "clinic-app/index.html",
+    "clinic-app/package.json"
+  ],
+  "message": "## Brief so far\n\n**Goal:** review the clinic app (Northside Physio) screen by screen as the person who will use it, fix what I find, and review again until no P1 problem is left.\n\n**What I found myself**\n- **Prototype:** `http://localhost:5173`, as you said. It is the `clinic-app/` folder here (a Vite app, `npm run dev` on port 5173, one `index.html`).\n- **Screens:** the nav reaches 4: Today, Clients, Invoices, Settings. They are saved in `screens.json` in the run folder.\n- **Screen width:** 1440 px, plus a check at 390 px for a phone.\n- **Rules found:** there is no `CLAUDE.md`, and no `design-review` or `product-design` skill in this folder, so only the built-in checklist applies.\n- **Stop fact:** after the last walk, a fresh agent finds no open P1 on any screen, every P1 left as \"your call\" is listed first in `handover.md`, and every P2 is fixed or listed there.\n- **Safety:** this runs on this laptop only. Nothing is deployed, published or sent.\n\n**Start check, one problem:** the walk tool and a browser are fine (Node 25.9.0, Google Chrome found). But nothing answers at `http://localhost:5173` right now, so the app is not running. `clinic-app/` has no `node_modules`, so `npm run dev` may need `npm install` first. Unless you say otherwise, I will start it myself from `clinic-app/` (`npm install` if needed, then `npm run dev`, local only) and stop it when the run ends. If you already run it somewhere else, give me that URL.\n\n## Questions\n\n1. **Which prototype?** Default: `http://localhost:5173`, which is `clinic-app/`. I start it myself, since it is not running.\n2. **Which screens?** Default: all 4 the nav reaches: Today, Clients, Invoices, Settings.\n3. **Who uses it, and what one job do they come to do?** Default (my guess from the screens): a receptionist or physio at a small physiotherapy clinic, whose job is to see today's appointments and book a new one.\n4. **Fix what I find, or only report?** Default: fix in place, keeping a copy of every changed file in the run folder.\n5. **What should I fix: P1 and P2, or P1 only?** Default: P1 and P2. P3 is listed, never fixed.\n6. **Any rule of your own to check?** Default: the built-in checklist only, since I found no `CLAUDE.md` or design skill.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Which prototype? Default: `http://localhost:5173`, which is `clinic-ap | 2. Which screens? Default: all 4 the nav reaches: Today, Clients, Invoice | 3. Who uses it, and what one job do they come to do? Default (my guess fr | 4. Fix what I find, or only report? Default: fix in place, keeping a copy | 5. What should I fix: P1 and P2, or P1 only? Default: P1 and P2. P3 is li | 6. Any rule of your own to check? Default: the built-in checklist only, s"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "10 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: which prototype (\"which prototype\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 395,
+      "evidence": "395 words, 248 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 395,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 5,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles all four topics: server not running and 'I will start it myself', screens 'Today, Clients, Invoices, Settings', 'Fix in place', and persona 'a receptionist or physio'.",
+      "no_redundancy": "Q1 'Which prototype?' asks what the ask and brief already state ('http://localhost:5173, as you said'); Q6 re-asks rules it already found absent.",
+      "defaults_quality": "Every question has a concrete default fitted to the app, e.g. 'fix in place, keeping a copy of every changed file' and 'see today's appointments and book a new one'.",
+      "clarity": "Six questions after a long brief, two of them repeating brief content, so it takes more than a glance; questions themselves are plain and single-topic.",
+      "respects_words": "Keeps the given URL and the 'clinic app' framing; starting the server locally and fixing are offered as defaults, not imposed.",
+      "overall": "Strong, well-grounded intake with good defaults, weakened by a redundant prototype question and some repetition between brief and questions."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.829Z"
+}

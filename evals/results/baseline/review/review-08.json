@@ -1,0 +1,121 @@
+{
+  "arm": "baseline",
+  "loop": "review",
+  "case": "review-08",
+  "ask": "can u look over my clinic thing and make it not embarrassing lol. investors tmrw",
+  "expected_track": "full",
+  "notes": "Casual voice, time pressure, 'not embarrassing' is vague. Fix mode is implied ('make it'). A good intake reads 'not embarrassing' as P1 and P2 fixed and keeps the round short. Quick is a fair recommendation too.",
+  "must_cover": [
+    "fix|report",
+    "bar|p1|p2",
+    "screens",
+    "persona|who uses",
+    "investors|tomorrow"
+  ],
+  "findable": [
+    "which prototype|which file"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "Here is my brief for the review of your clinic prototype. Nothing has been changed yet. You show it to investors tomorrow, so I will go through every screen, fix what looks careless, and list what is a matter of taste for you to decide.\n\n## Brief\n\n**Goal.** Review the whole prototype screen by screen as the person who uses it. Fix what looks broken or careless. Review again with a fresh pair of eyes until no P1 problem is left.\n\n**What I found (not asking about these)**\n- **Prototype:** `proto-clinic/index.html`, a single HTML file called \"Northside Physio\". It is the only prototype in this folder. It needs no server: the walk opens it itself.\n- **Screens:** all 4 that the nav reaches: Today, Clients, Invoices, Settings. I will keep the nav's own names. There is no dialog or detail page to add.\n- **Fix or report:** fix. \"Make it not embarrassing\" reads as fix, so I will change the file in place. A copy of every file I change is kept first in `loop-runs/product-review-loop-20261126-032806/original/`.\n- **Widths:** 1440 px, plus a 390 px phone check.\n- **Tools:** Node and Chrome both work, so I can click every control and take a screenshot of every screen.\n- **Look of new things:** match what the product already does (its colours, fonts, spacing and words). No `CLAUDE.md`, no `design-review` skill and no `product-design` skill was found, so no house rules are added.\n- **Stays on this laptop:** I do not deploy, publish or send anything.\n\n**Stop fact.** After the last walk, a fresh agent finds no open P1 on any screen. Every P1 left as \"your call\" is listed first in `handover.md`. Every P2 is fixed or listed there.\n\n**Taste is never changed.** Colour, fonts, layout, the product's name and tone, and adding or removing a screen or column go into a list for you with the option I would pick.\n\n## Questions\n\n1. **Who uses it, and what one job do they come to do?**\n   Default (my guess from the screens, please correct it): a front-desk person at a physio clinic who checks the day's appointments, finds a client, and checks which invoices are unpaid. Since investors will see it, I will also treat \"looks like a real product when someone clicks through it\" as part of the bar.\n2. **What should I fix: P1 and P2, or P1 only?**\n   Default: P1 and P2. P1 means it breaks the job or looks broken to anyone. P2 means it works but looks careless. P3 polish is listed, never fixed.\n3. **Any rule of your own to check, or anything to focus on?**\n   Default: the built-in checklist, every screen equally. The checklist covers dead clicks, console errors, placeholder text, cut-off text, missing empty states, mixed words, alignment and spacing slips, and sideways scrolling on a phone.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. Who uses it, and what one job do they come to do? | 2. What should I fix: P1 and P2, or P1 only? | 3. Any rule of your own to check, or anything to focus on?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "13 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 1 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 483,
+      "evidence": "483 words, 318 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 483,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 10,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 9
+    },
+    "evidence": {
+      "completeness": "Settles fix (\"Fix or report: fix\"), screens (\"all 4 that the nav reaches: Today, Clients, Invoices, Settings\"), bar (\"P1 and P2, or P1 only?\"), persona (\"Who uses it\"), and investors (\"You show it to investors tomorrow\").",
+      "no_redundancy": "States the prototype as found (\"It is the only prototype in this folder\") instead of asking; all three questions are things the files cannot answer.",
+      "defaults_quality": "Every question has a specific default, e.g. \"a front-desk person at a physio clinic who checks the day's appointments...\" and \"P1 and P2\"; Q3's default is generic but sensible.",
+      "clarity": "Only three plain, single-topic questions ordered by importance, but the brief before them is fairly long for a busy person the night before investors.",
+      "respects_words": "Reads \"make it not embarrassing\" as fix and keeps the investors-tomorrow framing (\"looks like a real product when someone clicks through it\"); taste changes are held for the person rather than imposed.",
+      "overall": "A strong opening: covers every needed topic, asks nothing findable, and \"go\" alone yields a sensible run; only the length of the brief holds it back."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.832Z"
+}

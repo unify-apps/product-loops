@@ -1,0 +1,120 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-10",
+  "ask": "use client-notes.txt and build it for Thursday's pitch. make it look premium",
+  "expected_track": "full",
+  "notes": "Agency voice. Notes answer the modules, colours and font. 'Premium' is a vague word the intake should pin down (what it means on screen). The 6-taps pain gives a measurable goal (book in 2 taps).",
+  "must_cover": [
+    "persona|member|front desk",
+    "module",
+    "premium",
+    "book|booking|taps",
+    "how deep|in full|depth",
+    "thursday|deadline"
+  ],
+  "findable": [
+    "colour|color|palette|orange",
+    "font|typeface|barlow",
+    "module|modules|class booking"
+  ],
+  "fixtures": [
+    "brand/apex-colors.json",
+    "client-notes.txt"
+  ],
+  "message": "# Brief: Apex Fitness member app prototype (for Thursday's pitch)\n\n**Goal:** a clickable phone-first web prototype for Apex Fitness (12 gyms, London) that makes booking a class take 2 taps or fewer, shown to Dan (COO) and Lauren (Head of Member Experience) on Thursday at 2pm.\n\n**What I read:** your message, `client-notes.txt` (call of 18 Nov) and `brand/apex-colors.json`. No existing product, no earlier run, no `CLAUDE.md` and no research brief were found in this folder, so this is a new product in `./apex-fitness/` (default).\n\n**Facts from the notes, in their words**\n- \"members to book classes from their phone, see the timetable per gym, and join a waitlist when full\"\n- \"Front desk needs to check people in (scan or search)\"\n- \"Membership page: plan, next payment, freeze membership\"\n- Colours: black `#0A0A0A`, Apex orange `#FF5A1F`, grey `#8A8F98`. Font: Barlow.\n- \"They HATE the current app because it takes 6 taps to book\"\n\n**Persona (my draft, please confirm):** an Apex member on their phone who wants to book tonight's class at their gym. The second user is a front-desk person at the gym who checks members in.\n\n**Modules in build order (my draft, please confirm)**\n| # | Module | Must have |\n|---|---|---|\n| 1 | Book | Pick a class and book it in 2 taps or fewer from the home screen; booked state; cancel |\n| 2 | Timetable | Timetable per gym (12 gyms, gym switcher), day strip, class cards with spaces left; full class shows \"Join waitlist\"; waitlist position |\n| 3 | Check-in (front desk) | Search a member by name; scan simulated by a \"Scan\" button; checked-in state; class list for the next hour |\n| 4 | Membership | Plan, next payment date and amount, freeze membership (pick dates, confirm, frozen state, unfreeze) |\n\n**Look (default, from your file):** black background, Apex orange for the main action, grey for secondary text, Barlow throughout (loaded from Google Fonts, falls back to a system sans). \"Premium\" means, by default: dark theme, large type, 8px spacing grid, one accent colour, no more than 2 font weights per screen, real class names and times, no stock clip-art. Initials in circles, no photos of people.\n\n**Name and mark:** you did not give one for the product. Default: 3 name and mark options shown on the real header, the first one used.\n\n**Follow:** no other product to copy (flow only). **How deep:** every module in full. **Runs:** plain files served from this laptop by the loop's own server. **Browser for click checks:** `chrome-headless-shell` was found, so every click will be checked. **Ships:** this laptop only. Nothing is published.\n\n**Coverage scan**\n| Topic | State | Why |\n|---|---|---|\n| Scope | partial | 3 areas named; check-in and freeze depth not stated |\n| Who and their job | partial | member is clear; front-desk person is a guess |\n| Data and facts | partial | colours, font, gym count given; no gym names, classes or prices (I will make up sample data) |\n| Main flow | clear | book in 2 taps, waitlist when full, check in by scan or search, freeze |\n| Edge cases | partial | full class and frozen membership named; cancelled, late, not a member are my defaults |\n| Look | partial | colours and font clear; \"premium\" has no example (defaulted above) |\n| Outputs | partial | a local link per screen; how you will present on Thursday is not said |\n| Done signal | partial | \"6 taps to 2 taps\" is the only measure (taken as the main must-have) |\n| Words with no number | partial | \"premium\" (defined above); \"look\" has no example screen |\n\n**Research first?** Not asked: the notes already name the feature set.\n\n**Lessons applied:** none yet.\n\n**Done means (stop fact)**\n1. Every module is built: Book, Timetable, Check-in, Membership.\n2. Every module's last review round has 0 P1.\n3. Every link in `links.md` opens, with no dead click, no placeholder text and no page error.\n4. `requests.md` has no open line.\n5. A member can book a class from the home screen in 2 taps or fewer.\n6. A full class shows \"Join waitlist\" and the member sees their waitlist position.\n7. The front desk can check a member in by search and by a scan button.\n8. Membership shows plan, next payment, and a working freeze.\n9. Links exist for every list, one detail, every create flow and every empty state (full track).\n\n**Request list (R1 is the whole ask)**\n- [ ] R1 build it for Thursday's pitch, from client-notes.txt\n- [ ] R2 make it look premium\n- [ ] R3 members book classes from their phone\n- [ ] R4 timetable per gym\n- [ ] R5 join a waitlist when full\n- [ ] R6 front desk checks people in (scan or search)\n- [ ] R7 membership page: plan, next payment, freeze membership\n- [ ] R8 Apex colours (black, orange #FF5A1F) and Barlow\n- [ ] R9 booking must not take 6 taps\n\nBudget: 120 minutes.\n\nAbout 90 minutes and 15 helper agents, within a budget of 120 minutes.\n\n## Questions\n\n1. Who uses it, and what one job do they come to do?\n   Recommended: an Apex member on their phone who books tonight's class at their own gym; the front-desk person is the second user.\n   Why it matters: the persona decides which screen is the home screen and what gets built first.\n\n2. Which modules, in this order, and what must each have?\n   Recommended: Book, Timetable, Check-in (front desk), Membership, with the must-haves in the table above.\n   Why it matters: the module list is what gets built, reviewed and linked; anything not on it is left out.\n\n3. What does \"premium\" mean to you, and is there one app or screen whose feel you want?\n   Recommended: dark, large Barlow type, orange only on the main action, generous spacing, flow only (no app copied).\n   Why it matters: \"premium\" has no measure, so the review would have nothing to check it against.\n\n4. How will you show it on Thursday: on a phone, a laptop screen, or a projector?\n   Recommended: phone-sized screens first (390 px wide), and the check-in module on a tablet width (768 px).\n   Why it matters: it sets the screen size every module is built and checked at.\n\n5. Do you have an Apex logo, icon files or a product name?\n   Recommended: no; show 3 name and mark options on the real header and use the first.\n   Why it matters: the name and the mark appear on every screen, so changing them later touches all of them.\n\n6. Track: quick or full?\n   Recommended: full (4 modules and a pitch to a COO): adds name options, one link per state and demo data that agrees across modules. Quick builds each module as one list page, with no name options and no demo states.\n   Why it matters: full takes about 90 minutes, quick about half of that.\n\n7. Extras: photos of people, a PDF guide of the screens, a public link for Dan and Lauren?\n   Recommended: none; initials only, no PDF, and the prototype stays on this laptop (nothing is published).\n   Why it matters: a public link is the only way Dan and Lauren can open it themselves, and I will not publish unless you ask.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. Who uses it, and what one job do they come to do? | 2. Which modules, in this order, and what must each have? | 3. What does \"premium\" mean to you, and is there one app or screen whose  | 4. How will you show it on Thursday: on a phone, a laptop screen, or a pr | 5. Do you have an Apex logo, icon files or a product name? | 6. Track: quick or full? | 7. Extras: photos of people, a PDF guide of the screens, a public link fo"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "56 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: colour (\"orange\"), font (\"barlow\"), module (\"module\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 90 minutes and 15 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "9. Links exist for every list, one detail, every create flow and every empty state (full track)."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1246,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 6,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles persona (Q1 member + front desk), modules (table + Q2), premium (Q3 'dark, large Barlow type, orange only on the main action'), booking ('2 taps or fewer'), depth ('every module in full', Q6) and Thursday (goal line, Q4 presentation device).",
+      "no_redundancy": "States colours and font from the file rather than asking, but Q2 'Which modules, in this order' re-asks what the notes already list, and Q1 persona largely repeats the notes' member/front-desk split.",
+      "defaults_quality": "Every question has a specific, fitting default, e.g. Q4 '390 px wide... check-in module on a tablet width (768 px)' and Q5 '3 name and mark options on the real header'.",
+      "clarity": "Seven questions behind a very long brief with a coverage scan, a 9-line request list and a duplicated budget line ('Budget: 120 minutes. About 90 minutes...'), which is too much for a two-minute reply.",
+      "respects_words": "Keeps 'Thursday's pitch' and 'premium' and uses client colours/font; the only additions are minor unrequested framing such as 'flow only' and a 120-minute budget.",
+      "overall": "Well-grounded brief with sensible defaults, so 'go' would work, but it is overlong and re-confirms modules and persona the notes already give."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.624Z"
+}

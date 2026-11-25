@@ -1,0 +1,130 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-02",
+  "ask": "First meeting with the head of digital operations at Maersk next Tuesday. Give her a plan ranked by what it saves that she can take to her COO. About 10 slides, extras in an appendix. HTML deck and an editable PowerPoint. Our look and what we can claim are in the folder.",
+  "expected_track": "full",
+  "notes": "The full ask from needs.md, plus the folder answers the look and the claims. Nearly every need is answered: a good intake shows the brief and asks one or two things at most (her name, if known).",
+  "must_cover": [
+    "goal|plan ranked|savings",
+    "coo|real audience",
+    "slide count|10",
+    "output|powerpoint|html",
+    "claims|what we may claim",
+    "look|manrope"
+  ],
+  "findable": [
+    "goal|what the deck is for|what should the reader",
+    "real audience|convince next|coo",
+    "slide count|how many slides",
+    "output|format|powerpoint",
+    "look|font|colour|color",
+    "claims|what we may claim|what we offer",
+    "meeting kind|first meeting"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "brand/corvid.svg",
+    "claims.md"
+  ],
+  "message": "**Goal:** a plan for Maersk's head of digital operations, ranked by what each step saves, that she can take to her COO.\n\n**Found:**\n- Meeting: first one, next Tuesday, with the head of digital operations at Maersk (from your message).\n- She must convince her COO next, so the savings come first (from your message).\n- Files land in `decks/maersk-20261126/out/`: an HTML deck and an editable PowerPoint, about 10 main slides, extras in an appendix (from your message).\n- Look: Manrope, ink #111827, accent #7C3AED, white, Corvid logo (from `CLAUDE.md`).\n- What we may claim: customs document checks; 62% fewer manual touches at Kuehne+Nagel; under 4 seconds per document; no price (from `claims.md`).\n- Tools work (PowerPoint, Chrome, web search). No Maersk volumes in the folder, so Maersk savings will be our marked estimates.\n\n**Track:** full, because you asked for an editable PowerPoint and the readers are senior.\n\nStill open after reading your files: what \"saves\" counts, which customers to name, what the plan covers, what to ask for at the end. The full brief is in `loop-runs/product-deck-loop-20261126-035325/brief.md`.\n\n**Done means:**\n- A plan ranked by savings, written for her COO.\n- `deck.html` and `deck.pptx` open, 8 to 12 main slides.\n- Every line cites a source, an estimate note or your word.\n- No customer named beyond `claims.md`, no price.\n\nAbout 40 minutes and 6 helper agents, within a budget of 90 minutes.\n\n1. What should \"saves\" count for her COO?\n   Recommended: money per year, with hours of manual document work as the supporting number.\n   Why it matters: it sets how every step is ranked and which estimates I must build.\n\n2. Kuehne+Nagel and DSV are logistics rivals of Maersk. Which of them may be named?\n   Recommended: name Kuehne+Nagel only, as the live proof with the 62% figure. Leave DSV (a pilot with no number) out.\n   Why it matters: a rival's name on the slide can help or put her off, and `claims.md` allows both.\n\n3. What does the plan cover at Maersk?\n   Recommended: about 5 steps in customs document checks across its logistics and ocean operations, biggest saving first.\n   Why it matters: Corvid only does document checks, so the plan stays inside what we can claim.\n\n4. What should the last slide ask her for?\n   Recommended: a pilot on one trade lane, with no price.\n   Why it matters: the deck should end on one step she can say yes to.\n\n5. Do you know her name, or anything she has said about digital operations?\n   Recommended: no; I research her public role and talks only.\n   Why it matters: it decides whether the deck can speak to her own words.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. What should \"saves\" count for her COO? | 2. Kuehne+Nagel and DSV are logistics rivals of Maersk. Which of them may | 3. What does the plan cover at Maersk? | 4. What should the last slide ask her for? | 5. Do you know her name, or anything she has said about digital operation"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "16 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: real audience (\"coo\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 6 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what \"saves\" counts, which customers to name, what the plan covers, what to ask for at the end. The ful"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 450,
+      "evidence": "450 words, 233 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you asked for an editable PowerPoint and the readers are senior."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 450,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "All six topics settled in the brief: goal 'ranked by what each step saves', COO 'written for her COO', 'about 10 main slides', 'HTML deck and an editable PowerPoint', claims and look from files.",
+      "no_redundancy": "Found facts are stated, not asked; Q2 'Which of them may be named?' partly re-asks what claims.md already allows, though framed as a rival-sensitivity judgment.",
+      "defaults_quality": "Every question has a concrete default fitting the ask, e.g. 'money per year, with hours of manual document work as the supporting number' and 'a pilot on one trade lane, with no price'.",
+      "clarity": "Five numbered single-topic questions, most important first, in plain words, but they follow a long brief with track, budget and run-path detail that adds reading time.",
+      "respects_words": "Keeps the HTML plus editable PowerPoint, the appendix and the COO audience; '8 to 12 main slides' stays faithful to 'about 10'.",
+      "overall": "A strong, faithful intake with good defaults where 'go' works; it is held back slightly by length and one question that is half-answered by claims.md."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.309Z"
+}

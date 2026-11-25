@@ -1,0 +1,122 @@
+{
+  "arm": "baseline",
+  "loop": "design",
+  "case": "design-03",
+  "ask": "make the Today screen in proto-clinic work like Linear's inbox (https://linear.app/docs/inbox) - just the flow, keep our look",
+  "expected_track": "full",
+  "notes": "Reference by URL, the mode (flow only) and the target screen are all in the ask. A good intake states them and asks only what the reference leaves open (for example what the detail pane shows for an appointment).",
+  "must_cover": [
+    "reference|linear|inbox",
+    "flow only|flow",
+    "today",
+    "parts|list|detail"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "exact|flow only|pixel",
+    "which screen|target screen"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "## My brief\n\n**Goal:** Make the **Today** screen in `proto-clinic` work like Linear's inbox (https://linear.app/docs/inbox). Copy the flow only: the same parts, order and steps, doing the same things. Keep Northside Physio's own look (colours, fonts, sizes, components) and its own sample data.\n\n**Prototype:** `proto-clinic/index.html`. It is the only prototype in the folder, so I did not ask. It is plain HTML with no `dev` script, so I will serve it with the loop's local server.\n\n**Reference:** the Linear inbox docs page. It is a public web page and it answers 200, so no sign-in is needed. I will read it as screenshots and text in a later step, and list every part of it before I build anything.\n\n**Stop fact:** Every request below is done and checked on the real page. No screen outside Today changed without a reason (a before and after compare says so). The prototype's link opens.\n\n**Defaults I picked (change any of them below):**\n- Mode: flow only, as you said. No pixel copy of Linear's look.\n- Other screens (Clients, Invoices, Settings) are not to change.\n- The result is a local link only. Nothing is published, pushed, committed or sent.\n- Design rules: no `CLAUDE.md` is in the folder, so I will use the loop's built-in design check.\n- Tools: Node v25.9.0 is there and a browser for screenshots was found (Google Chrome), so the run will compare screenshots as well as page text.\n\n## Request list\n\n| # | Request | Screen | Where |\n|---|---|---|---|\n| 1 | Today works like Linear's inbox, flow only, in our own look. *(my reading)* Today's appointments become the inbox items. Each can be opened, marked done and snoozed. The list has an unread/new state and an empty state. | Today | this place |\n\nI have only the one row because you gave one note. I will split it into more rows once I have read the reference page and listed its parts.\n\nNotes sent after \"go\" still join this run. Each becomes a new row.\n\n## Questions\n\n1. **Anything missing or wrong in the request list above?** Default: no, it is complete.\n2. **What is an \"inbox item\" on Today?** Default: each of today's appointments (time, client, therapist, type, room). The other choice is a new list of messages and alerts for the clinic, such as cancellations and unpaid invoices, with appointments left as they are.\n3. **The three stat cards and the \"New appointment\" button on Today.** Default: keep both. The stat cards stay above the list, and the button stays where it is. I noticed the button has no handler today, so it does nothing. I will not fix that unless you ask.\n4. **The table.** Default: the inbox list replaces the appointments table on Today, since an inbox is a list of items, not a table.\n5. **Anything in the Linear inbox you do not want?** Default: take every part of the page's flow, except features that need a real backend (such as notification settings and email or mobile delivery). Those are listed and left out with a reason.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Anything missing or wrong in the request list above? Default: no, it i | 2. What is an \"inbox item\" on Today? Default: each of today's appointment | 3. The three stat cards and the \"New appointment\" button on Today. Defaul | 4. The table. Default: the inbox list replaces the appointments table on  | 5. Anything in the Linear inbox you do not want? Default: take every part"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 530,
+      "evidence": "530 words, 342 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 530,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 8,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles reference, flow only and Today, and the list part (\"the inbox list replaces the appointments table\"), but the detail view is only implied by \"Each can be opened\" and never settled as a pane or a page.",
+      "no_redundancy": "States the found facts instead of asking (\"It is the only prototype in the folder, so I did not ask\"). Only Q1 (\"Anything missing or wrong...?\") is a generic catch-all.",
+      "defaults_quality": "Every question has a specific default that fits the ask, e.g. \"each of today's appointments (time, client, therapist, type, room)\" and leaving out backend-only features \"with a reason\".",
+      "clarity": "Five short questions, each about one thing, but the brief, the stop fact and the tools notes before them make it long, and Q1 should not come first.",
+      "respects_words": "Keeps \"flow only, as you said. No pixel copy of Linear's look\" and Northside's own colours, components and data, and leaves the other screens unchanged.",
+      "overall": "A strong opening that lets \"go\" run well; it loses points for its length and for leaving the shape of the item detail view to a guess."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.788Z"
+}

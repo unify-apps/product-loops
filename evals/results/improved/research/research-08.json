@@ -1,0 +1,125 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-08",
+  "ask": "redo the onboarding research from last month, but add Rippling and Deel this time",
+  "expected_track": "full",
+  "notes": "An earlier run left its brief: persona, market, sources and how bold are known. A good intake reuses them, adds the two rivals, and puts the new out folder under a dated name. Asking the persona again is redundant.",
+  "must_cover": [
+    "rivals|rippling|deel",
+    "out folder|folder|date",
+    "persona|hr",
+    "market|uk",
+    "how bold|bold"
+  ],
+  "findable": [
+    "persona|who uses|who is it for",
+    "market|country|region",
+    "how bold|bold|catch up",
+    "sources|source kinds|which pages"
+  ],
+  "fixtures": [
+    "loop-runs/product-research-loop-20261021-1012/brief.md",
+    "research/onboarding/brief.md"
+  ],
+  "message": "Redo the October onboarding research with five rivals instead of three, and rank the first modules again.\n\n**Found:**\n- Decision: the first modules of an onboarding product for HR teams at 200 to 2,000 person companies (from `loop-runs/product-research-loop-20261021-1012/brief.md`).\n- Persona: HR operations manager running 10 to 40 starts a month; the Head of People pays (same file).\n- Rivals: BambooHR, HiBob, Personio from last time, plus Rippling and Deel from your message.\n- Market: UK and Ireland. Sources: product pages, help centre, release notes, pricing, public reviews. Ideas: both catching up and ideas no rival has (all from last time's brief).\n- Results go in a new folder, `research/onboarding-20261126/`, so October's `research/onboarding/` stays untouched. Nothing is published or sent.\n- Web check passed: search works and Rippling's home page opens.\n\n**Track:** full, because you now have 5 rivals.\n\nStill open after reading your files: how deep to read, and whether to compare with October.\n\n**Done means:**\n- An Excel and CSV sheet covers all 5 rivals, each with 5+ rows.\n- Every yes or partial cell links to that rival's own page.\n- Every \"no rival has it\" claim has a search of each rival's site behind it.\n- Every source kind is tried for every rival.\n- `brief.md` ends in a ranked module list citing sheet rows.\n\nThe full brief will be in `loop-runs/product-research-loop-20261126-035156/brief.md`.\n\nAbout 60 minutes and 12 helper agents, within a budget of 90 minutes.\n\n1. Should the new brief show how the ranking changed from October's (Pre-boarding checklist, Equipment and access requests, First-week plan)?\n   Recommended: yes, a short \"what moved and why\" section.\n   Why it matters: you said \"redo\", so you probably want to see what the two new rivals changed.\n\n2. Full or quick?\n   Recommended: full. Quick reads 3 rivals on product pages and help centre only, so Rippling or Deel would be dropped. Full reads all 5 on every source kind.\n   Why it matters: quick cannot cover the two rivals you asked to add.\n\n3. How much to read per rival?\n   Recommended: up to 12 pages and 40 features each. Comprehensive is up to 25 pages and 100 features, and takes longer.\n   Why it matters: Rippling and Deel are wide suites, so a shallow read may miss their onboarding features.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. Should the new brief show how the ranking changed from October's (Pre- | 2. Full or quick? | 3. How much to read per rival?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 3, Why it matters: on 3, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 4 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.8,
+      "evidence": "missing: how bold"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 12 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: how deep to read, and whether to compare with October."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 387,
+      "evidence": "387 words, 238 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you now have 5 rivals."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 387,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles all five topics: rivals \"BambooHR, HiBob, Personio ... plus Rippling and Deel\", persona, market \"UK and Ireland\", how bold \"both\", and a dated out folder \"research/onboarding-20261126/\".",
+      "no_redundancy": "Persona, market, how bold and sources are stated as found, not asked; but Q2 \"Full or quick?\" asks what it already settled in \"Track: full, because you now have 5 rivals\".",
+      "defaults_quality": "Every question has a concrete default fitting the ask, e.g. \"yes, a short 'what moved and why' section\" and \"up to 12 pages and 40 features each\".",
+      "clarity": "Only three numbered questions with defaults, but the Found/Done means/budget blocks make it long, and Q2 repeats a choice already made.",
+      "respects_words": "Keeps \"redo\" with the same brief and adds exactly \"Rippling and Deel\"; the new dated folder keeps October's work untouched without going against the ask.",
+      "overall": "Strong intake: faithful brief built from last month's files, all key topics settled, good defaults; marked down slightly for one redundant question and length."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.256Z"
+}

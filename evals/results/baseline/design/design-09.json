@@ -1,0 +1,122 @@
+{
+  "arm": "baseline",
+  "loop": "design",
+  "case": "design-09",
+  "ask": "PM notes for proto-clinic below. 1) remove the descriptions under every heading everywhere 2) Today table: add a status column (arrived / waiting / in session) 3) don't touch the invoices screen at all, finance signed it off 4) Save changes on settings should show a toast instead of the grey 'Saved' 5) when done commit it and push to main",
+  "expected_track": "full",
+  "notes": "Numbered notes in the ask. One protected screen. The person asks for a commit and a push in words: a good intake keeps it (it is their ask) and notes there is no git repo here. 'Descriptions' barely exist in the prototype: a good intake says what it found.",
+  "must_cover": [
+    "descriptions",
+    "status",
+    "invoices|don't touch|do not change",
+    "toast",
+    "commit|push"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "screens that must not change|don't touch|invoices"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "## My brief\n\n**Goal:** change the screens of `proto-clinic` (Northside Physio) from your five PM notes, then check them in a real browser.\n\n**Prototype:** `proto-clinic/index.html`, plain HTML with four screens (Today, Clients, Invoices, Settings). I will serve it locally and give you the link.\n\n**Reference to copy:** none, so the copy-reference step is skipped.\n\n**Must not change:** the Invoices screen, not at all (finance signed it off). I will compare its before and after screenshots and text, and they must be identical.\n\n**Stop fact:** every note below is done and checked on the real page, Invoices and every other screen no note names are unchanged, and the link opens.\n\n**Checks I ran:** Node v25.9.0 is there and a browser for screenshots was found (Google Chrome), so I can compare screenshots, not only page text. No `CLAUDE.md` and no design skills are in this folder, so I will use the built-in design check.\n\n## Your notes, as one numbered list\n\n| # | Note, in words | Screens | Where | Proved by |\n|---|---|---|---|---|\n| 1 | Remove the description text under headings. In this prototype that is the grey \"Lorem ipsum...\" paragraph under \"Booking policy\" (my reading: the \"Booking policy\" heading itself stays) | Settings | everywhere | \"Lorem ipsum\" is gone from every screen and the code; nothing else is removed |\n| 2 | Today table: add a \"Status\" column, last, with arrived / waiting / in session | Today | this place | Header row ends with \"Status\"; each of the 5 rows shows one of the 3 words (my reading: 08:30 arrived, 09:15 in session, the other three waiting) |\n| 3 | Save changes on Settings shows a toast instead of the grey \"Saved\" text | Settings | this place | Click \"Save changes\": a toast appears and goes away by itself; the grey \"Saved\" text is gone |\n| 4 | Commit the change and push to main | handover | this place | See question 1: this folder is not a git repository |\n\nNot a row: \"don't touch the invoices screen\" is a rule I hold the whole run.\n\n**Seen in the code, not part of your notes (I will leave both as they are and list them in the handover):**\n- \"New appointment\" on Today has no handler, so it does nothing.\n- The Overdue filter on Invoices shows an empty table with no words. This is on the Invoices screen, so I would not touch it anyway.\n\nAnything missing or wrong? Notes you send later still join this run.\n\n## Questions (defaults in brackets)\n\n1. **Commit and push to main.** `proto-clinic` is not inside a git repository here: there is no `.git` folder and no remote, so there is nothing to push to. Which do you want? (Default: I make the changes and leave them uncommitted, and the handover says how to commit and push. If you do want a commit and push, give me the repository and its remote, or say \"run `git init` here and commit only, no push\".)\n2. **Note 1, which descriptions?** The only text that reads as a description under a heading is the \"Lorem ipsum\" paragraph under \"Booking policy\". The small grey captions under the numbers on Today (\"appointments\", \"therapists in\", \"unpaid this week\") are labels for the numbers, and I read them as not descriptions. (Default: remove only the \"Booking policy\" paragraph, and keep the captions. Say so if you want the captions gone too.)\n3. **Note 2, the status words.** The prototype has no status data, so I need sample values for the five rows. (Default: 08:30 Priya arrived, 09:15 Owen in session, 10:00 Mei, 11:30 Luis and 14:00 Hannah waiting. They are made-up sample data, and I will not treat them as a rule.)\n4. **Note 3, the toast.** (Default: a small dark toast at the bottom right of the screen saying \"Settings saved\", gone after 3 seconds. You gave no words, so tell me the words if you want different ones.)\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Commit and push to main. `proto-clinic` is not inside a git repository | 2. Note 1, which descriptions? The only text that reads as a description  | 3. Note 2, the status words. The prototype has no status data, so I need  | 4. Note 3, the toast. (Default: a small dark toast at the bottom right of"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "19 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 683,
+      "evidence": "683 words, 430 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 683,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 9
+    },
+    "evidence": {
+      "completeness": "All five topics settled: descriptions (row 1 + Q2), status (row 2 + Q3), Invoices ('not at all ... must be identical'), toast (row 3 + Q4), commit/push (row 4 + Q1).",
+      "no_redundancy": "States the prototype and the Invoices rule in the brief rather than asking; Q1 asks only because 'there is no .git folder and no remote', which the files could not answer.",
+      "defaults_quality": "Every question has a concrete default, e.g. 'a small dark toast at the bottom right ... \"Settings saved\", gone after 3 seconds' and named per-row status values.",
+      "clarity": "Four focused questions, most important (commit/push) first, plain words; but the brief, table and side notes make it fairly long for a two-minute reply.",
+      "respects_words": "Keeps 'don't touch the invoices screen at all' as a whole-run rule; deviates from 'commit it and push to main' only by default because no repo exists, and asks; 'everywhere' narrowing is flagged in Q2.",
+      "overall": "A strong opening: faithful brief, real blockers surfaced (no git repo, ambiguous descriptions), sensible defaults so 'go' works; slightly wordy."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.805Z"
+}

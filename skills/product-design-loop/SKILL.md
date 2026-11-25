@@ -1,6 +1,6 @@
 ---
 name: product-design-loop
-description: Changes how existing screens of a prototype look and work, from one set of notes, and runs to the end without asking again. Three ways in - a list of notes or screenshot comments ("rows too tight", "rename this", "this button does nothing", "remove descriptions everywhere"), a redesign of named screens, or copying a screen from a reference (a video, a live web page, screenshots, a design file, another HTML file). Use when the person types /product-design-loop, or sends design notes or screenshots of a prototype they want changed, asks to rework or restyle screens that already exist, or asks to make a screen look or work like a reference. Not for building a new product or new modules from nothing.
+description: Changes how existing screens of a prototype look and work, from one set of notes, and runs to the end without asking again. Three ways in - a list of notes or screenshot comments ("rows too tight", "rename this", "this button does nothing"), a redesign of named screens, or copying a screen from a reference (a video, a web page, screenshots, a design file). Use when someone types /product-design-loop, sends design notes or screenshots of a prototype to change, asks to "rework", "restyle", "polish these screens" or "make this screen look like" a reference. Not for building a new product or new modules (the build loop), and not for a review of the whole product (the review loop).
 argument-hint: "[your notes, a notes file, or 'make <screen> like <reference>']"
 ---
 
@@ -18,6 +18,16 @@ In this file:
 Stop fact: every note in `requests.md` is done and swept, no screen that no note names broke or changed
 without a reason (the before and after compare says so), and the prototype's link opens.
 
+The stop-fact items intake writes (`STATE stop-fact add`), with the real numbers and link:
+1. Every one of the `<n>` rows in `requests.md` is `done` or `swept`, or `left` with a reason.
+2. Every `everywhere` row's find in `sweep.md` shows no place left, except places skipped with a reason.
+3. The final compare has no UNEXPECTED and no BROKEN screen.
+4. Every changed part of the code traces to a row, or to a decision a row needed.
+5. The prototype's link, as `RUN/link.txt` has it, answers 200. (Node 2 writes that file; the port can differ
+   from 4100 when 4100 is taken, so the stop fact names the file, not a port.)
+6. Only with a reference, on the full track: every part in `reference-parts.md` is on `<target screen>`, or
+   left out with why.
+
 The person's own taste comes from their installed skills and the folder's `CLAUDE.md`, never from this file.
 Nothing is published, pushed, committed or sent unless the person asked for it in node 1, in words.
 
@@ -31,9 +41,17 @@ Nothing is published, pushed, committed or sent unless the person asked for it i
 6. `review`: a fresh agent checks the stop fact and looks for serious design faults on the changed screens.
 7. `handover`: writes handover.md and finishes the run.
 
+## Quick track
+
+For a list of notes where the reference is only background. It leaves `copy-reference`
+(`STATE left copy-reference --why "quick track"`), and the reference's row in `requests.md` becomes
+`left: quick track`. The sweep still runs: a note marked everywhere is only half done without it. With no
+reference, the two tracks are the same: do not ask, and init with `--track full`. Recommend full whenever the
+person asked to copy the reference.
+
 ## Node 1: intake
 
-Run `STATE init --loop product-design-loop --nodes intake,run-prototype,copy-reference,make-changes,sweep,review,handover`,
+Run `STATE init --loop product-design-loop --nodes intake,run-prototype,copy-reference,make-changes,sweep,review,handover --skill-dir "${CLAUDE_SKILL_DIR}" --track <quick|full> --budget-minutes 60`,
 then follow the intake rules in loop-rules.md.
 
 1. Read `${CLAUDE_SKILL_DIR}/references/needs.md`. It lists every need, its default, and where to look first.
@@ -41,11 +59,19 @@ then follow the intake rules in loop-rules.md.
 3. Write `requests.md` as `${CLAUDE_SKILL_DIR}/references/requests-format.md` says: one numbered row per
    note. Split a note that asks for two things into two rows. A screenshot note becomes words in its row.
 4. Run the start check in needs.md.
-5. Ask in ONE message: your brief, the numbered request list, then the questions needs.md leaves open
-   (at most 6), each with its default. End with `Reply with your answers, or just "go" to use the defaults.`
-6. After "go": put the answers into `requests.md` and `brief.md` (the goal, the prototype, every need with its
-   value, the step skills found, the stop fact), run `STATE close-intake`, say the one line from loop-rules.md,
-   and go straight on.
+5. Estimate: helpers are the builder check, one reviewer (count 2 tries), and one per file group when rows
+   live in different files (often none).
+6. Ask in ONE message: the short brief (goal, `Found:`, a `Track:` line: quick when there is no reference to
+   copy, full when there is one, as the quick track below says; the "still open after reading your files" line;
+   `Done means`), the
+   request list as one line per row (`R1 settings page: move Save to the top right`), the estimate line, then
+   the questions needs.md and the builder check leave open (at most 7; the track is a question only when a
+   reference makes both tracks fit), each with `Recommended:` and `Why it matters:`. The full needs table, the
+   coverage table and `Lessons applied` go in `brief.md`, not in the message. End with `Reply with your
+   answers, or just "go" to use the defaults.`
+7. After "go": put the answers into `requests.md`, write the stop-fact items, write `brief.md` (the goal, the
+   prototype, every need with its value, the step skills found, the stop fact), run `STATE close-intake`, say
+   the one line from loop-rules.md, and go straight on.
 
 A note that arrives after "go" is never a question. Add it as a new row and do it in this run.
 
@@ -66,11 +92,13 @@ A note that arrives after "go" is never a question. Add it as a new row and do i
    that is dead, in `requests.md` under "Broken before the run". Not this run's fault, not its job: never fix it.
 6. Check: `curl -s -o /dev/null -w "%{http_code}" <link>` prints 200. Write the link and the code to `link.txt`.
    Tell the person the link in one line.
-7. `STATE done run-prototype --check "link answers 200, before screenshots taken" --proof RUN/before/summary.json`
+7. Write the link to `RUN/link.txt` (the stop fact's item 5 reads it). Then
+   `STATE done run-prototype --check "link answers 200, before screenshots taken" --proof RUN/before/summary.json`
 
 ## Node 3: copy-reference
 
-With no reference: `STATE left copy-reference --why "no reference was given"` and go on.
+With no reference: `STATE left copy-reference --why "no reference was given"` and go on. On the quick track:
+`STATE left copy-reference --why "quick track"`, mark the reference row `left: quick track`, and go on.
 
 1. `STATE start copy-reference`
 2. Follow `${CLAUDE_SKILL_DIR}/references/copy-reference.md`: get the reference as screenshots and text, list
@@ -92,12 +120,14 @@ With no reference: `STATE left copy-reference --why "no reference was given"` an
 3. Do each row of `requests.md` that is still `todo`, in order, as make-changes.md says. After each row, run its
    check and write the command and its real output to `change-checks.md`. Mark the row `done`, or retry it.
    Run `STATE decide` the moment you make a choice, not in a batch at the end.
-4. Rows that live in different files may go to helper agents, one per file group, each told the rows, the
-   files and the checks. Rows in the same file are done one after another. Helpers never run `STATE`.
+4. Rows that live in different files may go to helper agents, one per file group. Write each one's brief to
+   `RUN/briefs/changes-<group>.md` first: the rows, the files and the checks. Rows in the same file are done one
+   after another. Helpers never run `STATE`.
 5. `CHECK capture --screens RUN/screens.json --out RUN/after`, then
    `CHECK compare --before RUN/before --after RUN/after --explained <screens> --out RUN/compare-changes.md`.
    `<screens>` are only the screens where a row's thing really is (its text in `before/*.txt`, or its code),
-   never every screen an `everywhere` row lists. For each UNEXPECTED screen, read what moved. Fix a leak (scope
+   never every screen only because an `everywhere` row lists them. A shared header or nav that every screen
+   shows is the one case where that really is every screen. For each UNEXPECTED screen, read what moved. Fix a leak (scope
    the rule to the screen the note named). Fix every BROKEN screen. Run the compare again.
 6. Design check on the changed screens: run the `design-review` skill when installed, else
    `${CLAUDE_SKILL_DIR}/references/design-check.md`. Either way, write `RUN/design-check.md`: one line per
@@ -120,14 +150,16 @@ With no reference: `STATE left copy-reference --why "no reference was given"` an
 ## Node 6: review
 
 1. `STATE start review`
-2. Start one helper agent with the Agent tool. It did not build anything in this run. Give it the prompt in
-   `${CLAUDE_SKILL_DIR}/references/review-prompt.md`, with RUN, the link, the prototype's changed files,
-   `CHECK` written out in full, and the design rules found in node 1.
-3. Read `review.md`. If it says FAIL: fix what it names, `STATE retry review --why "<what failed>"`, and start
+2. Write `RUN/briefs/review.md`: the prompt in `${CLAUDE_SKILL_DIR}/references/review-prompt.md`, with RUN,
+   the link, the prototype's changed files, `CHECK` written out in full, the design rules found in node 1, the
+   rubric path `${CLAUDE_SKILL_DIR}/shared/review-rubric.md` and the stop-fact table (`STATE stop-fact status`).
+   Start one helper agent on it that built nothing in this run, on a different model from the builders when one
+   is there. It writes `review.md` and `review.json`. Then `STATE stop-fact pass --from RUN/review.json`.
+3. Read `review.md`. If it says FAIL, or an item does not pass: fix what it names, `STATE retry review --why "<what failed>"`, and start
    a new review agent in retry mode: rename `review.md` to `review-<try>.md` and fill in the prompt's Retry
    part. After 3 retries,
    `STATE left review --why "<what still fails>"`.
-4. `STATE done review --check "fresh agent says PASS" --proof RUN/review.md`
+4. `STATE done review --check "fresh agent says PASS, spec <n>, quality <n>, model <m>" --proof RUN/review.md`
 
 ## Node 7: handover
 

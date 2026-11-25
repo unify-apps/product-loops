@@ -37,12 +37,16 @@ Places to look, in this order:
 
 ## The questions
 
-Show the brief first. Then ask, as one numbered list, only the questions below whose answer you could not find.
-Each question names the default you picked. At most 9. Leave out a question when the ask already answers it.
+Show the brief first. Then ask, as one numbered list, only the questions below whose answer you could not find,
+plus the builder check's questions and the track (quick or full). At most 7 in all: when more are open, keep the
+ones that change the build most, and show the rest in the brief with their default. Each question has a
+`Recommended:` line with the default you picked and a `Why it matters:` line, as the loop rules show. Leave out
+a question when the ask already answers it.
 
-Always ask 3, 4 and 6 unless the person's own words already give them. A persona or a must-have list you drafted
-from the ask or from the files is your guess, not an answer: the person knows who uses it and what they need.
-Never write "no open questions" while 3 or 4 is still a draft.
+Ask 3, 4 and 6 when the ask and the files do not give them. A persona or a must-have list you drafted from thin
+air is your guess, not an answer: the person knows who uses it and what they need. But a persona, a module list
+or a depth that the ask, a `CLAUDE.md`, a README or an earlier brief states is found: write it in the brief with
+where it came from, and do not ask. Never write "no open questions" while 3 or 4 is still a guess of yours.
 
 1. Only when a product was found here: what we build on, the existing one at `<path>` (list up to 5 found) or a
    new product. Default: <your pick>. With no product found, the folder is a default: do not ask.
@@ -59,6 +63,8 @@ Never write "no open questions" while 3 or 4 is still a draft.
 8. Only for a new product: a name you have, or 3 options to pick from later. Default: 3 options, the first used.
 9. Extras: photos of people, two versions behind a key, a PDF guide, a public link.
    Default: none of them; the product stays on this laptop.
+10. The track: quick (every module as one list page in the shell, no name options, no demo states) or full.
+   Default: quick for one or two modules, else full.
 
 End with: `Reply with your answers, or just "go" to use the defaults.`
 

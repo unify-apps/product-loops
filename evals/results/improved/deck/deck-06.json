@@ -1,0 +1,124 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-06",
+  "ask": "a 6-page brochure for the hotel chains we'll meet at the Lisbon hospitality trade show, about our housekeeping app",
+  "expected_track": "full",
+  "notes": "Brochure with a page count. The reader is many hotel chains, not one company, so 'which company' should become a default (a general reader) rather than a blocker. Print size A4 is set without asking.",
+  "must_cover": [
+    "brochure|format",
+    "6|pages",
+    "audience|hotel|reader",
+    "print|a4|paper",
+    "language|portuguese|english",
+    "look"
+  ],
+  "findable": [
+    "format|slides or one-pager|output",
+    "slide count|how many pages|page count",
+    "what we offer|claims"
+  ],
+  "fixtures": [
+    "app-facts.md"
+  ],
+  "message": "**Goal (my reading):** a 6-page brochure about Tidy, your housekeeping app, for hotel chain buyers you meet at the Lisbon hospitality trade show.\n\n**Found:**\n- Product: Tidy, a live room status board for housekeepers and front desk (from `app-facts.md`).\n- Proof we may use: 40 hotels in Spain and Portugal, and the Pestana group pilot quote \"Rooms ready 35 minutes sooner on average\" (from `app-facts.md`).\n- Languages: English, Portuguese, Spanish (from `app-facts.md`).\n- Format: a brochure, 6 pages, A4 portrait (from your ask; A4 because the show is in Portugal).\n- Where it lands: `decks/lisbon-hotels-20261126/out/` in this folder. It is for handing to chain buyers at the show, to read without you presenting.\n- Tools: the PowerPoint and PDF tools installed fine. Web search and page fetch are available, so I can research the chains.\n\n**Track:** full, because a brochure is read cold by senior buyers and a wrong fact costs more than the time it saves.\n\nStill open after reading your files: which chains, what the brochure should make them do, and what else we may claim.\n\n**Done means:**\n- 6 A4 pages, each drawn and checked.\n- Every line cites a source link, an estimate note or your word.\n- Only claims from `app-facts.md` or your answers appear.\n- Files in `out/` open: PDF and editable PowerPoint.\n\nAbout 45 minutes and 5 helper agents, within a budget of 90 minutes. The full brief will be in `loop-runs/product-deck-loop-20261126-035347/brief.md`.\n\n1. What should a buyer do or believe after reading it?\n   Recommended: a pitch. Their housekeeping delays, how Tidy fixes them, the Pestana proof, and one next step: book a 20-minute demo at the show.\n   Why it matters: this sets what all 6 pages argue and what the last page asks for.\n   Other options: an outside-in view of where hotel operations are going; a vision they can retell to their own boss.\n\n2. Which hotel chains should I research, and what is the reader's job?\n   Recommended: no single chain. Write for operations directors of mid-size European chains, and I research the hospitality trade, with no per-chain facts.\n   Why it matters: a brochure for named chains can use their own figures; a general one cannot.\n\n3. Who must the reader convince next, and what does that person care about?\n   Recommended: the chain's COO or owner, who cares about cost per room and guest ratings.\n   Why it matters: it decides whether the pages lead with saved labour cost or with speed.\n\n4. What else may we claim, and what must we not say?\n   Recommended: only the 3 facts in `app-facts.md`. Say \"in a 2025 pilot\", not \"on average\" for all hotels, since the quote is from one group.\n   Why it matters: prices, integrations (such as your hotel management system), other customers and security claims are not in your files, and I will not invent them.\n\n5. Which language, and do you have a logo and brand colours?\n   Recommended: English only, with a plain look: Arial, dark text on white, one dark blue accent, and no logo.\n   Why it matters: a Portuguese or Spanish version doubles the checking, and the look is set once.\n\n6. Which files do you want?\n   Recommended: PDF for print and an editable PowerPoint, with no web page.\n   Why it matters: a PDF is what you print; the PowerPoint is for edits before the show.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. What should a buyer do or believe after reading it? | 2. Which hotel chains should I research, and what is the reader's job? | 3. Who must the reader convince next, and what does that person care abou | 4. What else may we claim, and what must we not say? | 5. Which language, and do you have a logo and brand colours? | 6. Which files do you want?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "16 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 45 minutes and 5 helper agents, within a budget of 90 minutes. The full brief will be in `loop-runs/product-deck-loop-20261126-035347/"
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: which chains, what the brochure should make them do, and what else we may claim."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 566,
+      "evidence": "566 words, 239 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because a brochure is read cold by senior buyers and a wrong fact costs more than the time it saves."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 566,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 8,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles brochure, 6 pages and print (\"a brochure, 6 pages, A4 portrait\"), audience (Q2/Q3), language and look (Q5); all must-cover topics present.",
+      "no_redundancy": "Format, page count and offer are stated in Found, not asked; only Q6 on file types edges near what Done means already says (\"PDF and editable PowerPoint\").",
+      "defaults_quality": "Every question has a concrete default (\"book a 20-minute demo at the show\", \"Arial, dark text on white, one dark blue accent\"); English-only for a Lisbon show is defensible but arguably not the wisest default.",
+      "clarity": "Six questions plus a long brief with Track, Tools and budget lines; Q2 and Q5 each bundle two things (chains + reader job; language + logo/colours), and Q2/Q3 overlap.",
+      "respects_words": "Keeps \"6-page brochure\", the Lisbon show and hotel chains; the \"no single chain\" default softens \"the hotel chains we'll meet\" but asks rather than overrides.",
+      "overall": "Strong, faithful intake with sensible defaults that let \"go\" produce a good brochure; held back by length and a few bundled or overlapping questions."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.317Z"
+}
