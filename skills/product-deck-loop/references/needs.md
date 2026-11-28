@@ -20,7 +20,7 @@ role and say why in a few words. Typical options, to adapt, never to copy:
 |---|---|---|---|---|
 | G1 | The goal: what the reader should believe or do after the deck, in one sentence, and which option above | story, review, stop fact | the option that fits the reader's role, named in question 1 | the ask ("help me form a view", "pitch", "roadmap", "guide her") |
 | G2 | The angle and shape: the one idea the deck argues, and whether to follow the usual order for the meeting kind or a different one | story | the order in `story.md` for the goal | the ask, `CLAUDE.md` |
-| G3 | The real audience: who the reader must convince next, and what that person cares about (money, risk, speed) | story, review | the reader alone | the ask ("for her CEO", "she will share it") |
+| G3 | The real audience: who the reader must convince next, and what that person cares about (money, risk, speed) | story, review | no one further: only the reader | the ask ("for her CEO", "she will share it") |
 
 | # | Need | Used by | Default | Look first |
 |---|---|---|---|---|

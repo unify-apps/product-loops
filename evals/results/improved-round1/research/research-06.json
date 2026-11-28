@@ -1,0 +1,116 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-06",
+  "ask": "Precisamos decidir os módulos de um app de estoque para farmácias no Brasil. Rivals? not sure, find them. Portuguese sources are fine.",
+  "expected_track": "full",
+  "notes": "Mixed Portuguese and English. Market and source language are given. Rivals must be found. A good intake answers in the person's mix or plain English, names a rival-finding default, and may flag local rules (ANVISA, controlled drugs).",
+  "must_cover": [
+    "decision|modules|módulos",
+    "market|brasil|brazil",
+    "rivals|find",
+    "sources|portuguese|português",
+    "persona|pharmacist|farmacêutico|who uses",
+    "rules|anvisa|regulation"
+  ],
+  "findable": [
+    "market|country|region",
+    "sources|language|portuguese"
+  ],
+  "fixtures": [],
+  "message": "# Brief: módulos de um app de estoque para farmácias no Brasil\n\n**Decisão:** quais módulos construir primeiro, em ordem de construção (a planilha de capacidades dos rivais é a base; o resultado principal é a lista ranqueada de módulos).\n**Produto:** app de controle de estoque para farmácias, categoria \"sistema de gestão (ERP) para farmácias e drogarias\".\n**Mercado:** Brasil (default: o mercado da sua mensagem). As regras locais (SNGPC para controlados, XML de NF-e de compra, lote e validade) entram na pesquisa.\n**Fontes:** páginas públicas, sem login, sem relatórios pagos, sem cadastro de teste. Português é aceito (você disse). Tipos de fonte para todo rival: páginas do produto, central de ajuda ou docs, notas de versão, preços, avaliações públicas.\n\n**Verificação inicial (feita agora):** a busca web funcionou e a leitura da página da Trier Sistemas funcionou (módulos de PDV, estoque e validade, compras, SNGPC, BI, fidelidade, integrações, para farmácias independentes e redes). Nenhuma permissão foi pedida.\n\n## Rivais (você pediu para eu achar)\nProvisório, vindo da busca desta sessão: **Trier Sistemas (Trier Drogarias)**, **RCA Farma**, **SULTS** (mais voltado a redes e franquias). O nó de pesquisa confirma a lista com buscas de \"melhores sistemas para farmácia\" e pode trocar nomes (cada troca vai para `decisions.md`). Default: 3 rivais, no máximo 5.\n\n## Necessidades (valor ou default)\n| # | Necessidade | Valor |\n|---|---|---|\n| 1 | Decisão | primeiros módulos, ranqueados (default) |\n| 3 | Persona | a confirmar (pergunta 2) |\n| 4 | O que já temos | nada, produto novo: toda linha é `gap` ou `beat` (default) |\n| 5 | Rivais | ver acima |\n| 7 | Fontes | ver acima (default) |\n| 8 | Profundidade | até 12 páginas e 40 funções por rival (default) |\n| 9 | Fixo e recusado | nada (default) |\n| 10 | Tamanho do primeiro lançamento | os 3 primeiros módulos (default) |\n| 11 | Nomes dos rivais no brief | nomes reais, os arquivos ficam neste computador (default) |\n| 12 | Onde salvar | `research/estoque-farmacias-br/` (default) |\n| 13 | Compartilhar | não; nada é publicado nem enviado (default) |\n| 14 | Grupos da planilha | você não deu; palavras simples (default) |\n| 15 | Arquivo da planilha | `capability-sheet.xlsx` e `.csv` (default) |\n| 16 | Quão ousado | pergunta 3 |\n| Idioma | Idioma do brief e da planilha | português (default, pelo idioma da sua mensagem) |\n\n## Quadro de cobertura\n| Tópico | Estado | Por quê |\n|---|---|---|\n| Escopo | partial | \"módulos de estoque\"; falta dizer se inclui PDV, compras e financeiro |\n| Quem e o trabalho | missing | falta o tipo de farmácia e o usuário (pergunta 2) |\n| Dados e fatos | clear | páginas públicas dos rivais |\n| Fluxo principal | partial | será desenhado na etapa de pensar |\n| Casos de borda | partial | validade, controlados e nota fiscal serão tratados |\n| Aparência | clear | não se aplica, não há telas |\n| Saídas | clear | planilha, brief, `thinking.md`, `handover.md` |\n| Sinal de pronto | clear | ver \"Pronto quando\" |\n| Palavras sem número | clear | nenhuma na mensagem |\n\n**Lições aplicadas:** nenhuma ainda.\n**Orçamento:** 90 minutos.\n\n## Pronto quando\n1. `capability-sheet.xlsx` e `capability-sheet.csv` existem em `research/estoque-farmacias-br/`, e o Excel bate com o CSV.\n2. A planilha cobre os rivais confirmados, cada um com pelo menos 5 linhas lidas nas páginas dele.\n3. Toda linha diz o que faz, e toda célula sim ou parcial tem link das páginas do próprio rival.\n4. Toda linha `beat` tem uma busca em todos os sites dos rivais em `beats/`.\n5. Todo tipo de fonte foi tentado para todo rival: páginas do produto, central de ajuda ou docs, notas de versão, preços, avaliações públicas.\n6. `brief.md` termina em uma lista ranqueada de módulos, e cada módulo cita linhas da planilha.\n\n## Perguntas\nEstimativa: cerca de 8 agentes de apoio no total (um por rival na pesquisa, um por rival na prova de \"ninguém tem\", um revisor e a checagem do brief). A checagem do brief por um agente separado não rodou nesta sessão, por falta da ferramenta de agentes.\n\nAbout 60 minutes and 8 helper agents, within a budget of 90 minutes.\n\n1. Trilha: rápida ou completa?\n   Recommended: rápida (3 rivais, 2 tipos de fonte: páginas do produto e central de ajuda). A prova de \"ninguém tem\" e a revisão rodam nas duas. A completa lê mais fontes, e serve se você quiser 4 ou mais rivais ou uma matriz completa.\n   Why it matters: define quantos rivais e fontes entram na planilha.\n2. Quem usa todo dia, e quem paga?\n   Recommended: o farmacêutico responsável de uma farmácia independente com 1 a 3 lojas, que também é o dono e quem paga.\n   Why it matters: a persona só ranqueia os módulos, e nunca tira uma linha da planilha. Ela decide o que vem primeiro, por exemplo SNGPC e validade antes de compras ou financeiro.\n3. Quão ousado: alcançar os rivais, ideias que nenhum rival tem, ou os dois?\n   Recommended: os dois. O brief ganha `## Ideas no rival has` com pelo menos 3 ideias ligadas a uma dor da persona ou a uma linha da planilha.\n   Why it matters: muda se os primeiros módulos puxam o que falta ou o que ninguém faz.\n4. O escopo inclui PDV (caixa), compras e financeiro, ou só estoque e o que toca nele?\n   Recommended: só estoque e o que toca nele (entrada por XML de NF-e, lote e validade, inventário, controlados SNGPC, reposição), com PDV e financeiro apenas como linhas de comparação.\n   Why it matters: decide se módulos de caixa e financeiro podem entrar na lista ranqueada.\n5. O seu app já tem alguma função ou é do zero, e há módulo que precisa entrar ou sair?\n   Recommended: do zero, sem módulo fixo nem recusado.\n   Why it matters: uma função que já existe vira `have` em vez de `gap`, e um módulo fixo entra no ranking mesmo sem pontuar alto.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no numbered questions found"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 0,
+      "evidence": "0 questions"
+    },
+    "every_question_has_default": {
+      "pass": null,
+      "evidence": "0 of 0 name a default"
+    },
+    "recommended_and_why": {
+      "pass": null,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 0"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "66 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.667,
+      "evidence": "missing: rivals, rules"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 8 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1028,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 8,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles decision (\"quais módulos construir primeiro\"), market (Brasil), rivals (Trier, RCA Farma, SULTS), sources, persona (question 2), rules (\"SNGPC para controlados, XML de NF-e\"); ANVISA is not named but SNGPC covers it.",
+      "no_redundancy": "Market and sources are stated, not asked (\"Português é aceito (você disse)\"; \"Brasil (default: o mercado da sua mensagem)\"), and rivals were found, not asked.",
+      "defaults_quality": "Each question has a specific, sensible default, e.g. \"o farmacêutico responsável de uma farmácia independente com 1 a 3 lojas, que também é o dono e quem paga\".",
+      "clarity": "Five clear questions, but they sit under a long wall of tables (needs table, coverage board, done-when list) and mixed Portuguese/English lines such as \"About 60 minutes and 8 helper agents\".",
+      "respects_words": "Keeps Brazil, Portuguese sources and finding the rivals, but narrows \"decidir os módulos\" to a ranked first-build list with a default of \"os 3 primeiros módulos\" that the person never asked for.",
+      "overall": "A solid intake that is well found and has good defaults, but its length and internal scaffolding make a quick 'go' reply harder than it should be."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.635Z"
+}

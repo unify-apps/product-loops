@@ -1,0 +1,126 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-02",
+  "ask": "Build the first release from research/fleet-maintenance/brief.md, the top 3 modules only.",
+  "expected_track": "full",
+  "notes": "A research brief and CLAUDE.md answer persona, modules with must-haves, look and logo. Asking for any of those is redundant. The open question the brief itself raises (driver screens) is fair to ask.",
+  "must_cover": [
+    "how deep|in full|shell|depth",
+    "product folder|folder|where",
+    "driver|phone",
+    "name|mark|logo"
+  ],
+  "findable": [
+    "brand colour|colour|color|palette",
+    "font|typeface",
+    "persona|who uses|who is it for",
+    "module|modules",
+    "logo|mark"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "assets/fleetwise-mark.svg",
+    "research/fleet-maintenance/brief.md"
+  ],
+  "message": "**Goal:** a clickable prototype of the top 3 modules of Fleetwise, a maintenance tool for UK delivery fleets: Vehicle board, Defect reports, Service schedule.\n\n**Found:**\n- Your ask and `research/fleet-maintenance/brief.md`: the top 3 modules only. Parts stock and cost reports are out.\n- Persona: a fleet manager at a regional courier who checks each morning which vans are off the road and why (research brief).\n- Managers only: no driver phone screens in release 1 (research brief, \"Our view: no\").\n- Look: Inter, #0B5FFF, #0F172A, #F8FAFC and `assets/fleetwise-mark.svg`, in one plain HTML file, no build step (`CLAUDE.md`).\n- Name: Fleetwise (`CLAUDE.md` and the logo file), so I will not make name options.\n- Lands in `fleetwise/` here, for the operations director demo, on this laptop only. Nothing goes to Slack unless you ask (`CLAUDE.md`).\n\n**Track:** full, because there are 3 modules and it will likely be demoed: every module works, with a link for each list, one detail, each create flow and each empty state.\n\nStill open after reading your files: what \"due\" means, and how the modules affect each other.\n\n**Done means:**\n- Vehicle board, Defect reports and Service schedule all built.\n- Depot filter, status chips, reg search, defect photo, severity, workshop assignment, month view and drag-to-move all work.\n- Every link opens, with no dead click and no page error.\n- No review finding at the highest severity (P1) is left.\n\nThe full brief is in `loop-runs/product-build-loop-20261126-035042/brief.md`.\n\nAbout 70 minutes and 11 helper agents, within a budget of 120 minutes.\n\n1. When a driver's defect is assigned to a workshop, does the van's status on the board change?\n   Recommended: yes, a Dangerous defect puts the van \"in workshop\"; Minor and Major leave it on the road.\n   Why it matters: it decides whether the board and the defect list share one status.\n\n2. What makes a van \"due\" or \"in workshop\"?\n   Recommended: due means a service or MOT within 14 days; in workshop means a booking open today.\n   Why it matters: the status chips and the red overdue marks depend on these numbers.\n\n3. Which severity levels does a defect have?\n   Recommended: Minor, Major, Dangerous.\n   Why it matters: it sets the triage filter and the colour of each defect.\n\n4. When you drag a booking onto a day where that van already has one, what happens?\n   Recommended: it is allowed, and the day shows a \"2 bookings\" warning.\n   Why it matters: it decides whether the drag can fail.\n\n5. Quick or full?\n   Recommended: full. Quick makes one list page per module, with no detail, create or empty links.\n   Why it matters: full takes longer but is the one to show the operations director.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. When a driver's defect is assigned to a workshop, does the van's statu | 2. What makes a van \"due\" or \"in workshop\"? | 3. Which severity levels does a defect have? | 4. When you drag a booking onto a day where that van already has one, wha | 5. Quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 5 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.75,
+      "evidence": "missing: how deep"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 70 minutes and 11 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what \"due\" means, and how the modules affect each other."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 456,
+      "evidence": "456 words, 253 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because there are 3 modules and it will likely be demoed: every module works, with a link for each list, one detail, each c"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 456,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles depth (\"Quick or full? Recommended: full\"), folder (\"Lands in `fleetwise/` here\"), driver (\"no driver phone screens in release 1\") and name (\"Name: Fleetwise ... so I will not make name options\").",
+      "no_redundancy": "Brand, font, persona, modules and logo are stated as found facts with sources; questions cover only unknowns like \"what makes a van 'due'\" and severity levels.",
+      "defaults_quality": "Every question has a specific default, e.g. \"due means a service or MOT within 14 days\" and \"Minor, Major, Dangerous\", so 'go' yields a coherent build.",
+      "clarity": "Five plain one-topic questions, but the message is long, depth (Q5) comes last despite driving scope, and the Track section already answers it.",
+      "respects_words": "Keeps \"the top 3 modules only\" (\"Parts stock and cost reports are out\") and follows CLAUDE.md on Slack; only the 'operations director demo' framing is an unstated assumption.",
+      "overall": "A strong, well-sourced intake with sensible defaults that runs fine on 'go'; loses a little for length and for putting the depth question last while also deciding it upfront."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:46.865Z"
+}

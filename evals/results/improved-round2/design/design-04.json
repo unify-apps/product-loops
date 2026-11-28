@@ -1,0 +1,123 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-04",
+  "ask": "Dr Shah's feedback is in the txt file, please sort it",
+  "expected_track": "full",
+  "notes": "Messy feedback from a clinician. 'Fonts look cheap' is vague taste and should get a concrete reading. 'Who's running late' is a new feature, not a design note: a good intake flags it (row in the list with a default, or out of scope).",
+  "must_cover": [
+    "request|list|notes",
+    "clients|customers",
+    "font|cheap",
+    "running late|late",
+    "ipad|tablet"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "notes|which notes"
+  ],
+  "fixtures": [
+    "feedback-from-dr-shah.txt",
+    "proto-clinic/index.html"
+  ],
+  "message": "I will rework the Northside Physio prototype from Dr Shah's five notes, then check every screen before and after.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, plain HTML with four screens: Today, Clients, Invoices, Settings (from the folder)\n- Notes: `feedback-from-dr-shah.txt`, five bullets (from the folder)\n- No reference to copy and no `CLAUDE.md` or design skill, so I use my built-in design checks\n- \"Customers\" is the only place the word is used. The nav, table and search all say \"Clients\", so I pick \"Clients\" (from the code)\n- The blue \"New appointment\" button on Today has no handler, which is the dead button Dr Shah means (from the code)\n- A browser for screenshots works\n\n**Track:** full, because there is no reference, so both tracks are the same.\n**Coverage:** 4 clear · partial: Main flow, Edge cases, Look · missing: Words with no number\n\n**Done means:**\n- All 5 notes are done, with a result I checked on the page\n- \"Customers\" is gone from every screen\n- No screen changed that no note names\n- The prototype's link answers 200\n\n**My list of notes**\nR1 clients page: rename the title \"Customers\" to \"Clients\" (everywhere)\nR2 today: the \"New appointment\" button opens a form and Save adds a row (my reading)\nR3 all screens: one clean font, headings semibold (my reading, everywhere)\nR4 settings: replace the Latin booking policy text with real words\nR5 today: show who is running late (my reading)\n\nAnything missing or wrong? Notes you send later still join this run.\n\nAbout 40 minutes and 3 helper agents, within a budget of 60 minutes.\n\n1. What should \"New appointment\" do?\n   Recommended: open a small form (client, therapist, type, time, room); Save adds a row to today's list. Sample data only, nothing is stored.\n   Why it matters: \"doesn't do anything\" has many fixes, and the form decides what gets built.\n2. How should we see who is running late?\n   Recommended: a Status column on Today (\"On time\" or \"Running late 10 min\") and a \"1 running late\" box next to the other three. The late times are made-up sample data.\n   Why it matters: the prototype has no clock or check-in, so this decides whether it is a column, a banner or a separate list.\n3. What does \"cheap fonts\" mean for the look?\n   Recommended: keep to system fonts, with no download: a larger 16px body, 600 weight headings, and more room between lines.\n   Why it matters: a web font such as Inter needs internet on the iPad, and the demo may not have it.\n4. What should the Booking policy say?\n   Recommended: \"Appointments can be moved or cancelled up to 24 hours before at no charge. Later changes are charged in full.\"\n   Why it matters: this is a made-up rule that Dr Shah may read as the clinic's real one.\n5. Should I also fix the tight table rows on Today and the other screens?\n   Recommended: no. Dr Shah did not name them, so I list them as a proposal.\n   Why it matters: it would change screens no note asks about.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. What should \"New appointment\" do? | 2. How should we see who is running late? | 3. What does \"cheap fonts\" mean for the look? | 4. What should the Booking policy say? | 5. Should I also fix the tight table rows on Today and the other screens?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": false,
+      "evidence": "23 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 3 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 4 clear · partial: Main flow, Edge cases, Look · missing: Words with no number"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 523,
+      "evidence": "523 words, 266 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because there is no reference, so both tracks are the same."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 523,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles all five notes in a numbered list (R1-R5), picks \"Clients\" over \"Customers\", asks about fonts, running late and names the iPad in Q3; only \"done means\" lacks an explicit iPad-width check.",
+      "no_redundancy": "States the prototype and notes as found facts (\"Prototype: proto-clinic/index.html\", \"Notes: ... five bullets\") and resolves Clients from code instead of asking.",
+      "defaults_quality": "Every question has a concrete default fitted to the iPad demo, e.g. \"keep to system fonts, with no download: a larger 16px body, 600 weight headings\" and a real 24-hour policy text.",
+      "clarity": "Five short questions, each about one thing with a 'why', but jargon lines like \"Track: full\" and \"Coverage: 4 clear · partial: Main flow, Edge cases, Look\" add noise.",
+      "respects_words": "Keeps to Dr Shah's five notes, \"No screen changed that no note names\", and defaults the unasked table-row fix to \"no\".",
+      "overall": "A strong, faithful brief with wise defaults so 'go' works; small deductions for jargon lines and no explicit iPad check in done-means."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.857Z"
+}

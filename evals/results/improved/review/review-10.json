@@ -1,0 +1,123 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-10",
+  "ask": "our front desk uses iPads and phones. review the clinic prototype for small screens, fix P1 and P2, and add a rule: tap targets at least 44px",
+  "expected_track": "full",
+  "notes": "Bar, mode, persona and a custom rule are given. The widths are open (iPad 768/1024 and phone 390 as defaults). A good intake asks at most one or two questions.",
+  "must_cover": [
+    "phone|ipad|tablet|width",
+    "44",
+    "p1|p2",
+    "persona|front desk"
+  ],
+  "findable": [
+    "bar|p1 and p2|p1 only",
+    "fix or report|report only",
+    "rules|rule of your own|own rules",
+    "persona|who uses|who is it for"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** review the Northside Physio prototype for iPads and phones, fix P1 and P2, and add the rule \"tap targets at least 44px\".\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, the only one in this folder. The result is edited in place there, for the front desk.\n- Screens: Today, Clients, Invoices, Settings (the nav's own labels).\n- Who: front desk staff (from your message).\n- Fix mode, P1 and P2 fixed, P3 only listed (from your message). A copy of every changed file is kept first.\n- Your rule \"tap targets at least 44px\" is checked on every screen, on top of the usual checklist.\n- Nothing is deployed or sent. Everything stays on this laptop. The full brief is in `loop-runs/product-review-loop-20261126-035334/brief.md`.\n\n**Track:** full, because you said phones and iPads matter, so the phone width stays in.\n\nStill open after reading your files: the one job the front desk comes to do, and which widths count as \"iPad\".\n\n**Done means:**\n- All 4 screens have a before and an after screenshot.\n- A fresh reviewer finds no open P1 on any screen.\n- Every P1 and P2 is fixed, or has a stated reason.\n- Every button, link, field and menu is at least 44px high and wide on phone and iPad.\n- The original file is kept in the run folder.\n\nAbout 30 minutes and 4 helper agents, within a budget of 60 minutes.\n\n1. Which job does the front desk come to do?\n   Recommended: see today's appointments and book a new one.\n   Why it matters: this decides which screen path counts as P1 if it breaks. \"New appointment\" does nothing today.\n\n2. Which widths should count as iPad and phone?\n   Recommended: phone at 390 px, iPad at 820 px, plus the desktop view at 1440 px.\n   Why it matters: your 44px rule is measured at each width, and findings are judged against them.\n\n3. Which things must meet 44px?\n   Recommended: every button, nav link, text field and dropdown, at least 44px high and 44px wide, except plain text inside table rows.\n   Why it matters: the nav links, the filter and the table rows are small now, so this sets how much gets changed.\n\n4. Should the 44px rule rank as P1 or P2 when a control is smaller?\n   Recommended: P2 in general, P1 for \"New appointment\" and the nav on phone.\n   Why it matters: your bar is P1 and P2, so both get fixed, but a P1 blocks the run from finishing.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Which job does the front desk come to do? | 2. Which widths should count as iPad and phone? | 3. Which things must meet 44px? | 4. Should the 44px rule rank as P1 or P2 when a control is smaller?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 4 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 30 minutes and 4 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: the one job the front desk comes to do, and which widths count as \"iPad\"."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 423,
+      "evidence": "423 words, 233 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you said phones and iPads matter, so the phone width stays in."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 423,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles widths (\"phone at 390 px, iPad at 820 px\"), the 44px rule, P1/P2 bar (\"Fix mode, P1 and P2 fixed\") and persona (\"front desk staff\"), plus the key job and done criteria.",
+      "no_redundancy": "Bar, fix mode, rule and persona are stated as found, not asked; Q3 (which things must meet 44px) partly re-asks what \"tap targets\" already says.",
+      "defaults_quality": "Every question has a concrete default fitted to the file, e.g. \"P2 in general, P1 for 'New appointment' and the nav on phone\" and \"see today's appointments and book a new one\".",
+      "clarity": "Four plain, single-topic questions with most important first, but the brief and done list run long and Q3/Q4 about the rule could be one question.",
+      "respects_words": "Keeps iPads and phones, fixes only P1 and P2 (\"P3 only listed\"), and applies the 44px rule as stated; the table-text exception only drops non-tappable text.",
+      "overall": "A strong opening: grounded in the file, faithful to the ask, every question with a wise default, held back only by some length and one partly redundant question."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.305Z"
+}

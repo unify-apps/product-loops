@@ -1,8 +1,10 @@
 # What each node needs
 
 Node 1 reads this file to build its one round of questions. For every need: look in the places listed first.
-Ask only what is still missing and would change the result. Ask at most 6 questions. A persona you drafted
-(need 3) is always one of them, and so is how bold (need 16) unless the message says. A need whose default
+Ask only what is still missing and would change the result. Ask at most 7 questions, the track (quick or full)
+included. A persona you drafted
+yourself (need 3) is always one of them; a persona the message or `CLAUDE.md` gives is shown in the brief, never
+asked. How bold (need 16) is one of them unless the message says. A need whose default
 you could fill from what you found (for example the market, when every rival found sells in one country) is
 not a question: show it in the brief. Every other need shows
 in the brief with its value or its default, so the person can change it in the same reply.
@@ -32,8 +34,8 @@ Where to look, in this order, for every need:
 | 12 | **Where to save.** The folder for the brief and the sheet. | all | `research/<short name>/` in the working folder. Nothing is published or sent. |
 | 13 | **Sharing.** Publish or send the brief anywhere. | handover | No. The files stay on this laptop. Only a clear "publish it to X" in the answer changes this. |
 | 14 | **Groups.** The category words of the sheet. | research, matrix | The person's own group words, exactly as they wrote them, first. Each example they gave under a group is a capability every helper looks for. Then plain words for what does not fit them. |
-| 16 | **How bold.** Which ideas the brief leads with: catching up with the rivals, or ideas no rival has (a new way to do the job, not a small addition). | think, recommend, review | Both. The brief gets `## Ideas no rival has`: at least 3, each tied to a persona pain or a sheet row, ranked by how big the win is. When the person picks bold, the ranked modules lead with them; when they pick catch-up, the ideas stay a short list. Unless the message already says, this is always one of the questions. |
 | 15 | **Sheet file.** The file kind the person wants the sheet in. | matrix, handover | `capability-sheet.xlsx` (Excel, which Google Sheets also opens) and `capability-sheet.csv` are always made. A Google Sheet or a shared link is made only when the person asks for one, and only with a Google Drive tool this session has. |
+| 16 | **How bold.** Which ideas the brief leads with: catching up with the rivals, or ideas no rival has (a new way to do the job, not a small addition). | think, recommend, review | Both. The brief gets `## Ideas no rival has`: at least 3, each tied to a persona pain or a sheet row, ranked by how big the win is. When the person picks bold, the ranked modules lead with them; when they pick catch-up, the ideas stay a short list. Unless the message already says, this is always one of the questions. |
 
 ## The start check (node 1, before the questions)
 

@@ -1,0 +1,123 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-08",
+  "ask": "copy the booking wizard from reference/booking-flow.html into the clinic prototype as the New appointment flow - exactly, same steps and same look",
+  "expected_track": "full",
+  "notes": "Local reference file, exact mode and target are given. The open point is the clash of looks (the reference uses Georgia and teal; 'same look' means copy them). A good intake names that clash in the brief rather than asking what exact means.",
+  "must_cover": [
+    "reference|wizard",
+    "exact|exactly",
+    "new appointment",
+    "font|georgia|look"
+  ],
+  "findable": [
+    "reference|which reference",
+    "exact|flow only|pixel",
+    "which screen|target screen|new appointment"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html",
+    "reference/booking-flow.html"
+  ],
+  "message": "**Goal:** copy the booking wizard from `reference/booking-flow.html` into the clinic prototype as the New appointment flow, same steps and same look.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, plain HTML, the only one in the folder (from the folder).\n- Reference: `reference/booking-flow.html`, a 3-step wizard: Who is coming in, Pick a time, Check and book (from your message).\n- The \"New appointment\" button on Today does nothing today, so the flow opens from it (from the prototype's code).\n- Mode: exact, same steps and same look, measured on both pages (from \"exactly ... same look\").\n- Look: the wizard keeps its own Georgia serif, teal and card look; the other screens do not change (from your message).\n- No `CLAUDE.md` and no design skill found. The built-in design check is used.\n\n**Track:** full, because you asked to copy the reference and the quick track would leave the copy out.\n\n**Coverage:** 6 clear · partial: Main flow, Edge cases · missing: none\n\n**Done means:**\n- \"New appointment\" on Today opens the wizard.\n- All 3 steps, their text, order and Back/Next/Book work as in the reference.\n- Wizard sizes, fonts and colours measure equal to the reference.\n- Other screens are unchanged, and the prototype link answers 200.\n\nBrief, defaults and the numbered request list (R1 to R5) are in `loop-runs/product-design-loop-20261126-034235/brief.md` and `requests.md`.\n\nAbout 30 minutes and 2 helper agents, within a budget of 60 minutes.\n\n1. Where should the wizard open?\n   Recommended: its own page at `#/new-appointment`, opened by the button, with the header menu still visible.\n   Why it matters: the reference is a full page, and an overlay would change its size and look.\n\n2. What should \"Book\" do on the last step?\n   Recommended: the same as the reference, a \"Booked\" alert, with no new row added to Today.\n   Why it matters: adding a row to Today is a new behaviour the reference does not show.\n\n3. Step 1 has a plain \"Client name\" box in the reference and step 3 shows fixed text (Priya Nair, 10:30, Tom Hale, Room 1). Keep both exactly?\n   Recommended: yes, keep both as in the reference, with nothing connected to the clients list.\n   Why it matters: wiring them to real clients and times is more than \"exactly\".\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. Where should the wizard open? | 2. What should \"Book\" do on the last step? | 3. Step 1 has a plain \"Client name\" box in the reference and step 3 shows"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 3, Why it matters: on 3, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: reference (\"reference\"), exact (\"exact\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 30 minutes and 2 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 6 clear · partial: Main flow, Edge cases · missing: none"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 382,
+      "evidence": "382 words, 232 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you asked to copy the reference and the quick track would leave the copy out."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 382,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles reference, exact mode, entry point (\"New appointment\" on Today opens the wizard) and look (\"keeps its own Georgia serif, teal and card look\"), plus Book behaviour and placement.",
+      "no_redundancy": "Found facts are stated, not asked, but Q3 (\"Keep both exactly?\") partly re-asks what \"exactly\" already answers.",
+      "defaults_quality": "Every question has a specific default that fits \"exactly\", e.g. \"its own page at #/new-appointment\" and \"a 'Booked' alert, with no new row added to Today\".",
+      "clarity": "Only 3 short questions with why-lines and a \"go\" option, but the brief carries jargon (\"Track: full\", \"Coverage: 6 clear · partial\") and extra lines a busy person must skim.",
+      "respects_words": "Keeps \"same steps and same look\" throughout and refuses to add behaviour; only keeping the header menu visible is a small addition beyond the reference.",
+      "overall": "A strong intake: faithful brief, measurable done criteria, few well-defaulted questions; slightly long with one near-redundant question."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.869Z"
+}

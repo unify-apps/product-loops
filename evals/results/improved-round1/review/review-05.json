@@ -1,0 +1,114 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-05",
+  "ask": "check everything in my prototype",
+  "expected_track": "full",
+  "notes": "Two candidates (the app and a one-page marketing site). 'Which prototype' is a fair question here, with the clinic app as the default (more screens, the nav).",
+  "must_cover": [
+    "which prototype|proto-clinic|marketing",
+    "screens",
+    "persona|who uses",
+    "fix|report"
+  ],
+  "findable": [],
+  "fixtures": [
+    "marketing-site/index.html",
+    "proto-clinic/index.html"
+  ],
+  "message": "# Brief: review of the Northside Physio prototype\n\n**Goal:** Click through every screen of the prototype as the person who uses it, list what is wrong, fix it, and review again until no P1 problem is left.\n\n## What I found\n\n- The folder holds two things: `proto-clinic/index.html` (a clickable app with 4 screens: Today, Clients, Invoices, Settings) and `marketing-site/index.html` (a single public page, \"Feel better, faster\", with one Book now link). You said \"prototype\", so I picked `proto-clinic/`. The marketing page is a website, not a prototype, so it is left out unless you say otherwise.\n- `proto-clinic` is one HTML file with sample data. It needs no server: the walk serves it itself.\n- There is no `CLAUDE.md`, no `README`, no earlier run, and no `design-review` or `product-design` skill in this folder. No lessons from earlier runs.\n- Start check: Node 25.9.0 is ok, and Chrome is found. The prototype file exists. The walk can run with a browser.\n- Screens found from the nav (kept with the nav's own labels): Today, Clients, Invoices, Settings. They are saved in `screens.json` in the run folder.\n\n## Needs\n\n| Need | Value |\n|---|---|\n| Prototype | `proto-clinic/index.html` (default: the one app in the folder) |\n| Screens | all 4 the nav reaches: Today, Clients, Invoices, Settings (default) |\n| Who and job | a front-desk receptionist at a physio clinic who checks today's appointments and chases unpaid invoices (default: a guess from the screens) |\n| Fix or report | fix in place, with a copy of every changed file kept in `original/` (default) |\n| Bar | fix P1 and P2; P3 is listed, never fixed (default) |\n| Own rules | the built-in checklist only (default: none found) |\n| Track | full: 1440 px and a 390 px phone width (default) |\n| Where the result goes | `handover.md` in the run folder, on this laptop. Nothing is deployed or sent (default) |\n\n## Coverage scan\n\n| Topic | Status | Why |\n|---|---|---|\n| Scope | clear | `proto-clinic`, 4 screens; the marketing page is out |\n| Who and their job | partial | not stated; guessed from the screens |\n| Data and facts | clear | sample data is inside the file; it is made up and is never a rule |\n| Main flow | partial | Today lists appointments, Clients searches, Invoices filters, Settings saves; \"New appointment\" has no flow in the file |\n| Edge cases | partial | empty states matter: the Invoices Overdue filter and the Clients search |\n| Look | clear | keep the prototype's own colours, fonts and spacing |\n| Outputs | clear | `findings.md`, `fixes.md`, before and after screenshots, `handover.md` |\n| Done signal | clear | see Done means |\n| Words with no number | clear | \"everything\" is the 4 screens; \"wrong\" is the checklist's P1, P2 and P3 levels |\n\n**Lessons applied:** none yet.\n\n**Budget:** 60 minutes.\n\n**Done means:**\n1. Each of the 4 screens (Today, Clients, Invoices, Settings) has a before screenshot and a last after screenshot, at 1440 px and 390 px.\n2. After the last walk, a fresh agent found no open P1 on any of the 4 screens.\n3. Every P1 not fixed is marked \"your call\" in `findings.md`, with one plain sentence.\n4. Every P1 and P2 finding is fixed, or marked with its reason; P3 is listed in `handover.md`.\n5. Every changed file has its original in `original/`.\n\nAbout 60 minutes and 5 helper agents (1 builder check, 1 reviewer for the 4 screens, 1 fixer, 2 fresh rechecks), within a budget of 60 minutes.\n\n## Questions\n\n1. Which prototype should I review?\n   Recommended: `proto-clinic/index.html` (4 screens). The marketing page is left out.\n   Why it matters: reviewing the wrong file, or both, changes which screens are walked and fixed.\n\n2. Who uses it, and what one job do they come to do?\n   Recommended: a front-desk receptionist at the clinic who checks today's appointments and chases unpaid invoices.\n   Why it matters: the person decides which problems count as P1, such as a dead \"New appointment\" button.\n\n3. Should I fix what I find, or only report it?\n   Recommended: fix in place, with a copy of every changed file kept in `original/`.\n   Why it matters: fixing edits your file; report-only changes nothing.\n\n4. What should I fix: P1 and P2, or P1 only?\n   Recommended: P1 and P2. P3 is listed and never fixed.\n   Why it matters: P2 includes spacing and wording slips that change many lines of the file.\n\n5. Quick (P1 only, no phone width) or full?\n   Recommended: full, because you said \"everything\". It adds a 390 px phone check and takes about 20 minutes longer.\n   Why it matters: quick leaves out phone-width problems and all P2 fixes.\n\n6. Any rule of your own to check, such as words to use (Clients or Customers) or a colour rule?\n   Recommended: the built-in checklist only.\n   Why it matters: the nav says \"Clients\" but the Clients screen heading says \"Customers\"; your own word decides which one is fixed.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Which prototype should I review? | 2. Who uses it, and what one job do they come to do? | 3. Should I fix what I find, or only report it? | 4. What should I fix: P1 and P2, or P1 only? | 5. Quick (P1 only, no phone width) or full? | 6. Any rule of your own to check, such as words to use (Clients or Custom"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "40 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 5 helper agents (1 builder check, 1 reviewer for the 4 screens, 1 fixer, 2 fresh rechecks), within a budget of 60 minut"
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "| Track | full: 1440 px and a 390 px phone width (default) |"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 864,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles all four topics: prototype (`proto-clinic/index.html`), screens (Today, Clients, Invoices, Settings), persona (front-desk receptionist), and fix vs report (fix in place, originals kept).",
+      "no_redundancy": "Asks nothing the ask already answers, but Q1 'Which prototype should I review?' and Q2 re-ask things the brief has already settled from the files, so there is some overlap.",
+      "defaults_quality": "Every question has a specific, sensible default, e.g. 'fix in place, with a copy of every changed file kept in `original/`' and 'full, because you said \"everything\"'.",
+      "clarity": "Long: a Needs table, a coverage scan and Done means come before 6 questions, and the questions repeat the table row by row, so a busy person cannot answer it in two minutes.",
+      "respects_words": "Keeps 'everything' as all 4 screens plus the full track; leaving out the marketing page fits 'my prototype' and is put as a question with a default.",
+      "overall": "Strong intake with good defaults that a bare 'go' can accept, held back by length and by questions that repeat the brief."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.679Z"
+}

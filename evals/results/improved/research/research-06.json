@@ -1,0 +1,121 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-06",
+  "ask": "Precisamos decidir os módulos de um app de estoque para farmácias no Brasil. Rivals? not sure, find them. Portuguese sources are fine.",
+  "expected_track": "full",
+  "notes": "Mixed Portuguese and English. Market and source language are given. Rivals must be found. A good intake answers in the person's mix or plain English, names a rival-finding default, and may flag local rules (ANVISA, controlled drugs).",
+  "must_cover": [
+    "decision|modules|módulos",
+    "market|brasil|brazil",
+    "rivals|find",
+    "sources|portuguese|português",
+    "persona|pharmacist|farmacêutico|who uses",
+    "rules|anvisa|regulation"
+  ],
+  "findable": [
+    "market|country|region",
+    "sources|language|portuguese"
+  ],
+  "fixtures": [],
+  "message": "**Goal:** decide the modules of a pharmacy stock app for Brazil, ranked in build order.\n\n**Found:**\n- Product and market: stock app for pharmacies, Brazil (from your message). Portuguese sources are allowed (from your message).\n- Rivals: none named, so I will find 3 to 5. A first search showed Odoo (pharmacy edition), Trier, SULTS, Helix and Inovafarma.\n- Web check: search worked, and I read Odoo's pharmacy page (lots, expiry dates, automatic reorder, multi-store). Inovafarma's site did not open.\n- Where it lands: `research/pharmacy-stock-br/` in this folder, with an Excel sheet, a CSV, and a brief. Nothing is published or sent.\n- What it is for: choosing the first modules to build.\n- Sources: public pages only, no sign-in, no sign-up.\n\n**Track:** full, because you want rivals found and a decision on modules.\n\nStill open after reading your files: who uses it, how bold the ideas should be.\n\n**Done means:**\n- Excel and CSV sheet of 3 to 5 rivals, 5+ features each\n- Every \"yes\" has a link from the rival's own pages\n- Every \"no rival has it\" is searched on each rival's site\n- Brief ends in ranked modules citing sheet rows\n\nEverything else is in `loop-runs/product-research-loop-20261126-035149/brief.md`.\n\nAbout 40 minutes and 12 helper agents, within a budget of 90 minutes.\n\n1. Who uses it every day, and what one job do they come to do?\n   Recommended: a pharmacy manager (also the buyer) and a stock clerk who receives goods, checks lots and expiry dates, and reorders.\n   Why it matters: the persona ranks the modules; it never removes a row from the sheet.\n2. Which ideas should the brief lead with?\n   Recommended: both, catching up with rivals first, plus at least 3 ideas no rival has.\n   Why it matters: this sets whether the top modules are table stakes or new ideas.\n3. Should controlled-drug rules (ANVISA, SNGPC) and tax invoices (NF-e) be in scope?\n   Recommended: yes, as rows in the sheet, ranked by the persona.\n   Why it matters: these decide whether compliance modules are in the first release.\n4. Quick (3 rivals, 2 source kinds) or full (up to 5 rivals, 5 source kinds)?\n   Recommended: full: rivals are unknown and Brazil's rules vary by product.\n   Why it matters: full finds more rivals and more rows but takes longer.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Who uses it every day, and what one job do they come to do? | 2. Which ideas should the brief lead with? | 3. Should controlled-drug rules (ANVISA, SNGPC) and tax invoices (NF-e) b | 4. Quick (3 rivals, 2 source kinds) or full (up to 5 rivals, 5 source kin"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 12 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: who uses it, how bold the ideas should be."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 392,
+      "evidence": "392 words, 214 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you want rivals found and a decision on modules."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 392,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Covers decision (\"decide the modules ... ranked in build order\"), market and sources in the brief, rivals (\"I will find 3 to 5\"), persona (Q1) and rules (Q3 \"ANVISA, SNGPC ... NF-e\").",
+      "no_redundancy": "Market and Portuguese sources are stated, not asked, but Q4 (quick or full) asks again what the brief already settled (\"Track: full\"), and it says \"after reading your files\" when the folder was empty.",
+      "defaults_quality": "Every question has a specific default that fits, e.g. \"a pharmacy manager (also the buyer) and a stock clerk who receives goods, checks lots and expiry dates\" and \"yes, as rows in the sheet\" for ANVISA/NF-e.",
+      "clarity": "Four short questions, each about one thing, ending with \"just 'go'\", but a long brief comes first and the most important question is not clearly put up front.",
+      "respects_words": "Keeps Brazil, finds the rivals as asked, and allows Portuguese sources (\"Portuguese sources are allowed\"), with nothing that goes against the ask.",
+      "overall": "A strong intake: it covers every topic, finds rivals itself, and asks about persona and ANVISA with good defaults, but Q4 repeats a settled choice and the brief is a bit long."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.251Z"
+}

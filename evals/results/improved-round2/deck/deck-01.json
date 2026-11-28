@@ -1,0 +1,118 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-01",
+  "ask": "need a deck for the Acme meeting",
+  "expected_track": "full",
+  "notes": "The weak ask from needs.md. 'Acme' is ambiguous: the company must be pinned down. The goal is question 1 with options.",
+  "must_cover": [
+    "goal",
+    "company|which acme|website",
+    "reader|who is in the meeting|audience",
+    "meeting kind|first meeting",
+    "slide count|slides",
+    "output|powerpoint|pptx|pdf"
+  ],
+  "findable": [],
+  "fixtures": [],
+  "message": "**Goal:** a deck for your meeting with Acme. What it should make the reader believe or do is not stated yet (question 1).\n\n**Found:**\n- Company: \"Acme\", from your message. Nothing says which Acme (no website, no files).\n- The working folder is empty and has no `CLAUDE.md`: no start deck, no notes, no product files, no look to follow.\n- Tools: the PowerPoint and PDF tools work (python-pptx, pymupdf, Chrome and Quick Look found).\n- Defaults I will use: first meeting, plain look (Arial, dark text on white, one dark blue accent), files in `decks/acme-20261126/`.\n\n**Track:** full, because a first meeting is worth the research and review. Quick makes an HTML deck and PDF, 6 to 8 slides.\n\n**Coverage:** 1 clear · partial: Outputs, Look · missing: Scope, Who and their job, Data and facts, Done signal\n\n**Done means:**\n- The deck does what the goal says for the reader.\n- HTML deck and editable PowerPoint open from `decks/acme-20261126/out/`.\n- 8 to 12 main slides, extras in an appendix.\n- Every line cites a source link, an estimate note or your word.\n- Every review finding is fixed or left with why.\n\nThe full brief is in `brief.md` in the run folder.\n\nAbout 60 minutes and 5 helper agents, within a budget of 90 minutes.\n\n1. What should the deck do for the person you meet?\n   Recommended: an outside-in view, covering what is changing in Acme's industry, what it means for Acme, and where the openings are.\n   Other options: (b) a plan ranked by impact on revenue or cost; (c) a vision they can retell to their boss; (d) a pitch with proof and a next step; (e) a technical walk-through with a pilot plan.\n   Why it matters: the goal sets the order of every slide, and the review checks it first.\n\n2. Which Acme is it (website or city), and what do they do?\n   Recommended: I search for the most prominent company called Acme, and write the choice down for you to check.\n   Why it matters: a wrong company means every researched fact is about someone else.\n\n3. Who is in the meeting, with roles and public profile links?\n   Recommended: roles unknown, so the deck is written for a senior business reader.\n   Why it matters: the reader's role decides what the deck stresses (money, risk or speed).\n\n4. Who must the reader convince next, and what does that person care about?\n   Recommended: the reader alone.\n   Why it matters: a deck the reader will pass on to a boss needs the case to stand without you in the room.\n\n5. What do we offer, and what may we claim or not say?\n   Recommended: nothing is claimed about us, because no file says anything, so the deck is about Acme and its industry only.\n   Why it matters: a claim about us needs a file to cite.\n\n6. Which files do you want?\n   Recommended: HTML deck and an editable PowerPoint, no Artifact.\n   Why it matters: a PDF or a private claude.ai page is extra work.\n\n7. Do you have a start deck, meeting notes or a product file to give me?\n   Recommended: none, so I build new in the plain look.\n   Why it matters: a start deck sets the look, and notes give facts research cannot find.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. What should the deck do for the person you meet? | 2. Which Acme is it (website or city), and what do they do? | 3. Who is in the meeting, with roles and public profile links? | 4. Who must the reader convince next, and what does that person care abou | 5. What do we offer, and what may we claim or not say? | 6. Which files do you want? | 7. Do you have a start deck, meeting notes or a product file to give me?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "16 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 5 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 1 clear · partial: Outputs, Look · missing: Scope, Who and their job, Data and facts, Done signal"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 557,
+      "evidence": "557 words, 216 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because a first meeting is worth the research and review. Quick makes an HTML deck and PDF, 6 to 8 slides."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 557,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 7,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "All six topics settled: goal (Q1), which Acme (Q2), reader (Q3), 'first meeting' default, '8 to 12 main slides', output files (Q6).",
+      "no_redundancy": "Empty folder and a one-line ask give nothing to find; no question repeats a known fact, found facts are stated in the brief.",
+      "defaults_quality": "Most defaults are concrete ('HTML deck and an editable PowerPoint', 'senior business reader'), but 'the most prominent company called Acme' is a risky guess for an ambiguous name.",
+      "clarity": "Seven questions plus jargon lines like 'Coverage: 1 clear · partial: Outputs, Look' and track/budget notes make it long for a quick reply.",
+      "respects_words": "Keeps 'a deck for the Acme meeting' as asked and adds nothing the person ruled out.",
+      "overall": "Solid intake that settles every topic with defaults, held back by length, jargon and a weak default for which Acme."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.909Z"
+}

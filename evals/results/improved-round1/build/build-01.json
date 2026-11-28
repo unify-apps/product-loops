@@ -1,0 +1,112 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-01",
+  "ask": "build me a prototype for a dog walking app lol. owners book a walker, walkers see their day. keep it simple",
+  "expected_track": "quick",
+  "notes": "Short, casual, no files. 'keep it simple' is a vague word the intake should turn into a number or a scope (how many screens). Two personas in one sentence. Should be quick: one page shell, list states.",
+  "must_cover": [
+    "persona|who uses|owners|walkers",
+    "module",
+    "how deep|in full|shell|depth",
+    "look|colour|color|font",
+    "simple"
+  ],
+  "findable": [],
+  "fixtures": [],
+  "message": "# Brief: dog walking app prototype\n\n**Goal:** a clickable web prototype of a dog walking app where owners book a walker and walkers see their day, kept simple.\n\n**Your words:** \"build me a prototype for a dog walking app lol. owners book a walker, walkers see their day. keep it simple\"\n\n- **Product:** new, in `dog-walking/` in this folder (default; the folder was empty, no earlier runs, no brief found).\n- **Persona (default, my guess):** a busy dog owner who books a walker for tomorrow in under a minute. The walker's one job: know today's walks in order.\n- **Modules (default, my guess):**\n  1. Book a walker (`#/book`): pick dog, walker, day and slot, confirm, then see your booked walks.\n  2. My day (`#/day`): a walker's walks today in time order (dog, owner, address, time, status).\n- **Follow:** nothing, flow only (default). **Depth:** every module in full (default).\n- **Look (default):** the plain look from the loop's build notes; initials only, no photos, nothing downloaded.\n- **Name:** a working name only. The 3 name and mark options are skipped on the quick track.\n- **Ships:** this laptop only, as a local link (default). Nothing is published.\n- **How it runs:** one `index.html` with its CSS and JS inside, served locally (default). Stays on localStorage, no login, no payments.\n- **Click checks:** will run in a real browser (chrome-headless-shell found).\n- **\"Simple\" with a number (default):** 2 pages, no login, no payments, a booking in at most 3 taps.\n\n**Requests list:** R1 the whole ask; R2 owners book a walker; R3 walkers see their day; R4 keep it simple.\n\n| Topic | Status | Why |\n|---|---|---|\n| Scope | partial | two flows named; extras (reviews, maps, chat) not mentioned, left out |\n| Who and their job | partial | owner and walker named, persona is my draft |\n| Data and facts | missing | no walkers, dogs or walks given; sample data is made up |\n| Main flow | partial | book, then see the day; steps drafted |\n| Edge cases | missing | no free walker, empty day not mentioned |\n| Look | missing | no style given, plain look |\n| Outputs | clear | one local link per page |\n| Done signal | partial | drafted below |\n| Words with no number | partial | \"simple\" given a number above |\n\n**Lessons applied:** none yet.\n\n**Budget:** 120 minutes.\n\n**Done means:**\n1. Both modules are built: Book a walker, My day.\n2. Each module's last review round has 0 P1.\n3. Every link passes the click check: each opens, no dead click, no placeholder text, no page error.\n4. The requests list has no open line.\n5. A must-have in your words: \"owners book a walker\".\n6. A must-have in your words: \"walkers see their day\".\n\nAbout 70 minutes and 7 helper agents, within a budget of 120 minutes.\n\n## Questions\n\n1. Who uses it, and what one job do they come to do?\n   Recommended: a busy dog owner who books a walker for tomorrow in under a minute; the walker opens it to see today's walks in order.\n   Why it matters: the persona decides which module is built first and what the pages say.\n\n2. What are the modules, in order, and what must each have?\n   Recommended: Book a walker (dog, walker, slot, confirm, my booked walks), then My day (today's walks in time order).\n   Why it matters: this is the list of pages that get built; anything not on it is not built.\n\n3. Does the walker see one fixed walker's day, or pick who they are?\n   Recommended: a walker picker at the top of My day (3 sample walkers), and a walk booked by an owner shows in that walker's day.\n   Why it matters: it decides whether the two modules are linked by one booking or are two separate pages.\n\n4. What does booking take, and what does the owner see after?\n   Recommended: pick a dog (2 sample dogs), a walker who is free, and a slot tomorrow (30 or 60 min); one Confirm tap, then a card showing walker, dog and time.\n   Why it matters: it sets the form fields, the sample data and the confirm screen.\n\n5. What shows when no walker is free, or a walker has no walks today?\n   Recommended: \"No walkers free at this time, try another slot\" with the slots still tappable; an empty day shows \"No walks today\"; the sample data holds one full slot and one walker with no walks so you can click both.\n   Why it matters: these are the empty and error states, and the data has to include them.\n\n6. Any look to follow (logo, colours, fonts) or a name you have?\n   Recommended: none, the plain look and a working name such as \"Pawline\", no photos, initials only.\n   Why it matters: it decides whether the screens carry your brand or the plain look.\n\n7. Which track: quick or full?\n   Recommended: quick. Two modules, each one list page in the shell, no name and mark options and no demo states. Full adds a detail page, the create flow, empty-state links, and 3 name options on the header, at about 40 more minutes and 4 more helpers.\n   Why it matters: quick is the fastest way to something clickable; full is what you want if you will demo it to someone.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. Who uses it, and what one job do they come to do? | 2. What are the modules, in order, and what must each have? | 3. Does the walker see one fixed walker's day, or pick who they are? | 4. What does booking take, and what does the owner see after? | 5. What shows when no walker is free, or a walker has no walks today? | 6. Any look to follow (logo, colours, fonts) or a name you have? | 7. Which track: quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "37 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 70 minutes and 7 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "- **Name:** a working name only. The 3 name and mark options are skipped on the quick track."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 913,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 8,
+      "no_redundancy": 7,
+      "defaults_quality": 8,
+      "clarity": 4,
+      "respects_words": 7,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Persona, modules, look and 'simple' (\"2 pages, no login, no payments, a booking in at most 3 taps\") are all settled, but depth contradicts itself: brief says \"every module in full\" while Q7 recommends quick \"each one list page in the shell\".",
+      "no_redundancy": "Nothing findable is asked, but Q1 and Q2 re-ask the persona and modules the brief already drafted, word for word, so they add questions without new information.",
+      "defaults_quality": "Every question has a specific default that fits the ask, e.g. \"a walker picker at the top of My day (3 sample walkers)\" and \"No walkers free at this time, try another slot\".",
+      "clarity": "A long brief, a status table, done list and 7 questions; too much for a person who said \"keep it simple\" to answer in two minutes, and the most important question (depth) comes last.",
+      "respects_words": "Keeps 'simple' and the two flows, but the depth default conflicts between brief and Q7, and the 120-minute budget and topic table run against a 'keep it simple lol' prototype.",
+      "overall": "Sensible defaults and full topic coverage, so 'go' would mostly work, but the wall of text, duplicated questions and the full-vs-quick contradiction leave the build depth unclear."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.237Z"
+}

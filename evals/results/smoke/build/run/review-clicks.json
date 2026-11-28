@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-11-25T22:09:39.786Z",
+  "browser": "chrome-headless-shell",
+  "pass": true,
+  "clicksChecked": true,
+  "links": 1,
+  "failing": [],
+  "routes": [
+    {
+      "url": "http://127.0.0.1:4400/#/orders",
+      "opened": true,
+      "errors": [],
+      "placeholders": [],
+      "missing": [],
+      "clicks": {
+        "tried": 9,
+        "dead": [],
+        "skipped": 0,
+        "otherSite": 0
+      },
+      "shot": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/smokework/build/loop-runs/product-build-loop-20261126-032655/shots/review/orders.png"
+    }
+  ]
+}

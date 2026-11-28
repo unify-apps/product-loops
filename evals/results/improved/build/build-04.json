@@ -1,0 +1,121 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-04",
+  "ask": "We run a 14-hospital network (about 4,000 beds). Build a clickable prototype of a bed management tool for charge nurses: a bed board by ward, the admit / transfer / discharge flow, a housekeeping queue for beds being cleaned, and an exec dashboard with occupancy. It's for our innovation board in three weeks, so it has to look like a real product, not a wireframe.",
+  "expected_track": "full",
+  "notes": "Large enterprise ask with four named modules and a clear persona. Depth is implied ('a real product'). Good intake: confirms modules and must-haves, sample data that looks real but is made up (patient privacy), the look, and the research-first option is unnecessary since modules are named.",
+  "must_cover": [
+    "persona|charge nurse|who uses",
+    "module",
+    "how deep|in full|shell|depth",
+    "look|colour|color|font",
+    "sample data|data|patients",
+    "exec|dashboard",
+    "privacy|patient names|fake"
+  ],
+  "findable": [
+    "persona|who uses|who is it for"
+  ],
+  "fixtures": [],
+  "message": "**Goal:** a clickable bed management prototype for charge nurses, polished enough to show the innovation board as a real product.\n\n**Found:**\n- Customer: a 14-hospital network, about 4,000 beds (from your message)\n- Who it is for: charge nurses (from your message), with an exec view for leadership\n- Four parts named: bed board by ward, admit / transfer / discharge flow, housekeeping queue, exec dashboard with occupancy (from your message)\n- Where it lands: a new product in `bed-management/` in this folder, which was empty. It runs only on this laptop.\n- What it is for: the innovation board demo in three weeks (from your message)\n- Clicks will be checked in a real browser (headless Chrome found)\n\n**Track:** full, because there are four parts and a board will see it. Full adds three name and logo options and a link for every screen state.\n\nStill open after reading your files: the ward layout and sample data, what \"real product\" means for the look, and what you will demo live.\n\n**Done means:**\n- All four parts work, with real clicks and no dead buttons\n- Admit, transfer and discharge change the bed board and the dashboard\n- Every screen state, including empty ones, has its own link\n- A fresh reviewer finds no major problem and no page error\n\nThe full brief, with my defaults for everything else, is in `loop-runs/product-build-loop-20261126-035044/brief.md`.\n\nAbout 40 minutes and 14 helper agents, within a budget of 120 minutes.\n\n1. Which wards and hospital should the nurse view show, and how does the exec view relate?\n   Recommended: one flagship hospital with 8 wards (ED, ICU, cardiology, surgical, medical, maternity, paediatrics, oncology) and a hospital switcher; the exec view covers all 14.\n   Why it matters: this decides the sample data every screen uses.\n2. What should \"real product, not a wireframe\" look like?\n   Recommended: a clean, modern clinical software look, light theme, one accent colour, a colour per bed status (free, occupied, cleaning, blocked).\n   Why it matters: it sets the look of every screen, and you have no brand files here to follow.\n3. Which flow will you demo live to the board?\n   Recommended: admit a patient to a free bed and watch the bed board and occupancy update.\n   Why it matters: that flow gets the most polish and the most careful sample data.\n4. What should happen when there is no free bed, or a transfer targets a full ward?\n   Recommended: show a clear message with the nearest wards that do have a free bed, and let the nurse queue the patient.\n   Why it matters: this is the case a nurse hits most, and the board will ask about it.\n5. Do you have a name, logo or brand colours to use?\n   Recommended: no; I make three name options to pick from, and use the first.\n   Why it matters: it avoids a rename after the board sees it.\n6. Anything extra: photos, two layout versions, a PDF guide, a public link?\n   Recommended: none; initials instead of photos, and nothing leaves this laptop.\n   Why it matters: a public link is only made if you ask for it now.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Which wards and hospital should the nurse view show, and how does the  | 2. What should \"real product, not a wireframe\" look like? | 3. Which flow will you demo live to the board? | 4. What should happen when there is no free bed, or a transfer targets a  | 5. Do you have a name, logo or brand colours to use? | 6. Anything extra: photos, two layout versions, a PDF guide, a public lin"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 1 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.571,
+      "evidence": "missing: module, how deep, privacy"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 14 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: the ward layout and sample data, what \"real product\" means for the look, and what you will demo live."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 534,
+      "evidence": "534 words, 245 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because there are four parts and a board will see it. Full adds three name and logo options and a link for every screen sta"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 534,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 7,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Persona, modules, depth (\"Track: full\", \"All four parts work\"), look (Q2), sample data and exec scope (Q1) are settled, but patient privacy / fake patient names is never addressed beyond \"initials instead of photos\".",
+      "no_redundancy": "Persona is stated as found (\"charge nurses (from your message)\") rather than asked; no question repeats what the ask already gives.",
+      "defaults_quality": "Every question has a specific default, e.g. \"one flagship hospital with 8 wards ... the exec view covers all 14\" and \"a colour per bed status (free, occupied, cleaning, blocked)\".",
+      "clarity": "Six questions after a long brief; Q1 bundles two things (\"Which wards and hospital ... and how does the exec view relate?\") but the most important questions come first in plain words.",
+      "respects_words": "Keeps the four named parts, the three-week board demo and \"look like a real product, not a wireframe\" (Q2 polished clinical look, full track).",
+      "overall": "A strong, faithful intake with good defaults that a person could \"go\" on, held back by length and the missing explicit choice on fake patient data for a hospital demo."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:46.963Z"
+}

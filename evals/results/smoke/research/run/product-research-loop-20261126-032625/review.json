@@ -1,0 +1,9 @@
+{"items":[
+{"id":"S1","passes":true,"evidence":"check-research all: 30 checks PASS; xlsx Matrix 73 rows = csv 73"},
+{"id":"S2","passes":true,"evidence":"check script PASS; opened rival pages for Wave, FreshBooks, Bonsai"},
+{"id":"S3","passes":true,"evidence":"opened 5 yes-cell links (C24 Wave, C27 FreshBooks, C43 Bonsai, C26 Bonsai, C64 FreshBooks); all support the cell, C27 slightly overstated"},
+{"id":"S4","passes":true,"evidence":"beats/*.md for 3 rivals; my own 2 searches per rival on C50 found no counterexample"},
+{"id":"S5","passes":true,"evidence":"check script kinds product pages, help centre PASS; rival pages cite both kinds"},
+{"id":"S6","passes":true,"evidence":"brief.md ends in ## Ranked modules, 10 ranks, each cites existing sheet rows; script PASS"}],
+"spec":4,"quality":4,"verdict":"PASS",
+"findings":[{"level":"P2","what":"C27 FreshBooks yes: page describes installment schedule, never says deposit","fix":"reword the cell note to installment schedule on chosen dates"}]}

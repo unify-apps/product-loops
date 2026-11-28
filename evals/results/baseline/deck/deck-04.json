@@ -1,0 +1,127 @@
+{
+  "arm": "baseline",
+  "loop": "deck",
+  "case": "deck-04",
+  "ask": "second meeting with Northwind Health's CIO next week - technical deep dive on how we integrate with their Epic EHR. 12-15 slides.",
+  "expected_track": "full",
+  "notes": "A call transcript gives the people, their systems, pains and asks. CLAUDE.md gives look and claims. A good intake builds the goal from the transcript (a pilot plan for one hospital) and asks very little.",
+  "must_cover": [
+    "goal|pilot",
+    "reader|cio|integration lead",
+    "slide count|12",
+    "fhir|hl7|epic",
+    "claims|soc 2",
+    "look|inter"
+  ],
+  "findable": [
+    "meeting kind|technical|first meeting",
+    "slide count|how many slides",
+    "look|font|colour|color",
+    "claims|what we may claim",
+    "company facts|systems|epic"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "notes/call-2026-11-20.txt"
+  ],
+  "message": "Run started: `loop-runs/product-deck-loop-20261126-032856/`. Before I research and build, here is my brief and the questions it leaves open.\n\n**Start check**\n- Deck tools: ready (python-pptx, PDF reader, Chrome and Quick Look all found). The editable PowerPoint and the PDF can be made.\n- Web search: WebSearch and WebFetch are in this session. Research on Northwind Health, the healthcare IT industry and Epic can use public sources, each fact with a link.\n- Start deck: none in the folder. I will build a new deck in the look from your `CLAUDE.md`.\n\n**What I read**\n- `CLAUDE.md` (Larkspur AI deck style): Inter font, teal #0E7490, ink #0F172A, architecture diagrams as boxes with no icons. Claims allowed: SOC 2 Type II (2026), and FHIR R4 read and write through the Epic App Orchard listing. Never say HIPAA \"certified\".\n- `notes/call-2026-11-20.txt`: the intro call with Raj Patel (CIO) and Maria Gomez (Director of Clinical Apps). Northwind has 9 hospitals, has used Epic since 2019 and moves to Epic's cloud hosting next year. Nurses spend about 25 minutes per discharge summary, mostly copy and paste. They asked how you read and write back to Epic (FHIR or HL7), where data lives, and whether you have SOC 2. Raj wants a pilot plan for one hospital. Maria cares about nurse time. Raj will bring his integration lead.\n\n**My brief so far**\n- Company: Northwind Health (9 hospitals, on Epic).\n- Meeting: second meeting, next week. A technical deep dive on how we integrate with their Epic EHR. Raj Patel (CIO) and his integration lead attend. Maria Gomez may attend too.\n- Meeting kind: technical buyer.\n- Slides: 12 to 15 main slides (your range, which sits inside the technical-buyer norm of 10 to 15). Extra material goes to an appendix. The last appendix slide is a Sources slide.\n- Look: Inter, teal #0E7490 and ink #0F172A on white, architecture diagrams as boxes with no icons.\n- Claims: only SOC 2 Type II (2026) and FHIR R4 read and write through the Epic App Orchard listing. Nothing else about the product, no HIPAA \"certified\" wording, and no invented product screens. Anything the notes and `CLAUDE.md` do not cover (for example, where data lives, HL7 support, how fast it runs) becomes a question for the meeting. It will not be stated as a fact.\n- Output: HTML deck and an editable 16:9 PowerPoint. No PDF and no Artifact unless you say so.\n- Files go to `decks/northwind-health-20261126/`.\n- Speaker notes on every slide. Every figure marked public, our estimate or your word.\n- People research uses only public, work-related information.\n\n**Questions** (each shows its default; answer any, or reply \"go\" to take them all)\n\n1. **What should Raj and his integration lead believe or do after this deck?** Options:\n   - (a) A technical walk-through: how we read and write Epic through FHIR R4, where data lives, security, and what a one-hospital pilot needs from their team. *Default: it fits a CIO who asked exactly these questions and wants a pilot plan.*\n   - (b) A pilot plan first: scope, timeline and success measures for one hospital, with the integration shown as the enabling part.\n   - (c) A risk and security case: SOC 2, data flow and Epic cloud-hosting readiness, built to get past their security review.\n   - (d) A nurse-time case: the 25-minute discharge summary cut down, with the integration shown only as far as it makes that real.\n2. **What is the one idea the deck argues, and which order?** *Default: \"We connect to your Epic the way Epic expects, with a small footprint, so one hospital can pilot in weeks.\" The order is the technical-walk-through order: the problem in one slide, the architecture, the read and write flows, data and security, the Epic cloud move, then the pilot plan.* The \"weeks\" is only a placeholder. I will not state a timeline unless you give me one. Do you want a different idea or order?\n3. **Who must Raj convince next, and what do they care about?** *Default: Raj alone.* Maria cares about nurse time. Does Raj need to take this to a CISO, a CEO or a clinical board, and do they care about risk, cost or speed?\n4. **Is Maria in the room, and who is the integration lead?** *Default: Maria may attend, the integration lead's name and role are unknown, and I write for a senior technical reader.* Give me the name and profile link if you want them researched.\n5. **Are FHIR R4 and App Orchard the whole integration story?** The call asked \"FHIR? HL7?\". *Default: the deck claims only FHIR R4 read and write through App Orchard. It shows HL7 as an open question for the meeting.* If you support HL7 v2 or anything else, say what and I will add it.\n6. **Where does Northwind's data live, and what do we store?** They asked this and nothing in the files says. *Default: no claim. The slide holds the question and the points you must decide, marked \"to confirm\".* Please give me the facts (hosting, regions, retention, whether anything is kept) if you want them stated.\n7. **What do we say about Epic's cloud hosting move next year?** *Default: describe it from public Epic sources only, and make no claim that our product works with it unless you tell me it does.*\n8. **What pilot plan may we claim?** Raj wants a plan for one hospital. *Default: a plan framed as a proposal with phases and the asks of both sides, every number marked \"our estimate\" (for example, what to measure for the 25-minute summary). No customer names or results unless you give them.* Do you have a real pilot template, a timeline or a customer reference I may use?\n9. **Anything to lead with or leave out?** *Default: none.*\n10. **Any product diagrams or architecture files to reuse?** *Default: none. I draw the architecture myself, in your box style with no icons, using only what you have told me.*\n11. **Output or location changes?** *Default: HTML deck and editable PowerPoint, no PDF, no Artifact, files in `decks/northwind-health-20261126/`.* Add a PDF if you want to send it to read afterwards.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 11,
+      "evidence": "1. What should Raj and his integration lead believe or do after this deck | 2. What is the one idea the deck argues, and which order? *Default: \"We c | 3. Who must Raj convince next, and what do they care about? *Default: Raj | 4. Is Maria in the room, and who is the integration lead? *Default: Maria | 5. Are FHIR R4 and App Orchard the whole integration story? The call aske | 6. Where does Northwind's data live, and what do we store? They asked thi | 7. What do we say about Epic's cloud hosting move next year? *Default: de | 8. What pilot plan may we claim? Raj wants a plan for one hospital. *Defa | 9. Anything to lead with or leave out? *Default: none.* | 10. Any product diagrams or architecture files to reuse? *Default: none. I | 11. Output or location changes? *Default: HTML deck and editable PowerPoin"
+    },
+    "asked_le_7": {
+      "pass": false,
+      "value": 11,
+      "evidence": "11 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "11 of 11 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 11"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "19 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: meeting kind (\"technical\"), claims (\"claims\"), company facts (\"epic\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 1038,
+      "evidence": "1038 words, 432 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1038,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 8,
+      "clarity": 4,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles goal and pilot (Q1, Q8), readers 'Raj Patel (CIO) and his integration lead', '12 to 15 main slides', FHIR/HL7 (Q5), claims 'only SOC 2 Type II (2026)...', and look 'Inter, teal #0E7490'.",
+      "no_redundancy": "Slide count, look, claims and company facts are stated in the brief, not asked; Q10 and Q11 (diagrams, output location) add low-value asks the person could skip.",
+      "defaults_quality": "Most defaults are concrete and safe, e.g. Q5 'claims only FHIR R4 read and write through App Orchard. It shows HL7 as an open question'; Q2 adds a 'weeks' placeholder, and Q3 'Raj alone' is a thin default.",
+      "clarity": "Eleven questions after a long start check and brief; several are compound, e.g. Q3 'Does Raj need to take this to a CISO, a CEO or a clinical board, and do they care about risk, cost or speed?'.",
+      "respects_words": "Keeps 'technical deep dive' and the '12 to 15' range, with default goal (a) 'A technical walk-through'; nothing overrides the ask.",
+      "overall": "Accurate, grounded brief with safe defaults so 'go' works, but it is too long and has too many questions for a one-round intake."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.849Z"
+}

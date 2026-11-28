@@ -1,0 +1,121 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-06",
+  "ask": "review the clinic prototype, focus on the invoices screen - the owner says it feels broken",
+  "expected_track": "full",
+  "notes": "Focus given. The planted empty-state fault is on Invoices. A good intake keeps all screens in the walk but weights Invoices, and asks fix or report.",
+  "must_cover": [
+    "invoices|focus",
+    "screens|other screens",
+    "fix|report",
+    "bar|p1"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "focus|what to focus on"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** review the Northside Physio prototype screen by screen, with extra attention on Invoices, and find why it feels broken.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, the only one in this folder (single file, no server needed).\n- Screens: all 4 the nav reaches: Today, Clients, Invoices, Settings (`screens.json` is written).\n- Focus: Invoices, from your message. Every screen is still walked; Invoices gets the closest look.\n- Who and job: a clinic owner or receptionist who books visits and chases unpaid invoices (my guess, from the screens' words).\n- Browser check passed (Node 25.9.0, Chrome found), so screenshots and script checks will run.\n- Nothing is deployed, published or sent. Everything stays on this laptop.\n\n**Track:** full, because the owner says it \"feels broken\" and phone width should be checked too.\n\n**Coverage:** 5 clear · partial: Who and their job, Edge cases · missing: Done signal, fix or report\n\n**Done means:**\n- All 4 screens have a before screenshot and a last after screenshot.\n- A fresh agent finds no open P1 on any screen.\n- Every P1 not fixed is marked \"your call\" in one sentence.\n- Every P1 and P2 finding is fixed, or has a stated reason.\n- Every changed file has its original kept in `RUN/original/`.\n\nThe full brief goes to `brief.md` in the run folder once you reply.\n\nAbout 40 minutes and 7 helper agents, within a budget of 60 minutes.\n\n1. Should I fix what I find, or only report it?\n   Recommended: fix in place, keeping a copy of every file I change.\n   Why it matters: \"feels broken\" could mean you want a list for the owner or a repaired prototype.\n\n2. What should I fix: P1 and P2, or P1 only?\n   Recommended: P1 and P2. P3 is listed, never fixed.\n   Why it matters: P2 covers spacing and wording slips that make a screen feel unfinished.\n\n3. Who uses it, and what one job do they come to do?\n   Recommended: the clinic owner, who checks which invoices are paid or still owed.\n   Why it matters: the persona decides which problems count as P1 on Invoices.\n\n4. Any rule of your own to check?\n   Recommended: the built-in checklist only (no `CLAUDE.md` or review skill found here).\n   Why it matters: your own rules are checked on every screen and can raise a finding to P1.\n\n5. Quick (P1 only, no phone width) or full?\n   Recommended: full. Quick is faster but skips the phone check and never fixes P2.\n   Why it matters: full takes about 40 minutes; quick about 20.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Should I fix what I find, or only report it? | 2. What should I fix: P1 and P2, or P1 only? | 3. Who uses it, and what one job do they come to do? | 4. Any rule of your own to check? | 5. Quick (P1 only, no phone width) or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 7 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 5 clear · partial: Who and their job, Edge cases · missing: Done signal, fix or report"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 433,
+      "evidence": "433 words, 235 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because the owner says it \"feels broken\" and phone width should be checked too."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 433,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles focus (\"Invoices gets the closest look\"), screens (\"all 4 the nav reaches\"), fix vs report (Q1) and the bar (Q2 \"P1 and P2, or P1 only?\").",
+      "no_redundancy": "States the prototype and focus as found facts (\"Focus: Invoices, from your message\") instead of asking; the persona question is a guess it flags, not a findable fact.",
+      "defaults_quality": "Every question has a specific default, e.g. \"fix in place, keeping a copy of every file I change\" and \"P1 and P2. P3 is listed, never fixed.\"",
+      "clarity": "Five questions after a long brief with a jargon line (\"Coverage: 5 clear · partial...\"), and Q2 and Q5 overlap (quick = \"P1 only\").",
+      "respects_words": "Keeps the whole-prototype review with Invoices as focus and ties the track to the owner's \"feels broken\"; the Done list assumes fixing before Q1 is answered, a small presumption.",
+      "overall": "A strong, well-grounded opening with good defaults, slightly heavy and with one redundant question pair."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.892Z"
+}

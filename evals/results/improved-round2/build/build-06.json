@@ -1,0 +1,125 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-06",
+  "ask": "Make a clickable demo of a chat assistant exactly like ChatGPT for our in-house legal team. Demo is Friday.",
+  "expected_track": "full",
+  "notes": "'Exactly like ChatGPT' means exact: streamed answers, action row, collapsible sidebar, recent chats. The default must not water it down to flow only. CLAUDE.md answers the look and a privacy rule for sample data.",
+  "must_cover": [
+    "exact|exactly",
+    "streamed|streaming",
+    "sidebar|recent chats|history",
+    "persona|lawyer|legal team|who uses",
+    "friday|deadline",
+    "sample|answers|matters"
+  ],
+  "findable": [
+    "font|typeface",
+    "colour|color|palette",
+    "logo"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "brand/kestrel-logo.svg"
+  ],
+  "message": "**Goal:** a clickable web demo of a chat assistant that looks and works exactly like ChatGPT, for Kestrel Legal's in-house legal team, ready for Friday.\n\n**Found:**\n- Follows ChatGPT exactly, not just the flow (from your ask): streamed answers, the action row under each answer, a sidebar that collapses, recent chats.\n- Look: IBM Plex Sans and Mono, navy #14213D, gold #C9A227, paper #FAFAF7 (from CLAUDE.md).\n- Logo: `brand/kestrel-logo.svg`, top left (from CLAUDE.md).\n- Sample data uses ids like \"Matter 1042\", never real client names (from CLAUDE.md).\n- Users: the in-house legal team (from your ask).\n- Click checks will run in chrome-headless-shell (start check passed).\n\n**Track:** full, because the demo is Friday and it has 3 modules.\n\n**Coverage:** 4 clear · partial: Who and their job, Main flow, Data and facts, Edge cases · missing: none\n\n**Done means:**\n- Chat, Sidebar and recent chats, and Account menu are all built.\n- Every answer streams, with its action row underneath.\n- Every link in links.md opens, with no dead click.\n- A fresh reviewer finds no P1 in any module.\n- Demo links exist for every list, empty state and new chat.\n\nAbout 70 minutes and 12 helper agents, within a budget of 120 minutes.\n\n1. What is the one job a lawyer on the team comes to do in the demo?\n   Recommended: paste a clause or ask a question, get an answer, copy it into an email.\n   Why it matters: it picks the sample chats and the first thing on screen.\n\n2. Which sample conversations should the demo hold?\n   Recommended: 5 recent chats: NDA clause review, a termination notice, a GDPR question, a contract summary, an empty new chat. All under \"Matter 10xx\" ids.\n   Why it matters: Friday's audience sees these first, so they set the story.\n\n3. Which modules, and in what order?\n   Recommended: 1 Chat (composer, streamed replies, copy, thumbs, regenerate), 2 Sidebar and recent chats (collapse, search, rename, delete), 3 Account menu and settings.\n   Why it matters: this is the list the builders work through, and what the review checks.\n\n4. Is a local link on this laptop enough for Friday?\n   Recommended: yes, laptop only, nothing published.\n   Why it matters: a public link means a deploy, which I never do unless you ask.\n\n5. Should answers show legal extras that ChatGPT does not have (citations, a \"not legal advice\" line)?\n   Recommended: no, ChatGPT's own screens only, with legal wording in the sample answers.\n   Why it matters: \"exactly like ChatGPT\" is built exact, so any extra is a departure from it.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. What is the one job a lawyer on the team comes to do in the demo? | 2. Which sample conversations should the demo hold? | 3. Which modules, and in what order? | 4. Is a local link on this laptop enough for Friday? | 5. Should answers show legal extras that ChatGPT does not have (citations"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 70 minutes and 12 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 4 clear · partial: Who and their job, Main flow, Data and facts, Edge cases · missing: none"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 435,
+      "evidence": "435 words, 205 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because the demo is Friday and it has 3 modules."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 435,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles exact (\"Follows ChatGPT exactly\"), streamed answers, sidebar and recent chats, persona (Q1 lawyer's one job), Friday deadline, and sample chats under \"Matter 10xx\" ids (Q2).",
+      "no_redundancy": "Font, colours and logo are stated as found \"(from CLAUDE.md)\", never asked; only Q3 on modules partly repeats what the brief already lists.",
+      "defaults_quality": "Every question has a specific default, e.g. \"5 recent chats: NDA clause review, a termination notice, a GDPR question...\" and \"yes, laptop only, nothing published\".",
+      "clarity": "Five short questions, most important first, but the brief has internal jargon (\"Track: full\", \"Coverage: 4 clear · partial\", \"no P1\", \"links.md\") that a busy person must decode.",
+      "respects_words": "Keeps \"exactly like ChatGPT\" (Q5 default \"ChatGPT's own screens only\"), the legal team as users, and Friday; adds nothing that overrides the ask.",
+      "overall": "A strong, faithful intake that covers every needed topic with good defaults so \"go\" works; held back slightly by jargon and a somewhat redundant modules question."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.462Z"
+}

@@ -31,7 +31,9 @@ A short table: category, what most rivals have, where they are weak. Cite sheet 
 ## Where we beat them
 Each `beat` row worth building, one line each, with its sheet id and source. Only rows marked `beat` in the
 sheet: `CHECK brief` fails any other id here. Say for each one what the beat proof searched, in a few words.
-When a rival has something close, name it and say plainly what is still different.
+When a rival has something close, name it and say plainly what is still different. A beat the proof dropped is
+named in words under `## Where we beat them` ("Dropped: instant payouts, Wave has it"), never by its row id: the
+brief check reads an id there as a beat claim.
 
 ## Ideas no rival has
 At least 3, from thinking.md `## Ideas`, ranked by how big the win is for the persona. One line each: the idea,

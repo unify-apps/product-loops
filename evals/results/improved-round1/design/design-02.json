@@ -1,0 +1,114 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-02",
+  "ask": "the rows on the invoices table in proto-clinic are too tight, give them more room",
+  "expected_track": "quick",
+  "notes": "One small vague note. Quick track. A good intake reads 'more room' as a number (for example 4 px to 10 px row padding) and asks one question at most: the Invoices table only, or every table.",
+  "must_cover": [
+    "padding|row height|px",
+    "invoices",
+    "everywhere|other tables|clients|today"
+  ],
+  "findable": [
+    "which prototype|which file"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "## Brief\n\n**Goal:** give the rows of the Invoices table in `proto-clinic` more room.\n\n**Prototype:** `proto-clinic/index.html`, one plain HTML page with four screens (Today, Clients, Invoices, Settings). It has no `dev` script, so the run serves the folder locally and gives you a link.\n\n**Reference:** none. Copying a reference is skipped, so this is a notes run.\n\n**What I found by reading the code:** the rows are tight because every table shares one rule, `th, td { padding: 4px 10px }`. A row on Invoices is about 29px tall today. The Today and Clients tables use the same rule, so the change has to be scoped to the Invoices table or it would move them too.\n\n**Your notes, as a numbered list:**\n\n| # | Note, in words | Screen | Where | How it is proved | Status |\n|---|---|---|---|---|---|\n| 1 | Invoices table: more room in the rows. Cell padding goes from `4px 10px` to `14px 12px`, so a row grows from about 29px to about 47px *(my reading)* | Invoices | this place only | measured padding of the invoice cells is 14px; the Today and Clients tables are unchanged | todo |\n\n**Defaults I am using, unless you say otherwise:**\n- Design rules: no `product-design` or `design-review` skill is installed and there is no `CLAUDE.md` here, so the built-in design check applies.\n- Nothing is committed, pushed or published. The change stays in the file, and you get a local link.\n- Screens other than Invoices must not change.\n- Start checks: Chrome for screenshots is found, Node is v25.9.0. Both pass.\n\n**Done means:**\n1. The one row in `requests.md` is `done`, or `left` with a reason.\n2. The Invoices rows measure 14px top and bottom padding and 12px sides, about 47px tall.\n3. The final before and after compare shows no unexpected and no broken screen (Today, Clients and Settings look the same as before).\n4. Every changed line of code traces to row 1.\n5. The prototype's local link answers 200.\n\nAbout 30 minutes and 2 helper agents, within a budget of 60 minutes.\n\n## Questions\n\n1. Should this apply only to the Invoices table, or to the other tables too (Today and Clients)?\n   Recommended: Invoices only, as your note says. Today and Clients stay as they are.\n   Why it matters: the tables share one style rule, so \"all tables\" is a different change from \"this table\", and it moves two screens you did not name.\n\n2. How much room is \"more room\"?\n   Recommended: 14px above and below the text and 12px at the sides, so rows go from about 29px to about 47px.\n   Why it matters: \"more room\" has no number, and the number is what I measure the result against.\n\nNotes you send later still join this run.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 2,
+      "evidence": "1. Should this apply only to the Invoices table, or to the other tables t | 2. How much room is \"more room\"?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 2,
+      "evidence": "2 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "2 of 2 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 2, Why it matters: on 2, of 2"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "21 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 1 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 30 minutes and 2 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_table": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 478,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 7,
+      "defaults_quality": 10,
+      "clarity": 8,
+      "respects_words": 10,
+      "overall": 9
+    },
+    "evidence": {
+      "completeness": "Settles padding (\"Cell padding goes from 4px 10px to 14px 12px\"), invoices scope, and other tables (\"The Today and Clients tables use the same rule\").",
+      "no_redundancy": "States the prototype from the files, but Q1 asks \"only to the Invoices table, or to the other tables too\" though the person already said the invoices table, a mostly answered question.",
+      "defaults_quality": "Each question has a concrete default: \"Invoices only\" and \"14px above and below the text and 12px at the sides\", so go gives a good result.",
+      "clarity": "Only two short questions with plain why-lines, though the brief with a table, defaults and five done items is longer than the one-line ask needs.",
+      "respects_words": "Keeps the change to the Invoices rows only (\"Screens other than Invoices must not change\") and just adds room, as asked.",
+      "overall": "A strong opening: finds the shared th,td rule, scopes the change, and gives a measurable default; the only flaw is one partly redundant scope question and a heavy brief."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.649Z"
+}

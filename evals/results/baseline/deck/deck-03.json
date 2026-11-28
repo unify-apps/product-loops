@@ -1,0 +1,124 @@
+{
+  "arm": "baseline",
+  "loop": "deck",
+  "case": "deck-03",
+  "ask": "one-pager for Tesco's category buyer about our compostable packaging, to send ahead of the call",
+  "expected_track": "quick",
+  "notes": "Format (one-pager), meeting kind (sent to read) and the product facts are given. A4 for a UK company is set without asking. Quick track fits a single page.",
+  "must_cover": [
+    "goal",
+    "one-pager|one page|format",
+    "sent to read|send ahead",
+    "a4|paper size",
+    "claims|certified",
+    "reader|buyer"
+  ],
+  "findable": [
+    "format|slides or one-pager|output",
+    "meeting kind|sent to read|first meeting",
+    "what we offer|claims|product"
+  ],
+  "fixtures": [
+    "product.md"
+  ],
+  "message": "I have set up the run and read what you gave me. Nothing is built yet. Here is my brief, then my questions.\n\n## My brief so far\n\n- **Company:** Tesco (UK grocer). Reader: its category buyer for fresh produce packaging. I will treat the category as fresh produce unless you say otherwise.\n- **Meeting kind:** sent to read ahead of the call, so nobody presents it. It has to work alone on one page.\n- **Format:** a one-pager, 1 page, A4 portrait (UK reader).\n- **What we offer and may claim:** only what `product.md` says.\n  - Leafwrap is a home-compostable film for fresh produce.\n  - It breaks down in 26 weeks in a home compost bin, with TUV OK compost HOME certification.\n  - It is at price parity with PET film at volumes over 40 tonnes a year.\n  - It supplies Riverford (since 2024), and Abel & Cole is a trial.\n  - Nothing else goes on the page. I will not claim anything about Tesco's targets, shelf-life, kerbside collection or customer demand from our side. Anything I add about Tesco comes from public research, with a source link.\n- **Files:** `product.md` is the only file in the folder. There is no start deck, no `CLAUDE.md`, no meeting notes and no look to follow.\n- **Start check:**\n  - The Python tools (PowerPoint, PDF, Chrome) set up fine.\n  - Web search and web fetch are both available in this session, so I can research Tesco's public packaging commitments, with a link on every fact.\n\n## Questions\n\n1. **What should the buyer believe or do after reading it? (the goal)** Pick one, or say your own.\n   - (a) **A pitch:** their problem with produce plastic, how Leafwrap solves it, proof from Riverford, and a next step: a trial. **Default.** She is a buyer, she decides on cost, risk and supply, and the page is sent before a call.\n   - (b) **An outside-in view:** what is changing in produce packaging and what it means for Tesco, with Leafwrap as one opening.\n   - (c) **A cost case:** price parity with PET at volume, and what the switch costs her.\n   - (d) **A trial proposal:** one product line, one size, one pilot, ready for the call to agree.\n   - (e) **A short intro:** who we are and what we make, so she takes the call.\n2. **What is the one idea the page argues?** Default: \"You can leave PET film for compostable film at the same price, with proof from a UK supplier.\" Tell me if you want a different angle.\n3. **Who must she convince next?** Default: her own manager, and she cares about cost and risk more than about the story. Tell me if it is someone else, such as a packaging technologist or a sustainability lead, and what they care about.\n4. **Who is on the call?** Names, roles and public profile links, if you have them. Default: roles unknown. I write for a senior buyer and use only public, work-related information.\n5. **What may we claim beyond `product.md`?** For example more customers, volumes, shelf-life tests or a trial offer. Default: nothing more. Is there anything we must not say, such as naming Riverford or Abel & Cole? Default: naming them is fine because `product.md` lists them. Please confirm. The Abel & Cole line will say \"trial\", not \"customer\".\n6. **What do you know about Tesco and this call that I cannot find online?** For example the deal so far, what they said they need, the product line, or the volume. Default: none.\n7. **Anything to lead with or leave out?** For example a competitor, or the PET comparison. Default: none.\n8. **Files.** Default: one-page PDF plus an editable PowerPoint of the page. Do you also want an HTML version or a private claude.ai Artifact? Default: no Artifact. Nothing is published or sent anywhere.\n9. **Where do the files go?** Default: `decks/tesco-20261126/` in this folder.\n10. **The look.** Default: plain, which is Arial, dark text on white and one dark blue accent. Tell me if you have brand colours or fonts, or a logo file, and where it is. I will not make up product pictures.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 10,
+      "evidence": "1. What should the buyer believe or do after reading it? (the goal) Pick  | 2. What is the one idea the page argues? Default: \"You can leave PET film | 3. Who must she convince next? Default: her own manager, and she cares ab | 4. Who is on the call? Names, roles and public profile links, if you have | 5. What may we claim beyond `product.md`? For example more customers, vol | 6. What do you know about Tesco and this call that I cannot find online?  | 7. Anything to lead with or leave out? For example a competitor, or the P | 8. Files. Default: one-page PDF plus an editable PowerPoint of the page.  | 9. Where do the files go? Default: `decks/tesco-20261126/` in this folder | 10. The look. Default: plain, which is Arial, dark text on white and one d"
+    },
+    "asked_le_7": {
+      "pass": false,
+      "value": 10,
+      "evidence": "10 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "10 of 10 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 10"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "15 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: what we offer (\"product\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.833,
+      "evidence": "missing: claims"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 705,
+      "evidence": "705 words, 253 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 705,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles every topic: goal (Q1), \"a one-pager, 1 page, A4 portrait\", \"sent to read ahead of the call\", claims limited to product.md with TUV certification, reader \"its category buyer\".",
+      "no_redundancy": "Format, meeting kind and offer are stated in the brief, not asked; only small overlap in Q5 re-asking claims scope and Q8 output files after the one-pager is fixed.",
+      "defaults_quality": "Every question has a specific default fitting a buyer read-ahead, e.g. Q1 pitch with a trial next step, Q2 \"leave PET film for compostable film at the same price\", Q9 \"decks/tesco-20261126/\".",
+      "clarity": "Ten questions, several multi-part (Q5 asks two things, Q1 has five options), plus a long brief with tool-setup detail; heavy for a two-minute reply.",
+      "respects_words": "Keeps one-pager, send-ahead and Tesco buyer exactly; adds nothing beyond product.md (\"Nothing else goes on the page\"), only a minor assumed \"she\".",
+      "overall": "Thorough, faithful brief with good defaults so \"go\" works, but too many questions for a single page and the less important ones (look, folder, file types) dilute it."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.846Z"
+}

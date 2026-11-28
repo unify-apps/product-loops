@@ -1,0 +1,122 @@
+{
+  "arm": "baseline",
+  "loop": "design",
+  "case": "design-05",
+  "ask": "redesign the settings screen of proto-clinic, it's a mess. group it into sections and make it work on a phone",
+  "expected_track": "full",
+  "notes": "Redesign of one named screen. The section names and the policy text (now Lorem ipsum) are open. Scope is one screen, so the sweep should not spread to other screens.",
+  "must_cover": [
+    "sections|groups",
+    "phone|mobile|390",
+    "settings",
+    "other screens|only settings|scope",
+    "lorem|placeholder|policy"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "which screen|target screen"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "## Brief\n\n**Goal:** redesign the Settings screen of `proto-clinic` (Northside Physio): group its fields into sections and make it work on a phone.\n\n**Prototype:** `proto-clinic/index.html`, the only prototype in the folder. Plain HTML, no `dev` script, so I will serve it with the loop's local server and give you a link.\n\n**Checks done:** Node v25.9.0 works. A Chrome browser is found for screenshots. The prototype exists. The folder has no `CLAUDE.md`, and I found no `product-design` or `design-review` skill, so I will use the loop's built-in design rules.\n\n**Reference to copy:** none, so that step is skipped.\n\n**Where the result goes:** a local link only. Nothing is published, pushed, committed or sent.\n\n**Stop fact:** every request below is done and checked on the real page. No screen you did not name changed without a reason. The prototype's link opens.\n\n## Request list\n\n| # | What I will do | Screen | Where | How I will check it |\n|---|---|---|---|---|\n| 1 | Group the fields into titled sections, one card each: **Clinic** (Clinic name, Opening hours) and **Bookings** (Booking policy, Reminder texts) *(my reading)* | Settings | this place | both titles are on the page and each field sits under its section |\n| 2 | Booking policy is a label over lorem ipsum text with no control. Keep the text in a read-only block under the label with a short help line *(my reading)* | Settings | this place | no label without a control or text block under it |\n| 3 | Make Settings work at phone width (375px): one column, full-width fields, at least 44px tall touch targets, full-width \"Save changes\", no sideways scroll *(my reading)* | Settings | this place | at 375px the page is not wider than 375px, inputs are at least 44px tall |\n| 4 | Make the top bar and menu fit at 375px on Settings: the menu wraps, nothing is cut off *(my reading)* | Settings | this place | at 375px all four menu links are visible and clickable |\n\nRows marked *(my reading)* are my concrete guess at a vague note. Correct them here if they are wrong.\n\nNotes you send later still join this run.\n\nI saw two things already broken in the prototype. They are not part of your notes, so I will leave them as they are and list them in the handover: the \"New appointment\" button on Today does nothing, and the Overdue filter on Invoices shows an empty table with no words.\n\n## Questions\n\n1. **Sections.** Is the grouping above right? Default: two sections, Clinic and Bookings, as in row 1.\n2. **Phone menu.** Row 4 changes the top bar, which every screen shares. Should the phone fix apply to the shared bar on all screens, or only be tested on Settings? Default: the bar's phone rules are shared (the bar looks the same everywhere), and I check the other screens do not break.\n3. **Lorem ipsum.** Keep the placeholder policy text as it is, or write real booking policy words? Default: keep the text, I do not invent policy.\n4. **Other screens.** Should Today, Clients and Invoices stay exactly as they are? Default: yes, except for the shared top bar from question 2.\n5. **Anything missing or wrong** in the list above, such as a field to add or remove from Settings? Default: no.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Sections. Is the grouping above right? Default: two sections, Clinic a | 2. Phone menu. Row 4 changes the top bar, which every screen shares. Shou | 3. Lorem ipsum. Keep the placeholder policy text as it is, or write real  | 4. Other screens. Should Today, Clients and Invoices stay exactly as they | 5. Anything missing or wrong in the list above, such as a field to add or"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 577,
+      "evidence": "577 words, 423 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 577,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles sections (\"Clinic and Bookings\"), phone (\"375px: one column\"), settings scope, other screens (Q4) and lorem (\"keep the text, I do not invent policy\").",
+      "no_redundancy": "States the prototype and screen as found facts (\"the only prototype in the folder\") rather than asking; Q5 is a generic catch-all but not redundant.",
+      "defaults_quality": "Every question has a concrete default, e.g. \"two sections, Clinic and Bookings\" and \"the bar's phone rules are shared ... I check the other screens do not break\".",
+      "clarity": "Five short questions with defaults, but a long brief plus a four-row table comes first, and Q2 and Q4 overlap on scope.",
+      "respects_words": "Stays on sections and phone; leaves the broken Today and Invoices items alone (\"I will leave them as they are\"); only the shared top bar goes past Settings, and it is raised as a question.",
+      "overall": "A strong, faithful intake with wise defaults where \"go\" works; it is a bit long, and the scope question is split across two items."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.793Z"
+}

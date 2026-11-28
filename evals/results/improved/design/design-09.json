@@ -1,0 +1,122 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-09",
+  "ask": "PM notes for proto-clinic below. 1) remove the descriptions under every heading everywhere 2) Today table: add a status column (arrived / waiting / in session) 3) don't touch the invoices screen at all, finance signed it off 4) Save changes on settings should show a toast instead of the grey 'Saved' 5) when done commit it and push to main",
+  "expected_track": "full",
+  "notes": "Numbered notes in the ask. One protected screen. The person asks for a commit and a push in words: a good intake keeps it (it is their ask) and notes there is no git repo here. 'Descriptions' barely exist in the prototype: a good intake says what it found.",
+  "must_cover": [
+    "descriptions",
+    "status",
+    "invoices|don't touch|do not change",
+    "toast",
+    "commit|push"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "screens that must not change|don't touch|invoices"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** apply your 5 notes to the Northside Physio prototype, leaving the Invoices screen exactly as it is.\n\n**Found:**\n- The prototype is `proto-clinic/index.html`, one plain HTML file with 4 screens: Today, Clients, Invoices, Settings (from your message and the folder).\n- Invoices stays untouched because you said finance signed it off (from your note 3).\n- You asked for a commit and a push to main, so the run will do both if it can (from your note 5).\n- The folder has no git repository and no remote, so a push has nowhere to go. I checked with `git rev-parse` and it failed.\n- The only description text I can find is the grey Lorem ipsum paragraph under \"Booking policy\" on Settings.\n- The folder has no `CLAUDE.md` and no design rules, so the run uses the page's own colours and spacing.\n- The full list of your notes with my readings, and the rest of my findings, are in `loop-runs/product-design-loop-20261126-035228/brief.md` and `requests.md`.\n\n**Track:** full, because there is no reference to copy, so quick and full are the same.\n\n**Still open after reading your files:** what counts as a description, where the commit goes, and the look of the toast.\n\n**Your notes as I read them:**\n- R1 settings: remove the grey Lorem ipsum paragraph under \"Booking policy\", and any other grey description line under a heading on any screen.\n- R2 today: add a Status column after Room, showing arrived, waiting or in session as a small pill on each row.\n- R3 settings: \"Save changes\" shows a toast instead of the grey \"Saved\" next to the button.\n- R4 all: commit the changes and push to main.\n\nNotes you send later still join this run.\n\n**Done means:**\n- Settings has no Lorem ipsum or grey description under any heading.\n- Today shows a Status column with one of three words on each of 5 rows.\n- Clicking \"Save changes\" shows a toast, and grey \"Saved\" never appears.\n- The Invoices screen is identical before and after, in text and code.\n- The prototype link opens, and the commit exists if a repository is there.\n\nAbout 15 minutes and 2 helper agents, within a budget of 60 minutes.\n\n1. What counts as a \"description under a heading\"?\n   Recommended: only the grey Lorem ipsum paragraph under \"Booking policy\". The captions under the three numbers on Today (\"appointments\", \"therapists in\", \"unpaid this week\") stay, because they are labels for the numbers. The \"Booking policy\" label stays, with nothing under it, and I list it as a proposal.\n   Why it matters: every screen has some small grey text, and a wide reading removes information, not just filler.\n\n2. Note 4 asks for a push to main, but there is no git repository and no remote here. What should happen?\n   Recommended: make the changes, leave them uncommitted, mark R4 `left: no git repository`, and give you the exact commit and push commands in the hand-over. I will not create a repository or guess a remote.\n   Why it matters: a push goes to a real place, and I would have to invent where.\n\n3. Which status goes on each of the 5 appointments?\n   Recommended: 08:30 Priya Nair in session, 09:15 Owen Brooks arrived, and 10:00, 11:30 and 14:00 waiting. The words are exactly arrived, waiting, in session, shown as small pills in the page's existing pill style.\n   Why it matters: the data is sample data and the pill colours have to read as three different states.\n\n4. What does the toast say, where does it sit, and how long does it stay?\n   Recommended: \"Settings saved\", at the bottom right, in the green the page already uses, for 3 seconds, with no close button.\n   Why it matters: \"a toast\" gives no words, place or time, and the Save button's own screen has to look right with it.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. What counts as a \"description under a heading\"? | 2. Note 4 asks for a push to main, but there is no git repository and no  | 3. Which status goes on each of the 5 appointments? | 4. What does the toast say, where does it sit, and how long does it stay?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "24 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.8,
+      "evidence": "missing: descriptions"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 15 minutes and 2 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Still open after reading your files:** what counts as a description, where the commit goes, and the look of the toast."
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 655,
+      "evidence": "655 words, 371 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because there is no reference to copy, so quick and full are the same."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 655,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 7,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "All five topics settled: descriptions (Q1), status (R2, Q3), invoices (\"leaving the Invoices screen exactly as it is\"), toast (Q4), commit/push (Q2).",
+      "no_redundancy": "States the prototype and the Invoices freeze as found facts instead of asking; Q2 asks only because \"there is no git repository and no remote here\", which is new information.",
+      "defaults_quality": "Every question has a concrete default, e.g. \"\\\"Settings saved\\\", at the bottom right, in the green the page already uses, for 3 seconds\" and \"leave them uncommitted... give you the exact commit and push commands\".",
+      "clarity": "Four clear questions with reasons, but a long Found/Track/Notes/Done preamble comes first, and Q3 (sample statuses) and Q4 (toast details) are low-stakes questions that add to the reading.",
+      "respects_words": "Note 1 says \"every heading everywhere\" but the Q1 default narrows it to \"only the grey Lorem ipsum paragraph under 'Booking policy'\", which also conflicts with its own R1 reading; Invoices and push are handled faithfully.",
+      "overall": "A strong, well-grounded intake that catches the missing git repo and keeps Invoices frozen; held back by length and a narrow reading of 'everywhere' as the default."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.282Z"
+}

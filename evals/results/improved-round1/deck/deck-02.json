@@ -1,0 +1,125 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-02",
+  "ask": "First meeting with the head of digital operations at Maersk next Tuesday. Give her a plan ranked by what it saves that she can take to her COO. About 10 slides, extras in an appendix. HTML deck and an editable PowerPoint. Our look and what we can claim are in the folder.",
+  "expected_track": "full",
+  "notes": "The full ask from needs.md, plus the folder answers the look and the claims. Nearly every need is answered: a good intake shows the brief and asks one or two things at most (her name, if known).",
+  "must_cover": [
+    "goal|plan ranked|savings",
+    "coo|real audience",
+    "slide count|10",
+    "output|powerpoint|html",
+    "claims|what we may claim",
+    "look|manrope"
+  ],
+  "findable": [
+    "goal|what the deck is for|what should the reader",
+    "real audience|convince next|coo",
+    "slide count|how many slides",
+    "output|format|powerpoint",
+    "look|font|colour|color",
+    "claims|what we may claim|what we offer",
+    "meeting kind|first meeting"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "brand/corvid.svg",
+    "claims.md"
+  ],
+  "message": "# Brief: deck for the head of digital operations at Maersk\n\n**Goal (G1, from your ask):** After the deck, the head of digital operations at Maersk can take a plan, ranked by what each step saves, to her COO and defend it. Option: *a plan for them*.\n\n**Angle (G2, default):** One idea: \"Start where the saving is largest and provable, then widen.\" The order is the ranking, biggest saving first, then the first step we propose.\n\n**Real audience (G3, from your ask):** Her COO, who will see the deck second-hand. He cares about money saved, and then risk. Every slide has to make sense to someone who was not in the room.\n\n**What I found in the folder**\n- `CLAUDE.md`: look is Manrope, ink #111827, accent #7C3AED, white background, logo `brand/corvid.svg`. Never name a customer unless `claims.md` allows it.\n- `claims.md`: Corvid automates customs document checks for freight forwarders and carriers. We may name DSV (pilot, 2025) and Kuehne+Nagel (live since March 2026). Numbers we may state: 62% fewer manual document touches at Kuehne+Nagel (their 2026 case study) and checks in under 4 seconds per document. We must not say \"AI that never makes mistakes\", and we must not state any price.\n- No start deck, meeting notes or transcript, so the deck is built new in your look.\n- **The gap:** the only number we can claim is a touch reduction, not money. Any saving in dollars for Maersk will be our estimate, shown with its working and marked \"our estimate\" on the slide.\n\n## Needs and values\n\n| # | Need | Value | Source |\n|---|---|---|---|\n| 1 | Company | A.P. Moller - Maersk (maersk.com) | ask |\n| 2 | Who is in the meeting | Head of digital operations, name unknown; her COO is the second reader | ask (see question 1) |\n| 3 | Meeting kind | First meeting | ask |\n| 4 | Start deck | None. Built new in Corvid's look | folder |\n| 5 | Slide count | About 10 main slides, extras in an appendix, plus a Sources slide at the end of the appendix | ask |\n| 6 | What we may claim | Only what `claims.md` says (above) | folder |\n| 7 | Facts only you know | None given | ask (see question 3) |\n| 8 | Output | HTML deck and editable PowerPoint (`.pptx`). No PDF, no Artifact | ask |\n| 9 | Where files go | `decks/maersk-20261126/` (files in `decks/maersk-20261126/out/`) | default |\n| 10 | Look | Manrope, #111827, #7C3AED, white, corvid.svg logo | `CLAUDE.md` |\n| 11 | Lead with or leave out | Leave out: price, \"never makes mistakes\", any customer other than DSV and Kuehne+Nagel | `CLAUDE.md`, `claims.md` |\n| 12 | Product pictures | None, so no invented product screens | default |\n\n## Coverage scan\n\n| Topic | Status | Why |\n|---|---|---|\n| Scope | partial | Plan of what? Customs document checks only, or wider digital operations (question 2) |\n| Who and their job | clear | Head of digital operations, who must persuade her COO |\n| Data and facts | partial | Maersk's own volumes and costs are not in the folder, so savings come from public figures and our estimates (question 3) |\n| Main flow | clear | Ranked plan, biggest saving first, then the first step |\n| Edge cases | partial | What to do when a saving cannot be backed by any source (default: show it as \"for discussion\", with no number) |\n| Look | clear | `CLAUDE.md` |\n| Outputs | clear | HTML and PowerPoint |\n| Done signal | clear | See \"Done means\" |\n| Words with no number | partial | \"About 10 slides\" becomes 8 to 12 main slides, and \"saves\" needs a unit (question 4) |\n\n**Lessons applied:** none yet (no earlier runs).\n\n**Start check:**\n- Tools: `deck.py setup` passed. python-pptx and PDF reading work, and Chrome and Quick Look were found, so HTML and PowerPoint files can be made and every slide drawn and looked at.\n- Web search: WebSearch and WebFetch are in this session, so research on Maersk, its industry and her public profile will use the web, with a source link on every fact.\n\n**Done means (draft):**\n1. The deck gives the head of digital operations a plan, ranked by saving, that she can take to her COO.\n2. `deck.html` and `deck.pptx` are in `decks/maersk-20261126/out/` and open.\n3. 8 to 12 main slides, with the extras in an appendix that ends on a Sources slide.\n4. `deck.py check` prints PASS on every check after the last change.\n5. Every line on a slide cites a fact with a source link, an estimate note or your word, and nothing breaks `claims.md`.\n6. Every review finding is fixed, or left for you with why.\n\nAbout 60 minutes and 7 helper agents (a builder check, 3 for research, a claim checker per round and one reviewer), within a budget of 90 minutes.\n\n## Questions\n\n1. Who is the head of digital operations, and is there a public profile link (LinkedIn, a talk, an interview)?\n   Recommended: send the name and one link. If you have none, I write for the role and use no personal detail.\n   Why it matters: her own public words let the plan use her vocabulary and priorities.\n\n2. What does the plan cover?\n   Recommended: customs document checks as the first and best-proven step, plus 3 or 4 other digital-operations steps from Maersk's public priorities, each marked \"for discussion\" with no Corvid claim, ranked together by saving.\n   Why it matters: Corvid can only prove one area, and a ranking built on claims we cannot stand behind will not survive her COO.\n\n3. What do you know about Maersk that is not public (its systems, the deal so far, what she said she needs)?\n   Recommended: nothing, so only public facts and our estimates are used.\n   Why it matters: one real number from her side is worth more than any estimate of ours.\n\n4. In what unit is \"what it saves\" ranked?\n   Recommended: manual document touches and hours first, and money second, shown in dollars only as \"our estimate\" with its working, never as a Corvid claim.\n   Why it matters: the only figure we can claim is 62% fewer touches, and we may not state a price.\n\n5. Which customers do we name, and how far do we lean on the 62%?\n   Recommended: name Kuehne+Nagel (live) with the 62% and its source, and name DSV only as a pilot with no number.\n   Why it matters: she will call a reference, and the number must match what Kuehne+Nagel's case study says.\n\n6. How many main slides?\n   Recommended: 10 main slides (range 8 to 12) and the extras in the appendix.\n   Why it matters: the count is a stop-fact check, and it decides how much of the plan sits in the appendix.\n\n7. Which track?\n   Recommended: full (HTML, editable PowerPoint, with the claim checker and review), because you asked for a PowerPoint and the reader is senior. Quick would give HTML and PDF only, 6 to 8 slides.\n   Why it matters: quick leaves out the PowerPoint you asked for.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. Who is the head of digital operations, and is there a public profile l | 2. What does the plan cover? | 3. What do you know about Maersk that is not public (its systems, the dea | 4. In what unit is \"what it saves\" ranked? | 5. Which customers do we name, and how far do we lean on the 62%? | 6. How many main slides? | 7. Which track?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "48 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: real audience (\"coo\"), output (\"powerpoint\"), claims (\"claims\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 7 helper agents (a builder check, 3 for research, a claim checker per round and one reviewer), within a budget of 90 mi"
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "7. Which track?"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1226,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 5,
+      "defaults_quality": 8,
+      "clarity": 3,
+      "respects_words": 9,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Brief settles goal (\"ranked by what each step saves\"), COO as real audience, slide count, HTML + .pptx, claims.md limits and Manrope look; scope and saving unit raised as questions.",
+      "no_redundancy": "Q6 \"How many main slides?\" repeats the ask's \"About 10 slides\", Q7 \"Which track?\" re-asks the PowerPoint already requested, and Q5 partly re-asks who claims.md lets us name.",
+      "defaults_quality": "Every question has a concrete Recommended line, e.g. \"customs document checks as the first and best-proven step, plus 3 or 4 other... marked 'for discussion'\", so \"go\" works; a few defaults only restate the ask.",
+      "clarity": "A long wall of needs table, coverage scan, start check and done list ahead of 7 questions, three of them avoidable; a busy person cannot answer it in two minutes.",
+      "respects_words": "Keeps \"About 10 slides, extras in an appendix\", HTML and editable PowerPoint, and claims.md limits; ranking by touches before money stretches \"what it saves\" a little but is explained.",
+      "overall": "A thorough, faithful brief with sharp questions on scope and saving unit, but it is too long and asks three things the ask or files already answer."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.693Z"
+}

@@ -1,0 +1,122 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-09",
+  "ask": "just check proto-clinic for dead buttons and placeholder text. P1 only, report only, don't fix",
+  "expected_track": "quick",
+  "notes": "Everything is in the ask: prototype, focus, bar and mode. A good intake asks nothing or one thing and goes. Two planted faults match exactly.",
+  "must_cover": [
+    "dead|placeholder",
+    "p1",
+    "report"
+  ],
+  "findable": [
+    "bar|p1 and p2|p1 only",
+    "fix or report|report only|fix what",
+    "which prototype|which file",
+    "focus|what to focus on"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "Review `proto-clinic/index.html` for dead buttons and placeholder text, report only, nothing changed.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, the only one in the folder (from your message and the folder).\n- Screens: Today, Clients, Invoices, Settings, the 4 the nav reaches (from the nav).\n- Mode: report only, no file is changed (from your message: \"report only, don't fix\").\n- Bar: P1 only (from your message: \"P1 only\").\n- Focus: dead buttons and placeholder text (from your message).\n- Browser check passed: Node 25.9.0 and Chrome are there, and the file opens.\n\n**Track:** quick, because you asked for P1 only and a check of the main screens (no phone-width pass).\n\n**Coverage:** 5 clear · partial: Who and their job, Edge cases, Done signal · missing: none\n\n**Done means:**\n- All 4 screens have a screenshot.\n- Every finding names a screen, a rule and a level.\n- A fresh agent checked the list against the screenshots.\n- No P1 missing from the list.\n- No file of the product changed.\n\nThe full brief is in `loop-runs/product-review-loop-20261126-034239/brief.md` once you say go.\n\nAbout 30 minutes and 3 helper agents, within a budget of 60 minutes.\n\n1. Should I look only at dead buttons and placeholder text, or list every P1 I see?\n   Recommended: dead buttons and placeholder text first, plus any other P1 (broken link, console error, a button that blocks the main job).\n   Why it matters: \"only those two\" leaves out a P1 that would embarrass you in a demo, but it keeps the list short.\n\n2. Who uses it, and what one job do they come to do?\n   Recommended: a physio clinic receptionist who books and checks the day's appointments (a guess from the screens).\n   Why it matters: a dead button on the main path is P1, one elsewhere is only P2, and the persona decides which is which.\n\n3. Quick (P1 only, desktop width, about 20 minutes) or full (adds a phone-width check and P2 findings)?\n   Recommended: quick.\n   Why it matters: full finds sideways scrolling on a phone, but you asked for P1 only.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. Should I look only at dead buttons and placeholder text, or list every | 2. Who uses it, and what one job do they come to do? | 3. Quick (P1 only, desktop width, about 20 minutes) or full (adds a phone"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 3, Why it matters: on 3, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: bar (\"p1 only\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 30 minutes and 3 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 5 clear · partial: Who and their job, Edge cases, Done signal · missing: none"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 354,
+      "evidence": "354 words, 191 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because you asked for P1 only and a check of the main screens (no phone-width pass)."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 354,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 4,
+      "defaults_quality": 6,
+      "clarity": 6,
+      "respects_words": 5,
+      "overall": 5
+    },
+    "evidence": {
+      "completeness": "Brief settles prototype, focus ('dead buttons and placeholder text'), bar ('P1 only') and mode ('report only, no file is changed'); nothing needed is missing.",
+      "no_redundancy": "Q1 re-asks focus the person gave ('just check... dead buttons and placeholder text') and Q3 re-asks the bar/track ('Quick (P1 only...) or full') though 'P1 only' was stated.",
+      "defaults_quality": "Every question has a concrete default (e.g. 'a physio clinic receptionist who books and checks the day's appointments'), but Q1's default widens scope beyond the ask.",
+      "clarity": "Three numbered questions with defaults and 'just go' is answerable, but the message carries a lot of status text (Coverage, Done means, budget) and two of three questions are unneeded.",
+      "respects_words": "Brief is faithful, but Q1's default 'plus any other P1 (broken link, console error...)' goes against 'just check... for dead buttons and placeholder text'.",
+      "overall": "Solid faithful brief, but it spends its one round mostly on questions the ask already answered, and one default overrides the person's 'just'."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.902Z"
+}

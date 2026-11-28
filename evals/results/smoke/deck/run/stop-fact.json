@@ -1,0 +1,53 @@
+{
+  "items": [
+    {
+      "id": "S1",
+      "item": "The deck does what the goal says for Priya Nair, COO of Bright Smiles Dental: she believes Clinic Scheduler can cut her no-shows (about 9% today) and agrees to a small pilot in a few of her clinics.",
+      "passes": true,
+      "proof": "loop-runs/product-deck-loop-20261126-032714/review.json",
+      "note": "Opened renders/html/slide-01..10.png: slides 2-5 show 9% and the pilot fall to 6% (estimate), slides 6-7 ask for a pilot in a few clinics at 120 pounds per clinic per month"
+    },
+    {
+      "id": "S2",
+      "item": "These files are in decks/brightsmiles-20261126/out/ and open: deck.html, deck.pdf.",
+      "passes": true,
+      "proof": "loop-runs/product-deck-loop-20261126-032714/review.json",
+      "note": "ls -la decks/brightsmiles-20261126/out/: deck.html, deck.pdf; pdf has 10 pages, text of pages 1, 5, 7 matches the pictures"
+    },
+    {
+      "id": "S3",
+      "item": "The main slide count is 6 to 8.",
+      "passes": true,
+      "proof": "loop-runs/product-deck-loop-20261126-032714/review.json",
+      "note": "deck.json: 7 main slides plus Appendix divider; check.md says 7 main slides"
+    },
+    {
+      "id": "S4",
+      "item": "deck.py check --dir decks/brightsmiles-20261126 prints PASS on every check, after the last change.",
+      "passes": true,
+      "proof": "loop-runs/product-deck-loop-20261126-032714/review.json",
+      "note": "Ran deck.py check --dir: PASS: 7 of 7 checks pass"
+    },
+    {
+      "id": "S5",
+      "item": "Every line on a slide cites facts that say it, each with a source link, an estimate note or the person's word.",
+      "passes": true,
+      "proof": "loop-runs/product-deck-loop-20261126-032714/review.json",
+      "note": "Read claims.md, facts.json, facts.md: f1-f6 from facts.md, f7/f8 estimates with how, f9 the person's go on Q3"
+    },
+    {
+      "id": "S6",
+      "item": "Every finding of an earlier review round is fixed, or left with why, in decks/brightsmiles-20261126/review-fixes.md (none on the first round).",
+      "passes": true,
+      "proof": "loop-runs/product-deck-loop-20261126-032714/review.json",
+      "note": "No earlier review exists in loop-runs; first round"
+    }
+  ],
+  "review": {
+    "file": "loop-runs/product-deck-loop-20261126-032714/review.json",
+    "spec": 4,
+    "quality": 3,
+    "verdict": "PASS",
+    "at": "2026-11-25T22:08:19.339Z"
+  }
+}

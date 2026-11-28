@@ -1,0 +1,16 @@
+PASS  columns: id, category, capability, what it does, wave, freshbooks, bonsai, sources, mark, note
+PASS  rival columns: wave, freshbooks, bonsai
+PASS  rows: 73
+PASS  ids: 0 empty, 0 repeated
+PASS  rows with no "what it does": 0
+PASS  rows with no source link: 0
+PASS  sheet links found in no rival file: 0
+PASS  source links not written "<rival column>: <link>": 0
+PASS  rows whose mark is not have/gap/beat: 0
+PASS  rival cells not yes/partial/no/unknown: 0
+PASS  rival columns with no rivals/<column>.md file: 0
+PASS  yes or partial cells with no "<rival>: <link>" from that rival's own file: 0
+PASS  beat rows: 1, beat proof problems: 0
+PASS  beat rows where a rival has it in full but the note names no weak spot: 0
+PASS  capability-sheet.xlsx: Matrix tab 73 rows, capability-sheet.csv 73
+matrix: all 15 checks PASS

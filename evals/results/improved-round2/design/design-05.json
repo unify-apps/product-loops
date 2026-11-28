@@ -1,0 +1,122 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-05",
+  "ask": "redesign the settings screen of proto-clinic, it's a mess. group it into sections and make it work on a phone",
+  "expected_track": "full",
+  "notes": "Redesign of one named screen. The section names and the policy text (now Lorem ipsum) are open. Scope is one screen, so the sweep should not spread to other screens.",
+  "must_cover": [
+    "sections|groups",
+    "phone|mobile|390",
+    "settings",
+    "other screens|only settings|scope",
+    "lorem|placeholder|policy"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "which screen|target screen"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** redesign the Settings screen of proto-clinic so it is grouped into sections and works on a phone.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, plain HTML, no `dev` script. I will serve it with the loop's local server (from the folder).\n- Settings today is one card with 4 fields (Clinic name, Opening hours, Booking policy, Reminder texts) and one Save button (from the code).\n- The Booking policy text is Lorem ipsum filler (from the code).\n- No `CLAUDE.md` and no reference to copy, so no design rules beyond the built-in checks.\n- Browser for screenshots works and Node is v25.9.0, so the start check passed.\n- Seen in the code, not yours to fix this run: the Today \"New appointment\" button does nothing, and the Overdue invoice filter shows an empty table. I will record them and leave them.\n\n**Track:** full, because there is no reference, so both tracks are the same.\n**Coverage:** 6 clear · partial: Scope, Edge cases, Look · missing: Words with no number (\"a mess\", \"work on a phone\")\n\n**Done means:**\n- Settings shows its fields in named sections.\n- At 375px wide, Settings has no sideways scroll and Save is reachable.\n- Every field and Save work as before.\n- Other screens are unchanged, except what a request names.\n- The prototype link answers 200.\n\n**Requests** (full table with checks in `loop-runs/product-design-loop-20261126-034055/brief.md` once you say go):\n- R1 settings: group the fields into sections with a heading each: Clinic (Clinic name, Opening hours) and Bookings (Booking policy, Reminder texts) (my reading)\n- R2 settings: each section is its own card, with a short line under its heading saying what it holds (my reading)\n- R3 settings, phone: at 375px wide the fields are full width, 44px tall, one column, with no sideways scroll (my reading of \"work on a phone\")\n- R4 settings, phone: Save is one full-width button at the end of the page on a phone, and keeps its \"Saved\" message (my reading)\n- R5 settings, phone: the top bar (name and 4 links) wraps or scrolls so every link is reachable at 375px (my reading)\n\nAbout 40 minutes and 2 helper agents, within a budget of 60 minutes.\n\n**Questions**\n\n1. Should the phone work cover only Settings, or every screen?\n   Recommended: Settings only. The tables on the other screens would be listed as proposals, not changed.\n   Why it matters: the other screens have wide tables, so \"all screens\" is a much larger job.\n\n2. Which sections, and which field goes in each?\n   Recommended: Clinic (name, opening hours) and Bookings (booking policy, reminder texts).\n   Why it matters: this is the grouping itself, and the other fields are shaped by it.\n\n3. The Booking policy is Lorem ipsum filler. What should it become?\n   Recommended: keep the same words, but in an editable text box so it is a real setting.\n   Why it matters: it decides whether I change the text or only its look.\n\n4. On a phone, should Save stay fixed at the bottom of the screen?\n   Recommended: no, put it once at the end of the page. It is one short page.\n   Why it matters: a fixed bar covers fields when the keyboard opens.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Should the phone work cover only Settings, or every screen? | 2. Which sections, and which field goes in each? | 3. The Booking policy is Lorem ipsum filler. What should it become? | 4. On a phone, should Save stay fixed at the bottom of the screen?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "23 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 2 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 6 clear · partial: Scope, Edge cases, Look · missing: Words with no number (\"a mess\", \"work on a phone\")"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 543,
+      "evidence": "543 words, 366 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because there is no reference, so both tracks are the same."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 543,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles sections (Q2 'Clinic ... and Bookings'), phone ('At 375px wide ... no sideways scroll'), settings, scope (Q1 'only Settings, or every screen?') and lorem (Q3 'Booking policy is Lorem ipsum filler').",
+      "no_redundancy": "States prototype and screen as found ('Prototype: proto-clinic/index.html'); Q2 repeats the grouping already given in R1, a small overlap but not a findable fact.",
+      "defaults_quality": "Every question has a specific, sensible default, e.g. 'Settings only. The tables on the other screens would be listed as proposals' and 'put it once at the end of the page'.",
+      "clarity": "Four plain, single-topic questions ordered by importance, but the message is long with jargon like 'Coverage: 6 clear · partial: Scope, Edge cases, Look' and a five-item request list.",
+      "respects_words": "Keeps 'group it into sections' and 'work on a phone' faithfully; R5 touches the shared top bar, slightly widening past the settings screen.",
+      "overall": "A strong opening: complete coverage, good defaults and a clear 'go' path, held back mainly by length and some internal jargon."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.859Z"
+}

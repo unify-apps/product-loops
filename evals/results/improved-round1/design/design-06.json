@@ -1,0 +1,118 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-06",
+  "ask": "tighten up the spacing everywhere and use our brand font",
+  "expected_track": "full",
+  "notes": "Two HTML files, but CLAUDE.md names the live one and the font. 'Tighten' is vague: a good intake gives a concrete reading (an 8 px scale, row padding) as the default. Asking which prototype or which font is redundant.",
+  "must_cover": [
+    "spacing|tighten|px",
+    "everywhere|every screen",
+    "source sans|font"
+  ],
+  "findable": [
+    "font|typeface|brand font",
+    "which prototype|which file|old",
+    "colour|color"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "old/proto-clinic-v1.html",
+    "proto-clinic/index.html"
+  ],
+  "message": "## Brief\n\n**Goal:** Change `proto-clinic/index.html` (Northside Physio) so the spacing is tidied on every screen and the brand font, Source Sans 3 (from your `CLAUDE.md`: headings 600, body 400), is used everywhere.\n\n- **Prototype:** `proto-clinic/index.html`, plain HTML. It is the only live prototype. `old/proto-clinic-v1.html` is archived, and your `CLAUDE.md` says never to change it, so I will not touch it. I will run `proto-clinic/` on a local server and give you the link.\n- **Screens found (4):** Today, Clients, Invoices, Settings.\n- **Design rules found:** `CLAUDE.md` (Source Sans 3; blue `#2457D6`; ink `#1D2433`). No `product-design` or `design-review` skill is installed, so I will use the built-in rules in `make-changes.md` and `design-check.md`.\n- **Browser for screenshots:** found (Chrome). Node v25.9.0.\n- **Track:** full. There is no reference to copy, so `copy-reference` is skipped.\n- **Result goes to:** a local link only. Nothing is published, pushed or committed. Changed files are listed at the end.\n- **Coverage:** Scope clear. Look partial (the font is clear, \"tighten\" has two readings). Done signal clear.\n\n### Your notes, as a numbered list\n\n| # | Note, in words | Where | How I will check it |\n|---|---|---|---|\n| 1 | Table cells (Today, Clients, Invoices): padding `4px 10px` becomes `12px 14px`. (my reading) | everywhere | Computed `padding` of `td` and `th` on all 3 table screens |\n| 2 | Today: put 16px between the stats cards and the appointments table. (my reading) | this place | `getBoundingClientRect` gap between `.stats` and `table` is 16px |\n| 3 | Page spacing follows one scale (8, 16, 24). Page title, filter or search row and table or card sit the same distance apart on all four screens. (my reading) | everywhere | The same measured gaps on Today, Clients, Invoices and Settings |\n| 4 | Body text uses Source Sans 3 at weight 400. Loaded from Google Fonts, with the current system fonts as fallback. | everywhere | Computed `fontFamily` starts with \"Source Sans 3\" on every screen, and the font is loaded (`document.fonts.check`) |\n| 5 | Headings use Source Sans 3 at weight 600: page titles (`h1`) and the \"Northside Physio\" brand name, now 700. Table headers and form labels are already 600. (my reading) | everywhere | Computed `fontWeight` is 600 on every `h1` and `.brand` |\n| 6 | Inputs, selects and buttons also use the brand font (they do not inherit the font by default). (my reading) | everywhere | Computed `fontFamily` of `input`, `select` and `button` |\n\nSample data is not touched.\n\n**Broken before the run** (seen in the code, not part of your notes, so this run leaves them as they are):\n- \"New appointment\" on Today has no handler. It is a dead button.\n- The Invoices \"Overdue\" filter shows an empty table with no words.\n- The Settings \"Booking policy\" text is lorem ipsum.\n- The Clients menu item opens a screen titled \"Customers\".\n\nI'll re-check these with the before screenshots and list them in the hand-over. Say so if you want any of them fixed in this run.\n\nAbout 40 minutes and 2 helper agents, within a budget of 60 minutes.\n\n## Questions\n\n1. \"Tighten up the spacing\" can mean two things. Which one?\n   Recommended: tidy and make consistent, not smaller. The table cells at `4px 10px` are the tightest thing on the page, so they get more room (rows 1 to 3), and nothing gets squeezed.\n   Why it matters: \"less space\" would shrink the cards, gaps and margins instead, which is the opposite change.\n\n2. Load the font from Google Fonts with a `<link>` tag in the page?\n   Recommended: yes. Source Sans 3 is named as a Google Font in your notes. The system stack stays as fallback when the user is offline.\n   Why it matters: it makes an outside web request. The other option is a downloaded font file saved next to the page, which needs your approval to download it.\n\n3. Should the brand name \"Northside Physio\" in the header also be 600, not 700?\n   Recommended: yes. Your notes say headings are 600, and the brand name is a heading.\n   Why it matters: left at 700, it is the only bold text that is not 600.\n\n4. Any screen the spacing change must not touch?\n   Recommended: none. All four screens may change.\n   Why it matters: a rule on tables or cards changes every screen that uses them.\n\nNotes you send after \"go\" still join this run as new rows.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. \"Tighten up the spacing\" can mean two things. Which one? | 2. Load the font from Google Fonts with a `<link>` tag in the page? | 3. Should the brand name \"Northside Physio\" in the header also be 600, no | 4. Any screen the spacing change must not touch?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "26 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: font (\"font\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 2 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_table": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "- **Track:** full. There is no reference to copy, so `copy-reference` is skipped."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 760,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 8,
+      "clarity": 6,
+      "respects_words": 6,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles spacing (rows 1-3, Q1 on the meaning of 'tighten'), every screen ('all four screens', Q4) and the font ('Source Sans 3 ... headings 600, body 400').",
+      "no_redundancy": "States the found prototype, font and colours, but Q4 'Any screen the spacing change must not touch?' asks what 'everywhere' already says, and Q2 half re-asks the Google Fonts source the notes give.",
+      "defaults_quality": "Every question has a concrete default ('Recommended: yes', 'none'), but the Q1 default grows table padding from '4px 10px' to '12px 14px', a doubtful pick for 'tighten'.",
+      "clarity": "Four short questions with the most important first, but they come after a long brief with a six-row table and a 'Broken before the run' list.",
+      "respects_words": "The default reads 'tighten' as 'tidy and make consistent, not smaller' and gives cells 'more room', which goes against the plain meaning; Q4 doubts 'everywhere'.",
+      "overall": "A strong, well-grounded intake with good defaults, held back by length, a redundant 'everywhere' question and a default that turns 'tighten' into more space."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.659Z"
+}

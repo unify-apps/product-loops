@@ -1,0 +1,21 @@
+{
+  "items": [
+    {"id":"S1","passes":true,"evidence":"ls walk/before and walk/after-1: each holds 01-today, 02-clients, 03-invoices, 04-settings as .png and .phone.png; I opened all 8 after-1 screenshots"},
+    {"id":"S2","passes":true,"evidence":"I read the 8 after-1 screenshots and clinic/index.html: no P1 is open; the one P1 left (Booking policy Lorem ipsum) is marked your call. check-findings.mjs on recheck-1.md --no-open-p1 ended: OK"},
+    {"id":"S3","passes":true,"evidence":"findings.md F4 (P1, Lorem ipsum) is status your call with one plain sentence; check-findings.mjs on findings.md --bar P1 --after-fix ended: OK"},
+    {"id":"S4","passes":true,"evidence":"F1, F2, F3 are fixed; I confirmed each in the source diff against original/clinic/index.html and in the after-1 screenshots; F4 is your call"},
+    {"id":"S5","passes":true,"evidence":"diff of original/clinic/index.html against clinic/index.html shows clinic/index.html is the only changed file and its original is saved"}
+  ],
+  "spec": 4,
+  "quality": 3,
+  "verdict": "PASS",
+  "findings": [
+    {"level":"P2","what":"Today at 390 px: stat cards and table run past the right edge of the other screens","fix":"Set .stats grid-template-columns to repeat(auto-fit, minmax(110px, 1fr))"},
+    {"level":"P2","what":"Clients heading says Customers while the nav says Clients","fix":"Change the Clients heading to Clients"},
+    {"level":"P2","what":"Phone nav underline runs through Settings on the second line","fix":"Make nav links display: inline-block"},
+    {"level":"P2","what":"Invoices Overdue filter shows an empty table with no message","fix":"Show one muted row: No invoices are [status]."},
+    {"level":"P2","what":"Invoice numbers run against dates (INV-1041 3 Nov, INV-1042 28 Oct)","fix":"Swap the numbers of the Mei Chen and Luis Ortega invoices"},
+    {"level":"P2","what":"Page headings sit about 8 px above the control beside them","fix":"Set margin: 0 on h1 inside .row"},
+    {"level":"P2","what":"Settings gap after Booking policy is 48 px, others 52 px","fix":"Set the paragraph margins to give a 52 px gap"}
+  ]
+}

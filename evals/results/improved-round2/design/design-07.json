@@ -1,0 +1,119 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-07",
+  "ask": "on the clinic prototype just rename 'Customers' to 'Clients', nothing else",
+  "expected_track": "quick",
+  "notes": "Tiny, exact change with 'nothing else'. A good intake asks nothing or almost nothing, offers the quick track, and does not add a sweep of other notes. Planted: the heading says Customers.",
+  "must_cover": [
+    "clients",
+    "nothing else|only"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "everywhere|this place only|scope"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** On the clinic prototype, rename \"Customers\" to \"Clients\". Nothing else changes.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, plain HTML, the only one in the folder (from the folder).\n- \"Customers\" appears once, as the page heading on the Clients screen (line 87). The nav link already says \"Clients\" (from the code).\n- No reference to copy, so the track is full with nothing to copy (a straight list of notes).\n- No `CLAUDE.md` and no design skills in the folder, so the built-in design check is used.\n- Already broken, and I will leave it as it is: the \"New appointment\" button on Today does nothing, and the Overdue filter on Invoices shows an empty table with no words.\n- Nothing is published, pushed or committed. The result is a local link only.\n\n**Track:** full, because there is no reference to copy, so the two tracks are the same.\n**Coverage:** 9 clear\n\n**Done means:**\n- The Clients heading reads \"Clients\"; \"Customers\" is left nowhere.\n- Every other screen looks and reads exactly as before.\n- Only that one change is in the code.\n- The prototype's link answers 200.\n\n**Request list** (the full brief goes in `brief.md` after your reply):\n- R1 Clients screen: rename the heading \"Customers\" to \"Clients\"\n\nAbout 30 minutes and 2 helper agents, within a budget of 60 minutes.\n\nNo questions: your note gives the old word, the new word and the limit, and the files answer the rest. If you want something added to the list, say so.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no numbered questions found"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 0,
+      "evidence": "0 questions"
+    },
+    "every_question_has_default": {
+      "pass": null,
+      "evidence": "0 of 0 name a default"
+    },
+    "recommended_and_why": {
+      "pass": null,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 0"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "20 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 30 minutes and 2 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 9 clear"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 263,
+      "evidence": "263 words, 263 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "- No reference to copy, so the track is full with nothing to copy (a straight list of notes)."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 263,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 10,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 10,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles both topics: 'rename \"Customers\" to \"Clients\". Nothing else changes.' plus done criteria 'Only that one change is in the code.'",
+      "no_redundancy": "Asks nothing; states the found prototype ('proto-clinic/index.html ... the only one in the folder') and the one occurrence instead of asking.",
+      "defaults_quality": "No questions are needed and it says why ('your note gives the old word, the new word and the limit'), so 'go' gives exactly the asked change.",
+      "clarity": "No questions and short, but jargon like 'Track: full', 'Coverage: 9 clear', '2 helper agents' and the track explanation add noise for a one-word rename.",
+      "respects_words": "Keeps 'nothing else' strictly, even leaving known bugs alone: 'Already broken, and I will leave it as it is'.",
+      "overall": "Correct, faithful, question-free opening for a trivial rename; loses a little for process jargon and a heavy frame (30 min, helper agents) on a one-line change."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.865Z"
+}

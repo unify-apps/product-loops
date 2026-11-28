@@ -1,0 +1,125 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-10",
+  "ask": "use client-notes.txt and build it for Thursday's pitch. make it look premium",
+  "expected_track": "full",
+  "notes": "Agency voice. Notes answer the modules, colours and font. 'Premium' is a vague word the intake should pin down (what it means on screen). The 6-taps pain gives a measurable goal (book in 2 taps).",
+  "must_cover": [
+    "persona|member|front desk",
+    "module",
+    "premium",
+    "book|booking|taps",
+    "how deep|in full|depth",
+    "thursday|deadline"
+  ],
+  "findable": [
+    "colour|color|palette|orange",
+    "font|typeface|barlow",
+    "module|modules|class booking"
+  ],
+  "fixtures": [
+    "brand/apex-colors.json",
+    "client-notes.txt"
+  ],
+  "message": "**Goal:** a clickable Apex Fitness prototype for Thursday's 2pm pitch to Dan (COO) and Lauren (Head of Member Experience), with a premium look.\n\n**Found:**\n- Apex Fitness, 12 gyms in London, from `client-notes.txt`.\n- Three things to build, from `client-notes.txt`: Booking (timetable per gym, book, waitlist when full), Check-in (scan or search), Membership (plan, next payment, freeze).\n- Look, from `brand/apex-colors.json`: black #0A0A0A, Apex orange #FF5A1F, grey #8A8F98, font Barlow.\n- Their complaint, from `client-notes.txt`: booking takes 6 taps in the current app.\n- It lands in `apex/` in this folder, as a local link on this laptop, for the pitch demo.\n- Click checks will run in a real browser (headless Chrome found).\n\n**Track:** full, because it has 3 modules and will be shown to a client. Quick would be one list page per module.\n\nStill open after reading your files: what \"premium\" means, and the freeze rules.\n\n**Done means:**\n- Booking, Check-in and Membership are all built.\n- Every module passes review with no serious problem left.\n- Every link opens and every click works.\n- A member books a class in 3 taps or fewer.\n- A member joins the waitlist of a full class.\n- Front desk checks a member in by search, and a member freezes their plan.\n\nFull brief: `loop-runs/product-build-loop-20261126-035045/brief.md`\n\nAbout 60 minutes and 11 helper agents, within a budget of 120 minutes.\n\n1. What should \"premium\" look like?\n   Recommended: black base, orange only on actions, large Barlow type, generous spacing, no stock photos.\n   Why it matters: \"premium\" is a taste word, and this decides every screen.\n\n2. How many taps from the opening screen to a booked class?\n   Recommended: 3 or fewer (today it takes 6).\n   Why it matters: it shapes the booking flow, the one thing they hate about their app.\n\n3. Barlow needs a download from the internet, and nothing is downloaded unless you say so. Do you have the font files, or should it use Barlow if installed and a plain sans-serif otherwise?\n   Recommended: Barlow if installed, else a plain sans-serif, nothing downloaded.\n   Why it matters: the pitch laptop may show a different font than you expect.\n\n4. Do you have an Apex logo file, or should I make three simple wordmark options in orange and black and use the first?\n   Recommended: three wordmark options, first one used.\n   Why it matters: the logo sits on every screen header.\n\n5. What are the freeze rules: how long, and how many times a year?\n   Recommended: 1 to 3 months, once a year, and the next payment date moves by the freeze length.\n   Why it matters: the Membership page shows these rules and the new payment date.\n\n6. Do you need a link someone else can open on Thursday, or is showing it from this laptop enough?\n   Recommended: this laptop only, nothing published.\n   Why it matters: anything public needs your explicit yes.\n\n7. Should the demo include a full class with a waitlist, and a check-in that fails (member not found, plan frozen)?\n   Recommended: yes to both, so Dan and Lauren see the edge cases working.\n   Why it matters: it adds demo states to the sample data.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. What should \"premium\" look like? | 2. How many taps from the opening screen to a booked class? | 3. Barlow needs a download from the internet, and nothing is downloaded u | 4. Do you have an Apex logo file, or should I make three simple wordmark  | 5. What are the freeze rules: how long, and how many times a year? | 6. Do you need a link someone else can open on Thursday, or is showing it | 7. Should the demo include a full class with a waitlist, and a check-in t"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "19 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: colour (\"orange\"), font (\"font\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.833,
+      "evidence": "missing: how deep"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 11 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what \"premium\" means, and the freeze rules."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 535,
+      "evidence": "535 words, 229 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because it has 3 modules and will be shown to a client. Quick would be one list page per module."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 535,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles modules, personas (member, front desk), premium (Q1), booking taps (Q2), depth ('Track: full'), and Thursday 2pm pitch; only gap is that personas are implied in Done means rather than named outright.",
+      "no_redundancy": "States colours, font and modules as found facts; Q3 asks only about font files and download, not which font, so it is only slightly redundant.",
+      "defaults_quality": "Every question has a specific default that fits the ask, e.g. 'black base, orange only on actions, large Barlow type, generous spacing, no stock photos' and '3 or fewer (today it takes 6)'.",
+      "clarity": "Seven questions after a long brief, with the most important first and in plain words; still more than a busy person can answer in two minutes, and Q3 and Q4 each ask two things.",
+      "respects_words": "Keeps Thursday's pitch, premium and client-notes scope; minor issue: Done means already says 'books a class in 3 taps or fewer' before Q2 asks it.",
+      "overall": "A strong, faithful intake with good defaults; it is a bit long and asks some low-impact questions (logo, demo states) that could have been defaults in the brief."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.236Z"
+}

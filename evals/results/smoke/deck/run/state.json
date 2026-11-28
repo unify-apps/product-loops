@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "loop": "product-deck-loop",
+  "workDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/smokework/deck",
+  "runDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/smokework/deck/loop-runs/product-deck-loop-20261126-032714",
+  "script": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/repo/product-loops/skills/product-deck-loop/shared/scripts/loop-state.mjs",
+  "createdAt": "2026-11-25T21:57:14.332Z",
+  "changedAt": "2026-11-25T22:10:46.540Z",
+  "intake": "closed",
+  "finished": {
+    "at": "2026-11-25T22:10:46.539Z",
+    "stopFact": "deck.html and deck.pdf for Priya Nair, COO of Bright Smiles Dental, 7 main slides, every line cited, deck check 7 of 7 PASS, fresh review PASS (spec 4, quality 3), every finding fixed or left"
+  },
+  "stopped": null,
+  "paused": null,
+  "track": "quick",
+  "skillDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/repo/product-loops/skills/product-deck-loop",
+  "budget": {
+    "minutes": 90,
+    "maxPushes": 6,
+    "maxDecisions": 40,
+    "startedAt": "2026-11-25T22:00:06.012Z"
+  },
+  "pushes": 0,
+  "nodes": [
+    {
+      "name": "intake",
+      "status": "done",
+      "startedAt": "2026-11-25T21:57:14.332Z",
+      "endedAt": "2026-11-25T22:00:06.012Z",
+      "check": "the person said \"go\" (1 replies)",
+      "proof": "loop-runs/product-deck-loop-20261126-032714/brief.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "research",
+      "status": "done",
+      "startedAt": "2026-11-25T22:00:16.683Z",
+      "endedAt": "2026-11-25T22:00:29.638Z",
+      "check": "merge-facts PASS: 8 facts, every one from the person or an estimate with its how; spot check against facts.md",
+      "proof": "decks/brightsmiles-20261126/facts-check.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "story",
+      "status": "done",
+      "startedAt": "2026-11-25T22:00:51.060Z",
+      "endedAt": "2026-11-25T22:01:19.445Z",
+      "check": "count 7 in 6 to 8, every figure cited: check PASS",
+      "proof": "decks/brightsmiles-20261126/check-count-figures.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "build",
+      "status": "done",
+      "startedAt": "2026-11-25T22:01:19.513Z",
+      "endedAt": "2026-11-25T22:03:09.709Z",
+      "check": "fit, body, looked PASS after the last render; 10 slides drawn and looked at",
+      "proof": "decks/brightsmiles-20261126/check-fit-body-looked.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "facts-and-words",
+      "status": "done",
+      "startedAt": "2026-11-25T22:03:14.061Z",
+      "endedAt": "2026-11-25T22:06:05.981Z",
+      "check": "figures, claims PASS; claim checker round 3 PASS; words.md written",
+      "proof": "decks/brightsmiles-20261126/check-figures-claims.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "outputs",
+      "status": "done",
+      "startedAt": "2026-11-25T22:06:10.336Z",
+      "endedAt": "2026-11-25T22:06:35.945Z",
+      "check": "deck check PASS on all 7",
+      "proof": "decks/brightsmiles-20261126/check.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "review",
+      "status": "done",
+      "startedAt": "2026-11-25T22:06:36.029Z",
+      "endedAt": "2026-11-25T22:10:15.662Z",
+      "check": "fresh agent says PASS as the real audience, spec 4, quality 3, model claude-sonnet-5-5; every finding fixed or left (4 fixed, 3 left); deck check 7 of 7 after fixes",
+      "proof": "loop-runs/product-deck-loop-20261126-032714/review.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "handover",
+      "status": "done",
+      "startedAt": "2026-11-25T22:10:15.728Z",
+      "endedAt": "2026-11-25T22:10:46.456Z",
+      "check": "handover.md written",
+      "proof": "loop-runs/product-deck-loop-20261126-032714/handover.md",
+      "retries": [],
+      "leftWhy": null
+    }
+  ],
+  "held": [],
+  "decisions": 3,
+  "replies": 1
+}

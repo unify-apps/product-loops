@@ -1,0 +1,14 @@
+[
+  {
+    "key": "count",
+    "name": "slide count in the asked range",
+    "pass": true,
+    "detail": "7 main slides, asked 6 to 8; 3 in the appendix"
+  },
+  {
+    "key": "figures",
+    "name": "every figure has a source",
+    "pass": true,
+    "detail": "9 facts, every figure on a slide is in a fact its line cites"
+  }
+]

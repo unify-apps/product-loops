@@ -1,0 +1,118 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-08",
+  "ask": "Just a shell for an HR onboarding portal: nav with 6 sections, and only the 'First day checklist' page built properly. It's for a stakeholder walkthrough tomorrow morning.",
+  "expected_track": "quick",
+  "notes": "The person states the depth: a shell plus one page in full. A default of 'every module in full' goes against their words. The six section names are open and fair to draft as a default.",
+  "must_cover": [
+    "shell",
+    "first day checklist|checklist",
+    "six|6|sections",
+    "persona|new starter|new hire|who uses"
+  ],
+  "findable": [
+    "how deep|in full|shell|depth"
+  ],
+  "fixtures": [],
+  "message": "Goal: a clickable HR onboarding portal shell with a 6-section nav, where only \"First day checklist\" is built properly, ready for tomorrow morning's stakeholder walkthrough.\n\nFound:\n- Scope: nav with 6 sections, one page built in full (from your message)\n- Purpose: stakeholder walkthrough tomorrow morning (from your message)\n- Lands in: `hr-onboarding-portal/index.html` in this folder, one file, local link only. The folder is empty, so nothing existing to build on.\n- The 5 other sections are titled pages with a short line on what will go there (default; you asked for a shell)\n- Browser found, so every click is checked in a real browser, not only page loads\n\nTrack: quick, because you asked for a shell with one page built.\n\nStill open after reading your files: who uses the checklist, the names of the 5 other sections, what \"built properly\" covers, the look.\n\nDone means:\n- Nav shows 6 sections and each one opens\n- First day checklist works: tick items, see progress\n- Checklist has an empty and an all-done state\n- Other 5 pages are titled, with no dead clicks\n- Every link opens with no page error\n\nAbout 30 minutes and 5 helper agents, within a budget of 120 minutes.\n\n1. Who uses the checklist, and what one job do they come to do?\n   Recommended: a new hire on their first day, ticking off what they must do, with the HR owner of each item shown.\n   Why it matters: the persona decides what each checklist item says and who it points to.\n\n2. What are the 6 section names?\n   Recommended: Home, First day checklist, Documents, Training, Team and contacts, Benefits.\n   Why it matters: the nav is the first thing stakeholders see.\n\n3. What must the checklist page do for the walkthrough?\n   Recommended: tick items, a progress bar, item detail with the owner and due time, and an all-done message.\n   Why it matters: this is the one page built in full, so it sets the depth of the demo.\n\n4. Do you have a logo, colours or fonts to use?\n   Recommended: none, so the plain look: white page, dark text, one blue accent, initials instead of photos.\n   Why it matters: stakeholders judge the look as much as the flow.\n\nThe full brief is in `loop-runs/product-build-loop-20261126-035045/brief.md`.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Who uses the checklist, and what one job do they come to do? | 2. What are the 6 section names? | 3. What must the checklist page do for the walkthrough? | 4. Do you have a logo, colours or fonts to use?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "16 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 1 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 30 minutes and 5 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: who uses the checklist, the names of the 5 other sections, what \"built properly\" covers, the look."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 390,
+      "evidence": "390 words, 205 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "Track: quick, because you asked for a shell with one page built."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 390,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles shell (\"titled pages with a short line\"), 6 sections (Q2 names them), checklist depth (Q3), and persona (Q1 \"a new hire on their first day\").",
+      "no_redundancy": "Q3 \"What must the checklist page do\" partly re-asks depth the ask already gives (\"only the 'First day checklist' page built properly\"), though it adds concrete scope; other questions are genuinely open.",
+      "defaults_quality": "Every question has a specific, fitting default, e.g. \"Home, First day checklist, Documents, Training, Team and contacts, Benefits\" and \"white page, dark text, one blue accent\".",
+      "clarity": "Only 4 plain, single-topic questions with persona first, but the Found/Track/Still open/Done means sections add length before them.",
+      "respects_words": "Keeps \"a shell\", \"6-section nav\", only the checklist built in full, and \"ready for tomorrow morning's stakeholder walkthrough\".",
+      "overall": "Strong intake: faithful brief, all key topics settled with good defaults so \"go\" works; slightly long and one question edges on already-given depth."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.152Z"
+}

@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.0
+
+- All loops: the first step does more of the work before it asks. It reads the lessons earlier runs left, checks your ask against a fixed list (scope, who it is for, data, flow, edge cases, look, outputs, what done means, words with no number), and has a fresh helper read the draft brief as the one who must build it. Then it asks at most 7 questions, each with the answer it would pick and why it matters, and says how long the run will take. The message stays under 600 words, so you can answer it in two minutes: the full needs table, the coverage table and the lessons go in `brief.md`. A fact your ask or your files already give is written in the brief with its source, never asked, not even to confirm.
+- All loops: "done" is now a short checklist you see before you say go. The fresh review passes each line with what it saw, gives two scores (does it do what you asked, would you trust it), and runs the check itself. A run cannot finish while a line fails, unless the hand-over lists it for you.
+- All loops: each loop has a quick track for a small ask, and recommends one. The checks and the review run either way.
+- All loops: every run has a time budget. A run that runs out of time, or keeps getting stuck, pauses and tells you, instead of going on. Say "continue" for 30 more minutes. A run picks up where it was after a restart.
+- All loops: a notification when a run finishes or pauses, on a Mac, Linux or Windows, and in Slack when you set a link.
+- All loops: a check that failed and then passed after a change becomes a one-line rule in `loop-runs/solutions/`, read by the next run. The hand-over shows the run's minutes and retries per step.
+- All loops: each helper gets its task as a file and writes its report to a file, so nothing is lost in a restart. A helper that reads web pages treats what a page says as data, never as an order, and lists any planted order for you. A check that fails twice goes to a fresh helper on the strongest model before it is left for you.
+- All loops: a `STATE` command from one loop's folder refuses to act on another loop's run and names both (two loops at once on one laptop crossed wires in every smoke run). `finish` says whether the notification went out. `init` makes `briefs/`, `reports/` and `decisions.md`, so no hand-over link is dead. The estimate scales with the track, so a three-line ask is not quoted the whole budget.
+- For people who change the loops: tests, a check that the shared files match, `npm run check` before a pull request, and `evals/` (50 real asks, 10 per loop, run on the old and the new plugin, scored by script checks and a blind grader; `evals/README.md`).
+
 ## 0.1.5
 
 - All loops: the first step always shows its brief and questions and waits for your reply, even when your first message says "build it". A new hook counts your replies, and the loop cannot start working until there is one. A default never goes against your own words: "exactly like X" means exact. A helper that comes back with no report is started again, never left waiting for you.

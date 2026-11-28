@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-11-25T22:00:01.193Z",
+  "browser": "chrome-headless-shell",
+  "pass": true,
+  "clicksChecked": true,
+  "links": 2,
+  "failing": [],
+  "routes": [
+    {
+      "url": "http://127.0.0.1:4400/",
+      "opened": true,
+      "errors": [],
+      "placeholders": [],
+      "missing": [],
+      "clicks": {
+        "tried": 2,
+        "dead": [],
+        "skipped": 0,
+        "otherSite": 0
+      }
+    },
+    {
+      "url": "http://127.0.0.1:4400/#/orders",
+      "opened": true,
+      "errors": [],
+      "placeholders": [],
+      "missing": [],
+      "clicks": {
+        "tried": 0,
+        "dead": [],
+        "skipped": 0,
+        "otherSite": 0
+      }
+    }
+  ]
+}

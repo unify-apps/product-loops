@@ -1,0 +1,121 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-03",
+  "ask": "decide the feature set for our shift scheduling product for restaurants",
+  "expected_track": "full",
+  "notes": "Interviews give the persona, the market and the rivals (the tools they use). CLAUDE.md gives the rival-name rule. A good intake states these and asks few questions (how bold, what we have today).",
+  "must_cover": [
+    "decision|feature set",
+    "persona|manager|general manager",
+    "rivals|7shifts|homebase",
+    "market|us",
+    "how bold|bold|catch up",
+    "rival names|rival a"
+  ],
+  "findable": [
+    "persona|who uses|who is it for",
+    "rivals|competitors|which products",
+    "market|country|region",
+    "rival names|real names|rival a"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "interviews/summary.md"
+  ],
+  "message": "# Brief: the feature set for Rota, shift scheduling for restaurants\n\n**Goal:** decide the feature set for \"Rota\" (our working name, from `CLAUDE.md`), a shift scheduling product for restaurants. The capability sheet is the main output. After it come where we beat the rivals, then the ranked modules.\n\n**Start check:** a web search for \"restaurant shift scheduling software\" returned results. A fetch of the 7shifts home page worked, but only returned its title (\"Restaurant HR, Scheduling, Payroll & Retention Tools\") and a \"Loading\" message. Helpers will read its inner pages (pricing, help centre, features) instead. Web reads did not ask for permission.\n\n## What I found in your folder\n- `interviews/summary.md`: 5 interviews with general managers of independent US restaurants (15 to 60 staff; Austin, Denver, Chicago).\n- `CLAUDE.md`: never name rivals in anything shared outside the team; call them Rival A, B, C. Working name is \"Rota\".\n\n## Needs\n\n| # | Need | Value |\n|---|---|---|\n| 1 | Decision | A full feature set: capability matrix first, then where we beat them, then ranked modules (default) |\n| 2 | Product | Rota: shift scheduling for restaurants (rota building, swaps, labour cost, tips) |\n| 3 | Persona | Drafted, see question 2 |\n| 4 | What we have today | Nothing yet, a new product (default). Every row is `gap` or `beat` |\n| 5 | Rivals | 7shifts, Homebase, When I Work: the three tools your interviewees use (from `interviews/summary.md`) |\n| 6 | Market | US (from the interviews and the rivals) |\n| 7 | Sources | Public pages only. No sign-in, no paid reports, no trial sign-up. Kinds tried for every rival: product pages, help centre or docs, release notes or changelog, pricing, public reviews (default) |\n| 8 | Depth | Up to 12 pages and 40 features per rival (default) |\n| 9 | Fixed and refused | None (default) |\n| 10 | First release size | Rank every module; the top 3 are the first release (default) |\n| 11 | Rival names | See question 4 |\n| 12 | Where to save | `research/rota/` in the working folder (default) |\n| 13 | Sharing | No. Nothing is published or sent (default) |\n| 14 | Groups | You gave none. Plain groups (default), plus each pain below as a capability every helper must look for: building the weekly rota fast, shift swaps and who covers, labour cost against sales, tip pooling |\n| 15 | Sheet file | `capability-sheet.xlsx` and `capability-sheet.csv`. No Google Sheet (default) |\n| 16 | How bold | See question 3 |\n\n`OUT` = `research/rota/`. `KINDS` = product pages, help centre or docs, release notes or changelog, pricing, public reviews. `GROUPS` = none given.\n\n## Coverage scan\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | partial | A \"full feature set\" could mean scheduling only, or also payroll, time clock and hiring. Default: scheduling and what restaurants need around it, with rows from the rivals' wider suites marked out of scope |\n| Who and their job | partial | Interviews point to the GM; drafted below |\n| Data and facts | clear | 5 interviews, 4 ranked pains |\n| Main flow | clear | Build the week, publish, handle swaps, watch labour cost |\n| Edge cases | partial | Swaps, overtime and tips are in the pains; compliance rules are not covered. Default: rows only where a rival publishes them |\n| Look | n/a | No screens are made |\n| Outputs | clear | Sheet, brief, thinking file, hand-over |\n| Done signal | clear | See \"Done means\" |\n| Words with no number | partial | \"Full\" takes the default depth of 40 features per rival |\n\n**Lessons applied:** none yet (no earlier runs).\n**Budget:** 90 minutes.\n\n## Done means\n1. `research/rota/capability-sheet.xlsx` and `.csv` exist, and the Excel file matches the CSV.\n2. The sheet covers 7shifts, Homebase and When I Work, each with at least 5 rows read on its own pages.\n3. Every sheet row says what it does, and every yes or partial cell has a link from that rival's own pages.\n4. Every beat row has a search of every rival's own site behind it, in `research/rota/beats/`.\n5. Every source kind was tried for every rival: product pages, help centre or docs, release notes or changelog, pricing, public reviews.\n6. `research/rota/brief.md` ends in a ranked module list whose every module cites sheet rows.\n\n## Estimate\nAbout 50 minutes and 8 helper agents, within a budget of 90 minutes.\n\n## Questions\n\n1. Which track: quick or full?\n   Recommended: full. You asked for the whole feature set, and the full track reads 5 source kinds per rival; quick reads 2 and gives a thinner sheet. Both keep the beat proof and the review.\n   Why it matters: it sets how many pages are read and how many rows the sheet gets.\n\n2. Who uses it every day, and who pays?\n   Recommended: the general manager of an independent US restaurant with 15 to 60 staff. They build the rota, handle swaps and watch labour cost. They also pay.\n   Why it matters: the persona ranks the modules. It never takes a row out of the sheet.\n\n3. How bold: catch up with the rivals, or lead with ideas no rival has?\n   Recommended: both. The brief gets an \"Ideas no rival has\" section with at least 3 ideas, each tied to an interview pain or a sheet row.\n   Why it matters: it decides what the ranked modules lead with.\n\n4. Rival names: your notes say never to name rivals in anything shared outside the team. Keep the real names in the files on this laptop?\n   Recommended: yes. Real names in the sheet and brief, which stay local and are never published or sent. Any copy you share outside the team would need A, B, C.\n   Why it matters: a sheet with real names breaks your team rule the moment it is shared.\n\n5. Rivals: use the three your interviewees use (7shifts, Homebase, When I Work), or add Sling and RotaCloud (the most-listed others in my search), up to 5?\n   Recommended: the three. They are what your customers use today; more rivals add time and rows.\n   Why it matters: each rival adds helpers and about 15 minutes.\n\n6. Scope: scheduling only, or also payroll, time clock, hiring and team messaging?\n   Recommended: scheduling plus what restaurants need around it (swaps, labour cost against sales, tip pooling, time off, team messaging). Payroll and hiring rows stay in the sheet, marked out of scope for the first release.\n   Why it matters: it sets which rows count as gaps and which modules the brief ranks.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Which track: quick or full? | 2. Who uses it every day, and who pays? | 3. How bold: catch up with the rivals, or lead with ideas no rival has? | 4. Rival names: your notes say never to name rivals in anything shared ou | 5. Rivals: use the three your interviewees use (7shifts, Homebase, When I | 6. Scope: scheduling only, or also payroll, time clock, hiring and team m"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "49 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: persona (\"persona\"), rivals (\"rivals\"), rival names (\"rival names\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 50 minutes and 8 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 8,
+      "evidence": "8 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "1. Which track: quick or full?"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1140,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 5,
+      "defaults_quality": 9,
+      "clarity": 4,
+      "respects_words": 9,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles decision (\"A full feature set\"), persona (Q2), rivals (7shifts, Homebase, When I Work), market (\"US\"), how bold (Q3) and rival names (Q4).",
+      "no_redundancy": "Asks things the files already answer: Q2 \"Who uses it every day\" (interviews name the GM), Q5 rivals, and Q4 rival names despite the CLAUDE.md rule; market is stated, not asked.",
+      "defaults_quality": "Every question has a concrete default that fits the files, e.g. \"the general manager of an independent US restaurant with 15 to 60 staff\" and \"Real names in the sheet and brief, which stay local\".",
+      "clarity": "Six questions sit under a 16-row needs table, a coverage scan, done criteria and an estimate; that is a long wall for a busy person, though each question is about one thing.",
+      "respects_words": "Keeps the ask (\"decide the feature set\"), the working name \"Rota\" and the no-rival-names-outside rule (\"Any copy you share outside the team would need A, B, C\").",
+      "overall": "Thorough brief with good defaults, so \"go\" would work, but three of its six questions re-ask facts it found and the message is far longer than it needs to be."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.630Z"
+}

@@ -1,0 +1,123 @@
+{
+  "arm": "baseline",
+  "loop": "design",
+  "case": "design-08",
+  "ask": "copy the booking wizard from reference/booking-flow.html into the clinic prototype as the New appointment flow - exactly, same steps and same look",
+  "expected_track": "full",
+  "notes": "Local reference file, exact mode and target are given. The open point is the clash of looks (the reference uses Georgia and teal; 'same look' means copy them). A good intake names that clash in the brief rather than asking what exact means.",
+  "must_cover": [
+    "reference|wizard",
+    "exact|exactly",
+    "new appointment",
+    "font|georgia|look"
+  ],
+  "findable": [
+    "reference|which reference",
+    "exact|flow only|pixel",
+    "which screen|target screen|new appointment"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html",
+    "reference/booking-flow.html"
+  ],
+  "message": "## Brief\n\n**Goal:** Copy the booking wizard from `reference/booking-flow.html` into the clinic prototype (`proto-clinic/index.html`, Northside Physio) as the New appointment flow, with the same steps and the same look.\n\n- **Prototype:** `proto-clinic/index.html`, the only one in the folder. It will be served locally as plain HTML.\n- **Reference:** `reference/booking-flow.html`, a local file. It is read only and I will not edit it.\n- **Mode:** exact, because you said \"exactly ... same look\". I will match sizes, spacing, colours and fonts, and measure both pages to prove it.\n- **Screen it changes:** the \"New appointment\" button on Today is dead today. It will open the new flow.\n- **Step skills found:** none. There is no `product-design` or `design-review` skill, and no `CLAUDE.md` in the folder. I will use the built-in make-changes and design-check rules.\n- **Browser for screenshots:** found (Google Chrome). Node is v25.9.0, so the checks will run.\n- **Result goes to:** a local link only. Nothing is published, pushed or committed.\n- **Stop fact:** the \"New appointment\" button opens the wizard. Its 3 steps, fields, buttons and look match the reference. Every other screen of the prototype is unchanged, and the link opens.\n\n## Request list\n\n| # | Note, in words | Screens | Where | Check | Status |\n|---|---|---|---|---|---|\n| 1 | Add the New appointment flow as a 3-step wizard: a progress bar of 3 segments (first lit), then a card with the step content, then a Back and a Next button row | new-appointment (new) | this place | every part of the reference is found in the flow; the segments light up 1, 2, 3 as you go | todo |\n| 2 | Step 1, \"Who is coming in?\", hint \"Search for a client, or add a new one.\", with a \"Client name\" box | new-appointment | this place | the text and the box are there on step 1 | todo |\n| 3 | Step 2, \"Pick a time\", hint \"Times with a free therapist and a free room.\", four time buttons 09:00, 09:45, 10:30, 11:15, with 10:30 shown as picked | new-appointment | this place | the text and 4 buttons are there on step 2; 10:30 is marked picked | todo |\n| 4 | Step 3, \"Check and book\", hint \"We text the client a reminder the day before.\", with the 3-line summary: Client: Priya Nair, Time: 10:30 with Tom Hale, Room 1, Type: Follow-up, 45 minutes | new-appointment | this place | the text and the 3 lines are there on step 3 | todo |\n| 5 | Buttons behave like the reference: Next goes forward, Back goes back (nothing happens on step 1), the last step's button reads \"Book\" and shows an alert saying \"Booked\" (my reading: the same alert, with no booking saved, as in the reference) | new-appointment | this place | click Next twice: step 3 shows \"Book\"; Back returns; Book raises the alert \"Booked\" | todo |\n| 6 | Same look as the reference: serif (Georgia) type, cream page, white card with a 14px radius and 28px padding, 560px wide, green accent #0a7d6b, same bar, buttons and spacing | new-appointment | this place | measured values on the flow equal the reference's, written side by side | todo |\n| 7 | The \"New appointment\" button on Today opens the flow (my reading: it goes to its own screen at `#/new-appointment`, with the header kept and no nav tab added) | today, new-appointment | this place | click \"New appointment\" on Today and the first step shows | todo |\n\n**Broken before the run** (found while reading the code, to be confirmed with screenshots): the \"New appointment\" button on Today has no handler. Row 7 makes it work, since you asked for it. I will not fix anything else I find broken. The Overdue filter on Invoices shows an empty table with no words, and I will leave it alone.\n\n**Proposals** (not built in this run): none yet.\n\n## Questions\n\nNotes you send later still join this run.\n\n1. **Anything missing or wrong in the list above?** Default: it is right as written.\n2. **Where does the wizard sit?** Default: its own screen at `#/new-appointment`, opened by the Today button, with the prototype's header kept around it. The other choice is a dialog over Today.\n3. **Where does the reference's look stop?** The reference's serif type and green accent differ from the clinic's sans type and blue accent. Default: the wizard keeps the reference's look exactly, and the header, nav and every other screen keep the clinic's look.\n4. **Sample content.** The reference has fixed sample content (Priya Nair, 10:30 with Tom Hale). Default: copy it as is, since you said \"exactly\". The flow is not tied to the clinic's client or appointment data, and \"Book\" does not add a row to Today.\n5. **Does the last step add a row to Today?** Default: no, \"Book\" only shows the alert \"Booked\", as in the reference.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Anything missing or wrong in the list above? Default: it is right as w | 2. Where does the wizard sit? Default: its own screen at `#/new-appointme | 3. Where does the reference's look stop? The reference's serif type and g | 4. Sample content. The reference has fixed sample content (Priya Nair, 10 | 5. Does the last step add a row to Today? Default: no, \"Book\" only shows "
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "22 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: reference (\"reference\"), exact (\"exact\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 847,
+      "evidence": "847 words, 669 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 847,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles reference, exact mode ('exact, because you said \"exactly ... same look\"'), the New appointment button entry point, and the Georgia/serif look in row 6 and Q3.",
+      "no_redundancy": "Reference and exact are stated rather than asked, but Q2 'Where does the wizard sit?' partly re-asks the screen the ask names, and Q5 repeats Q4's 'Book does not add a row to Today'.",
+      "defaults_quality": "Every question has a concrete default, e.g. 'its own screen at #/new-appointment ... header kept' and 'wizard keeps the reference's look exactly, ... every other screen keep the clinic's look'.",
+      "clarity": "The brief and the 7-row table are long. Q1 'Anything missing or wrong' is generic, and Q4 and Q5 overlap, so five questions sit behind a wall of text.",
+      "respects_words": "Keeps 'exactly' everywhere (same 3 steps, Georgia, #0a7d6b, copies the sample content as is) and changes nothing else ('I will not fix anything else I find broken').",
+      "overall": "A faithful, well-grounded intake with good defaults where 'go' works, held back by its length and a duplicated question."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.802Z"
+}

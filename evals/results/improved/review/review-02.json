@@ -1,0 +1,120 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-02",
+  "ask": "quick P1 pass on the clinic prototype before my 2pm demo. desktop only",
+  "expected_track": "quick",
+  "notes": "Bar and width given, time pressure. Quick track (P1 only, no phone). A good intake asks one or two questions at most.",
+  "must_cover": [
+    "p1",
+    "desktop|no phone",
+    "fix|report"
+  ],
+  "findable": [
+    "bar|p1 and p2|p1 only",
+    "phone|screen width|390"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** review every screen of the clinic prototype as the person who uses it, and fix every P1 problem before your 2pm demo.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, the only one in this folder. It opens as a file, no server needed.\n- It is \"Northside Physio\", a physio clinic (from the page title). Four screens: Today, Clients, Invoices, Settings.\n- Desktop only, so the phone-width check is left out (from your message).\n- Fixing P1 only. P2 and P3 are listed for you and never touched (from \"P1 pass\").\n- Result lands in `handover.md` in the run folder, on this laptop. Nothing is deployed or sent.\n\n**Track:** quick, because you said quick and the demo is today.\n\nStill open after reading your files: who uses it and their one job, and whether to fix or only list.\n\n**Done means:**\n- All 4 screens have a before and an after screenshot.\n- A fresh reviewer finds no open P1 on any screen.\n- Any P1 I cannot fix is listed first, in one plain sentence.\n- Every changed file has its original saved.\n\nEverything else (the full brief) is in `loop-runs/product-review-loop-20261126-035243/brief.md`.\n\nAbout 20 minutes and 4 helper agents, within a budget of 60 minutes.\n\n1. Should I fix what I find, or only report it?\n   Recommended: fix P1 problems in place, keeping a copy of every file I change.\n   Why it matters: report only leaves the prototype exactly as it is for the demo.\n\n2. Who uses it, and what one job do they come to do?\n   Recommended: the front-desk person at the clinic, who checks today's appointments and adds a new one.\n   Why it matters: a problem counts as P1 when it blocks this person's job.\n\n3. Any rule of your own to check?\n   Recommended: no, just the built-in checks (dead buttons, errors, placeholder text, empty states, mixed words).\n   Why it matters: your own rule would be checked on every screen as well.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. Should I fix what I find, or only report it? | 2. Who uses it, and what one job do they come to do? | 3. Any rule of your own to check?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 3, Why it matters: on 3, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "16 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 20 minutes and 4 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: who uses it and their one job, and whether to fix or only list."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 334,
+      "evidence": "334 words, 203 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because you said quick and the demo is today."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 334,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 8,
+      "clarity": 7,
+      "respects_words": 8,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles P1 (\"Fixing P1 only. P2 and P3 are listed\"), desktop (\"phone-width check is left out\") and fix vs report (Q1 with default), plus user/job and done criteria.",
+      "no_redundancy": "States the P1 bar and phone exclusion as found facts rather than asking; Q3 (own rules) is low value but not answerable from files.",
+      "defaults_quality": "Concrete defaults: \"fix P1 problems in place, keeping a copy\", \"front-desk person... checks today's appointments\"; Q3's \"no, just the built-in checks\" is sensible but thin.",
+      "clarity": "Three short numbered questions, most important first, but the brief is padded and contradicts itself (Goal says \"fix every P1\" while also listing fix-or-report as still open).",
+      "respects_words": "Keeps quick, desktop only, P1 only and the 2pm deadline (\"About 20 minutes\"); only slip is presuming fixing in the Goal before asking.",
+      "overall": "A solid, faithful intake that settles every needed topic with good defaults; minor redundancy and the fix/report inconsistency keep it from top marks."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.289Z"
+}

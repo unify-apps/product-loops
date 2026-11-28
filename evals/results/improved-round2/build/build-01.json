@@ -1,0 +1,117 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-01",
+  "ask": "build me a prototype for a dog walking app lol. owners book a walker, walkers see their day. keep it simple",
+  "expected_track": "quick",
+  "notes": "Short, casual, no files. 'keep it simple' is a vague word the intake should turn into a number or a scope (how many screens). Two personas in one sentence. Should be quick: one page shell, list states.",
+  "must_cover": [
+    "persona|who uses|owners|walkers",
+    "module",
+    "how deep|in full|shell|depth",
+    "look|colour|color|font",
+    "simple"
+  ],
+  "findable": [],
+  "fixtures": [],
+  "message": "**Goal:** a clickable prototype of a dog walking app, where owners book a walker and walkers see their day.\n\n**Found:**\n- Two jobs named: owners book a walker, walkers see their day (from your message).\n- \"keep it simple\" (from your message). I read it as 2 modules with 1 page each.\n- The folder is empty: no CLAUDE.md, no earlier runs, no research brief, so the product will be new, in `dog-walking-app/`.\n- Browser for click checks: chrome-headless-shell (start check passed).\n- Local only: nothing is published.\n\n**Track:** quick, because it is two modules and you said \"keep it simple\". Each module is one page in one shell, with no name options and no demo states.\n\n**Coverage:** 5 clear · partial: Data and facts, Edge cases · missing: Look · \"simple\" is turned into 2 modules, 1 page each.\n\n**Done means:**\n- Book a walk page works: pick walker, day, time, dog, confirm.\n- My day page lists today's walks in time order.\n- Every link opens with no dead click or page error.\n- Everything you asked for is on the request list and ticked.\n\nThe full brief is in `loop-runs/product-build-loop-20261126-033953/brief.md`.\n\nAbout 30 minutes and 5 helper agents, within a budget of 120 minutes.\n\n1. How should the walker see the bookings an owner just made?\n   Recommended: one shared set of sample data, with a \"Switch to walker view\" link in the header and no login.\n   Why it matters: it decides whether a new booking shows up on the walker's page.\n\n2. What does a booking hold?\n   Recommended: dog, walker, day, time and 30 or 60 minutes.\n   Why it matters: these are the fields on the form and on the walker's list.\n\n3. What happens when a time slot is already taken?\n   Recommended: taken slots are greyed out and cannot be picked.\n   Why it matters: it decides the error and edge case for booking.\n\n4. Which look should it have?\n   Recommended: a plain, friendly look with the working name \"Pawline\", and no photos (initials only).\n   Why it matters: it sets the colours and header on every page.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. How should the walker see the bookings an owner just made? | 2. What does a booking hold? | 3. What happens when a time slot is already taken? | 4. Which look should it have?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "16 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 30 minutes and 5 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 5 clear · partial: Data and facts, Edge cases · missing: Look · \"simple\" is turned into 2 modules, 1 page each."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 360,
+      "evidence": "360 words, 206 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because it is two modules and you said \"keep it simple\". Each module is one page in one shell, with no name options and no"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 360,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 10,
+      "defaults_quality": 9,
+      "clarity": 8,
+      "respects_words": 9,
+      "overall": 9
+    },
+    "evidence": {
+      "completeness": "Settles persona (owners book, walkers see their day), modules and depth (\"2 modules with 1 page each\", \"one page in one shell\"), look (Q4 \"Which look should it have?\") and simple (\"\\\"simple\\\" is turned into 2 modules, 1 page each\"); look is only loosely pinned (no concrete colour or font).",
+      "no_redundancy": "Every question covers something the empty folder and the ask leave open (view switching, booking fields, taken slots, look); found facts are stated in the brief, not asked.",
+      "defaults_quality": "Each question has a concrete default that fits a simple prototype, e.g. \"a \\\"Switch to walker view\\\" link in the header and no login\" and \"taken slots are greyed out\"; the look default \"plain, friendly\" is a little vague.",
+      "clarity": "Four short questions in plain words, each about one thing, with \"just \\\"go\\\"\"; the brief adds some noise (helper agents, budget, browser name, the Coverage line jargon).",
+      "respects_words": "Keeps \"keep it simple\" as the quick track with \"no name options and no demo states\" and stays on the two named jobs; adding the working name \"Pawline\" is a small step past the ask.",
+      "overall": "A strong, short opening: the scope is faithful and minimal, and the few questions with good defaults mean \"go\" alone gives a sensible simple prototype."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.062Z"
+}

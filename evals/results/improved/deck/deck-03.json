@@ -1,0 +1,124 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-03",
+  "ask": "one-pager for Tesco's category buyer about our compostable packaging, to send ahead of the call",
+  "expected_track": "quick",
+  "notes": "Format (one-pager), meeting kind (sent to read) and the product facts are given. A4 for a UK company is set without asking. Quick track fits a single page.",
+  "must_cover": [
+    "goal",
+    "one-pager|one page|format",
+    "sent to read|send ahead",
+    "a4|paper size",
+    "claims|certified",
+    "reader|buyer"
+  ],
+  "findable": [
+    "format|slides or one-pager|output",
+    "meeting kind|sent to read|first meeting",
+    "what we offer|claims|product"
+  ],
+  "fixtures": [
+    "product.md"
+  ],
+  "message": "**Goal:** a one-page A4 sheet that a Tesco category buyer reads before your call, and that leaves them willing to test Leafwrap compostable film.\n\n**Found:**\n- Product facts from `product.md`: home-compostable produce film, breaks down in 26 weeks in a home bin, TUV OK compost HOME certified, price parity with PET film over 40 tonnes a year.\n- Customers named in `product.md`: Riverford (since 2024) and Abel & Cole (trial).\n- Format from your ask: a one-pager, sent ahead of the call. It is UK, so A4 portrait.\n- Lands in: `decks/tesco-20261126/out/` as an HTML page and a PDF to attach to your email.\n- For: Tesco's category buyer, before the call. I will only claim what `product.md` says, and nothing about Tesco unless a source link backs it.\n\n**Track:** quick, because one page to read ahead of a call needs only HTML and a PDF. No PowerPoint is made.\n\nStill open after reading your files: what the page should get the buyer to do, and which customers we may name.\n\n**Done means:**\n- One A4 page that asks the buyer for a trial of Leafwrap film.\n- `deck.html` and `deck.pdf` are in `out/` and open.\n- Every line cites `product.md` or a source link.\n- The deck check prints PASS on every check.\n- Every review finding is fixed or left with a reason.\n\nThe full brief, with defaults for everything else, is in `loop-runs/product-deck-loop-20261126-035330/brief.md`. Web search is not available in this session, so research uses only your file.\n\nAbout 15 minutes and 3 helper agents, within a budget of 90 minutes.\n\n1. What should the buyer believe or do after reading it?\n   Recommended: a pitch. Their need for packaging that composts at home, how Leafwrap meets it, proof, and a request for a trial run. Other options: an outside-in view of the shift away from plastic film, or a plan for a first trial in one produce line.\n   Why it matters: the goal decides the page's headline and what goes in each block.\n\n2. May we name Riverford and Abel & Cole, and say Abel & Cole is a trial?\n   Recommended: name Riverford, and write \"in trial with another UK organic box retailer\" for Abel & Cole.\n   Why it matters: a customer named without permission can cost trust, and a trial may be confidential.\n\n3. Who else will read it, and what do they care about?\n   Recommended: only the buyer, who may forward it to a packaging technologist. The page stays short on price and long on the certificate.\n   Why it matters: a forwarded page needs the certificate and test detail, and not just the commercial case.\n\n4. What is the next step you want to ask for on the call?\n   Recommended: a trial of one produce line, with a named contact from you.\n   Why it matters: the closing block must say one clear next step, and I will not invent a contact name or a date.\n\n5. Any look to follow, such as a logo or brand colours?\n   Recommended: plain, with Arial, dark text on white and one dark green accent.\n   Why it matters: with no brand file, I will not guess your colours.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. What should the buyer believe or do after reading it? | 2. May we name Riverford and Abel & Cole, and say Abel & Cole is a trial? | 3. Who else will read it, and what do they care about? | 4. What is the next step you want to ask for on the call? | 5. Any look to follow, such as a logo or brand colours?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.833,
+      "evidence": "missing: sent to read"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 15 minutes and 3 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what the page should get the buyer to do, and which customers we may name."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 538,
+      "evidence": "538 words, 263 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because one page to read ahead of a call needs only HTML and a PDF. No PowerPoint is made."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 538,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles goal, one-pager, send-ahead, A4 ('It is UK, so A4 portrait'), claims ('only claim what product.md says', TUV certified) and reader (Tesco category buyer, possible forward to technologist).",
+      "no_redundancy": "States format and product facts rather than asking, but Q4 'next step you want to ask for' largely repeats Q1 and the brief's 'asks the buyer for a trial'.",
+      "defaults_quality": "Every question has a concrete default fitting the case, e.g. 'name Riverford, and write \"in trial with another UK organic box retailer\" for Abel & Cole'.",
+      "clarity": "Plain words and most important first, but a long brief plus five questions with options and 'Why it matters' lines is more than a two-minute read.",
+      "respects_words": "Keeps 'one-pager' and 'send ahead of the call' as one A4 page plus PDF to attach, 'No PowerPoint is made'; only 'deck' file naming drifts slightly.",
+      "overall": "Strong, faithful intake with good defaults and careful claim handling; trimmed by overlapping Q1/Q4 and some length."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.311Z"
+}

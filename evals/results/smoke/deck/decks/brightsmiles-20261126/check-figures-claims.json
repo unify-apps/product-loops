@@ -1,0 +1,14 @@
+[
+  {
+    "key": "figures",
+    "name": "every figure has a source",
+    "pass": true,
+    "detail": "9 facts, every figure on a slide is in a fact its line cites"
+  },
+  {
+    "key": "claims",
+    "name": "every line cites facts that say it",
+    "pass": true,
+    "detail": "38 rows, each cites a fact, claim checker PASS"
+  }
+]

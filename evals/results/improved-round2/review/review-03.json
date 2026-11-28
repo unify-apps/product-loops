@@ -1,0 +1,120 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-03",
+  "ask": "audit my prototype in proto-clinic/ - don't change anything, I just want a list of what's wrong",
+  "expected_track": "full",
+  "notes": "Report-only mode stated in words. The bar question matters less (nothing gets fixed). Asking fix or report is redundant.",
+  "must_cover": [
+    "report only|report",
+    "screens",
+    "persona|who uses"
+  ],
+  "findable": [
+    "fix or report|report only|fix what",
+    "which prototype|which file"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "Goal: audit the Northside Physio prototype and give you a list of what is wrong, with nothing changed.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, the only one in the folder.\n- Screens: Today, Clients, Invoices, Settings (the four nav items).\n- Mode: report only, from \"don't change anything\". No file will be touched, and the fix bar does not apply.\n- Output: a list of findings, each with a screen, a rule and a level (P1, P2, P3).\n- Works on this laptop only. Nothing is deployed or sent.\n\n**Track:** full, because you did not say it is for a meeting today. It also checks the 390 px phone width.\n\nCoverage: 6 clear · partial: Who and their job, Look · missing: none\n\n**Done means:**\n- All 4 screens have a screenshot.\n- Every finding has a screen, a rule and a level.\n- A fresh agent checked the list against the screenshots, with no P1 missing.\n- No file of the prototype changed.\n\nAbout 30 minutes and 3 helper agents, within a budget of 60 minutes.\n\n1. Who uses it, and what one job do they come to do?\n   Recommended: clinic front-desk staff who check today's appointments and chase unpaid invoices.\n   Why it matters: the persona decides what counts as a P1 (a dead button on Today hurts more than a typo in Settings).\n\n2. Quick (P1 only, no phone width) or full?\n   Recommended: full. It lists every P1, P2 and P3, and checks the phone width.\n   Why it matters: quick is faster but leaves out the smaller problems and the phone check.\n\n3. Any rule of your own to check beyond the built-in checklist?\n   Recommended: none, built-in checklist only (no `CLAUDE.md` or review skill found).\n   Why it matters: your own rules, such as a word list or a spacing rule, would be added to what is flagged.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. Who uses it, and what one job do they come to do? | 2. Quick (P1 only, no phone width) or full? | 3. Any rule of your own to check beyond the built-in checklist?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 3, Why it matters: on 3, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "15 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 30 minutes and 3 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Coverage: 6 clear · partial: Who and their job, Look · missing: none"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 318,
+      "evidence": "318 words, 175 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you did not say it is for a meeting today. It also checks the 390 px phone width."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 318,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 8,
+      "respects_words": 10,
+      "overall": 9
+    },
+    "evidence": {
+      "completeness": "Settles report only (\"Mode: report only, from 'don't change anything'\"), screens (\"Today, Clients, Invoices, Settings\") and persona (Q1 \"Who uses it, and what one job\").",
+      "no_redundancy": "States the prototype and report mode as found facts instead of asking; Q2 (quick or full) slightly repeats the Track line already set to full but asks nothing findable.",
+      "defaults_quality": "Every question has a concrete default: \"clinic front-desk staff who check today's appointments and chase unpaid invoices\", \"full\", \"built-in checklist only (no CLAUDE.md or review skill found)\".",
+      "clarity": "Three short questions, most important first, one-reply answerable; minor jargon like \"Coverage: 6 clear · partial: Who and their job, Look\" and \"the fix bar does not apply\" adds clutter.",
+      "respects_words": "Keeps \"don't change anything\" fully: \"No file will be touched\" and done means \"No file of the prototype changed\"; output is a list as asked.",
+      "overall": "Tight, faithful brief with a clear done definition and three well-defaulted questions; \"go\" alone gives a sound full audit."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.884Z"
+}

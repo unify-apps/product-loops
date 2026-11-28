@@ -1,0 +1,117 @@
+{
+  "arm": "baseline",
+  "loop": "build",
+  "case": "build-01",
+  "ask": "build me a prototype for a dog walking app lol. owners book a walker, walkers see their day. keep it simple",
+  "expected_track": "quick",
+  "notes": "Short, casual, no files. 'keep it simple' is a vague word the intake should turn into a number or a scope (how many screens). Two personas in one sentence. Should be quick: one page shell, list states.",
+  "must_cover": [
+    "persona|who uses|owners|walkers",
+    "module",
+    "how deep|in full|shell|depth",
+    "look|colour|color|font",
+    "simple"
+  ],
+  "findable": [],
+  "fixtures": [],
+  "message": "## Brief (draft, nothing built yet)\n\n**Goal:** A clickable prototype of a dog walking app. Owners book a walker. Walkers see their day. Keep it simple.\n\n**Your words, kept as requests:**\n- R1 build me a prototype for a dog walking app lol. owners book a walker, walkers see their day. keep it simple\n- R2 owners book a walker\n- R3 walkers see their day\n- R4 keep it simple\n\n**Product:** new product in `<working folder>/dog-walking-app/` (the folder is empty, so this is a default). One `index.html` with its CSS and JS inside, shown as a local link on this laptop only.\n\n**Who uses it and the one job (my guess, not your answer):**\n- Owner: has a dog, wants a walker booked for a day and time without back and forth.\n- Walker: opens the app in the morning to see which walks they have today and where.\n\n**Modules in build order (my guess):**\n1. **Book a walker (owner):** list of walkers, pick one, pick date, time and dog, confirm, see the booking.\n2. **My day (walker):** today's walks in time order with owner, dog and address, mark a walk done.\n\n**Follow:** nothing. Flow only, no product copied exactly.\n**Depth:** every module built in full (two modules, kept small).\n**Look:** the plain look (no logo, colours or fonts found; no product-design skill installed).\n**Name:** 3 name and mark options shown later, the first one used.\n**Extras:** none. No photos of people (initials only), no two versions behind a key, no PDF guide, no public link.\n**Start check:** click checks will run in chrome-headless-shell, so clicks are really checked, not only loaded.\n**Stop fact:** every module is built and reviewed with no P1 left, every link opens with no dead click, no placeholder text and no page error, and no request above is left open.\n\n### Questions\n\n1. Who uses it, and the one job they come to do? Default: owner books a walk for a dog; walker sees their day's walks.\n2. Modules in build order, and what each must have? Default: the two modules above (Book a walker, My day).\n3. Screens or products to follow, and exact or flow only? Default: none, flow only.\n4. How deep: which modules are built in full, which are only a titled page? Default: both in full.\n5. Your logo and icon files, colours and fonts? Default: none found, so the plain look.\n6. A name you have, or 3 options to pick from later? Default: 3 options, the first one used.\n7. Extras: photos of people, two versions behind a key, a PDF guide, a public link? Default: none of them; the product stays on this laptop.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. Who uses it, and the one job they come to do? Default: owner books a w | 2. Modules in build order, and what each must have? Default: the two modu | 3. Screens or products to follow, and exact or flow only? Default: none,  | 4. How deep: which modules are built in full, which are only a titled pag | 5. Your logo and icon files, colours and fonts? Default: none found, so t | 6. A name you have, or 3 options to pick from later? Default: 3 options,  | 7. Extras: photos of people, two versions behind a key, a PDF guide, a pu"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "21 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 459,
+      "evidence": "459 words, 306 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 459,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 6,
+      "defaults_quality": 8,
+      "clarity": 5,
+      "respects_words": 8,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles persona (Owner/Walker), modules ('Book a walker', 'My day'), depth ('both in full'), look ('the plain look') and simplicity ('two modules, kept small').",
+      "no_redundancy": "Q1 'Who uses it, and the one job' and Q2 re-ask what the ask already said ('owners book a walker, walkers see their day') instead of just stating it in the brief.",
+      "defaults_quality": "Every question has a concrete default fitting the ask, e.g. 'Default: the two modules above (Book a walker, My day)' and 'none of them; the product stays on this laptop'.",
+      "clarity": "Seven template questions after a long brief that already states each default twice; R1-R4 repeat the ask verbatim, too heavy for a 'lol ... keep it simple' request.",
+      "respects_words": "Keeps 'keep it simple' with two small modules and no extras, though 'every module built in full' plus name/mark options and a stop fact add more ceremony than asked.",
+      "overall": "Solid defaults so 'go' yields a sensible simple prototype, but the form-like 7-question wall and duplicated brief feel heavy for a casual small ask."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.148Z"
+}

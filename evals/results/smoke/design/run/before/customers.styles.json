@@ -1,0 +1,15 @@
+{
+ "fill rgb(255, 255, 255)": "header \"Northside Physio\\nToday Clients\"",
+ "font-size 17px": "div.brand \"Northside Physio\"",
+ "font-weight 700": "div.brand \"Northside Physio\"",
+ "font -apple-system": "div.brand \"Northside Physio\"",
+ "color rgb(29, 36, 51)": "div.brand \"Northside Physio\"",
+ "font-size 15px": "a \"Today\"",
+ "font-weight 400": "a \"Today\"",
+ "color rgb(91, 100, 117)": "a \"Today\"",
+ "font-size 22px": "h1 \"Customers\"",
+ "color rgb(0, 0, 0)": "input \"\"",
+ "corner 8px": "input \"\"",
+ "font-size 13px": "th \"Name\"",
+ "font-weight 600": "th \"Name\""
+}

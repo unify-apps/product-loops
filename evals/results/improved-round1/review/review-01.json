@@ -1,0 +1,116 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-01",
+  "ask": "review proto-clinic/index.html and fix the problems",
+  "expected_track": "full",
+  "notes": "The baseline needs.md example: the ask answers the prototype and fix mode, so only screens, persona, bar and rules are open. Asking 'which prototype' or 'fix or report' is redundant.",
+  "must_cover": [
+    "screens|today|clients|invoices|settings",
+    "persona|front desk|receptionist|who uses",
+    "bar|p1|p2",
+    "rules|checklist"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "fix or report|report only|fix what"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "# Brief: review `proto-clinic/index.html` and fix the problems\n\n**Goal:** Review the Northside Physio prototype screen by screen as its user, fix what I find, and review again until no P1 problem is left.\n\n## What I found (not asked again)\n- **Prototype:** `proto-clinic/index.html`, a single HTML file with 4 screens. The walk serves it locally, so no server is needed. You named the file.\n- **Mode:** fix, in place. You said \"fix the problems\". A copy of every changed file is kept in `loop-runs/product-review-loop-20261126-032715/original/`.\n- **Screens the nav reaches** (names are the nav's own labels): Today, Clients, Invoices, Settings. They are written to `screens.json`.\n- **Start check:** Node 25.9.0 is ok, and Chrome was found, so the walk can take screenshots. The file exists.\n- **Rules found:** there is no `CLAUDE.md`, no `design-review` or `product-design` skill, and no earlier run. The built-in checklist is the only rule set.\n- **Where it runs:** this laptop only. Nothing is deployed, posted or sent.\n\n## Needs (defaults marked)\n| Need | Value |\n|---|---|\n| Product | `proto-clinic/index.html` |\n| Screens | Today, Clients, Invoices, Settings (default: every nav screen) |\n| Who and the job | A physio clinic receptionist who checks today's appointments and books a new one (default: a guess from the screens) |\n| Mode | Fix, in place, originals kept |\n| Bar | Fix P1 and P2; list P3 only (default) |\n| Own rules | Built-in checklist only (default) |\n| Track | Full: 1440 px plus 390 px phone width (default) |\n| Rounds | At most 3 rechecks |\n\n## Coverage scan\n| Topic | State | Why |\n|---|---|---|\n| Scope | clear | One file, 4 screens |\n| Who and their job | partial | Only a guess from the screens |\n| Data and facts | clear | Sample data only, made up |\n| Main flow | partial | The primary button on Today (\"New appointment\") may not open anything; the review will confirm |\n| Edge cases | partial | The Invoices filter \"Overdue\" and the Clients search may have no empty state |\n| Look | clear | Match the product's own colours, fonts and spacing |\n| Outputs | clear | Fixed file, `findings.md`, `fixes.md`, `handover.md` with before and after screenshots |\n| Done signal | clear | See \"Done means\" |\n| Words with no number | clear | \"The problems\" means P1 and P2 findings by the checklist |\n\n## Lessons applied\nnone yet (no earlier lessons for this loop).\n\n## Done means\n1. All 4 screens in `screens.json` have a before and a last after screenshot.\n2. After the last walk, a fresh agent found no open P1 on any screen.\n3. Every P1 not fixed is marked \"your call\" in `findings.md`, with one plain sentence.\n4. Every P1 and P2 finding is fixed, or marked with its reason.\n5. The original of every changed file is in `original/`.\n\nBudget: 60 minutes.\n\nAbout 40 minutes and 4 helper agents, within a budget of 60 minutes.\n\n## Questions\n1. Who uses it, and what one job do they come to do?\n   Recommended: a clinic receptionist who checks today's appointments and books or moves one.\n   Why it matters: it decides which screen and which button count as P1 (for example \"New appointment\" on Today).\n\n2. Which screens should I cover?\n   Recommended: all 4 the nav reaches: Today, Clients, Invoices, Settings. Add any screen you want, such as a \"New appointment\" dialog.\n   Why it matters: a screen left out is never reviewed, and a dialog that does not exist yet can only be reported.\n\n3. What should I fix: P1 and P2, or P1 only?\n   Recommended: P1 and P2. P3 is listed and never fixed.\n   Why it matters: P2 covers spacing, mixed words and missing empty states, so this sets how many files change.\n\n4. Any rule of your own to check?\n   Recommended: no, use the built-in checklist.\n   Why it matters: your own rules (for example \"no placeholder text in any demo\") change what counts as a problem.\n\n5. Quick or full?\n   Recommended: full. Quick fixes P1 only and skips the 390 px phone check.\n   Why it matters: full finds phone-width problems but takes longer. Quick is for a fast pass before a meeting.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Who uses it, and what one job do they come to do? | 2. Which screens should I cover? | 3. What should I fix: P1 and P2, or P1 only? | 4. Any rule of your own to check? | 5. Quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "42 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 4 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "| Track | Full: 1440 px plus 390 px phone width (default) |"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 729,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 10,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles screens (Today, Clients, Invoices, Settings), persona (\"a clinic receptionist\"), bar (\"P1 and P2. P3 is listed\") and rules (\"use the built-in checklist\").",
+      "no_redundancy": "Prototype and mode are stated as found (\"You said 'fix the problems'\"), not asked; asking which screens is mild since the nav already lists them.",
+      "defaults_quality": "Every question has a concrete default fitting the ask, e.g. \"a clinic receptionist who checks today's appointments and books or moves one\".",
+      "clarity": "Five clear questions with persona first, but buried under a long brief, a needs table and a coverage scan that repeat each other, plus a duplicated budget line.",
+      "respects_words": "Keeps the named file and fix mode (\"Fix, in place, originals kept\"); nothing contradicts the ask.",
+      "overall": "Strong, well-defaulted intake where \"go\" works, held back by length and repetition before the questions."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.670Z"
+}

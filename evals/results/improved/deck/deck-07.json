@@ -1,0 +1,124 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-07",
+  "ask": "add 3 slides about Siemens Healthineers to our standard deck for Thursday's intro with their procurement lead",
+  "expected_track": "full",
+  "notes": "Adds to a start deck, but only a text export is here (the .pptx is missing). A good intake says so and asks for the file, with a default (build the 3 slides in the outline's order and a plain look).",
+  "must_cover": [
+    "start deck|standard deck|.pptx",
+    "where the 3 slides go|after|before|order",
+    "goal",
+    "reader|procurement",
+    "output|powerpoint"
+  ],
+  "findable": [
+    "company|which company",
+    "meeting kind|first meeting|intro",
+    "slide count|how many slides",
+    "reader|who is in the meeting|procurement lead"
+  ],
+  "fixtures": [
+    "deck/standard-deck-outline.md"
+  ],
+  "message": "**Goal:** add 3 slides about Siemens Healthineers to the standard deck for Thursday's intro with their procurement lead.\n\n**Found:**\n- Company: Siemens Healthineers, from your message.\n- Meeting: Thursday, a first meeting with their procurement lead, from your message. This deck is for that meeting.\n- Start deck: `deck/standard-deck-outline.md`, a text export of `standard-deck.pptx` (9 slides, Brightpath procurement analytics). The `.pptx` itself is not in the folder.\n- What we may claim, from that outline only: 30% of indirect spend is off-contract; customers Bosch and Philips (approved logos); 4.2% savings in year one (median of 11 customers).\n- Result: 9 + 3 = 12 main slides, an HTML deck and an editable PowerPoint, in `decks/siemens-healthineers-20261126/`. I never change your original deck. The changed copy goes in that folder.\n\nTrack: full, because you gave a start deck and the quick track makes no PowerPoint.\n\nStill open after reading your files: what the new slides should achieve, and the start deck file.\n\nDone means:\n- The 3 new slides are in the standard deck, 12 main slides in all.\n- Your 9 slides stay as they are, unless you say otherwise.\n- Every line on the new slides has a source link or your word.\n- An editable PowerPoint and an HTML deck open without errors.\n- Every slide was drawn and looked at after the last change.\n\nThe full brief is in `loop-runs/product-deck-loop-20261126-035350/brief.md`. About 40 minutes and 6 helper agents, within a budget of 90 minutes.\n\n1. What should the procurement lead believe or do after the 3 slides?\n   Recommended: a pitch. Their procurement problem (off-contract indirect spend at a large health-technology company), how Brightpath fixes it, and one proof point from your 4.2% result.\n   Other options: an outside-in view of healthcare procurement and where the openings are; a plan for them, ranked by savings; a vision they can retell to their own boss.\n   Why it matters: the goal decides what the 3 slides say and in what order.\n\n2. Where do the 3 slides go in the deck?\n   Recommended: right after slide 2 (\"The problem\"), so the deck moves from their situation to what Brightpath does.\n   Why it matters: placement decides whether the slides read as their story or as an add-on.\n\n3. Who must the procurement lead convince next, and what does that person care about most (money, risk, speed)?\n   Recommended: no one further, only the procurement lead.\n   Why it matters: a lead who must take this to a CFO needs a savings figure. One who must take it to a CISO needs risk and security.\n\n4. Please add `standard-deck.pptx` to the folder, or tell me to build the new slides in a plain look.\n   Recommended: add the file, so the new slides match your fonts and colours and I can edit the real deck.\n   Why it matters: without the file I can only copy the text, and the look and the 9 slides could drift.\n\n5. What do you know about the procurement lead and the deal so far (name, role, a profile link, what Siemens Healthineers has said it needs)?\n   Recommended: nothing more than you wrote, so I write for a senior procurement reader from public facts only.\n   Why it matters: a name and a profile let the slides address what this person has said in public. Without them, the research stays general.\n\n6. Is there anything to lead with or leave out (a competitor, a topic, a number)?\n   Recommended: nothing to leave out. I use only the three claims from your outline and make no new claims about what Brightpath does.\n   Why it matters: a number about Siemens Healthineers that we cannot back up costs more than a missing slide.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. What should the procurement lead believe or do after the 3 slides? | 2. Where do the 3 slides go in the deck? | 3. Who must the procurement lead convince next, and what does that person | 4. Please add `standard-deck.pptx` to the folder, or tell me to build the | 5. What do you know about the procurement lead and the deal so far (name, | 6. Is there anything to lead with or leave out (a competitor, a topic, a "
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "16 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: reader (\"procurement lead\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "The full brief is in `loop-runs/product-deck-loop-20261126-035350/brief.md`. About 40 minutes and 6 helper agents, within a budget of 90 min"
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what the new slides should achieve, and the start deck file."
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 625,
+      "evidence": "625 words, 245 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "Track: full, because you gave a start deck and the quick track makes no PowerPoint."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 625,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 9,
+      "defaults_quality": 7,
+      "clarity": 6,
+      "respects_words": 10,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles every topic: start deck (\"standard-deck.pptx itself is not in the folder\", Q4), placement (Q2 \"right after slide 2\"), goal (Q1), reader (procurement lead found), output (\"an HTML deck and an editable PowerPoint\").",
+      "no_redundancy": "Company, meeting, slide count and reader are stated in Found, not asked; Q3/Q5 about who else to convince and deal details go a little beyond need but do not re-ask known facts.",
+      "defaults_quality": "Q1-Q3, Q5, Q6 have concrete, fitting defaults (pitch with the 4.2% proof, after slide 2); Q4's default \"add the file\" cannot be taken by replying \"go\", so the fallback is unclear.",
+      "clarity": "Six questions plus a long Found/Done-means brief; most important first (goal, placement) and plain words, but more than a busy person answers in two minutes.",
+      "respects_words": "Keeps 3 slides (\"9 + 3 = 12 main slides\"), Thursday's procurement intro, and the standard deck untouched (\"Your 9 slides stay as they are\").",
+      "overall": "Strong, faithful intake that settles everything with mostly good defaults; docked for length, two optional questions, and the Q4 default that \"go\" cannot fulfil."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.319Z"
+}

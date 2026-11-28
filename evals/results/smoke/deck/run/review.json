@@ -1,0 +1,16 @@
+{"items":[
+{"id":"S1","passes":true,"evidence":"Opened renders/html/slide-01..10.png: slides 2-5 show 9% and the pilot fall to 6% (estimate), slides 6-7 ask for a pilot in a few clinics at 120 pounds per clinic per month"},
+{"id":"S2","passes":true,"evidence":"ls -la decks/brightsmiles-20261126/out/: deck.html, deck.pdf; pdf has 10 pages, text of pages 1, 5, 7 matches the pictures"},
+{"id":"S3","passes":true,"evidence":"deck.json: 7 main slides plus Appendix divider; check.md says 7 main slides"},
+{"id":"S4","passes":true,"evidence":"Ran deck.py check --dir: PASS: 7 of 7 checks pass"},
+{"id":"S5","passes":true,"evidence":"Read claims.md, facts.json, facts.md: f1-f6 from facts.md, f7/f8 estimates with how, f9 the person's go on Q3"},
+{"id":"S6","passes":true,"evidence":"No earlier review exists in loop-runs; first round"}],
+"spec":4,"quality":3,"verdict":"PASS",
+"findings":[
+{"level":"P3","what":"Slide 5: 9% minus 3 points from a 3-clinic pilot is a thin projection","fix":"say in notes it is a small sample and the pilot tests it"},
+{"level":"P3","what":"Slide 4: pilot clinics not described, no control","fix":"note in speaker notes that this is what the pilot answers"},
+{"level":"P3","what":"Slide 7: all 40 clinics cost 4,800 on the pilot ask slide","fix":"move to notes or appendix"},
+{"level":"P3","what":"No value of a no-show anywhere; business case incomplete","fix":"keep questions; notes say cost is sized together first"},
+{"level":"P3","what":"Slides 3, 6, 7 cards half empty","fix":"shorter cards or larger text"},
+{"level":"P3","what":"Slide 1 does not name Clinic Scheduler","fix":"add to subtitle"},
+{"level":"P3","what":"Sources say Given by the presenter for the client's own 9%","fix":"optional wording from the intro call"}]}

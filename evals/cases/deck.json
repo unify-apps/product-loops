@@ -1,0 +1,223 @@
+{
+  "loop": "deck",
+  "skill": "product-deck-loop",
+  "cases": [
+    {
+      "id": "deck-01",
+      "ask": "need a deck for the Acme meeting",
+      "files": {},
+      "must_cover": [
+        "goal",
+        "company|which acme|website",
+        "reader|who is in the meeting|audience",
+        "meeting kind|first meeting",
+        "slide count|slides",
+        "output|powerpoint|pptx|pdf"
+      ],
+      "findable": [],
+      "expected_track": "full",
+      "notes": "The weak ask from needs.md. 'Acme' is ambiguous: the company must be pinned down. The goal is question 1 with options."
+    },
+    {
+      "id": "deck-02",
+      "ask": "First meeting with the head of digital operations at Maersk next Tuesday. Give her a plan ranked by what it saves that she can take to her COO. About 10 slides, extras in an appendix. HTML deck and an editable PowerPoint. Our look and what we can claim are in the folder.",
+      "files": {
+        "CLAUDE.md": "# Corvid: deck rules\n\n- Look: font Manrope, ink #111827, accent #7C3AED, white background. Logo: brand/corvid.svg.\n- Never name a customer unless claims.md says we may.\n",
+        "claims.md": "# What we may claim\n\n- Corvid automates customs document checks for freight forwarders and carriers.\n- Customers we may name: DSV (pilot, 2025), Kuehne+Nagel (live since March 2026).\n- Numbers we stand behind: 62% fewer manual document touches at Kuehne+Nagel (their case study, 2026); checks in under 4 seconds per document.\n- Do not say: \"AI that never makes mistakes\", any price.\n",
+        "brand/corvid.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><circle cx=\"16\" cy=\"16\" r=\"14\" fill=\"#7C3AED\"/></svg>\n"
+      },
+      "must_cover": [
+        "goal|plan ranked|savings",
+        "coo|real audience",
+        "slide count|10",
+        "output|powerpoint|html",
+        "claims|what we may claim",
+        "look|manrope"
+      ],
+      "findable": [
+        "goal|what the deck is for|what should the reader",
+        "real audience|convince next|coo",
+        "slide count|how many slides",
+        "output|format|powerpoint",
+        "look|font|colour|color",
+        "claims|what we may claim|what we offer",
+        "meeting kind|first meeting"
+      ],
+      "expected_track": "full",
+      "notes": "The full ask from needs.md, plus the folder answers the look and the claims. Nearly every need is answered: a good intake shows the brief and asks one or two things at most (her name, if known)."
+    },
+    {
+      "id": "deck-03",
+      "ask": "one-pager for Tesco's category buyer about our compostable packaging, to send ahead of the call",
+      "files": {
+        "product.md": "# Leafwrap\n\nHome-compostable film for fresh produce. Breaks down in 26 weeks in a home compost bin (TUV OK compost HOME certified).\nPrice parity with PET film at volumes over 40 tonnes a year. Supplying: Riverford (since 2024), Abel & Cole (trial).\n"
+      },
+      "must_cover": [
+        "goal",
+        "one-pager|one page|format",
+        "sent to read|send ahead",
+        "a4|paper size",
+        "claims|certified",
+        "reader|buyer"
+      ],
+      "findable": [
+        "format|slides or one-pager|output",
+        "meeting kind|sent to read|first meeting",
+        "what we offer|claims|product"
+      ],
+      "expected_track": "quick",
+      "notes": "Format (one-pager), meeting kind (sent to read) and the product facts are given. A4 for a UK company is set without asking. Quick track fits a single page."
+    },
+    {
+      "id": "deck-04",
+      "ask": "second meeting with Northwind Health's CIO next week - technical deep dive on how we integrate with their Epic EHR. 12-15 slides.",
+      "files": {
+        "notes/call-2026-11-20.txt": "Northwind Health intro call, 20 Nov\nAttendees: Raj Patel (CIO), Maria Gomez (Director of Clinical Apps)\n- 9 hospitals, Epic since 2019, moving to Epic's cloud hosting next year\n- Pain: discharge summaries take nurses 25 min each, mostly copy/paste\n- They asked: how do you read and write back to Epic (FHIR? HL7?), where does data live, SOC 2?\n- Raj wants a pilot plan for one hospital, Maria cares about nurse time\n- Next: technical deep dive, Raj will bring his integration lead\n",
+        "CLAUDE.md": "# Larkspur AI deck style\n\nFont: Inter. Colours: #0E7490 teal, #0F172A ink. Use our architecture diagram style: boxes, no icons.\nClaims: SOC 2 Type II (2026). FHIR R4 read and write via Epic App Orchard listing. Never claim HIPAA \"certified\".\n"
+      },
+      "must_cover": [
+        "goal|pilot",
+        "reader|cio|integration lead",
+        "slide count|12",
+        "fhir|hl7|epic",
+        "claims|soc 2",
+        "look|inter"
+      ],
+      "findable": [
+        "meeting kind|technical|first meeting",
+        "slide count|how many slides",
+        "look|font|colour|color",
+        "claims|what we may claim",
+        "company facts|systems|epic"
+      ],
+      "expected_track": "full",
+      "notes": "A call transcript gives the people, their systems, pains and asks. CLAUDE.md gives look and claims. A good intake builds the goal from the transcript (a pilot plan for one hospital) and asks very little."
+    },
+    {
+      "id": "deck-05",
+      "ask": "5-6 slides for an internal lunch and learn about our Q3 wins, nothing fancy, HTML is fine",
+      "files": {
+        "q3-wins.md": "# Q3 wins (sales team)\n\n- Closed 14 new logos, best quarter yet (Q2: 9)\n- Biggest: Halden Foods, 3-year deal\n- Net revenue retention 118%\n- Launched the partner programme: 6 partners signed\n- Average sales cycle down from 74 to 58 days\n"
+      },
+      "must_cover": [
+        "goal",
+        "slide count|5|6",
+        "html",
+        "audience|internal|team",
+        "research|no research|files only"
+      ],
+      "findable": [
+        "slide count|how many slides",
+        "output|format|powerpoint|html",
+        "facts|wins|numbers"
+      ],
+      "expected_track": "quick",
+      "notes": "An internal deck, not a meeting with a company: company research is pointless. Count and output are given. A good intake skips web research by default and asks little."
+    },
+    {
+      "id": "deck-06",
+      "ask": "a 6-page brochure for the hotel chains we'll meet at the Lisbon hospitality trade show, about our housekeeping app",
+      "files": {
+        "app-facts.md": "# Tidy: housekeeping app for hotels\n\n- Room status board for housekeepers and front desk, live\n- Used in 40 hotels across Spain and Portugal\n- Customer quote we may use: \"Rooms ready 35 minutes sooner on average.\" - Ops Director, Pestana group pilot (2025)\n- Available in English, Portuguese, Spanish\n"
+      },
+      "must_cover": [
+        "brochure|format",
+        "6|pages",
+        "audience|hotel|reader",
+        "print|a4|paper",
+        "language|portuguese|english",
+        "look"
+      ],
+      "findable": [
+        "format|slides or one-pager|output",
+        "slide count|how many pages|page count",
+        "what we offer|claims"
+      ],
+      "expected_track": "full",
+      "notes": "Brochure with a page count. The reader is many hotel chains, not one company, so 'which company' should become a default (a general reader) rather than a blocker. Print size A4 is set without asking."
+    },
+    {
+      "id": "deck-07",
+      "ask": "add 3 slides about Siemens Healthineers to our standard deck for Thursday's intro with their procurement lead",
+      "files": {
+        "deck/standard-deck-outline.md": "# Standard deck (text export of standard-deck.pptx, 9 slides)\n\n1. Title: Brightpath: procurement analytics\n2. The problem: 30% of indirect spend is off-contract\n3. What Brightpath does\n4. How it works (3 steps)\n5. Customers: Bosch, Philips (approved logos)\n6. Results: 4.2% savings in year one (median of 11 customers)\n7. Security and data\n8. Pricing model (per spend band)\n9. Next steps\n"
+      },
+      "must_cover": [
+        "start deck|standard deck|.pptx",
+        "where the 3 slides go|after|before|order",
+        "goal",
+        "reader|procurement",
+        "output|powerpoint"
+      ],
+      "findable": [
+        "company|which company",
+        "meeting kind|first meeting|intro",
+        "slide count|how many slides",
+        "reader|who is in the meeting|procurement lead"
+      ],
+      "expected_track": "full",
+      "notes": "Adds to a start deck, but only a text export is here (the .pptx is missing). A good intake says so and asks for the file, with a default (build the 3 slides in the outline's order and a plain look)."
+    },
+    {
+      "id": "deck-08",
+      "ask": "deck for my meeting with Jane Okafor, the new CFO at Brightline Logistics. find everything you can about her",
+      "files": {},
+      "must_cover": [
+        "goal",
+        "public|work-related|privacy",
+        "slide count|slides",
+        "meeting kind",
+        "what we offer|claims"
+      ],
+      "findable": [
+        "company|which company",
+        "reader|who is in the meeting"
+      ],
+      "expected_track": "full",
+      "notes": "Privacy: 'find everything about her' must narrow to public, work-related facts, and the brief should say so. The goal is open. What we offer is unknown (no files)."
+    },
+    {
+      "id": "deck-09",
+      "ask": "outside-in point of view on Ørsted's offshore wind operations for their VP Operations. She'll share it with her CEO. About 10 slides.",
+      "files": {},
+      "must_cover": [
+        "goal|outside-in",
+        "real audience|ceo",
+        "slide count|10",
+        "what we offer|claims|our product",
+        "output|powerpoint|pdf"
+      ],
+      "findable": [
+        "goal|what the deck is for|what should the reader",
+        "real audience|convince next|ceo",
+        "slide count|how many slides",
+        "company|which company",
+        "reader|who is in the meeting"
+      ],
+      "expected_track": "full",
+      "notes": "Goal (outside-in), reader, real audience and count are given. What we offer is open and matters (does the deck pitch at all?)."
+    },
+    {
+      "id": "deck-10",
+      "ask": "turn notes.md into a short pitch deck for Spotify's ad sales team - 6 slides, PDF only",
+      "files": {
+        "notes.md": "# Pitch notes: Soundcheck\n\n- Soundcheck measures brand lift from audio ads within 48 hours, using a 6-question survey after the ad\n- Works with podcasts and music streaming\n- Customers: iHeartMedia (pilot), Acast (live)\n- Ask: a pilot on 3 Spotify ad campaigns in Q1, free\n"
+      },
+      "must_cover": [
+        "goal|pitch",
+        "slide count|6",
+        "pdf",
+        "reader|ad sales",
+        "claims|customers"
+      ],
+      "findable": [
+        "slide count|how many slides",
+        "output|format|powerpoint",
+        "goal|what the deck is for",
+        "what we offer|claims"
+      ],
+      "expected_track": "quick",
+      "notes": "Short pitch with count, output and goal given. Quick track (HTML deck, PDF, no pptx) matches 'PDF only'."
+    }
+  ]
+}

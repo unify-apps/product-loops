@@ -1,0 +1,117 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-04",
+  "ask": "Benchmark us against Coupa, SAP Ariba, Jaggaer and Zip on intake-to-procure. We already have intake forms, approval routing and a supplier portal. I need a comprehensive capability matrix my VP of Procurement can read.",
+  "expected_track": "full",
+  "notes": "Enterprise procurement. Rivals, what we have, depth (comprehensive) and the main output (matrix) are all given. The reader (VP) is given. Good intake: asks group words and market at most.",
+  "must_cover": [
+    "matrix|capability",
+    "have|what we have|today",
+    "depth|comprehensive",
+    "persona|vp|buyer",
+    "groups|categories",
+    "sheet|excel|xlsx"
+  ],
+  "findable": [
+    "rivals|competitors|which products",
+    "what we have|already have|have today",
+    "depth|how much to read|comprehensive"
+  ],
+  "fixtures": [],
+  "message": "# Product research loop: brief for your review\n\n**Start check:** passed. A web search for \"intake-to-procure software\" returned results, and a fetch of Zip's home page (zip.com) returned text. If the web reads asked you for permission, allow them for this run (choose \"don't ask again\"), or the research will stop while you are away.\n\n**One thing I noticed:** the search results say Zip sits as an intake layer on top of an ERP, while Coupa, SAP Ariba and Jaggaer are full source-to-pay suites. So the matrix compares the intake-to-procure slice of each suite, not the whole suite. Most comparison pages I found are written by rivals, so every cell will be backed by the vendor's own pages, not by those.\n\n## The brief\n\n**Decision:** a capability matrix of intake-to-procure that your VP of Procurement can read. The sheet is the main output. It comes first, then where we beat the rivals, then a ranked list of modules to build.\n\n**Product and category:** our intake-to-procure product, in the procurement software category (intake, approvals, supplier onboarding, purchase orders).\n\n**Persona and buyer:** (draft) the daily user is a procurement manager who routes requests and chases approvals. The buyer, who reads the matrix, is the VP of Procurement. The persona only ranks modules. It never removes a row from the sheet.\n\n**Rivals:** Coupa, SAP Ariba, Jaggaer, Zip (4, as you named them).\n\n**Market:** (default) global enterprise procurement, US-first, since all four sell mainly to large companies in the US and Europe.\n\n**What we have today:** intake forms, approval routing, supplier portal. These rows are marked `have`. Everything else a rival has is `gap` or `beat`.\n\n**Sources (default):** public pages only, no sign-in, no paid reports, no trial sign-up. For every rival we try these kinds: product pages, help centre or docs, release notes or changelog, pricing, public reviews.\n\n**Depth:** comprehensive means up to 25 pages and 100 features per rival.\n\n**Groups:** you gave no group words, so I use plain ones, for example Intake, Approvals, Supplier onboarding and portal, Purchase orders, Invoices and payment, Contracts, Risk and compliance, Integrations, Analytics, AI. Your three existing features each get a row under their group.\n\n**Fixed and refused:** none.\n\n**First release size:** every module is ranked, and the top 3 are the first release.\n\n**Rival names in the brief:** real names (the brief stays on this laptop).\n\n**Where to save:** `research/intake-to-procure/` in the working folder.\n\n**Sharing:** nothing is published or sent. The files stay on this laptop.\n\n**Sheet file:** `capability-sheet.xlsx` and `capability-sheet.csv`. No Google Sheet unless you ask.\n\n**Lessons applied:** none yet (no earlier runs).\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | partial | intake-to-procure is named, but where \"procure\" ends (PO, invoice, payment) is not |\n| Who and their job | partial | the VP reads it, but the daily user and the decision it feeds are not named |\n| Data and facts | clear | public rival pages, plus your three features |\n| Main flow | clear | research, matrix, think, recommend, review |\n| Edge cases | partial | a rival that blocks its pages, or sells only inside a suite, needs a rule |\n| Look | clear | no screens are made |\n| Outputs | clear | Excel and CSV sheet, brief, thinking, rival files |\n| Done signal | clear | see below |\n| Words with no number | partial | \"comprehensive\" is read as 25 pages and 100 features per rival |\n\n**Budget:** 90 minutes.\n\n**Done means:**\n1. `capability-sheet.xlsx` and `capability-sheet.csv` exist in `research/intake-to-procure/`, and the Excel file matches the CSV.\n2. The sheet covers Coupa, SAP Ariba, Jaggaer and Zip, each with at least 5 rows read on its own pages.\n3. Every sheet row says what it does, and every yes or partial cell has a link from that rival's own pages.\n4. Every `beat` row has a search of every rival's own site behind it, saved in `beats/`.\n5. Every source kind was tried for every rival: product pages, help centre or docs, release notes or changelog, pricing, public reviews.\n6. `brief.md` ends in a ranked module list whose every module cites sheet rows.\n\nAbout 60 minutes and 10 helper agents, within a budget of 90 minutes.\n\n## Questions\n\n1. Which track: quick or full?\n   Recommended: full. You named 4 rivals and asked for a comprehensive matrix. Quick covers only 3 rivals and 2 source kinds, so it would leave one of your four out.\n   Why it matters: this sets how many rivals and how many pages are read.\n\n2. Where does \"procure\" end for this matrix? (a) stop at the purchase order, (b) go through goods receipt, invoice and payment, (c) include sourcing and contracts as well.\n   Recommended: (b). That is the usual reach of Coupa and Zip, and your VP will ask about invoices.\n   Why it matters: it sets which rows are in the sheet and which rivals get `no`.\n\n3. Who uses it every day, and who reads the matrix?\n   Recommended: a procurement manager who routes requests and chases approvals, and a VP of Procurement who decides. The persona only ranks the modules. It never takes a row out of the sheet.\n   Why it matters: the persona decides which module is ranked first.\n\n4. How bold should the brief be: catch up with the rivals, or lead with ideas no rival has?\n   Recommended: both. The brief gets `## Ideas no rival has` (at least 3), and the ranked modules lead with whichever is bigger.\n   Why it matters: it decides what the top of the module list looks like.\n\n5. Is \"what we have today\" only intake forms, approval routing and a supplier portal, or are there more (for example vendor onboarding checks, or a purchase order feature)?\n   Recommended: only those three. Anything else is marked `gap`.\n   Why it matters: a feature you have but did not list would show up as a gap in front of your VP.\n\n6. What does your VP need besides the matrix: a one-page summary, a rating per rival, or just the sheet?\n   Recommended: the sheet with a one-line summary per group and a short \"where we are behind / ahead\" section at the top of the brief.\n   Why it matters: it sets how the first page of the brief is written.\n\n7. Do you want a Google Sheet link as well as the Excel file?\n   Recommended: no. Excel and CSV only, and nothing is published or shared.\n   Why it matters: a Google Sheet needs a connected Google Drive tool and a sign-in.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. Which track: quick or full? | 2. Where does \"procure\" end for this matrix? (a) stop at the purchase ord | 3. Who uses it every day, and who reads the matrix? | 4. How bold should the brief be: catch up with the rivals, or lead with i | 5. Is \"what we have today\" only intake forms, approval routing and a supp | 6. What does your VP need besides the matrix: a one-page summary, a ratin | 7. Do you want a Google Sheet link as well as the Excel file?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "41 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: rivals (\"rivals\"), what we have (\"what we have\"), depth (\"comprehensive\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 10 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "1. Which track: quick or full?"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1107,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 5,
+      "defaults_quality": 9,
+      "clarity": 4,
+      "respects_words": 8,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles matrix, have (\"These rows are marked `have`\"), depth (\"25 pages and 100 features per rival\"), persona, groups (Intake, Approvals, ...) and sheet (\"capability-sheet.xlsx\"); scope end of procure also asked.",
+      "no_redundancy": "Re-asks findable facts: Q1 quick vs full despite \"comprehensive\" and 4 named rivals, Q5 re-asks what we have, Q3 re-asks who reads the matrix (the VP was named).",
+      "defaults_quality": "Every question has a concrete, fitting default, e.g. Q2 \"Recommended: (b)... your VP will ask about invoices\" and Q7 \"Excel and CSV only\".",
+      "clarity": "Long wall: start check, full brief, coverage table, 6-item done list, then 7 questions; the key question (procure scope) sits second behind a redundant track question.",
+      "respects_words": "Keeps the 4 rivals, the three existing features and comprehensive depth; adds unasked extras (ranked modules, \"top 3 are the first release\", \"Ideas no rival has\") but does not override the ask.",
+      "overall": "Thorough and \"go\"-ready with good defaults, but too long and asks several things the ask already answered, which costs a busy VP-facing user time."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.632Z"
+}

@@ -1,0 +1,119 @@
+{
+  "arm": "baseline",
+  "loop": "design",
+  "case": "design-07",
+  "ask": "on the clinic prototype just rename 'Customers' to 'Clients', nothing else",
+  "expected_track": "quick",
+  "notes": "Tiny, exact change with 'nothing else'. A good intake asks nothing or almost nothing, offers the quick track, and does not add a sweep of other notes. Planted: the heading says Customers.",
+  "must_cover": [
+    "clients",
+    "nothing else|only"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "everywhere|this place only|scope"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "## Brief\n\n**Goal:** On the Northside Physio clinic prototype, rename \"Customers\" to \"Clients\". Nothing else changes.\n\n**Prototype:** `proto-clinic/index.html`, the only prototype in the folder. It is plain HTML, so I will serve it locally with the loop's own server. It has no `dev` or `start` script.\n\n**Reference to copy:** none. The copy-reference step will be skipped.\n\n**Design rules and step skills:** there is no `CLAUDE.md` in the folder. I found no `product-design` or `design-review` skill. The run will use the loop's built-in make-changes and design-check rules.\n\n**Start checks:**\n- A browser for screenshots: found (Google Chrome).\n- Node 22 or newer: Node v25.9.0.\n- The prototype exists: yes.\n\n**Stop fact:** The one request below is done and swept. No screen that the note does not name has changed or broken. The prototype's link opens (HTTP 200).\n\n**Where the result goes:** a local link only. Nothing is published, pushed, committed or sent.\n\n## Request list\n\n| # | Note | Screen | Where | How I will prove it |\n|---|---|---|---|---|\n| 1 | Rename \"Customers\" to \"Clients\" | Clients | everywhere | \"Customers\" no longer appears on any screen or in the code, and the title of the Clients screen reads \"Clients\" |\n\nI found \"Customers\" once, as the page title on the Clients screen (line 87). The nav link already says \"Clients\".\n\nYour words \"nothing else\" mean:\n- No other text, spacing, colour or behaviour changes.\n- I will not fix anything I notice on the way. Anything I notice is only listed under \"Broken before the run\" in the handover. The Invoices filter has no empty state, and \"New appointment\" on Today does nothing.\n\n## Questions\n\n1. **Is the request list right, or is anything missing?** Default: it is right as written. Notes you send later still join this run.\n2. **Does \"everywhere\" fit?** It names a kind of thing (a name), so I marked it everywhere: every place \"Customers\" appears, in the code and on every screen. I found only the one. Default: everywhere. If you want only the Clients screen title, say so.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 2,
+      "evidence": "1. Is the request list right, or is anything missing? Default: it is righ | 2. Does \"everywhere\" fit? It names a kind of thing (a name), so I marked "
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 2,
+      "evidence": "2 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "2 of 2 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 2"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "19 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: everywhere (\"everywhere\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 358,
+      "evidence": "358 words, 276 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 358,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 5,
+      "defaults_quality": 8,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles both topics: \"rename \\\"Customers\\\" to \\\"Clients\\\"\" and \"Your words \\\"nothing else\\\" mean: No other text, spacing, colour or behaviour changes.\"",
+      "no_redundancy": "Q2 \"Does \\\"everywhere\\\" fit?\" asks about scope the ask and files already settle (only one occurrence found), and Q1 is a generic re-confirm of the list.",
+      "defaults_quality": "Both questions carry concrete defaults (\"Default: everywhere\", \"Default: it is right as written\"), so \"go\" works, though they defend facts rather than choices.",
+      "clarity": "Only two questions, but a long brief with start checks, stop fact and tooling notes buries a one-word rename job.",
+      "respects_words": "Keeps \"nothing else\" strictly: \"I will not fix anything I notice on the way\", only listing the Invoices empty state and New appointment issues.",
+      "overall": "Accurate and faithful intake that found the single occurrence, but it asks two needless questions and is far heavier than a one-word rename needs."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.800Z"
+}

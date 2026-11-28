@@ -1,0 +1,20 @@
+[
+  {
+    "key": "figures",
+    "name": "every figure has a source",
+    "pass": true,
+    "detail": "9 facts, every figure on a slide is in a fact its line cites"
+  },
+  {
+    "key": "body",
+    "name": "every slide's body fills it and shows its title's numbers",
+    "pass": true,
+    "detail": "no slide half empty; every title number is in its body"
+  },
+  {
+    "key": "fit",
+    "name": "all text fits its box, titles on one line",
+    "pass": true,
+    "detail": "every box fits"
+  }
+]

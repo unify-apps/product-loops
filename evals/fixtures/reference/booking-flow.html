@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Booking wizard (reference)</title>
+<style>
+  body { font-family: Georgia, serif; background: #fbfaf7; color: #222; margin: 0; }
+  .wizard { max-width: 560px; margin: 40px auto; background: #fff; border: 1px solid #ddd; border-radius: 14px; padding: 28px; }
+  .steps { display: flex; gap: 8px; margin-bottom: 24px; }
+  .steps span { flex: 1; height: 4px; background: #e6e2da; border-radius: 4px; }
+  .steps span.on { background: #0a7d6b; }
+  h2 { margin: 0 0 6px; font-size: 20px; }
+  p.hint { color: #777; margin: 0 0 18px; }
+  .slots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .slots button { padding: 10px; border: 1px solid #ccc; background: #fff; border-radius: 8px; }
+  .slots button.picked { border-color: #0a7d6b; background: #e7f4f1; }
+  .foot { display: flex; justify-content: space-between; margin-top: 24px; }
+  .foot button { padding: 10px 16px; border-radius: 8px; border: 0; background: #0a7d6b; color: #fff; }
+  .foot button.back { background: transparent; color: #0a7d6b; }
+</style>
+</head>
+<body>
+<div class="wizard">
+  <div class="steps"><span class="on"></span><span></span><span></span></div>
+  <section data-step="1">
+    <h2>Who is coming in?</h2>
+    <p class="hint">Search for a client, or add a new one.</p>
+    <input placeholder="Client name" style="width:100%;padding:10px">
+  </section>
+  <section data-step="2" hidden>
+    <h2>Pick a time</h2>
+    <p class="hint">Times with a free therapist and a free room.</p>
+    <div class="slots"><button>09:00</button><button>09:45</button><button class="picked">10:30</button><button>11:15</button></div>
+  </section>
+  <section data-step="3" hidden>
+    <h2>Check and book</h2>
+    <p class="hint">We text the client a reminder the day before.</p>
+    <ul><li>Client: Priya Nair</li><li>Time: 10:30 with Tom Hale, Room 1</li><li>Type: Follow-up, 45 minutes</li></ul>
+  </section>
+  <div class="foot"><button class="back">Back</button><button class="next">Next</button></div>
+</div>
+<script>
+  let step = 1;
+  const show = () => {
+    document.querySelectorAll("section").forEach((s) => (s.hidden = Number(s.dataset.step) !== step));
+    document.querySelectorAll(".steps span").forEach((s, i) => s.classList.toggle("on", i < step));
+    document.querySelector(".next").textContent = step === 3 ? "Book" : "Next";
+  };
+  document.querySelector(".next").onclick = () => { if (step < 3) { step++; show(); } else alert("Booked"); };
+  document.querySelector(".back").onclick = () => { if (step > 1) { step--; show(); } };
+</script>
+</body>
+</html>

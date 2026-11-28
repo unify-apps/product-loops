@@ -1,0 +1,119 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-07",
+  "ask": "Compare Calendly, Cal.com and SavvyCal on team scheduling - pricing pages and help docs only. 20 minutes tops.",
+  "expected_track": "quick",
+  "notes": "Tight time box and fixed source kinds. Quick track fits. The intake must not grow the scope (no reviews, no changelogs) and should keep the questions to one or two.",
+  "must_cover": [
+    "decision|compare|matrix",
+    "sources|pricing|help",
+    "20 minutes|time",
+    "team scheduling|groups"
+  ],
+  "findable": [
+    "rivals|competitors|which products",
+    "sources|which pages|source kinds"
+  ],
+  "fixtures": [],
+  "message": "**Goal:** a team-scheduling comparison of Calendly, Cal.com and SavvyCal, built from their pricing pages and help docs only.\n\n**Found:**\n- Rivals: Calendly, Cal.com, SavvyCal (from your message).\n- Sources: pricing pages and help docs only, no sign-in or trial (from your message).\n- Main output: a capability sheet (Excel and CSV), then where we beat them, then ranked modules (you said \"compare\").\n- Time cap: 20 minutes (from your message).\n- Start check passed: web search works, and Calendly's pricing page opened (Free $0, Standard $10, Teams $16 per seat, Enterprise from $15k a year).\n- Nothing is published or sent; files stay on this laptop in `research/team-scheduling/`.\n\n**Track:** quick, because you capped the run at 20 minutes (3 rivals, 2 source kinds, the check that no rival has a \"beat\" still runs).\n\nCoverage: 5 clear · partial: Who and their job, Words with no number · missing: none\n\n**Done means:**\n- Excel and CSV sheet exist and match.\n- Each rival has at least 5 rows, each with its own page link.\n- Every \"no rival has it\" is backed by a search of each rival's site.\n- The brief ends in a ranked module list citing sheet rows.\n\nThe full brief, with every default, is in `loop-runs/product-research-loop-20261126-034042/briefs/builder-check.md` and becomes `brief.md` when you say go.\n\nAbout 50 minutes and 8 helper agents, within a budget of 20 minutes. These do not fit: see question 1.\n\n1. The work needs about 50 minutes, your cap is 20. What gives?\n   Recommended: keep the 20 minutes. Read about 6 pages per rival, and mark rows I could not confirm as \"unverified\" instead of dropping them.\n   Why it matters: a hard cap means a thinner sheet; 50 minutes means the full 12 pages per rival.\n\n2. Who uses our product every day, and what one job do they come to do?\n   Recommended: an operations lead at a 10 to 50 person B2B company who sets up shared booking pages and round-robin for the team.\n   Why it matters: the persona ranks the modules; it never removes a row from the sheet.\n\n3. How bold should the brief be?\n   Recommended: both. Catch-up modules first, plus at least 3 ideas no rival has.\n   Why it matters: \"catch-up\" keeps the ideas to a short list; \"bold\" puts them at the top of the ranking.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. The work needs about 50 minutes, your cap is 20. What gives? | 2. Who uses our product every day, and what one job do they come to do? | 3. How bold should the brief be?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 3, Why it matters: on 3, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.75,
+      "evidence": "missing: team scheduling"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 50 minutes and 8 helper agents, within a budget of 20 minutes. These do not fit: see question 1."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Coverage: 5 clear · partial: Who and their job, Words with no number · missing: none"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 398,
+      "evidence": "398 words, 236 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because you capped the run at 20 minutes (3 rivals, 2 source kinds, the check that no rival has a \"beat\" still runs)."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 398,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 8,
+      "no_redundancy": 6,
+      "defaults_quality": 8,
+      "clarity": 6,
+      "respects_words": 6,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles rivals, sources (\"pricing pages and help docs only\"), the 20-minute cap and team scheduling, and frames the decision as a capability sheet plus ranked modules; all four must-cover topics are present.",
+      "no_redundancy": "Rivals and sources are stated as found facts, but Q1 asks again about the cap the person already set (\"20 minutes tops\"), and Q2/Q3 ask about our persona and boldness, which a plain comparison does not need.",
+      "defaults_quality": "Every question has a concrete default, e.g. \"keep the 20 minutes. Read about 6 pages per rival, and mark rows ... as 'unverified'\" and a specific ops-lead persona, so \"go\" works.",
+      "clarity": "Three numbered questions, most important first, but the brief around them is long and uses jargon (\"Coverage: 5 clear · partial: Who and their job, Words with no number\", \"8 helper agents\").",
+      "respects_words": "Keeps the 20-minute cap and the sources limit, but adds scope the person never asked for (\"where we beat them\", \"ranked modules\", \"at least 3 ideas no rival has\", Excel and CSV) to a simple compare ask.",
+      "overall": "A solid brief that keeps the cap and the sources, but it re-asks a settled limit and pads a 20-minute comparison with persona and strategy questions and extra outputs."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.836Z"
+}

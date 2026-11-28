@@ -1,0 +1,118 @@
+{
+  "arm": "baseline",
+  "loop": "research",
+  "case": "research-05",
+  "ask": "what are rivals doing in AI note taking?",
+  "expected_track": "full",
+  "notes": "Vague: no product, no decision, no rivals, no persona. A good intake drafts a decision and a product line as defaults, proposes rivals found by search, and keeps to the question cap.",
+  "must_cover": [
+    "decision",
+    "product|what it is",
+    "persona|who uses",
+    "rivals|otter|fireflies|granola",
+    "market",
+    "how bold|bold"
+  ],
+  "findable": [],
+  "fixtures": [],
+  "message": "## Research brief (draft, nothing run yet)\n\n**Start check passed.** A web search for \"AI note taking software\" returned results (G2, ClickUp, Shopify and Microsoft roundups). A fetch of otter.ai returned text: it is an AI meeting notetaker for individuals, teams, sales, educators and enterprises. The run opens 30 to 50 web pages after you leave. If your tool asks permission for web reads, choose \"don't ask again\", or the research will stop while you are away.\n\nYour ask: \"what are rivals doing in AI note taking?\"\n\nI found no earlier runs, notes or CLAUDE.md in this folder, so every need below is my default.\n\n**The brief as I have it**\n\n| Need | Value |\n|---|---|\n| Decision | A capability matrix is the main output (a feature list of the rivals), then where we beat them, then ranked modules |\n| Product | An AI note-taking product. You have not named yours |\n| Persona | Not named. Draft in question 1 |\n| What we have today | Nothing yet (new product). Every row is `gap` or `beat` |\n| Rivals | None named. I will add the best-known ones from web search: likely Otter.ai, Fireflies.ai, Fathom (3 to 5 in all) |\n| Market | Global, English-language (the rivals found sell mainly in the US) |\n| Sources | Public pages only, no sign-in, no paid reports, no trial sign-up. Kinds tried per rival: product pages, help centre or docs, release notes or changelog, pricing, public reviews |\n| Depth | Up to 12 pages and 40 features per rival |\n| Fixed and refused | None |\n| First release size | Rank every module. The top 3 are the first release |\n| Rival names | Real names (the brief stays on this laptop) |\n| Where to save | `research/ai-note-taking/` |\n| Sharing | None. Nothing is published or sent |\n| Groups | Plain words: capture and transcription, summaries and AI, search and organisation, integrations, collaboration, security and admin, pricing and plans |\n| Sheet file | `capability-sheet.xlsx` and `capability-sheet.csv`. No Google Sheet |\n| How bold | Both (see question 2) |\n\n**Stop fact:** `research/ai-note-taking/capability-sheet.xlsx` and `.csv` exist. Every row says what it does. Every yes or partial cell has a link from that rival's own pages. Every beat row has a search of every rival's own site behind it. `brief.md` ends in a ranked module list that cites sheet rows.\n\n**Questions** (the default is in brackets)\n\n1. **Persona.** Who uses it every day, and who pays? [Draft: a busy professional who sits in many video calls and wants meetings turned into notes and follow-ups without typing. The company or team lead pays. The persona only ranks the modules and never removes a row from the sheet.]\n2. **How bold?** Lead with catching up to the rivals, or with ideas no rival has? [Both: the brief gets an `## Ideas no rival has` section with at least 3 ideas, tied to a persona pain or a sheet row.]\n3. **Which \"AI note taking\"?** Meeting notetakers (Otter, Fireflies, Fathom), personal note apps with AI (Notion AI, Mem, Reflect), or both? [Meeting notetakers, with personal note apps only if you say so.]\n4. **Rivals.** Do you have specific rivals to study, or should I choose? [I choose: Otter.ai, Fireflies.ai, Fathom.]\n5. **Your product today.** Do you have features already, so some rows can be marked `have`? [None: new product.]\n6. **Extra source kinds or capabilities.** Any group words, example features or source kinds (for example YouTube demos or social posts) every rival must be checked for? [None beyond the defaults.]\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Persona. Who uses it every day, and who pays? [Draft: a busy professio | 2. How bold? Lead with catching up to the rivals, or with ideas no rival  | 3. Which \"AI note taking\"? Meeting notetakers (Otter, Fireflies, Fathom), | 4. Rivals. Do you have specific rivals to study, or should I choose? [I c | 5. Your product today. Do you have features already, so some rows can be  | 6. Extra source kinds or capabilities. Any group words, example features "
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": false,
+      "evidence": "no default on: 1, 2, 3, 4, 5, 6"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "24 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 618,
+      "evidence": "618 words, 410 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 618,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 7,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "All six topics are settled: Decision, Product, Persona (Q1), Rivals 'Otter.ai, Fireflies.ai, Fathom', Market 'Global, English-language', How bold (Q2). The decision is assumed as 'capability matrix ... ranked modules' and never asked.",
+      "no_redundancy": "The folder was empty and the ask was one line, so no question repeats a known fact. Q4 (rivals) and Q5 (product today) only repeat rows already shown in the brief table.",
+      "defaults_quality": "Every question has a concrete default that fits the ask, such as '[Meeting notetakers, with personal note apps only if you say so.]' and '[I choose: Otter.ai, Fireflies.ai, Fathom.]'.",
+      "clarity": "A start-check paragraph, a 16-row table and a stop fact come before 6 questions, so it is a lot to read. Q3 (which market) and Q4 (rivals) overlap.",
+      "respects_words": "The ask was only 'what are rivals doing', but the brief assumes the person is building a product: 'What we have today | Nothing yet (new product)' and ranked first-release modules.",
+      "overall": "A strong intake with good defaults that 'go' can accept, but it is long, and it turns a plain research question into a build plan without asking what decision the research is for."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.767Z"
+}

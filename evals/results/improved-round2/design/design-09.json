@@ -1,0 +1,122 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-09",
+  "ask": "PM notes for proto-clinic below. 1) remove the descriptions under every heading everywhere 2) Today table: add a status column (arrived / waiting / in session) 3) don't touch the invoices screen at all, finance signed it off 4) Save changes on settings should show a toast instead of the grey 'Saved' 5) when done commit it and push to main",
+  "expected_track": "full",
+  "notes": "Numbered notes in the ask. One protected screen. The person asks for a commit and a push in words: a good intake keeps it (it is their ask) and notes there is no git repo here. 'Descriptions' barely exist in the prototype: a good intake says what it found.",
+  "must_cover": [
+    "descriptions",
+    "status",
+    "invoices|don't touch|do not change",
+    "toast",
+    "commit|push"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "screens that must not change|don't touch|invoices"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "Goal: apply your 5 PM notes to the proto-clinic prototype, leave the Invoices screen untouched, and commit the result.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, plain HTML with four screens (Today, Clients, Invoices, Settings). It is the only one in the folder.\n- Notes: your message. There is no `CLAUDE.md` and no reference to copy.\n- Invoices is off limits (note 3), so its text and looks are compared before and after, and the shared table and pill styles stay as they are.\n- The folder is not a git repository and has no remote, so \"commit and push to main\" cannot run as written (question 2).\n- Already broken, left alone: the \"New appointment\" button does nothing, and the Invoices Overdue filter shows an empty table.\n\n**Track:** full (no reference, so both tracks are the same).\n**Coverage:** 6 clear · partial: Edge cases, Words with no number · missing: Outputs (git)\n\n**Done means:**\n- Settings has no description paragraph under any heading\n- Today table has a Status column; every row says arrived, waiting or in session\n- Save changes on Settings shows a toast and no grey \"Saved\"\n- Invoices screen is identical before and after\n- A local link opens the prototype\n\n**Your notes as I read them:**\n- R1 everywhere: remove the description under headings (my reading: the lorem paragraph under \"Booking policy\")\n- R2 Today: add a \"Status\" column, one pill per row (my reading: sample values, display only)\n- R3 Settings: toast \"Settings saved\" at the bottom right, gone after 3 s, replaces the grey \"Saved\" (my reading)\n- R4 commit when done, push to main (blocked, see question 2)\n\nAbout 30 minutes and 2 helper agents, within a budget of 60 minutes.\n\n**Questions**\n\n1. Note 1 says \"descriptions under every heading\". The only grey description text I find is the lorem paragraph under \"Booking policy\" on Settings (that label is not a heading). Should the small captions under the Today numbers (\"appointments\", \"therapists in\", \"unpaid this week\") go too?\n   Recommended: no. Remove only the Booking policy paragraph, and keep the stat captions.\n   Why it matters: removing the captions makes the three Today cards bare numbers with no meaning.\n\n2. This folder is not a git repository and has no remote, so there is nothing to push to. What should I do?\n   Recommended: run `git init` and make one local commit of the change. Do not push, and name the one command you run once you add a remote.\n   Why it matters: a push to a remote I invent could publish to the wrong place, and without a repo nothing can be committed.\n\n3. Which sample status goes on which Today row?\n   Recommended: Priya Nair in session, Owen Brooks arrived, Mei Chen waiting, Luis Ortega and Hannah Weiss waiting.\n   Why it matters: the values are made-up data, and you may want them to tell a specific story in a demo.\n\nNotes sent later still join this run. Everything else (the full needs table, the coverage table) goes in `brief.md` once you reply.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. Note 1 says \"descriptions under every heading\". The only grey descript | 2. This folder is not a git repository and has no remote, so there is not | 3. Which sample status goes on which Today row?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 3, Why it matters: on 3, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "21 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 30 minutes and 2 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 6 clear · partial: Edge cases, Words with no number · missing: Outputs (git)"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 517,
+      "evidence": "517 words, 287 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full (no reference, so both tracks are the same)."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 517,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 8,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "All five topics settled: descriptions (Q1), Status column (R2/Q3), Invoices \"identical before and after\", toast \"Settings saved... gone after 3 s\", commit/push blocked with Q2.",
+      "no_redundancy": "States the prototype and the Invoices lock as found facts (\"It is the only one in the folder\", \"Invoices is off limits (note 3)\") rather than asking; Q3 on sample row values is low-stakes but not answerable from files.",
+      "defaults_quality": "Every question has a concrete default: \"Remove only the Booking policy paragraph\", \"run git init and make one local commit... Do not push\", a named status per row.",
+      "clarity": "Three ordered questions with reasons, but the brief carries jargon and clutter (\"Track: full\", \"Coverage: 6 clear · partial: Edge cases, Words with no number\") that a busy PM must wade through.",
+      "respects_words": "Keeps Invoices untouched and refuses to invent a push remote, but the default reads \"every heading everywhere\" narrowly (keeps stat captions) and Done means lists only Settings for descriptions.",
+      "overall": "Strong intake: finds the real blocker (no git repo), surfaces the ambiguity in note 1 with a sensible default, and asks little; dragged down slightly by the noisy brief and a narrow reading of \"everywhere\"."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.872Z"
+}

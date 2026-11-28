@@ -1,0 +1,122 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-04",
+  "ask": "QA everything in proto-clinic before I show it to the clinic owners on Monday",
+  "expected_track": "full",
+  "notes": "CLAUDE.md gives the persona, the job and four house rules. A good intake states them and does not ask the persona or rules again.",
+  "must_cover": [
+    "persona|front desk",
+    "rules|empty state|sentence case",
+    "bar|p1|p2",
+    "fix|report"
+  ],
+  "findable": [
+    "persona|who uses|who is it for|one job",
+    "rules|rule of your own|own rules"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** QA all of `proto-clinic` as a front desk user would, fix what I find, and leave you a hand-over before Monday's clinic owner demo.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, the only one in the folder (no server needed).\n- Screens: 4 from the nav: Today, Clients, Invoices, Settings.\n- Users: front desk staff at small physio clinics; their job is to get the day's clients in and out on time, and take payment (from `CLAUDE.md`).\n- Your rules, checked on top of the built-in checklist: sentence-case buttons, an empty state on every list that says what to do next, no placeholder text, money always as £ with two decimals (from `CLAUDE.md`).\n- Browser for the screenshots: Chrome, found and working.\n\n**Track:** full, because the demo is Monday, not today, so there is time for the phone-width check and a second pass.\n\nCoverage: 7 clear · partial: Edge cases, Done signal\n\n**Done means:**\n- All 4 screens have a before and an after screenshot.\n- A fresh reviewer finds no open P1 on any screen.\n- Every P1 not fixed is marked \"your call\" in one sentence.\n- Every P1 and P2 is fixed, or has a reason.\n- Every changed file has its original saved in the run folder.\n\nThe full brief is in `loop-runs/product-review-loop-20261126-034156/brief.md`.\n\nAbout 60 minutes and 5 helper agents, within a budget of 60 minutes.\n\n1. Should I fix what I find, or only report it?\n   Recommended: fix, in place, keeping a copy of every file I change.\n   Why it matters: \"QA\" can mean a list of problems or a polished prototype, and fixing changes your files.\n\n2. Which problems should I fix?\n   Recommended: P1 and P2. P3 is listed for you, never fixed.\n   Why it matters: this sets how much of the prototype I change before Monday.\n\n3. Will anyone open this on a phone or tablet on Monday?\n   Recommended: yes, so I also check a 390 px phone width.\n   Why it matters: a desktop-only demo lets me skip the phone check and finish sooner.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. Should I fix what I find, or only report it? | 2. Which problems should I fix? | 3. Will anyone open this on a phone or tablet on Monday?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 3, Why it matters: on 3, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 5 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Coverage: 7 clear · partial: Edge cases, Done signal"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 350,
+      "evidence": "350 words, 228 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because the demo is Monday, not today, so there is time for the phone-width check and a second pass."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 350,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Persona and rules settled in the brief (\"front desk staff...\", \"sentence-case buttons, an empty state\"), bar asked (\"P1 and P2\"), fix vs report asked (\"fix, in place, keeping a copy\").",
+      "no_redundancy": "Persona and rules are stated as found from CLAUDE.md, not asked; the three questions (fix/report, bar, phone use) are not answerable from the files.",
+      "defaults_quality": "Every question has a specific default: \"fix, in place, keeping a copy\", \"P1 and P2. P3 is listed for you, never fixed\", \"check a 390 px phone width\".",
+      "clarity": "Only three plain questions with reasons, but the brief adds jargon (\"Coverage: 7 clear · partial: Edge cases, Done signal\") and the Done list overlaps on P1 (\"no open P1\" vs \"Every P1 not fixed is marked\").",
+      "respects_words": "Keeps \"everything\" (\"All 4 screens\") and the Monday demo (\"before Monday's clinic owner demo\"); fixing files is offered as a default, not imposed.",
+      "overall": "A strong opening that settles scope, bar and fix mode in one short round with good defaults; small deductions for jargon and a slightly muddled done list."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.886Z"
+}

@@ -1,0 +1,105 @@
+{
+  "version": 2,
+  "loop": "product-research-loop",
+  "workDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/smokework/research",
+  "runDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/smokework/research/loop-runs/product-research-loop-20261126-032625",
+  "script": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/repo/product-loops/skills/product-research-loop/shared/scripts/loop-state.mjs",
+  "createdAt": "2026-11-25T21:56:25.772Z",
+  "changedAt": "2026-11-25T22:10:20.879Z",
+  "intake": "closed",
+  "finished": {
+    "at": "2026-11-25T22:10:20.878Z",
+    "stopFact": "research/shutter-invoice/capability-sheet.xlsx and capability-sheet.csv exist (73 rows, Excel matches CSV), every sheet row says what it does, every yes or partial cell has a link from that rival's own pages, the one beat row (C50) has a search of every rival's own site behind it, and research/shutter-invoice/brief.md ends in a ranked module list of 10 whose every module cites sheet rows."
+  },
+  "stopped": null,
+  "paused": null,
+  "track": "quick",
+  "skillDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/repo/product-loops/skills/product-research-loop",
+  "budget": {
+    "minutes": 90,
+    "maxPushes": 6,
+    "maxDecisions": 40,
+    "startedAt": "2026-11-25T21:58:15.815Z"
+  },
+  "pushes": 0,
+  "nodes": [
+    {
+      "name": "intake",
+      "status": "done",
+      "startedAt": "2026-11-25T21:56:25.772Z",
+      "endedAt": "2026-11-25T21:58:15.815Z",
+      "check": "the person said \"go\" (1 replies)",
+      "proof": "loop-runs/product-research-loop-20261126-032625/brief.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "research",
+      "status": "done",
+      "startedAt": "2026-11-25T21:58:31.344Z",
+      "endedAt": "2026-11-25T22:01:35.583Z",
+      "check": "every rival file has source links and 5+ rows read",
+      "proof": "loop-runs/product-research-loop-20261126-032625/checks/research.txt",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "matrix",
+      "status": "done",
+      "startedAt": "2026-11-25T22:01:35.675Z",
+      "endedAt": "2026-11-25T22:06:20.339Z",
+      "check": "every row says what it does, every yes cell has its own rival's labelled link, every beat row has a search of every rival's site, xlsx matches",
+      "proof": "loop-runs/product-research-loop-20261126-032625/checks/matrix.txt",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "think",
+      "status": "done",
+      "startedAt": "2026-11-25T22:06:20.407Z",
+      "endedAt": "2026-11-25T22:07:18.052Z",
+      "check": "every module names the job step it serves",
+      "proof": "loop-runs/product-research-loop-20261126-032625/checks/think.txt",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "recommend",
+      "status": "done",
+      "startedAt": "2026-11-25T22:07:18.112Z",
+      "endedAt": "2026-11-25T22:08:04.434Z",
+      "check": "ranked list is last, every module has a must have and cites real sheet rows",
+      "proof": "loop-runs/product-research-loop-20261126-032625/checks/brief.txt",
+      "retries": [
+        {
+          "at": "2026-11-25T22:08:04.236Z",
+          "why": "rows under ## Where we beat them that are not beat rows: 1 (C27)"
+        }
+      ],
+      "leftWhy": null
+    },
+    {
+      "name": "review",
+      "status": "done",
+      "startedAt": "2026-11-25T22:08:04.519Z",
+      "endedAt": "2026-11-25T22:09:53.323Z",
+      "check": "fresh agent says PASS, spec 4, quality 4, model claude-sonnet-5-5",
+      "proof": "loop-runs/product-research-loop-20261126-032625/review.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "handover",
+      "status": "done",
+      "startedAt": "2026-11-25T22:09:53.415Z",
+      "endedAt": "2026-11-25T22:10:20.782Z",
+      "check": "handover.md written",
+      "proof": "loop-runs/product-research-loop-20261126-032625/handover.md",
+      "retries": [],
+      "leftWhy": null
+    }
+  ],
+  "held": [],
+  "decisions": 2,
+  "replies": 1
+}

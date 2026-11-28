@@ -1,0 +1,118 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-08",
+  "ask": "Just a shell for an HR onboarding portal: nav with 6 sections, and only the 'First day checklist' page built properly. It's for a stakeholder walkthrough tomorrow morning.",
+  "expected_track": "quick",
+  "notes": "The person states the depth: a shell plus one page in full. A default of 'every module in full' goes against their words. The six section names are open and fair to draft as a default.",
+  "must_cover": [
+    "shell",
+    "first day checklist|checklist",
+    "six|6|sections",
+    "persona|new starter|new hire|who uses"
+  ],
+  "findable": [
+    "how deep|in full|shell|depth"
+  ],
+  "fixtures": [],
+  "message": "**Goal:** a clickable shell of an HR onboarding portal. The nav has 6 sections, and only \"First day checklist\" is built properly, for tomorrow morning's stakeholder walkthrough.\n\n**Found:**\n- Ask: 6 nav sections, one built in full, the other five are shell pages (from your message)\n- Ask: shown to stakeholders tomorrow morning, so it must run without surprises (from your message)\n- Ask: only \"First day checklist\" is named; the other five names are mine (from your message)\n- Working folder: empty, so this is a new product in `./hr-onboarding-portal/` (from the folder)\n- Look: no logo, colours or fonts anywhere, so the plain look is used (from the folder)\n- Browser: chrome-headless-shell, so every click is checked for real (start check)\n\n**Track:** full, because you will show it to stakeholders. This adds 3 name and logo options on the real header, and a link for every state of the checklist (empty, all done, one task opened).\n\nCoverage: 4 clear · partial: Who and their job, Data and facts, Edge cases · missing: Look, Done signal\n\n**Done means:**\n- Nav shows 6 sections; each opens its own page, none blank\n- First day checklist is complete: tasks, tick-off, progress, empty state\n- The other 5 pages are titled shell pages, not built\n- Every link opens and every click works in a real browser\n- A fresh reviewer says PASS with no P1\n\nAbout 90 minutes and 5 helper agents, within a budget of 120 minutes.\n\n1. What are the other 5 sections called?\n   Recommended: Documents, Equipment and access, Meet your team, Benefits, Training.\n   Why it matters: the names go on the nav your stakeholders will read.\n\n2. Who is on the page, and what one job do they come to do?\n   Recommended: a new hire on their first morning, who works through what to do today and ticks it off.\n   Why it matters: a new hire and an HR admin need different checklist pages.\n\n3. What does a task on the First day checklist hold, and what happens when it is ticked?\n   Recommended: a title, who it is with, a time, a short note; ticking moves it to done and the progress bar updates (for example \"3 of 8 done\").\n   Why it matters: this is the one page built properly, so it is what they will click.\n\n4. Is there a company name, logo or colours to use?\n   Recommended: none; use the plain look and pick a working name from the 3 options.\n   Why it matters: stakeholders judge a branded demo differently from a grey one.\n\n5. Quick or full?\n   Recommended: full. Quick makes every section one page and skips the name options and the state links; full adds both.\n   Why it matters: full takes longer, and you have until tomorrow morning.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. What are the other 5 sections called? | 2. Who is on the page, and what one job do they come to do? | 3. What does a task on the First day checklist hold, and what happens whe | 4. Is there a company name, logo or colours to use? | 5. Quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 1 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 90 minutes and 5 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Coverage: 4 clear · partial: Who and their job, Data and facts, Edge cases · missing: Look, Done signal"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 475,
+      "evidence": "475 words, 247 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you will show it to stakeholders. This adds 3 name and logo options on the real header, and a link for every state "
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 475,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 5,
+      "defaults_quality": 7,
+      "clarity": 6,
+      "respects_words": 5,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles shell (\"the other five are shell pages\"), 6 sections with proposed names, checklist contents (Q3) and persona (Q2 \"a new hire on their first morning\").",
+      "no_redundancy": "Q5 \"Quick or full?\" asks how deep to go, though \"Just a shell\" with one page built properly already answers it.",
+      "defaults_quality": "Q1-Q4 defaults are concrete and fitting (named sections, task fields, \"3 of 8 done\"), but Q5 defaults to \"full\", which adds scope the person did not want.",
+      "clarity": "Five numbered questions with defaults, but a long brief plus jargon like \"Coverage: 4 clear · partial: ... missing: Look, Done signal\" slows a busy reader.",
+      "respects_words": "\"Track: full ... adds 3 name and logo options on the real header, and a link for every state\" goes beyond \"Just a shell\" with only one page built.",
+      "overall": "Solid brief and good persona/checklist defaults, but it escalates a stated shell to a full track and asks a depth question the ask already answered."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.636Z"
+}

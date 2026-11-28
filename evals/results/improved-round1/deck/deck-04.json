@@ -1,0 +1,122 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-04",
+  "ask": "second meeting with Northwind Health's CIO next week - technical deep dive on how we integrate with their Epic EHR. 12-15 slides.",
+  "expected_track": "full",
+  "notes": "A call transcript gives the people, their systems, pains and asks. CLAUDE.md gives look and claims. A good intake builds the goal from the transcript (a pilot plan for one hospital) and asks very little.",
+  "must_cover": [
+    "goal|pilot",
+    "reader|cio|integration lead",
+    "slide count|12",
+    "fhir|hl7|epic",
+    "claims|soc 2",
+    "look|inter"
+  ],
+  "findable": [
+    "meeting kind|technical|first meeting",
+    "slide count|how many slides",
+    "look|font|colour|color",
+    "claims|what we may claim",
+    "company facts|systems|epic"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "notes/call-2026-11-20.txt"
+  ],
+  "message": "I read your ask, `CLAUDE.md` and `notes/call-2026-11-20.txt`. There is no start deck and no product file in the folder. Setup worked: the PowerPoint and PDF tools, Chrome and Quick Look are all found. Web search and web fetch are in this session, so research can use public sources.\n\n## The brief (draft)\n\n**Goal (G1):** not stated in your ask. See question 1.\n**Company:** Northwind Health, a 9-hospital system on Epic since 2019, moving to Epic's cloud hosting next year (from your call notes).\n**Meeting:** second meeting, next week. Technical deep dive on how we integrate with their Epic EHR.\n**In the room:** Raj Patel (CIO), Maria Gomez (Director of Clinical Apps), and Raj's integration lead (name unknown).\n**What they told us on the 20 Nov call:** discharge summaries take nurses about 25 minutes each, mostly copy and paste. They asked how we read and write back to Epic (FHIR or HL7), where data lives, and whether we have SOC 2. Raj wants a pilot plan for one hospital. Maria cares about nurse time.\n\n| Need | Value | Source |\n|---|---|---|\n| Meeting kind | technical buyer (CIO plus integration lead) | your ask |\n| Main slide count | 12 to 15, extras in an appendix | your ask |\n| Track | full (recommended, see question 5) | default |\n| Start deck | none, build new | folder |\n| Look | Inter, teal #0E7490, ink #0F172A, architecture diagrams as boxes with no icons | `CLAUDE.md` |\n| What we may claim | SOC 2 Type II (2026). FHIR R4 read and write via the Epic App Orchard listing. Never say HIPAA \"certified\". Nothing else yet. | `CLAUDE.md` |\n| Outputs | HTML deck and editable PowerPoint (default), no Artifact | default |\n| Output folder | `decks/northwind-health-20261126/` | default |\n| Product pictures | none, no made-up product screens | default |\n| Lead with or leave out | none | default |\n| Speaker notes, Sources slide | yes, set without asking | rule |\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | partial | technical integration is clear, but pilot plan in or out is not |\n| Who and their job | partial | Raj, Maria and an unnamed integration lead; unclear who must be convinced next |\n| Data and facts | partial | we may claim only FHIR R4 and SOC 2; nothing on data location, HL7, or hosting |\n| Main flow | partial | read, write back, security, pilot is my guess for the order |\n| Edge cases | missing | what happens when a write-back fails, and Epic's cloud move |\n| Look | clear | `CLAUDE.md` |\n| Outputs | clear | defaults |\n| Done signal | partial | goal not stated |\n| Words with no number | clear | \"12-15 slides\" has a number; \"nurse time\" uses their 25 minutes |\n\n**Lessons applied:** none yet (no earlier runs).\n\n**Done means (stop fact, real values):**\n1. The deck does what the goal says for Raj Patel, his integration lead and Maria Gomez: goal to be set by your answer to question 1.\n2. `deck.html` and `deck.pptx` are in `decks/northwind-health-20261126/out/` and open.\n3. The main slide count is 12 to 15.\n4. `deck.py check` prints PASS on every check after the last change.\n5. Every line on a slide cites facts that say it, each with a source link, an estimate note or your word.\n6. Every earlier review finding is fixed, or left with why, in `review-fixes.md`.\n\nAbout 60 minutes and 6 helper agents (one builder check, 3 for research, one claim checker per round, one reviewer), within a budget of 90 minutes.\n\n## Questions\n\n1. What should Raj believe or do after this deck?\n   - a) A technical walk-through: their Epic setup, how ours connects, a pilot plan.\n   - b) A pitch: the discharge problem, our fix, proof, a next step.\n   - c) A plan for them: a ranked pilot for one hospital, each step tied to nurse minutes saved.\n   - d) A vision Raj can retell to his own boss: why now, what good looks like, first steps.\n\n   Recommended: a), ending in a one-hospital pilot plan. It matches \"technical deep dive\", Raj's ask for a pilot, and the integration lead coming.\n   Why it matters: the goal decides the order of every slide and what the reviewer checks first.\n\n2. What is the one idea the deck argues?\n   Recommended: \"We write back into Epic through the interfaces you already use, with your data staying inside your control, so one hospital can start in weeks with little new risk.\" Order: their situation, how we read, how we write back, where data lives, security, Epic cloud move, pilot plan, next step.\n   Why it matters: a technical deck without one argument becomes a list of boxes.\n\n3. Who must Raj convince next, and what do they care about?\n   Recommended: his CEO and security or compliance lead, who care about risk and cost; Maria is in the room and cares about nurse time.\n   Why it matters: it decides whether slides lead with risk, money or nurse time.\n\n4. What may we say about the architecture beyond FHIR R4 read and write and SOC 2 Type II? Please give a file or a few lines on: HL7 v2 support (they asked), where data lives and for how long, hosting (our cloud or theirs), how we work with Epic's cloud hosting, and any security claims.\n   Recommended: only the two claims in `CLAUDE.md`. Anything else in the deck is a public fact with a link, or a clearly marked open question for the meeting. I will not write \"HL7\", \"stored in\" or \"encrypted\" claims unless you give them.\n   Why it matters: Raj's three questions on the call were exactly these, so a gap here is the deck's biggest risk.\n\n5. Track: quick (HTML and PDF, 6 to 8 slides) or full (HTML and editable PowerPoint, 12 to 15 slides)?\n   Recommended: full. Your 12 to 15 range and a CIO audience need the PowerPoint, and the quick track caps at 8 slides.\n   Why it matters: quick cannot make your slide count.\n\n6. Include a pilot plan for one hospital, with timeline and nurse-time numbers?\n   Recommended: yes, 2 to 3 main slides. The 25 minutes per summary is your call's number, labelled \"from Northwind, 20 Nov\". Any time saved is an estimate, marked as ours.\n   Why it matters: Raj asked for it, but a plan with unproven numbers can cost trust in a technical meeting.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. What should Raj believe or do after this deck? | 2. What is the one idea the deck argues? | 3. Who must Raj convince next, and what do they care about? | 4. What may we say about the architecture beyond FHIR R4 read and write a | 5. Track: quick (HTML and PDF, 6 to 8 slides) or full (HTML and editable  | 6. Include a pilot plan for one hospital, with timeline and nurse-time nu"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "41 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: meeting kind (\"technical\"), slide count (\"slide count\"), look (\"look\"), claims (\"claims\"), company facts (\"epic\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 6 helper agents (one builder check, 3 for research, one claim checker per round, one reviewer), within a budget of 90 m"
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "| Track | full (recommended, see question 5) | default |"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1109,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles goal (Q1, pilot ending), readers (Raj, Maria, integration lead), 12 to 15 slides, FHIR/HL7 (Q4), claims (SOC 2 Type II from CLAUDE.md) and look (Inter, teal, ink).",
+      "no_redundancy": "States slide count, look and claims as found facts, but Q5 'Track: quick or full?' asks what '12-15 slides' already answers, as its own default admits.",
+      "defaults_quality": "Every question has a specific, fitting default, e.g. Q4 'only the two claims in CLAUDE.md' and Q6 'yes, 2 to 3 main slides' with the 25 minutes labelled as Northwind's.",
+      "clarity": "Six questions follow a long brief with two tables, a coverage scan and a done list; Q4 bundles five sub-topics, so it is slow to answer.",
+      "respects_words": "Keeps 'technical deep dive' and '12 to 15' main slides, with extras moved to an appendix rather than adding to the count; nothing overrides the ask.",
+      "overall": "Strong grounding and safe claim defaults, and 'go' gives a good deck, but redundant track question and wall-of-text length weaken it as an intake."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.697Z"
+}

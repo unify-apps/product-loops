@@ -1,0 +1,123 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-05",
+  "ask": "5-6 slides for an internal lunch and learn about our Q3 wins, nothing fancy, HTML is fine",
+  "expected_track": "quick",
+  "notes": "An internal deck, not a meeting with a company: company research is pointless. Count and output are given. A good intake skips web research by default and asks little.",
+  "must_cover": [
+    "goal",
+    "slide count|5|6",
+    "html",
+    "audience|internal|team",
+    "research|no research|files only"
+  ],
+  "findable": [
+    "slide count|how many slides",
+    "output|format|powerpoint|html",
+    "facts|wins|numbers"
+  ],
+  "fixtures": [
+    "q3-wins.md"
+  ],
+  "message": "**Goal:** a plain 5 to 6 slide HTML deck for your lunch and learn on the Q3 wins.\n\n**Found:**\n- Your ask: internal talk, 5 to 6 slides, HTML is fine, nothing fancy.\n- `q3-wins.md` holds the 5 facts (14 new logos, Halden Foods, 118% retention, 6 partners, 74 to 58 day cycle). They are your word, with no outside research.\n- Files land in `decks/q3-wins-20261126/out/`: `deck.html` and `deck.pdf`.\n- Look: plain, Arial, dark text on white, one dark blue accent.\n- Everything else (full brief) is in `loop-runs/product-deck-loop-20261126-035344/brief.md`.\n\n**Track:** quick, because you asked for nothing fancy and 5 to 6 slides.\n\nStill open after reading your files: what the room should take away, and who is in it.\n\n**Done means:**\n- 5 to 6 main slides.\n- `deck.html` and `deck.pdf` open.\n- Every number comes from `q3-wins.md`.\n- Every slide drawn, looked at, and checked.\n\nAbout 10 minutes and 3 helper agents, within a budget of 90 minutes.\n\n1. What should people take away from the talk?\n   Recommended: what worked in Q3 and which one habit to copy, so the room learns, not only cheers.\n   Why it matters: it decides the slide order. A results story and a lessons story are different decks.\n2. Who is in the room?\n   Recommended: the whole company, mixed roles, so no sales jargon (say \"new customers\", not \"logos\").\n   Why it matters: it sets the words and how much each number is explained.\n3. May Halden Foods be named on screen?\n   Recommended: yes, name it, with the 3-year deal as the biggest win.\n   Why it matters: a customer's name shown to the whole company is your call, not mine.\n4. Anything to add beyond the 5 facts, such as who closed what, or revenue?\n   Recommended: no, use only the 5 facts in `q3-wins.md`.\n   Why it matters: every line needs a fact behind it, and I will not invent a reason for a win.\n5. Company name or logo on the title slide?\n   Recommended: no, title only: \"Q3 wins: Sales\".\n   Why it matters: I have no brand in your folder, so the look stays plain.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. What should people take away from the talk? | 2. Who is in the room? | 3. May Halden Foods be named on screen? | 4. Anything to add beyond the 5 facts, such as who closed what, or revenu | 5. Company name or logo on the title slide?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "15 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: facts (\"facts\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 10 minutes and 3 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what the room should take away, and who is in it."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 361,
+      "evidence": "361 words, 159 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because you asked for nothing fancy and 5 to 6 slides."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 361,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles goal, '5 to 6 main slides', HTML, 'no outside research', and asks 'Who is in the room?' with a default; all must-cover topics handled.",
+      "no_redundancy": "Slide count, output and the 5 facts are stated, not asked; Q4 'Anything to add beyond the 5 facts' and Q5 logo are mildly unnecessary.",
+      "defaults_quality": "Every question has a concrete default, e.g. 'the whole company, mixed roles, so no sales jargon' and 'title only: \"Q3 wins: Sales\"'.",
+      "clarity": "Plain words and one topic per question, but five questions plus a long Found/Track/Done brief is more than a busy person needs for a quick deck.",
+      "respects_words": "Keeps 'nothing fancy' as 'plain, Arial, dark text on white' and 5-6 slides; adds an unrequested deck.pdf alongside the HTML.",
+      "overall": "A strong, faithful intake with good defaults that a 'go' reply makes workable, slightly heavy for a 'nothing fancy' lunch-and-learn deck."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.315Z"
+}

@@ -1,0 +1,119 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-09",
+  "ask": "research competitors for our field service app (ServiceTitan, Jobber, Housecall Pro) and put the sheet in a Google Sheet I can share with the team",
+  "expected_track": "full",
+  "notes": "Asks for a Google Sheet. The start check must look for a Drive tool and say plainly when it cannot make one (xlsx only). Rivals are given.",
+  "must_cover": [
+    "google|drive|sheet",
+    "persona|technician|owner|dispatcher",
+    "decision",
+    "how bold|bold",
+    "market"
+  ],
+  "findable": [
+    "rivals|competitors|which products"
+  ],
+  "fixtures": [],
+  "message": "**Goal:** a capability sheet comparing our field service app with ServiceTitan, Jobber and Housecall Pro, then where we beat them and which modules to build first.\n\n**Found:**\n- Rivals: ServiceTitan, Jobber, Housecall Pro (from your message).\n- Lands in: `research/field-service-app/` in this folder (Excel and CSV sheet, plus a product brief). It is for deciding what to build and for sharing with your team.\n- Sources: public pages only (product pages, help centre, release notes, pricing, public reviews). No sign-ins, no trials.\n- Market: US and Canada, where all three sell (default).\n- You have no existing features listed, so every row is a gap or a place we can beat them (default).\n- Web search and page reading both work.\n\n**Google Sheet:** I can make the Excel file, but not a Google Sheet link: no Google Drive tool is connected to this session. The Excel file opens in Google Sheets if you upload it. Nothing is shared or sent unless you ask for it.\n\n**Track:** quick, because you named 3 rivals and no extra source types.\n\nStill open after reading your files: who the app is for, and how bold the ideas should be.\n\n**Done means:**\n- Excel and CSV sheet exist and match.\n- Each rival has at least 5 rows read from its own pages.\n- Every yes or partial cell has a link from that rival's pages.\n- Each \"we beat them\" row has a search of every rival's site behind it.\n- The brief ends with a ranked module list citing sheet rows.\n\nFull details are in `loop-runs/product-research-loop-20261126-035151/brief.md`.\n\nAbout 25 minutes and 8 helper agents, within a budget of 90 minutes.\n\n1. Who uses the app every day, and what one job do they come to do?\n   Recommended: a dispatcher at a small home-service business (HVAC, plumbing, electrical) who schedules and sends technicians.\n   Why it matters: the persona decides which module is ranked first. It never removes a row from the sheet.\n2. How bold should the ideas be?\n   Recommended: both. Catch up on the basics, and list at least 3 ideas no rival has.\n   Why it matters: it decides whether the ranked modules lead with new ideas or with matching the rivals.\n3. Quick or full?\n   Recommended: quick. 3 rivals, product pages and help centre only, up to 12 pages each. Full adds release notes, pricing and public reviews, up to 25 pages each.\n   Why it matters: full reads much more per rival and takes longer.\n4. Do you want to share a different way, since there is no Google Drive tool?\n   Recommended: no. Keep the Excel file in the folder and upload it to Google Sheets yourself.\n   Why it matters: I will not publish or share anything unless you say where.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Who uses the app every day, and what one job do they come to do? | 2. How bold should the ideas be? | 3. Quick or full? | 4. Do you want to share a different way, since there is no Google Drive t"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "19 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 1 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.8,
+      "evidence": "missing: decision"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 25 minutes and 8 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: who the app is for, and how bold the ideas should be."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 469,
+      "evidence": "469 words, 276 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** quick, because you named 3 rivals and no extra source types."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 469,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 8,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Covers all five: Google ('no Google Drive tool is connected'), persona (Q1), decision ('for deciding what to build'), boldness (Q2), market ('US and Canada, where all three sell').",
+      "no_redundancy": "Rivals are stated as found ('from your message'), not asked; only Q3 re-asks a track it already picked ('Track: quick').",
+      "defaults_quality": "Every question has a concrete default, e.g. 'a dispatcher at a small home-service business (HVAC, plumbing, electrical)' and 'list at least 3 ideas no rival has'.",
+      "clarity": "Four plain, numbered questions with the most important first, but a long preamble and a Done-means list come before them, and Q3 repeats the Track line.",
+      "respects_words": "Says plainly that it cannot make the Google Sheet and offers Excel to upload; the default ('upload it to Google Sheets yourself') only partly meets 'a Google Sheet I can share'.",
+      "overall": "A strong intake that settles every topic with good defaults; it loses a little for length and for falling back from the asked-for Google Sheet."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.258Z"
+}

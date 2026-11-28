@@ -1,0 +1,120 @@
+{
+  "arm": "baseline",
+  "loop": "review",
+  "case": "review-02",
+  "ask": "quick P1 pass on the clinic prototype before my 2pm demo. desktop only",
+  "expected_track": "quick",
+  "notes": "Bar and width given, time pressure. Quick track (P1 only, no phone). A good intake asks one or two questions at most.",
+  "must_cover": [
+    "p1",
+    "desktop|no phone",
+    "fix|report"
+  ],
+  "findable": [
+    "bar|p1 and p2|p1 only",
+    "phone|screen width|390"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "I'm starting the product review loop on your clinic prototype. Here is the brief as I have it. Nothing has started yet.\n\n## Brief\n\n- **Goal:** a quick review of the whole prototype before your 2pm demo. The loop opens every screen, clicks the buttons, takes a screenshot of each screen, and checks for P1 problems (the ones that would hurt in front of people).\n- **Prototype:** `proto-clinic/index.html` (\"Northside Physio\"). It is the only prototype in this folder. It opens as a file, so no server is needed.\n- **Start check:** Node 25.9.0 and Google Chrome are both found, so the walk can run.\n- **Screens found:** Today, Clients, Invoices, Settings (the four items in the nav).\n- **Width:** desktop only (1440 px). You said so, so the phone-width check is switched off.\n- **Bar:** P1 only. You said \"quick P1 pass\", so P2 and P3 problems are listed but not fixed.\n- **Rules:** the built-in checklist. I found no `CLAUDE.md`, no `design-review` skill, no `product-design` skill and no earlier runs to add rules from.\n- **Stop fact:** after the last walk, a fresh agent finds no open P1 on any of the 4 screens. Any P1 left for you to decide is listed first in `handover.md`.\n- **Local only:** nothing is deployed, published or sent.\n\n## Questions\n\n1. **Which screens?** Default: all 4 the nav reaches: Today, Clients, Invoices, Settings. Tell me if there is a screen the nav does not reach (a dialog, a detail page) that you will show.\n2. **Who uses it, and what one job do they come to do?** Default (a guess from the screens): \"front-desk staff at a physio clinic who run the day's bookings, clients and invoices\". The job is to see today's appointments and book a new one.\n3. **Fix what I find, or only report it?** Default: fix, in place, keeping a copy of every changed file in the run folder. Say \"report only\" if you do not want the file touched before the demo.\n4. **Any rule of your own to check?** Default: the built-in checklist only.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Which screens? Default: all 4 the nav reaches: Today, Clients, Invoice | 2. Who uses it, and what one job do they come to do? Default (a guess fro | 3. Fix what I find, or only report it? Default: fix, in place, keeping a  | 4. Any rule of your own to check? Default: the built-in checklist only."
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "11 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 359,
+      "evidence": "359 words, 216 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 359,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 8,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles P1 (\"Bar: P1 only\"), desktop (\"desktop only (1440 px)... phone-width check is switched off\") and fix vs report (Q3 \"Fix what I find, or only report it?\").",
+      "no_redundancy": "Bar and phone are stated in the brief, not asked; Q1 on screens and Q4 on own rules partly re-ask what the nav and the empty folder already show.",
+      "defaults_quality": "Every question has a concrete default (\"fix, in place, keeping a copy of every changed file\", the four named screens, a specific user guess), though editing in place right before a demo is a slightly risky default.",
+      "clarity": "Four short numbered questions with a \"go\" option, but the long brief and low-value Q2/Q4 make it heavier than a quick pass needs.",
+      "respects_words": "Keeps \"quick P1 pass\", \"desktop only\" and the 2pm demo; P2/P3 are \"listed but not fixed\", which matches the ask.",
+      "overall": "A solid intake that covers P1, desktop and fix-or-report with good defaults, held back a little by extra questions that don't change a quick P1 pass."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.814Z"
+}

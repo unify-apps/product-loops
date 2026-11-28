@@ -1,0 +1,118 @@
+{
+  "arm": "baseline",
+  "loop": "build",
+  "case": "build-09",
+  "ask": "hey so we're a coop of ~200 dairy farmers in Wisconsin and we want an app for milk pickup scheduling + seeing the quality test results (fat, protein, somatic cell count) from each pickup, and maybe also a marketplace where farmers buy feed from each other?? not sure about that one. the truck drivers would need it too. idk how many screens, whatever makes sense",
+  "expected_track": "full",
+  "notes": "Rambling, unsure scope (the marketplace is a maybe), two personas (farmers and drivers), domain data named. A good intake proposes the scope with the marketplace as a clear default (out, or a shell) and asks it once; research-first is a fair question.",
+  "must_cover": [
+    "persona|farmer|driver",
+    "marketplace",
+    "module",
+    "research|rivals",
+    "how deep|in full|depth",
+    "phone|mobile|tablet"
+  ],
+  "findable": [],
+  "fixtures": [],
+  "message": "## Here is what I understood\n\n**Goal:** a clickable web prototype of an app for a Wisconsin dairy co-op of about 200 farmers. It schedules milk pickups and shows the quality test results (fat, protein, somatic cell count) from each pickup. Truck drivers use it too. A feed marketplace between farmers is a maybe.\n\n**Your words, kept as requests:**\n- R1 The whole ask.\n- R2 Milk pickup scheduling.\n- R3 Quality test results (fat, protein, somatic cell count) from each pickup.\n- R4 Maybe a marketplace where farmers buy feed from each other (\"not sure about that one\").\n- R5 Truck drivers need it too.\n\n**Draft brief (my guesses, marked as defaults):**\n- **Who uses it:** two people. A dairy farmer who wants to know when the truck comes and how the milk tested. A truck driver who wants the day's stops in order and a quick way to log each pickup. (default)\n- **Modules, in build order (default):**\n  1. Pickups: the farmer's next pickup, book or change a slot, past pickups.\n  2. Quality results: fat, protein and somatic cell count per pickup, a flag when a value is out of range, a simple trend.\n  3. Driver route: the driver's stops for the day, mark picked up, enter litres and sample ID.\n  4. Feed marketplace: farmers list feed for sale and buy from each other. Built as a simple module you can drop later. (default: built in full, since you said \"maybe\")\n- **Follow:** nothing exact. Flow only. (default)\n- **How deep:** every module in full, with sample data. (default)\n- **Look:** no logo, colours or fonts found. A plain, clean look, large type and big tap targets that work in a truck cab. (default)\n- **Name:** 3 name and mark options, the first one used. (default)\n- **Where it runs:** a new folder `dairy-coop-app/` here, one `index.html`, served on this laptop only. Nothing is published. (default)\n- **Start check:** a browser for click checks was found (chrome-headless-shell), so every click will be checked for real.\n- **Done when:** every module is built and reviewed with no major problem, every link opens and every click works, and every request above is in the product.\n\n## Questions\n\n1. **Run `product-research-loop` first?** No brief or research exists and the feature set is open (the marketplace especially). Default: no, build from the modules above.\n2. **Who uses it, and the one job each comes to do?** My draft is the farmer and the driver above. Are there others, such as a co-op office or dispatcher who sets routes? Default: farmer and driver only.\n3. **Modules and must-haves.** Is the list above right? In particular, should the feed marketplace be in at all? Default: include it in full as module 4, last in the build order.\n4. **How deep:** all four in full, or some only a titled page? Default: all in full.\n5. **Screens or products to follow?** Is there an app you want it to look or work like, and exact or flow only? Default: none, flow only.\n6. **Phone or desktop first?** Farmers and drivers are likely on phones. Default: phone first, still usable on a laptop.\n7. **Logo, colours, fonts?** Default: none found, plain look.\n8. **Name:** do you have one, or should I give 3 options? Default: 3 options, the first used.\n9. **Extras:** photos of people, two versions of a layout behind a key, a PDF guide, a public link? Default: none; it stays on this laptop.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 9,
+      "evidence": "1. Run `product-research-loop` first? No brief or research exists and the | 2. Who uses it, and the one job each comes to do? My draft is the farmer  | 3. Modules and must-haves. Is the list above right? In particular, should | 4. How deep: all four in full, or some only a titled page? Default: all i | 5. Screens or products to follow? Is there an app you want it to look or  | 6. Phone or desktop first? Farmers and drivers are likely on phones. Defa | 7. Logo, colours, fonts? Default: none found, plain look. | 8. Name: do you have one, or should I give 3 options? Default: 3 options, | 9. Extras: photos of people, two versions of a layout behind a key, a PDF"
+    },
+    "asked_le_7": {
+      "pass": false,
+      "value": 9,
+      "evidence": "9 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "9 of 9 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 9"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "22 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 591,
+      "evidence": "591 words, 365 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 591,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 9,
+      "defaults_quality": 7,
+      "clarity": 6,
+      "respects_words": 7,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles every must-cover topic: personas (farmer, driver), marketplace (Q3), modules list, research (Q1 'Run product-research-loop first?'), depth (Q4), and phone (Q6 'Phone or desktop first?').",
+      "no_redundancy": "Folder was empty, so nothing was findable; it asks nothing the ask already answers, though Q2 and Q3 largely re-ask the farmer/driver and module drafts already stated in the brief.",
+      "defaults_quality": "Most defaults are concrete (phone first, 'large type and big tap targets that work in a truck cab'), but the marketplace defaults to 'built in full' despite the person's doubt, and the driver logs 'litres' when a Wisconsin co-op would use pounds.",
+      "clarity": "Nine questions after a long brief, and several repeat it ('Is the list above right?', 'all four in full'), so it takes longer than two minutes to answer.",
+      "respects_words": "Keeps the person's requests R1-R5, but turns 'maybe... not sure about that one' into 'default: built in full, since you said \"maybe\"', which leans past the stated doubt.",
+      "overall": "A solid, complete intake with sensible phone-first, two-persona defaults, held back by length and repetition and by defaulting the doubtful marketplace to a full build."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.678Z"
+}

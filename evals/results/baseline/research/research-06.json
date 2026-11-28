@@ -1,0 +1,121 @@
+{
+  "arm": "baseline",
+  "loop": "research",
+  "case": "research-06",
+  "ask": "Precisamos decidir os módulos de um app de estoque para farmácias no Brasil. Rivals? not sure, find them. Portuguese sources are fine.",
+  "expected_track": "full",
+  "notes": "Mixed Portuguese and English. Market and source language are given. Rivals must be found. A good intake answers in the person's mix or plain English, names a rival-finding default, and may flag local rules (ANVISA, controlled drugs).",
+  "must_cover": [
+    "decision|modules|módulos",
+    "market|brasil|brazil",
+    "rivals|find",
+    "sources|portuguese|português",
+    "persona|pharmacist|farmacêutico|who uses",
+    "rules|anvisa|regulation"
+  ],
+  "findable": [
+    "market|country|region",
+    "sources|language|portuguese"
+  ],
+  "fixtures": [],
+  "message": "Iniciei a execução (pasta: `loop-runs/product-research-loop-20261126-032442`). Antes de pesquisar, aqui está o meu resumo do pedido e as perguntas. Depois da sua resposta o trabalho roda sozinho e você pode sair.\n\n**Verificação inicial:** a busca na web funcionou (resultados sobre sistemas de gestão de estoque para farmácias no Brasil) e a leitura da página inicial da Trier Sistemas funcionou (módulos de PDV, estoque e validade por lote, compras, financeiro, fiscal, SNGPC, BI, CRM, app gerente). Não pude abrir a página do FarMoura (erro de conexão), mas isso não bloqueia a execução.\n\n## Brief (rascunho)\n\n- **Decisão:** quais módulos um app de estoque para farmácias no Brasil deve ter, ranqueados em ordem de construção.\n- **Produto:** app de gestão de estoque para farmácias e drogarias. Categoria: software de gestão (ERP) farmacêutico.\n- **Mercado:** Brasil. Regras locais contam (Anvisa, SNGPC, NF-e/NFC-e).\n- **Rivais** (você não tinha certeza, então achei pela busca; padrão: 3 a 5): Trier Drogarias (Trier Sistemas), WebPharma, SysFar, FarMoura. Os nomes finais saem de listas \"melhores sistemas para farmácia\" na pesquisa. Cada rival adicionado fica registrado em `decisions.md`.\n- **Fontes:** só páginas públicas, em português ou inglês, sem login, sem relatórios pagos, sem cadastro de teste. Tipos tentados para cada rival: páginas de produto, central de ajuda, notas de versão, preços, avaliações públicas.\n- **Profundidade:** até 12 páginas e 40 funcionalidades por rival.\n- **O que já temos:** nada (produto novo). Toda linha é `gap` ou `beat`.\n- **Obrigatórios e proibidos:** nenhum.\n- **Tamanho do primeiro lançamento:** ranquear todos os módulos; os 3 primeiros formam o primeiro lançamento.\n- **Nomes dos rivais no brief:** nomes reais. Os arquivos ficam neste computador.\n- **Onde salvar:** `research/estoque-farmacias/`. Nada é publicado nem enviado.\n- **Planilha:** `capability-sheet.xlsx` (Excel, abre no Google Sheets) e `capability-sheet.csv`, com link de fonte em cada célula \"sim\" ou \"parcial\". Sem Google Sheet, a menos que você peça.\n- **Grupos da planilha:** você não deu grupos. Uso os meus: estoque e lotes, validade, compras e fornecedores, preços, fiscal e regulatório (SNGPC, notas), PDV, relatórios, integrações.\n- **Resultado final:** `brief.md` com lista ranqueada de módulos, cada um citando linhas da planilha, mais a planilha com fonte em cada célula.\n\n## Perguntas\n\n1. **Persona.** Rascunho: quem usa todo dia é o farmacêutico responsável ou o gerente de uma farmácia independente (1 a 3 lojas), e quem paga é o dono. Está certo? A persona só ranqueia os módulos, nunca tira uma linha da planilha. *Padrão: esse rascunho.*\n2. **Quão ousado.** (a) alcançar os rivais, (b) ideias que nenhum rival tem, ou (c) as duas coisas. *Padrão: as duas; o brief traz `## Ideias que nenhum rival tem` com pelo menos 3 ideias.*\n3. **Porte da farmácia.** Independente de 1 a 3 lojas, rede média, ou todas? Isso muda quais rivais valem a comparação. *Padrão: independentes e pequenas redes.*\n4. **Rivais.** Quer que eu use exatamente os 4 acima, ou há algum que você queira incluir ou excluir? *Padrão: os 4 acima, no máximo 5.*\n5. **Idioma do brief e da planilha.** Português ou inglês? *Padrão: português.*\n\nPermita leituras na web para esta execução (escolha \"não perguntar novamente\" quando aparecer), senão a pesquisa vai parar enquanto você estiver fora.\n\nResponda com suas respostas, ou apenas \"go\" para usar os padrões.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": false,
+      "evidence": "last line: Responda com suas respostas, ou apenas \"go\" para usar os padrões."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Persona. Rascunho: quem usa todo dia é o farmacêutico responsável ou o | 3. Porte da farmácia. Independente de 1 a 3 lojas, rede média, ou todas?  | 4. Rivais. Quer que eu use exatamente os 4 acima, ou há algum que você qu | 5. Idioma do brief e da planilha. Português ou inglês? *Padrão: português"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": false,
+      "evidence": "no default on: 1, 3, 4, 5"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.833,
+      "evidence": "missing: rivals"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 537,
+      "evidence": "537 words, 360 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 537,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles decision ('quais módulos ... ranqueados'), market ('Brasil'), rivals (4 found), sources ('português ou inglês'), persona (Q1 'farmacêutico responsável') and rules ('Anvisa, SNGPC, NF-e/NFC-e').",
+      "no_redundancy": "Market and sources are stated in the brief, not asked; but Q5 asks the output language though the person wrote in Portuguese, and Q4 re-asks rivals the person said to find.",
+      "defaults_quality": "Every question has a specific default, e.g. 'Padrão: independentes e pequenas redes' and 'os 4 acima, no máximo 5', so 'go' works.",
+      "clarity": "Five short numbered questions with the most important (persona) first, but behind a long preamble and a 14-line brief.",
+      "respects_words": "Finds rivals itself as asked ('você não tinha certeza, então achei pela busca') and keeps Portuguese sources; Q4 hands rival choice back to the person slightly.",
+      "overall": "A strong intake that covers every needed topic with good defaults; somewhat long, with one or two questions it could have decided itself."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.769Z"
+}

@@ -1,0 +1,123 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-06",
+  "ask": "tighten up the spacing everywhere and use our brand font",
+  "expected_track": "full",
+  "notes": "Two HTML files, but CLAUDE.md names the live one and the font. 'Tighten' is vague: a good intake gives a concrete reading (an 8 px scale, row padding) as the default. Asking which prototype or which font is redundant.",
+  "must_cover": [
+    "spacing|tighten|px",
+    "everywhere|every screen",
+    "source sans|font"
+  ],
+  "findable": [
+    "font|typeface|brand font",
+    "which prototype|which file|old",
+    "colour|color"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "old/proto-clinic-v1.html",
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** even out the spacing on every screen of the Northside Physio prototype and switch it to your brand font, Source Sans 3.\n\n**Found:**\n- The live prototype is `proto-clinic/index.html`, plain HTML with 4 screens: Today, Clients, Invoices, Settings (from CLAUDE.md and the folder).\n- `old/proto-clinic-v1.html` is archived and an identical copy. It is never touched (CLAUDE.md).\n- Brand font: Source Sans 3 from Google Fonts, headings 600, body 400 (CLAUDE.md). The page uses the system font now.\n- The three tables have 4px cell padding, tighter than the 16px used on cards and rows. Header and form spacing are also off that scale.\n- Nothing is published, pushed or committed. The result is a local link.\n\nTrack: full, because there is no reference to leave out.\n\nStill open after reading your files: what \"tighten up\" means in numbers.\n\n**Done means:**\n- All 5 requests below are done, and the spacing and font changes are applied on all 4 screens.\n- No other screen changes, and no existing button or link stops working.\n- Every text on every screen renders in Source Sans 3, buttons and inputs included.\n- The local link opens, and `old/` is unchanged.\n\n**Requests** (notes you send later still join this run):\n- R1 all 3 tables: cell padding 4px 10px becomes 8px 12px, everywhere (my reading)\n- R2 Settings card and form: labels and fields on the same 8/16px steps, everywhere (my reading)\n- R3 header bar: padding 14px 24px and 24px gap become 16px 24px and 16px (my reading)\n- R4 body font: Source Sans 3 weight 400 on all text, including buttons and fields\n- R5 headings: page titles and the brand name at weight 600\n\nAbout 20 minutes and 2 helper agents, within a budget of 60 minutes.\n\n**Questions**\n\n1. \"Tighten up\": do you mean less space, or one even set of spacing?\n   Recommended: one even scale (4, 8, 16, 24px). That makes the cramped table rows roomier and trims the loose gaps, rather than shrinking everything.\n   Why it matters: \"less space\" would make the 4px table rows even tighter, the opposite of the first reading.\n\n2. Should the spacing change reach the page edges and the width of the content, or only the gaps and padding inside blocks?\n   Recommended: only gaps and padding inside blocks. Page width (1040px) and side margins stay.\n   Why it matters: changing the page width moves every screen's layout, not just its spacing.\n\n3. Is it fine to load Source Sans 3 from Google Fonts, falling back to the system font when offline?\n   Recommended: yes, as your notes say Google Fonts. A prototype shared offline would show the system font.\n   Why it matters: it decides whether the font needs a local copy in the prototype folder.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. \"Tighten up\": do you mean less space, or one even set of spacing? | 2. Should the spacing change reach the page edges and the width of the co | 3. Is it fine to load Source Sans 3 from Google Fonts, falling back to th"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 3, Why it matters: on 3, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "21 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: font (\"font\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 20 minutes and 2 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what \"tighten up\" means in numbers."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 470,
+      "evidence": "470 words, 296 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "Track: full, because there is no reference to leave out."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 470,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 6,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles spacing (R1-R3 with px values, Q1 scale 4/8/16/24), everywhere (\"applied on all 4 screens\") and font (\"Source Sans 3 weight 400 on all text\").",
+      "no_redundancy": "States found facts (prototype, font, colours via CLAUDE.md) but Q3 \"Is it fine to load Source Sans 3 from Google Fonts\" re-asks what CLAUDE.md already says.",
+      "defaults_quality": "Every question has a concrete default: \"one even scale (4, 8, 16, 24px)\", \"Page width (1040px) and side margins stay\", \"yes, as your notes say Google Fonts\".",
+      "clarity": "Three short, plain questions ending with \"just 'go'\", but preceded by a long brief with Found, Done means, Requests and budget sections.",
+      "respects_words": "Default reinterprets \"tighten up\" as making tables roomier (\"4px 10px becomes 8px 12px\") and Q2 default narrows \"everywhere\" to \"only gaps and padding inside blocks\".",
+      "overall": "Strong grounded intake with numbers and defaults, but the defaults lean away from the literal \"tighten\" and \"everywhere\" and one question is redundant."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.275Z"
+}

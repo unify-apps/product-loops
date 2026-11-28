@@ -1,0 +1,118 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-05",
+  "ask": "5-6 slides for an internal lunch and learn about our Q3 wins, nothing fancy, HTML is fine",
+  "expected_track": "quick",
+  "notes": "An internal deck, not a meeting with a company: company research is pointless. Count and output are given. A good intake skips web research by default and asks little.",
+  "must_cover": [
+    "goal",
+    "slide count|5|6",
+    "html",
+    "audience|internal|team",
+    "research|no research|files only"
+  ],
+  "findable": [
+    "slide count|how many slides",
+    "output|format|powerpoint|html",
+    "facts|wins|numbers"
+  ],
+  "fixtures": [
+    "q3-wins.md"
+  ],
+  "message": "# Brief: Q3 wins deck for an internal lunch and learn\n\n**Goal (draft, you did not state one, so please confirm in question 1):** colleagues leave the lunch and learn knowing what the sales team won in Q3 and what drove it.\n**Angle (default):** Q3 was the best quarter yet, and three changes (partners, a shorter sales cycle, customers staying and growing) explain why.\n**Real audience (default):** the colleagues in the room only. Nobody else is expected to read it later.\n\n**Start check:** the deck tools work (PowerPoint and PDF tools set up, Chrome found for drawing the slides). Web search tools are in this session, but this is an internal deck, so research uses only your file `q3-wins.md` and your answers. No outside facts are added.\n\n**What I read:** `q3-wins.md` is the only file in the folder. There is no `CLAUDE.md` and no start deck. No earlier runs and no saved lessons.\n\n**The facts I will use (all from `q3-wins.md`, the sales team's own numbers):**\n- 14 new logos, the best quarter yet (Q2: 9)\n- Biggest win: Halden Foods, a 3-year deal\n- Net revenue retention 118%\n- Partner programme launched, 6 partners signed\n- Average sales cycle down from 74 to 58 days\n\n**Every need and its value**\n\n| Need | Value |\n|---|---|\n| Company | ours (internal talk), so no company research |\n| Meeting kind | an internal talk, presented live (default) |\n| Slide count | 5 to 6 main slides, your words (the quick track's usual 6 to 8 is narrowed to your range) |\n| Format and files | HTML deck, plus its PDF (quick track). No PowerPoint unless you ask (default) |\n| Start deck | none, so a new deck |\n| Look | plain: Arial, dark text on white, one dark blue accent (default) |\n| What we may claim | only the five facts above. No causes or customer quotes beyond them (default) |\n| Product pictures | none (default) |\n| Lead with or leave out | nothing (default) |\n| Where the files go | `decks/q3-wins-20261126/` (default) |\n| Track | quick (recommended, see question 5) |\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | partial | Q3 wins, 5 to 6 slides; which wins and any losses is open |\n| Who and their job | partial | colleagues at a lunch and learn; their job in the room is not said |\n| Data and facts | clear | five facts in `q3-wins.md` |\n| Main flow | partial | the angle is open (question 2) |\n| Edge cases | clear | not relevant for a talk |\n| Look | clear | \"nothing fancy\", so plain |\n| Outputs | clear | HTML |\n| Done signal | missing | what the room should believe or do (question 1) |\n| Words with no number | partial | \"nothing fancy\" means plain look, no animation, no product pictures; \"wins\" means the five facts above |\n\n**Lessons applied:** none yet.\n\n**Done means (draft):**\n1. The deck does what the goal says for the colleagues at the lunch and learn.\n2. `deck.html` and `deck.pdf` are in `decks/q3-wins-20261126/out/` and open.\n3. The main slide count is 5 to 6.\n4. The deck check prints PASS on every check after the last change.\n5. Every line on a slide cites a fact from `q3-wins.md` or says it is your word.\n6. Every finding of the review is fixed, or left with why.\n\nAbout 70 minutes and 4 helper agents, within a budget of 90 minutes.\n\n**Questions**\n\n1. What should the room believe or do after the deck?\n   Recommended: (b) Know the wins and what drove them, so they can repeat them. A short talk to peers is best served by a story with a cause, not a list.\n   Options: (a) A celebration: the numbers and the people behind them. (b) Know the wins and what drove them, so they can repeat them. (c) Learn how the partner programme and the shorter sales cycle work, so other teams can use them. (d) Ask other teams for help to keep Q4 going: what sales needs from them.\n   Why it matters: the goal sets the order of the slides and which of the five facts get a slide of their own.\n\n2. What is the one idea the deck argues?\n   Recommended: Q3 was the best quarter yet, and three changes explain it: partners, a faster sales cycle, and customers who stay and grow.\n   Why it matters: it decides the slide order. Without it the deck is a list of five numbers.\n\n3. Who must the room be able to explain it to next, and what do they care about (money, risk, speed)?\n   Recommended: no one; the colleagues in the room only.\n   Why it matters: if they will retell it to their own team or a boss, each slide needs a line they can repeat.\n\n4. May the deck name Halden Foods and say the deal is 3 years, and are all five numbers fine to show company-wide?\n   Recommended: yes, name it and show all five, since the talk is internal. Nothing goes on a slide beyond what `q3-wins.md` says (no deal value, no reasons for the sales cycle drop).\n   Why it matters: a customer name or a figure that should stay in sales is cut before the room sees it. Tell me what to leave out.\n\n5. Which track: quick or full?\n   Recommended: quick. HTML deck and PDF, no PowerPoint, 5 to 6 slides as you asked. Research, the claim check and the review still run. Full adds an editable PowerPoint and room for an appendix, and you said HTML is fine.\n   Why it matters: it sets the files you get and how long the run takes.\n\n6. Do you want to add anything we may say beyond the five lines, such as a reason for the shorter cycle, quotes, or who closed Halden Foods?\n   Recommended: no. The deck says only what the file says, and each slide has a speaker note for you to add the story in your own words.\n   Why it matters: any cause or story we add without a source fails the claim check and is cut.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. What should the room believe or do after the deck? | 2. What is the one idea the deck argues? | 3. Who must the room be able to explain it to next, and what do they care | 4. May the deck name Halden Foods and say the deal is 3 years, and are al | 5. Which track: quick or full? | 6. Do you want to add anything we may say beyond the five lines, such as "
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "47 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: output (\"powerpoint\"), facts (\"facts\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 70 minutes and 4 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "| Slide count | 5 to 6 main slides, your words (the quick track's usual 6 to 8 is narrowed to your range) |"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1059,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 6,
+      "defaults_quality": 9,
+      "clarity": 3,
+      "respects_words": 8,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles goal (Q1), slide count \"5 to 6 main slides, your words\", HTML deck, audience \"the colleagues in the room only\", and research \"uses only your file q3-wins.md\".",
+      "no_redundancy": "States slide count and the five facts rather than asking, but Q5 \"Which track: quick or full?\" re-asks the output the person already gave (\"HTML is fine\"), and Q2 largely repeats Q1.",
+      "defaults_quality": "Every question has a specific default, e.g. Q4 \"yes, name it and show all five, since the talk is internal\" and Q5 \"quick. HTML deck and PDF, no PowerPoint\".",
+      "clarity": "For a \"nothing fancy\" ask, it is a wall: two tables, a coverage scan, a done list and six questions with options, far more than a two-minute read.",
+      "respects_words": "Keeps 5-6 slides, HTML and a plain look (\"Arial, dark text on white\"), though it adds a PDF the person did not ask for.",
+      "overall": "Solid content and good defaults, so \"go\" works, but it is far too heavy for a casual 5-6 slide internal deck and asks overlapping or needless questions."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.699Z"
+}

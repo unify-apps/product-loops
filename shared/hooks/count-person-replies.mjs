@@ -40,5 +40,6 @@ async function readInput() {
 }
 
 if (process.argv[1]?.endsWith("count-person-replies.mjs")) {
-  readInput().then((input) => { countReply(input); }).catch(() => { process.exitCode = 0; });
+  // One line on stdout, so an unattended run's transcript shows the reply was counted.
+  readInput().then((input) => { const n = countReply(input); if (n) process.stdout.write(`ok person reply ${n}\n`); }).catch(() => { process.exitCode = 0; });
 }

@@ -1,0 +1,126 @@
+{
+  "arm": "baseline",
+  "loop": "build",
+  "case": "build-02",
+  "ask": "Build the first release from research/fleet-maintenance/brief.md, the top 3 modules only.",
+  "expected_track": "full",
+  "notes": "A research brief and CLAUDE.md answer persona, modules with must-haves, look and logo. Asking for any of those is redundant. The open question the brief itself raises (driver screens) is fair to ask.",
+  "must_cover": [
+    "how deep|in full|shell|depth",
+    "product folder|folder|where",
+    "driver|phone",
+    "name|mark|logo"
+  ],
+  "findable": [
+    "brand colour|colour|color|palette",
+    "font|typeface",
+    "persona|who uses|who is it for",
+    "module|modules",
+    "logo|mark"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "assets/fleetwise-mark.svg",
+    "research/fleet-maintenance/brief.md"
+  ],
+  "message": "## Brief: first release of the Fleetwise maintenance tool\n\n**Goal:** a clickable web prototype of the first release, built from `research/fleet-maintenance/brief.md`, the top 3 ranked modules only. Parts stock and Cost reports (modules 4 and 5) are out of this run.\n\n**Persona (from the research brief, to confirm):** a fleet manager at a regional UK courier (50 to 500 vans). They come in every morning to see which vans are off the road today and why. The operations director pays.\n\n**Modules, in build order (from the research brief):**\n1. **Vehicle board:** every van, its status (on road, in workshop, due) and next service date. Must have: filter by depot, status chips, search by reg.\n2. **Defect reports:** drivers report a defect from the walkaround check; the manager triages. Must have: photo, severity, assign to workshop.\n3. **Service schedule:** calendar of services and MOTs, overdue in red. Must have: month view, drag to move a booking.\n\n**Look (found in your working folder, `CLAUDE.md`):** primary `#0B5FFF`, ink `#0F172A`, surface `#F8FAFC`, font Inter, logo `assets/fleetwise-mark.svg`. Plain HTML, one file, no build step.\n**Product folder (default):** a new product in `fleetwise-maintenance/`, one `index.html` with its CSS and JS inside, served by the loop's own local server.\n**Sample data:** made up and consistent across modules. Photos of people: none, initials only.\n**Where it ships:** this laptop only, as a local link. Nothing is published, and nothing is posted to Slack #proto-demos (your `CLAUDE.md` says only when someone asks).\n**Start check:** a browser was found (chrome-headless-shell), so every click will be checked in a real browser.\n**Stop fact:** all 3 modules are built and reviewed with no P1 left, every link opens with no dead click, placeholder text or page error, and every request below is ticked.\n\n**Requests on the list:** R1 the whole ask (top 3 modules only), R2 Vehicle board, R3 Defect reports, R4 Service schedule.\n\n**Questions**\n\n1. **Who uses it, and the one job they come to do?** Default: the fleet manager above, whose job is to see which vans are off the road today and why.\n2. **Modules and must-haves.** Default: the 3 above with the must-haves from the research brief. Anything to add or cut?\n3. **Driver phone screens in release 1?** The research brief asks this and gives its own view: no, managers only. Default: no, managers only. Defect reports are then entered by the manager on behalf of a driver.\n4. **Screens or products to follow, exact or flow only?** Default: none, flow only.\n5. **How deep?** Default: all 3 modules in full, each with its list, detail, create flow, empty state and error state.\n6. **Look.** Default: the Fleetwise brand from `CLAUDE.md` and the logo file above. Anything to change?\n7. **Name.** The Fleetwise mark already exists. Default: the product is named Fleetwise Maintenance and uses that mark, so there are no name options to pick from.\n8. **Extras.** Photos of people, two versions behind a key, a PDF guide, a public link. Default: none of them.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 8,
+      "evidence": "1. Who uses it, and the one job they come to do? Default: the fleet manag | 2. Modules and must-haves. Default: the 3 above with the must-haves from  | 3. Driver phone screens in release 1? The research brief asks this and gi | 4. Screens or products to follow, exact or flow only? Default: none, flow | 5. How deep? Default: all 3 modules in full, each with its list, detail,  | 6. Look. Default: the Fleetwise brand from `CLAUDE.md` and the logo file  | 7. Name. The Fleetwise mark already exists. Default: the product is named | 8. Extras. Photos of people, two versions behind a key, a PDF guide, a pu"
+    },
+    "asked_le_7": {
+      "pass": false,
+      "value": 8,
+      "evidence": "8 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "8 of 8 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 8"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "14 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: persona (\"who uses\"), module (\"module\"), logo (\"logo\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 510,
+      "evidence": "510 words, 312 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 510,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 4,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 10,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles depth (Q5 'all 3 modules in full'), folder ('a new product in fleetwise-maintenance/'), drivers (Q3 'no, managers only') and name (Q7 'Fleetwise Maintenance'); folder is only a brief default, not a question.",
+      "no_redundancy": "Re-asks findable facts as questions: Q1 'Who uses it' (persona), Q2 'Modules and must-haves', Q6 'Look' (brand/logo) though the brief already states them.",
+      "defaults_quality": "Every question has a concrete, fitting default, e.g. Q3 'no, managers only. Defect reports are then entered by the manager on behalf of a driver'.",
+      "clarity": "Eight questions after a long brief; the important ones (driver, depth) sit at 3 and 5 behind three redundant confirmations.",
+      "respects_words": "Keeps 'top 3 modules only' ('Parts stock and Cost reports ... are out of this run') and honours CLAUDE.md's Slack-only-when-asked rule.",
+      "overall": "Accurate brief with good defaults so 'go' works, but padded with redundant questions that dilute the few that matter."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.214Z"
+}

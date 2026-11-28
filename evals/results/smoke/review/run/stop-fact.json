@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "id": "S1",
+      "item": "Every one of the 4 screens in RUN/screens.json (Today, Clients, Invoices, Settings) has a before and a last after screenshot.",
+      "passes": true,
+      "proof": "loop-runs/product-review-loop-20261126-032657/review.json",
+      "note": "ls walk/before and walk/after-1: each holds 01-today, 02-clients, 03-invoices, 04-settings as .png and .phone.png; I opened all 8 after-1 screenshots"
+    },
+    {
+      "id": "S2",
+      "item": "After the last walk, a fresh agent found no open P1 on any screen.",
+      "passes": true,
+      "proof": "loop-runs/product-review-loop-20261126-032657/review.json",
+      "note": "I read the 8 after-1 screenshots and clinic/index.html: no P1 is open; the one P1 left (Booking policy Lorem ipsum) is marked your call. check-findings.mjs on recheck-1.md --no-open-p1 ended: OK"
+    },
+    {
+      "id": "S3",
+      "item": "Every P1 not fixed is marked \"your call\" in RUN/findings.md, with one plain sentence.",
+      "passes": true,
+      "proof": "loop-runs/product-review-loop-20261126-032657/review.json",
+      "note": "findings.md F4 (P1, Lorem ipsum) is status your call with one plain sentence; check-findings.mjs on findings.md --bar P1 --after-fix ended: OK"
+    },
+    {
+      "id": "S4",
+      "item": "Every finding at or above the bar (P1) is fixed, or marked with its reason.",
+      "passes": true,
+      "proof": "loop-runs/product-review-loop-20261126-032657/review.json",
+      "note": "F1, F2, F3 are fixed; I confirmed each in the source diff against original/clinic/index.html and in the after-1 screenshots; F4 is your call"
+    },
+    {
+      "id": "S5",
+      "item": "Every changed file has its original in RUN/original/.",
+      "passes": true,
+      "proof": "loop-runs/product-review-loop-20261126-032657/review.json",
+      "note": "diff of original/clinic/index.html against clinic/index.html shows clinic/index.html is the only changed file and its original is saved"
+    }
+  ],
+  "review": {
+    "file": "loop-runs/product-review-loop-20261126-032657/review.json",
+    "spec": 4,
+    "quality": 3,
+    "verdict": "PASS",
+    "at": "2026-11-25T22:06:09.592Z"
+  }
+}

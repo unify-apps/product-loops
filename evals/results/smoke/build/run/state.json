@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "loop": "product-build-loop",
+  "workDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/smokework/build",
+  "runDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/smokework/build/loop-runs/product-build-loop-20261126-032655",
+  "script": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/repo/product-loops/skills/product-build-loop/shared/scripts/loop-state.mjs",
+  "createdAt": "2026-11-25T21:56:55.820Z",
+  "changedAt": "2026-11-25T22:10:53.137Z",
+  "intake": "closed",
+  "finished": {
+    "at": "2026-11-25T22:10:53.136Z",
+    "stopFact": "Orders is built on one page at http://127.0.0.1:4400/#/orders, reviewed with 0 P1, every link passes the click check in chrome-headless-shell, and requests.md has no open line"
+  },
+  "stopped": null,
+  "paused": null,
+  "track": "quick",
+  "skillDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/repo/product-loops/skills/product-build-loop",
+  "budget": {
+    "minutes": 120,
+    "maxPushes": 6,
+    "maxDecisions": 40,
+    "startedAt": "2026-11-25T21:58:40.550Z"
+  },
+  "pushes": 0,
+  "nodes": [
+    {
+      "name": "intake",
+      "status": "done",
+      "startedAt": "2026-11-25T21:56:55.820Z",
+      "endedAt": "2026-11-25T21:58:40.549Z",
+      "check": "the person said \"go\" (1 replies)",
+      "proof": "loop-runs/product-build-loop-20261126-032655/brief.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "run-link",
+      "status": "done",
+      "startedAt": "2026-11-25T21:59:32.263Z",
+      "endedAt": "2026-11-25T22:00:06.829Z",
+      "check": "server answers 200, shell routes pass (check-clicks PASS 2 links, chrome-headless-shell)",
+      "proof": "loop-runs/product-build-loop-20261126-032655/run-link.json",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "name-mark",
+      "status": "left",
+      "startedAt": "2026-11-25T22:00:06.916Z",
+      "endedAt": "2026-11-25T22:00:06.921Z",
+      "check": null,
+      "proof": null,
+      "retries": [],
+      "leftWhy": "quick track"
+    },
+    {
+      "name": "build-modules",
+      "status": "done",
+      "startedAt": "2026-11-25T22:00:07.027Z",
+      "endedAt": "2026-11-25T22:03:42.995Z",
+      "check": "every module's clicks pass (Orders: PASS 9 clicks, 0 dead; 0 open requests)",
+      "proof": "loop-runs/product-build-loop-20261126-032655/build-modules.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "review-modules",
+      "status": "done",
+      "startedAt": "2026-11-25T22:04:03.095Z",
+      "endedAt": "2026-11-25T22:08:57.227Z",
+      "check": "no P1 left in any module (Orders round 2: P1 0, P2 0, clicks pass)",
+      "proof": "loop-runs/product-build-loop-20261126-032655/review-modules.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "demo-links",
+      "status": "left",
+      "startedAt": "2026-11-25T22:08:57.293Z",
+      "endedAt": "2026-11-25T22:08:57.294Z",
+      "check": null,
+      "proof": null,
+      "retries": [],
+      "leftWhy": "quick track"
+    },
+    {
+      "name": "review",
+      "status": "done",
+      "startedAt": "2026-11-25T22:09:07.317Z",
+      "endedAt": "2026-11-25T22:10:36.163Z",
+      "check": "fresh agent says PASS, spec 4, quality 4, model sonnet",
+      "proof": "loop-runs/product-build-loop-20261126-032655/review.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "handover",
+      "status": "done",
+      "startedAt": "2026-11-25T22:10:36.229Z",
+      "endedAt": "2026-11-25T22:10:53.054Z",
+      "check": "handover.md written",
+      "proof": "loop-runs/product-build-loop-20261126-032655/handover.md",
+      "retries": [],
+      "leftWhy": null
+    }
+  ],
+  "held": [],
+  "decisions": 0,
+  "replies": 1
+}

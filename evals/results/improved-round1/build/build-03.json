@@ -1,0 +1,118 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-03",
+  "ask": "add a loyalty points module to the bakery prototype in shop/. customers earn 1 point per £1, 10 points = a free coffee",
+  "expected_track": "quick",
+  "notes": "Existing product in shop/ (plain HTML, README says how it runs). The points rule is given. A good intake does not ask which product or how points work; it may ask about redeeming with too few points and where the module sits.",
+  "must_cover": [
+    "persona|customer|who uses",
+    "where|nav|screen",
+    "redeem|free coffee",
+    "how deep|in full|depth|edge|not enough points"
+  ],
+  "findable": [
+    "which product|existing product|new product|which prototype",
+    "how it runs|server|dev script",
+    "points rule|per £1|points per"
+  ],
+  "fixtures": [
+    "shop/README.md",
+    "shop/index.html"
+  ],
+  "message": "# Brief: loyalty points for the Crumb & Co prototype\n\n**Goal:** add a loyalty points module to the bakery prototype in `shop/`. In your words: \"customers earn 1 point per £1, 10 points = a free coffee\".\n\n**Product:** the existing one, `shop/` (Crumb & Co ordering prototype). One `index.html`, plain JavaScript, no server and no build, with three screens: Menu (#/menu), Basket (#/basket) and My orders (#/orders). I change only what the new module needs and keep the rest as it is.\n\n**What I found in it:**\n- Menu: Sourdough loaf £4.50, Almond croissant £3.20, Flat white £3.10, Cinnamon bun £2.90. The Flat white is the only coffee.\n- The basket's **Pay** button does nothing today, and My orders is two fixed rows (12 Nov £7.60, 4 Nov £4.50). So nothing can earn points yet.\n\n**Persona (default):** a regular customer who orders ahead and collects in the shop. The one job: see how many points they have and spend 10 of them on a free coffee.\n\n**Module (default):** one module, Loyalty, at `#/loyalty`, added to the header menu. Must have:\n1. A points balance, with how many points to the next free coffee.\n2. Points earned when an order is paid.\n3. Redeeming 10 points for a free Flat white in the basket.\n4. A points history list (earned and spent).\n5. An empty state for a first visit (0 points, no history).\n\n**Follow:** nothing outside the shop. The look is the shop's own (cream background, brown header, orange buttons). Flow only.\n**Depth (default):** the Loyalty list page in full. No separate detail pages.\n**Name and mark:** the product keeps its name, Crumb & Co. No name options.\n**Extras (default):** none. No photos, no second version, no PDF guide. The product stays on this laptop.\n**How it runs (default):** plain files served by the loop's own server, started before any build, so you get a local link first.\n**Click checks:** the browser found is chrome-headless-shell, so clicks will be really checked.\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | clear | one module in the existing shop; no accounts, no real payment |\n| Who and their job | partial | persona drafted by me (question 1) |\n| Data and facts | partial | menu and prices found; starting balance and past-order points not given (question 4) |\n| Main flow | partial | earn on pay, redeem in the basket; how Pay works is not said (questions 4 to 6) |\n| Edge cases | partial | rounding, redeem with no coffee, balance under 10 (questions 5 and 6) |\n| Look | clear | the shop's own look |\n| Outputs | clear | a local link, no deploy |\n| Done signal | clear | see \"Done means\" |\n| Words with no number | clear | \"free coffee\" is a Flat white at £0.00; \"points\" are whole numbers |\n\n**Lessons applied:** none yet (no earlier runs in this folder).\n\n**Requests (every thing you asked for):**\n- R1 Add a loyalty points module to the bakery prototype in `shop/` (from: ask)\n- R2 Customers earn 1 point per £1 (from: ask)\n- R3 10 points = a free coffee (from: ask)\n\n**Budget:** 120 minutes.\n\n**Done means:**\n1. Every module in `RUN/modules.md` is built: Loyalty.\n2. Every module's last review round has 0 P1.\n3. Every link in `RUN/links.md` opens, with no dead click, no placeholder text and no page error (`#/loyalty`, `#/menu`, `#/basket`, `#/orders`).\n4. `RUN/requests.md` has no open line.\n5. A customer who pays £7.60 sees 7 points on the Loyalty page. At 10 points they can make a Flat white free in the basket, and 10 points come off.\n6. A new customer sees an empty Loyalty page with 0 points and a way back to the Menu.\n\nAbout 70 minutes and 4 helper agents (1 builder, 2 reviewers, 1 final reviewer), within a budget of 120 minutes. One more helper, the builder check, has already run; it is the source of questions 4 to 6.\n\n## Questions\n\n1. Who uses it, and what one job do they come to do?\n   Recommended: a regular customer who orders ahead and collects in the shop, and wants to see their points and spend 10 on a free coffee.\n   Why it matters: the persona decides what the Loyalty page shows first.\n\n2. Which modules, and what must each have?\n   Recommended: one module, Loyalty, with the five must-haves above (balance, earning, redeeming, history, empty state).\n   Why it matters: it is the list the builder and the reviewers check off.\n\n3. How deep: the Loyalty page in full, or a titled page only?\n   Recommended: in full, as a list page with working redeem and history, and no separate detail pages.\n   Why it matters: a shell builds fast but has nothing to click on.\n\n4. Does **Pay** become a real action?\n   Recommended: yes. Pay finishes the order, empties the basket, adds a new row at the top of My orders and gives points. State is kept in the browser so it survives a reload. The two past orders stay as sample history and earn no points. Starting balance is 0. Pay is a demo action with no real payment, and the page says so.\n   Why it matters: today Pay does nothing, so without this no points can ever be earned.\n\n5. How are points counted and rounded?\n   Recommended: whole points, rounded down from what was paid (£7.60 earns 7). A free coffee is £0.00, so it earns nothing, and it comes off the total before points are counted.\n   Why it matters: it sets every number on the Loyalty page and in My orders.\n\n6. How does redeeming work in the basket?\n   Recommended: with 10 or more points and a Flat white in the basket, a \"Redeem 10 points\" button makes one Flat white £0.00. The 10 points come off when the order is paid, not on the click. One free coffee per order, and removing the Flat white undoes it. With under 10 points the button is off and says how many more are needed.\n   Why it matters: it decides what the person sees and what is saved on the half-finished path.\n\n7. Track: quick or full?\n   Recommended: quick. One module as one page in the shop, with no name and mark options and no extra demo states. Full adds a detail page, a create flow and a link for every state, and suits a demo to someone else.\n   Why it matters: quick finishes sooner; full leaves you more links to show.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. Who uses it, and what one job do they come to do? | 2. Which modules, and what must each have? | 3. How deep: the Loyalty page in full, or a titled page only? | 4. Does Pay become a real action? | 5. How are points counted and rounded? | 6. How does redeeming work in the basket? | 7. Track: quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "45 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 70 minutes and 4 helper agents (1 builder, 2 reviewers, 1 final reviewer), within a budget of 120 minutes. One more helper, the builde"
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "7. Track: quick or full?"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1108,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Persona (Q1 'a regular customer who orders ahead'), where ('#/loyalty, added to the header menu'), redeem (Q6 'Redeem 10 points' makes a Flat white £0.00) and depth (Q3 plus 'With under 10 points the button is off') are all settled.",
+      "no_redundancy": "Product, how it runs and the 1pt/£1, 10pt rule are stated in the brief, not asked; Q5 asks only the unstated rounding. Q1-Q3 re-ask defaults the brief already fixed, which is close to repeating itself.",
+      "defaults_quality": "Defaults are concrete and wise, e.g. Q4 'Pay finishes the order, empties the basket... Starting balance is 0' and Q5 '£7.60 earns 7', so 'go' alone gives a good build.",
+      "clarity": "Seven questions after a long brief, a coverage table and a done list. The key question (Q4, Pay does nothing) comes fourth, and Q7 quick/full overlaps Q3 depth.",
+      "respects_words": "Keeps '1 point per £1' and '10 points = a free coffee' (Flat white, the only coffee); 'Flow only' and the 120-minute budget are added by the assistant but go against nothing the person said.",
+      "overall": "A strong intake that found the real blocker (Pay is inert) and gave defaults that work on 'go', but it is too long and repeats itself for a busy person."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.322Z"
+}

@@ -1,0 +1,123 @@
+{
+  "arm": "baseline",
+  "loop": "build",
+  "case": "build-03",
+  "ask": "add a loyalty points module to the bakery prototype in shop/. customers earn 1 point per £1, 10 points = a free coffee",
+  "expected_track": "quick",
+  "notes": "Existing product in shop/ (plain HTML, README says how it runs). The points rule is given. A good intake does not ask which product or how points work; it may ask about redeeming with too few points and where the module sits.",
+  "must_cover": [
+    "persona|customer|who uses",
+    "where|nav|screen",
+    "redeem|free coffee",
+    "how deep|in full|depth|edge|not enough points"
+  ],
+  "findable": [
+    "which product|existing product|new product|which prototype",
+    "how it runs|server|dev script",
+    "points rule|per £1|points per"
+  ],
+  "fixtures": [
+    "shop/README.md",
+    "shop/index.html"
+  ],
+  "message": "Here is what I understood, and what I found in the folder. Nothing is built yet.\n\n## Brief\n\n**Goal:** add a loyalty points module to the existing Crumb & Co ordering prototype in `shop/`. Customers earn 1 point per £1 spent. 10 points = a free coffee. (Your words: \"add a loyalty points module to the bakery prototype in shop/. customers earn 1 point per £1, 10 points = a free coffee\")\n\n**What exists:** `shop/index.html`, one file with its CSS and JS inside, and `shop/README.md`. It has three screens: Menu, Basket, My orders. It has hash routes (`#/menu`, `#/basket`, `#/orders`). The Pay button in the basket does nothing yet. The only coffee on the menu is the Flat white (£3.10). No `CLAUDE.md`, no earlier runs, no brief or research file in this folder.\n\n**Persona (my draft, not yet confirmed):** a regular customer who orders ahead and collects in the shop. They want to see what they have earned and spend it on a free coffee without asking staff.\n\n**Modules in build order (my draft):**\n\n| # | Module | Must have |\n|---|---|---|\n| 1 | Earning | Paying a basket adds points: 1 per £1, whole pounds only (£3.10 earns 3). The balance shows in the header on every screen. |\n| 2 | Loyalty page (`#/loyalty`) | New \"Loyalty\" link in the header. Balance, a progress bar to the next free coffee (\"7 of 10 points\"), and a history of points earned and spent. A clear empty state for a new customer. |\n| 3 | Redeeming | At 10 points or more, the basket offers \"Use 10 points: free coffee\". It takes the Flat white to £0.00 and spends 10 points. Under 10 points it shows how many are missing. |\n\n**Follow:** nothing outside this product, so flow only (no \"exactly like X\").\n**Look:** the product's own look: brown header, cream page, orange buttons, system font. No new logo, colours or fonts.\n**Name plan:** none. The product already has its name, Crumb & Co.\n**How it runs:** plain files. `shop/index.html` is served by the loop's small local server (`serve.mjs`), as there is no dev script.\n**Browser for click checks:** found (chrome-headless-shell), so clicks will be checked for real.\n**Extras:** none. No photos, no two versions behind a key, no PDF guide. Everything stays on this laptop.\n**Requests so far:**\n- R1 the whole ask (ticked at the end)\n- R2 customers earn 1 point per £1\n- R3 10 points = a free coffee\n\n**Stop fact:** every module is built and reviewed with no P1 left, every link passes the click check (opens, no dead click, no placeholder text, no page error), and `requests.md` has no open item.\n\n## Questions\n\n1. **What we build on.** The existing product at `shop/` (the only one found). Default: add the module to `shop/`, not a new product.\n3. **Who uses it, and the one job they come to do.** Default: the regular customer above, who comes to see their points and get a free coffee.\n4. **Modules and must-haves.** Default: the three modules in the table above. Two things in them are my guess, so please confirm or change them. First, points are earned when the customer pays, using whole pounds only. Second, the free coffee is the Flat white, as it is the only coffee on the menu.\n6. **How deep.** Default: all three modules in full. None is a titled empty page.\n9. **Extras.** Default: none. No photos of people, no two versions behind a key, no PDF guide, no public link.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. What we build on. The existing product at `shop/` (the only one found) | 3. Who uses it, and the one job they come to do. Default: the regular cus | 4. Modules and must-haves. Default: the three modules in the table above. | 6. How deep. Default: all three modules in full. None is a titled empty p | 9. Extras. Default: none. No photos of people, no two versions behind a k"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "22 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: which product (\"existing product\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 2,
+      "evidence": "2 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 605,
+      "evidence": "605 words, 451 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 605,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles persona (\"a regular customer who orders ahead\"), where (\"New 'Loyalty' link in the header\", #/loyalty), redeem (\"Use 10 points: free coffee\" on Flat white) and depth (\"all three modules in full\", \"Under 10 points it shows how many are missing\").",
+      "no_redundancy": "Q1 \"What we build on\" asks what the ask already says (\"the bakery prototype in shop/\"); points rule and how it runs are correctly stated in the brief, not asked.",
+      "defaults_quality": "Every question has a specific default fitting the files, e.g. \"the free coffee is the Flat white, as it is the only coffee on the menu\" and \"whole pounds only (£3.10 earns 3)\".",
+      "clarity": "Long brief with table and many status lines; questions oddly numbered 1,3,4,6,9 and Q4 bundles two separate guesses (earn rounding and which coffee).",
+      "respects_words": "Keeps \"1 per £1\" and \"10 points = a free coffee\" and adds to the existing shop/ product; the whole-pounds rounding is flagged as a guess, not imposed.",
+      "overall": "A strong, well-grounded opening that settles all needed topics with good defaults, held back by one redundant question and a wordy, unevenly numbered layout."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.217Z"
+}

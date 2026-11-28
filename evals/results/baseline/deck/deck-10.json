@@ -1,0 +1,124 @@
+{
+  "arm": "baseline",
+  "loop": "deck",
+  "case": "deck-10",
+  "ask": "turn notes.md into a short pitch deck for Spotify's ad sales team - 6 slides, PDF only",
+  "expected_track": "quick",
+  "notes": "Short pitch with count, output and goal given. Quick track (HTML deck, PDF, no pptx) matches 'PDF only'.",
+  "must_cover": [
+    "goal|pitch",
+    "slide count|6",
+    "pdf",
+    "reader|ad sales",
+    "claims|customers"
+  ],
+  "findable": [
+    "slide count|how many slides",
+    "output|format|powerpoint",
+    "goal|what the deck is for",
+    "what we offer|claims"
+  ],
+  "fixtures": [
+    "notes.md"
+  ],
+  "message": "I read your ask and `notes.md` (Soundcheck pitch notes). Nothing has been built yet. Here is my brief and the questions I need answered first.\n\n## What I found\n\n- **Start check:** the tools are ready. The Python tools (python-pptx, pymupdf), Chrome and Quick Look all work, so I can make the PDF. The WebSearch and WebFetch tools are in this session, so I can research Spotify's ad business with a source link on every fact.\n- **Folder:** it holds only `notes.md`. No start deck and no `CLAUDE.md`, so the look is plain: Arial, dark text on white, one dark blue accent.\n- **What notes.md lets me claim (and nothing more):**\n  - Soundcheck measures brand lift from audio ads within 48 hours, using a 6-question survey after the ad.\n  - It works with podcasts and music streaming.\n  - Customers: iHeartMedia (pilot) and Acast (live).\n  - The ask: a free pilot on 3 Spotify ad campaigns in Q1.\n\n## My brief so far\n\n- **Company:** Spotify, and its ad sales team (Spotify Advertising).\n- **Deck:** a pitch deck of 6 slides, with no appendix slides.\n- **Output:** a PDF only. I build the slides first and then make the PDF. I will not hand you an HTML deck or a PowerPoint.\n- **Files go to:** `decks/spotify-20261126/`.\n- **Slide size:** 16:9.\n- **Meeting kind:** first meeting.\n- **Look:** plain.\n- **Claims:** only the four points above. I will mark every outside figure as public (with a link) or as an estimate.\n\n## Questions\n\n1. **What should the ad sales team believe or do after the deck?** (the goal) My default is option (a), because a free pilot is the ask in your notes.\n   - (a) **A pitch:** the problem (advertisers cannot prove audio ads work), how Soundcheck solves it, the proof from iHeartMedia and Acast, and a yes to the free Q1 pilot on 3 campaigns.\n   - (b) **An outside-in view:** how audio ad measurement is changing, what it means for Spotify's sales team, and where Soundcheck fits.\n   - (c) **A plan for them:** how Spotify's sellers could use brand-lift proof to win bigger audio budgets, ranked by impact.\n   - (d) **A vision they can retell to their own boss:** why proof of audio impact matters now, what good looks like, and the first steps.\n   - (e) **Something else:** tell me in one sentence.\n2. **What is the one idea the deck argues, and which order do you want?** My default: \"Audio ads close more budget when sellers can show brand lift in 48 hours,\" in the usual pitch order (problem, solution, proof, ask).\n3. **Who must the ad sales team convince next, and what does that person care about?** My default is the reader alone. Examples: Spotify's head of ad sales (revenue), advertisers' brand managers (proof of results), or Spotify's legal and privacy team (survey data).\n4. **Who is in the meeting?** Names, roles and public profile links, for example a VP of ad sales or the measurement team. My default is roles unknown, so I write for a senior business reader.\n5. **Do you want any of these in the deck?** A price or what happens after the free pilot, a Soundcheck pilot success measure, product screenshots, or the iHeartMedia and Acast results. My default: none beyond your notes, and no made-up product screens or numbers. I would also put \"how sure are the pilot numbers\" on the slide as a question for the meeting rather than invent it.\n6. **Anything to lead with or leave out?** For example, a competitor not to name, such as Nielsen or Kantar. My default is none.\n7. **Is \"Soundcheck\" the company name and the product name?** My default: yes, and I add no tagline or website.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. What should the ad sales team believe or do after the deck? (the goal) | 2. What is the one idea the deck argues, and which order do you want? My  | 3. Who must the ad sales team convince next, and what does that person ca | 4. Who is in the meeting? Names, roles and public profile links, for exam | 5. Do you want any of these in the deck? A price or what happens after th | 6. Anything to lead with or leave out? For example, a competitor not to n | 7. Is \"Soundcheck\" the company name and the product name? My default: yes"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: goal (\"goal\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 634,
+      "evidence": "634 words, 249 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 634,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 5,
+      "defaults_quality": 8,
+      "clarity": 4,
+      "respects_words": 8,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles goal (Q1 'A pitch'), '6 slides', 'a PDF only', reader 'Spotify ... ad sales team', and claims 'only the four points above' including iHeartMedia and Acast.",
+      "no_redundancy": "Q1 asks the goal though the ask says 'pitch deck', Q2 re-asks the pitch order, and Q4 largely repeats the reader already named as the ad sales team.",
+      "defaults_quality": "Every question has a concrete default, e.g. 'My default is option (a), because a free pilot is the ask in your notes' and 'none beyond your notes, and no made-up product screens or numbers'.",
+      "clarity": "Seven questions after a long brief, Q1 has five options, and Q2 and Q5 each bundle several things ('one idea ... and which order').",
+      "respects_words": "Keeps '6 slides, with no appendix slides' and 'I will not hand you an HTML deck or a PowerPoint'; only Q1 options (b)-(d) drift away from the asked-for pitch, though the default stays a pitch.",
+      "overall": "Faithful and complete with good defaults so 'go' works, but it over-asks settled points and is too long for a quick one-round reply."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.865Z"
+}

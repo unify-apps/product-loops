@@ -1,0 +1,117 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-09",
+  "ask": "PM notes for proto-clinic below. 1) remove the descriptions under every heading everywhere 2) Today table: add a status column (arrived / waiting / in session) 3) don't touch the invoices screen at all, finance signed it off 4) Save changes on settings should show a toast instead of the grey 'Saved' 5) when done commit it and push to main",
+  "expected_track": "full",
+  "notes": "Numbered notes in the ask. One protected screen. The person asks for a commit and a push in words: a good intake keeps it (it is their ask) and notes there is no git repo here. 'Descriptions' barely exist in the prototype: a good intake says what it found.",
+  "must_cover": [
+    "descriptions",
+    "status",
+    "invoices|don't touch|do not change",
+    "toast",
+    "commit|push"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "screens that must not change|don't touch|invoices"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "## Brief\n\n**Goal:** apply the PM's 5 notes to the `proto-clinic` prototype (`proto-clinic/index.html`, plain HTML, four screens: Today, Clients, Invoices, Settings) and leave the Invoices screen exactly as it is.\n\n**Facts and defaults (marked as defaults)**\n- Prototype: the only one in the folder, `proto-clinic/index.html`. It will run with the loop's local server on its folder (default).\n- Reference: none, so the copy-reference node is skipped and there is one track (full, nothing to ask).\n- Design rules: no `CLAUDE.md` and no installed design skills were found, so the built-in design check is used (default).\n- Result goes to: a local link only (default). Your note 5 asks for a commit and a push, which is the one exception, see question 3.\n- Screen that must not change: **Invoices** (note 3). Every change and the sweep must leave its markup, styles and text untouched. The before and after compare must show it unchanged.\n- Seen in the code, not this run's job and left as found: the \"New appointment\" button on Today does nothing, and the Invoices \"Overdue\" filter shows an empty table with no words.\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | clear | 4 changes, Invoices excluded |\n| Who and their job | clear | clinic staff reading the day's list |\n| Data and facts | partial | Status values per appointment are not given; sample values will be used |\n| Main flow | clear | open Today, read status; open Settings, click Save changes, see a toast |\n| Edge cases | partial | toast wording, place and time not given |\n| Look | clear | reuse the prototype's own colours and pill style |\n| Outputs | partial | commit and push asked, but the folder is not a git repository and has no remote |\n| Done signal | clear | see Done means |\n| Words with no number | partial | \"descriptions under every heading\" (which text?), \"toast\" (how long?) |\n\n**Lessons applied:** none yet (no earlier runs).\n\n## The request list (your 5 notes, split into rows)\n\n| # | Note, in words | Screens | Where | Check | Status |\n|---|---|---|---|---|---|\n| 1 | Remove the descriptions under headings: the grey paragraph under \"Booking policy\" on Settings, which is the only descriptive text under a heading or label in the app (my reading) | Settings | everywhere | no description paragraph under any heading on any screen; the \"Lorem ipsum\" text is gone from every screen | todo |\n| 2 | Today table: add a \"Status\" column as the last column, one value per appointment from arrived / waiting / in session (my reading: 08:30 arrived, 09:15 in session, 10:00 waiting, 11:30 waiting, 14:00 waiting) | Today | this place | the header reads Time, Client, Therapist, Type, Room, Status; all 5 rows show one of the 3 values | todo |\n| 3 | Settings \"Save changes\" shows a toast instead of the grey \"Saved\" text (my reading: a toast reading \"Settings saved\" at the bottom right, gone after 3 seconds; the grey text removed) | Settings | this place | clicking \"Save changes\" shows the toast; the grey \"Saved\" never appears; the toast goes away | todo |\n| 4 | Commit the finished change and push it to main | none | this place | the commit exists; the push to main succeeds | todo |\n\nYour note 3 (\"don't touch the invoices screen\") is not a row. It is a rule for every row above, and the final compare checks it.\n\nAnything missing or wrong? Notes you send later still join this run as new rows.\n\n**Done means**\n1. Rows 1 to 3 are `done` or `swept`, and row 4 is done or `left` with the reason.\n2. The \"Lorem ipsum\" paragraph under \"Booking policy\" is gone, and no other description paragraph exists under a heading on any of the 4 screens.\n3. The Today table has 6 columns ending in Status, and all 5 appointments show arrived, waiting or in session.\n4. The Invoices screen is identical before and after (compare says unchanged), and no screen shows UNEXPECTED or BROKEN.\n5. Clicking \"Save changes\" shows a toast and no grey \"Saved\" text.\n6. The prototype's local link answers 200.\n7. The change is committed in git and pushed to main, or the run says exactly why it could not be.\n\n**Budget:** 60 minutes.\n\nAbout 50 minutes and 2 helper agents, within a budget of 60 minutes.\n\n## Questions\n\n1. Which text counts as \"descriptions under every heading\"? I found only one: the grey Lorem ipsum paragraph under \"Booking policy\" on Settings. The page titles (Today, Customers, Invoices, Settings) have no text under them, and the small labels under the stat numbers (\"appointments\", \"therapists in\") are captions, not descriptions.\n   Recommended: remove only the Booking policy paragraph, and keep the stat captions.\n   Why it matters: removing the captions too would empty the three stat cards on Today.\n\n2. After the paragraph is gone, \"Booking policy\" is a label with nothing under it. Should it stay?\n   Recommended: keep the label for now and list it under Proposals for you to decide.\n   Why it matters: deleting it goes beyond your note, but leaving it looks like an orphan heading.\n\n3. The folder `proto-clinic` is not a git repository and has no remote, so \"commit and push to main\" cannot run as written. What should happen?\n   Recommended: do not create a repository or invent a remote. Commit only if a repository exists when the run reaches that step, and otherwise record the commit and push as `left` in the handover with the one step you take (give the repository, or tell me to run `git init`).\n   Why it matters: a push goes to a real place and cannot be undone, so I will not guess where it goes.\n\n4. How should the Status values look?\n   Recommended: the same rounded pill style the Invoices screen uses, in plain neutral grey for all three values, with the sample values in row 2.\n   Why it matters: it decides whether colours are added; reusing the pill shape without Invoices' green or orange keeps Invoices untouched and adds no new colours.\n\n5. How long should the toast stay, and where?\n   Recommended: bottom right, 3 seconds, text \"Settings saved\".\n   Why it matters: your note gave no wording or timing, and \"Saved\" alone may read as unfinished.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Which text counts as \"descriptions under every heading\"? I found only  | 2. After the paragraph is gone, \"Booking policy\" is a label with nothing  | 3. The folder `proto-clinic` is not a git repository and has no remote, s | 4. How should the Status values look? | 5. How long should the toast stay, and where?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "41 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: screens that must not change (\"invoices\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 50 minutes and 2 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "- Reference: none, so the copy-reference node is skipped and there is one track (full, nothing to ask)."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 1092,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "All five topics settled: descriptions (Q1/row 1), status column (row 2, Q4), Invoices untouched as a rule, toast (row 3, Q5), commit/push (row 4, Q3).",
+      "no_redundancy": "States the prototype and the Invoices exclusion as facts rather than asking; Q2 (keep the orphan 'Booking policy' label) is a small extra the person likely does not care about.",
+      "defaults_quality": "Every question has a specific default, e.g. 'bottom right, 3 seconds, text \"Settings saved\"' and 'do not create a repository or invent a remote', so 'go' gives a safe result.",
+      "clarity": "Five short questions, each with a recommendation, but they sit under a long brief, a coverage scan, a request table and a 7-point Done list, so the message is slow to read.",
+      "respects_words": "Keeps Invoices fully untouched (even keeps the pill grey to avoid Invoices' colours) and keeps 'push to main' as a goal, only holding it because no repo exists; minor Clients/Customers naming slip.",
+      "overall": "A strong, safe intake that finds the real blocker (no git repo) and gives good defaults, held back by its length and one low-value question."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.665Z"
+}

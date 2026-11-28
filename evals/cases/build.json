@@ -1,0 +1,204 @@
+{
+  "loop": "build",
+  "skill": "product-build-loop",
+  "cases": [
+    {
+      "id": "build-01",
+      "ask": "build me a prototype for a dog walking app lol. owners book a walker, walkers see their day. keep it simple",
+      "files": {},
+      "must_cover": [
+        "persona|who uses|owners|walkers",
+        "module",
+        "how deep|in full|shell|depth",
+        "look|colour|color|font",
+        "simple"
+      ],
+      "findable": [],
+      "expected_track": "quick",
+      "notes": "Short, casual, no files. 'keep it simple' is a vague word the intake should turn into a number or a scope (how many screens). Two personas in one sentence. Should be quick: one page shell, list states."
+    },
+    {
+      "id": "build-02",
+      "ask": "Build the first release from research/fleet-maintenance/brief.md, the top 3 modules only.",
+      "files": {
+        "CLAUDE.md": "# Fleetwise prototypes\n\n- Brand: primary #0B5FFF, ink #0F172A, surface #F8FAFC. Font: Inter (Google Fonts).\n- Logo: assets/fleetwise-mark.svg\n- Prototypes are plain HTML, one file per product, no build step.\n- We share demo links in Slack #proto-demos, but only when someone asks.\n",
+        "assets/fleetwise-mark.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"8\" fill=\"#0B5FFF\"/><path d=\"M8 20h16M10 12h12\" stroke=\"#fff\" stroke-width=\"3\"/></svg>\n",
+        "research/fleet-maintenance/brief.md": "# Fleet maintenance: product brief\n\nDecision: the first modules of a maintenance tool for mid-size delivery fleets (50 to 500 vans), UK.\n\n## Persona\nFleet manager at a regional courier. Comes in every morning to see which vans are off the road today and why.\nPays: operations director.\n\n## Ranked modules\n1. Vehicle board: every van, its status (on road, in workshop, due), next service date. Must have: filter by depot, status chips, search by reg.\n2. Defect reports: drivers report a defect from the walkaround check; manager triages. Must have: photo, severity, assign to workshop.\n3. Service schedule: calendar of services and MOTs, overdue in red. Must have: month view, drag to move a booking.\n4. Parts stock: parts on hand per depot.\n5. Cost reports: cost per van per month.\n\n## Questions for the build\n- Should drivers get their own phone screens in release 1? (Our view: no, managers only.)\n"
+      },
+      "must_cover": [
+        "how deep|in full|shell|depth",
+        "product folder|folder|where",
+        "driver|phone",
+        "name|mark|logo"
+      ],
+      "findable": [
+        "brand colour|colour|color|palette",
+        "font|typeface",
+        "persona|who uses|who is it for",
+        "module|modules",
+        "logo|mark"
+      ],
+      "expected_track": "full",
+      "notes": "A research brief and CLAUDE.md answer persona, modules with must-haves, look and logo. Asking for any of those is redundant. The open question the brief itself raises (driver screens) is fair to ask."
+    },
+    {
+      "id": "build-03",
+      "ask": "add a loyalty points module to the bakery prototype in shop/. customers earn 1 point per £1, 10 points = a free coffee",
+      "files": {
+        "shop/index.html": "<!doctype html>\n<html><head><meta charset=\"utf-8\"><title>Crumb & Co</title>\n<style>body{font-family:system-ui;margin:0;background:#fffaf3;color:#3b2a1a}header{padding:16px 24px;background:#3b2a1a;color:#fffaf3;display:flex;gap:20px}header a{color:#f4d9b0;text-decoration:none}main{padding:24px;max-width:900px;margin:auto}.item{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #eadcc8}button{background:#c2652a;color:#fff;border:0;border-radius:6px;padding:8px 12px}</style></head>\n<body><header><b>Crumb &amp; Co</b><a href=\"#/menu\">Menu</a><a href=\"#/basket\">Basket</a><a href=\"#/orders\">My orders</a></header>\n<main id=\"app\"></main>\n<script>\nconst menu=[{n:\"Sourdough loaf\",p:4.5},{n:\"Almond croissant\",p:3.2},{n:\"Flat white\",p:3.1},{n:\"Cinnamon bun\",p:2.9}];\nconst basket=[];\nconst views={menu:()=>\"<h1>Menu</h1>\"+menu.map((m,i)=>'<div class=item><span>'+m.n+' £'+m.p.toFixed(2)+'</span><button onclick=\"basket.push(menu['+i+']);location.hash=\\'#/basket\\'\">Add</button></div>').join(\"\"),\nbasket:()=>\"<h1>Basket</h1>\"+(basket.length?basket.map(b=>'<div class=item>'+b.n+'<span>£'+b.p.toFixed(2)+'</span></div>').join(\"\")+'<p><button>Pay</button></p>':'<p>Your basket is empty.</p>'),\norders:()=>\"<h1>My orders</h1><div class=item>12 Nov · 2 items<span>£7.60</span></div><div class=item>4 Nov · 1 item<span>£4.50</span></div>\"};\nfunction r(){const k=location.hash.slice(2)||\"menu\";document.getElementById(\"app\").innerHTML=(views[k]||views.menu)()}\naddEventListener(\"hashchange\",r);r();\n</script></body></html>\n",
+        "shop/README.md": "# Crumb & Co ordering prototype\n\nOpen index.html in a browser. No server, no build. Customers order ahead and collect in the shop.\nThree screens: Menu, Basket, My orders.\n"
+      },
+      "must_cover": [
+        "persona|customer|who uses",
+        "where|nav|screen",
+        "redeem|free coffee",
+        "how deep|in full|depth|edge|not enough points"
+      ],
+      "findable": [
+        "which product|existing product|new product|which prototype",
+        "how it runs|server|dev script",
+        "points rule|per £1|points per"
+      ],
+      "expected_track": "quick",
+      "notes": "Existing product in shop/ (plain HTML, README says how it runs). The points rule is given. A good intake does not ask which product or how points work; it may ask about redeeming with too few points and where the module sits."
+    },
+    {
+      "id": "build-04",
+      "ask": "We run a 14-hospital network (about 4,000 beds). Build a clickable prototype of a bed management tool for charge nurses: a bed board by ward, the admit / transfer / discharge flow, a housekeeping queue for beds being cleaned, and an exec dashboard with occupancy. It's for our innovation board in three weeks, so it has to look like a real product, not a wireframe.",
+      "files": {},
+      "must_cover": [
+        "persona|charge nurse|who uses",
+        "module",
+        "how deep|in full|shell|depth",
+        "look|colour|color|font",
+        "sample data|data|patients",
+        "exec|dashboard",
+        "privacy|patient names|fake"
+      ],
+      "findable": [
+        "persona|who uses|who is it for"
+      ],
+      "expected_track": "full",
+      "notes": "Large enterprise ask with four named modules and a clear persona. Depth is implied ('a real product'). Good intake: confirms modules and must-haves, sample data that looks real but is made up (patient privacy), the look, and the research-first option is unnecessary since modules are named."
+    },
+    {
+      "id": "build-05",
+      "ask": "need prototype. school canteen pre-order. parents order + pay, kitchen see count per dish by 10am. india. mobile first",
+      "files": {},
+      "must_cover": [
+        "persona|parent|kitchen",
+        "module",
+        "pay|payment",
+        "phone|mobile",
+        "currency|rupee|₹|inr",
+        "10am|cut-off|cutoff",
+        "how deep|in full|depth"
+      ],
+      "findable": [],
+      "expected_track": "full",
+      "notes": "Terse, non-native voice, two personas, a market (India: rupees, UPI), a cut-off time and mobile first. Payment is fake in a prototype and should be stated, not asked as a real money step."
+    },
+    {
+      "id": "build-06",
+      "ask": "Make a clickable demo of a chat assistant exactly like ChatGPT for our in-house legal team. Demo is Friday.",
+      "files": {
+        "CLAUDE.md": "# Kestrel Legal: house style\n\n- Font: IBM Plex Sans; mono: IBM Plex Mono.\n- Colours: navy #14213D, gold #C9A227, paper #FAFAF7.\n- Logo: brand/kestrel-logo.svg (use it top left).\n- Never show real client names: use \"Matter 1042\" style ids.\n",
+        "brand/kestrel-logo.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 32\"><text x=\"0\" y=\"24\" font-family=\"IBM Plex Sans\" font-size=\"22\" fill=\"#14213D\">Kestrel</text></svg>\n"
+      },
+      "must_cover": [
+        "exact|exactly",
+        "streamed|streaming",
+        "sidebar|recent chats|history",
+        "persona|lawyer|legal team|who uses",
+        "friday|deadline",
+        "sample|answers|matters"
+      ],
+      "findable": [
+        "font|typeface",
+        "colour|color|palette",
+        "logo"
+      ],
+      "expected_track": "full",
+      "notes": "'Exactly like ChatGPT' means exact: streamed answers, action row, collapsible sidebar, recent chats. The default must not water it down to flow only. CLAUDE.md answers the look and a privacy rule for sample data."
+    },
+    {
+      "id": "build-07",
+      "ask": "build the thing in spec.md end to end",
+      "files": {
+        "spec.md": "# Tally: shared expenses for flatmates (prototype spec)\n\nOwner: Rina (PM). Status: ready to prototype.\n\n## Who\nFlatmates aged 20 to 35 sharing a rented flat in the UK. The one job: see who owes whom this month and settle up\nwithout an awkward chat.\n\n## Modules (build order) and must-haves\n1. Home: balance per flatmate (owes / is owed), \"Settle up\" button, last 5 expenses.\n2. Add expense: amount, who paid, split equally or by shares, category, photo of the receipt (placeholder ok).\n3. Bills: recurring bills (rent, energy, broadband) with due dates and who has paid.\n4. Settle up: suggested payments that clear all debts in the fewest transfers; mark as paid.\n\nEvery module built in full. Empty states for a new flat with no expenses.\n\n## Look\nFriendly, rounded. Font: Nunito. Primary #22A06B, ink #1B1F24, background #F7F8F6. Name: Tally (final). No logo yet:\nuse the word mark in Nunito 800.\n\n## Not in scope\nReal payments, bank links, sign-up.\n"
+      },
+      "must_cover": [
+        "persona|flatmates",
+        "module",
+        "how deep|in full",
+        "look|font|colour|color",
+        "settle"
+      ],
+      "findable": [
+        "persona|who uses|who is it for",
+        "module|modules|must-have|must have",
+        "font|typeface",
+        "colour|color|palette",
+        "name|naming|brand name",
+        "how deep|in full|shell|depth"
+      ],
+      "expected_track": "full",
+      "notes": "The spec answers nearly every need: persona, modules in order with must-haves, depth, look, name, out of scope. A good intake shows the brief and asks very little (0 to 2 questions, for example where it lives). Asking persona or modules here is a fault."
+    },
+    {
+      "id": "build-08",
+      "ask": "Just a shell for an HR onboarding portal: nav with 6 sections, and only the 'First day checklist' page built properly. It's for a stakeholder walkthrough tomorrow morning.",
+      "files": {},
+      "must_cover": [
+        "shell",
+        "first day checklist|checklist",
+        "six|6|sections",
+        "persona|new starter|new hire|who uses"
+      ],
+      "findable": [
+        "how deep|in full|shell|depth"
+      ],
+      "expected_track": "quick",
+      "notes": "The person states the depth: a shell plus one page in full. A default of 'every module in full' goes against their words. The six section names are open and fair to draft as a default."
+    },
+    {
+      "id": "build-09",
+      "ask": "hey so we're a coop of ~200 dairy farmers in Wisconsin and we want an app for milk pickup scheduling + seeing the quality test results (fat, protein, somatic cell count) from each pickup, and maybe also a marketplace where farmers buy feed from each other?? not sure about that one. the truck drivers would need it too. idk how many screens, whatever makes sense",
+      "files": {},
+      "must_cover": [
+        "persona|farmer|driver",
+        "marketplace",
+        "module",
+        "research|rivals",
+        "how deep|in full|depth",
+        "phone|mobile|tablet"
+      ],
+      "findable": [],
+      "expected_track": "full",
+      "notes": "Rambling, unsure scope (the marketplace is a maybe), two personas (farmers and drivers), domain data named. A good intake proposes the scope with the marketplace as a clear default (out, or a shell) and asks it once; research-first is a fair question."
+    },
+    {
+      "id": "build-10",
+      "ask": "use client-notes.txt and build it for Thursday's pitch. make it look premium",
+      "files": {
+        "client-notes.txt": "Call with Apex Fitness (12 gyms, London), 18 Nov\n- They want members to book classes from their phone, see the timetable per gym, and join a waitlist when full\n- Front desk needs to check people in (scan or search)\n- Membership page: plan, next payment, freeze membership\n- Their colours: black and \"Apex orange\" #FF5A1F, font they use is \"Barlow\"\n- They HATE the current app because it takes 6 taps to book\n- Pitch Thursday 2pm with Dan (COO) and Lauren (Head of Member Experience)\n",
+        "brand/apex-colors.json": "{ \"black\": \"#0A0A0A\", \"orange\": \"#FF5A1F\", \"grey\": \"#8A8F98\", \"font\": \"Barlow\" }\n"
+      },
+      "must_cover": [
+        "persona|member|front desk",
+        "module",
+        "premium",
+        "book|booking|taps",
+        "how deep|in full|depth",
+        "thursday|deadline"
+      ],
+      "findable": [
+        "colour|color|palette|orange",
+        "font|typeface|barlow",
+        "module|modules|class booking"
+      ],
+      "expected_track": "full",
+      "notes": "Agency voice. Notes answer the modules, colours and font. 'Premium' is a vague word the intake should pin down (what it means on screen). The 6-taps pain gives a measurable goal (book in 2 taps)."
+    }
+  ]
+}

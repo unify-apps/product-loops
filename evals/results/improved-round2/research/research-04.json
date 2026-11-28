@@ -1,0 +1,122 @@
+{
+  "arm": "improved",
+  "loop": "research",
+  "case": "research-04",
+  "ask": "Benchmark us against Coupa, SAP Ariba, Jaggaer and Zip on intake-to-procure. We already have intake forms, approval routing and a supplier portal. I need a comprehensive capability matrix my VP of Procurement can read.",
+  "expected_track": "full",
+  "notes": "Enterprise procurement. Rivals, what we have, depth (comprehensive) and the main output (matrix) are all given. The reader (VP) is given. Good intake: asks group words and market at most.",
+  "must_cover": [
+    "matrix|capability",
+    "have|what we have|today",
+    "depth|comprehensive",
+    "persona|vp|buyer",
+    "groups|categories",
+    "sheet|excel|xlsx"
+  ],
+  "findable": [
+    "rivals|competitors|which products",
+    "what we have|already have|have today",
+    "depth|how much to read|comprehensive"
+  ],
+  "fixtures": [],
+  "message": "**Goal:** a comprehensive intake-to-procure capability matrix of us against Coupa, SAP Ariba, Jaggaer and Zip, that your VP of Procurement can read.\n\n**Found:**\n- Rivals: Coupa, SAP Ariba, Jaggaer, Zip (from your message).\n- We have today: intake forms, approval routing, supplier portal. These rows are marked `have` (from your message).\n- Output: a capability matrix, as an Excel file plus a CSV, with a source link on every yes or partial cell (from your message: \"capability matrix\").\n- Depth: \"comprehensive\" means up to 25 pages and 100 features per rival (default for that word).\n- Sources: public pages only, no sign-ins, nothing published or sent (default).\n- Start check: web search works and Zip's page opened. Coupa's home page returned 403, so its helper will try other Coupa pages.\n\n**Track:** full, because you named 4 rivals and asked for a comprehensive matrix.\n\n**Coverage:** 4 clear · partial: Who and their job, Edge cases, Outputs · missing: Scope boundary, Words with no number (\"comprehensive\" is set to 25 pages and 100 features per rival)\n\n**Done means:**\n- Excel and CSV matrix with all 4 rivals, 5 or more rows each.\n- Every row says what it does.\n- Every yes or partial has that rival's own link.\n- Each \"only we have it\" claim is searched on every rival's site.\n- The brief ends in a ranked module list citing sheet rows.\n\nThe full brief, with every default, is in `loop-runs/product-research-loop-20261126-033953/brief.md`.\n\nAbout 40 minutes and 10 helper agents, within a budget of 90 minutes.\n\n1. Where does \"intake-to-procure\" stop?\n   Recommended: from the purchase request through approval, supplier onboarding, sourcing and PO. Invoicing and payment are left out.\n   Why it matters: Zip, Coupa and Ariba each draw this line differently, so it decides which rows the matrix has.\n\n2. Do you have anything else today besides intake forms, approval routing and a supplier portal?\n   Recommended: no. Those three are all we mark `have`.\n   Why it matters: each extra feature you name becomes a `have` row instead of a `gap`.\n\n3. How should the matrix be grouped for your VP?\n   Recommended: Intake and requests · Approval routing · Supplier onboarding and portal · Sourcing and POs · Integrations and AI · Admin and reporting.\n   Why it matters: the groups are the tabs and headings your VP reads first.\n\n4. Who uses it every day, and who pays?\n   Recommended: an employee who files purchase requests and a procurement buyer who handles them; the VP of Procurement pays. The persona only ranks the modules and never removes a row from the matrix.\n   Why it matters: the persona decides which modules rank first.\n\n5. How bold should the brief be?\n   Recommended: both. Catch-up modules first, plus at least 3 ideas no rival has.\n   Why it matters: this decides whether the brief leads with catching up or with new ideas.\n\n6. Should the matrix show a score per rival, or only yes, partial and no?\n   Recommended: yes, partial or no with a link only. No numeric score, because scores are our opinion.\n   Why it matters: a VP will ask which rival is \"best\", and a score invites that argument.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Where does \"intake-to-procure\" stop? | 2. Do you have anything else today besides intake forms, approval routing | 3. How should the matrix be grouped for your VP? | 4. Who uses it every day, and who pays? | 5. How bold should the brief be? | 6. Should the matrix show a score per rival, or only yes, partial and no?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 10 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 4 clear · partial: Who and their job, Edge cases, Outputs · missing: Scope boundary, Words with no number (\"comprehensive\" is "
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 534,
+      "evidence": "534 words, 254 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you named 4 rivals and asked for a comprehensive matrix."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 534,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles matrix, have (\"These rows are marked `have`\"), depth (\"25 pages and 100 features per rival\"), persona (Q4), groups (Q3) and sheet (\"an Excel file plus a CSV\").",
+      "no_redundancy": "States rivals, what we have and depth as found, but Q2 \"Do you have anything else today besides intake forms...\" re-asks what the ask already listed.",
+      "defaults_quality": "Every question has a concrete default, e.g. Q1 \"from the purchase request through approval... Invoicing and payment are left out\" and Q3's six named groups.",
+      "clarity": "Six questions ordered sensibly with plain words, but preceded by a long brief with jargon lines like \"Track: full\" and \"Coverage: 4 clear · partial: Who and their job...\".",
+      "respects_words": "Keeps the 4 rivals, the 3 existing features and \"comprehensive\"; the persona default only ranks modules and \"never removes a row from the matrix\".",
+      "overall": "A strong, well-defaulted intake that \"go\" alone would run well, held back by one redundant question and a dense, jargon-heavy brief."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.826Z"
+}

@@ -1,0 +1,90 @@
+{
+  "version": 2,
+  "loop": "product-review-loop",
+  "workDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/smokework/review",
+  "runDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/smokework/review/loop-runs/product-review-loop-20261126-032657",
+  "script": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/repo/product-loops/skills/product-review-loop/shared/scripts/loop-state.mjs",
+  "createdAt": "2026-11-25T21:56:57.199Z",
+  "changedAt": "2026-11-25T22:06:37.271Z",
+  "intake": "closed",
+  "finished": {
+    "at": "2026-11-25T22:06:37.270Z",
+    "stopFact": "After the last walk, a fresh agent found no open P1 on any screen; the one P1 left (F4, Booking policy Lorem ipsum) is listed first in handover.md as your call; every P2 is listed there."
+  },
+  "stopped": null,
+  "paused": null,
+  "track": "full",
+  "skillDir": "/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/repo/product-loops/skills/product-review-loop",
+  "budget": {
+    "minutes": 60,
+    "maxPushes": 6,
+    "maxDecisions": 40,
+    "startedAt": "2026-11-25T21:58:49.603Z"
+  },
+  "pushes": 0,
+  "nodes": [
+    {
+      "name": "intake",
+      "status": "done",
+      "startedAt": "2026-11-25T21:56:57.199Z",
+      "endedAt": "2026-11-25T21:58:49.603Z",
+      "check": "the person said \"go\" (1 replies)",
+      "proof": "loop-runs/product-review-loop-20261126-032657/brief.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "walk",
+      "status": "done",
+      "startedAt": "2026-11-25T21:58:58.875Z",
+      "endedAt": "2026-11-25T21:59:42.914Z",
+      "check": "every screen has a screenshot and script checks",
+      "proof": "loop-runs/product-review-loop-20261126-032657/walk/before/checks.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "review",
+      "status": "done",
+      "startedAt": "2026-11-25T21:59:42.987Z",
+      "endedAt": "2026-11-25T22:02:22.402Z",
+      "check": "every finding has a screen, a rule and a level",
+      "proof": "loop-runs/product-review-loop-20261126-032657/findings.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "fix",
+      "status": "done",
+      "startedAt": "2026-11-25T22:02:22.476Z",
+      "endedAt": "2026-11-25T22:04:16.351Z",
+      "check": "each finding fixed, the person's call, or not fixed with a reason",
+      "proof": "loop-runs/product-review-loop-20261126-032657/fixes.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "recheck",
+      "status": "done",
+      "startedAt": "2026-11-25T22:04:16.425Z",
+      "endedAt": "2026-11-25T22:06:18.125Z",
+      "check": "fresh agent: no open P1 after the last walk, spec 4, quality 3, model claude-sonnet-5-5",
+      "proof": "loop-runs/product-review-loop-20261126-032657/recheck-1.md",
+      "retries": [],
+      "leftWhy": null
+    },
+    {
+      "name": "handover",
+      "status": "done",
+      "startedAt": "2026-11-25T22:06:18.197Z",
+      "endedAt": "2026-11-25T22:06:37.174Z",
+      "check": "handover.md written",
+      "proof": "loop-runs/product-review-loop-20261126-032657/handover.md",
+      "retries": [],
+      "leftWhy": null
+    }
+  ],
+  "held": [],
+  "decisions": 0,
+  "replies": 1
+}

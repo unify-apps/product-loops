@@ -7,6 +7,8 @@ exactly these `##` sections, in this order. Keep each one short: a few lines or 
 
 1. `## Persona`
    - The persona from the brief. Do not add a name, a team size or counts that no source and no answer gives.
+     Examples in the flow carry no number a source or an answer did not give: "a set number of weeks before the
+     date", not "6 weeks before".
    - The person who uses it every day: their role, where they work, how big the place is.
    - What they use for this job today (paper, a spreadsheet, a rival). That sets the bar.
    - The words they use for things. Those become the product's labels.

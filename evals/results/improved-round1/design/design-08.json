@@ -1,0 +1,118 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-08",
+  "ask": "copy the booking wizard from reference/booking-flow.html into the clinic prototype as the New appointment flow - exactly, same steps and same look",
+  "expected_track": "full",
+  "notes": "Local reference file, exact mode and target are given. The open point is the clash of looks (the reference uses Georgia and teal; 'same look' means copy them). A good intake names that clash in the brief rather than asking what exact means.",
+  "must_cover": [
+    "reference|wizard",
+    "exact|exactly",
+    "new appointment",
+    "font|georgia|look"
+  ],
+  "findable": [
+    "reference|which reference",
+    "exact|flow only|pixel",
+    "which screen|target screen|new appointment"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html",
+    "reference/booking-flow.html"
+  ],
+  "message": "## Brief\n\n**Goal:** Copy the booking wizard from `reference/booking-flow.html` into the clinic prototype (`proto-clinic/index.html`, Northside Physio) as the \"New appointment\" flow, exactly: same steps and same look.\n\n**Prototype:** `proto-clinic/index.html`, plain HTML with hash routes (Today, Clients, Invoices, Settings). It is the only prototype in the folder. It will run with the built-in local server on a free port. There is no `CLAUDE.md`, and no `product-design` or `design-review` skill, so the built-in `make-changes.md` and `design-check.md` rules apply.\n\n**Reference:** `reference/booking-flow.html`, read only, never edited. Its parts:\n- a 3-bar step bar\n- Step 1 \"Who is coming in?\" (hint \"Search for a client, or add a new one.\", client-name field)\n- Step 2 \"Pick a time\" (hint \"Times with a free therapist and a free room.\", four slots 09:00, 09:45, 10:30 picked, 11:15)\n- Step 3 \"Check and book\" (hint \"We text the client a reminder the day before.\", Priya Nair / 10:30 with Tom Hale, Room 1 / Follow-up, 45 minutes)\n- Back and Next buttons, where Next becomes \"Book\" on step 3, Back does nothing on step 1, and \"Book\" shows \"Booked\"\n\n**Where it goes:** a new screen `#/new-appointment` inside the prototype's header. The dead \"New appointment\" button on Today opens it.\n\n**Mode:** exact, because you wrote \"exactly\" and \"same look\". The wizard card keeps the reference's Georgia serif, teal `#0a7d6b`, 560px card, 14px radius, bar and slot sizes. Colours, fonts, sizes and spacing are measured in both pages and written down side by side. The prototype's header and page frame stay as they are.\n\n**Not touched:** Clients, Invoices and Settings stay as they are. Nothing is published, pushed or committed. The result is a local link only.\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | clear | one flow, 3 steps, one entry button |\n| Who and their job | partial | reception books a client in, by the reference's words |\n| Data and facts | partial | the reference has fixed sample data (Priya Nair, 10:30, Tom Hale) |\n| Main flow | clear | Next, Next, Book; Back |\n| Edge cases | partial | the reference has none: empty name, a different slot, leaving half way |\n| Look | clear | exact copy of the reference |\n| Outputs | clear | local link, changed file `proto-clinic/index.html` |\n| Done signal | clear | every part of the reference is on the screen and the look is measured equal |\n| Words with no number | clear | \"exactly\" and \"same\" are measured on the page |\n\n**Lessons applied:** none yet (no earlier runs).\n\n**Start check:** browser found (Google Chrome), Node v25.9.0, prototype found. All pass. The builder-check helper could not be started in this session, so I wrote its questions myself (questions 2 and 3).\n\n**Done means:**\n1. Every one of the 3 rows in `requests.md` is `done` or `swept`, or `left` with a reason.\n2. Every part in `reference-parts.md` (bar, 3 steps with their words, slots, Back and Next, Book) is on `#/new-appointment`, or left out with why.\n3. Font family, colours, card width and radius of the wizard match the reference when both are measured.\n4. The final compare has no UNEXPECTED and no BROKEN screen. Today, Clients, Invoices and Settings are unchanged except the New appointment button.\n5. Every changed part of the code traces to a row, or to a decision a row needed.\n6. The prototype's link answers 200.\n\n**Requests**\n\n| # | Note | Where |\n|---|---|---|\n| 1 | Copy the 3-step booking wizard (Who is coming in? / Pick a time / Check and book), same words, same order | new screen |\n| 2 | The wizard looks like the reference: Georgia serif, teal `#0a7d6b`, 560px card, 14px radius, 3-bar step bar, 4-column time grid (my reading: exact on the card, prototype header stays) | new screen |\n| 3 | The dead \"New appointment\" button on Today opens the flow (my reading) | Today |\n\nBroken before the run (found now, left as it is): the \"New appointment\" button does nothing today (row 3 gives it a job). The Overdue invoice filter shows an empty table with no words, and I will not change it. Anything else the before screenshots show will be listed in the handover.\n\nAbout 30 minutes and 2 helper agents (one reviewer, counted for 2 tries), within a budget of 60 minutes.\n\n**Questions**\n\n1. Full or quick track?\n   Recommended: full. You asked to copy the reference exactly, and the full track checks every part of the reference against the screen.\n   Why it matters: the quick track skips the copy step, so nothing would be copied.\n\n2. Where does the wizard open: a full screen at `#/new-appointment`, or a pop-up over Today?\n   Recommended: a full screen at `#/new-appointment`, opened by the New appointment button, with the prototype's header kept above it.\n   Why it matters: the reference is a page-sized card, and a pop-up changes its layout and the \"exact\" check.\n\n3. Should the wizard keep the reference's fixed sample content and the \"Booked\" alert (typed name ignored, step 3 always Priya Nair at 10:30), or use what the person picks?\n   Recommended: keep it exactly as the reference does, because you said \"exactly\" and the prototype is sample data anyway. Booking ends with \"Booked\" and returns to Today, with no new row on the Today list.\n   Why it matters: wiring the choices through changes how it behaves and is much more work than copying it.\n\n4. The reference's page background and fonts clash with the prototype's. Keep the prototype's page frame and copy exactly only the wizard card?\n   Recommended: yes. The prototype's header and page background stay, and the wizard card is an exact copy.\n   Why it matters: copying the reference's page background too would make this one screen look like a different app.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. Full or quick track? | 2. Where does the wizard open: a full screen at `#/new-appointment`, or a | 3. Should the wizard keep the reference's fixed sample content and the \"B | 4. The reference's page background and fonts clash with the prototype's. "
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "41 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: reference (\"reference\"), exact (\"exact\"), which screen (\"new appointment\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 30 minutes and 2 helper agents (one reviewer, counted for 2 tries), within a budget of 60 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "1. Full or quick track?"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 990,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 6,
+      "defaults_quality": 9,
+      "clarity": 4,
+      "respects_words": 8,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles reference, exact mode, New appointment entry and look: \"keeps the reference's Georgia serif, teal #0a7d6b, 560px card, 14px radius\".",
+      "no_redundancy": "Q2 re-asks the screen the ask already names (\"Where does the wizard open\") and Q1 \"Full or quick track?\" is a process choice the agent's own default answers, though the brief states the found facts.",
+      "defaults_quality": "Every question has a specific, fitting default, e.g. \"keep it exactly as the reference does, because you said 'exactly'\".",
+      "clarity": "Four questions sit under a long wall of brief, coverage table, done list and requests table, and Q1 uses jargon (\"full or quick track\").",
+      "respects_words": "Keeps \"exactly\" for the wizard card, but defaults to keeping the prototype's page frame and background (\"copy exactly only the wizard card\"), a reading of the ask rather than its literal words.",
+      "overall": "A strong, faithful brief with good defaults, but too long and two of its four questions were not needed."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.663Z"
+}

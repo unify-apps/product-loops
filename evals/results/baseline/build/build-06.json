@@ -1,0 +1,125 @@
+{
+  "arm": "baseline",
+  "loop": "build",
+  "case": "build-06",
+  "ask": "Make a clickable demo of a chat assistant exactly like ChatGPT for our in-house legal team. Demo is Friday.",
+  "expected_track": "full",
+  "notes": "'Exactly like ChatGPT' means exact: streamed answers, action row, collapsible sidebar, recent chats. The default must not water it down to flow only. CLAUDE.md answers the look and a privacy rule for sample data.",
+  "must_cover": [
+    "exact|exactly",
+    "streamed|streaming",
+    "sidebar|recent chats|history",
+    "persona|lawyer|legal team|who uses",
+    "friday|deadline",
+    "sample|answers|matters"
+  ],
+  "findable": [
+    "font|typeface",
+    "colour|color|palette",
+    "logo"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "brand/kestrel-logo.svg"
+  ],
+  "message": "## Brief (draft, nothing is built yet)\n\n**Goal:** A clickable web demo of a chat assistant exactly like ChatGPT, for the in-house legal team, ready for Friday.\n\n**What I found here**\n- `CLAUDE.md` (Kestrel Legal house style): IBM Plex Sans and IBM Plex Mono; navy #14213D, gold #C9A227, paper #FAFAF7; logo `brand/kestrel-logo.svg` top left; never show real client names, use \"Matter 1042\" style ids.\n- `brand/kestrel-logo.svg`: a \"Kestrel\" wordmark.\n- No existing product, no earlier run, no brief or research file here.\n- Start check: click checks will run in a real browser (chrome-headless-shell).\n\n**Plan (defaults)**\n- New product in `./legal-assistant/`, one `index.html` with CSS and JS inside, served locally.\n- Name: Kestrel Legal is the house; the product name is 3 options on the real header, first one used.\n- Stays on this laptop. Nothing is published.\n\n**Modules (drafted by me, my guess)**\n1. Chat: composer, streamed answers, action row under each answer (copy, regenerate, thumbs up/down, share), model picker, stop button, suggested prompts on the empty state.\n2. Sidebar and recent chats: collapsing sidebar, new chat, recent chats grouped by day, search, rename, delete.\n3. Account and settings: profile menu, light/dark, custom instructions.\n\nSample chats will be legal-team work (contract review, NDA clauses, policy questions) on \"Matter 1042\" style ids, no real client names.\n\n## Questions\n\n1. Who uses it, and the one job they come to do? Default: an in-house lawyer or paralegal at Kestrel Legal who asks questions about contracts, clauses and policies and gets a draft answer fast.\n2. The modules in build order, and what each must have? Default: the three above.\n3. \"Exactly like ChatGPT\" means exact, not flow only. Default: I build all of this: streamed answers, the action row under each answer, the sidebar that collapses, recent chats, new chat, model picker, stop button, regenerate. Anything else you want in the list, or anything you do not want?\n4. How deep? Default: every module in full.\n5. Look: default is the Kestrel house style from `CLAUDE.md` (fonts, colours, logo top left). Any change, or other files?\n6. Name: default is 3 options on the real header, the first one used. Do you already have a name?\n7. Extras: photos of people (default none, initials only), two versions behind a key (default no), a PDF guide of the screens (default none), a public link (default none, local only).\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. Who uses it, and the one job they come to do? Default: an in-house law | 2. The modules in build order, and what each must have? Default: the thre | 3. \"Exactly like ChatGPT\" means exact, not flow only. Default: I build al | 4. How deep? Default: every module in full. | 5. Look: default is the Kestrel house style from `CLAUDE.md` (fonts, colo | 6. Name: default is 3 options on the real header, the first one used. Do  | 7. Extras: photos of people (default none, initials only), two versions b"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "16 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: font (\"font\"), colour (\"colour\"), logo (\"logo\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 407,
+      "evidence": "407 words, 216 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 407,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 6,
+      "defaults_quality": 8,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Settles all topics: \"exact, not flow only\", \"streamed answers\", \"recent chats grouped by day\", persona \"in-house lawyer or paralegal\", \"ready for Friday\", sample chats on \"Matter 1042\" ids.",
+      "no_redundancy": "Q5 re-asks look (\"Any change, or other files?\") though CLAUDE.md gives fonts, colours, logo; Q2 and Q4 repeat the modules plan already stated in the brief.",
+      "defaults_quality": "Every question has a concrete default (\"in-house lawyer or paralegal...\", \"every module in full\", \"default none, local only\"), though Q3 also ends open-ended \"Anything else you want...?\"",
+      "clarity": "Seven questions with overlap (Q2/Q3/Q4 all about scope) and Q7 bundles four extras into one item; brief plus questions is long for a quick reply.",
+      "respects_words": "Keeps \"exactly like ChatGPT\" as exact, keeps the Friday deadline and \"clickable demo\"; only adds an assumed account/settings module, framed as a guess.",
+      "overall": "Strong brief that uses the house style and covers every needed topic, but asks about found facts and splits scope across overlapping questions, so it is longer than it needs to be."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.429Z"
+}

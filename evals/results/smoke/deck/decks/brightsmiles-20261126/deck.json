@@ -1,0 +1,234 @@
+{
+ "title": "Bright Smiles Dental and Clinic Scheduler: first meeting",
+ "format": "slides",
+ "outputs": [
+  "html",
+  "pdf"
+ ],
+ "slide_count": [
+  6,
+  8
+ ],
+ "brand": {
+  "title_font": "Arial",
+  "body_font": "Arial",
+  "background": "FFFFFF",
+  "text": "1F2328",
+  "muted": "59636E",
+  "accent": "1F4E79",
+  "accent_soft": "E8EEF5"
+ },
+ "slides": [
+  {
+   "layout": "title",
+   "title": "Fewer no-shows at Bright Smiles Dental",
+   "subtitle": "Clinic Scheduler: a first conversation with Priya Nair, COO",
+   "notes": "Thank Priya for her time. Say the meeting is about no-shows."
+  },
+  {
+   "layout": "numbers",
+   "title": "About 9% of your appointments are no-shows",
+   "facts": [
+    "f3"
+   ],
+   "numbers": [
+    {
+     "value": "40",
+     "label": "Clinics in England and Wales",
+     "fact": "f1"
+    },
+    {
+     "value": "About 9%",
+     "label": "Of appointments are no-shows, as you told us",
+     "fact": "f3"
+    }
+   ],
+   "points": [
+    {
+     "text": "You told us this figure yourselves",
+     "facts": [
+      "f3"
+     ]
+    },
+    {
+     "text": "How many appointments does one clinic book in a month?"
+    }
+   ],
+   "notes": "Bright Smiles runs 40 clinics in England and Wales. You told us no-shows run at about 9% of appointments. Ask how many appointments a clinic books, so the cost can be sized together."
+  },
+  {
+   "layout": "steps",
+   "title": "Clinic Scheduler books, reminds and refills slots",
+   "facts": [
+    "f4"
+   ],
+   "steps": [
+    {
+     "heading": "Book",
+     "text": "Patients book a slot online",
+     "facts": [
+      "f4"
+     ]
+    },
+    {
+     "heading": "Remind",
+     "text": "Patients get a text reminder",
+     "facts": [
+      "f4"
+     ]
+    },
+    {
+     "heading": "Refill",
+     "text": "The waitlist fills cancelled slots",
+     "facts": [
+      "f4"
+     ]
+    }
+   ],
+   "notes": "Clinic Scheduler has three parts: online booking, text reminders, and a waitlist that fills cancelled slots. Ask how her clinics book, remind and refill slots today."
+  },
+  {
+   "layout": "numbers",
+   "title": "No-shows fell from 8% to 5% in our pilot",
+   "facts": [
+    "f5"
+   ],
+   "numbers": [
+    {
+     "value": "8%",
+     "label": "No-shows before, in our 3 pilot clinics",
+     "fact": "f5"
+    },
+    {
+     "value": "5%",
+     "label": "No-shows after 3 months",
+     "fact": "f5"
+    },
+    {
+     "value": "3",
+     "label": "Pilot clinics",
+     "fact": "f5"
+    }
+   ],
+   "points": [
+    {
+     "text": "Our pilot report's estimate: a 3-point fall in 3 months",
+     "facts": [
+      "f5"
+     ]
+    },
+    {
+     "text": "Your clinics start higher, at about 9%",
+     "facts": [
+      "f3",
+      "f5"
+     ]
+    }
+   ],
+   "notes": "In our 3 pilot clinics, no-shows fell from 8% to 5% in 3 months. Our internal pilot report gives this as an estimate."
+  },
+  {
+   "layout": "numbers",
+   "title": "The same fall would bring you to about 6%",
+   "facts": [
+    "f7"
+   ],
+   "numbers": [
+    {
+     "value": "About 9%",
+     "label": "Your no-shows today",
+     "fact": "f3"
+    },
+    {
+     "value": "About 6%",
+     "label": "With the same 3-point fall, our estimate",
+     "fact": "f7"
+    }
+   ],
+   "points": [
+    {
+     "text": "Our estimate, not a promise: a pilot in your clinics would measure it",
+     "facts": [
+      "f7"
+     ]
+    },
+    {
+     "text": "What does an empty slot cost one of your clinics?"
+    }
+   ],
+   "notes": "If Bright Smiles saw the same 3-point fall as our pilot clinics, no-shows would go from about 9% to about 6%. This is our estimate from only 3 pilot clinics; a pilot in her clinics would measure whether it holds."
+  },
+  {
+   "layout": "steps",
+   "title": "A pilot in a few of your clinics would measure it",
+   "facts": [
+    "f9"
+   ],
+   "steps": [
+    {
+     "heading": "Choose",
+     "text": "We agree with you which clinics, how many, and for how long",
+     "facts": [
+      "f9"
+     ]
+    },
+    {
+     "heading": "Run",
+     "text": "Those clinics use online booking, text reminders and the waitlist",
+     "facts": [
+      "f4",
+      "f9"
+     ]
+    },
+    {
+     "heading": "Measure",
+     "text": "We compare the no-show rate before and after",
+     "facts": [
+      "f9"
+     ]
+    }
+   ],
+   "notes": "We propose a pilot in a few of her clinics. Which clinics, how many and how long are agreed with her. The pilot is judged on the no-show rate before and after."
+  },
+  {
+   "layout": "steps",
+   "title": "Next step: agree a pilot at £120 per clinic a month",
+   "facts": [
+    "f6",
+    "f9",
+    "f8"
+   ],
+   "steps": [
+    {
+     "heading": "We propose",
+     "text": "A pilot in a few of your clinics at £120 per clinic per month, list price",
+     "facts": [
+      "f9",
+      "f6"
+     ]
+    },
+    {
+     "heading": "From you",
+     "text": "Which clinics, how many, how long, and the start date",
+     "facts": [
+      "f9"
+     ]
+    },
+    {
+     "heading": "How we judge it",
+     "text": "The no-show rate before and after; yours is about 9% today",
+     "facts": [
+      "f9",
+      "f3"
+     ]
+    }
+   ],
+   "notes": "The ask: a pilot in a few clinics at the list price of £120 per clinic per month. Which clinics, how many, how long and the start date are agreed with her, and the pilot is judged on the no-show rate before and after. First, ask how many appointments her clinics book, to size the cost of no-shows together. If she asks about all 40 clinics: £4,800 a month at list price, our estimate. Ask which clinics she would want first."
+  },
+  {
+   "layout": "section",
+   "title": "Appendix",
+   "part": "appendix"
+  }
+ ]
+}

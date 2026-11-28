@@ -1,0 +1,119 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-05",
+  "ask": "need prototype. school canteen pre-order. parents order + pay, kitchen see count per dish by 10am. india. mobile first",
+  "expected_track": "full",
+  "notes": "Terse, non-native voice, two personas, a market (India: rupees, UPI), a cut-off time and mobile first. Payment is fake in a prototype and should be stated, not asked as a real money step.",
+  "must_cover": [
+    "persona|parent|kitchen",
+    "module",
+    "pay|payment",
+    "phone|mobile",
+    "currency|rupee|₹|inr",
+    "10am|cut-off|cutoff",
+    "how deep|in full|depth"
+  ],
+  "findable": [],
+  "fixtures": [],
+  "message": "**Goal:** a clickable, mobile-first web prototype of a school canteen pre-order product for India.\n\n**Found:**\n- New product: the working folder is empty, with no earlier runs and no research brief.\n- Parents order and pay; kitchen sees the count per dish by 10am (from your message).\n- Market is India, so rupees and Indian payment ways; mobile first (from your message).\n- Click checks will run in a real browser (chrome-headless-shell).\n- Everything stays on this laptop. Sample data only, and no real payment.\n\n**Track:** full, because it is a new product with 3 modules.\n\nCoverage: 4 clear · partial: Scope, Data and facts · missing: Edge cases, Look · words with no number: \"by 10am\"\n\n**Done means:**\n- Parent can pick a child, a day and dishes, and place an order.\n- Parent can pay in rupees and see a confirmed order.\n- Kitchen sees the count per dish, with the 10am cutoff shown.\n- Every link opens and every click works in a browser.\n- Each module's last review has no P1.\n\nThe full brief goes to `loop-runs/product-build-loop-20261126-033953/brief.md` once you reply.\n\nAbout 60 minutes and 11 helper agents, within a budget of 120 minutes.\n\n1. What does \"by 10am\" mean: orders for a school day close at 10am, and which day, the day before or the same morning?\n   Recommended: orders close at 10am the day before; the kitchen sees the final count from 10am.\n   Why it matters: it decides the cutoff rule on every screen and when the kitchen count locks.\n\n2. Which modules, in this order: Menu and order, Pay, Kitchen counts?\n   Recommended: those three, with the parent's menu and order first.\n   Why it matters: the module list sets what gets built and in what order.\n\n3. How do parents pay?\n   Recommended: UPI first, then card, and a school wallet balance; all pretend, no real payment.\n   Why it matters: the pay screens and the receipt change with each way.\n\n4. How many children and schools does a parent see?\n   Recommended: one school, and a parent can have up to 2 children.\n   Why it matters: it decides whether the order starts with a child picker.\n\n5. Do you have a logo, colours or fonts for it?\n   Recommended: none; a plain warm look with a green accent, and 3 name options to pick from later.\n   Why it matters: the look is applied to every screen from the first build.\n\n6. Do you want food photos or a public link?\n   Recommended: neither; emoji dish icons, and the product stays on this laptop.\n   Why it matters: photos need files, and a link means publishing.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. What does \"by 10am\" mean: orders for a school day close at 10am, and w | 2. Which modules, in this order: Menu and order, Pay, Kitchen counts? | 3. How do parents pay? | 4. How many children and schools does a parent see? | 5. Do you have a logo, colours or fonts for it? | 6. Do you want food photos or a public link?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 0 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.857,
+      "evidence": "missing: how deep"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 11 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Coverage: 4 clear · partial: Scope, Data and facts · missing: Edge cases, Look · words with no number: \"by 10am\""
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 445,
+      "evidence": "445 words, 197 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because it is a new product with 3 modules."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 445,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles parent/kitchen, modules (Q2), pay (Q3 'UPI first'), mobile first, rupees, 10am cutoff (Q1); depth only stated as 'Track: full', not offered as a choice.",
+      "no_redundancy": "Restates found facts in the brief ('from your message') and asks only open points such as the meaning of 'by 10am' and how parents pay.",
+      "defaults_quality": "Each question has a concrete, fitting default, e.g. 'orders close at 10am the day before' and 'UPI first, then card, and a school wallet balance; all pretend'.",
+      "clarity": "Six questions in a sensible order, but the jargon line 'Coverage: 4 clear · partial: Scope, Data and facts' and the 'Why it matters' lines make it longer than needed.",
+      "respects_words": "Keeps 'prototype', 'mobile first', India and 'by 10am'; it does assume '3 modules' in the Track line before Q2 asks about modules.",
+      "overall": "A strong, faithful intake with good defaults where 'go' alone works; it loses a little for length and for stating depth instead of asking about it."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.364Z"
+}

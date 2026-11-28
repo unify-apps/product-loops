@@ -1,0 +1,121 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-06",
+  "ask": "review the clinic prototype, focus on the invoices screen - the owner says it feels broken",
+  "expected_track": "full",
+  "notes": "Focus given. The planted empty-state fault is on Invoices. A good intake keeps all screens in the walk but weights Invoices, and asks fix or report.",
+  "must_cover": [
+    "invoices|focus",
+    "screens|other screens",
+    "fix|report",
+    "bar|p1"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "focus|what to focus on"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "I will review the Northside Physio clinic prototype screen by screen, with extra attention on Invoices, and fix what I find.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, the only prototype in this folder. It opens as a file, with no server needed (from the folder).\n- Screens: Today, Clients, Invoices and Settings, the four the nav reaches. Invoices gets the closest look because you named it (from your message).\n- Who and job: a front-desk person at a physio clinic who books clients and checks who has paid. This is my guess from the screens' words, and it is a default.\n- The result lands in `loop-runs/product-review-loop-20261126-035246/`: `handover.md`, with before and after screenshots. Your prototype file is changed in place, with a copy of the original kept there.\n- Nothing is deployed, posted or sent. Everything stays on this laptop.\n- The browser check passed: Chrome and Node are both there.\n\n**Track:** full, because the prototype is small and the phone width costs little to check.\n\nStill open after reading your files: what \"broken\" means to the owner, and whether to fix or only report.\n\n**Done means:**\n- All 4 screens have a before and an after screenshot.\n- A fresh reviewer finds no open P1 problem on any screen.\n- Every P1 left unfixed is marked \"your call\" in one sentence.\n- Every P1 and P2 is fixed, or has a stated reason.\n- Every changed file has its original kept.\n\nThe full brief is in the run folder, in `brief.md`.\n\nAbout 25 minutes and 5 helper agents, within a budget of 60 minutes.\n\n1. What did the owner say feels broken on Invoices? Anything specific, such as a filter, a number, a button?\n   Recommended: nothing specific. I check the whole Invoices screen, and the filters and totals first.\n   Why it matters: a specific complaint tells me which problem to put first in the handover.\n\n2. Should I fix what I find, or only report it?\n   Recommended: fix, keeping a copy of every file I change.\n   Why it matters: \"review\" can mean either, and fixing edits your file.\n\n3. Who uses it, and what one job do they come to do?\n   Recommended: a front-desk person who checks who has paid and who still owes.\n   Why it matters: the job decides which problems count as P1.\n\n4. Quick or full?\n   Recommended: full. It fixes P1 and P2 problems, lists P3, and checks the 390 px phone width.\n   Why it matters: quick fixes P1 only, skips the phone check and takes about 10 minutes.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 4,
+      "evidence": "1. What did the owner say feels broken on Invoices? Anything specific, su | 2. Should I fix what I find, or only report it? | 3. Who uses it, and what one job do they come to do? | 4. Quick or full?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 4,
+      "evidence": "4 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "4 of 4 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 4, Why it matters: on 4, of 4"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 25 minutes and 5 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Still open after reading your files: what \"broken\" means to the owner, and whether to fix or only report."
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 432,
+      "evidence": "432 words, 263 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because the prototype is small and the phone width costs little to check."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 432,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles focus (\"Invoices gets the closest look\"), other screens (\"Today, Clients, Invoices and Settings\"), fix vs report (Q2), and the bar (\"no open P1 problem on any screen\").",
+      "no_redundancy": "States the prototype and focus as found facts rather than asking; Q4 \"Quick or full?\" re-asks a track already chosen in the brief, and Q3 re-asks a guess it already made.",
+      "defaults_quality": "Every question has a concrete default fitting the ask, e.g. \"check the whole Invoices screen, and the filters and totals first\" and \"fix, keeping a copy of every file I change\".",
+      "clarity": "Four plain, single-topic questions with the owner's complaint first, but the brief before them is long (found list, done list, budget) for a busy reader.",
+      "respects_words": "Keeps the Invoices focus and the owner's \"feels broken\" framing; defaulting \"review\" to fixing is flagged as a question (\"review can mean either\") rather than imposed silently.",
+      "overall": "A strong opening that settles every needed topic with sensible defaults so \"go\" works, held back slightly by length and two questions that repeat brief decisions."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:26:47.297Z"
+}

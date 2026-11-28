@@ -1,6 +1,6 @@
 ---
 name: product-research-loop
-description: Decides what to build before anyone builds it. Researches the rival products in a category on their public pages, builds a capability sheet (Excel and CSV) with a source link on every cell, searches each rival's own site before calling anything "no rival has it", thinks the product through for its persona (the job, the principle, the flow, the simplicity cut), and ends in a product brief with a ranked module list. Asks every question once at the start, then runs alone. Use when someone asks "what should we build first", "which modules does X need", "benchmark us against A, B and C", "what are rivals doing", "research the competitors", "decide the feature set", or wants a brief to hand to a build. It builds no product.
+description: Decides what to build before anyone builds it. Researches the rival products in a category on their public pages, builds a capability sheet (Excel and CSV) with a source link on every cell, searches each rival's own site before calling anything "no rival has it", thinks the product through for its persona, and ends in a product brief with a ranked module list. Use when someone asks "what should we build first", "which modules does X need", "benchmark us against A, B and C", "research the competitors", "make a feature matrix" or "decide the feature set". Not for building the product (the build loop does that) or for a deck about one company (the deck loop does that).
 argument-hint: "<the product or category, and the decision> e.g. \"first modules for a booking tool for small clinics, vs A, B and C\""
 ---
 
@@ -23,13 +23,25 @@ In this file:
   node 3.
 - **Waiting for helpers.** Helper agents run in the background. To wait for their files, run one Bash command in
   the foreground (not in the background) with a 600000 ms timeout, for example
-  `until [ "$(ls OUT/rivals 2>/dev/null | grep -c '\.md$')" -ge 3 ]; do sleep 10; done`. Never use `sleep` alone,
+  `until [ "$(ls RUN/reports/*.md 2>/dev/null | wc -l)" -ge <helpers started> ]; do sleep 10; done`. Wait for
+  the report files, not the work files: a helper writes its rival file first and its report last, so a rival
+  file can still be half written when it appears. Never use `sleep` alone,
   ScheduleWakeup or ListAgents. When it times out or is moved to the background, check which files are
   missing and run the same wait once more.
 
 Stop fact: `OUT/capability-sheet.xlsx` and `OUT/capability-sheet.csv` exist, every sheet row says what it does,
 every yes or partial cell has a link from that rival's own pages, every beat row has a search of every rival's
 own site behind it, and `OUT/brief.md` ends in a ranked module list whose every module cites sheet rows.
+
+The stop-fact items intake writes (`STATE stop-fact add`), with the real names, folder and kinds:
+1. `OUT/capability-sheet.xlsx` and `OUT/capability-sheet.csv` exist in `<the real out folder>`, and the Excel
+   file matches the CSV.
+2. The sheet covers these rivals: `<names>`, each with at least 5 rows read on its own pages.
+3. Every sheet row says what it does, and every yes or partial cell has a link from that rival's own pages.
+4. Every beat row has a search of every rival's own site behind it, in `OUT/beats/`.
+5. Every source kind was tried for every rival: `<KINDS>`.
+6. `OUT/brief.md` ends in a ranked module list whose every module cites sheet rows.
+7. Only when the person gave group words or examples: the sheet uses `<GROUPS>` and has a row for each example.
 
 ## Nodes
 
@@ -41,6 +53,13 @@ own site behind it, and `OUT/brief.md` ends in a ranked module list whose every 
 5. `recommend`: writes the product brief, ending in the ranked module list.
 6. `review`: a fresh agent checks the files, opens 5 sources, and reads the brief as the buyer.
 7. `handover`: writes handover.md and finishes the run.
+
+## Quick track
+
+For a quick look at a category: 3 rivals only (the 3 named, or the 3 best known), and 2 source kinds,
+`KINDS = "product pages, help centre"`. No node is left: the beat proof and the review still run, because a
+wrong "no rival has it" costs more than the time it saves. Depth stays as need 8 says. Recommend full when the
+person named 4 or more rivals, named source kinds of their own, or asked for a full or complete matrix.
 
 ## Step skills and preferences
 
@@ -67,12 +86,15 @@ where to. "Go" or "use the defaults" never means publish. Never sign in, sign up
 
 ## Node 1: intake
 
-Run `STATE init --loop product-research-loop --nodes intake,research,matrix,think,recommend,review,handover`,
+Run `STATE init --loop product-research-loop --nodes intake,research,matrix,think,recommend,review,handover --skill-dir "${CLAUDE_SKILL_DIR}" --track <quick|full> --budget-minutes 90`,
 then follow the intake rules.
 
 Needs: read `${CLAUDE_SKILL_DIR}/references/needs.md`. It lists every need, its default, and where to look
-before asking. Ask at most 6 questions, only for what is missing and changes the result. Show every other
-need in the brief with its value or default.
+before asking. Ask at most 7 questions, the track included, only for what is missing and changes the result.
+Show every other need in the brief with its value or default.
+
+Estimate: helpers are one per rival for research, one per rival for the beat proof, one reviewer and the
+builder check: about 2 per rival plus 2.
 
 Start check: one WebSearch for the category and one WebFetch of a rival's home page, as `needs.md` says.
 Say the result in the same message as the questions.
@@ -86,9 +108,10 @@ When the person asked for a feature list or a matrix, the brief says the sheet i
 1. `STATE start research`
 2. When fewer than 3 rivals are named, find the rest: WebSearch for lists of the best products in the category
    for this market, and take the names that show up in the most lists. Run `STATE decide` for each one added.
-3. Start one helper agent per rival with the Agent tool, all in one message. Each gets the task in
+3. For each rival, write `RUN/briefs/research-<rival-slug>.md`: the task in
    `${CLAUDE_SKILL_DIR}/references/research.md`, filled in, with every source kind, group word and named example
-   from the brief. Each writes only `OUT/rivals/<rival-slug>.md`.
+   from the brief. Then start one helper agent per rival on its brief file, all in one message. Each writes
+   `OUT/rivals/<rival-slug>.md` and its report.
    Then wait for all the files, as "Waiting for helpers" says.
 4. Check: `CHECK research OUT --rivals <number of rivals> --kinds "<KINDS>" --write RUN/checks/research.txt`
 5. A FAIL names the file and the problem. Send one helper to fix that file only, then
@@ -103,9 +126,9 @@ file, run `STATE decide` to drop it, and check again with one rival fewer.
 1. `STATE start matrix`
 2. Run `product-research` if installed. Then build `OUT/capability-sheet.csv` as
    `${CLAUDE_SKILL_DIR}/references/matrix.md` says, from the rival files only.
-3. Beat proof. When the sheet has `beat` rows, start one helper per rival with the Agent tool, all in one message,
-   with the task in `${CLAUDE_SKILL_DIR}/references/beat-proof.md`, filled in with every beat row: the same full
-   list for every rival, even a row you think that rival has or lacks. `CHECK matrix` needs a line per row and
+3. Beat proof. When the sheet has `beat` rows, write `RUN/briefs/beat-<rival-slug>.md` per rival: the task in
+   `${CLAUDE_SKILL_DIR}/references/beat-proof.md`, filled in with every beat row (the same full list for every
+   rival, even a row you think that rival has or lacks). Start one helper per rival on its file, all in one message. `CHECK matrix` needs a line per row and
    rival. Each writes
    `OUT/beats/<rival-slug>.md`. Wait for all the files, as "Waiting for helpers" says. Then change the cells and
    marks as `matrix.md` § Beat proof says.
@@ -136,14 +159,17 @@ file, run `STATE decide` to drop it, and check again with one rival fewer.
 ## Node 6: review
 
 1. `STATE start review`
-2. Start one helper agent with the Agent tool, with the task in `${CLAUDE_SKILL_DIR}/references/review.md`,
-   filled in. It writes `RUN/review.md`. Wait for that file, as "Waiting for helpers" says.
-3. Read `RUN/review.md`. On FAIL: fix what it names (in the node that made it), `STATE retry review --why "..."`,
+2. Write `RUN/briefs/review.md`: the task in `${CLAUDE_SKILL_DIR}/references/review.md`, filled in, with the
+   stop-fact table (`STATE stop-fact status`) pasted in. Start one helper agent on it, on a different model from
+   the builders when one is there. It follows `${CLAUDE_SKILL_DIR}/shared/review-rubric.md` and writes
+   `RUN/review.md` and `RUN/review.json`. Wait for both files, as "Waiting for helpers" says. Then run
+   `STATE stop-fact pass --from RUN/review.json`.
+3. Read `RUN/review.md`. On FAIL, or an item that does not pass: fix what it names (in the node that made it), `STATE retry review --why "..."`,
    and start a new review agent. For each `WRONG BEAT` line: add that page to the rival's file, change the cell,
    label the link in `sources`, change the mark unless every rival is still clearly weak, run `SHEET OUT`, and
    take the beat out of the brief everywhere it is used (bottom line, `## Where we beat them`, the module's
    "How we beat or match"). Run `STATE decide` for each one.
-4. `STATE done review --check "fresh agent says PASS" --proof RUN/review.md`. When the retries run out, a wrong
+4. `STATE done review --check "fresh agent says PASS, spec <n>, quality <n>, model <m>" --proof RUN/review.md`. When the retries run out, a wrong
    beat that is still in the sheet goes under `## Not sure yet` in the brief before `STATE left review`.
 
 ## Node 7: handover

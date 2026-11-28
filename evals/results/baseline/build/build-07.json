@@ -1,0 +1,126 @@
+{
+  "arm": "baseline",
+  "loop": "build",
+  "case": "build-07",
+  "ask": "build the thing in spec.md end to end",
+  "expected_track": "full",
+  "notes": "The spec answers nearly every need: persona, modules in order with must-haves, depth, look, name, out of scope. A good intake shows the brief and asks very little (0 to 2 questions, for example where it lives). Asking persona or modules here is a fault.",
+  "must_cover": [
+    "persona|flatmates",
+    "module",
+    "how deep|in full",
+    "look|font|colour|color",
+    "settle"
+  ],
+  "findable": [
+    "persona|who uses|who is it for",
+    "module|modules|must-have|must have",
+    "font|typeface",
+    "colour|color|palette",
+    "name|naming|brand name",
+    "how deep|in full|shell|depth"
+  ],
+  "fixtures": [
+    "spec.md"
+  ],
+  "message": "## Brief: Tally prototype\n\n**Goal:** build a clickable web prototype of Tally, shared expenses for flatmates, from `spec.md`, end to end, on this laptop only.\n\n**What I found**\n- Your working folder holds only `spec.md` (owner Rina, PM, \"ready to prototype\"). There is no existing product, no earlier run, no `CLAUDE.md`, and no logo files. So this is a **new product**, built in `<working folder>/tally/`, as one `index.html` with its CSS and JS inside.\n- The spec is a brief already, so I will not offer to run product-research-loop first.\n- Start check: click checks will run in **chrome-headless-shell**, so every click is really tested.\n- The run folder is `loop-runs/product-build-loop-20261126-032954/`. I have written the request list (R1 to R8) and the module list there.\n\n**Persona (from spec):** flatmates aged 20 to 35 sharing a rented flat in the UK. The one job: see who owes whom this month and settle up without an awkward chat.\n\n**Modules in build order (from spec)**\n1. **Home:** balance per flatmate (owes / is owed), \"Settle up\" button, last 5 expenses, empty state for a new flat.\n2. **Add expense:** amount, who paid, split equally or by shares, category, receipt photo (placeholder).\n3. **Bills:** recurring bills (rent, energy, broadband) with due dates and who has paid.\n4. **Settle up:** suggested payments that clear all debts in the fewest transfers; mark as paid.\n\n**Depth:** every module built in full, with empty states.\n**Look:** friendly and rounded, Nunito, primary #22A06B, ink #1B1F24, background #F7F8F6. Name Tally (final), word mark in Nunito 800.\n**Not in scope:** real payments, bank links, sign-up.\n**Stop fact:** every module is built and reviewed with no P1 left, every demo link opens and every click works with no dead click, no placeholder text and no page error, and no request is left open.\n\n**Questions** (each shows its default)\n1. **Persona.** Is the persona above right, and is there anything about how they use it that the spec leaves out? Default: as written in the spec.\n2. **Modules and must-haves.** Is this the full list and order, and does each module have everything it needs? For example, how many flatmates does the sample flat have, and may a bill repeat monthly only? Default: the four modules above, with a sample flat of 4 flatmates, and bills that repeat monthly.\n3. **Depth.** Which modules are built in full and which are only a titled page? Default: all four in full, as the spec says.\n4. **Screens to follow.** Is there any app or screens to copy, and exactly or flow only? Default: none, flow only.\n5. **Look.** Any logo, icon files or other colours and fonts beyond the spec? Default: the spec's look only, with the Nunito word mark and no logo.\n6. **Extras.** Photos of people, two versions of a layout behind a key, a PDF guide of the screens, or a public link? Default: none of them. Initials only, and Tally stays on this laptop.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Persona. Is the persona above right, and is there anything about how t | 2. Modules and must-haves. Is this the full list and order, and does each | 3. Depth. Which modules are built in full and which are only a titled pag | 4. Screens to follow. Is there any app or screens to copy, and exactly or | 5. Look. Any logo, icon files or other colours and fonts beyond the spec? | 6. Extras. Photos of people, two versions of a layout behind a key, a PDF"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "17 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: persona (\"persona\"), module (\"module\"), font (\"font\"), colour (\"colour\"), how deep (\"in full\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 504,
+      "evidence": "504 words, 301 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 504,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 3,
+      "defaults_quality": 8,
+      "clarity": 5,
+      "respects_words": 9,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Brief settles persona, all four modules, \"Depth: every module built in full\", the look (Nunito, #22A06B), and Settle up \"fewest transfers; mark as paid\"; only the sample-flat size is left to a question.",
+      "no_redundancy": "Asks again about facts the spec gives: \"Is the persona above right\", \"Is this the full list and order\", \"Which modules are built in full\" and \"Any logo\" when the spec says \"No logo yet\".",
+      "defaults_quality": "Defaults are concrete and fit the spec: \"a sample flat of 4 flatmates, and bills that repeat monthly\", \"all four in full, as the spec says\", \"none, flow only\", \"Initials only\".",
+      "clarity": "Six questions after a long brief, and several bundle many asks together (Q2 covers list, order, must-haves, flatmate count and bill repeat; Q6 lists four extras).",
+      "respects_words": "Brief and every default keep the spec as written (all modules in full, spec look, Tally final, no real payments); Q3 asking which to build in full is redundant, but its default follows \"Every module built in full\".",
+      "overall": "Solid, faithful brief with good defaults, but half the questions re-ask what the spec settles; only the flatmate count, bill repeat, screens to follow and extras are real asks."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.522Z"
+}

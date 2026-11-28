@@ -1,0 +1,123 @@
+{
+  "arm": "baseline",
+  "loop": "deck",
+  "case": "deck-05",
+  "ask": "5-6 slides for an internal lunch and learn about our Q3 wins, nothing fancy, HTML is fine",
+  "expected_track": "quick",
+  "notes": "An internal deck, not a meeting with a company: company research is pointless. Count and output are given. A good intake skips web research by default and asks little.",
+  "must_cover": [
+    "goal",
+    "slide count|5|6",
+    "html",
+    "audience|internal|team",
+    "research|no research|files only"
+  ],
+  "findable": [
+    "slide count|how many slides",
+    "output|format|powerpoint|html",
+    "facts|wins|numbers"
+  ],
+  "fixtures": [
+    "q3-wins.md"
+  ],
+  "message": "I read your ask and `q3-wins.md` (the only file in the folder; there is no `CLAUDE.md` and no start deck). Here is the brief I would work from, then my questions.\n\n## Start check\n\n- Deck tools: set up and working (python-pptx, PDF reader, Chrome and Quick Look all found). Nothing failed.\n- Web search: WebSearch and WebFetch are in this session. This is an internal deck, so I would not research outside the company. Every number comes from `q3-wins.md`.\n\n## Brief so far\n\n- **What it is:** a short HTML slide deck for an internal lunch and learn about Q3 wins.\n- **Facts I may use (only from `q3-wins.md`):**\n  - 14 new logos, best quarter yet (Q2: 9)\n  - Biggest deal: Halden Foods, 3 years\n  - Net revenue retention 118%\n  - Partner programme launched, 6 partners signed\n  - Average sales cycle down from 74 to 58 days\n- **Slide count:** 5 to 6 main slides, no appendix.\n- **Output:** one HTML deck. You said HTML is fine, so I would not make a PowerPoint or PDF.\n- **Look:** plain (Arial, dark text on white, one dark blue accent), since you said nothing fancy.\n- **Meeting kind:** a team talk with no outside buyer. I would write it to be presented, in plain words.\n- **Files go to:** `decks/q3-wins-20261126/` in this folder.\n- **Speaker notes:** on each slide, with the facts used. A short Sources slide would list where each number comes from.\n\n## Questions\n\n1. **What should people believe or do after the lunch and learn?** (default: option a)\n   - a) Be proud and see what worked: a celebration where each win is tied to the thing that made it happen.\n   - b) Learn how to repeat it: the lessons behind the faster sales cycle, retention and partners, so others can copy them.\n   - c) Know where to help next: the wins, then what Q4 needs from the rest of the company.\n   - d) Something else, in your words.\n\n   I picked a) because you said \"wins\" and \"nothing fancy\".\n2. **Who is in the room, and who will they tell?** (default: the whole company, in a mix of roles, with no one to convince afterwards)\n3. **What is the one idea the deck argues?** (default: \"Q3 was our best quarter, and the sales cycle, retention and partners all moved together\")\n4. **Company name** (for the title slide). (default: no name on the slides, title \"Q3 wins\")\n5. **Is there anything I must not say or must lead with?** For example, is Halden Foods allowed to be named in front of everyone? (default: name Halden Foods and say nothing beyond the notes file)\n6. **Any other numbers, names or stories for the deck?** I will not invent any, so with only the five facts above some slides may be thin. (default: none, and I use only the five facts)\n7. **Is \"best quarter yet\" about new logos only, or the whole quarter?** The file says it next to the logo count. (default: new logos only)\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. What should people believe or do after the lunch and learn? (default:  | 2. Who is in the room, and who will they tell? (default: the whole compan | 3. What is the one idea the deck argues? (default: \"Q3 was our best quart | 4. Company name (for the title slide). (default: no name on the slides, t | 5. Is there anything I must not say or must lead with? For example, is Ha | 6. Any other numbers, names or stories for the deck? I will not invent an | 7. Is \"best quarter yet\" about new logos only, or the whole quarter? The "
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: facts (\"facts\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.8,
+      "evidence": "missing: goal"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 516,
+      "evidence": "516 words, 243 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 516,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 8,
+      "clarity": 5,
+      "respects_words": 8,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Goal (Q1), slide count \"5 to 6 main slides\", \"one HTML deck\", audience (Q2) and \"I would not research outside the company\" are all settled.",
+      "no_redundancy": "Slide count, output and facts are stated in the brief, not asked; but Q3 \"one idea the deck argues\" overlaps Q1, and Q7 asks about wording the file already gives.",
+      "defaults_quality": "Every question has a concrete default, e.g. Q1 option a and Q3 \"Q3 was our best quarter...\"; the Q2 default \"the whole company\" is a guess for a lunch and learn.",
+      "clarity": "Seven questions plus a Start check section about tools is a lot for a \"nothing fancy\" deck; Q1 has four options and some questions overlap.",
+      "respects_words": "Keeps HTML only, plain look \"since you said nothing fancy\" and 5-6 slides, but adds a separate Sources slide that may push past six.",
+      "overall": "A solid, faithful brief with good defaults, but it asks too much for a small internal 5-6 slide deck and could be cut to about three questions."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.851Z"
+}

@@ -1,0 +1,227 @@
+{
+  "loop": "design",
+  "skill": "product-design-loop",
+  "cases": [
+    {
+      "id": "design-01",
+      "ask": "apply my notes in notes.md to the clinic prototype",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        },
+        "notes.md": "# Notes on the clinic prototype (from Sam, ops lead)\n\n1. The \"New appointment\" button on Today does nothing. Make it open a short form: client, time, therapist, type.\n2. Rename \"Customers\" to \"Clients\" everywhere. We never say customers.\n3. Settings has fake latin text under Booking policy. Write a real short policy (24h cancellation).\n4. Rows in the Invoices table feel too tight.\n5. When I pick \"Overdue\" on Invoices the table just goes blank. Say there are none.\n6. Today's date in the heading should be smaller than the page title, it shouts.\n"
+      },
+      "must_cover": [
+        "request|notes|list",
+        "everywhere|this screen only|every screen",
+        "too tight|row height|padding",
+        "form|fields",
+        "policy"
+      ],
+      "findable": [
+        "which prototype|which file",
+        "notes|which notes",
+        "everywhere|all screens|this place only"
+      ],
+      "expected_track": "full",
+      "notes": "Six clear notes on the planted faults. Note 2 says 'everywhere' itself. Note 4 is vague ('too tight') and should get a concrete reading as a default. Asking which prototype is redundant (only one)."
+    },
+    {
+      "id": "design-02",
+      "ask": "the rows on the invoices table in proto-clinic are too tight, give them more room",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        }
+      },
+      "must_cover": [
+        "padding|row height|px",
+        "invoices",
+        "everywhere|other tables|clients|today"
+      ],
+      "findable": [
+        "which prototype|which file"
+      ],
+      "expected_track": "quick",
+      "notes": "One small vague note. Quick track. A good intake reads 'more room' as a number (for example 4 px to 10 px row padding) and asks one question at most: the Invoices table only, or every table."
+    },
+    {
+      "id": "design-03",
+      "ask": "make the Today screen in proto-clinic work like Linear's inbox (https://linear.app/docs/inbox) - just the flow, keep our look",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        }
+      },
+      "must_cover": [
+        "reference|linear|inbox",
+        "flow only|flow",
+        "today",
+        "parts|list|detail"
+      ],
+      "findable": [
+        "which prototype|which file",
+        "exact|flow only|pixel",
+        "which screen|target screen"
+      ],
+      "expected_track": "full",
+      "notes": "Reference by URL, the mode (flow only) and the target screen are all in the ask. A good intake states them and asks only what the reference leaves open (for example what the detail pane shows for an appointment)."
+    },
+    {
+      "id": "design-04",
+      "ask": "Dr Shah's feedback is in the txt file, please sort it",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        },
+        "feedback-from-dr-shah.txt": "hi, had a click through on the ipad\n\n- the clients page.. wait it says customers?? pick one pls\n- big blue button on the home page doesnt do anything\n- fonts look a bit cheap tbh\n- settings has latin text in it lol\n- can we see whos running late today somehow\n"
+      },
+      "must_cover": [
+        "request|list|notes",
+        "clients|customers",
+        "font|cheap",
+        "running late|late",
+        "ipad|tablet"
+      ],
+      "findable": [
+        "which prototype|which file",
+        "notes|which notes"
+      ],
+      "expected_track": "full",
+      "notes": "Messy feedback from a clinician. 'Fonts look cheap' is vague taste and should get a concrete reading. 'Who's running late' is a new feature, not a design note: a good intake flags it (row in the list with a default, or out of scope)."
+    },
+    {
+      "id": "design-05",
+      "ask": "redesign the settings screen of proto-clinic, it's a mess. group it into sections and make it work on a phone",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        }
+      },
+      "must_cover": [
+        "sections|groups",
+        "phone|mobile|390",
+        "settings",
+        "other screens|only settings|scope",
+        "lorem|placeholder|policy"
+      ],
+      "findable": [
+        "which prototype|which file",
+        "which screen|target screen"
+      ],
+      "expected_track": "full",
+      "notes": "Redesign of one named screen. The section names and the policy text (now Lorem ipsum) are open. Scope is one screen, so the sweep should not spread to other screens."
+    },
+    {
+      "id": "design-06",
+      "ask": "tighten up the spacing everywhere and use our brand font",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        },
+        "old/proto-clinic-v1.html": {
+          "copy": "proto-clinic/index.html"
+        },
+        "CLAUDE.md": "# Northside Physio: design notes\n\n- Brand font: Source Sans 3 (Google Fonts). Headings 600, body 400.\n- Colours: blue #2457D6, ink #1D2433.\n- The live prototype is proto-clinic/index.html. Anything in old/ is archived: never change it.\n"
+      },
+      "must_cover": [
+        "spacing|tighten|px",
+        "everywhere|every screen",
+        "source sans|font"
+      ],
+      "findable": [
+        "font|typeface|brand font",
+        "which prototype|which file|old",
+        "colour|color"
+      ],
+      "expected_track": "full",
+      "notes": "Two HTML files, but CLAUDE.md names the live one and the font. 'Tighten' is vague: a good intake gives a concrete reading (an 8 px scale, row padding) as the default. Asking which prototype or which font is redundant."
+    },
+    {
+      "id": "design-07",
+      "ask": "on the clinic prototype just rename 'Customers' to 'Clients', nothing else",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        }
+      },
+      "must_cover": [
+        "clients",
+        "nothing else|only"
+      ],
+      "findable": [
+        "which prototype|which file",
+        "everywhere|this place only|scope"
+      ],
+      "expected_track": "quick",
+      "notes": "Tiny, exact change with 'nothing else'. A good intake asks nothing or almost nothing, offers the quick track, and does not add a sweep of other notes. Planted: the heading says Customers."
+    },
+    {
+      "id": "design-08",
+      "ask": "copy the booking wizard from reference/booking-flow.html into the clinic prototype as the New appointment flow - exactly, same steps and same look",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        },
+        "reference/booking-flow.html": {
+          "copy": "reference/booking-flow.html"
+        }
+      },
+      "must_cover": [
+        "reference|wizard",
+        "exact|exactly",
+        "new appointment",
+        "font|georgia|look"
+      ],
+      "findable": [
+        "reference|which reference",
+        "exact|flow only|pixel",
+        "which screen|target screen|new appointment"
+      ],
+      "expected_track": "full",
+      "notes": "Local reference file, exact mode and target are given. The open point is the clash of looks (the reference uses Georgia and teal; 'same look' means copy them). A good intake names that clash in the brief rather than asking what exact means."
+    },
+    {
+      "id": "design-09",
+      "ask": "PM notes for proto-clinic below. 1) remove the descriptions under every heading everywhere 2) Today table: add a status column (arrived / waiting / in session) 3) don't touch the invoices screen at all, finance signed it off 4) Save changes on settings should show a toast instead of the grey 'Saved' 5) when done commit it and push to main",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        }
+      },
+      "must_cover": [
+        "descriptions",
+        "status",
+        "invoices|don't touch|do not change",
+        "toast",
+        "commit|push"
+      ],
+      "findable": [
+        "which prototype|which file",
+        "screens that must not change|don't touch|invoices"
+      ],
+      "expected_track": "full",
+      "notes": "Numbered notes in the ask. One protected screen. The person asks for a commit and a push in words: a good intake keeps it (it is their ask) and notes there is no git repo here. 'Descriptions' barely exist in the prototype: a good intake says what it found."
+    },
+    {
+      "id": "design-10",
+      "ask": "make proto-clinic look more modern",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        }
+      },
+      "must_cover": [
+        "modern",
+        "everywhere|every screen|which screens",
+        "font|colour|color|spacing|radius",
+        "design rules|style"
+      ],
+      "findable": [
+        "which prototype|which file"
+      ],
+      "expected_track": "full",
+      "notes": "One vague taste note. A good intake turns 'modern' into a short concrete list as its default reading (type scale, spacing, radius, colour) and asks the person to confirm or change it."
+    }
+  ]
+}

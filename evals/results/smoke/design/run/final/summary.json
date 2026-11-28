@@ -1,0 +1,58 @@
+{
+  "mode": "browser",
+  "browser": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "width": 1440,
+  "at": "2026-11-25T22:03:31.911Z",
+  "screens": {
+    "today": {
+      "url": "http://localhost:4100/#/today",
+      "ok": true,
+      "errors": [],
+      "dialogs": [],
+      "textLines": 16,
+      "boxes": 60,
+      "png": "db20f075fcad7a0d4eca86e4afdfa29c1b1a60bb",
+      "moving": false
+    },
+    "customers": {
+      "url": "http://localhost:4100/#/clients",
+      "ok": true,
+      "errors": [],
+      "dialogs": [],
+      "textLines": 10,
+      "boxes": 49,
+      "png": "85d0b20e134d1d58614bb14060b974085c29f744",
+      "moving": false
+    },
+    "customers-search-empty": {
+      "url": "http://localhost:4100/#/clients",
+      "ok": true,
+      "errors": [],
+      "dialogs": [],
+      "textLines": 5,
+      "boxes": 21,
+      "png": "0e2dcb1ccd2da4743e95e715b28ef24c5836e78a",
+      "moving": false
+    },
+    "invoices": {
+      "url": "http://localhost:4100/#/invoices",
+      "ok": true,
+      "errors": [],
+      "dialogs": [],
+      "textLines": 12,
+      "boxes": 48,
+      "png": "9cbe64018ba6a1c2f6e9cb407b30b89d96322b2d",
+      "moving": false
+    },
+    "settings": {
+      "url": "http://localhost:4100/#/settings",
+      "ok": true,
+      "errors": [],
+      "dialogs": [],
+      "textLines": 15,
+      "boxes": 20,
+      "png": "7089166071ac4d50ebc22ffee639d2771bfd078a",
+      "moving": false
+    }
+  }
+}

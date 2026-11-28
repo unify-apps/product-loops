@@ -73,7 +73,9 @@ Exactly these columns, in this order, one finding per row:
 - **Fix**: ONE exact change, the smallest that removes the problem, in the product's own terms (the element, the
   words, the value), or "none". Never two options ("add a form, or remove the button"): pick the smaller one.
   Prefer a fix made from what the product already has: a message, a label, a value from data it already holds,
-  removing a thing. Keep such a row `open`, at any level. Only the fixer may move a row to `your call`.
+  removing a thing. Keep such a row `open`, at any level. Only the fixer may move a row to `your call`. An
+  intake answer that names a finding ("the policy words are your call") overrides the Fix column: the fix brief
+  carries the answer, and the fixer sets the row from it.
 - **Status**: `open` for a problem to fix, `your call` for taste, `not a problem` for a script finding you
   checked and rejected. The fix node uses `fixed` and `not fixed`.
 

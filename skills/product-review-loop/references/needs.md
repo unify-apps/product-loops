@@ -63,3 +63,7 @@ answers questions 1 and 4, so the round asks only 2, 3, 5 and 6.
 4. Should I fix what I find, or only report it? Default: fix, keeping a copy of every file I change.
 5. What should I fix: P1 and P2, or P1 only? Default: P1 and P2.
 6. Any rule of your own to check? Default: the built-in checklist `<plus the skills or CLAUDE.md rules you found>`.
+7. Quick (P1 only, no phone width) or full? Default: full, unless the ask says quick. "P1 only" alone sets the
+   bar, not the track: full with `--bar P1` is a normal choice.
+
+Write each one with `Recommended:` (the default) and `Why it matters:`, as the loop rules show. At most 7.

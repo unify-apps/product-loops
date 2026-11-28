@@ -1,0 +1,121 @@
+{
+  "arm": "improved",
+  "loop": "review",
+  "case": "review-08",
+  "ask": "can u look over my clinic thing and make it not embarrassing lol. investors tmrw",
+  "expected_track": "full",
+  "notes": "Casual voice, time pressure, 'not embarrassing' is vague. Fix mode is implied ('make it'). A good intake reads 'not embarrassing' as P1 and P2 fixed and keeps the round short. Quick is a fair recommendation too.",
+  "must_cover": [
+    "fix|report",
+    "bar|p1|p2",
+    "screens",
+    "persona|who uses",
+    "investors|tomorrow"
+  ],
+  "findable": [
+    "which prototype|which file"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** review every screen of your Northside Physio prototype as a clinic user, fix what looks wrong, and review again until no serious problem is left, before the investors see it tomorrow.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, the only one in this folder.\n- Screens: Today, Clients, Invoices, Settings (the 4 the menu reaches).\n- Fix, not just report: \"make it not embarrassing\" asks for changes. A copy of every file I change is kept first.\n- Bar: serious (P1) and medium (P2) problems fixed; small ones (P3) listed only. This is my default.\n- Rules: none of your own found (no `CLAUDE.md`, no design skill here), so the built-in checklist.\n- Nothing is published or sent. Everything stays on this laptop.\n\n**Track:** full, because investors may open it on a phone, and tomorrow leaves time for the phone check.\n\nCoverage: 5 clear · partial: Who and their job, Main flow, Edge cases · missing: none\n\n**Done means:**\n- All 4 screens have a before and an after screenshot.\n- A fresh reviewer finds no open P1 on any screen.\n- Every P1 I do not fix is listed first as \"your call\".\n- Every P1 and P2 is fixed or has a stated reason.\n- Every changed file has its original saved.\n\nThe full brief is in `loop-runs/product-review-loop-20261126-034217/brief.md`.\n\nAbout 60 minutes and 5 helper agents, within a budget of 60 minutes.\n\n1. Who is the demo for, and what one job do they come to do?\n   Recommended: a clinic receptionist who checks today's appointments and books new ones.\n   Why it matters: it decides which problems count as serious.\n\n2. The \"New appointment\" button on Today does nothing. What should it do?\n   Recommended: open a small booking form (client, time, therapist) that adds a row to Today's list.\n   Why it matters: a dead main button is the first thing an investor clicks; the other choice is to hide it.\n\n3. The Settings \"Booking policy\" has filler Latin text. What should it say?\n   Recommended: a plain sentence, such as \"Cancel at least 24 hours before to avoid a fee\", which you can edit later.\n   Why it matters: I will not invent clinic policy unless you say so.\n\n4. Do investors see it on a phone?\n   Recommended: yes, check at phone width as well as on a laptop.\n   Why it matters: the phone check adds time and more fixes.\n\n5. Quick (serious problems only, laptop width, faster) or full (serious and medium problems, laptop and phone)?\n   Recommended: full.\n   Why it matters: quick leaves spacing and wording slips in the list instead of fixing them.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Who is the demo for, and what one job do they come to do? | 2. The \"New appointment\" button on Today does nothing. What should it do? | 3. The Settings \"Booking policy\" has filler Latin text. What should it sa | 4. Do investors see it on a phone? | 5. Quick (serious problems only, laptop width, faster) or full (serious a"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 1 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.8,
+      "evidence": "missing: persona"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 5 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Coverage: 5 clear · partial: Who and their job, Main flow, Edge cases · missing: none"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 442,
+      "evidence": "442 words, 231 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because investors may open it on a phone, and tomorrow leaves time for the phone check."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 442,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 8,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles fix (\"Fix, not just report\"), bar (\"P1 and P2 fixed; P3 listed only\"), screens (Today, Clients, Invoices, Settings), investors tomorrow, and asks persona in Q1 with a default.",
+      "no_redundancy": "States the prototype as found (\"the only one in this folder\") rather than asking, but Q4 (phone?) duplicates Q5 (quick vs full incl. phone) and the brief already picks \"Track: full\".",
+      "defaults_quality": "Every question has a concrete default fitting an investor demo, e.g. \"open a small booking form (client, time, therapist)\" and a plain 24-hour cancellation sentence.",
+      "clarity": "Five questions with plain why-lines, but a long brief, jargon like \"Coverage: 5 clear · partial: Who and their job...\", and overlapping Q4/Q5 slow a busy person down.",
+      "respects_words": "Keeps \"make it not embarrassing\" as fixing and the tomorrow deadline (\"before the investors see it tomorrow\"); refuses to invent clinic policy without asking.",
+      "overall": "Strong intake that finds the files, settles the key topics with good defaults so \"go\" works, held back by length, jargon and one redundant question."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.899Z"
+}

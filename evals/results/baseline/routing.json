@@ -1,0 +1,582 @@
+{
+  "arm": "baseline",
+  "executor": "agent",
+  "scoredAt": "2026-11-25T22:06:08.265Z",
+  "skills": [
+    {
+      "name": "product-build-loop",
+      "description": "Builds a clickable web prototype of a new product, or adds a feature or module to a prototype that already exists, in one unattended run. It asks every question once at the start, gives a local link before it builds, builds and reviews every module on the list, checks every click in a real browser, makes a link per state for a demo, and hands over. Use when someone types /product-build-loop, or asks to \"build a prototype of\", \"make a clickable demo of\", \"start a new product\", \"add a module to my prototype\", or \"build this end to end\". For changes to how existing screens look, or a list of screenshot notes, use a design loop instead."
+    },
+    {
+      "name": "product-research-loop",
+      "description": "Decides what to build before anyone builds it. Researches the rival products in a category on their public pages, builds a capability sheet (Excel and CSV) with a source link on every cell, searches each rival's own site before calling anything \"no rival has it\", thinks the product through for its persona (the job, the principle, the flow, the simplicity cut), and ends in a product brief with a ranked module list. Asks every question once at the start, then runs alone. Use when someone asks \"what should we build first\", \"which modules does X need\", \"benchmark us against A, B and C\", \"what are rivals doing\", \"research the competitors\", \"decide the feature set\", or wants a brief to hand to a build. It builds no product."
+    },
+    {
+      "name": "product-design-loop",
+      "description": "Changes how existing screens of a prototype look and work, from one set of notes, and runs to the end without asking again. Three ways in - a list of notes or screenshot comments (\"rows too tight\", \"rename this\", \"this button does nothing\", \"remove descriptions everywhere\"), a redesign of named screens, or copying a screen from a reference (a video, a live web page, screenshots, a design file, another HTML file). Use when the person types /product-design-loop, or sends design notes or screenshots of a prototype they want changed, asks to rework or restyle screens that already exist, or asks to make a screen look or work like a reference. Not for building a new product or new modules from nothing."
+    },
+    {
+      "name": "product-review-loop",
+      "description": "Reviews a whole clickable product prototype screen by screen, as the person who will use it, fixes what it finds, and reviews again until no P1 problem is left. It clicks every button, takes a screenshot of every screen, and checks for dead clicks, console errors, cut-off text, placeholder text, broken images, missing empty and loading states, alignment and spacing slips, mixed words across screens, and pages that scroll sideways on a phone. Taste calls are listed for the person, never changed. Use when someone types /product-review-loop, or asks to review, audit, QA, polish or \"check everything\" in a prototype, mock-up or demo app before showing it, or asks \"what is wrong with my prototype\" about the whole product rather than one screen."
+    },
+    {
+      "name": "product-deck-loop",
+      "description": "Makes a deck, one-pager, brochure or simple web page for a meeting with a company, end to end. Researches the company, its industry and the people in the meeting with a source link on every fact, writes a story with one idea per slide, builds it (keeping named slides of a start deck when one is given), checks every claim and word, and makes an HTML deck, an editable 16:9 PowerPoint in real text and shapes, and a PDF. Asks every question once at the start, then runs alone. Use when someone asks for \"a deck for my meeting with X\", \"slides for a first meeting\", \"an outside-in point of view on a company\", \"add 3 slides to this deck for X\", \"a one-pager or brochure for a prospect\", or \"turn this into an editable PowerPoint\"."
+    }
+  ],
+  "accuracy": 0.985,
+  "positives": 0.98,
+  "near_misses": 1,
+  "per_loop": {
+    "build": 1,
+    "research": 1,
+    "design": 1,
+    "review": 1,
+    "deck": 0.9,
+    "none": 1
+  },
+  "confusion": {
+    "build": {
+      "build": 10
+    },
+    "research": {
+      "research": 10
+    },
+    "design": {
+      "design": 10
+    },
+    "review": {
+      "review": 10
+    },
+    "deck": {
+      "deck": 9,
+      "none": 1
+    },
+    "none": {
+      "none": 15
+    }
+  },
+  "missing": 0,
+  "rows": [
+    {
+      "id": "r01",
+      "ask": "build me a prototype for a dog walking app lol. owners book a walker, walkers see their day. keep it simple",
+      "expected": "build",
+      "got": "build",
+      "raw": "product-build-loop",
+      "correct": true
+    },
+    {
+      "id": "r02",
+      "ask": "Build the first release from research/fleet-maintenance/brief.md, the top 3 modules only.",
+      "expected": "build",
+      "got": "build",
+      "raw": "product-build-loop",
+      "correct": true
+    },
+    {
+      "id": "r03",
+      "ask": "add a loyalty points module to the bakery prototype in shop/. customers earn 1 point per £1, 10 points = a free coffee",
+      "expected": "build",
+      "got": "build",
+      "raw": "product-build-loop",
+      "correct": true
+    },
+    {
+      "id": "r04",
+      "ask": "We run a 14-hospital network (about 4,000 beds). Build a clickable prototype of a bed management tool for charge nurses: a bed board by ward, the admit / transfer / discharge flow, a housekeeping queue for beds being cleaned, and an exec dashboard with occupancy. It's for our innovation board in three weeks, so it has to look like a real product, not a wireframe.",
+      "expected": "build",
+      "got": "build",
+      "raw": "product-build-loop",
+      "correct": true
+    },
+    {
+      "id": "r05",
+      "ask": "need prototype. school canteen pre-order. parents order + pay, kitchen see count per dish by 10am. india. mobile first",
+      "expected": "build",
+      "got": "build",
+      "raw": "product-build-loop",
+      "correct": true
+    },
+    {
+      "id": "r06",
+      "ask": "Make a clickable demo of a chat assistant exactly like ChatGPT for our in-house legal team. Demo is Friday.",
+      "expected": "build",
+      "got": "build",
+      "raw": "product-build-loop",
+      "correct": true
+    },
+    {
+      "id": "r07",
+      "ask": "build the thing in spec.md end to end",
+      "expected": "build",
+      "got": "build",
+      "raw": "product-build-loop",
+      "correct": true
+    },
+    {
+      "id": "r08",
+      "ask": "Just a shell for an HR onboarding portal: nav with 6 sections, and only the 'First day checklist' page built properly. It's for a stakeholder walkthrough tomorrow morning.",
+      "expected": "build",
+      "got": "build",
+      "raw": "product-build-loop",
+      "correct": true
+    },
+    {
+      "id": "r09",
+      "ask": "hey so we're a coop of ~200 dairy farmers in Wisconsin and we want an app for milk pickup scheduling + seeing the quality test results (fat, protein, somatic cell count) from each pickup, and maybe also a marketplace where farmers buy feed from each other?? not sure about that one. the truck drivers would need it too. idk how many screens, whatever makes sense",
+      "expected": "build",
+      "got": "build",
+      "raw": "product-build-loop",
+      "correct": true
+    },
+    {
+      "id": "r10",
+      "ask": "use client-notes.txt and build it for Thursday's pitch. make it look premium",
+      "expected": "build",
+      "got": "build",
+      "raw": "product-build-loop",
+      "correct": true
+    },
+    {
+      "id": "r11",
+      "ask": "what should we build first for an online booking tool for small physio clinics in the UK? compare us with Cliniko, Jane and Power Diary",
+      "expected": "research",
+      "got": "research",
+      "raw": "product-research-loop",
+      "correct": true
+    },
+    {
+      "id": "r12",
+      "ask": "quick look at how Notion, Coda and Slite do templates. just a feature list, nothing fancy",
+      "expected": "research",
+      "got": "research",
+      "raw": "product-research-loop",
+      "correct": true
+    },
+    {
+      "id": "r13",
+      "ask": "decide the feature set for our shift scheduling product for restaurants",
+      "expected": "research",
+      "got": "research",
+      "raw": "product-research-loop",
+      "correct": true
+    },
+    {
+      "id": "r14",
+      "ask": "Benchmark us against Coupa, SAP Ariba, Jaggaer and Zip on intake-to-procure. We already have intake forms, approval routing and a supplier portal. I need a comprehensive capability matrix my VP of Procurement can read.",
+      "expected": "research",
+      "got": "research",
+      "raw": "product-research-loop",
+      "correct": true
+    },
+    {
+      "id": "r15",
+      "ask": "what are rivals doing in AI note taking?",
+      "expected": "research",
+      "got": "research",
+      "raw": "product-research-loop",
+      "correct": true
+    },
+    {
+      "id": "r16",
+      "ask": "Precisamos decidir os módulos de um app de estoque para farmácias no Brasil. Rivals? not sure, find them. Portuguese sources are fine.",
+      "expected": "research",
+      "got": "research",
+      "raw": "product-research-loop",
+      "correct": true
+    },
+    {
+      "id": "r17",
+      "ask": "Compare Calendly, Cal.com and SavvyCal on team scheduling - pricing pages and help docs only. 20 minutes tops.",
+      "expected": "research",
+      "got": "research",
+      "raw": "product-research-loop",
+      "correct": true
+    },
+    {
+      "id": "r18",
+      "ask": "redo the onboarding research from last month, but add Rippling and Deel this time",
+      "expected": "research",
+      "got": "research",
+      "raw": "product-research-loop",
+      "correct": true
+    },
+    {
+      "id": "r19",
+      "ask": "research competitors for our field service app (ServiceTitan, Jobber, Housecall Pro) and put the sheet in a Google Sheet I can share with the team",
+      "expected": "research",
+      "got": "research",
+      "raw": "product-research-loop",
+      "correct": true
+    },
+    {
+      "id": "r20",
+      "ask": "go or no-go: should we build a pet insurance comparison site for Germany? Look at Check24, Verivox and Tarifcheck.",
+      "expected": "research",
+      "got": "research",
+      "raw": "product-research-loop",
+      "correct": true
+    },
+    {
+      "id": "r21",
+      "ask": "apply my notes in notes.md to the clinic prototype",
+      "expected": "design",
+      "got": "design",
+      "raw": "product-design-loop",
+      "correct": true
+    },
+    {
+      "id": "r22",
+      "ask": "the rows on the invoices table in proto-clinic are too tight, give them more room",
+      "expected": "design",
+      "got": "design",
+      "raw": "product-design-loop",
+      "correct": true
+    },
+    {
+      "id": "r23",
+      "ask": "make the Today screen in proto-clinic work like Linear's inbox (https://linear.app/docs/inbox) - just the flow, keep our look",
+      "expected": "design",
+      "got": "design",
+      "raw": "product-design-loop",
+      "correct": true
+    },
+    {
+      "id": "r24",
+      "ask": "Dr Shah's feedback is in the txt file, please sort it",
+      "expected": "design",
+      "got": "design",
+      "raw": "product-design-loop",
+      "correct": true
+    },
+    {
+      "id": "r25",
+      "ask": "redesign the settings screen of proto-clinic, it's a mess. group it into sections and make it work on a phone",
+      "expected": "design",
+      "got": "design",
+      "raw": "product-design-loop",
+      "correct": true
+    },
+    {
+      "id": "r26",
+      "ask": "tighten up the spacing everywhere and use our brand font",
+      "expected": "design",
+      "got": "design",
+      "raw": "product-design-loop",
+      "correct": true
+    },
+    {
+      "id": "r27",
+      "ask": "on the clinic prototype just rename 'Customers' to 'Clients', nothing else",
+      "expected": "design",
+      "got": "design",
+      "raw": "product-design-loop",
+      "correct": true
+    },
+    {
+      "id": "r28",
+      "ask": "copy the booking wizard from reference/booking-flow.html into the clinic prototype as the New appointment flow - exactly, same steps and same look",
+      "expected": "design",
+      "got": "design",
+      "raw": "product-design-loop",
+      "correct": true
+    },
+    {
+      "id": "r29",
+      "ask": "PM notes for proto-clinic below. 1) remove the descriptions under every heading everywhere 2) Today table: add a status column (arrived / waiting / in session) 3) don't touch the invoices screen at all, finance signed it off 4) Save changes on settings should show a toast instead of the grey 'Saved' 5) when done commit it and push to main",
+      "expected": "design",
+      "got": "design",
+      "raw": "product-design-loop",
+      "correct": true
+    },
+    {
+      "id": "r30",
+      "ask": "make proto-clinic look more modern",
+      "expected": "design",
+      "got": "design",
+      "raw": "product-design-loop",
+      "correct": true
+    },
+    {
+      "id": "r31",
+      "ask": "review proto-clinic/index.html and fix the problems",
+      "expected": "review",
+      "got": "review",
+      "raw": "product-review-loop",
+      "correct": true
+    },
+    {
+      "id": "r32",
+      "ask": "quick P1 pass on the clinic prototype before my 2pm demo. desktop only",
+      "expected": "review",
+      "got": "review",
+      "raw": "product-review-loop",
+      "correct": true
+    },
+    {
+      "id": "r33",
+      "ask": "audit my prototype in proto-clinic/ - don't change anything, I just want a list of what's wrong",
+      "expected": "review",
+      "got": "review",
+      "raw": "product-review-loop",
+      "correct": true
+    },
+    {
+      "id": "r34",
+      "ask": "QA everything in proto-clinic before I show it to the clinic owners on Monday",
+      "expected": "review",
+      "got": "review",
+      "raw": "product-review-loop",
+      "correct": true
+    },
+    {
+      "id": "r35",
+      "ask": "check everything in my prototype",
+      "expected": "review",
+      "got": "review",
+      "raw": "product-review-loop",
+      "correct": true
+    },
+    {
+      "id": "r36",
+      "ask": "review the clinic prototype, focus on the invoices screen - the owner says it feels broken",
+      "expected": "review",
+      "got": "review",
+      "raw": "product-review-loop",
+      "correct": true
+    },
+    {
+      "id": "r37",
+      "ask": "review http://localhost:5173 - it's our clinic app",
+      "expected": "review",
+      "got": "review",
+      "raw": "product-review-loop",
+      "correct": true
+    },
+    {
+      "id": "r38",
+      "ask": "can u look over my clinic thing and make it not embarrassing lol. investors tmrw",
+      "expected": "review",
+      "got": "review",
+      "raw": "product-review-loop",
+      "correct": true
+    },
+    {
+      "id": "r39",
+      "ask": "just check proto-clinic for dead buttons and placeholder text. P1 only, report only, don't fix",
+      "expected": "review",
+      "got": "review",
+      "raw": "product-review-loop",
+      "correct": true
+    },
+    {
+      "id": "r40",
+      "ask": "our front desk uses iPads and phones. review the clinic prototype for small screens, fix P1 and P2, and add a rule: tap targets at least 44px",
+      "expected": "review",
+      "got": "review",
+      "raw": "product-review-loop",
+      "correct": true
+    },
+    {
+      "id": "r41",
+      "ask": "need a deck for the Acme meeting",
+      "expected": "deck",
+      "got": "deck",
+      "raw": "product-deck-loop",
+      "correct": true
+    },
+    {
+      "id": "r42",
+      "ask": "First meeting with the head of digital operations at Maersk next Tuesday. Give her a plan ranked by what it saves that she can take to her COO. About 10 slides, extras in an appendix. HTML deck and an editable PowerPoint. Our look and what we can claim are in the folder.",
+      "expected": "deck",
+      "got": "deck",
+      "raw": "product-deck-loop",
+      "correct": true
+    },
+    {
+      "id": "r43",
+      "ask": "one-pager for Tesco's category buyer about our compostable packaging, to send ahead of the call",
+      "expected": "deck",
+      "got": "deck",
+      "raw": "product-deck-loop",
+      "correct": true
+    },
+    {
+      "id": "r44",
+      "ask": "second meeting with Northwind Health's CIO next week - technical deep dive on how we integrate with their Epic EHR. 12-15 slides.",
+      "expected": "deck",
+      "got": "deck",
+      "raw": "product-deck-loop",
+      "correct": true
+    },
+    {
+      "id": "r45",
+      "ask": "5-6 slides for an internal lunch and learn about our Q3 wins, nothing fancy, HTML is fine",
+      "expected": "deck",
+      "got": "none",
+      "raw": "none",
+      "correct": false
+    },
+    {
+      "id": "r46",
+      "ask": "a 6-page brochure for the hotel chains we'll meet at the Lisbon hospitality trade show, about our housekeeping app",
+      "expected": "deck",
+      "got": "deck",
+      "raw": "product-deck-loop",
+      "correct": true
+    },
+    {
+      "id": "r47",
+      "ask": "add 3 slides about Siemens Healthineers to our standard deck for Thursday's intro with their procurement lead",
+      "expected": "deck",
+      "got": "deck",
+      "raw": "product-deck-loop",
+      "correct": true
+    },
+    {
+      "id": "r48",
+      "ask": "deck for my meeting with Jane Okafor, the new CFO at Brightline Logistics. find everything you can about her",
+      "expected": "deck",
+      "got": "deck",
+      "raw": "product-deck-loop",
+      "correct": true
+    },
+    {
+      "id": "r49",
+      "ask": "outside-in point of view on Ørsted's offshore wind operations for their VP Operations. She'll share it with her CEO. About 10 slides.",
+      "expected": "deck",
+      "got": "deck",
+      "raw": "product-deck-loop",
+      "correct": true
+    },
+    {
+      "id": "r50",
+      "ask": "turn notes.md into a short pitch deck for Spotify's ad sales team - 6 slides, PDF only",
+      "expected": "deck",
+      "got": "deck",
+      "raw": "product-deck-loop",
+      "correct": true
+    },
+    {
+      "id": "r51",
+      "ask": "write unit tests for my Express API",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    },
+    {
+      "id": "r52",
+      "ask": "summarise this PDF for me",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    },
+    {
+      "id": "r53",
+      "ask": "what is a good name for my startup? it's a meal planning app",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    },
+    {
+      "id": "r54",
+      "ask": "fix the failing GitHub Actions build on my repo",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    },
+    {
+      "id": "r55",
+      "ask": "review my pull request #42 and leave comments",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    },
+    {
+      "id": "r56",
+      "ask": "draft an email to my landlord about the broken boiler",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    },
+    {
+      "id": "r57",
+      "ask": "convert this CSV of orders into JSON",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    },
+    {
+      "id": "r58",
+      "ask": "make a budget spreadsheet for my household",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    },
+    {
+      "id": "r59",
+      "ask": "write the PRD for our new onboarding flow",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    },
+    {
+      "id": "r60",
+      "ask": "translate our pricing page into German",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    },
+    {
+      "id": "r61",
+      "ask": "refactor this React class component to hooks",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    },
+    {
+      "id": "r62",
+      "ask": "write a LinkedIn post about our Q3 launch",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    },
+    {
+      "id": "r63",
+      "ask": "explain what a capability matrix is",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    },
+    {
+      "id": "r64",
+      "ask": "set up ESLint and Prettier in this repo",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    },
+    {
+      "id": "r65",
+      "ask": "what's the difference between UX and UI design?",
+      "expected": "none",
+      "got": "none",
+      "raw": "none",
+      "correct": true
+    }
+  ]
+}

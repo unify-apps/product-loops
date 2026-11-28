@@ -1,0 +1,117 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-05",
+  "ask": "redesign the settings screen of proto-clinic, it's a mess. group it into sections and make it work on a phone",
+  "expected_track": "full",
+  "notes": "Redesign of one named screen. The section names and the policy text (now Lorem ipsum) are open. Scope is one screen, so the sweep should not spread to other screens.",
+  "must_cover": [
+    "sections|groups",
+    "phone|mobile|390",
+    "settings",
+    "other screens|only settings|scope",
+    "lorem|placeholder|policy"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "which screen|target screen"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "## Brief\n\n**Goal:** redesign the Settings screen of `proto-clinic` (Northside Physio): group it into sections and make it work on a phone. The prototype is `proto-clinic/index.html`, plain HTML in one file. I read it and found the four settings fields (Clinic name, Opening hours, Booking policy, Reminder texts) and one \"Save changes\" button.\n\n**Track:** full (there is no reference to copy, so quick and full are the same).\n\n**Defaults I took (change any of them in your reply):**\n- Only the Settings screen is restyled. Its wording, fields, colours and fonts stay. No new settings are added.\n- Local link only. Nothing is published, pushed or committed. The run says which files changed.\n- No `CLAUDE.md` and no design skill (`product-design`, `design-review`) was found, so the built-in design check is used.\n- Checks: Node v25.9.0 and Chrome are present, so screenshots work.\n\n**What I read from your note.** Words with no number: \"a mess\", \"work on a phone\". I gave \"work on a phone\" numbers below (375 px wide, 44 px touch height).\n\n### The request list (numbered)\n\n| # | Note, in words | Screens | Where | Check |\n|---|---|---|---|---|\n| 1 | Group the Settings fields into two sections: \"Clinic details\" (Clinic name, Opening hours) and \"Bookings and reminders\" (Booking policy, Reminder texts) *(my reading)* | settings | this place | both headings show, each above its two fields in that order; all four labels and values unchanged |\n| 2 | One \"Save changes\" button after the last section; clicking it still shows \"Saved\" *(my reading)* | settings | this place | click \"Save changes\" shows \"Saved\" |\n| 3 | Settings works on a phone: at 375 px wide no sideways scroll, fields full width, every field and button at least 44 px tall *(my reading)* | settings | this place | measured in the page at width 375 |\n| 4 | The top bar fits a phone: at 375 px wide the brand and the four links show with no sideways scroll, each link at least 44 px tall; at 1440 px wide nothing moves *(my reading)* | settings (the bar is on every screen) | this place | measured at 375; before and after compare at 1440 shows the other screens unchanged |\n\nBroken before the run, which I noticed and will not fix: \"New appointment\" on Today does nothing; the Overdue filter on Invoices shows an empty table with no words; the Clients screen is titled \"Customers\". I will confirm these in node 2 and list them in the handover.\n\n**Anything missing or wrong in this list?** Notes you send later still join this run.\n\n### Coverage\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | clear | the Settings screen only; top bar only at phone width (question 1) |\n| Who and their job | partial | clinic staff changing clinic details; default is fine, no question |\n| Data and facts | clear | four fields and sample values are in the file |\n| Main flow | clear | open Settings, edit, Save changes |\n| Edge cases | partial | long values and a narrow phone; default: fields wrap, work down to 320 px |\n| Look | clear | keep the existing palette and fonts |\n| Outputs | clear | local link, uncommitted file change |\n| Done signal | clear | the four rows pass and the compare has no unexpected screen |\n| Words with no number | partial | \"work on a phone\" gets 375 px and 44 px (question 3) |\n\nLessons applied: none yet (no earlier runs).\n\nAbout 50 minutes and 3 helper agents, within a budget of 60 minutes.\n\n## Questions\n\n1. The top bar is on every screen and does not fit a phone: at 375 px it is about 490 px wide, so it scrolls sideways. Do I fix it?\n   Recommended: yes, at phone width only (links wrap or shrink to fit), with the desktop bar identical.\n   Why it matters: without it Settings still scrolls sideways on a phone, but it touches a part shared by every screen.\n\n2. Are two sections and one Save button the grouping you want?\n   Recommended: \"Clinic details\" (Clinic name, Opening hours) and \"Bookings and reminders\" (Booking policy, Reminder texts), one Save changes below both.\n   Why it matters: it decides the headings, the order, and whether each section saves on its own.\n\n3. What does \"work on a phone\" mean in numbers?\n   Recommended: 375 px wide with no sideways scroll (still fine at 320 px), fields full width, every field and button at least 44 px tall.\n   Why it matters: it is the pass line for rows 3 and 4.\n\n4. Booking policy holds placeholder Latin text (\"Lorem ipsum...\"). Keep it as it is?\n   Recommended: keep the text and keep it read-only, as it is now; you replace the words later.\n   Why it matters: I will not invent clinic policy wording, and an editable box would add behaviour you did not ask for.\n\n5. Is anything missing or wrong in the list above, including my readings marked *(my reading)*?\n   Recommended: nothing, go with the list.\n   Why it matters: after you reply nobody asks you anything again until the handover.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. The top bar is on every screen and does not fit a phone: at 375 px it  | 2. Are two sections and one Save button the grouping you want? | 3. What does \"work on a phone\" mean in numbers? | 4. Booking policy holds placeholder Latin text (\"Lorem ipsum...\"). Keep i | 5. Is anything missing or wrong in the list above, including my readings "
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "32 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 2 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 50 minutes and 3 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 9,
+      "evidence": "9 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full (there is no reference to copy, so quick and full are the same)."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 891,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles sections (Q2 \"Clinic details\"/\"Bookings and reminders\"), phone (Q3 375 px, 44 px), settings, scope (\"Only the Settings screen is restyled\", Q1 top bar) and placeholder (Q4 \"Lorem ipsum\" kept read-only).",
+      "no_redundancy": "States the prototype and screen as found facts rather than asking; only minor overlap as Q5 repeats the earlier \"Anything missing or wrong in this list?\".",
+      "defaults_quality": "Every question has a specific, sensible default, e.g. \"yes, at phone width only ... with the desktop bar identical\" and \"keep the text and keep it read-only\".",
+      "clarity": "Questions are plain and ordered, but the brief, request table, broken-items note and coverage table make it a long wall before the five questions.",
+      "respects_words": "Keeps to settings, sections and phone; asks before touching the shared top bar and keeps wording, colours and fonts unchanged.",
+      "overall": "A strong, faithful intake with good defaults that settles every needed topic; held back mainly by its length and some repetition."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.657Z"
+}

@@ -1,0 +1,58 @@
+{
+  "mode": "browser",
+  "browser": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "width": 1440,
+  "at": "2026-11-25T22:00:22.792Z",
+  "screens": {
+    "today": {
+      "url": "http://localhost:4100/#/today",
+      "ok": true,
+      "errors": [],
+      "dialogs": [],
+      "textLines": 16,
+      "boxes": 60,
+      "png": "e3dcf85ed4021dbd03dd3f7f870e9ca4c178f43e",
+      "moving": false
+    },
+    "customers": {
+      "url": "http://localhost:4100/#/clients",
+      "ok": true,
+      "errors": [],
+      "dialogs": [],
+      "textLines": 10,
+      "boxes": 49,
+      "png": "ecdbb7508c4e75ae521f5a130a98d7b476e588f5",
+      "moving": false
+    },
+    "customers-search-empty": {
+      "url": "http://localhost:4100/#/clients",
+      "ok": true,
+      "errors": [],
+      "dialogs": [],
+      "textLines": 5,
+      "boxes": 21,
+      "png": "6582f7ad77bd91adbd79266900c0b3caffbd21f8",
+      "moving": false
+    },
+    "invoices": {
+      "url": "http://localhost:4100/#/invoices",
+      "ok": true,
+      "errors": [],
+      "dialogs": [],
+      "textLines": 12,
+      "boxes": 48,
+      "png": "e965feb9982a6908188baa776e73b9293a212b78",
+      "moving": false
+    },
+    "settings": {
+      "url": "http://localhost:4100/#/settings",
+      "ok": true,
+      "errors": [],
+      "dialogs": [],
+      "textLines": 15,
+      "boxes": 20,
+      "png": "cbfd32516936d1587c211c8e8524fc39d1582739",
+      "moving": false
+    }
+  }
+}

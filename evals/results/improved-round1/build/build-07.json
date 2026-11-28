@@ -1,0 +1,121 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-07",
+  "ask": "build the thing in spec.md end to end",
+  "expected_track": "full",
+  "notes": "The spec answers nearly every need: persona, modules in order with must-haves, depth, look, name, out of scope. A good intake shows the brief and asks very little (0 to 2 questions, for example where it lives). Asking persona or modules here is a fault.",
+  "must_cover": [
+    "persona|flatmates",
+    "module",
+    "how deep|in full",
+    "look|font|colour|color",
+    "settle"
+  ],
+  "findable": [
+    "persona|who uses|who is it for",
+    "module|modules|must-have|must have",
+    "font|typeface",
+    "colour|color|palette",
+    "name|naming|brand name",
+    "how deep|in full|shell|depth"
+  ],
+  "fixtures": [
+    "spec.md"
+  ],
+  "message": "# Brief: Tally prototype\n\n**Goal:** a clickable local web prototype of Tally, shared expenses for UK flatmates, built end to end from `spec.md`.\n\n**Who and their job** (from spec.md): flatmates aged 20 to 35 sharing a rented flat in the UK. The one job: see who owes whom this month and settle up without an awkward chat.\n\n**Modules, in build order, all built in full** (from spec.md):\n\n| # | Module | Must have |\n|---|---|---|\n| 1 | Home | balance per flatmate (owes / is owed), \"Settle up\" button, last 5 expenses, empty state for a new flat |\n| 2 | Add expense | amount, who paid, split equally or by shares, category, receipt photo (placeholder ok) |\n| 3 | Bills | recurring bills (rent, energy, broadband) with due dates and who has paid |\n| 4 | Settle up | suggested payments that clear all debts in the fewest transfers; mark as paid |\n\n**Look** (from spec.md): friendly, rounded. Font Nunito. Primary #22A06B, ink #1B1F24, background #F7F8F6. Corner radius 16px on cards, 999px on buttons (default, since \"rounded\" has no number).\n**Name:** Tally, final. No logo: the word mark \"Tally\" in Nunito 800 on the header. So no name and mark options are made (default).\n**Not in scope:** real payments, bank links, sign-up.\n**Follow:** no other product to copy; flow only (default).\n**Extras:** no photos of people (initials only), no two versions behind a key, no PDF guide, no public link. It stays on this laptop (default).\n**Product folder and run:** new product in `<working folder>/tally/`, one `index.html` with its CSS and JS inside, hash routes `#/home`, `#/add`, `#/bills`, `#/settle`, served by the loop's own local server (defaults).\n**Sample data (default):** an invented flat of 4 flatmates, current month, amounts in GBP. You are \"Maya\", one of the 4.\n**Behaviour (default):** state is kept in memory in the page. A new expense changes the balances, \"mark as paid\" clears a debt, and a reload resets it.\n**Browser for click checks:** found, chrome-headless-shell. Every click will be checked in a real browser.\n**Research first?** Not asked: spec.md is already the brief, so the research loop is skipped.\n\n**Requests so far** (`requests.md`): R1 the whole ask; R2 to R5 the four modules and their must-haves; R6 every module in full; R7 empty states for a new flat; R8 the look; R9 the name and word mark; R10 the out-of-scope list.\n\n**Lessons applied:** none yet (no earlier runs here).\n**Budget:** 120 minutes.\n\n**Coverage scan**\n\n| Topic | State | Why |\n|---|---|---|\n| Scope | clear | four modules named, out-of-scope list given |\n| Who and their job | clear | spec.md \"Who\" |\n| Data and facts | partial | no sample data given; invented flat of 4 (default) |\n| Main flow | clear | add expense, see balances, settle up, mark as paid |\n| Edge cases | partial | only the empty flat is named; also a flat that is all settled up and a split by shares that does not add up (defaults below) |\n| Look | clear | font, three colours, name, word mark; radius 16px is a default |\n| Outputs | clear | a local link, plus a link per state |\n| Done signal | clear | every module in full, empty states |\n| Words with no number | partial | \"friendly, rounded\" (16px radius), \"fewest transfers\" (computed, not guessed) |\n\n**Done means:**\n1. Every module is built in full: Home, Add expense, Bills, Settle up.\n2. Every module's last review round has 0 P1.\n3. Every link in `links.md` opens, with no dead click, no placeholder text and no page error, checked in a real browser.\n4. `requests.md` has no open line.\n5. Must-haves: \"Settle up button on Home\"; \"split equally or by shares\"; \"suggested payments that clear all debts in the fewest transfers\"; \"empty states for a new flat with no expenses\".\n6. `links.md` has a link for every list, one detail, every create flow and every empty state.\n\nAbout 60 minutes and 14 helper agents, within a budget of 120 minutes.\n\n**Questions**\n\n1. The track: quick or full?\n   Recommended: full. Four modules built in full, and the empty states you asked for need the extra demo states a quick run leaves out.\n   Why it matters: quick makes each module one list page with no detail, create or empty routes, and would drop your empty-state need.\n\n2. Should it keep state, or only show screens?\n   Recommended: keep state in memory. Adding an expense changes balances and \"mark as paid\" clears a debt; a reload resets it.\n   Why it matters: Settle up and Home only make sense in a demo when they agree with each other.\n\n3. Who is \"you\" on Home, and what sample flat?\n   Recommended: you are Maya, in a flat of 4 (Maya, Jordan, Priya, Sam), about 8 expenses this month, amounts in GBP.\n   Why it matters: the balances, the \"owes / is owed\" wording and the suggested transfers all come from this data.\n\n4. Edge cases beyond the empty flat: what should these do?\n   Recommended: a flat all settled up shows \"All square\" with the Settle up button off; shares that do not add up block Save with the gap shown (\"£2.40 left to assign\"); a bill past its due date shows \"Overdue\" in red.\n   Why it matters: these are the cases a demo audience tries first.\n\n5. Receipt photo: a placeholder picker only, or a file you can really pick and preview?\n   Recommended: placeholder picker (a grey receipt tile with \"Add photo\"), nothing is uploaded.\n   Why it matters: a real picker needs a file preview and a remove step; the spec says placeholder ok.\n\n6. Categories on Add expense: which list?\n   Recommended: Groceries, Rent, Energy, Broadband, Eating out, Cleaning, Other.\n   Why it matters: the category list shows on Add expense and on every row of the recent expenses.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. The track: quick or full? | 2. Should it keep state, or only show screens? | 3. Who is \"you\" on Home, and what sample flat? | 4. Edge cases beyond the empty flat: what should these do? | 5. Receipt photo: a placeholder picker only, or a file you can really pic | 6. Categories on Add expense: which list?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 6, Why it matters: on 6, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "43 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: module (\"module\"), how deep (\"in full\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 60 minutes and 14 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_table": {
+      "pass": true,
+      "value": 10,
+      "evidence": "10 table rows marked clear, partial or missing"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "1. The track: quick or full?"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 999,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 5,
+      "defaults_quality": 9,
+      "clarity": 5,
+      "respects_words": 8,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Brief settles flatmates persona, all four modules \"all built in full\", Nunito and the three colours, and Settle up \"fewest transfers; mark as paid\"; only the settle algorithm is left as \"computed, not guessed\".",
+      "no_redundancy": "Q1 \"The track: quick or full?\" asks what spec.md already says (\"Every module built in full\"), Q5 re-asks the receipt when the spec says \"placeholder ok\", and Q2/Q3 repeat defaults already stated in the brief.",
+      "defaults_quality": "Every question has a concrete, fitting default, e.g. \"you are Maya, in a flat of 4 (Maya, Jordan, Priya, Sam)... amounts in GBP\" and \"shares that do not add up block Save with the gap shown\".",
+      "clarity": "Six questions follow a long brief, a coverage table and a done list; the first question is a redundant process choice instead of the most important open point.",
+      "respects_words": "Keeps \"in full\", the look, the final name and the out-of-scope list; offering a \"quick\" track that \"would drop your empty-state need\" goes against the spec, even though full is recommended.",
+      "overall": "Faithful, well-defaulted brief, but too long and asks several things the spec already settles, so it is a decent but heavy opening for a solo hour."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:06:20.498Z"
+}

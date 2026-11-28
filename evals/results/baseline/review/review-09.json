@@ -1,0 +1,122 @@
+{
+  "arm": "baseline",
+  "loop": "review",
+  "case": "review-09",
+  "ask": "just check proto-clinic for dead buttons and placeholder text. P1 only, report only, don't fix",
+  "expected_track": "quick",
+  "notes": "Everything is in the ask: prototype, focus, bar and mode. A good intake asks nothing or one thing and goes. Two planted faults match exactly.",
+  "must_cover": [
+    "dead|placeholder",
+    "p1",
+    "report"
+  ],
+  "findable": [
+    "bar|p1 and p2|p1 only",
+    "fix or report|report only|fix what",
+    "which prototype|which file",
+    "focus|what to focus on"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "## Brief for your review\n\n**Goal:** check the Northside Physio prototype for dead buttons and placeholder text, as the person who will use it. Report only. Nothing is changed.\n\n**Stop fact:** every screen has a screenshot and a reviewed list of findings, each with a screen, a rule and a level, and a fresh agent confirmed the list against the screenshots.\n\nWhat I found or took from your message:\n\n- **Prototype:** `proto-clinic/index.html`, the only prototype in this folder. It opens as a file and needs no server.\n- **Mode:** report only. No file is changed, so no copies are kept.\n- **Bar:** P1 only.\n- **Focus:** dead buttons and placeholder text.\n- **Screen width:** 1440 px, plus a check at 390 px for a phone.\n- **Start check:** Node 25.9.0 is ok, and Google Chrome was found for the walk. The file exists.\n- **Screens the nav reaches:** Today, Clients, Invoices and Settings.\n- **Rules of your own:** I found no `CLAUDE.md`, `design-review` skill or earlier run, so the built-in checklist applies.\n- **Where the result goes:** `handover.md` in the run folder on this laptop. Nothing is deployed, posted or sent.\n\nQuestions:\n\n1. Which screens? Default: all 4 the nav reaches: Today, Clients, Invoices, Settings.\n2. Who uses it, and what one job do they come to do? Default (my guess from the screens): a receptionist at a physio clinic, who checks today's appointments and books a new one.\n3. Any rule of your own to check? Default: the built-in checklist only.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. Which screens? Default: all 4 the nav reaches: Today, Clients, Invoice | 2. Who uses it, and what one job do they come to do? Default (my guess fr | 3. Any rule of your own to check? Default: the built-in checklist only."
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "13 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 4 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 263,
+      "evidence": "263 words, 191 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-review-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 263,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 8,
+      "defaults_quality": 8,
+      "clarity": 8,
+      "respects_words": 8,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "All three topics are settled in the brief: \"Focus: dead buttons and placeholder text\", \"Bar: P1 only\", \"Mode: report only. No file is changed\".",
+      "no_redundancy": "The brief states the prototype, mode, bar and focus instead of asking for them, but Q3 (\"Any rule of your own to check?\") asks again what the brief already says (\"found no CLAUDE.md... built-in checklist applies\").",
+      "defaults_quality": "Every question has a concrete default (\"all 4 the nav reaches\", \"a receptionist at a physio clinic\"), though the persona guess barely matters for a dead-button and placeholder sweep.",
+      "clarity": "Three short numbered questions in plain words with \"just go\" to accept, but the brief carries extra lines (Node version, Chrome, screen width) that a two-minute reader does not need.",
+      "respects_words": "It keeps report only, P1 only and the focus, but adds a 390 px phone check and a persona question to a \"just check\" ask.",
+      "overall": "A solid, faithful intake that settles everything. The person-and-job question and the repeated checklist question are padding a narrow \"just check\" ask did not need."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.834Z"
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "key": "body",
+    "name": "every slide's body fills it and shows its title's numbers",
+    "pass": false,
+    "detail": "slide 3 is 51% empty below its content; slide 7 is 42% empty below its content"
+  },
+  {
+    "key": "fit",
+    "name": "all text fits its box, titles on one line",
+    "pass": true,
+    "detail": "every box fits"
+  }
+]

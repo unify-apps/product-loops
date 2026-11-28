@@ -1,0 +1,10 @@
+Northside Physio
+Today Customers Invoices Settings
+Customers
+Name	Phone	Last visit	Visits
+Priya Nair	07700 900123	12 Nov 2026	6
+Owen Brooks	07700 900456	New	0
+Mei Chen	07700 900789	3 Nov 2026	11
+Luis Ortega	07700 900321	28 Oct 2026	3
+Hannah Weiss	07700 900654	19 Nov 2026	8
+Ade Okoye	07700 900987	2 Sep 2026	2

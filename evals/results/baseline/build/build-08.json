@@ -1,0 +1,118 @@
+{
+  "arm": "baseline",
+  "loop": "build",
+  "case": "build-08",
+  "ask": "Just a shell for an HR onboarding portal: nav with 6 sections, and only the 'First day checklist' page built properly. It's for a stakeholder walkthrough tomorrow morning.",
+  "expected_track": "quick",
+  "notes": "The person states the depth: a shell plus one page in full. A default of 'every module in full' goes against their words. The six section names are open and fair to draft as a default.",
+  "must_cover": [
+    "shell",
+    "first day checklist|checklist",
+    "six|6|sections",
+    "persona|new starter|new hire|who uses"
+  ],
+  "findable": [
+    "how deep|in full|shell|depth"
+  ],
+  "fixtures": [],
+  "message": "## Brief (draft)\n\n**Goal:** A clickable shell of an HR onboarding portal for a stakeholder walkthrough tomorrow morning: a navigation with 6 sections, and only the \"First day checklist\" page built properly. The other five are titled pages.\n\n**New product folder (default):** `/private/tmp/claude-501/-Users-harshalkotti--claude-spares-spare-81Mfoj/44c366c7-da1f-48f6-b2fa-e04f993e0a17/scratchpad/evalwork/358e78c372/hr-onboarding-portal/`. Nothing was found in the working folder (it was empty), so this is a new product.\n\n**Persona (my draft, please correct):** A new hire in their first week, who comes to see what to do before and on day one and tick it off. The stakeholders watching the demo are HR and the hiring managers.\n\n**Modules in build order (my draft, please correct):**\n\n| # | Module | Depth | Must have |\n|---|---|---|---|\n| 1 | First day checklist | Built in full | Tasks grouped (Before you arrive, Day one, End of week); tick a task and progress updates; due time and owner on each task; empty and all-done states |\n| 2 | Welcome | Titled page only | Name in the nav, a titled page |\n| 3 | Documents and forms | Titled page only | same |\n| 4 | Equipment and access | Titled page only | same |\n| 5 | Training | Titled page only | same |\n| 6 | People and contacts | Titled page only | same |\n\n**Follow:** nothing. Flow only, no product copied.\n**Look:** none found. Plain clean look, initials for people, no photos, no downloads.\n**How it runs:** one `index.html` with its CSS and JS inside, served locally. Local link only, nothing is published.\n**Name:** 3 name and mark options on the real header, the first one used.\n**Browser for click checks:** found, chrome-headless-shell, so clicks will be checked for real.\n**Stop fact:** every module is built to its depth and reviewed with no P1 left, every link opens with no dead click or placeholder text, and the request list has no open item.\n\n## Questions\n\n1. **Who uses it, and the one job they come to do?** Default: a new hire in week one who needs to know what to do and tick it off.\n2. **What are the 6 sections, and what must the First day checklist have?** Default: the six in the table above, with First day checklist as the one built in full.\n3. **How deep are the other 5?** Default: a titled page each, with the section name and a one-line note that it is not built yet, since you asked for a shell. Not built in full.\n4. **Logo, icon files, colours, fonts?** Default: none found, plain clean look.\n5. **Name?** Default: 3 name and mark options, the first one used. Say a name if you have one.\n6. **Extras (photos of people, two versions behind a key, a PDF guide, a public link)?** Default: none; the product stays on this laptop only. If you want it shown outside your laptop tomorrow, say so now.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Who uses it, and the one job they come to do? Default: a new hire in w | 2. What are the 6 sections, and what must the First day checklist have? D | 3. How deep are the other 5? Default: a titled page each, with the sectio | 4. Logo, icon files, colours, fonts? Default: none found, plain clean loo | 5. Name? Default: 3 name and mark options, the first one used. Say a name | 6. Extras (photos of people, two versions behind a key, a PDF guide, a pu"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "19 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: how deep (\"how deep\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 500,
+      "evidence": "500 words, 322 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 500,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 6,
+      "defaults_quality": 8,
+      "clarity": 6,
+      "respects_words": 8,
+      "overall": 7
+    },
+    "evidence": {
+      "completeness": "Shell, 6 sections, checklist must-haves ('Tasks grouped ... tick a task and progress updates') and persona ('A new hire in their first week') are all settled with drafts.",
+      "no_redundancy": "Q3 'How deep are the other 5?' asks what the ask already gave ('Just a shell ... only the First day checklist page built properly'); Q6 extras and Q4 look add low-value asks.",
+      "defaults_quality": "Defaults are concrete and fit the demo: named six sections, grouped checklist with states, 'a new hire in week one who needs to know what to do and tick it off'.",
+      "clarity": "Six questions after a long brief and table, and the questions repeat the brief (persona, sections, look, name all appear twice), so it takes longer than two minutes.",
+      "respects_words": "Keeps shell, 6 sections and checklist-only depth and the tomorrow deadline, but the stop fact 'no ... placeholder text' clashes with the shell's 'one-line note that it is not built yet'.",
+      "overall": "A solid, faithful intake with good defaults, weakened by a redundant depth question, duplicated content between brief and questions, and too many questions for a next-morning demo."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.600Z"
+}

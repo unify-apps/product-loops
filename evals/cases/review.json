@@ -1,0 +1,216 @@
+{
+  "loop": "review",
+  "skill": "product-review-loop",
+  "cases": [
+    {
+      "id": "review-01",
+      "ask": "review proto-clinic/index.html and fix the problems",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        }
+      },
+      "must_cover": [
+        "screens|today|clients|invoices|settings",
+        "persona|front desk|receptionist|who uses",
+        "bar|p1|p2",
+        "rules|checklist"
+      ],
+      "findable": [
+        "which prototype|which file",
+        "fix or report|report only|fix what"
+      ],
+      "expected_track": "full",
+      "notes": "The baseline needs.md example: the ask answers the prototype and fix mode, so only screens, persona, bar and rules are open. Asking 'which prototype' or 'fix or report' is redundant."
+    },
+    {
+      "id": "review-02",
+      "ask": "quick P1 pass on the clinic prototype before my 2pm demo. desktop only",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        }
+      },
+      "must_cover": [
+        "p1",
+        "desktop|no phone",
+        "fix|report"
+      ],
+      "findable": [
+        "bar|p1 and p2|p1 only",
+        "phone|screen width|390"
+      ],
+      "expected_track": "quick",
+      "notes": "Bar and width given, time pressure. Quick track (P1 only, no phone). A good intake asks one or two questions at most."
+    },
+    {
+      "id": "review-03",
+      "ask": "audit my prototype in proto-clinic/ - don't change anything, I just want a list of what's wrong",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        }
+      },
+      "must_cover": [
+        "report only|report",
+        "screens",
+        "persona|who uses"
+      ],
+      "findable": [
+        "fix or report|report only|fix what",
+        "which prototype|which file"
+      ],
+      "expected_track": "full",
+      "notes": "Report-only mode stated in words. The bar question matters less (nothing gets fixed). Asking fix or report is redundant."
+    },
+    {
+      "id": "review-04",
+      "ask": "QA everything in proto-clinic before I show it to the clinic owners on Monday",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        },
+        "CLAUDE.md": "# Northside Physio prototype\n\nUsers: front desk staff at small physio clinics (2 to 6 therapists). Their one job: get the day's clients in and out\non time, and take payment.\n\nOur review rules:\n- Buttons in sentence case.\n- Every list has an empty state that says what to do next.\n- No placeholder text anywhere, ever.\n- Money always with the £ sign and two decimals.\n"
+      },
+      "must_cover": [
+        "persona|front desk",
+        "rules|empty state|sentence case",
+        "bar|p1|p2",
+        "fix|report"
+      ],
+      "findable": [
+        "persona|who uses|who is it for|one job",
+        "rules|rule of your own|own rules"
+      ],
+      "expected_track": "full",
+      "notes": "CLAUDE.md gives the persona, the job and four house rules. A good intake states them and does not ask the persona or rules again."
+    },
+    {
+      "id": "review-05",
+      "ask": "check everything in my prototype",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        },
+        "marketing-site/index.html": "<!doctype html><html><head><meta charset=\"utf-8\"><title>Northside Physio: book online</title></head>\n<body style=\"font-family:system-ui;margin:40px\"><h1>Feel better, faster.</h1><p>Book a physio appointment in Leeds in under a minute.</p>\n<a href=\"#book\" style=\"background:#2457d6;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none\">Book now</a>\n<h2 id=\"book\">Our clinics</h2><p>Headingley · Chapel Allerton · City centre</p></body></html>\n"
+      },
+      "must_cover": [
+        "which prototype|proto-clinic|marketing",
+        "screens",
+        "persona|who uses",
+        "fix|report"
+      ],
+      "findable": [],
+      "expected_track": "full",
+      "notes": "Two candidates (the app and a one-page marketing site). 'Which prototype' is a fair question here, with the clinic app as the default (more screens, the nav)."
+    },
+    {
+      "id": "review-06",
+      "ask": "review the clinic prototype, focus on the invoices screen - the owner says it feels broken",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        }
+      },
+      "must_cover": [
+        "invoices|focus",
+        "screens|other screens",
+        "fix|report",
+        "bar|p1"
+      ],
+      "findable": [
+        "which prototype|which file",
+        "focus|what to focus on"
+      ],
+      "expected_track": "full",
+      "notes": "Focus given. The planted empty-state fault is on Invoices. A good intake keeps all screens in the walk but weights Invoices, and asks fix or report."
+    },
+    {
+      "id": "review-07",
+      "ask": "review http://localhost:5173 - it's our clinic app",
+      "files": {
+        "clinic-app/index.html": {
+          "copy": "proto-clinic/index.html"
+        },
+        "clinic-app/package.json": "{\n  \"name\": \"clinic-app\",\n  \"private\": true,\n  \"scripts\": { \"dev\": \"vite --port 5173\", \"build\": \"vite build\" },\n  \"devDependencies\": { \"vite\": \"^5.4.0\" }\n}\n"
+      },
+      "must_cover": [
+        "localhost|5173|server|not running|start",
+        "screens",
+        "fix|report",
+        "persona|who uses"
+      ],
+      "findable": [
+        "which prototype|which file"
+      ],
+      "expected_track": "full",
+      "notes": "The URL does not answer (nothing is running, and vite is not installed). The start check should find that and say so in the same message, with a default (open clinic-app/index.html directly)."
+    },
+    {
+      "id": "review-08",
+      "ask": "can u look over my clinic thing and make it not embarrassing lol. investors tmrw",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        }
+      },
+      "must_cover": [
+        "fix|report",
+        "bar|p1|p2",
+        "screens",
+        "persona|who uses",
+        "investors|tomorrow"
+      ],
+      "findable": [
+        "which prototype|which file"
+      ],
+      "expected_track": "full",
+      "notes": "Casual voice, time pressure, 'not embarrassing' is vague. Fix mode is implied ('make it'). A good intake reads 'not embarrassing' as P1 and P2 fixed and keeps the round short. Quick is a fair recommendation too."
+    },
+    {
+      "id": "review-09",
+      "ask": "just check proto-clinic for dead buttons and placeholder text. P1 only, report only, don't fix",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        }
+      },
+      "must_cover": [
+        "dead|placeholder",
+        "p1",
+        "report"
+      ],
+      "findable": [
+        "bar|p1 and p2|p1 only",
+        "fix or report|report only|fix what",
+        "which prototype|which file",
+        "focus|what to focus on"
+      ],
+      "expected_track": "quick",
+      "notes": "Everything is in the ask: prototype, focus, bar and mode. A good intake asks nothing or one thing and goes. Two planted faults match exactly."
+    },
+    {
+      "id": "review-10",
+      "ask": "our front desk uses iPads and phones. review the clinic prototype for small screens, fix P1 and P2, and add a rule: tap targets at least 44px",
+      "files": {
+        "proto-clinic/index.html": {
+          "copy": "proto-clinic/index.html"
+        }
+      },
+      "must_cover": [
+        "phone|ipad|tablet|width",
+        "44",
+        "p1|p2",
+        "persona|front desk"
+      ],
+      "findable": [
+        "bar|p1 and p2|p1 only",
+        "fix or report|report only",
+        "rules|rule of your own|own rules",
+        "persona|who uses|who is it for"
+      ],
+      "expected_track": "full",
+      "notes": "Bar, mode, persona and a custom rule are given. The widths are open (iPad 768/1024 and phone 390 as defaults). A good intake asks at most one or two questions."
+    }
+  ]
+}

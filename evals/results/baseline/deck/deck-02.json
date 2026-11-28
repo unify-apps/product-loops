@@ -1,0 +1,130 @@
+{
+  "arm": "baseline",
+  "loop": "deck",
+  "case": "deck-02",
+  "ask": "First meeting with the head of digital operations at Maersk next Tuesday. Give her a plan ranked by what it saves that she can take to her COO. About 10 slides, extras in an appendix. HTML deck and an editable PowerPoint. Our look and what we can claim are in the folder.",
+  "expected_track": "full",
+  "notes": "The full ask from needs.md, plus the folder answers the look and the claims. Nearly every need is answered: a good intake shows the brief and asks one or two things at most (her name, if known).",
+  "must_cover": [
+    "goal|plan ranked|savings",
+    "coo|real audience",
+    "slide count|10",
+    "output|powerpoint|html",
+    "claims|what we may claim",
+    "look|manrope"
+  ],
+  "findable": [
+    "goal|what the deck is for|what should the reader",
+    "real audience|convince next|coo",
+    "slide count|how many slides",
+    "output|format|powerpoint",
+    "look|font|colour|color",
+    "claims|what we may claim|what we offer",
+    "meeting kind|first meeting"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "brand/corvid.svg",
+    "claims.md"
+  ],
+  "message": "I read your ask, `CLAUDE.md`, `claims.md` and `brand/corvid.svg`. Here is the brief I would work from. Nothing is built yet.\n\n**Start check**\n- Deck tools: OK. python-pptx, PDF reader, Chrome and Quick Look were found, so the HTML deck, the editable PowerPoint and a PDF can all be made.\n- Web search: the WebSearch and WebFetch tools are in this session. Research on Maersk, shipping and her public talks will use public sources, each fact with a link.\n- No start deck in the folder (no .pptx, .pdf or .key), so I build new.\n\n**Brief so far**\n- **Company:** Maersk (A.P. Moller - Maersk).\n- **Reader:** the head of digital operations. Her role is not given by name, so I write for a senior business reader and look for her public profile.\n- **Meeting:** first meeting, next Tuesday (2026-12-01).\n- **Offer and claims, from `claims.md`:** Corvid automates customs document checks for freight forwarders and carriers. We may name DSV (pilot, 2025) and Kuehne+Nagel (live since March 2026). We may say 62% fewer manual document touches at Kuehne+Nagel (their case study, 2026) and checks in under 4 seconds per document. We never say \"AI that never makes mistakes\" and never give a price. Nothing else is claimed.\n- **Look, from `CLAUDE.md`:** Manrope, ink #111827, accent #7C3AED, white background, logo `brand/corvid.svg`. Customers are named only as `claims.md` allows.\n- **Slides:** about 10 main slides (8 to 12), extras in an appendix, with a Sources slide at the end of the appendix.\n- **Output:** HTML deck and editable 16:9 PowerPoint. No PDF and no Artifact.\n- **Where the files go:** `decks/maersk-20261126/`.\n- **Stop fact:** she can read the deck and take a plan ranked by what it saves to her COO. There are 8 to 12 main slides. Every line cites a public fact, an estimate note or your word. Every slide was drawn and looked at. The HTML and PowerPoint files open.\n\n**Questions** (each shows the default I would use)\n\n1. **What is the deck for?** You said \"a plan ranked by what it saves\", so my default is **A**.\n   - **A. A plan for her (default).** Where Corvid cuts cost in Maersk's customs and document work, ranked by saving, so she can take the top items to her COO.\n   - B. An outside-in view. What is changing in customs and trade documents, what it means for Maersk, where the openings are.\n   - C. A vision she can retell to her COO. Why now, what good looks like, first steps.\n   - D. A pitch. Maersk's document problem, how Corvid solves it, proof from Kuehne+Nagel and DSV, a next step.\n   - E. A technical walk-through. Maersk's document flow, how Corvid connects, a pilot plan.\n2. **What is the one idea the deck argues, and what order?** Default: \"Manual customs document checks are Maersk's biggest avoidable cost in digital operations, and a staged rollout starts with the largest saving.\" Order: where the cost is, the ranked plan, proof, first pilot, next step.\n3. **Who must she convince next, and what do they care about?** Default: her COO, who cares about money first, then risk and speed. The savings figures come first and are marked \"public\" or \"our estimate\".\n4. **Her name, and any public profile or talks link?** Default: I search for the head of digital operations at Maersk and use only public, work-related information. If I cannot tell who she is, I write for the role.\n5. **Do you know anything about Maersk that we should use?** Examples are its systems, the deal so far, or what it said it needs. Default: none, so I use public sources only.\n6. **How do we show savings with no Maersk data?** Default: public Maersk volumes and costs, plus our 62% result at Kuehne+Nagel applied as a scenario, each marked \"our estimate\" with the working shown. You should check these estimates before Tuesday.\n7. **May we name Kuehne+Nagel and DSV on slides?** Default: yes, as `claims.md` says (DSV as a 2025 pilot, Kuehne+Nagel live since March 2026). Nobody else is named.\n8. **Any product screenshots or diagrams to use?** Default: none, and no made-up product screens. I use diagrams and charts drawn from the facts.\n9. **Anything to lead with or leave out, such as a topic or a competitor not to name?** Default: none beyond `claims.md`.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 9,
+      "evidence": "1. What is the deck for? You said \"a plan ranked by what it saves\", so my | 2. What is the one idea the deck argues, and what order? Default: \"Manual | 3. Who must she convince next, and what do they care about? Default: her  | 4. Her name, and any public profile or talks link? Default: I search for  | 5. Do you know anything about Maersk that we should use? Examples are its | 6. How do we show savings with no Maersk data? Default: public Maersk vol | 7. May we name Kuehne+Nagel and DSV on slides? Default: yes, as `claims.m | 8. Any product screenshots or diagrams to use? Default: none, and no made | 9. Anything to lead with or leave out, such as a topic or a competitor no"
+    },
+    "asked_le_7": {
+      "pass": false,
+      "value": 9,
+      "evidence": "9 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "9 of 9 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 9"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "15 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: real audience (\"convince next\"), claims (\"claims\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": false,
+      "evidence": "no line with minutes and helpers"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 732,
+      "evidence": "732 words, 320 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 732,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 10,
+      "no_redundancy": 4,
+      "defaults_quality": 8,
+      "clarity": 4,
+      "respects_words": 9,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Brief settles look (\"Manrope, ink #111827\"), claims from claims.md, \"about 10 main slides\", \"HTML deck and editable 16:9 PowerPoint\", and questions cover goal and COO.",
+      "no_redundancy": "Asks already-answered facts: Q1 \"What is the deck for?\" (ask says ranked plan), Q3 \"Who must she convince next\" (ask says COO), Q7 \"May we name Kuehne+Nagel and DSV\" (claims.md says yes).",
+      "defaults_quality": "Every question has a concrete default fitting the ask, e.g. Q6 \"our 62% result at Kuehne+Nagel applied as a scenario, each marked 'our estimate'\"; Q1 lists five options where one was already given.",
+      "clarity": "Nine questions plus a five-option menu in Q1 and a long start check make it a wall of text; the most useful questions (Q5 Maersk insight, Q6 savings method) are buried.",
+      "respects_words": "Keeps \"about 10\" with appendix, both outputs, COO audience and claims limits; only mild drift is widening to \"8 to 12\" and re-offering non-plan deck types.",
+      "overall": "Thorough and faithful brief with good defaults, but re-asks three settled facts and is too long for a busy person; should be 3-4 questions (insider knowledge, savings method, her name)."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.843Z"
+}

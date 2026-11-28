@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "id": "S1",
+      "item": "Every one of the 4 rows in requests.md is done or swept, or left with a reason.",
+      "passes": true,
+      "proof": "loop-runs/product-design-loop-20261126-032658/review.json",
+      "note": "re-ran row checks: greps on final/*.txt and clinic/index.html, eval of td padding on today/customers/invoices"
+    },
+    {
+      "id": "S2",
+      "item": "Every everywhere row's find in sweep.md shows no place left, except places skipped with a reason.",
+      "passes": true,
+      "proof": "loop-runs/product-design-loop-20261126-032658/review.json",
+      "note": "re-ran sweep finds on clinic/index.html and grep on final/*.txt: no match"
+    },
+    {
+      "id": "S3",
+      "item": "The final compare has no UNEXPECTED and no BROKEN screen.",
+      "passes": true,
+      "proof": "loop-runs/product-design-loop-20261126-032658/review.json",
+      "note": "page-check compare: same 0, explained 5, UNEXPECTED 0, BROKEN 0; compare-final.md"
+    },
+    {
+      "id": "S4",
+      "item": "Every changed part of the code traces to a row, or to a decision a row needed.",
+      "passes": true,
+      "proof": "loop-runs/product-design-loop-20261126-032658/review.json",
+      "note": "diff before/source/index.html vs clinic/index.html: 6 changed lines, all trace to rows 1, 2, 4"
+    },
+    {
+      "id": "S5",
+      "item": "The prototype's link http://localhost:4100/ answers 200.",
+      "passes": true,
+      "proof": "loop-runs/product-design-loop-20261126-032658/review.json",
+      "note": "curl http://localhost:4100/ printed 200"
+    }
+  ],
+  "review": {
+    "file": "loop-runs/product-design-loop-20261126-032658/review.json",
+    "spec": 5,
+    "quality": 4,
+    "verdict": "PASS",
+    "at": "2026-11-25T22:04:23.750Z"
+  }
+}

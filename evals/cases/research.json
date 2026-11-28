@@ -1,0 +1,197 @@
+{
+  "loop": "research",
+  "skill": "product-research-loop",
+  "cases": [
+    {
+      "id": "research-01",
+      "ask": "what should we build first for an online booking tool for small physio clinics in the UK? compare us with Cliniko, Jane and Power Diary",
+      "files": {},
+      "must_cover": [
+        "decision|first modules",
+        "persona|clinic|physio|receptionist",
+        "rivals|cliniko",
+        "market|uk",
+        "how bold|bold|catch up|catch-up",
+        "sources|pages"
+      ],
+      "findable": [
+        "rivals|competitors|which products",
+        "market|country|region"
+      ],
+      "expected_track": "full",
+      "notes": "Classic research ask: decision, category, market and three rivals are all given. A good intake asks the persona and how bold, not the rivals or the market."
+    },
+    {
+      "id": "research-02",
+      "ask": "quick look at how Notion, Coda and Slite do templates. just a feature list, nothing fancy",
+      "files": {},
+      "must_cover": [
+        "decision|feature list|matrix|sheet",
+        "sources|kinds|help centre|product pages",
+        "groups|categories",
+        "persona|who uses"
+      ],
+      "findable": [
+        "rivals|competitors|which products"
+      ],
+      "expected_track": "quick",
+      "notes": "Small, clear scope: a feature list of three named rivals. Quick track (3 rivals, 2 source kinds). The persona only ranks modules here and matters little; a good intake keeps the round short."
+    },
+    {
+      "id": "research-03",
+      "ask": "decide the feature set for our shift scheduling product for restaurants",
+      "files": {
+        "interviews/summary.md": "# Restaurant manager interviews (5), Oct 2026\n\nWho: general managers of independent restaurants, 15 to 60 staff, US (Austin, Denver, Chicago).\n\nTop pains, in their words:\n1. \"Sunday night I build next week's rota in a spreadsheet and it takes 3 hours.\" (5 of 5)\n2. \"Shift swaps happen in a group chat and I find out when someone doesn't show.\" (4 of 5)\n3. \"I never know labour cost against sales until the month is over.\" (3 of 5)\n4. \"Tip pooling is a mess.\" (2 of 5)\n\nTools they use today: 7shifts (2), Homebase (2), When I Work (1), spreadsheets (all).\n",
+        "CLAUDE.md": "# Team notes\n\n- In anything we might share outside the team, never name rivals: call them Rival A, B, C.\n- Our working name is \"Rota\".\n"
+      },
+      "must_cover": [
+        "decision|feature set",
+        "persona|manager|general manager",
+        "rivals|7shifts|homebase",
+        "market|us",
+        "how bold|bold|catch up",
+        "rival names|rival a"
+      ],
+      "findable": [
+        "persona|who uses|who is it for",
+        "rivals|competitors|which products",
+        "market|country|region",
+        "rival names|real names|rival a"
+      ],
+      "expected_track": "full",
+      "notes": "Interviews give the persona, the market and the rivals (the tools they use). CLAUDE.md gives the rival-name rule. A good intake states these and asks few questions (how bold, what we have today)."
+    },
+    {
+      "id": "research-04",
+      "ask": "Benchmark us against Coupa, SAP Ariba, Jaggaer and Zip on intake-to-procure. We already have intake forms, approval routing and a supplier portal. I need a comprehensive capability matrix my VP of Procurement can read.",
+      "files": {},
+      "must_cover": [
+        "matrix|capability",
+        "have|what we have|today",
+        "depth|comprehensive",
+        "persona|vp|buyer",
+        "groups|categories",
+        "sheet|excel|xlsx"
+      ],
+      "findable": [
+        "rivals|competitors|which products",
+        "what we have|already have|have today",
+        "depth|how much to read|comprehensive"
+      ],
+      "expected_track": "full",
+      "notes": "Enterprise procurement. Rivals, what we have, depth (comprehensive) and the main output (matrix) are all given. The reader (VP) is given. Good intake: asks group words and market at most."
+    },
+    {
+      "id": "research-05",
+      "ask": "what are rivals doing in AI note taking?",
+      "files": {},
+      "must_cover": [
+        "decision",
+        "product|what it is",
+        "persona|who uses",
+        "rivals|otter|fireflies|granola",
+        "market",
+        "how bold|bold"
+      ],
+      "findable": [],
+      "expected_track": "full",
+      "notes": "Vague: no product, no decision, no rivals, no persona. A good intake drafts a decision and a product line as defaults, proposes rivals found by search, and keeps to the question cap."
+    },
+    {
+      "id": "research-06",
+      "ask": "Precisamos decidir os módulos de um app de estoque para farmácias no Brasil. Rivals? not sure, find them. Portuguese sources are fine.",
+      "files": {},
+      "must_cover": [
+        "decision|modules|módulos",
+        "market|brasil|brazil",
+        "rivals|find",
+        "sources|portuguese|português",
+        "persona|pharmacist|farmacêutico|who uses",
+        "rules|anvisa|regulation"
+      ],
+      "findable": [
+        "market|country|region",
+        "sources|language|portuguese"
+      ],
+      "expected_track": "full",
+      "notes": "Mixed Portuguese and English. Market and source language are given. Rivals must be found. A good intake answers in the person's mix or plain English, names a rival-finding default, and may flag local rules (ANVISA, controlled drugs)."
+    },
+    {
+      "id": "research-07",
+      "ask": "Compare Calendly, Cal.com and SavvyCal on team scheduling - pricing pages and help docs only. 20 minutes tops.",
+      "files": {},
+      "must_cover": [
+        "decision|compare|matrix",
+        "sources|pricing|help",
+        "20 minutes|time",
+        "team scheduling|groups"
+      ],
+      "findable": [
+        "rivals|competitors|which products",
+        "sources|which pages|source kinds"
+      ],
+      "expected_track": "quick",
+      "notes": "Tight time box and fixed source kinds. Quick track fits. The intake must not grow the scope (no reviews, no changelogs) and should keep the questions to one or two."
+    },
+    {
+      "id": "research-08",
+      "ask": "redo the onboarding research from last month, but add Rippling and Deel this time",
+      "files": {
+        "loop-runs/product-research-loop-20261021-1012/brief.md": "# Brief: employee onboarding tools\n\nDecision: the first modules of an onboarding product for HR teams at 200 to 2,000 person companies.\nPersona: HR operations manager who runs onboarding for 10 to 40 new starters a month. Pays: Head of People.\nRivals: BambooHR, HiBob, Personio.\nMarket: UK and Ireland.\nSources: product pages, help centre, release notes, pricing, public reviews.\nHow bold: both.\nOut folder: research/onboarding/\n",
+        "research/onboarding/brief.md": "# Onboarding: product brief (21 Oct 2026)\n\n## Ranked modules\n1. Pre-boarding checklist\n2. Equipment and access requests\n3. First-week plan\n"
+      },
+      "must_cover": [
+        "rivals|rippling|deel",
+        "out folder|folder|date",
+        "persona|hr",
+        "market|uk",
+        "how bold|bold"
+      ],
+      "findable": [
+        "persona|who uses|who is it for",
+        "market|country|region",
+        "how bold|bold|catch up",
+        "sources|source kinds|which pages"
+      ],
+      "expected_track": "full",
+      "notes": "An earlier run left its brief: persona, market, sources and how bold are known. A good intake reuses them, adds the two rivals, and puts the new out folder under a dated name. Asking the persona again is redundant."
+    },
+    {
+      "id": "research-09",
+      "ask": "research competitors for our field service app (ServiceTitan, Jobber, Housecall Pro) and put the sheet in a Google Sheet I can share with the team",
+      "files": {},
+      "must_cover": [
+        "google|drive|sheet",
+        "persona|technician|owner|dispatcher",
+        "decision",
+        "how bold|bold",
+        "market"
+      ],
+      "findable": [
+        "rivals|competitors|which products"
+      ],
+      "expected_track": "full",
+      "notes": "Asks for a Google Sheet. The start check must look for a Drive tool and say plainly when it cannot make one (xlsx only). Rivals are given."
+    },
+    {
+      "id": "research-10",
+      "ask": "go or no-go: should we build a pet insurance comparison site for Germany? Look at Check24, Verivox and Tarifcheck.",
+      "files": {},
+      "must_cover": [
+        "go|no-go",
+        "market|germany",
+        "persona|pet owner",
+        "rivals|check24",
+        "money|revenue|commission",
+        "rules|bafin|regulation|licen"
+      ],
+      "findable": [
+        "rivals|competitors|which products",
+        "market|country|region",
+        "decision|what this run decides"
+      ],
+      "expected_track": "full",
+      "notes": "Decision type is go or no-go, not modules. Market and rivals given. A good intake keeps the decision as asked and may flag the insurance broker licence question as a fact to research, not a question for the person."
+    }
+  ]
+}

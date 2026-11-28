@@ -1,0 +1,121 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-04",
+  "ask": "We run a 14-hospital network (about 4,000 beds). Build a clickable prototype of a bed management tool for charge nurses: a bed board by ward, the admit / transfer / discharge flow, a housekeeping queue for beds being cleaned, and an exec dashboard with occupancy. It's for our innovation board in three weeks, so it has to look like a real product, not a wireframe.",
+  "expected_track": "full",
+  "notes": "Large enterprise ask with four named modules and a clear persona. Depth is implied ('a real product'). Good intake: confirms modules and must-haves, sample data that looks real but is made up (patient privacy), the look, and the research-first option is unnecessary since modules are named.",
+  "must_cover": [
+    "persona|charge nurse|who uses",
+    "module",
+    "how deep|in full|shell|depth",
+    "look|colour|color|font",
+    "sample data|data|patients",
+    "exec|dashboard",
+    "privacy|patient names|fake"
+  ],
+  "findable": [
+    "persona|who uses|who is it for"
+  ],
+  "fixtures": [],
+  "message": "**Goal:** a clickable, real-looking prototype of a bed management tool for charge nurses, ready for your innovation board in three weeks.\n\n**Found:**\n- Who: charge nurses (from your message). Job: see which beds are free and move patients in, across and out.\n- Modules, in build order: bed board by ward, admit / transfer / discharge, housekeeping queue, exec dashboard with occupancy (from your message).\n- Scale: 14 hospitals, about 4,000 beds (from your message).\n- Quality bar: \"a real product, not a wireframe\" (from your message).\n- Working folder was empty: a new product, built in `bed-management/`, local link only.\n- Browser for click checks: chrome-headless-shell, so every click is really tested.\n\n**Track:** full, because it has 4 modules and you will show it to a board. It adds name and logo options and a link for every state (lists, a detail, each flow, empty and error states).\n\n**Coverage:** 4 clear · partial: Data and facts, Edge cases, Look · missing: Done signal. The full table is in `loop-runs/product-build-loop-20261126-033954/brief.md`.\n\n**Done means:**\n- All 4 modules built, each with no serious review finding left.\n- Every link opens and every click works, with no placeholder text.\n- A charge nurse can admit, transfer and discharge a patient.\n- A discharged bed shows up in the housekeeping queue.\n\nAbout 100 minutes and 15 helper agents, within a budget of 120 minutes.\n\n1. How should the prototype handle your 14 hospitals?\n   Recommended: one fully working hospital (about 300 beds, 8 wards) for the nurse screens, with a hospital switcher, and all 14 hospitals on the exec dashboard.\n   Why it matters: it decides how much sample data is built and what the board sees first.\n\n2. What goes on the exec dashboard besides occupancy?\n   Recommended: occupancy % per hospital and per ward, a 7-day trend, patients waiting for a bed, discharges before noon, and average bed cleaning time.\n   Why it matters: the board will judge the product by these numbers.\n\n3. Which tricky cases must the admit and transfer flow handle?\n   Recommended: no bed free in the ward, isolation or gender-matched rooms, a transfer to a ward that is full, and a discharge that sends the bed to housekeeping.\n   Why it matters: these cases are what make it look like a real hospital tool.\n\n4. What look should it have: your logo, colours and fonts?\n   Recommended: none given, so a calm clinical look (teal and slate, Inter, status colours for free, occupied, cleaning and blocked) with a placeholder name.\n   Why it matters: \"real product\" depends mostly on the look.\n\n5. Is made-up patient data fine?\n   Recommended: yes, invented patients shown as initials and a bed number, no real patient information anywhere.\n   Why it matters: it keeps real patient data out of a demo.\n\n6. Do you have a product name, or should I offer three options?\n   Recommended: three name and mark options on the real header, the first one used.\n   Why it matters: the board sees the name on every screen.\n\n7. Anything to add: a PDF guide of the screens, or a public link?\n   Recommended: none; the prototype stays on this laptop.\n   Why it matters: nothing is published unless you ask.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 7,
+      "evidence": "1. How should the prototype handle your 14 hospitals? | 2. What goes on the exec dashboard besides occupancy? | 3. Which tricky cases must the admit and transfer flow handle? | 4. What look should it have: your logo, colours and fonts? | 5. Is made-up patient data fine? | 6. Do you have a product name, or should I offer three options? | 7. Anything to add: a PDF guide of the screens, or a public link?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 7,
+      "evidence": "7 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "7 of 7 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 7, Why it matters: on 7, of 7"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "16 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 1 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 0.857,
+      "evidence": "missing: privacy"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 100 minutes and 15 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 4 clear · partial: Data and facts, Edge cases, Look · missing: Done signal. The full table is in `loop-runs/product-build-loop"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 540,
+      "evidence": "540 words, 230 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because it has 4 modules and you will show it to a board. It adds name and logo options and a link for every state (lists, "
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 540,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 9,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles persona and modules in the brief, depth via 'Track: full' and 'All 4 modules built', look (Q4), sample data scope (Q1), exec metrics (Q2) and privacy ('invented patients shown as initials', Q5).",
+      "no_redundancy": "Persona is stated as found ('Who: charge nurses (from your message)'), not asked; every question covers something the empty folder and the ask leave open.",
+      "defaults_quality": "Defaults are specific and fit the case, e.g. 'one fully working hospital (about 300 beds, 8 wards)... all 14 hospitals on the exec dashboard' and 'teal and slate, Inter, status colours for free, occupied, cleaning and blocked'.",
+      "clarity": "Seven questions after a long brief full of internal jargon ('Coverage: 4 clear · partial: Data and facts...', 'chrome-headless-shell', '15 helper agents') is more than a busy person reads in two minutes, though each question is about one thing.",
+      "respects_words": "Keeps 'real product, not a wireframe' as the quality bar and the three-week board date; scoping nurse screens to one hospital is offered as a question with all 14 kept on the exec dashboard, not imposed.",
+      "overall": "A strong intake: it covers every needed topic with wise defaults, so 'go' gives a good result, held back by its length and process jargon."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.258Z"
+}

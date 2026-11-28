@@ -1,0 +1,122 @@
+{
+  "arm": "improved",
+  "loop": "design",
+  "case": "design-03",
+  "ask": "make the Today screen in proto-clinic work like Linear's inbox (https://linear.app/docs/inbox) - just the flow, keep our look",
+  "expected_track": "full",
+  "notes": "Reference by URL, the mode (flow only) and the target screen are all in the ask. A good intake states them and asks only what the reference leaves open (for example what the detail pane shows for an appointment).",
+  "must_cover": [
+    "reference|linear|inbox",
+    "flow only|flow",
+    "today",
+    "parts|list|detail"
+  ],
+  "findable": [
+    "which prototype|which file",
+    "exact|flow only|pixel",
+    "which screen|target screen"
+  ],
+  "fixtures": [
+    "proto-clinic/index.html"
+  ],
+  "message": "**Goal:** make the Today screen of Northside Physio work like Linear's inbox, flow only, in your own look.\n\n**Found:**\n- Prototype: `proto-clinic/index.html`, plain HTML, no `dev` or `start` script. I will serve the folder locally. (from the folder)\n- Reference: Linear's inbox docs page, https://linear.app/docs/inbox. I read it in the copy step and list every part of its flow first. (from your message)\n- Mode: flow only. Same parts, order and steps; your colours, fonts, buttons and sample data stay. (from \"just the flow, keep our look\")\n- Screen it changes: Today (the table of 5 appointments, with the 3 stat cards and \"New appointment\" above). (from your message)\n- Look rules: no `CLAUDE.md` and no design skill installed, so I follow the prototype's own tokens (`--accent`, `--line`, 8px and 10px radii) and the built-in design check. (from the folder)\n- Start check: Chrome and Node 25 are there, so screenshots work. Nothing is published, pushed or committed.\n\n**Track:** full, because you asked to copy a reference.\n\n**Coverage:** 5 clear · partial: Main flow, Edge cases, Words with no number · missing: none\n\n**Done means:**\n- Today follows every part of Linear's inbox flow, or says why one is left out.\n- Fonts, colours and radii on Today match the \"before\" screenshots.\n- Clients, Invoices and Settings look the same as before.\n- Every row of `requests.md` is done, or left with a reason.\n- The prototype's link answers 200.\n\nEverything else (the needs table, request list, coverage table) goes in `loop-runs/product-design-loop-20261126-034052/brief.md` once you say go.\n\n**My request list (my reading, you can correct any row):**\n- R1 Today: appointments become inbox items. A list on the left, one open on the right, with the first one selected.\n- R2 Today: a new item shows an unread dot and bold name. Opening it clears the dot.\n- R3 Today: a \"Done\" action on an open item moves it out of the list into a \"Done\" tab (my reading of mark done).\n- R4 Today: \"Inbox\" and \"Done\" tabs at the top of the list, each with a count.\n- R5 Today: keyboard `J` and `K` move between items, `E` marks done.\n- R6 Today: when the list is empty it shows \"You're all caught up\".\n- R7 Today: keep the 3 stat cards, \"New appointment\" and the page title as they are.\n\n**Not touched:** \"New appointment\" does nothing, the \"Customers\" title does not match the \"Clients\" tab, and Invoices has no empty state. They were like this before.\n\nAbout 40 minutes and 3 helper agents, within a budget of 60 minutes.\n\n1. What should \"Done\" mean for an appointment?\n   Recommended: the client is checked in, and the row shows \"Checked in\".\n   Why it matters: it sets the wording, the tab name and what the open item shows.\n2. Which appointments start as unread?\n   Recommended: Owen Brooks (First visit) only, because he is new.\n   Why it matters: it decides what the unread state looks like on first open.\n3. Should the state survive a page reload?\n   Recommended: no, it resets on reload, because the prototype has no saved data.\n   Why it matters: a person trying the flow twice sees the same start.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. What should \"Done\" mean for an appointment? | 2. Which appointments start as unread? | 3. Should the state survive a page reload?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 3, Why it matters: on 3, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "27 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": true,
+      "evidence": "none of 3 findable facts asked"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 3 helper agents, within a budget of 60 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "**Coverage:** 5 clear · partial: Main flow, Edge cases, Words with no number · missing: none"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 542,
+      "evidence": "542 words, 431 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you asked to copy a reference."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-design-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 542,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 10,
+      "defaults_quality": 9,
+      "clarity": 6,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles reference (\"Linear's inbox docs page\"), flow only (\"Mode: flow only\"), Today (\"Screen it changes: Today\") and parts (\"A list on the left, one open on the right\").",
+      "no_redundancy": "Prototype, screen and mode are stated as found facts; the 3 questions (Done meaning, unread, reload) cannot be found in the files or ask.",
+      "defaults_quality": "Each question has a specific fitting default, e.g. \"the client is checked in, and the row shows 'Checked in'\" and \"Owen Brooks (First visit) only\".",
+      "clarity": "Only 3 short, well-ordered questions, but they sit under a long brief with coverage, done-means, 7 requests and not-touched lists that a busy person must wade through.",
+      "respects_words": "Keeps \"your colours, fonts, buttons and sample data stay\" and leaves other screens alone; R7 keeps existing stat cards, consistent with keeping the look.",
+      "overall": "Strong, faithful intake with smart defaults that let \"go\" work; held back mainly by length and jargon like \"Track: full\" and \"Coverage: 5 clear\"."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.854Z"
+}

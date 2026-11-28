@@ -1,0 +1,127 @@
+{
+  "arm": "improved",
+  "loop": "deck",
+  "case": "deck-04",
+  "ask": "second meeting with Northwind Health's CIO next week - technical deep dive on how we integrate with their Epic EHR. 12-15 slides.",
+  "expected_track": "full",
+  "notes": "A call transcript gives the people, their systems, pains and asks. CLAUDE.md gives look and claims. A good intake builds the goal from the transcript (a pilot plan for one hospital) and asks very little.",
+  "must_cover": [
+    "goal|pilot",
+    "reader|cio|integration lead",
+    "slide count|12",
+    "fhir|hl7|epic",
+    "claims|soc 2",
+    "look|inter"
+  ],
+  "findable": [
+    "meeting kind|technical|first meeting",
+    "slide count|how many slides",
+    "look|font|colour|color",
+    "claims|what we may claim",
+    "company facts|systems|epic"
+  ],
+  "fixtures": [
+    "CLAUDE.md",
+    "notes/call-2026-11-20.txt"
+  ],
+  "message": "**Goal:** a technical deep dive for Northwind Health's CIO, Raj Patel, and his integration lead, showing how Larkspur AI reads and writes Epic, with a one-hospital pilot plan, in 12 to 15 main slides.\n\n**Found:**\n- Company: Northwind Health, 9 hospitals, on Epic since 2019, moving to Epic's cloud hosting next year (from notes/call-2026-11-20.txt).\n- Attendees: Raj Patel (CIO) and Maria Gomez (Director of Clinical Apps); Raj brings his integration lead (from the call notes).\n- Their asks: FHIR or HL7, where data lives, SOC 2, a pilot plan, nurse time (from the call notes).\n- We may claim: SOC 2 Type II (2026); FHIR R4 read and write via the Epic App Orchard listing. Never \"HIPAA certified\" (from CLAUDE.md).\n- Look: Inter, teal #0E7490, ink #0F172A, architecture diagrams as boxes with no icons (from CLAUDE.md).\n- Start check passed: deck tools ready, web search available.\n\n**Track:** full, because you gave 12 to 15 slides for a senior technical buyer. Outputs: HTML deck and editable PowerPoint.\n\nCoverage: 8 clear · partial: Edge cases, Data and facts · missing: none\n\n**Done means:**\n- 12 to 15 main slides; extras go to an appendix with a Sources slide.\n- Files in `decks/northwind-health-20261126/out/`: deck.html and deck.pptx.\n- Every line cites a public source, our estimate, or your word.\n- No claim beyond FHIR R4 and SOC 2 Type II.\n- Every slide drawn, looked at, and passed by a fresh reviewer.\n\nThe full brief goes to `loop-runs/product-deck-loop-20261126-034258/brief.md`.\n\nAbout 70 minutes and 7 helper agents, within a budget of 90 minutes.\n\n1. Where does Larkspur AI store and process Northwind's data (hosting, region, how long it is kept)?\n   Recommended: no claim on the slides; one slide says \"to confirm in the meeting\" and lists the questions.\n   Why it matters: they asked this on the call, and none of our files say it, so I will not invent it.\n2. Do we support HL7 v2, or only FHIR R4?\n   Recommended: claim FHIR R4 read and write only, and answer HL7 as an open question for the integration lead.\n   Why it matters: an unsupported interface claim in front of an integration lead is the costliest mistake.\n3. Who must Raj convince next, and what do they care about?\n   Recommended: Raj and his integration lead only; the lead cares about authentication, failure handling and write-back safety.\n   Why it matters: it decides how deep the technical slides go and what the last slide asks for.\n4. Do you want the pilot plan in the deck, and how detailed?\n   Recommended: 2 slides for one hospital, with scope, steps and success measures, all marked as proposals with no dates.\n   Why it matters: Raj asked for it, but timelines we cannot stand behind would be a promise.\n5. May the deck use a nurse-time saving for discharge summaries?\n   Recommended: use only their 25 minutes per summary from the call; no saving figure of ours.\n   Why it matters: a saving number needs a source or your estimate, and none is in the files.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 5,
+      "evidence": "1. Where does Larkspur AI store and process Northwind's data (hosting, re | 2. Do we support HL7 v2, or only FHIR R4? | 3. Who must Raj convince next, and what do they care about? | 4. Do you want the pilot plan in the deck, and how detailed? | 5. May the deck use a nurse-time saving for discharge summaries?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 5,
+      "evidence": "5 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "5 of 5 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 5, Why it matters: on 5, of 5"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: meeting kind (\"technical\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 70 minutes and 7 helper agents, within a budget of 90 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Coverage: 8 clear · partial: Edge cases, Data and facts · missing: none"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 512,
+      "evidence": "512 words, 257 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because you gave 12 to 15 slides for a senior technical buyer. Outputs: HTML deck and editable PowerPoint."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-deck-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 512,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 10,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Settles goal (\"with a one-hospital pilot plan\"), reader (Raj and integration lead), slide count (12 to 15), FHIR/HL7 (Q2), claims (SOC 2 Type II, never HIPAA certified) and look (Inter, teal, ink).",
+      "no_redundancy": "States slide count, look and claims as found, but Q4 \"Do you want the pilot plan in the deck\" and Q3 on the audience partly re-ask what the call notes already say (Raj wants a pilot plan, brings his integration lead).",
+      "defaults_quality": "Every question has a concrete, safe default, e.g. \"claim FHIR R4 read and write only, and answer HL7 as an open question\" and \"use only their 25 minutes per summary\".",
+      "clarity": "Plain words and one topic per question, but five questions after a long brief with coverage, track and budget lines make it more than a two-minute read.",
+      "respects_words": "Keeps \"12 to 15 main slides\", the technical deep dive framing and the CIO audience; nothing overrides the ask.",
+      "overall": "A strong intake that grounds every fact in the files and guards the risky claims, held back a little by length and two partly redundant questions."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.919Z"
+}

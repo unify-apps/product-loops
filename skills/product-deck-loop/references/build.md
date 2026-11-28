@@ -52,7 +52,7 @@ and shapes, never a picture of a slide.
 | `section` | title, subtitle | a break between parts, and the Appendix break |
 | `points` | title, points (2 to 5 short lines) | a claim with its reasons |
 | `numbers` | title, numbers (1 to 4: value, label, fact), points (1 or 2, under the boxes) | figures that carry the slide, and what they mean |
-| `columns` | title, columns (2 or 3: heading, points, facts) | a comparison, or by-team views |
+| `columns` | title, columns (2 or 3: heading, points, facts) | a comparison with 3 or more lines per column; with less text use `steps` or `numbers`, or `body` fails on the empty space |
 | `steps` | title, steps (2 to 5: heading, text, facts) | a process, a roadmap, a pilot plan |
 | `image` | title, image (a path from `OUT`), caption | a real product screen or diagram the person gave |
 | `stack` | title, blocks (each a `points`, `numbers`, `columns`, `steps` or `image` with an optional heading and weight) | a one-pager or a dense brochure page |

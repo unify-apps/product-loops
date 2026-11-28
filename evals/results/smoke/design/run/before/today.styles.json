@@ -1,0 +1,20 @@
+{
+ "fill rgb(255, 255, 255)": "header \"Northside Physio\\nToday Clients\"",
+ "font-size 17px": "div.brand \"Northside Physio\"",
+ "font-weight 700": "div.brand \"Northside Physio\"",
+ "font -apple-system": "div.brand \"Northside Physio\"",
+ "color rgb(29, 36, 51)": "div.brand \"Northside Physio\"",
+ "font-size 15px": "a.active \"Today\"",
+ "font-weight 400": "a.active \"Today\"",
+ "color rgb(91, 100, 117)": "a \"Clients\"",
+ "font-size 22px": "h1 \"Today, Thursday 26 November\"",
+ "font-size 14px": "button.btn \"New appointment\"",
+ "font Arial": "button.btn \"New appointment\"",
+ "color rgb(255, 255, 255)": "button.btn \"New appointment\"",
+ "fill rgb(36, 87, 214)": "button.btn \"New appointment\"",
+ "corner 8px": "button.btn \"New appointment\"",
+ "corner 10px": "div.card.stat \"5\\nappointments\"",
+ "font-size 26px": "b \"5\"",
+ "font-size 13px": "th \"Time\"",
+ "font-weight 600": "th \"Time\""
+}

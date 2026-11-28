@@ -1,0 +1,126 @@
+{
+  "arm": "improved",
+  "loop": "build",
+  "case": "build-07",
+  "ask": "build the thing in spec.md end to end",
+  "expected_track": "full",
+  "notes": "The spec answers nearly every need: persona, modules in order with must-haves, depth, look, name, out of scope. A good intake shows the brief and asks very little (0 to 2 questions, for example where it lives). Asking persona or modules here is a fault.",
+  "must_cover": [
+    "persona|flatmates",
+    "module",
+    "how deep|in full",
+    "look|font|colour|color",
+    "settle"
+  ],
+  "findable": [
+    "persona|who uses|who is it for",
+    "module|modules|must-have|must have",
+    "font|typeface",
+    "colour|color|palette",
+    "name|naming|brand name",
+    "how deep|in full|shell|depth"
+  ],
+  "fixtures": [
+    "spec.md"
+  ],
+  "message": "**Goal:** a clickable Tally prototype (shared expenses for UK flatmates) with 4 modules, built end to end and kept on this laptop.\n\n**Found:**\n- Who: flatmates aged 20 to 35 in a UK rented flat; the one job is to see who owes whom and settle up without an awkward chat (from spec.md)\n- Modules in order: Home, Add expense, Bills, Settle up, each with its must-haves, every one built in full (from spec.md)\n- Look: Nunito, primary #22A06B, ink #1B1F24, background #F7F8F6, rounded and friendly (from spec.md)\n- Name: Tally, final; no logo, so the word mark in Nunito 800 (from spec.md)\n- Empty states for a new flat with no expenses; receipt photo can be a placeholder (from spec.md)\n- Out of scope: real payments, bank links, sign-up (from spec.md)\n\n**Track:** full, because spec.md asks for every module in full, with empty states and a link per state.\n\nCoverage: 6 clear · partial: Data and facts, Edge cases, Outputs · missing: none\n\n**Done means:**\n- Home, Add expense, Bills and Settle up are all built in full.\n- Every module passes review with no P1 left.\n- Every link opens in a real browser with no dead click.\n- A new flat with no expenses shows an empty state on each module.\n- Settle up suggests the fewest transfers that clear every debt.\n\nThe full brief, with the coverage table, is written to the run folder as `brief.md` when you say go.\n\nAbout 40 minutes and 14 helper agents, within a budget of 120 minutes.\n\n1. Which people and amounts should the sample flat use?\n   Recommended: 4 flatmates (Rina, Sam, Priya, Jonas), initials only, amounts in pounds, rent £1,200 a month.\n   Why it matters: Home, Bills and Settle up all read the same numbers, so they must agree.\n\n2. When someone marks a suggested payment as paid on Settle up, should the balances on Home change?\n   Recommended: yes, Home and Settle up update together and the page keeps them after a reload.\n   Why it matters: this decides whether Settle up is a real flow or a static list.\n\n3. Which screen size comes first?\n   Recommended: phone first, which also looks right on a laptop.\n   Why it matters: flatmates mostly use this on a phone, and the layout of every module follows from it.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 3,
+      "evidence": "1. Which people and amounts should the sample flat use? | 2. When someone marks a suggested payment as paid on Settle up, should th | 3. Which screen size comes first?"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 3,
+      "evidence": "3 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "3 of 3 name a default"
+    },
+    "recommended_and_why": {
+      "pass": true,
+      "evidence": "Recommended: on 3, Why it matters: on 3, of 3"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "18 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: module (\"module\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "About 40 minutes and 14 helper agents, within a budget of 120 minutes."
+    },
+    "coverage_shown": {
+      "pass": true,
+      "value": 0,
+      "evidence": "Coverage: 6 clear · partial: Data and facts, Edge cases, Outputs · missing: none"
+    },
+    "message_le_600_words": {
+      "pass": true,
+      "value": 396,
+      "evidence": "396 words, 257 before the first question"
+    },
+    "track_offered": {
+      "pass": true,
+      "evidence": "**Track:** full, because spec.md asks for every module in full, with empty states and a link per state."
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-build-loop, version 2"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 396,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 10,
+      "defaults_quality": 9,
+      "clarity": 7,
+      "respects_words": 9,
+      "overall": 8
+    },
+    "evidence": {
+      "completeness": "Brief states persona, all 4 modules 'built in full', Nunito plus the hex colours, and settle is covered in 'Done means' ('fewest transfers') and Q2; the rest is clear.",
+      "no_redundancy": "Persona, modules, font, colours, name and depth are all stated under 'Found' (from spec.md), not asked; the 3 questions (sample data, settle-up persistence, screen size) are not in the spec.",
+      "defaults_quality": "Each question has a concrete default ('4 flatmates... rent £1,200', 'Home and Settle up update together... after a reload', 'phone first'); reusing the PM's name Rina as a flatmate is a small oddity.",
+      "clarity": "Only 3 short questions, each with a reason, but the brief adds jargon and noise ('Coverage: 6 clear · partial: Data and facts...', 'no P1 left', '14 helper agents').",
+      "respects_words": "Faithful to the spec (in full, empty states, placeholder receipt, out of scope kept); 'a link per state' is a slight addition the spec does not state.",
+      "overall": "A strong opening: it states everything findable, asks only 3 questions that change the result with good defaults, and 'go' would work; process jargon is the main drag."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:18:43.547Z"
+}

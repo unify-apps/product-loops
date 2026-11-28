@@ -1,0 +1,119 @@
+{
+  "arm": "baseline",
+  "loop": "research",
+  "case": "research-07",
+  "ask": "Compare Calendly, Cal.com and SavvyCal on team scheduling - pricing pages and help docs only. 20 minutes tops.",
+  "expected_track": "quick",
+  "notes": "Tight time box and fixed source kinds. Quick track fits. The intake must not grow the scope (no reviews, no changelogs) and should keep the questions to one or two.",
+  "must_cover": [
+    "decision|compare|matrix",
+    "sources|pricing|help",
+    "20 minutes|time",
+    "team scheduling|groups"
+  ],
+  "findable": [
+    "rivals|competitors|which products",
+    "sources|which pages|source kinds"
+  ],
+  "fixtures": [],
+  "message": "The run is set up (`loop-runs/product-research-loop-20261126-032440/`). Nothing has been researched yet. Here is my brief and what I need from you.\n\n**Start check: passed.** A web search for \"team scheduling software\" returned results (mostly shift and employee scheduling tools, so I will keep to meeting scheduling). A fetch of calendly.com returned text: Calendly describes itself as a meeting management platform with shared booking links, routing forms, an AI assistant (beta), a notetaker and payments. Web reads did not ask for permission here. The run opens about 30 to 50 pages after you leave, so if your session asks, choose \"don't ask again\" or the research will stop while you are away.\n\n## My brief\n\n- **Decision:** a capability matrix (a feature list per rival) comparing the three on team scheduling. The sheet is the main output, then where each rival is strong or weak, then a short module list.\n- **Product:** not named. I assume this is a pure comparison and you have no product of your own yet (question 1).\n- **Category:** meeting and appointment scheduling software, team scheduling features (round robin, collective booking, shared event types, admin controls, routing).\n- **Persona and buyer:** drafted in question 2.\n- **Rivals (3):** Calendly, Cal.com, SavvyCal. No others added.\n- **Market:** global, English-language pages, prices in USD. All three sell worldwide.\n- **What we have today:** nothing, so every row is `gap` or `beat`.\n- **Sources:** you limited this to **pricing pages** and **help docs**. I will read only those two kinds for each rival. No product pages, no changelogs, no reviews, no videos, no sign-in, no trial sign-up.\n- **Depth:** you said 20 minutes tops, so I use a light cut: up to 8 pages and 25 features per rival, instead of the usual 12 and 40. Page reads run in parallel, one helper per rival. I can aim for about 20 minutes, but I cannot guarantee it, because the review step and the Excel build also take time.\n- **Fixed and refused:** none.\n- **First release size:** rank every module. The top 3 are the first release.\n- **Rival names:** real names. The files stay on this laptop.\n- **Where to save:** `research/team-scheduling-compare/` in this folder.\n- **Sharing:** nothing is published, sent or uploaded.\n- **Sheet file:** `capability-sheet.xlsx` and `capability-sheet.csv`. No Google Sheet link: you did not ask for one.\n- **Groups (sheet categories):** you gave no group words. I will use plain ones: Booking types, Team routing, Availability and calendars, Admin and permissions, Pricing and plans, Integrations.\n\n## Questions\n\n1. **Do you have a product of your own, or is this only a comparison?** Default: only a comparison, so there are no `have` rows. If you have one, tell me the features it already has.\n2. **Persona.** My draft: an **operations or sales-ops lead at a 10 to 50 person company**, who sets up shared booking pages for a team every week and wants the right person booked without back-and-forth. The buyer is the same person or their manager. The persona only ranks the modules. It never takes a row out of the sheet. Default: my draft.\n3. **How bold should the brief be?** (a) Catch-up: match what the rivals do. (b) Ideas no rival has: new ways to do the job. (c) Both. Default: both, with at least 3 \"ideas no rival has\" tied to a persona pain. Note that these ideas can only come from what the pricing pages and help docs show.\n4. **What counts as \"team scheduling\"?** Default: round robin, collective (everyone attends) and group events, shared team pages, routing forms, and admin and seat controls. Name any feature you want added or left out.\n5. **Market and currency.** Default: global, USD. Say if you want a specific country.\n6. **Time budget.** Is \"20 minutes\" a hard cap or a target? Default: a target. I keep the depth light, and anything not read in time is marked `unverified` and listed in the hand-over.\n\nReply with your answers, or just \"go\" to use the defaults.\n",
+  "checks": {
+    "ended_with_go_line": {
+      "pass": true,
+      "evidence": "last line: Reply with your answers, or just \"go\" to use the defaults."
+    },
+    "asked_count": {
+      "pass": null,
+      "value": 6,
+      "evidence": "1. Do you have a product of your own, or is this only a comparison? Defau | 2. Persona. My draft: an operations or sales-ops lead at a 10 to 50 perso | 3. How bold should the brief be? (a) Catch-up: match what the rivals do.  | 4. What counts as \"team scheduling\"? Default: round robin, collective (ev | 5. Market and currency. Default: global, USD. Say if you want a specific  | 6. Time budget. Is \"20 minutes\" a hard cap or a target? Default: a target"
+    },
+    "asked_le_7": {
+      "pass": true,
+      "value": 6,
+      "evidence": "6 questions"
+    },
+    "every_question_has_default": {
+      "pass": true,
+      "evidence": "6 of 6 name a default"
+    },
+    "recommended_and_why": {
+      "pass": false,
+      "evidence": "Recommended: on 0, Why it matters: on 0, of 6"
+    },
+    "brief_shown": {
+      "pass": true,
+      "evidence": "19 lines before the questions"
+    },
+    "no_findable_asked": {
+      "pass": false,
+      "evidence": "asked: rivals (\"rivals\")"
+    },
+    "must_cover_hit": {
+      "pass": null,
+      "value": 1,
+      "evidence": "missing: none"
+    },
+    "estimate_line": {
+      "pass": true,
+      "evidence": "- **Depth:** you said 20 minutes tops, so I use a light cut: up to 8 pages and 25 features per rival, instead of the usual 12 and 40. Page r"
+    },
+    "coverage_shown": {
+      "pass": false,
+      "value": 0,
+      "evidence": "0 table rows marked clear, partial or missing"
+    },
+    "message_le_600_words": {
+      "pass": false,
+      "value": 670,
+      "evidence": "670 words, 419 before the first question"
+    },
+    "track_offered": {
+      "pass": false,
+      "evidence": "no track line"
+    },
+    "state_initialised": {
+      "pass": true,
+      "evidence": "intake open, replies 0, loop product-research-loop, version 1"
+    },
+    "stop_fact_items": {
+      "pass": null,
+      "value": 0,
+      "evidence": "no stop-fact.json"
+    },
+    "turn_ended_without_working": {
+      "pass": true,
+      "evidence": "no file outside the fixtures and loop-runs/"
+    },
+    "message_words": {
+      "pass": null,
+      "value": 670,
+      "evidence": "words in the message"
+    }
+  },
+  "llm": {
+    "scores": {
+      "completeness": 9,
+      "no_redundancy": 7,
+      "defaults_quality": 8,
+      "clarity": 5,
+      "respects_words": 6,
+      "overall": 6
+    },
+    "evidence": {
+      "completeness": "Settles decision (\"a capability matrix ... comparing the three on team scheduling\"), sources (\"only those two kinds\"), time (\"20 minutes tops, so I use a light cut\") and team scope (Q4 round robin, collective, routing).",
+      "no_redundancy": "Rivals and sources are stated, not asked, but Q6 re-asks whether \"20 minutes\" is a cap though the ask said \"tops\", and Q5 market adds a low-value question.",
+      "defaults_quality": "Every question has a concrete default (e.g. persona \"operations or sales-ops lead at a 10 to 50 person company\", team features list), so \"go\" works.",
+      "clarity": "Long preamble plus a 15-bullet brief and 6 questions; the most decisive question (team scope) sits fourth behind product and persona.",
+      "respects_words": "Keeps sources strictly to pricing and help docs, but defaults \"20 minutes tops\" to \"a target\" and says \"I cannot guarantee it\", and adds module ranking and \"first release\" beyond a plain compare.",
+      "overall": "Sound and faithful on sources with good defaults, but too long for a 20-minute job and it softens the stated time cap."
+    }
+  },
+  "run": {
+    "executor": "agent",
+    "minutes": null,
+    "cost_usd": null,
+    "num_turns": null,
+    "is_error": null
+  },
+  "gradedAt": "2026-11-25T22:24:51.772Z"
+}

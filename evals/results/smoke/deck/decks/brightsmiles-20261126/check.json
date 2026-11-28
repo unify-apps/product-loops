@@ -1,0 +1,44 @@
+[
+  {
+    "key": "count",
+    "name": "slide count in the asked range",
+    "pass": true,
+    "detail": "7 main slides, asked 6 to 8; 3 in the appendix"
+  },
+  {
+    "key": "figures",
+    "name": "every figure has a source",
+    "pass": true,
+    "detail": "9 facts, every figure on a slide is in a fact its line cites"
+  },
+  {
+    "key": "claims",
+    "name": "every line cites facts that say it",
+    "pass": true,
+    "detail": "37 rows, each cites a fact, claim checker PASS"
+  },
+  {
+    "key": "body",
+    "name": "every slide's body fills it and shows its title's numbers",
+    "pass": true,
+    "detail": "no slide half empty; every title number is in its body"
+  },
+  {
+    "key": "fit",
+    "name": "all text fits its box, titles on one line",
+    "pass": true,
+    "detail": "every box fits"
+  },
+  {
+    "key": "open",
+    "name": "each output file opens, with real text at the right size",
+    "pass": true,
+    "detail": "opened: html, pdf"
+  },
+  {
+    "key": "looked",
+    "name": "every slide was drawn and looked at",
+    "pass": true,
+    "detail": "10 pictures, looked.md covers all 10 slides"
+  }
+]
